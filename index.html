@@ -6,8 +6,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	    <meta name="description" content="Demo project">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="http://popcornjs.org/code/dist/popcorn-complete.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
 		<link rel="stylesheet" href="css/style.css">
+		<script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+		<script src="js/pop-test.js"></script>
 		<!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
 		<style type="text/css"></style>
 	</head>
@@ -33,19 +37,10 @@
 				</div>
 			</section>
 		</main>
+		<span id="time">
+			0
+		</span>
 	</body>
-	<script type="text/javascript">
-		document.addEventListener( "DOMContentLoaded", function() {
-	 
-	           var popcorn = Popcorn( "#hipVid0" );
-	 
-	           popcorn.footnote({
-	             start: 2,
-	             end: 5,
-	             target: "evEsq",
-	             text: "Pop!"
-	           });
-	 
-	         }, false );
+	<script type="text/javascript">	 
 	</script>
 </html>
