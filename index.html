@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demo</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	    <meta name="description" content="Demo project">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="http://popcornjs.org/code/dist/popcorn-complete.js"></script>
+		<link rel="stylesheet" href="css/style.css">
+		<!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<div class="conteudo"></div>
+			</nav>
+		</header>
+		<main>
+			<section>
+				<div class="conteudo">
+					<div class="grid clearfix hipervideo">
+						<div class="col-1-5 verde" id="evEsq"></div>
+						<div class="col-3-5" id="video">
+							<video style="width: 100%" poster="http://jardim.in/hipervideo/img/splash.jpg" preload="auto" class="" id="hipVid0" style="height: 360px;" controls="">
+						       <source type="video/webm" src="http://player.aovivonaweb.tv/HiperVideo_audio_mix6_trilha2.webm"></source>
+						       <source src="http://player.aovivonaweb.tv/HiperVideo_audio_mix6_trilha2.mp4" type="video/mp4"></source>
+					       	</video>
+						</div>
+						<div class="col-1-5 verde" id="evDir"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+	<script type="text/javascript">
+		document.addEventListener( "DOMContentLoaded", function() {
+	 
+	           var popcorn = Popcorn( "#hipVid0" );
+	 
+	           popcorn.footnote({
+	             start: 2,
+	             end: 5,
+	             target: "evEsq",
+	             text: "Pop!"
+	           });
+	 
+	         }, false );
+	</script>
+</html>
