@@ -12,13 +12,21 @@
 		<link rel="stylesheet" href="css/style.css">
 		<script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
 		<script src="js/pop-test.js"></script>
-		<!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
 		<style type="text/css"></style>
 	</head>
 	<body>
 		<header>
 			<nav>
-				<div class="conteudo"></div>
+				<div class="conteudo">
+					<ul>
+						<li style="" onclick="hipVidHalf();">Half</li>
+						<li style="" onclick="hipVidReplay();">Replay</li>
+						<li id="play" onclick="hipVidPlay();">Play</li>
+						<li style="display: none;" id="pause" onclick="hipVidPause();">Pause</li>
+						<li onclick="hipVidFim();">Fim</li>
+						<li style="" onclick="hipVidFull();">Full</li>
+					</ul>
+				</div>
 			</nav>
 		</header>
 		<main>
@@ -27,7 +35,7 @@
 					<div class="grid clearfix hipervideo">
 						<div class="col-1-5 verde" id="evEsq"></div>
 						<div class="col-3-5" id="video">
-							<video style="width: 100%" poster="http://jardim.in/hipervideo/img/splash.jpg" preload="auto" class="" id="hipVid0" style="height: 360px;" controls="">
+							<video style="width: 100%" poster="http://jardim.in/hipervideo/img/splash.jpg" preload="auto" class="" id="hipVid0" style="height: 360px;">
 						       <source type="video/webm" src="http://player.aovivonaweb.tv/HiperVideo_audio_mix6_trilha2.webm"></source>
 						       <source src="http://player.aovivonaweb.tv/HiperVideo_audio_mix6_trilha2.mp4" type="video/mp4"></source>
 					       	</video>
