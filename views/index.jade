@@ -16,8 +16,21 @@ block content
   video(poster="http://jardim.in/hipervideo/img/splash.jpg" preload="auto" class="" id="hipVid0")
     source(type="video/webm" src="#{tocando}.webm" id="webm")
     source(src="#{tocando}.mp4" type="video/mp4" id="mp4")
-  #video-controls
-    input(type="range" id="seek-bar" value="0")
+  nav#video-controls.hover
+    #capitulos
+      .capitulo(style="width: 20%; left: 0;")
+        hr
+        p Capitulo 1
+      .capitulo(style="width: 40%; left: 20%;")
+        hr
+        p Capitulo 2
+      .capitulo(style="width: 20%; left: 60%;")
+        hr
+        p Capitulo 3
+      .capitulo(style="width: 20%; left: 80%;")
+        hr
+        p Capitulo 4
+    input(type="range" id="seek-bar" min="0" max="100" value="0" data-rangeslider="")
   script(type="text/javascript").
     function playVideo(argument) {
       var body = document.getElementById('body');
@@ -31,5 +44,26 @@ block content
       video.play();
     }
 
-    $('input[type="range"]').rangeslider();
+    window.onload = function(){
+      var hipervideo = $('video')
+      var seekBar = $('#seek-bar')
+
+      // Event listener for the seek bar
+      seekBar.addEventListener("change", function() {
+        // Calculate the new time
+        var time = hipervideo.duration * (seekBar.value / 100);
+
+        // Update the video time
+        hipervideo.currentTime = time;
+      });
+
+      // Update the seek bar as the video plays
+      hipervideo.addEventListener("timeupdate", function() {
+        // Calculate the slider value
+        var value = (100 / hipervideo.duration) * hipervideo.currentTime;
+
+        // Update the slider value
+        seekBar.value = value;
+      })
+    };
 
