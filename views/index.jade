@@ -1,6 +1,35 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p teste
+  header(style='height: 200px; background-color: gray;')
+    .conteudo
+      h1= title
+      p Welcome to #{title}
+  .conteudo
+    .grid
+      for h in hipervideos
+        a.hipervideo(onclick='playVideo("#{h.url}")') 
+          .col-1-5(style='background-color: #{h.cor};')
+            .areaTematica
+              h2= h.nome
+              p= h.descricao
+  video(poster="http://jardim.in/hipervideo/img/splash.jpg" preload="auto" class="" id="hipVid0")
+    source(type="video/webm" src="#{tocando}.webm" id="webm")
+    source(src="#{tocando}.mp4" type="video/mp4" id="mp4")
+  #video-controls
+    input(type="range" id="seek-bar" value="0")
+  script(type="text/javascript").
+    function playVideo(argument) {
+      var body = document.getElementById('body');
+      var video = document.getElementById('hipVid0');
+      var videoMp4 = document.getElementById('mp4');
+      var videoWebm = document.getElementById('webm');
+      body.setAttribute("class", "tocando");
+      videoMp4.setAttribute("src", argument + ".mp4");
+      videoWebm.setAttribute("src", argument + ".webm");
+      video.load();
+      video.play();
+    }
+
+    $('input[type="range"]').rangeslider();
+
