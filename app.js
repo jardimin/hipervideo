@@ -9,8 +9,11 @@ var livereload = require('express-livereload');
 var $ = require('jquery')
 // var rangeslider = require('rangeslider.js')
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var routes = {
+    index: require('./routes/index'),
+    users: require('./routes/users'),
+    vue:   require('./routes/vue')
+};
 
 var app = express();
 
@@ -36,8 +39,9 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', routes);
-app.use('/users', users);
+app.use('/', routes.index);
+app.use('/users', routes.users);
+app.use('/vue', routes.vue);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
