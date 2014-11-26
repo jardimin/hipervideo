@@ -32,38 +32,34 @@ block content
         p Capitulo 4
     input(type="range" id="seek-bar" min="0" max="100" value="0" data-rangeslider="")
   script(type="text/javascript").
-    function playVideo(argument) {
-      var body = document.getElementById('body');
-      var video = document.getElementById('hipVid0');
-      var videoMp4 = document.getElementById('mp4');
-      var videoWebm = document.getElementById('webm');
-      body.setAttribute("class", "tocando");
-      videoMp4.setAttribute("src", argument + ".mp4");
-      videoWebm.setAttribute("src", argument + ".webm");
-      video.load();
-      video.play();
-    }
+    //- function playVideo(argument) {
+    //-   $('body').addClass("tocando");
+    //-   $('#mp4').setAttribute("src", argument + ".mp4");
+    //-   $('#webm').setAttribute("src", argument + ".webm");
+    //-   hipervideo.load();
+    //-   hipervideo.play();
+    //- };
 
-    window.onload = function(){
-      var hipervideo = $('video')
-      var seekBar = $('#seek-bar')
+    //- window.onload = function(){
+    //-   var hipervideo = $('video')
+    //-   var seekBar = $('#seek-bar')
 
-      // Event listener for the seek bar
-      seekBar.addEventListener("change", function() {
-        // Calculate the new time
-        var time = hipervideo.duration * (seekBar.value / 100);
+    //-   // Event listener for the seek bar
+    //-   seekBar.addEventListener("change", function() {
+    //-     // Calculate the new time
+    //-     var time = hipervideo.duration * (seekBar.value / 100);
 
-        // Update the video time
-        hipervideo.currentTime = time;
-      });
+    //-     // Update the video time
+    //-     hipervideo.currentTime = time;
+    //-   });
 
-      // Update the seek bar as the video plays
-      hipervideo.addEventListener("timeupdate", function() {
-        // Calculate the slider value
-        var value = (100 / hipervideo.duration) * hipervideo.currentTime;
+    //-   // Update the seek bar as the video plays
+    //-   hipervideo.addEventListener("timeupdate", function() {
+    //-     // Calculate the slider value
+    //-     var value = (100 / hipervideo.duration) * hipervideo.currentTime;
 
-        // Update the slider value
-        seekBar.value = value;
-      })
-    };
+    //-     // Update the slider value
+    //-     seekBar.value = value;
+    //-   })
+    //- };
 
