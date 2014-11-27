@@ -37,7 +37,7 @@ function toFormat(time) {
 
 $(document).ready(function() {
 
-  hipervideo.addEventListener("loadstart" , function() {
+  hipervideo.addEventListener("loadedmetadata" , function() {
     var duracao = toFormat(hipervideo.duration);
     var tempoTotal = function(array) {
       var min = array[0];
