@@ -18,19 +18,22 @@ block content
     source(src="#{tocando}.mp4" type="video/mp4" id="mp4")
   nav#video-controls.hover
     #capitulos
-      .capitulo(style="width: 20%; left: 0;")
+      .capitulo(style="width: 20%; left: 0;" onclick="seekCap(0)")
         hr
-        p Capitulo 1
-      .capitulo(style="width: 40%; left: 20%;")
+        p= hipervideos[0].capitulos[0].nome
+      .capitulo(style="width: 40%; left: 20%;" onclick="seekCap(20)")
         hr
-        p Capitulo 2
-      .capitulo(style="width: 20%; left: 60%;")
+        p= hipervideos[0].capitulos[1].nome
+      .capitulo(style="width: 20%; left: 60%;" onclick="seekCap(60)")
         hr
-        p Capitulo 3
-      .capitulo(style="width: 20%; left: 80%;")
+        p= hipervideos[0].capitulos[2].nome
+      .capitulo(style="width: 20%; left: 80%;" onclick="seekCap(80)")
         hr
-        p Capitulo 4
-    input(type="range" id="seek-bar" min="0" max="100" value="0" data-rangeslider="")
+        p= hipervideos[0].capitulos[3].nome
+    .rangeslider(style="")
+      .rangeslider__fill(style="width: 538.416px;")
+      .rangeslider__handle(style="left: 537.416px;")
+    input(type="range" id="seek-bar" min="0" max="1000" data-rangeslider="" style="display: none;")
   script(type="text/javascript").
     //- function playVideo(argument) {
     //-   $('body').addClass("tocando");

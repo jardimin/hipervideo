@@ -1,5 +1,6 @@
 var hipervideo = $('#hipVid0').get(0);
-var selector = '[data-rangeslider]';
+var selector = $('.rangeslider').get(0);
+var seekBar = $('#seek-bar').get(0);
 
 var playVideo = function(argument) {
   $('body').addClass("tocando");
@@ -9,15 +10,66 @@ var playVideo = function(argument) {
   hipervideo.play();
 }
 
-$(document).ready(function() {
-  // hipervideo.addEventListener("timeupdate", function(e) {
-  //   // Calculate the slider value
-  //   var value = (100 / hipervideo.duration) * hipervideo.currentTime;
+var seekCap = function(perc) {
+  var timecode = (hipervideo.duration * perc) / 100
+  hipervideo.currentTime = timecode;
+}
 
-  //   var $inputRange = $('input[type="range"]', e.target.parentNode), e.target.parentNode)[0].value; 
-  //   // Update the slider value
-  //   $inputRange.val(value).change();
-  // })
+$(document).ready(function() {
+
+  seekBar.addEventListener("change", function() {
+    // Calculate the new time
+    var time = hipervideo.duration * (seekBar.value / 1000);
+    console.log(seekBar.value);
+
+    // Update the video time
+    hipervideo.currentTime = time;
+  });
+
+  
+  // Update the seek bar as the video plays
+  hipervideo.addEventListener("timeupdate", function() {
+    // Calculate the slider value
+    var value = (1000 / hipervideo.duration) * hipervideo.currentTime;
+    var fillWidth = seekBar.value / 10
+
+    // Update the slider value
+    seekBar.value = value;
+    $('.rangeslider__fill').css('width', fillWidth+"%")
+    $('.rangeslider__handle').css('left', fillWidth+"%")
+  });
+
+  var bol = false;
+  var seekTime = function(e) {
+    var janela   = window.innerWidth,
+        pos      = e.pageX,
+        relativo = hipervideo.duration * (pos / janela);
+
+    hipervideo.currentTime = relativo;
+  };
+
+  selector.addEventListener("mousemove", function(e) {
+    var janela   = window.innerWidth,
+        pos      = e.pageX,
+        relativo = hipervideo.duration * (pos / janela);
+
+    if (bol===true) {
+      seekTime(e);
+    }
+
+  });
+
+  selector.addEventListener("mouseup", function(e) {
+    hipervideo.play();
+    bol = false;
+  });
+
+  selector.addEventListener("mousedown", function(e) {
+    hipervideo.pause();
+    bol = true;
+    seekTime(e);
+  });
+
 
   (function() {
     window.onmousemove = handleMouseMove;
@@ -31,24 +83,4 @@ $(document).ready(function() {
       }
     }
   })();
-
-  // (function() {
-  //   function valueOutput(element) {
-  //     var value = element.value,
-  //     var time = hipervideo.duration * (value / 100);
-
-  //     hipervideo.currentTime = time;
-  //   } 
-
-  //   $(document).on('change', selector, function(e) {
-  //     valueOutput(e.target);
-  //   }); 
-  // })();
-
-  $('input[type="range"]').rangeslider({
-    polyfill: false,
-    rangeClass: 'rangeslider',
-    fillClass: 'rangeslider__fill',
-    handleClass: 'rangeslider__handle'
-  });
 })
