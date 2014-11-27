@@ -59,7 +59,7 @@ var db = {
       nome: 'Adolescente',
       descricao: 'T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t',
       cor: 'yellow',
-      url: 'http://player.aovivonaweb.tv/HiperVideo_audio_mix6_trilha2',
+      url: 'https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH',
       duracao: 217.641,
       capitulos: [
         {
