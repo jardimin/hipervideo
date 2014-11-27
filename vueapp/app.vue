@@ -2,8 +2,18 @@
 	
 	.vue-nav {
 		list-style-type: none;
+		margin: 0;
+		padding: 0;
 		li {
 			display: inline;
+			margin: 0;
+			padding: 0;
+			a {
+				padding: 10px;
+				&:hover {
+					background: #eee;
+				}
+			}
 		}
 	}
 
@@ -26,7 +36,6 @@
 		<li><a href="#/video/1">video1</a></li>
 		<li><a href="#/video/2">video2</a></li>
 	</ul>
-	<hr/>
 	<!-- main view -->
 	<div class="view" v-component="{{view}}" v-transition></div>
 </template>

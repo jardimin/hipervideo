@@ -4,15 +4,18 @@ var app = new Vue(require('./app.vue'))
 var router = new Router()
 
 router.on('/', function () {
-	window.scrollTo(0, 0)
 	app.view = 'home-view'
 })
 
 router.on('/video/:id', function (id) {
-	window.scrollTo(0, 0)
-	app.view = 'video-view'
-	app.params.video = id
-	console.log(app.params.video)
+	if (app.view === 'video-view' && app.params.video === id) {
+		return // prevent transition on the same id
+	}
+	app.view = ''
+	Vue.nextTick(function () {
+		app.view = 'video-view'
+		app.params.video = id
+	})
 })
 
 router.configure({
