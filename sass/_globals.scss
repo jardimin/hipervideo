@@ -7,23 +7,3 @@ $color-video-2: #0f0;
 $color-video-3: #00f;
 $color-video-4: #00c;
 $color-video-5: #0cc;
-
-// backgrounds de acordo com o contexto
-
-.context-bg {
-	.is-video-mulher & {
-		background: $color-video-1;
-	}
-	.is-video-adolescente & {
-		background: $color-video-2;
-	}
-	.is-video-crianca & {
-		background: $color-video-3;
-	}
-	.is-video-preso & {
-		background: $color-video-4;
-	}
-	.is-video-deficiente & {
-		background: $color-video-5;
-	}
-}
