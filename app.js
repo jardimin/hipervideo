@@ -6,8 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
 var livereload = require('express-livereload');
-var $ = require('jquery')
-// var rangeslider = require('rangeslider.js')
+var $ = require('jquery');
 
 var routes = {
     index: require('./routes/index'),
@@ -73,6 +72,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;

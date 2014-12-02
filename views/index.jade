@@ -42,35 +42,4 @@ block content
       .rangeslider__fill(style="width: 538.416px;")
       .rangeslider__handle(style="left: 537.416px;")
     input(type="range" id="seek-bar" min="0" max="1000" data-rangeslider="" style="display: none;")
-  script(type="text/javascript").
-    //- function playVideo(argument) {
-    //-   $('body').addClass("tocando");
-    //-   $('#mp4').setAttribute("src", argument + ".mp4");
-    //-   $('#webm').setAttribute("src", argument + ".webm");
-    //-   hipervideo.load();
-    //-   hipervideo.play();
-    //- };
-
-    //- window.onload = function(){
-    //-   var hipervideo = $('video')
-    //-   var seekBar = $('#seek-bar')
-
-    //-   // Event listener for the seek bar
-    //-   seekBar.addEventListener("change", function() {
-    //-     // Calculate the new time
-    //-     var time = hipervideo.duration * (seekBar.value / 100);
-
-    //-     // Update the video time
-    //-     hipervideo.currentTime = time;
-    //-   });
-
-    //-   // Update the seek bar as the video plays
-    //-   hipervideo.addEventListener("timeupdate", function() {
-    //-     // Calculate the slider value
-    //-     var value = (100 / hipervideo.duration) * hipervideo.currentTime;
-
-    //-     // Update the slider value
-    //-     seekBar.value = value;
-    //-   })
-    //- };
 

@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Volumes/users/marlus/Projetos/hipervideo/node_modules/director/build/director.js":[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/home/guzz/hipervideo/node_modules/director/build/director.js":[function(require,module,exports){
 
 
 //
@@ -718,7 +718,7 @@ Router.prototype.mount = function(routes, path) {
 
 
 }(typeof exports === "object" ? exports : window));
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/insert-css/index.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/insert-css/index.js":[function(require,module,exports){
 var inserted = {};
 
 module.exports = function (css, options) {
@@ -742,7 +742,7 @@ module.exports = function (css, options) {
     }
 };
 
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/child.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/api/child.js":[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -796,7 +796,7 @@ exports.$addChild = function (opts, BaseCtor) {
   this._children.push(child)
   return child
 }
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/data.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/api/data.js":[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
 var Path = require('../parse/path')
@@ -955,7 +955,7 @@ exports.$log = function (path) {
     : this._data
   console.log(JSON.parse(JSON.stringify(data)))
 }
-},{"../parse/directive":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/directive.js","../parse/expression":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/expression.js","../parse/path":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/path.js","../parse/text":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/text.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","../watcher":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/watcher.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/dom.js":[function(require,module,exports){
+},{"../parse/directive":"/home/guzz/hipervideo/node_modules/vue/src/parse/directive.js","../parse/expression":"/home/guzz/hipervideo/node_modules/vue/src/parse/expression.js","../parse/path":"/home/guzz/hipervideo/node_modules/vue/src/parse/path.js","../parse/text":"/home/guzz/hipervideo/node_modules/vue/src/parse/text.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","../watcher":"/home/guzz/hipervideo/node_modules/vue/src/watcher.js"}],"/home/guzz/hipervideo/node_modules/vue/src/api/dom.js":[function(require,module,exports){
 var _ = require('../util')
 var transition = require('../transition')
 
@@ -1165,7 +1165,7 @@ function remove (el, vm, cb) {
   _.remove(el)
   if (cb) cb()
 }
-},{"../transition":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/transition/index.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/events.js":[function(require,module,exports){
+},{"../transition":"/home/guzz/hipervideo/node_modules/vue/src/transition/index.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/api/events.js":[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -1342,7 +1342,7 @@ function modifyListenerCount (vm, event, count) {
     parent = parent.$parent
   }
 }
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/global.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/api/global.js":[function(require,module,exports){
 var _ = require('../util')
 var mergeOptions = require('../util/merge-option')
 
@@ -1476,7 +1476,7 @@ function createAssetRegisters (Constructor) {
 }
 
 createAssetRegisters(exports)
-},{"../config":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","../util/merge-option":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/merge-option.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/lifecycle.js":[function(require,module,exports){
+},{"../config":"/home/guzz/hipervideo/node_modules/vue/src/config.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","../util/merge-option":"/home/guzz/hipervideo/node_modules/vue/src/util/merge-option.js"}],"/home/guzz/hipervideo/node_modules/vue/src/api/lifecycle.js":[function(require,module,exports){
 var _ = require('../util')
 var compile = require('../compile/compile')
 
@@ -1622,7 +1622,7 @@ function cleanup (vm) {
 exports.$compile = function (el) {
   return compile(el, this.$options, true)(this, el)
 }
-},{"../compile/compile":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/compile/compile.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/batcher.js":[function(require,module,exports){
+},{"../compile/compile":"/home/guzz/hipervideo/node_modules/vue/src/compile/compile.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/batcher.js":[function(require,module,exports){
 var _ = require('./util')
 
 /**
@@ -1688,7 +1688,7 @@ p.reset = function () {
 }
 
 module.exports = Batcher
-},{"./util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/binding.js":[function(require,module,exports){
+},{"./util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/binding.js":[function(require,module,exports){
 var uid = 0
 
 /**
@@ -1739,7 +1739,7 @@ p.notify = function () {
 }
 
 module.exports = Binding
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/cache.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/cache.js":[function(require,module,exports){
 /**
  * A doubly linked list-based Least Recently Used (LRU)
  * cache. Will keep most recently used items while
@@ -1852,7 +1852,7 @@ p.get = function (key, returnEntry) {
 }
 
 module.exports = Cache
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/compile/compile.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/compile/compile.js":[function(require,module,exports){
 var _ = require('../util')
 var config = require('../config')
 var textParser = require('../parse/text')
@@ -2390,7 +2390,7 @@ function directiveComparator (a, b) {
   b = b.def.priority || 0
   return a > b ? 1 : -1
 }
-},{"../config":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js","../parse/directive":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/directive.js","../parse/template":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/template.js","../parse/text":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/text.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/compile/transclude.js":[function(require,module,exports){
+},{"../config":"/home/guzz/hipervideo/node_modules/vue/src/config.js","../parse/directive":"/home/guzz/hipervideo/node_modules/vue/src/parse/directive.js","../parse/template":"/home/guzz/hipervideo/node_modules/vue/src/parse/template.js","../parse/text":"/home/guzz/hipervideo/node_modules/vue/src/parse/text.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/compile/transclude.js":[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parse/template')
 
@@ -2554,7 +2554,7 @@ function insertContentAt (outlet, contents) {
   }
   parent.removeChild(outlet)
 }
-},{"../parse/template":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/template.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js":[function(require,module,exports){
+},{"../parse/template":"/home/guzz/hipervideo/node_modules/vue/src/parse/template.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/config.js":[function(require,module,exports){
 module.exports = {
 
   /**
@@ -2634,7 +2634,7 @@ Object.defineProperty(module.exports, 'delimiters', {
     this._delimitersChanged = true
   }
 })
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directive.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/directive.js":[function(require,module,exports){
 var _ = require('./util')
 var config = require('./config')
 var Watcher = require('./watcher')
@@ -2837,7 +2837,7 @@ p.set = function (value, lock) {
 }
 
 module.exports = Directive
-},{"./config":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js","./parse/expression":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/expression.js","./parse/text":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/text.js","./util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","./watcher":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/watcher.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/attr.js":[function(require,module,exports){
+},{"./config":"/home/guzz/hipervideo/node_modules/vue/src/config.js","./parse/expression":"/home/guzz/hipervideo/node_modules/vue/src/parse/expression.js","./parse/text":"/home/guzz/hipervideo/node_modules/vue/src/parse/text.js","./util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","./watcher":"/home/guzz/hipervideo/node_modules/vue/src/watcher.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/attr.js":[function(require,module,exports){
 // xlink
 var xlinkNS = 'http://www.w3.org/1999/xlink'
 var xlinkRE = /^xlink:/
@@ -2870,7 +2870,7 @@ function xlinkHandler (value) {
     this.el.removeAttributeNS(xlinkNS, 'href')
   }
 }
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/class.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/directives/class.js":[function(require,module,exports){
 var _ = require('../util')
 var addClass = _.addClass
 var removeClass = _.removeClass
@@ -2889,7 +2889,7 @@ module.exports = function (value) {
     }
   }
 }
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/cloak.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/cloak.js":[function(require,module,exports){
 var config = require('../config')
 
 module.exports = {
@@ -2902,7 +2902,7 @@ module.exports = {
   }
 
 }
-},{"../config":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/component.js":[function(require,module,exports){
+},{"../config":"/home/guzz/hipervideo/node_modules/vue/src/config.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/component.js":[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parse/template')
 
@@ -3059,7 +3059,7 @@ module.exports = {
   }
 
 }
-},{"../parse/template":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/template.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/el.js":[function(require,module,exports){
+},{"../parse/template":"/home/guzz/hipervideo/node_modules/vue/src/parse/template.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/el.js":[function(require,module,exports){
 module.exports = {
 
   isLiteral: true,
@@ -3073,7 +3073,7 @@ module.exports = {
   }
   
 }
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/html.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/directives/html.js":[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parse/template')
 
@@ -3111,7 +3111,7 @@ module.exports = {
   }
 
 }
-},{"../parse/template":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/template.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/if.js":[function(require,module,exports){
+},{"../parse/template":"/home/guzz/hipervideo/node_modules/vue/src/parse/template.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/if.js":[function(require,module,exports){
 var _ = require('../util')
 var compile = require('../compile/compile')
 var templateParser = require('../parse/template')
@@ -3180,7 +3180,7 @@ module.exports = {
   }
 
 }
-},{"../compile/compile":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/compile/compile.js","../parse/template":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/template.js","../transition":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/transition/index.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/index.js":[function(require,module,exports){
+},{"../compile/compile":"/home/guzz/hipervideo/node_modules/vue/src/compile/compile.js","../parse/template":"/home/guzz/hipervideo/node_modules/vue/src/parse/template.js","../transition":"/home/guzz/hipervideo/node_modules/vue/src/transition/index.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/index.js":[function(require,module,exports){
 // manipulation directives
 exports.text       = require('./text')
 exports.html       = require('./html')
@@ -3203,7 +3203,7 @@ exports.component  = require('./component')
 exports.repeat     = require('./repeat')
 exports['if']      = require('./if')
 exports['with']    = require('./with')
-},{"./attr":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/attr.js","./class":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/class.js","./cloak":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/cloak.js","./component":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/component.js","./el":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/el.js","./html":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/html.js","./if":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/if.js","./model":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/model/index.js","./on":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/on.js","./partial":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/partial.js","./ref":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/ref.js","./repeat":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/repeat.js","./show":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/show.js","./style":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/style.js","./text":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/text.js","./transition":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/transition.js","./with":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/with.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/model/checkbox.js":[function(require,module,exports){
+},{"./attr":"/home/guzz/hipervideo/node_modules/vue/src/directives/attr.js","./class":"/home/guzz/hipervideo/node_modules/vue/src/directives/class.js","./cloak":"/home/guzz/hipervideo/node_modules/vue/src/directives/cloak.js","./component":"/home/guzz/hipervideo/node_modules/vue/src/directives/component.js","./el":"/home/guzz/hipervideo/node_modules/vue/src/directives/el.js","./html":"/home/guzz/hipervideo/node_modules/vue/src/directives/html.js","./if":"/home/guzz/hipervideo/node_modules/vue/src/directives/if.js","./model":"/home/guzz/hipervideo/node_modules/vue/src/directives/model/index.js","./on":"/home/guzz/hipervideo/node_modules/vue/src/directives/on.js","./partial":"/home/guzz/hipervideo/node_modules/vue/src/directives/partial.js","./ref":"/home/guzz/hipervideo/node_modules/vue/src/directives/ref.js","./repeat":"/home/guzz/hipervideo/node_modules/vue/src/directives/repeat.js","./show":"/home/guzz/hipervideo/node_modules/vue/src/directives/show.js","./style":"/home/guzz/hipervideo/node_modules/vue/src/directives/style.js","./text":"/home/guzz/hipervideo/node_modules/vue/src/directives/text.js","./transition":"/home/guzz/hipervideo/node_modules/vue/src/directives/transition.js","./with":"/home/guzz/hipervideo/node_modules/vue/src/directives/with.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/model/checkbox.js":[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -3229,7 +3229,7 @@ module.exports = {
   }
 
 }
-},{"../../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/model/default.js":[function(require,module,exports){
+},{"../../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/model/default.js":[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -3347,7 +3347,7 @@ module.exports = {
   }
 
 }
-},{"../../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/model/index.js":[function(require,module,exports){
+},{"../../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/model/index.js":[function(require,module,exports){
 var _ = require('../../util')
 
 var handlers = {
@@ -3404,7 +3404,7 @@ module.exports = {
   }
 
 }
-},{"../../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","./checkbox":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/model/checkbox.js","./default":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/model/default.js","./radio":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/model/radio.js","./select":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/model/select.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/model/radio.js":[function(require,module,exports){
+},{"../../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","./checkbox":"/home/guzz/hipervideo/node_modules/vue/src/directives/model/checkbox.js","./default":"/home/guzz/hipervideo/node_modules/vue/src/directives/model/default.js","./radio":"/home/guzz/hipervideo/node_modules/vue/src/directives/model/radio.js","./select":"/home/guzz/hipervideo/node_modules/vue/src/directives/model/select.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/model/radio.js":[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -3431,7 +3431,7 @@ module.exports = {
   }
 
 }
-},{"../../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/model/select.js":[function(require,module,exports){
+},{"../../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/model/select.js":[function(require,module,exports){
 var _ = require('../../util')
 var Watcher = require('../../watcher')
 
@@ -3599,7 +3599,7 @@ function indexOf (arr, val) {
   }
   return -1
 }
-},{"../../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","../../watcher":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/watcher.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/on.js":[function(require,module,exports){
+},{"../../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","../../watcher":"/home/guzz/hipervideo/node_modules/vue/src/watcher.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/on.js":[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -3659,7 +3659,7 @@ module.exports = {
     _.off(this.el, 'load', this.iframeBind)
   }
 }
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/partial.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/partial.js":[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parse/template')
 var transition = require('../transition')
@@ -3715,7 +3715,7 @@ module.exports = {
   }
 
 }
-},{"../parse/template":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/template.js","../transition":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/transition/index.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/ref.js":[function(require,module,exports){
+},{"../parse/template":"/home/guzz/hipervideo/node_modules/vue/src/parse/template.js","../transition":"/home/guzz/hipervideo/node_modules/vue/src/transition/index.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/ref.js":[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -3740,7 +3740,7 @@ module.exports = {
   }
   
 }
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/repeat.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/repeat.js":[function(require,module,exports){
 var _ = require('../util')
 var isObject = _.isObject
 var textParser = require('../parse/text')
@@ -4248,7 +4248,7 @@ function range (n) {
   }
   return ret
 }
-},{"../compile/compile":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/compile/compile.js","../compile/transclude":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/compile/transclude.js","../parse/expression":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/expression.js","../parse/template":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/template.js","../parse/text":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/text.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","../util/merge-option":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/merge-option.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/show.js":[function(require,module,exports){
+},{"../compile/compile":"/home/guzz/hipervideo/node_modules/vue/src/compile/compile.js","../compile/transclude":"/home/guzz/hipervideo/node_modules/vue/src/compile/transclude.js","../parse/expression":"/home/guzz/hipervideo/node_modules/vue/src/parse/expression.js","../parse/template":"/home/guzz/hipervideo/node_modules/vue/src/parse/template.js","../parse/text":"/home/guzz/hipervideo/node_modules/vue/src/parse/text.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","../util/merge-option":"/home/guzz/hipervideo/node_modules/vue/src/util/merge-option.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/show.js":[function(require,module,exports){
 var transition = require('../transition')
 
 module.exports = function (value) {
@@ -4257,7 +4257,7 @@ module.exports = function (value) {
     el.style.display = value ? '' : 'none'
   }, this.vm)
 }
-},{"../transition":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/transition/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/style.js":[function(require,module,exports){
+},{"../transition":"/home/guzz/hipervideo/node_modules/vue/src/transition/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/style.js":[function(require,module,exports){
 var prefixes = ['-webkit-', '-moz-', '-ms-']
 var importantRE = /!important;?$/
 
@@ -4304,7 +4304,7 @@ module.exports = {
   }
 
 }
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/text.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/directives/text.js":[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -4320,7 +4320,7 @@ module.exports = {
   }
   
 }
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/transition.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/directives/transition.js":[function(require,module,exports){
 module.exports = {
 
   priority: 1000,
@@ -4333,7 +4333,7 @@ module.exports = {
   }
 
 }
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/with.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/directives/with.js":[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
 
@@ -4381,7 +4381,7 @@ module.exports = {
   }
 
 }
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","../watcher":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/watcher.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/filters/array-filters.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","../watcher":"/home/guzz/hipervideo/node_modules/vue/src/watcher.js"}],"/home/guzz/hipervideo/node_modules/vue/src/filters/array-filters.js":[function(require,module,exports){
 var _ = require('../util')
 var Path = require('../parse/path')
 
@@ -4469,7 +4469,7 @@ function contains (val, search) {
     return val.toString().toLowerCase().indexOf(search) > -1
   }
 }
-},{"../parse/path":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/path.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/filters/index.js":[function(require,module,exports){
+},{"../parse/path":"/home/guzz/hipervideo/node_modules/vue/src/parse/path.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/filters/index.js":[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -4591,7 +4591,7 @@ exports.key = function (handler, key) {
  */
 
 _.extend(exports, require('./array-filters'))
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","./array-filters":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/filters/array-filters.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/instance/compile.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","./array-filters":"/home/guzz/hipervideo/node_modules/vue/src/filters/array-filters.js"}],"/home/guzz/hipervideo/node_modules/vue/src/instance/compile.js":[function(require,module,exports){
 var _ = require('../util')
 var Directive = require('../directive')
 var compile = require('../compile/compile')
@@ -4663,7 +4663,7 @@ exports._bindDir = function (name, node, desc, def, linker) {
     new Directive(name, node, this, desc, def, linker)
   )
 }
-},{"../compile/compile":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/compile/compile.js","../compile/transclude":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/compile/transclude.js","../directive":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directive.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/instance/events.js":[function(require,module,exports){
+},{"../compile/compile":"/home/guzz/hipervideo/node_modules/vue/src/compile/compile.js","../compile/transclude":"/home/guzz/hipervideo/node_modules/vue/src/compile/transclude.js","../directive":"/home/guzz/hipervideo/node_modules/vue/src/directive.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/instance/events.js":[function(require,module,exports){
 var _ = require('../util')
 var inDoc = _.inDoc
 
@@ -4786,7 +4786,7 @@ exports._callHook = function (hook) {
   }
   this.$emit('hook:' + hook)
 }
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/instance/init.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/instance/init.js":[function(require,module,exports){
 var mergeOptions = require('../util/merge-option')
 
 /**
@@ -4863,7 +4863,7 @@ exports._init = function (options) {
     this.$mount(options.el)
   }
 }
-},{"../util/merge-option":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/merge-option.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/instance/scope.js":[function(require,module,exports){
+},{"../util/merge-option":"/home/guzz/hipervideo/node_modules/vue/src/util/merge-option.js"}],"/home/guzz/hipervideo/node_modules/vue/src/instance/scope.js":[function(require,module,exports){
 var _ = require('../util')
 var Observer = require('../observer')
 var Binding = require('../binding')
@@ -5081,7 +5081,7 @@ exports._defineMeta = function (key, value) {
     }
   })
 }
-},{"../binding":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/binding.js","../observer":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/observer/index.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/observer/array.js":[function(require,module,exports){
+},{"../binding":"/home/guzz/hipervideo/node_modules/vue/src/binding.js","../observer":"/home/guzz/hipervideo/node_modules/vue/src/observer/index.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/observer/array.js":[function(require,module,exports){
 var _ = require('../util')
 var arrayProto = Array.prototype
 var arrayMethods = Object.create(arrayProto)
@@ -5172,7 +5172,7 @@ _.define(
 )
 
 module.exports = arrayMethods
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/observer/index.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/observer/index.js":[function(require,module,exports){
 var _ = require('../util')
 var config = require('../config')
 var Binding = require('../binding')
@@ -5409,7 +5409,7 @@ p.removeVm = function (vm) {
 
 module.exports = Observer
 
-},{"../binding":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/binding.js","../config":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","./array":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/observer/array.js","./object":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/observer/object.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/observer/object.js":[function(require,module,exports){
+},{"../binding":"/home/guzz/hipervideo/node_modules/vue/src/binding.js","../config":"/home/guzz/hipervideo/node_modules/vue/src/config.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","./array":"/home/guzz/hipervideo/node_modules/vue/src/observer/array.js","./object":"/home/guzz/hipervideo/node_modules/vue/src/observer/object.js"}],"/home/guzz/hipervideo/node_modules/vue/src/observer/object.js":[function(require,module,exports){
 var _ = require('../util')
 var objProto = Object.prototype
 
@@ -5485,7 +5485,7 @@ _.define(
     }
   }
 )
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/directive.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/parse/directive.js":[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var cache = new Cache(1000)
@@ -5645,7 +5645,7 @@ exports.parse = function (s) {
   cache.put(s, dirs)
   return dirs
 }
-},{"../cache":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/cache.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/expression.js":[function(require,module,exports){
+},{"../cache":"/home/guzz/hipervideo/node_modules/vue/src/cache.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/parse/expression.js":[function(require,module,exports){
 var _ = require('../util')
 var Path = require('./path')
 var Cache = require('../cache')
@@ -5872,7 +5872,7 @@ exports.parse = function (exp, needSet) {
 
 // Export the pathRegex for external use
 exports.pathTestRE = pathTestRE
-},{"../cache":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/cache.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","./path":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/path.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/path.js":[function(require,module,exports){
+},{"../cache":"/home/guzz/hipervideo/node_modules/vue/src/cache.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","./path":"/home/guzz/hipervideo/node_modules/vue/src/parse/path.js"}],"/home/guzz/hipervideo/node_modules/vue/src/parse/path.js":[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var pathCache = new Cache(1000)
@@ -6173,7 +6173,7 @@ exports.set = function (obj, path, val) {
   }
   return true
 }
-},{"../cache":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/cache.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/template.js":[function(require,module,exports){
+},{"../cache":"/home/guzz/hipervideo/node_modules/vue/src/cache.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/parse/template.js":[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var templateCache = new Cache(100)
@@ -6396,7 +6396,7 @@ exports.parse = function (template, clone) {
     ? exports.clone(frag)
     : frag
 }
-},{"../cache":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/cache.js","../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/text.js":[function(require,module,exports){
+},{"../cache":"/home/guzz/hipervideo/node_modules/vue/src/cache.js","../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/parse/text.js":[function(require,module,exports){
 var Cache = require('../cache')
 var config = require('../config')
 var dirParser = require('./directive')
@@ -6575,7 +6575,7 @@ function inlineFilters (exp) {
     }
   }
 }
-},{"../cache":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/cache.js","../config":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js","./directive":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/directive.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/transition/css.js":[function(require,module,exports){
+},{"../cache":"/home/guzz/hipervideo/node_modules/vue/src/cache.js","../config":"/home/guzz/hipervideo/node_modules/vue/src/config.js","./directive":"/home/guzz/hipervideo/node_modules/vue/src/parse/directive.js"}],"/home/guzz/hipervideo/node_modules/vue/src/transition/css.js":[function(require,module,exports){
 var _ = require('../util')
 var addClass = _.addClass
 var removeClass = _.removeClass
@@ -6765,7 +6765,7 @@ module.exports = function (el, direction, op, data, cb) {
     push(el, direction, op, leaveClass, cb)
   }
 }
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/transition/index.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/transition/index.js":[function(require,module,exports){
 var _ = require('../util')
 var applyCSSTransition = require('./css')
 var applyJSTransition = require('./js')
@@ -6917,7 +6917,7 @@ var apply = exports.apply = function (el, direction, op, vm, cb) {
     if (cb) cb()
   }
 }
-},{"../util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js","./css":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/transition/css.js","./js":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/transition/js.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/transition/js.js":[function(require,module,exports){
+},{"../util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js","./css":"/home/guzz/hipervideo/node_modules/vue/src/transition/css.js","./js":"/home/guzz/hipervideo/node_modules/vue/src/transition/js.js"}],"/home/guzz/hipervideo/node_modules/vue/src/transition/js.js":[function(require,module,exports){
 /**
  * Apply JavaScript enter/leave functions.
  *
@@ -6961,7 +6961,7 @@ module.exports = function (el, direction, op, data, def, vm, cb) {
     }
   }
 }
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/debug.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/util/debug.js":[function(require,module,exports){
 var config = require('../config')
 
 /**
@@ -7012,7 +7012,7 @@ function enableDebug () {
     }
   }
 }
-},{"../config":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/dom.js":[function(require,module,exports){
+},{"../config":"/home/guzz/hipervideo/node_modules/vue/src/config.js"}],"/home/guzz/hipervideo/node_modules/vue/src/util/dom.js":[function(require,module,exports){
 var config = require('../config')
 
 /**
@@ -7189,7 +7189,7 @@ exports.removeClass = function (el, cls) {
     el.setAttribute('class', cur.trim())
   }
 }
-},{"../config":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/env.js":[function(require,module,exports){
+},{"../config":"/home/guzz/hipervideo/node_modules/vue/src/config.js"}],"/home/guzz/hipervideo/node_modules/vue/src/util/env.js":[function(require,module,exports){
 /**
  * Can we use __proto__?
  *
@@ -7264,7 +7264,7 @@ if (inBrowser && !exports.isIE9) {
     ? 'webkitAnimationEnd'
     : 'animationend'
 }
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/filter.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/util/filter.js":[function(require,module,exports){
 var _ = require('./debug')
 
 /**
@@ -7337,7 +7337,7 @@ exports.applyFilters = function (value, filters, vm, oldVal) {
   }
   return value
 }
-},{"./debug":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/debug.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js":[function(require,module,exports){
+},{"./debug":"/home/guzz/hipervideo/node_modules/vue/src/util/debug.js"}],"/home/guzz/hipervideo/node_modules/vue/src/util/index.js":[function(require,module,exports){
 var lang   = require('./lang')
 var extend = lang.extend
 
@@ -7346,7 +7346,7 @@ extend(exports, require('./env'))
 extend(exports, require('./dom'))
 extend(exports, require('./filter'))
 extend(exports, require('./debug'))
-},{"./debug":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/debug.js","./dom":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/dom.js","./env":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/env.js","./filter":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/filter.js","./lang":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/lang.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/lang.js":[function(require,module,exports){
+},{"./debug":"/home/guzz/hipervideo/node_modules/vue/src/util/debug.js","./dom":"/home/guzz/hipervideo/node_modules/vue/src/util/dom.js","./env":"/home/guzz/hipervideo/node_modules/vue/src/util/env.js","./filter":"/home/guzz/hipervideo/node_modules/vue/src/util/filter.js","./lang":"/home/guzz/hipervideo/node_modules/vue/src/util/lang.js"}],"/home/guzz/hipervideo/node_modules/vue/src/util/lang.js":[function(require,module,exports){
 /**
  * Check is a string starts with $ or _
  *
@@ -7521,7 +7521,7 @@ exports.define = function (obj, key, val, enumerable) {
     configurable : true
   })
 }
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/merge-option.js":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/node_modules/vue/src/util/merge-option.js":[function(require,module,exports){
 var _ = require('./index')
 var extend = _.extend
 
@@ -7751,7 +7751,7 @@ module.exports = function mergeOptions (parent, child, vm) {
   }
   return options
 }
-},{"./index":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/vue.js":[function(require,module,exports){
+},{"./index":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/vue.js":[function(require,module,exports){
 var _ = require('./util')
 var extend = _.extend
 
@@ -7836,7 +7836,7 @@ extend(p, require('./api/child'))
 extend(p, require('./api/lifecycle'))
 
 module.exports = _.Vue = Vue
-},{"./api/child":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/child.js","./api/data":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/data.js","./api/dom":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/dom.js","./api/events":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/events.js","./api/global":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/global.js","./api/lifecycle":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/api/lifecycle.js","./directives":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/directives/index.js","./filters":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/filters/index.js","./instance/compile":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/instance/compile.js","./instance/events":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/instance/events.js","./instance/init":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/instance/init.js","./instance/scope":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/instance/scope.js","./util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/watcher.js":[function(require,module,exports){
+},{"./api/child":"/home/guzz/hipervideo/node_modules/vue/src/api/child.js","./api/data":"/home/guzz/hipervideo/node_modules/vue/src/api/data.js","./api/dom":"/home/guzz/hipervideo/node_modules/vue/src/api/dom.js","./api/events":"/home/guzz/hipervideo/node_modules/vue/src/api/events.js","./api/global":"/home/guzz/hipervideo/node_modules/vue/src/api/global.js","./api/lifecycle":"/home/guzz/hipervideo/node_modules/vue/src/api/lifecycle.js","./directives":"/home/guzz/hipervideo/node_modules/vue/src/directives/index.js","./filters":"/home/guzz/hipervideo/node_modules/vue/src/filters/index.js","./instance/compile":"/home/guzz/hipervideo/node_modules/vue/src/instance/compile.js","./instance/events":"/home/guzz/hipervideo/node_modules/vue/src/instance/events.js","./instance/init":"/home/guzz/hipervideo/node_modules/vue/src/instance/init.js","./instance/scope":"/home/guzz/hipervideo/node_modules/vue/src/instance/scope.js","./util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/node_modules/vue/src/watcher.js":[function(require,module,exports){
 var _ = require('./util')
 var config = require('./config')
 var Observer = require('./observer')
@@ -8052,17 +8052,12 @@ p.teardown = function () {
 }
 
 module.exports = Watcher
-},{"./batcher":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/batcher.js","./config":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js","./observer":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/observer/index.js","./parse/expression":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/expression.js","./util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/app.vue":[function(require,module,exports){
-require("insert-css")(".vue-nav{list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:opacity .3s ease .3s}.view.v-enter,.view.v-leave{opacity:0}.view.v-leave{transition-delay:0}");
-var __vue_template__ = "<!-- main nav -->\n	<ul class=\"vue-nav\">\n		<li><a href=\"#/\">home</a></li>\n		<li><a href=\"#/video/1\">video1</a></li>\n		<li><a href=\"#/video/2\">video2</a></li>\n	</ul>\n	<!-- main view -->\n	<div class=\"view\" v-component=\"{{view}}\" v-transition=\"\"></div>";
+},{"./batcher":"/home/guzz/hipervideo/node_modules/vue/src/batcher.js","./config":"/home/guzz/hipervideo/node_modules/vue/src/config.js","./observer":"/home/guzz/hipervideo/node_modules/vue/src/observer/index.js","./parse/expression":"/home/guzz/hipervideo/node_modules/vue/src/parse/expression.js","./util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/vueapp/app.vue":[function(require,module,exports){
+require("insert-css")("#capitulos,.conteudo{zoom:1}#capitulos :after,#capitulos:before,.conteudo :after,.conteudo:before{content:\"\";display:table}#capitulos:after,.conteudo:after{clear:both}body{padding:0;margin:0;font:16px \"Lucida Grande\",Helvetica,Arial,sans-serif}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando #hipVid0{opacity:1}body.tocando #video-controls{display:block}a{color:#00B7FF}a.hipervideo{cursor:pointer;transition:all .5s ease 0s}a.hipervideo:hover{color:#000;background-color:#fff}.conteudo{width:95%;margin:0 auto;min-height:60px}.areaTematica{text-align:center;padding:5%}#hipVid0{background-size:cover;bottom:0;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#video-controls{position:fixed;top:0;width:100%;display:none}#video-controls.hover #capitulos,#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0}#video-controls.hover #tp-cr,#video-controls.hover #tp-tt{opacity:0;font-size:0}#capitulos{background-color:#323232;color:#fff;height:20px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}.capitulo{transition:all .5s ease 0s;position:absolute}.capitulo:hover{color:#000;background-color:#969696}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:192%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:0 15px;transition:all .5s ease 0s}.rangeslider{position:fixed;border-radius:0;top:20px;background:rgba(0,0,0,.8);transition:all .5s ease 0s}.rangeslider .rangeslider__fill{border-radius:0}.rangeslider__fill{border-radius:0;transition:all .5s ease 0s}.rangeslider__handle{width:20px;height:20px;top:0;margin-left:-5px;transition:all .5s ease 0s;z-index:11}.rangeslider__handle:after{height:10px;width:10px}#tp-cr{position:absolute;opacity:1;top:0;left:5px;color:#000;font-weight:500;z-index:10;transition:all .5s ease 0s}#tp-cr-min,#tp-cr-sec{position:relative;float:left}#tp-tt{position:absolute;opacity:1;top:0;right:5px;color:#fff;font-weight:500;z-index:10;transition:all .5s ease 0s}#tp-tt-min,#tp-tt-sec{position:relative;float:right}*,:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.grid{background:0 0;margin:0 0 1%}[class*=col-]{float:left;padding-right:1%}[class*=col-]:last-of-type{padding-right:0}.col-2-3{width:66.66%}.col-1-3{width:32.7%}.col-1-2{width:49.3%}.col-1-4{width:25%}.col-3-4{width:75%}.col-1-5{width:20%}.col-1-6{width:16.665%}.col-1-8{width:12.5%}");
+var __vue_template__ = "<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n	<div class=\"view\" v-component=\"{{view}}\" v-transition=\"\"></div>";
 module.exports = {
 		el: '#app',
-		data: {
-			view: '',
-			params: {
-				video: null
-			}
-		},
+		data: require('./db.json'),
 		/*filters: {
 			fromNow: require('./filters/from-now'),
 			domain: require('./filters/domain')
@@ -8074,14 +8069,14 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"./views/home-view.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/views/home-view.vue","./views/video-view.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/views/video-view.vue","insert-css":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/insert-css/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/example.vue":[function(require,module,exports){
+},{"./db.json":"/home/guzz/hipervideo/vueapp/db.json","./views/home-view.vue":"/home/guzz/hipervideo/vueapp/views/home-view.vue","./views/video-view.vue":"/home/guzz/hipervideo/vueapp/views/video-view.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/components/example.vue":[function(require,module,exports){
 var __vue_template__ = "<p>\n		<strong>my content is:</strong><br>\n		<content>\n	</content></p>";
 module.exports = {
 
 	}
 module.exports.template = __vue_template__;
 
-},{}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/sidebar-block.vue":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/vueapp/components/sidebar-block.vue":[function(require,module,exports){
 require("insert-css")(".sidebar_block__header{background:#555;color:#fff;padding:10px}.sidebar_block__content{padding:10px}");
 var __vue_template__ = "<div class=\"sidebar_block\">\n		<div class=\"sidebar_block__header\">{{title}}</div>\n		<div class=\"sidebar_block__content\">\n			<content>\n		</content></div>\n	</div>";
 module.exports = {
@@ -8089,14 +8084,153 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/insert-css/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/main.js":[function(require,module,exports){
+},{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/db.json":[function(require,module,exports){
+module.exports={
+  "title": "Redes Estratégicas",
+  "texto": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "hipervideos": [
+    {
+      "nome": "Mulher",
+      "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",      
+      "cor": "red",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "duracao": 217.641,
+      "capitulos": [
+        {
+          "nome": "Comeco",
+          "timecode": 15.5
+        },
+        {
+          "nome": "Meio1",
+          "timecode": 45.5
+        },
+        {
+          "nome": "Meio2",
+          "timecode": 150.5
+        },
+        {
+          "nome": "Final",
+          "timecode": 190.5
+        }
+      ]
+    },
+    {
+      "nome": "Crianca",
+      "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",      
+      "cor": "green",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "duracao": 217.641,
+      "capitulos": [
+        {
+          "nome": "Comeco",
+          "timecode": 15.5
+        },
+        {
+          "nome": "Meio1",
+          "timecode": 45.5
+        },
+        {
+          "nome": "Meio2",
+          "timecode": 150.5
+        },
+        {
+          "nome": "Final",
+          "timecode": 190.5
+        }
+      ]
+    },
+    {
+      "nome": "Adolescente",
+      "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
+      "cor": "yellow",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "duracao": 217.641,
+      "capitulos": [
+        {
+          "nome": "Comeco",
+          "timecode": 15.5
+        },
+        {
+          "nome": "Meio1",
+          "timecode": 45.5
+        },
+        {
+          "nome": "Meio2",
+          "timecode": 150.5
+        },
+        {
+          "nome": "Final",
+          "timecode": 190.5
+        }
+      ]
+    },
+    {
+      "nome": "Deficiente",
+      "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
+      "cor": "orange",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "duracao": 217.641,
+      "capitulos": [
+        {
+          "nome": "Comeco",
+          "timecode": 15.5
+        },
+        {
+          "nome": "Meio1",
+          "timecode": 45.5
+        },
+        {
+          "nome": "Meio2",
+          "timecode": 150.5
+        },
+        {
+          "nome": "Final",
+          "timecode": 190.5
+        }
+      ]
+    },
+    {
+      "nome": "Preso",
+      "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
+      "cor": "blue",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "duracao": 217.641,
+      "capitulos": [
+        {
+          "nome": "Comeco",
+          "timecode": 15.5
+        },
+        {
+          "nome": "Meio1",
+          "timecode": 45.5
+        },
+        {
+          "nome": "Meio2",
+          "timecode": 150.5
+        },
+        {
+          "nome": "Final",
+          "timecode": 190.5
+        }
+      ]
+    }
+  ],
+  "tocando": "Intro",
+  "view": "",
+  "params": {
+    "video": null
+  }
+}
+},{}],"/home/guzz/hipervideo/vueapp/main.js":[function(require,module,exports){
 var Vue = require('vue')
 var Router = require('director').Router
 var app = new Vue(require('./app.vue'))
 var router = new Router()
+var database = require('./db.json')
 
 router.on('/', function () {
 	app.view = 'home-view'
+	app.db = database
 })
 
 router.on('/video/:id', function (id) {
@@ -8107,6 +8241,7 @@ router.on('/video/:id', function (id) {
 	Vue.nextTick(function () {
 		app.view = 'video-view'
 		app.params.video = id
+		app.db = database.hipervideos[id]
 	})
 })
 
@@ -8117,19 +8252,20 @@ router.configure({
 })
 
 router.init('/')
-},{"./app.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/app.vue","director":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/director/build/director.js","vue":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/vue.js"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/views/home-view.vue":[function(require,module,exports){
-require("insert-css")("h1{color:#00f}");
-var __vue_template__ = "<h1>Home</h1>\n	<div v-component=\"example\">\n		conteudo dentro de um componente\n	</div>";
+},{"./app.vue":"/home/guzz/hipervideo/vueapp/app.vue","./db.json":"/home/guzz/hipervideo/vueapp/db.json","director":"/home/guzz/hipervideo/node_modules/director/build/director.js","vue":"/home/guzz/hipervideo/node_modules/vue/src/vue.js"}],"/home/guzz/hipervideo/vueapp/views/home-view.vue":[function(require,module,exports){
+require("insert-css")("header{height:200px;background-color:gray}");
+var __vue_template__ = "<div v-with=\"db: db\">\n		<header>\n			<div class=\"conteudo\">\n				<h1>{{db.title}}</h1>\n				<p>{{db.texto}}</p>\n			</div>\n		</header>\n		<div class=\"conteudo\">\n			<div class=\"grid\">\n				<div v-repeat=\"db.hipervideos\">\n					<a href=\"#/video/{{$index}}\" class=\"hipervideo\">\n						<div class=\"col-1-5\" style=\"background-color: {{cor}}\">\n							<div class=\"areaTematica\">\n								<h2>{{nome}}</h2>\n								<p>{{descricao}}</p>\n							</div>\n						</div>\n					</a>\n				</div>\n			</div>\n		</div>\n	</div>";
 module.exports = {
+		replace: true,
 		components: {
 			example: require('../components/example.vue')
 		}
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/example.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/example.vue","insert-css":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/insert-css/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
+},{"../components/example.vue":"/home/guzz/hipervideo/vueapp/components/example.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
 require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc}");
-var __vue_template__ = "<div v-with=\"params: params\">\n		<h1>video #{{params.video}}</h1>\n		<p><a class=\"btn\" v-on=\"click: clickHandle\">Show block: {{toggle}}</a></p>\n		\n		<in-sidebar-block v-show=\"toggle\" v-with=\"video: params.video, title: 'id do video: ' + params.video\">\n			<div v-component=\"in-example\" v-with=\"video:video\">\n				conteudo dentro de um componente do video {{video}}\n			</div>\n		</in-sidebar-block>\n	</div>";
+var __vue_template__ = "<div v-with=\"params: params, db: db\">\n		<video poster=\"http://jardim.in/hipervideo/img/splash.jpg\" preload=\"auto\" class=\"\" id=\"hipVid0\">\n			<source src=\"{{db.url}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n			</source><source type=\"video/webm\" src=\"{{db.url}}.webm\" id=\"webm\">\n		</source></video>\n		<nav class=\"hover\" id=\"video-controls\">\n			<div id=\"capitulos\">\n				<div class=\"capitulo\" v-repeat=\"db.capitulos\" style=\"width: {{tamanhoCap($index)[0]}}%; left: {{tamanhoCap($index)[1]}}%\"></div>\n			</div>\n		</nav>\n		<h1>video #{{params.video}}</h1>\n		<p>{{db.nome}}</p>\n		<p><a class=\"btn\" v-on=\"click: clickHandle\">Show block: {{toggle}}</a></p>\n		\n		<in-sidebar-block v-show=\"toggle\" v-with=\"video: params.video, title: 'id do video: ' + params.video\">\n			<div v-component=\"in-example\" v-with=\"video:video\">\n				conteudo dentro de um componente do video {{video}}\n			</div>\n		</in-sidebar-block>\n	</div>";
 module.exports = {
 		// replace para pegar com v-with objetos do parent
 		replace: true,
@@ -8137,6 +8273,47 @@ module.exports = {
 			return {
 				toggle: false
 			}
+		},
+		computed: {
+			tamanhoCap: {
+				get: function(cap) {
+					var tempo = this.$data.db.duracao;
+					var itulo = this.$data.db.capitulos[cap].timecode;
+					var tamanho = (itulo * 100) / tempo;
+					if (cap === 0) {
+						return [tamanho, 0];
+					} else {
+						var pos = 0;
+						for (var i = 0; i < cap; i++) {
+							var perc = (this.$data.db.capitulos[i].timecode * 100) / tempo;
+							pos += perc;
+						} return [tamanho, pos];
+					}
+				}
+			}
+		},
+		// redy: function() {
+		// 	var tempo = this.$data.duracao;
+		// 	var cap = this.$data.capitulos;
+		// 	var pos = 0;
+		// 	for (var i = 0; i < cap.length; i++) {
+		// 		var tamanho = (cap[i].timecode * 100) / tempo;
+		// 		this.$data.capitulos[i].tamanho = tamanho;
+		// 		this.$data.capitulos[i].lef = pos;
+		// 	}
+		// },
+		attached: function() {
+			window.onmousemove = handleMouseMove;
+			var controles = document.getElementById('video-controls');
+		  function handleMouseMove(event) {
+		    event = event || window.event; // IE-ism
+		    // event.clientX and event.clientY contain the mouse position
+		    if (event.clientY < 50) {
+		      controles.className = "";
+		    } else {
+		      controles.className = "hover";
+		    }
+		  }
 		},
 		methods: {
 			clickHandle: function(){
@@ -8151,4 +8328,4 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/example.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/example.vue","../components/sidebar-block.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/sidebar-block.vue","insert-css":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/insert-css/index.js"}]},{},["/Volumes/users/marlus/Projetos/hipervideo/vueapp/main.js"]);
+},{"../components/example.vue":"/home/guzz/hipervideo/vueapp/components/example.vue","../components/sidebar-block.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-block.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}]},{},["/home/guzz/hipervideo/vueapp/main.js"]);

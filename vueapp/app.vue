@@ -1,42 +1,294 @@
 <style lang="scss">
 	
-	.vue-nav {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		li {
-			display: inline;
-			margin: 0;
-			padding: 0;
-			a {
-				padding: 10px;
-				&:hover {
-					background: #eee;
-				}
-			}
-		}
+	%clearfix {
+	  zoom: 1; /* IE6&7 */
+	  &:before, :after,{
+	    content: "";
+	    display: table;
+	  }
+	  &:after {
+	    clear: both;
+	  }
 	}
 
-	.view {
-		transition: opacity .3s ease .3s;
-		&.v-enter, &.v-leave {
-			opacity: 0;
-		}
-		&.v-leave {
-			transition-delay: 0;
-		}
+	body {
+	  padding: 0px;
+	  margin: 0px;
+	  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+	  &.tocando {
+	    & header {
+	      opacity: 0;
+	    }
+	    & a {
+	      &.hipervideo {
+	        opacity: 0;
+	      }
+	    }
+	    #hipVid0 {
+	      opacity: 1;
+	    }
+	    #video-controls {
+	      display: block;
+	    }
+	  }
 	}
+
+	a {
+	  color: #00B7FF;
+	  &.hipervideo {
+	    cursor: pointer;
+	    transition: all 0.5s ease 0s;
+	    &:hover {
+	      color: black;
+	      background-color: white;
+	    }
+	  }
+	}
+
+	.conteudo {
+	  width: 95%;
+	  margin: 0 auto;
+	  min-height: 60px;
+	  @extend %clearfix;
+	}
+
+	.areaTematica {
+	  text-align: center;
+	  padding: 5%;
+	}
+
+	#hipVid0 {
+	  background-size: cover;
+	  bottom: 0;
+	  height: auto;
+	  width: 100%;
+	  position: fixed;
+	  left: 0;
+	  transition: all 0.5s ease 0s;
+	  z-index: -100;
+	  opacity: 0;
+	}
+
+	//controles video
+
+	#video-controls {
+	  position: fixed;
+	  top: 0;
+	  width: 100%;
+	  display: none;
+	  &.hover {
+	    #capitulos {
+	      height: 0;
+	    }
+	    .capitulo {
+	      height: 0;
+	      & hr {
+	        height: 3px;
+	      }
+	      & p {
+	        opacity: 0;
+	        font-size: 0;
+	      }
+	    }
+	    .rangeslider, .rangeslider__fill {
+	      top: 0px;
+	      height: 3px;
+	    }
+	    .rangeslider__handle {
+	      width: 0;
+	      height: 0;
+	      opacity: 0;
+	      &:after {
+	        height: 0;
+	        width: 0;
+	      }
+	    }
+	    #tp-cr {
+	      opacity: 0;
+	      font-size: 0;
+	    }
+	    #tp-tt {
+	      opacity: 0;
+	      font-size: 0;
+	    }
+	  }
+	}
+
+	#capitulos {
+	  background-color: rgba(50, 50, 50, 1);
+	  color: white;
+	  height: 20px;
+	  position: relative;
+	  width: 100%;
+	  z-index: 1;
+	  cursor: pointer;
+	  transition: all 0.5s ease 0s;
+	  @extend %clearfix;
+	}
+
+	.capitulo {
+	  transition: all 0.5s ease 0s;
+	  position: absolute;
+	  &:hover {
+	    color: black;
+	    background-color: rgba(150,150,150,1);
+	  }
+	  & hr {
+	    -moz-border-bottom-colors: none;
+	    -moz-border-left-colors: none;
+	    -moz-border-right-colors: none;
+	    -moz-border-top-colors: none;
+	    background-color: white;
+	    border-color: -moz-use-text-color white -moz-use-text-color -moz-use-text-color;
+	    border-image: none;
+	    border-style: none solid none none;
+	    border-width: medium 1px medium medium;
+	    color: white;
+	    float: left;
+	    height: 192%;
+	    margin: 0;
+	    position: absolute;
+	    top: 0;
+	    width: 0;
+	    transition: all 0.5s ease 0s;
+	  }
+	  & p {
+	    margin: 0 15px;
+	    transition: all 0.5s ease 0s;
+	  }
+	}
+
+	.rangeslider {
+	  position: fixed;
+	  border-radius: 0;
+	  top: 20px;
+	  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+	  transition: all 0.5s ease 0s;
+	  .rangeslider__fill {
+	    border-radius: 0;
+	  }
+	}
+
+	.rangeslider__fill {
+	  border-radius: 0;
+	  transition: all 0.5s ease 0s;
+	}
+
+	.rangeslider__handle {
+	  width: 20px;
+	  height: 20px;
+	  top: 0;
+	  margin-left: -5px;
+	  transition: all 0.5s ease 0s;
+	  z-index: 11;
+	  &:after {
+	    height: 10px;
+	    width: 10px;
+	  }
+	}
+
+	#tp-cr {
+	  position: absolute; 
+	  opacity: 1;
+	  top: 0; 
+	  left: 5px; 
+	  color: black;
+	  font-weight: 500;
+	  z-index: 10;
+	  transition: all 0.5s ease 0s;
+	}
+
+	#tp-cr-min {
+	  position: relative; 
+	  float: left;
+	}
+
+	#tp-cr-sec{
+	  position: relative; 
+	  float: left;
+	}
+
+	#tp-tt {
+	  position: absolute; 
+	  opacity: 1;
+	  top: 0; 
+	  right: 5px; 
+	  color: white;
+	  font-weight: 500;
+	  z-index: 10;
+	  transition: all 0.5s ease 0s;
+	}
+
+	#tp-tt-min {
+	  position: relative; 
+	  float: right;
+	}
+
+	#tp-tt-sec{
+	  position: relative; 
+	  float: right;
+	}
+
+
+
+	// grid
+
+	$pad: 1%;
+
+	*, *:after, *:before {
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  box-sizing: border-box;
+	}
+
+	.grid {
+	  background: transparent;
+	  margin: 0 0 $pad 0;
+	  
+	  &:after {
+	    @extend clearfix 
+	  }
+	}
+
+	[class*='col-'] {
+	  float: left;
+	  padding-right: $pad;
+	  &:last-of-type {
+	    padding-right: 0;
+	  }
+	}
+	.col-2-3 {
+	  width: 66.66%;
+	}
+	.col-1-3 {
+	  width: 32.7%;
+	}
+	.col-1-2 {
+	  width: 49.3%;
+	}
+	.col-1-4 {
+	  width: 25%;
+	}
+	.col-3-4 {
+	  width: 75%;
+	}
+	.col-1-5 {
+	  width: 20%;
+	}
+
+	.col-1-6 {
+	  width: 16.665%;
+	}
+
+	.col-1-8 {
+	  width: 12.5%;
+	}
+
 
 </style>
 
 <template>
-	<!-- main nav -->
-	<ul class="vue-nav">
-		<li><a href="#/">home</a></li>
-		<li><a href="#/video/1">video1</a></li>
-		<li><a href="#/video/2">video2</a></li>
-	</ul>
-	<!-- main view -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<div class="view" v-component="{{view}}" v-transition></div>
 </template>
 
@@ -44,12 +296,7 @@
 
 	module.exports = {
 		el: '#app',
-		data: {
-			view: '',
-			params: {
-				video: null
-			}
-		},
+		data: require('./db.json'),
 		/*filters: {
 			fromNow: require('./filters/from-now'),
 			domain: require('./filters/domain')

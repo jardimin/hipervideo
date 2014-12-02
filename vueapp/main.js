@@ -2,9 +2,11 @@ var Vue = require('vue')
 var Router = require('director').Router
 var app = new Vue(require('./app.vue'))
 var router = new Router()
+var database = require('./db.json')
 
 router.on('/', function () {
 	app.view = 'home-view'
+	app.db = database
 })
 
 router.on('/video/:id', function (id) {
@@ -15,6 +17,7 @@ router.on('/video/:id', function (id) {
 	Vue.nextTick(function () {
 		app.view = 'video-view'
 		app.params.video = id
+		app.db = database.hipervideos[id]
 	})
 })
 
