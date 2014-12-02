@@ -52,7 +52,7 @@
 </style>
 
 <template>
-	<div v-class="className, is-video: view=='video-view'">
+	<div>
 		<!-- main nav -->
 		<ul class="vue-nav">
 			<li><a href="#/">home</a></li>
@@ -63,7 +63,7 @@
 			<li><a href="#/video/preso">preso</a></li>
 		</ul>
 		<!-- main view -->
-		<div class="view"  v-component="{{view}}" v-transition />
+		<div class="view" v-class="className, is-video: view=='video-view'" v-component="{{view}}" v-transition />
 	</div>
 
 </template>
