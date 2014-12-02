@@ -1,7 +1,5 @@
 <style lang="scss">
-	h1 {
-		color: blue;
-	}
+	
 </style>
 
 

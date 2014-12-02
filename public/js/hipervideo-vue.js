@@ -8053,12 +8053,14 @@ p.teardown = function () {
 
 module.exports = Watcher
 },{"./batcher":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/batcher.js","./config":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/config.js","./observer":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/observer/index.js","./parse/expression":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/parse/expression.js","./util":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/util/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/app.vue":[function(require,module,exports){
-require("insert-css")(".vue-nav{list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:opacity .3s ease .3s}.view.v-enter,.view.v-leave{opacity:0}.view.v-leave{transition-delay:0}");
-var __vue_template__ = "<!-- main nav -->\n	<ul class=\"vue-nav\">\n		<li><a href=\"#/\">home</a></li>\n		<li><a href=\"#/video/1\">video1</a></li>\n		<li><a href=\"#/video/2\">video2</a></li>\n	</ul>\n	<!-- main view -->\n	<div class=\"view\" v-component=\"{{view}}\" v-transition=\"\"></div>";
+require("insert-css")(".vue-nav{position:relative;z-index:20;list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:opacity .3s ease .3s}.view.v-enter,.view.v-leave{opacity:0}.view.v-leave{transition-delay:0}.is-video-mulher .context-bg{background:red}.is-video-adolescente .context-bg{background:#0f0}.is-video-crianca .context-bg{background:#00f}.is-video-preso .context-bg{background:#00c}.is-video-deficiente .context-bg{background:#0cc}");
+var __vue_template__ = "<div v-class=\"className, is-video: view=='video-view'\">\n		<!-- main nav -->\n		<ul class=\"vue-nav\">\n			<li><a href=\"#/\">home</a></li>\n			<li><a href=\"#/video/mulher\">mulher</a></li>\n			<li><a href=\"#/video/adolescente\">adolescente</a></li>\n			<li><a href=\"#/video/crianca\">criança</a></li>\n			<li><a href=\"#/video/deficiente\">deficiente</a></li>\n			<li><a href=\"#/video/preso\">preso</a></li>\n		</ul>\n		<!-- main view -->\n		<div class=\"view\" v-component=\"{{view}}\" v-transition=\"\">\n	</div>\n</div>";
 module.exports = {
 		el: '#app',
+		replace: true,
 		data: {
 			view: '',
+			className: '',
 			params: {
 				video: null
 			}
@@ -8082,10 +8084,26 @@ module.exports = {
 module.exports.template = __vue_template__;
 
 },{}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/sidebar-block.vue":[function(require,module,exports){
-require("insert-css")(".sidebar_block__header{background:#555;color:#fff;padding:10px}.sidebar_block__content{padding:10px}");
-var __vue_template__ = "<div class=\"sidebar_block\">\n		<div class=\"sidebar_block__header\">{{title}}</div>\n		<div class=\"sidebar_block__content\">\n			<content>\n		</content></div>\n	</div>";
+require("insert-css")(".sidebar_block{width:348px}.sidebar_block__header{background:#555;color:#fff;padding:10px;height:28px;line-height:28px}.sidebar_block__content{padding:10px 58px 10px 10px}");
+var __vue_template__ = "<div class=\"sidebar_block\">\n		<div class=\"sidebar_block__header context-bg\">{{title}}</div>\n		<div class=\"sidebar_block__content\">\n			<content>\n		</content></div>\n	</div>";
 module.exports = {
 		replace: true,
+	}
+module.exports.template = __vue_template__;
+
+},{"insert-css":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/insert-css/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/sidebar-chapter.vue":[function(require,module,exports){
+require("insert-css")(".sidebar_chapter{position:relative;width:300px}.sidebar_chapter .sidebar_chapter_title{position:relative;z-index:2;display:inline-block;background:#fff;color:#555;padding:10px 58px 10px 10px;height:28px;line-height:28px}.sidebar_chapter .sidebar_chapter_bg{position:absolute;top:0;left:0;transition:all .5s;transform:translate3d(-100%,0,0);width:100%;height:100%;background:#fff}.sidebar.is-open .sidebar_chapter .sidebar_chapter_bg{transform:translate3d(0,0,0)}");
+var __vue_template__ = "<div class=\"sidebar_chapter\">\n		<div class=\"sidebar_chapter_title\">{{title}}</div>\n		<div class=\"sidebar_chapter_bg\"></div>\n	</div>";
+module.exports = {
+		replace: true,
+	}
+module.exports.template = __vue_template__;
+
+},{"insert-css":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/insert-css/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/sidebar-graph.vue":[function(require,module,exports){
+require("insert-css")(".sidebar_graph{width:240px;height:240px;padding:30px;transition:all .5s ease}.sidebar_graph:hover{width:260px;height:260px;padding:20px}.sidebar_graph .sidebar_graph_svg{background:rgba(100,100,100,.5);width:100%;height:100%;border-radius:50%}");
+var __vue_template__ = "<div class=\"sidebar_graph\">\n		<div class=\"sidebar_graph_svg\"></div>\n	</div>";
+module.exports = {
+		replace: true
 	}
 module.exports.template = __vue_template__;
 
@@ -8097,6 +8115,7 @@ var router = new Router()
 
 router.on('/', function () {
 	app.view = 'home-view'
+	app.className = 'is-home'
 })
 
 router.on('/video/:id', function (id) {
@@ -8106,6 +8125,7 @@ router.on('/video/:id', function (id) {
 	app.view = ''
 	Vue.nextTick(function () {
 		app.view = 'video-view'
+		app.className = 'is-video-' + id
 		app.params.video = id
 	})
 })
@@ -8118,7 +8138,6 @@ router.configure({
 
 router.init('/')
 },{"./app.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/app.vue","director":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/director/build/director.js","vue":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/vue/src/vue.js"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/views/home-view.vue":[function(require,module,exports){
-require("insert-css")("h1{color:#00f}");
 var __vue_template__ = "<h1>Home</h1>\n	<div v-component=\"example\">\n		conteudo dentro de um componente\n	</div>";
 module.exports = {
 		components: {
@@ -8127,9 +8146,9 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/example.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/example.vue","insert-css":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/insert-css/index.js"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
-require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc}");
-var __vue_template__ = "<div v-with=\"params: params\">\n		<h1>video #{{params.video}}</h1>\n		<p><a class=\"btn\" v-on=\"click: clickHandle\">Show block: {{toggle}}</a></p>\n		\n		<in-sidebar-block v-show=\"toggle\" v-with=\"video: params.video, title: 'id do video: ' + params.video\">\n			<div v-component=\"in-example\" v-with=\"video:video\">\n				conteudo dentro de um componente do video {{video}}\n			</div>\n		</in-sidebar-block>\n	</div>";
+},{"../components/example.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/example.vue"}],"/Volumes/users/marlus/Projetos/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
+require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block}.sidebar_content{position:relative;z-index:20}.sidebar_back{background-color:rgba(0,0,0,.2);width:300px;height:100%;position:absolute;top:0;left:0;transition:all .5s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}");
+var __vue_template__ = "<div v-with=\"params: params\">\n		\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: toggle\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: params.video\"></in-sidebar-chapter>\n				<in-sidebar-block v-show=\"toggle\" v-with=\"video: params.video, title: 'id do video: ' + params.video\">\n					<div v-component=\"in-example\" v-with=\"video:video\">\n						conteudo dentro de um componente do video {{video}}\n					</div>\n				</in-sidebar-block>\n				<div>\n					<a class=\"btn\" v-on=\"click: clickHandle\">Show block: {{toggle}}</a>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n	</div>";
 module.exports = {
 		// replace para pegar com v-with objetos do parent
 		replace: true,
@@ -8146,9 +8165,11 @@ module.exports = {
 		},
 		components: {
 			'in-example': require('../components/example.vue'),
-			'in-sidebar-block': require('../components/sidebar-block.vue')
+			'in-sidebar-block': require('../components/sidebar-block.vue'),
+			'in-sidebar-graph': require('../components/sidebar-graph.vue'),
+			'in-sidebar-chapter': require('../components/sidebar-chapter.vue')
 		}
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/example.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/example.vue","../components/sidebar-block.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/sidebar-block.vue","insert-css":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/insert-css/index.js"}]},{},["/Volumes/users/marlus/Projetos/hipervideo/vueapp/main.js"]);
+},{"../components/example.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/example.vue","../components/sidebar-block.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/sidebar-block.vue","../components/sidebar-chapter.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/sidebar-chapter.vue","../components/sidebar-graph.vue":"/Volumes/users/marlus/Projetos/hipervideo/vueapp/components/sidebar-graph.vue","insert-css":"/Volumes/users/marlus/Projetos/hipervideo/node_modules/insert-css/index.js"}]},{},["/Volumes/users/marlus/Projetos/hipervideo/vueapp/main.js"]);

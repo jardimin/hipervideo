@@ -5,6 +5,7 @@ var router = new Router()
 
 router.on('/', function () {
 	app.view = 'home-view'
+	app.className = 'is-home'
 })
 
 router.on('/video/:id', function (id) {
@@ -14,6 +15,7 @@ router.on('/video/:id', function (id) {
 	app.view = ''
 	Vue.nextTick(function () {
 		app.view = 'video-view'
+		app.className = 'is-video-' + id
 		app.params.video = id
 	})
 })
