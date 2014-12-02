@@ -1,6 +1,6 @@
 <style lang="scss">
 	
-	@import "sass/vars";
+	@import "sass/globals";
 
 	.vue-nav {
 		position: relative;
@@ -28,24 +28,6 @@
 		}
 		&.v-leave {
 			transition-delay: 0;
-		}
-	}
-
-	.context-bg {
-		.is-video-mulher & {
-			background: $color-video-1;
-		}
-		.is-video-adolescente & {
-			background: $color-video-2;
-		}
-		.is-video-crianca & {
-			background: $color-video-3;
-		}
-		.is-video-preso & {
-			background: $color-video-4;
-		}
-		.is-video-deficiente & {
-			background: $color-video-5;
 		}
 	}
 
