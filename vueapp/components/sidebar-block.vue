@@ -1,7 +1,9 @@
 <style lang="scss">
+
 	.sidebar_block {
 		width: 348px;
 	}
+
 	.sidebar_block__header {
 		background: #555;
 		color: #fff;

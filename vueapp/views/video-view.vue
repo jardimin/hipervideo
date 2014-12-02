@@ -52,6 +52,7 @@
 
 			<div class="sidebar_back"></div>
 		</div>
+
 	</div>
 </template>
 

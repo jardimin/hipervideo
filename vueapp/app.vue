@@ -65,6 +65,7 @@
 		<!-- main view -->
 		<div class="view"  v-component="{{view}}" v-transition />
 	</div>
+
 </template>
 
 <script>

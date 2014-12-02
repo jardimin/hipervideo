@@ -1,5 +1,10 @@
 @import "vars";
 
+html,body,#app {
+	height: 100%;
+	overflow: hidden;
+}
+
 body {
 	background: #333;
 	color: #fff;
@@ -12,7 +17,3 @@ a {
 	color: #fff;
 }
 
-html,body,#app {
-	height: 100%;
-	overflow: hidden;
-}
