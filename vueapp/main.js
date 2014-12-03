@@ -1,7 +1,9 @@
+var _ = require('underscore')
 var Vue = require('vue')
 var Router = require('director').Router
 var app = new Vue(require('./app.vue'))
 var router = new Router()
+
 
 router.on('/', function () {
 	app.view = 'home-view'
@@ -27,3 +29,5 @@ router.configure({
 })
 
 router.init('/')
+
+console.log(_.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }))
