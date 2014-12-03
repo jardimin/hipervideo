@@ -3,6 +3,7 @@ var Router = require('director').Router
 var app = new Vue(require('./app.vue'))
 var router = new Router()
 var database = require('./db.json')
+var _ = require('underscore')
 
 router.on('/', function () {
 	app.view = 'home-view'
@@ -17,7 +18,7 @@ router.on('/video/:id', function (id) {
 	Vue.nextTick(function () {
 		app.view = 'video-view'
 		app.params.video = id
-		app.db = database.hipervideos[id]
+		app.db = _.findWhere(database.hipervideos,{"id": id})
 	})
 })
 
@@ -28,3 +29,6 @@ router.configure({
 })
 
 router.init('/')
+
+
+console.log(_.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }))
