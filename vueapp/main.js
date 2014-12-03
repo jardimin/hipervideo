@@ -3,6 +3,7 @@ var Router = require('director').Router
 var app = new Vue(require('./app.vue'))
 var router = new Router()
 var database = require('./db.json')
+var $ = require('jquery')
 var _ = require('underscore')
 
 router.on('/', function () {

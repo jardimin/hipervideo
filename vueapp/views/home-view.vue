@@ -31,9 +31,12 @@
 </template>
 
 <script>
-
+	var $$$ = require('jquery')
 	module.exports = {
 		replace: true,
+		attached: function () {
+			$$$('body').removeClass("tocando");
+		},
 		components: {
 			example: require('../components/example.vue')
 		}

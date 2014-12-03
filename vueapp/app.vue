@@ -145,7 +145,7 @@
 	    border-width: medium 1px medium medium;
 	    color: white;
 	    float: left;
-	    height: 192%;
+	    height: 220%;
 	    margin: 0;
 	    position: absolute;
 	    top: 0;
