@@ -4,8 +4,8 @@
 
 <template>
 	<p>
-		<strong>my content is:</strong><br/>
-		<content/>
+		<strong>{{name}}</strong><br/>
+		{{text}}
 	</p>
 </template>
 

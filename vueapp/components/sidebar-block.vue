@@ -1,11 +1,15 @@
 <style lang="scss">
-
 	.sidebar_block {
 		width: 348px;
+		height: 300px;
+		overflow: hidden;
+		transition: all .3s ease;
+		&.v-enter, &.v-leave {
+			transform: translate3d(-400px,0,0);
+			height: 0;
+		}
 	}
-
 	.sidebar_block__header {
-		background: #555;
 		color: #fff;
 		padding: 10px;
 		height: 28px;
