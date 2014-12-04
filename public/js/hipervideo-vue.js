@@ -18924,7 +18924,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",      
       "cor": "#f00",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/SA/Dapes_SA",
-      "duracao": 2072.056,
+      "duracao": 2280.135,
       "capitulos": [
         {
           "nome": "Comeco",
@@ -19201,7 +19201,7 @@ module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
 require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px}.sidebar{width:248px}.sidebar_content{position:relative;z-index:20}.sidebar_back{background-color:rgba(0,0,0,.2);width:300px;height:100%;position:absolute;top:0;left:0;transition:all .5s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}");
-var __vue_template__ = "<div v-with=\"params: params, db: db\">\n\n		<!-- VIDEO -->\n\n		<in-bg-video></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: eventList.length\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: params.video\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"eventList\" v-transition=\"\">\n					<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields\"></div>\n				</in-sidebar-block>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<div class=\"debug\">\n			<a id=\"um\" class=\"btn\" v-on=\"click: addRandomEvent\">Novo evento</a>\n			<a id=\"dois\" class=\"btn\" v-on=\"click: removeFirstEvent\">Remover primeiro evento</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: removeAllEvents\">Remover todos os eventos</a>\n		</div>\n\n	</div>";
+var __vue_template__ = "<div v-with=\"params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- VIDEO -->\n\n		<in-bg-video></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: eventList.length\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: params.video\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"eventList\" v-transition=\"\">\n					<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields\"></div>\n				</in-sidebar-block>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<div class=\"debug\">\n			<a id=\"um\" class=\"btn\" v-on=\"click: addRandomEvent\">Novo evento</a>\n			<a id=\"dois\" class=\"btn\" v-on=\"click: removeFirstEvent\">Remover primeiro evento</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: removeAllEvents\">Remover todos os eventos</a>\n		</div>\n\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
 		// replace para pegar com v-with objetos do parent
@@ -19213,14 +19213,53 @@ var $$$ = require('jquery')
 			}
 		},
 		attached: function() {
-			$$$('body').addClass("tocando");
+			$$$('body').addClass("tocando");	
+			// toggleFull();
+			// function cancelFullScreen(el) {
+   //          var requestMethod = el.cancelFullScreen||el.webkitCancelFullScreen||el.mozCancelFullScreen||el.exitFullscreen;
+   //          if (requestMethod) { // cancel full screen.
+   //              requestMethod.call(el);
+   //          } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+   //              var wscript = new ActiveXObject("WScript.Shell");
+   //              if (wscript !== null) {
+   //                  wscript.SendKeys("{F11}");
+   //              }
+   //          }
+   //      }
+
+   //      function requestFullScreen(el) {
+   //          // Supports most browsers and their versions.
+   //          var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+
+   //          if (requestMethod) { // Native full screen.
+   //              requestMethod.call(el);
+   //          } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+   //              var wscript = new ActiveXObject("WScript.Shell");
+   //              if (wscript !== null) {
+   //                  wscript.SendKeys("{F11}");
+   //              }
+   //          }
+   //          return false
+   //      }
+
+   //      function toggleFull() {
+   //          var elem = document.body; // Make the body go full screen.
+   //          var isInFullScreen = (document.fullScreenElement && document.fullScreenElement !== null) ||  (document.mozFullScreen || document.webkitIsFullScreen);
+
+   //          if (isInFullScreen) {
+   //              cancelFullScreen(document);
+   //          } else {
+   //              requestFullScreen(elem);
+   //          }
+   //          return false;
+   //      }
 			
 			window.onmousemove = handleMouseMove;
 			var controles = document.getElementById('video-controls');
 		  function handleMouseMove(event) {
 		    event = event || window.event; // IE-ism
 		    // event.clientX and event.clientY contain the mouse position
-		    if (event.clientY < 50) {
+		    if (event.clientY < 60) {
 		      controles.className = "";
 		    } else {
 		      controles.className = "hover";
