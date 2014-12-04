@@ -164,6 +164,26 @@
 						document.getElementById("dois").click();
 					}
 				});
+				hiper.code({
+					start: 30,
+					end: 60,
+					onStart: function() {
+						document.getElementById("um").click();
+					},
+					onEnd: function() {
+						document.getElementById("dois").click();
+					}
+				});
+				hiper.code({
+					start: 59.8,
+					end: 106,
+					onStart: function() {
+						document.getElementById("um").click();
+					},
+					onEnd: function() {
+						document.getElementById("dois").click();
+					}
+				});
 		  }, false );
 
 		},

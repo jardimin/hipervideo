@@ -2,7 +2,7 @@
 	.rangeslider {
 	  position: fixed;
 	  border-radius: 0;
-	  top: 20px;
+	  top: 30px;
 	  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
 	  transition: all 0.5s ease 0s;
 	  .rangeslider__fill {
@@ -16,8 +16,8 @@
 	}
 
 	.rangeslider__handle {
-	  width: 20px;
-	  height: 20px;
+	  width: 25px;
+	  height: 25px;
 	  top: 0;
 	  margin-left: -5px;
 	  transition: all 0.5s ease 0s;
@@ -30,6 +30,7 @@
 
 	#tp-cr {
 	  position: absolute; 
+	  margin: 4px;
 	  opacity: 1;
 	  top: 0; 
 	  left: 5px; 
@@ -51,6 +52,7 @@
 
 	#tp-tt {
 	  position: absolute; 
+	  margin: 4px;
 	  opacity: 1;
 	  top: 0; 
 	  right: 5px; 
@@ -83,7 +85,7 @@
 			<div style="position: relative; float: right;">:</div>
 			<div id="tp-tt-min">00</div>
 		</div>
-		<div class="rangeslider__fill" style="width: 0px;"></div>
+		<div class="rangeslider__fill context-bg" style="width: 0px;"></div>
 		<div class="rangeslider__handle" style="left: 0px;"></div>
 	</div>
 </template>

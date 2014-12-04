@@ -18662,7 +18662,7 @@ p.teardown = function () {
 
 module.exports = Watcher
 },{"./batcher":"/home/guzz/hipervideo/node_modules/vue/src/batcher.js","./config":"/home/guzz/hipervideo/node_modules/vue/src/config.js","./observer":"/home/guzz/hipervideo/node_modules/vue/src/observer/index.js","./parse/expression":"/home/guzz/hipervideo/node_modules/vue/src/parse/expression.js","./util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/vueapp/app.vue":[function(require,module,exports){
-require("insert-css")(".conteudo{zoom:1}.conteudo :after,.conteudo:before{content:\"\";display:table}.conteudo:after{clear:both}.vue-nav{position:relative;z-index:20;list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:opacity .3s ease .3s}.view.v-enter,.view.v-leave{opacity:0}.view.v-leave{transition-delay:0}body{padding:0;margin:0;font:16px \"Lucida Grande\",Helvetica,Arial,sans-serif}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando #hipVid0{opacity:1}body.tocando #video-controls{display:block}a{color:#00B7FF}a.hipervideo{cursor:pointer;transition:all .5s ease 0s}a.hipervideo:hover{color:#000;background-color:#fff}.conteudo{width:95%;margin:0 auto;min-height:60px}");
+require("insert-css")(".conteudo{zoom:1}.conteudo :after,.conteudo:before{content:\"\";display:table}.conteudo:after{clear:both}.vue-nav{position:relative;z-index:20;list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:opacity .3s ease .3s}.view.v-enter,.view.v-leave{opacity:0}.view.v-leave{transition-delay:0}body{padding:0;margin:0;font:16px \"Lucida Grande\",Helvetica,Arial,sans-serif}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando #hipVid0{opacity:1}body.tocando #video-controls{display:block}a.hipervideo{cursor:pointer;transition:all .5s ease 0s}a.hipervideo:hover{color:#000;background-color:#fff}.conteudo{width:95%;margin:0 auto;min-height:60px}");
 var __vue_template__ = "<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n	<div class=\"view\" v-class=\"className, is-video: view=='video-view'\" v-component=\"{{view}}\" v-transition=\"\">\n	</div>";
 module.exports = {
 		el: '#app',
@@ -18778,7 +18778,7 @@ module.exports = {
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/components/topbar-capitulos.vue":[function(require,module,exports){
-require("insert-css")("#capitulos{background-color:#323232;color:#fff;height:20px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}.capitulo{transition:all .5s ease 0s;position:absolute}.capitulo:hover{color:#000;background-color:#969696}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:220%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:0 15px;transition:all .5s ease 0s}");
+require("insert-css")("#capitulos{background-color:#323232;color:#fff;height:30px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}.capitulo{transition:all .5s ease 0s;height:30px;position:absolute}.capitulo:hover{color:#000;background-color:#969696}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:100%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:6px 24px;transition:all .5s ease 0s}");
 var __vue_template__ = "<div v-with=\"db: db\" id=\"capitulos\">\n		<div class=\"capitulo\" v-repeat=\"db.capitulos\" style=\"width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%\" v-on=\"click: seekCap(posicaoCap[$index]) \">\n			<hr>\n			<p>{{$index + 1}} {{db.capitulos[$index].nome}}</p>\n		</div>\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
@@ -18822,8 +18822,8 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/components/topbar-slider.vue":[function(require,module,exports){
-require("insert-css")(".rangeslider{position:fixed;border-radius:0;top:20px;background:rgba(0,0,0,.8);transition:all .5s ease 0s}.rangeslider .rangeslider__fill{border-radius:0}.rangeslider__fill{border-radius:0;transition:all .5s ease 0s}.rangeslider__handle{width:20px;height:20px;top:0;margin-left:-5px;transition:all .5s ease 0s;z-index:11}.rangeslider__handle:after{height:10px;width:10px}#tp-cr{position:absolute;opacity:1;top:0;left:5px;color:#000;font-weight:500;z-index:10;transition:all .5s ease 0s}#tp-cr-min,#tp-cr-sec{position:relative;float:left}#tp-tt{position:absolute;opacity:1;top:0;right:5px;color:#fff;font-weight:500;z-index:10;transition:all .5s ease 0s}#tp-tt-min,#tp-tt-sec{position:relative;float:right}");
-var __vue_template__ = "<div class=\"rangeslider\">\n		<div id=\"tp-cr\">\n			<div id=\"tp-cr-min\">00</div>\n			<div style=\"position: relative; float: left\">:</div>\n			<div id=\"tp-cr-sec\">00</div>\n		</div>\n		<div id=\"tp-tt\">\n			<div id=\"tp-tt-sec\">00</div>\n			<div style=\"position: relative; float: right\">:</div>\n			<div id=\"tp-tt-min\">00</div>\n		</div>\n		<div class=\"rangeslider__fill\" style=\"width: 0px\"></div>\n		<div class=\"rangeslider__handle\" style=\"left: 0px\"></div>\n	</div>";
+require("insert-css")(".rangeslider{position:fixed;border-radius:0;top:30px;background:rgba(0,0,0,.8);transition:all .5s ease 0s}.rangeslider .rangeslider__fill{border-radius:0}.rangeslider__fill{border-radius:0;transition:all .5s ease 0s}.rangeslider__handle{width:25px;height:25px;top:0;margin-left:-5px;transition:all .5s ease 0s;z-index:11}.rangeslider__handle:after{height:10px;width:10px}#tp-cr{position:absolute;margin:4px;opacity:1;top:0;left:5px;color:#000;font-weight:500;z-index:10;transition:all .5s ease 0s}#tp-cr-min,#tp-cr-sec{position:relative;float:left}#tp-tt{position:absolute;margin:4px;opacity:1;top:0;right:5px;color:#fff;font-weight:500;z-index:10;transition:all .5s ease 0s}#tp-tt-min,#tp-tt-sec{position:relative;float:right}");
+var __vue_template__ = "<div class=\"rangeslider\">\n		<div id=\"tp-cr\">\n			<div id=\"tp-cr-min\">00</div>\n			<div style=\"position: relative; float: left\">:</div>\n			<div id=\"tp-cr-sec\">00</div>\n		</div>\n		<div id=\"tp-tt\">\n			<div id=\"tp-tt-sec\">00</div>\n			<div style=\"position: relative; float: right\">:</div>\n			<div id=\"tp-tt-min\">00</div>\n		</div>\n		<div class=\"rangeslider__fill context-bg\" style=\"width: 0px\"></div>\n		<div class=\"rangeslider__handle\" style=\"left: 0px\"></div>\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
 		replace: true,
@@ -18875,7 +18875,7 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/db.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
   "title": "Redes Estratégicas",
   "texto": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   "hipervideos": [
@@ -18883,7 +18883,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
       "id": "mulher",
       "nome": "Mulher",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",      
-      "cor": "red",
+      "cor": "#f00",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -18909,7 +18909,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
       "id": "crianca",
       "nome": "Criança",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",      
-      "cor": "green",
+      "cor": "#00f",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -18935,7 +18935,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
       "id": "adolescente",
       "nome": "Adolescente",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
-      "cor": "yellow",
+      "cor": "#0f0",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -18961,7 +18961,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
       "id": "deficiente",
       "nome": "Deficiente",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
-      "cor": "orange",
+      "cor": "#0cc",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -18987,7 +18987,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
       "id": "preso",
       "nome": "Preso",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
-      "cor": "blue",
+      "cor": "#00c",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -19100,6 +19100,26 @@ var $$$ = require('jquery')
 				hiper.code({
 					start: 4,
 					end: 18,
+					onStart: function() {
+						document.getElementById("um").click();
+					},
+					onEnd: function() {
+						document.getElementById("dois").click();
+					}
+				});
+				hiper.code({
+					start: 30,
+					end: 60,
+					onStart: function() {
+						document.getElementById("um").click();
+					},
+					onEnd: function() {
+						document.getElementById("dois").click();
+					}
+				});
+				hiper.code({
+					start: 59.8,
+					end: 106,
 					onStart: function() {
 						document.getElementById("um").click();
 					},

@@ -6,7 +6,7 @@
       "id": "mulher",
       "nome": "Mulher",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",      
-      "cor": "red",
+      "cor": "#f00",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -32,7 +32,7 @@
       "id": "crianca",
       "nome": "Criança",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",      
-      "cor": "green",
+      "cor": "#00f",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -58,7 +58,7 @@
       "id": "adolescente",
       "nome": "Adolescente",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
-      "cor": "yellow",
+      "cor": "#0f0",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -84,7 +84,7 @@
       "id": "deficiente",
       "nome": "Deficiente",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
-      "cor": "orange",
+      "cor": "#0cc",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -110,7 +110,7 @@
       "id": "preso",
       "nome": "Preso",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
-      "cor": "blue",
+      "cor": "#00c",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [

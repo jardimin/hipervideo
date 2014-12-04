@@ -2,7 +2,7 @@
 	#capitulos {
 	  background-color: rgba(50, 50, 50, 1);
 	  color: white;
-	  height: 20px;
+	  height: 30px;
 	  position: relative;
 	  width: 100%;
 	  z-index: 1;
@@ -13,6 +13,7 @@
 
 	.capitulo {
 	  transition: all 0.5s ease 0s;
+	  height: 30px;
 	  position: absolute;
 	  &:hover {
 	    color: black;
@@ -30,7 +31,7 @@
 	    border-width: medium 1px medium medium;
 	    color: white;
 	    float: left;
-	    height: 220%;
+	    height: 100%;
 	    margin: 0;
 	    position: absolute;
 	    top: 0;
@@ -38,7 +39,7 @@
 	    transition: all 0.5s ease 0s;
 	  }
 	  & p {
-	    margin: 0 15px;
+	    margin: 6px 24px;
 	    transition: all 0.5s ease 0s;
 	  }
 	}

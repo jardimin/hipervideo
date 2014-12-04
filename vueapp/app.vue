@@ -65,7 +65,6 @@
 	}
 
 	a {
-	  color: #00B7FF;
 	  &.hipervideo {
 	    cursor: pointer;
 	    transition: all 0.5s ease 0s;

@@ -46,7 +46,7 @@
 			<div class="grid">
 				<div  v-repeat="db.hipervideos">
 					<a  href="#/{{id}}" class="hipervideo">
-						<div class="col-1-5" style="background-color: {{cor}};">
+						<div class="col-1-5 " style="background-color: {{cor}};">
 							<div class="areaTematica">
 								<h2>{{nome}}</h2>
 								<p>{{descricao}}</p>
