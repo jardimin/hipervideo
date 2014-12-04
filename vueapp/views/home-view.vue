@@ -3,6 +3,42 @@
 		height: 200px;
 		background-color: gray;
 	}
+
+	.areaTematica {
+	  text-align: center;
+	  padding: 5%;
+	}
+
+	// grid
+
+	$pad: 1%;
+
+	*, *:after, *:before {
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  box-sizing: border-box;
+	}
+
+	.grid {
+	  background: transparent;
+	  margin: 0 0 $pad 0;
+	  
+	  &:after {
+	    @extend clearfix 
+	  }
+	}
+
+	[class*='col-'] {
+	  float: left;
+	  padding-right: $pad;
+	  &:last-of-type {
+	    padding-right: 0;
+	  }
+	}
+	.col-1-5 {
+	  width: 20%;
+	}
+
 </style>
 
 <template>

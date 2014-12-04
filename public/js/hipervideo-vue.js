@@ -18662,7 +18662,7 @@ p.teardown = function () {
 
 module.exports = Watcher
 },{"./batcher":"/home/guzz/hipervideo/node_modules/vue/src/batcher.js","./config":"/home/guzz/hipervideo/node_modules/vue/src/config.js","./observer":"/home/guzz/hipervideo/node_modules/vue/src/observer/index.js","./parse/expression":"/home/guzz/hipervideo/node_modules/vue/src/parse/expression.js","./util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/vueapp/app.vue":[function(require,module,exports){
-require("insert-css")("#capitulos,.conteudo{zoom:1}#capitulos :after,#capitulos:before,.conteudo :after,.conteudo:before{content:\"\";display:table}#capitulos:after,.conteudo:after{clear:both}body{padding:0;margin:0;font:16px \"Lucida Grande\",Helvetica,Arial,sans-serif}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando #hipVid0{opacity:1}body.tocando #video-controls{display:block}a{color:#00B7FF}a.hipervideo{cursor:pointer;transition:all .5s ease 0s}a.hipervideo:hover{color:#000;background-color:#fff}.conteudo{width:95%;margin:0 auto;min-height:60px}.areaTematica{text-align:center;padding:5%}#hipVid0{background-size:cover;bottom:0;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#video-controls{position:fixed;top:0;width:100%;display:none}#video-controls.hover #capitulos,#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0}#video-controls.hover #tp-cr,#video-controls.hover #tp-tt{opacity:0;font-size:0}#capitulos{background-color:#323232;color:#fff;height:20px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}.capitulo{transition:all .5s ease 0s;position:absolute}.capitulo:hover{color:#000;background-color:#969696}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:220%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:0 15px;transition:all .5s ease 0s}.rangeslider{position:fixed;border-radius:0;top:20px;background:rgba(0,0,0,.8);transition:all .5s ease 0s}.rangeslider .rangeslider__fill{border-radius:0}.rangeslider__fill{border-radius:0;transition:all .5s ease 0s}.rangeslider__handle{width:20px;height:20px;top:0;margin-left:-5px;transition:all .5s ease 0s;z-index:11}.rangeslider__handle:after{height:10px;width:10px}#tp-cr{position:absolute;opacity:1;top:0;left:5px;color:#000;font-weight:500;z-index:10;transition:all .5s ease 0s}#tp-cr-min,#tp-cr-sec{position:relative;float:left}#tp-tt{position:absolute;opacity:1;top:0;right:5px;color:#fff;font-weight:500;z-index:10;transition:all .5s ease 0s}#tp-tt-min,#tp-tt-sec{position:relative;float:right}*,:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.grid{background:0 0;margin:0 0 1%}[class*=col-]{float:left;padding-right:1%}[class*=col-]:last-of-type{padding-right:0}.col-2-3{width:66.66%}.col-1-3{width:32.7%}.col-1-2{width:49.3%}.col-1-4{width:25%}.col-3-4{width:75%}.col-1-5{width:20%}.col-1-6{width:16.665%}.col-1-8{width:12.5%}");
+require("insert-css")(".conteudo{zoom:1}.conteudo :after,.conteudo:before{content:\"\";display:table}.conteudo:after{clear:both}body{padding:0;margin:0;font:16px \"Lucida Grande\",Helvetica,Arial,sans-serif}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando #hipVid0{opacity:1}body.tocando #video-controls{display:block}a{color:#00B7FF}a.hipervideo{cursor:pointer;transition:all .5s ease 0s}a.hipervideo:hover{color:#000;background-color:#fff}.conteudo{width:95%;margin:0 auto;min-height:60px}");
 var __vue_template__ = "<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n	<div class=\"view\" v-component=\"{{view}}\" v-transition=\"\"></div>";
 module.exports = {
 		el: '#app',
@@ -18678,7 +18678,68 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"./db.json":"/home/guzz/hipervideo/vueapp/db.json","./views/home-view.vue":"/home/guzz/hipervideo/vueapp/views/home-view.vue","./views/video-view.vue":"/home/guzz/hipervideo/vueapp/views/video-view.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/components/example.vue":[function(require,module,exports){
+},{"./db.json":"/home/guzz/hipervideo/vueapp/db.json","./views/home-view.vue":"/home/guzz/hipervideo/vueapp/views/home-view.vue","./views/video-view.vue":"/home/guzz/hipervideo/vueapp/views/video-view.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/components/bg-video.vue":[function(require,module,exports){
+require("insert-css")("#hipVid0{background-size:cover;bottom:0;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}");
+var __vue_template__ = "<video v-with=\"db: db\" poster=\"http://jardim.in/hipervideo/img/splash.jpg\" preload=\"auto\" class=\"\" id=\"hipVid0\">\n		<source src=\"{{db.url}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n		</source><source type=\"video/webm\" src=\"{{db.url}}.webm\" id=\"webm\">\n	</source></video>";
+var $$$ = require('jquery')
+	module.exports = {
+		replace: true,
+		attached: function() {
+			var hipervideo = $$$('#hipVid0').get(0);
+			var selector = $$$('.rangeslider').get(0);
+			var seekBar = $$$('#seek-bar').get(0);
+			hipervideo.play();
+			var tempoCorrido = function(array) {
+			  var min = array[0];
+			  var sec = array[1];
+			  $$$('#tp-cr-min').text(min);
+			  $$$('#tp-cr-sec').text(sec);
+			};
+
+			function toFormat(time) {
+			  var secT  = Math.floor(time),
+			      sec   = (secT % 60).toFixed(),
+			      min   = Math.floor(secT / 60),
+			      sec_  = toDigits(sec),
+			      min_  = toDigits(min);
+
+			  function toDigits(n) {
+			    return n > 9 ? "" + n: "0" + n;
+			  }
+
+			  return [min_.toString(), sec_.toString()]
+			}
+
+		  hipervideo.addEventListener("loadedmetadata" , function() {
+		    var duracao = toFormat(hipervideo.duration);
+		    var tempoTotal = function(array) {
+		      var min = array[0];
+		      var sec = array[1];
+		      $$$('#tp-tt-min').text(min);
+		      $$$('#tp-tt-sec').text(sec);
+		    };
+
+		    tempoTotal(duracao);
+		  })
+		  
+		  // Update the seek bar as the video plays
+		  hipervideo.addEventListener("timeupdate", function() {
+		    // Calculate the slider value
+		    var value = (1000 / hipervideo.duration) * hipervideo.currentTime;
+		    var fillWidth = seekBar.value / 10;
+		    var tempo = toFormat(hipervideo.currentTime);
+		    tempoCorrido(tempo);
+
+		    // Update the slider value
+		    seekBar.value = value;
+		    $$$('.rangeslider__fill').css('width', fillWidth+"%")
+		    $$$('.rangeslider__handle').css('left', fillWidth+"%")
+		  });
+		}
+	}
+module.exports.template = __vue_template__;
+
+},{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/components/example.vue":[function(require,module,exports){
 var __vue_template__ = "<p>\n		<strong>my content is:</strong><br>\n		<content>\n	</content></p>";
 module.exports = {
 
@@ -18693,8 +18754,105 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/db.json":[function(require,module,exports){
-module.exports=module.exports=module.exports={
+},{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/components/topbar-capitulos.vue":[function(require,module,exports){
+require("insert-css")("#capitulos{background-color:#323232;color:#fff;height:20px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}.capitulo{transition:all .5s ease 0s;position:absolute}.capitulo:hover{color:#000;background-color:#969696}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:220%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:0 15px;transition:all .5s ease 0s}");
+var __vue_template__ = "<div v-with=\"db: db\" id=\"capitulos\">\n		<div class=\"capitulo\" v-repeat=\"db.capitulos\" style=\"width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%\" v-on=\"click: seekCap(posicaoCap[$index]) \">\n			<hr>\n			<p>{{$index + 1}} {{db.capitulos[$index].nome}}</p>\n		</div>\n	</div>";
+var $$$ = require('jquery')
+	module.exports = {
+		replace: true,
+		methods: {
+			seekCap: function(perc) {
+				var hipervideo = document.getElementById('hipVid0')
+			  var timecode = (hipervideo.duration * perc) / 100
+			  hipervideo.currentTime = timecode;
+			}
+		},
+		computed: {
+			tamanhoCap: {
+				get: function() {
+					var tempo = this.$data.db.duracao
+					var capitulos = this.$data.db.capitulos
+					var tamanhos = []
+					for (var i = 0, antes = 0; i < capitulos.length; i++) {
+						var width = ((capitulos[i].timecode - antes)*100) / tempo
+						tamanhos.push(width)
+						antes = capitulos[i].timecode
+					}
+					return tamanhos
+				}
+			},
+			posicaoCap: {
+				get: function() {
+					var tempo = this.$data.db.duracao
+					var capitulos = this.$data.db.capitulos
+					var posicoes = []
+					for (var i = 0, pos = 0; i < capitulos.length; i++) {
+						var width = ((capitulos[i].timecode)*100) / tempo
+						posicoes.push(pos)
+						pos = width
+					}
+					return posicoes
+				}
+			}
+		}
+	}
+module.exports.template = __vue_template__;
+
+},{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/components/topbar-slider.vue":[function(require,module,exports){
+require("insert-css")(".rangeslider{position:fixed;border-radius:0;top:20px;background:rgba(0,0,0,.8);transition:all .5s ease 0s}.rangeslider .rangeslider__fill{border-radius:0}.rangeslider__fill{border-radius:0;transition:all .5s ease 0s}.rangeslider__handle{width:20px;height:20px;top:0;margin-left:-5px;transition:all .5s ease 0s;z-index:11}.rangeslider__handle:after{height:10px;width:10px}#tp-cr{position:absolute;opacity:1;top:0;left:5px;color:#000;font-weight:500;z-index:10;transition:all .5s ease 0s}#tp-cr-min,#tp-cr-sec{position:relative;float:left}#tp-tt{position:absolute;opacity:1;top:0;right:5px;color:#fff;font-weight:500;z-index:10;transition:all .5s ease 0s}#tp-tt-min,#tp-tt-sec{position:relative;float:right}");
+var __vue_template__ = "<div class=\"rangeslider\">\n		<div id=\"tp-cr\">\n			<div id=\"tp-cr-min\">00</div>\n			<div style=\"position: relative; float: left\">:</div>\n			<div id=\"tp-cr-sec\">00</div>\n		</div>\n		<div id=\"tp-tt\">\n			<div id=\"tp-tt-sec\">00</div>\n			<div style=\"position: relative; float: right\">:</div>\n			<div id=\"tp-tt-min\">00</div>\n		</div>\n		<div class=\"rangeslider__fill\" style=\"width: 0px\"></div>\n		<div class=\"rangeslider__handle\" style=\"left: 0px\"></div>\n	</div>";
+var $$$ = require('jquery')
+	module.exports = {
+		replace: true,
+		attached: function() {
+			var hipervideo = $$$('#hipVid0').get(0);
+			var selector = $$$('.rangeslider').get(0);
+			var seekBar = $$$('#seek-bar').get(0);
+			var bol = false;
+		  var seekTime = function(e) {
+		    var janela   = window.innerWidth,
+		        pos      = e.pageX,
+		        relativo = hipervideo.duration * (pos / janela);
+
+		    hipervideo.currentTime = relativo;
+		  };
+
+			seekBar.addEventListener("change", function() {
+		    // Calculate the new time
+		    var time = hipervideo.duration * (seekBar.value / 1000);
+		    console.log(seekBar.value);
+
+		    // Update the video time
+		    hipervideo.currentTime = time;
+		  });
+
+		  selector.addEventListener("mousemove", function(e) {
+		    var janela   = window.innerWidth,
+		        pos      = e.pageX,
+		        relativo = hipervideo.duration * (pos / janela);
+
+		    if (bol===true) {
+		      seekTime(e);
+		    }
+
+		  });
+
+		  selector.addEventListener("mouseup", function(e) {
+		    hipervideo.play();
+		    bol = false;
+		  });
+
+		  selector.addEventListener("mousedown", function(e) {
+		    hipervideo.pause();
+		    bol = true;
+		    seekTime(e);
+		  });
+		}
+	}
+module.exports.template = __vue_template__;
+
+},{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/db.json":[function(require,module,exports){
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
   "title": "Redes Estratégicas",
   "texto": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   "hipervideos": [
@@ -18869,10 +19027,8 @@ router.configure({
 
 router.init('/')
 
-
-console.log(_.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }))
 },{"./app.vue":"/home/guzz/hipervideo/vueapp/app.vue","./db.json":"/home/guzz/hipervideo/vueapp/db.json","director":"/home/guzz/hipervideo/node_modules/director/build/director.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js","underscore":"/home/guzz/hipervideo/node_modules/underscore/underscore.js","vue":"/home/guzz/hipervideo/node_modules/vue/src/vue.js"}],"/home/guzz/hipervideo/vueapp/views/home-view.vue":[function(require,module,exports){
-require("insert-css")("header{height:200px;background-color:gray}");
+require("insert-css")("header{height:200px;background-color:gray}.areaTematica{text-align:center;padding:5%}*,:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.grid{background:0 0;margin:0 0 1%}[class*=col-]{float:left;padding-right:1%}[class*=col-]:last-of-type{padding-right:0}.col-1-5{width:20%}");
 var __vue_template__ = "<div v-with=\"db: db\">\n		<header>\n			<div class=\"conteudo\">\n				<h1>{{db.title}}</h1>\n				<p>{{db.texto}}</p>\n			</div>\n		</header>\n		<div class=\"conteudo\">\n			<div class=\"grid\">\n				<div v-repeat=\"db.hipervideos\">\n					<a href=\"#/video/{{id}}\" class=\"hipervideo\">\n						<div class=\"col-1-5\" style=\"background-color: {{cor}}\">\n							<div class=\"areaTematica\">\n								<h2>{{nome}}</h2>\n								<p>{{descricao}}</p>\n							</div>\n						</div>\n					</a>\n				</div>\n			</div>\n		</div>\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
@@ -18887,8 +19043,8 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"../components/example.vue":"/home/guzz/hipervideo/vueapp/components/example.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
-require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc}");
-var __vue_template__ = "<div v-with=\"params: params, db: db\">\n		<video poster=\"http://jardim.in/hipervideo/img/splash.jpg\" preload=\"auto\" class=\"\" id=\"hipVid0\">\n			<source src=\"{{db.url}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n			</source><source type=\"video/webm\" src=\"{{db.url}}.webm\" id=\"webm\">\n		</source></video>\n		<nav class=\"hover\" id=\"video-controls\">\n			<div id=\"capitulos\">\n				<div class=\"capitulo\" v-repeat=\"db.capitulos\" style=\"width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%\" v-on=\"click: seekCap(posicaoCap[$index]) \">\n					<hr>\n					<p>{{$index + 1}} {{db.capitulos[$index].nome}}</p>\n				</div>\n			</div>\n			<div class=\"rangeslider\">\n				<div id=\"tp-cr\">\n					<div id=\"tp-cr-min\">00</div>\n					<div style=\"position: relative; float: left\">:</div>\n					<div id=\"tp-cr-sec\">00</div>\n				</div>\n				<div id=\"tp-tt\">\n					<div id=\"tp-tt-sec\">00</div>\n					<div style=\"position: relative; float: right\">:</div>\n					<div id=\"tp-tt-min\">00</div>\n				</div>\n				<div class=\"rangeslider__fill\" style=\"width: 0px\"></div>\n				<div class=\"rangeslider__handle\" style=\"left: 0px\"></div>\n			</div>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n		<h1>video #{{params.video}}</h1>\n		<p>{{db.nome}}</p>\n		<p><a class=\"btn\" v-on=\"click: clickHandle\">Show block: {{toggle}}</a></p>\n		\n		<in-sidebar-block v-show=\"toggle\" v-with=\"video: params.video, title: 'id do video: ' + params.video\">\n			<div v-component=\"in-example\" v-with=\"video:video\">\n				conteudo dentro de um componente do video {{video}}\n			</div>\n		</in-sidebar-block>\n	</div>";
+require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc}#video-controls{position:fixed;top:0;width:100%;display:none}#video-controls.hover #capitulos,#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0}#video-controls.hover #tp-cr,#video-controls.hover #tp-tt{opacity:0;font-size:0}");
+var __vue_template__ = "<div v-with=\"params: params, db: db\">\n		<in-bg-video></in-bg-video>\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n		<h1>video #{{params.video}}</h1>\n		<p>{{db.nome}}</p>\n		<p><a class=\"btn\" v-on=\"click: clickHandle\">Show block: {{toggle}}</a></p>\n		\n		<in-sidebar-block v-show=\"toggle\" v-with=\"video: params.video, title: 'id do video: ' + params.video\">\n			<div v-component=\"in-example\" v-with=\"video:video\">\n				conteudo dentro de um componente do video {{video}}\n			</div>\n		</in-sidebar-block>\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
 		// replace para pegar com v-with objetos do parent
@@ -18898,151 +19054,9 @@ var $$$ = require('jquery')
 				toggle: false
 			}
 		},
-		computed: {
-			tamanhoCap: {
-				get: function() {
-					var tempo = this.$data.db.duracao
-					var capitulos = this.$data.db.capitulos
-					var tamanhos = []
-					for (var i = 0, antes = 0; i < capitulos.length; i++) {
-						var width = ((capitulos[i].timecode - antes)*100) / tempo
-						tamanhos.push(width)
-						antes = capitulos[i].timecode
-					}
-					return tamanhos
-				}
-			},
-			posicaoCap: {
-				get: function() {
-					var tempo = this.$data.db.duracao
-					var capitulos = this.$data.db.capitulos
-					var posicoes = []
-					for (var i = 0, pos = 0; i < capitulos.length; i++) {
-						var width = ((capitulos[i].timecode)*100) / tempo
-						posicoes.push(pos)
-						pos = width
-					}
-					return posicoes
-				}
-			}
-		},
-		// redy: function() {
-		// 	var tempo = this.$data.duracao;
-		// 	var cap = this.$data.capitulos;
-		// 	var pos = 0;
-		// 	for (var i = 0; i < cap.length; i++) {
-		// 		var tamanho = (cap[i].timecode * 100) / tempo;
-		// 		this.$data.capitulos[i].tamanho = tamanho;
-		// 		this.$data.capitulos[i].lef = pos;
-		// 	}
-		// },
 		attached: function() {
-			var hipervideo = $$$('#hipVid0').get(0);
-			var selector = $$$('.rangeslider').get(0);
-			var seekBar = $$$('#seek-bar').get(0);
 			$$$('body').addClass("tocando");
-			hipervideo.play();
-			var tempoCorrido = function(array) {
-			  var min = array[0];
-			  var sec = array[1];
-			  $$$('#tp-cr-min').text(min);
-			  $$$('#tp-cr-sec').text(sec);
-			};
-
-			var playVideo = function(argument) {
-			  
-			  $$$('#mp4').prop("src", argument + ".mp4");
-			  $$$('#webm').prop("src", argument + ".webm");
-			  hipervideo.load();
-			  
-			}
-
-			var seekCap = function(perc) {
-			  var timecode = (hipervideo.duration * perc) / 100
-			  hipervideo.currentTime = timecode;
-			}
-
-			function toFormat(time) {
-			  var secT  = Math.floor(time),
-			      sec   = (secT % 60).toFixed(),
-			      min   = Math.floor(secT / 60),
-			      sec_  = toDigits(sec),
-			      min_  = toDigits(min);
-
-			  function toDigits(n) {
-			    return n > 9 ? "" + n: "0" + n;
-			  }
-
-			  return [min_.toString(), sec_.toString()]
-			}
-
-		  hipervideo.addEventListener("loadedmetadata" , function() {
-		    var duracao = toFormat(hipervideo.duration);
-		    var tempoTotal = function(array) {
-		      var min = array[0];
-		      var sec = array[1];
-		      $$$('#tp-tt-min').text(min);
-		      $$$('#tp-tt-sec').text(sec);
-		    };
-
-		    tempoTotal(duracao);
-		  })
-
-		  seekBar.addEventListener("change", function() {
-		    // Calculate the new time
-		    var time = hipervideo.duration * (seekBar.value / 1000);
-		    console.log(seekBar.value);
-
-		    // Update the video time
-		    hipervideo.currentTime = time;
-		  });
-
-		  
-		  // Update the seek bar as the video plays
-		  hipervideo.addEventListener("timeupdate", function() {
-		    // Calculate the slider value
-		    var value = (1000 / hipervideo.duration) * hipervideo.currentTime;
-		    var fillWidth = seekBar.value / 10;
-		    var tempo = toFormat(hipervideo.currentTime);
-		    tempoCorrido(tempo);
-
-		    // Update the slider value
-		    seekBar.value = value;
-		    $$$('.rangeslider__fill').css('width', fillWidth+"%")
-		    $$$('.rangeslider__handle').css('left', fillWidth+"%")
-		  });
-
-		  var bol = false;
-		  var seekTime = function(e) {
-		    var janela   = window.innerWidth,
-		        pos      = e.pageX,
-		        relativo = hipervideo.duration * (pos / janela);
-
-		    hipervideo.currentTime = relativo;
-		  };
-
-		  selector.addEventListener("mousemove", function(e) {
-		    var janela   = window.innerWidth,
-		        pos      = e.pageX,
-		        relativo = hipervideo.duration * (pos / janela);
-
-		    if (bol===true) {
-		      seekTime(e);
-		    }
-
-		  });
-
-		  selector.addEventListener("mouseup", function(e) {
-		    hipervideo.play();
-		    bol = false;
-		  });
-
-		  selector.addEventListener("mousedown", function(e) {
-		    hipervideo.pause();
-		    bol = true;
-		    seekTime(e);
-		  });
-
+			
 			window.onmousemove = handleMouseMove;
 			var controles = document.getElementById('video-controls');
 		  function handleMouseMove(event) {
@@ -19059,18 +19073,16 @@ var $$$ = require('jquery')
 			clickHandle: function(){
 				this.$data.toggle = !this.$data.toggle;
 				console.log(this, this.$data, this.$data.toggle, this.$data.arr)
-			},
-			seekCap: function(perc) {
-				var hipervideo = document.getElementById('hipVid0')
-			  var timecode = (hipervideo.duration * perc) / 100
-			  hipervideo.currentTime = timecode;
 			}
 		},
 		components: {
 			'in-example': require('../components/example.vue'),
-			'in-sidebar-block': require('../components/sidebar-block.vue')
+			'in-sidebar-block': require('../components/sidebar-block.vue'),
+			'in-topbar-slider': require('../components/topbar-slider.vue'),
+			'in-topbar-capitulos': require('../components/topbar-capitulos.vue'),
+			'in-bg-video': require('../components/bg-video.vue')
 		}
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/example.vue":"/home/guzz/hipervideo/vueapp/components/example.vue","../components/sidebar-block.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-block.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}]},{},["/home/guzz/hipervideo/vueapp/main.js"]);
+},{"../components/bg-video.vue":"/home/guzz/hipervideo/vueapp/components/bg-video.vue","../components/example.vue":"/home/guzz/hipervideo/vueapp/components/example.vue","../components/sidebar-block.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-block.vue","../components/topbar-capitulos.vue":"/home/guzz/hipervideo/vueapp/components/topbar-capitulos.vue","../components/topbar-slider.vue":"/home/guzz/hipervideo/vueapp/components/topbar-slider.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}]},{},["/home/guzz/hipervideo/vueapp/main.js"]);

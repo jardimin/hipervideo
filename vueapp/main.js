@@ -30,6 +30,3 @@ router.configure({
 })
 
 router.init('/')
-
-
-console.log(_.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }))
