@@ -2,7 +2,7 @@
 	.rangeslider {
 	  position: fixed;
 	  border-radius: 0;
-	  top: 30px;
+	  top: 40px;
 	  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
 	  transition: all 0.5s ease 0s;
 	  .rangeslider__fill {
@@ -16,10 +16,10 @@
 	}
 
 	.rangeslider__handle {
-	  width: 25px;
-	  height: 25px;
+	  width: 30px;
+	  height: 30px;
 	  top: 0;
-	  margin-left: -9px;
+	  margin-left: -11px;
 	  transition: all 0.5s ease 0s;
 	  z-index: 11;
 	  #video-controls.hover & {
@@ -33,8 +33,8 @@
       }
 	  }
 	  &:after {
-	    height: 15px;
-	    width: 15px;
+	    height: 18px;
+	    width: 18px;
 	    background-color: rgba(50, 50, 50, 0.8);
 	  }
 	}

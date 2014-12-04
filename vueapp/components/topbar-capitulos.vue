@@ -2,7 +2,7 @@
 	#capitulos {
 	  background-color: rgba(50, 50, 50, 1);
 	  color: white;
-	  height: 30px;
+	  height: 40px;
 	  position: relative;
 	  width: 100%;
 	  z-index: 1;
@@ -16,7 +16,7 @@
 
 	.capitulo {
 	  transition: all 0.2s ease 0s;
-	  height: 30px;
+	  height: 40px;
 	  position: absolute;
 	  #video-controls.hover & {
 	  	height: 0;
@@ -52,9 +52,9 @@
 	    transition: all 0.5s ease 0s;
 	  }
 	  & p {
-	    margin: 8px 15px;
+	    margin: 12px 15px;
 	    font-weight: 700;
-	    font-size: 75%;
+	    font-size: 80%;
 	    transition: all 0.5s ease 0s;
 	  }
 	}

@@ -53,11 +53,24 @@
 	  }
 	}
 
+	.titulo {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 70.8%;
+		height: 9.1%;
+		font-size: 200%;
+		font-weight: 700;
+		padding-left: 100px;
+		padding-top: 14px;
+		z-index: -101;
+	}
+
 </style>
 
 <template>
 	<div v-with="params: params, db: db" allowfullscreen="true">
-
+		<div class="titulo context-bg">Hipervídeo Mulher</div>
 		<!-- VIDEO -->
 
 		<in-bg-video></in-bg-video>

@@ -1,11 +1,11 @@
 <style lang="scss">
 	#hipVid0 {
 	  background-size: cover;
-	  top: -60px;
+	  bottom: 68px;
 	  height: auto;
-	  width: 100%;
+	  width: 78.1%;
 	  position: fixed;
-	  left: 0;
+	  right: 0;
 	  transition: all 0.5s ease 0s;
 	  z-index: -100;
 	  opacity: 0;

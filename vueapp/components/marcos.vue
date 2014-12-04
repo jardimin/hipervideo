@@ -3,14 +3,14 @@
 		width: 100%;
 		position: fixed;
 		bottom: 0;
-		height: 60px;
+		height: 68px;
 		box-shadow: 0 0 10px black inset;
 		background-color: rgba(50, 50, 50, 1);
 		padding: 0 3%;
 		z-index: 10;
 		transition: all 0.5s;
 		#app.marco-fechado & {
-			bottom: -60px;
+			bottom: -68px;
 		}
 	}
 
