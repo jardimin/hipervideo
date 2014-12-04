@@ -18875,7 +18875,7 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/db.json":[function(require,module,exports){
-module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
   "title": "Redes Estratégicas",
   "texto": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   "hipervideos": [
@@ -19067,7 +19067,7 @@ module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
 require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px}.sidebar{width:248px}.sidebar_content{position:relative;z-index:20}.sidebar_back{background-color:rgba(0,0,0,.2);width:300px;height:100%;position:absolute;top:0;left:0;transition:all .5s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover #capitulos,#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0}#video-controls.hover #tp-cr,#video-controls.hover #tp-tt{opacity:0;font-size:0}");
-var __vue_template__ = "<div v-with=\"params: params, db: db\">\n		<in-bg-video></in-bg-video>\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: eventList.length\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: params.video\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"eventList\" v-transition=\"\">\n					<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields\"></div>\n				</in-sidebar-block>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n		\n		<!-- DEBUG -->\n\n		<div class=\"debug\">\n			<a class=\"btn\" v-on=\"click: addRandomEvent\">Novo evento</a>\n			<a class=\"btn\" v-on=\"click: removeFirstEvent\">Remover primeiro evento</a>\n			<a class=\"btn\" v-on=\"click: removeAllEvents\">Remover todos os eventos</a>\n		</div>\n\n	</div>";
+var __vue_template__ = "<div v-with=\"params: params, db: db\">\n		<in-bg-video></in-bg-video>\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: eventList.length\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: params.video\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"eventList\" v-transition=\"\">\n					<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields\"></div>\n				</in-sidebar-block>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n		\n		<!-- DEBUG -->\n\n		<div class=\"debug\">\n			<a id=\"um\" class=\"btn\" v-on=\"click: addRandomEvent\">Novo evento</a>\n			<a id=\"dois\" class=\"btn\" v-on=\"click: removeFirstEvent\">Remover primeiro evento</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: removeAllEvents\">Remover todos os eventos</a>\n		</div>\n\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
 		// replace para pegar com v-with objetos do parent
@@ -19092,6 +19092,23 @@ var $$$ = require('jquery')
 		      controles.className = "hover";
 		    }
 		  }
+
+		  var video = document.getElementById('hipVid0');
+		  video.addEventListener( "loadeddata", function() {
+		  	var hiper = Popcorn("#hipVid0");
+
+				hiper.code({
+					start: 4,
+					end: 18,
+					onStart: function() {
+						document.getElementById("um").click();
+					},
+					onEnd: function() {
+						document.getElementById("dois").click();
+					}
+				});
+		  }, false );
+
 		},
 		methods: {
 			addRandomEvent: function(){

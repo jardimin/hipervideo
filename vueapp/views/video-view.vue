@@ -116,9 +116,9 @@
 		<!-- DEBUG -->
 
 		<div class="debug">
-			<a class="btn" v-on="click: addRandomEvent">Novo evento</a>
-			<a class="btn" v-on="click: removeFirstEvent">Remover primeiro evento</a>
-			<a class="btn" v-on="click: removeAllEvents">Remover todos os eventos</a>
+			<a id="um" class="btn" v-on="click: addRandomEvent">Novo evento</a>
+			<a id="dois" class="btn" v-on="click: removeFirstEvent">Remover primeiro evento</a>
+			<a id="tres" class="btn" v-on="click: removeAllEvents">Remover todos os eventos</a>
 		</div>
 
 	</div>
@@ -149,6 +149,23 @@
 		      controles.className = "hover";
 		    }
 		  }
+
+		  var video = document.getElementById('hipVid0');
+		  video.addEventListener( "loadeddata", function() {
+		  	var hiper = Popcorn("#hipVid0");
+
+				hiper.code({
+					start: 4,
+					end: 18,
+					onStart: function() {
+						document.getElementById("um").click();
+					},
+					onEnd: function() {
+						document.getElementById("dois").click();
+					}
+				});
+		  }, false );
+
 		},
 		methods: {
 			addRandomEvent: function(){
