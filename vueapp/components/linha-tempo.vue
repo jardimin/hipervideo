@@ -1,0 +1,71 @@
+<style lang="scss">
+	.linha_do_tempo {
+		width: 88%;
+		position: absolute;
+		height: 60%;
+		border-bottom: 1px solid rgba(250,250,250,0.2);
+	}
+
+	.ano {
+		position: absolute;
+		color: rgba(250,250,250,0.5);
+		font-size: 75%;
+		font-weight: 700;
+		bottom: -8px;
+	}
+
+	.marco {
+		height: 5px;
+		width: 5px;
+		border-radius: 5px;
+		background-color: rgba(250,250,250,0.2);
+		position: absolute;
+		bottom: -2.5px;
+		list-style: none;
+		cursor: pointer;
+		transition: all .2s ease-in-out;
+		&:hover {
+			height: 10px;
+			width: 10px;
+			border-radius: 10px;
+			background-color: rgba(250,250,250,1);
+			bottom: -5px;
+			margin-left: -2.5px;
+		}
+	}
+</style>
+
+<template>
+	<div v-with="db: db" class="linha_do_tempo">
+		<p class="ano" style="left: 3%;">1950</p>
+		<p class="ano" style="left: 16%;">1960</p>
+		<p class="ano" style="left: 29%;">1970</p>
+		<p class="ano" style="left: 42%;">1980</p>
+		<p class="ano" style="left: 55%;">1990</p>
+		<p class="ano" style="left: 68%;">2000</p>
+		<p class="ano" style="left: 81%;">2010</p>
+		<p class="ano" style="left: 93.75%;">2020</p>
+		<ul>
+			<li v-repeat="db.conteudo.marcos" class="marco" style="left: {{posMarco[$index]}}%;"></li>
+		</ul>
+	</div>
+</template>
+<script>
+	var $$$ = require('jquery')
+	module.exports = {
+		replace: true,
+		computed: {
+			posMarco: {
+				get: function () {
+					var marcos = this.$data.db.conteudo.marcos
+					var pos = []
+					for (var i = 0; i < marcos.length; i++) {
+						var calc = (marcos[i].ano - 1950) * 1.295 + 4.3
+						pos.push(calc)
+					}
+					return pos
+				}
+			}
+		}
+	}
+</script>

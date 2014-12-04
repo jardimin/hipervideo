@@ -22,6 +22,16 @@
 	  margin-left: -9px;
 	  transition: all 0.5s ease 0s;
 	  z-index: 11;
+	  #video-controls.hover & {
+	  	width: 0;
+      height: 0;
+      opacity: 0;
+      &:after {
+        height: 0;
+        width: 0;
+        background-color: rgba(50, 50, 50, 0.8);
+      }
+	  }
 	  &:after {
 	    height: 15px;
 	    width: 15px;
@@ -40,6 +50,10 @@
 	  font-size: 75%;
 	  z-index: 10;
 	  transition: all 0.5s ease 0s;
+	  #video-controls.hover & {
+	  	opacity: 0;
+      font-size: 0;
+	  }
 	}
 
 	#tp-cr-min {
@@ -63,6 +77,10 @@
 	  font-size: 75%;
 	  z-index: 10;
 	  transition: all 0.5s ease 0s;
+	  #video-controls.hover & {
+	  	opacity: 0;
+	     font-size: 0;
+	  }
 	}
 
 	#tp-tt-min {

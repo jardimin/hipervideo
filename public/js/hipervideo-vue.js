@@ -18679,7 +18679,7 @@ module.exports = {
 module.exports.template = __vue_template__;
 
 },{"./db.json":"/home/guzz/hipervideo/vueapp/db.json","./views/home-view.vue":"/home/guzz/hipervideo/vueapp/views/home-view.vue","./views/video-view.vue":"/home/guzz/hipervideo/vueapp/views/video-view.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/components/bg-video.vue":[function(require,module,exports){
-require("insert-css")("#hipVid0{background-size:cover;bottom:0;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}");
+require("insert-css")("#hipVid0{background-size:cover;bottom:60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#app.marco-fechado #hipVid0{bottom:0}");
 var __vue_template__ = "<video v-with=\"db: db\" poster=\"http://jardim.in/hipervideo/img/splash.jpg\" preload=\"auto\" class=\"\" id=\"hipVid0\">\n		<source src=\"{{db.url}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n		</source><source type=\"video/webm\" src=\"{{db.url}}.webm\" id=\"webm\">\n	</source></video>";
 var $$$ = require('jquery')
 	module.exports = {
@@ -18746,7 +18746,46 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{}],"/home/guzz/hipervideo/vueapp/components/sidebar-block-profile.vue":[function(require,module,exports){
+},{}],"/home/guzz/hipervideo/vueapp/components/linha-tempo.vue":[function(require,module,exports){
+require("insert-css")(".linha_do_tempo{width:88%;position:absolute;height:60%;border-bottom:1px solid rgba(250,250,250,.2)}.ano{position:absolute;color:rgba(250,250,250,.5);font-size:75%;font-weight:700;bottom:-8px}.marco{height:5px;width:5px;border-radius:5px;background-color:rgba(250,250,250,.2);position:absolute;bottom:-2.5px;list-style:none;cursor:pointer;transition:all .2s ease-in-out}.marco:hover{height:10px;width:10px;border-radius:10px;background-color:#fafafa;bottom:-5px;margin-left:-2.5px}");
+var __vue_template__ = "<div v-with=\"db: db\" class=\"linha_do_tempo\">\n		<p class=\"ano\" style=\"left: 3%\">1950</p>\n		<p class=\"ano\" style=\"left: 16%\">1960</p>\n		<p class=\"ano\" style=\"left: 29%\">1970</p>\n		<p class=\"ano\" style=\"left: 42%\">1980</p>\n		<p class=\"ano\" style=\"left: 55%\">1990</p>\n		<p class=\"ano\" style=\"left: 68%\">2000</p>\n		<p class=\"ano\" style=\"left: 81%\">2010</p>\n		<p class=\"ano\" style=\"left: 93.75%\">2020</p>\n		<ul>\n			<li v-repeat=\"db.conteudo.marcos\" class=\"marco\" style=\"left: {{posMarco[$index]}}%\"></li>\n		</ul>\n	</div>";
+var $$$ = require('jquery')
+	module.exports = {
+		replace: true,
+		computed: {
+			posMarco: {
+				get: function () {
+					var marcos = this.$data.db.conteudo.marcos
+					var pos = []
+					for (var i = 0; i < marcos.length; i++) {
+						var calc = (marcos[i].ano - 1950) * 1.295 + 4.3
+						pos.push(calc)
+					}
+					return pos
+				}
+			}
+		}
+	}
+module.exports.template = __vue_template__;
+
+},{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/components/marcos.vue":[function(require,module,exports){
+require("insert-css")(".marcos-historicos{width:100%;position:fixed;bottom:0;height:60px;box-shadow:0 0 10px #000 inset;background-color:#323232;padding:0 3%;z-index:10;transition:all .5s}#app.marco-fechado .marcos-historicos{bottom:-60px}.marcos_handle{width:15%;position:absolute;border-radius:5px;height:23px;cursor:pointer;top:-15px;background-color:#323232;left:40%}");
+var __vue_template__ = "<div v-with=\"db: db\" class=\"marcos-historicos\">\n		<div class=\"marcos_handle\" v-on=\"click: handleMarcos\"></div>\n		<in-linha-tempo></in-linha-tempo>\n	</div>";
+var $$$ = require('jquery')
+	module.exports = {
+		replace: true,
+		methods: {
+			handleMarcos: function () {
+				$$$('#app').toggleClass('marco-fechado');
+			}
+		},
+		components: {
+			'in-linha-tempo': require('../components/linha-tempo.vue'),
+		}
+	}
+module.exports.template = __vue_template__;
+
+},{"../components/linha-tempo.vue":"/home/guzz/hipervideo/vueapp/components/linha-tempo.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/components/sidebar-block-profile.vue":[function(require,module,exports){
 var __vue_template__ = "<p>\n		<strong>{{name}}</strong><br>\n		{{text}}\n	</p>";
 module.exports = {
 
@@ -18778,7 +18817,7 @@ module.exports = {
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/components/topbar-capitulos.vue":[function(require,module,exports){
-require("insert-css")("#capitulos{background-color:#323232;color:#fff;height:30px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}.capitulo{transition:all .2s ease 0s;height:30px;position:absolute}.capitulo:hover{color:#000;background-color:#c8c8c8}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:100%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:8px 15px;font-weight:700;font-size:75%;transition:all .5s ease 0s}");
+require("insert-css")("#capitulos{background-color:#323232;color:#fff;height:30px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}#video-controls.hover #capitulos{height:0}.capitulo{transition:all .2s ease 0s;height:30px;position:absolute}#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}.capitulo:hover{color:#000;background-color:#c8c8c8}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:100%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:8px 15px;font-weight:700;font-size:75%;transition:all .5s ease 0s}");
 var __vue_template__ = "<div v-with=\"db: db\" id=\"capitulos\">\n		<div class=\"capitulo\" v-repeat=\"db.capitulos\" style=\"width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%\" v-on=\"click: seekCap(posicaoCap[$index]) \">\n			<hr>\n			<p>{{$index + 1}}.{{db.capitulos[$index].nome | uppercase}}</p>\n		</div>\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
@@ -18822,7 +18861,7 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/components/topbar-slider.vue":[function(require,module,exports){
-require("insert-css")(".rangeslider{position:fixed;border-radius:0;top:30px;background:rgba(0,0,0,.8);transition:all .5s ease 0s}.rangeslider .rangeslider__fill{border-radius:0}.rangeslider__fill{border-radius:0;transition:all .5s ease 0s}.rangeslider__handle{width:25px;height:25px;top:0;margin-left:-9px;transition:all .5s ease 0s;z-index:11}.rangeslider__handle:after{height:15px;width:15px;background-color:rgba(50,50,50,.8)}#tp-cr{position:absolute;margin:7px;opacity:1;top:0;left:5px;color:#000;font-weight:700;font-size:75%;z-index:10;transition:all .5s ease 0s}#tp-cr-min,#tp-cr-sec{position:relative;float:left}#tp-tt{position:absolute;margin:7px;opacity:1;top:0;right:5px;color:#fff;font-weight:700;font-size:75%;z-index:10;transition:all .5s ease 0s}#tp-tt-min,#tp-tt-sec{position:relative;float:right}");
+require("insert-css")(".rangeslider{position:fixed;border-radius:0;top:30px;background:rgba(0,0,0,.8);transition:all .5s ease 0s}.rangeslider .rangeslider__fill{border-radius:0}.rangeslider__fill{border-radius:0;transition:all .5s ease 0s}.rangeslider__handle{width:25px;height:25px;top:0;margin-left:-9px;transition:all .5s ease 0s;z-index:11}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0;background-color:rgba(50,50,50,.8)}.rangeslider__handle:after{height:15px;width:15px;background-color:rgba(50,50,50,.8)}#tp-cr{position:absolute;margin:7px;opacity:1;top:0;left:5px;color:#000;font-weight:700;font-size:75%;z-index:10;transition:all .5s ease 0s}#video-controls.hover #tp-cr{opacity:0;font-size:0}#tp-cr-min,#tp-cr-sec{position:relative;float:left}#tp-tt{position:absolute;margin:7px;opacity:1;top:0;right:5px;color:#fff;font-weight:700;font-size:75%;z-index:10;transition:all .5s ease 0s}#video-controls.hover #tp-tt{opacity:0;font-size:0}#tp-tt-min,#tp-tt-sec{position:relative;float:right}");
 var __vue_template__ = "<div class=\"rangeslider\">\n		<div id=\"tp-cr\">\n			<div id=\"tp-cr-min\">00</div>\n			<div style=\"position: relative; float: left\">:</div>\n			<div id=\"tp-cr-sec\">00</div>\n		</div>\n		<div id=\"tp-tt\">\n			<div id=\"tp-tt-sec\">00</div>\n			<div style=\"position: relative; float: right\">:</div>\n			<div id=\"tp-tt-min\">00</div>\n		</div>\n		<div class=\"rangeslider__fill context-bg\" style=\"width: 0px\"></div>\n		<div class=\"rangeslider__handle\" style=\"left: 0px\"></div>\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
@@ -18875,7 +18914,7 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/db.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
   "title": "Redes Estratégicas",
   "texto": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   "hipervideos": [
@@ -18884,7 +18923,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
       "nome": "Mulher",
       "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",      
       "cor": "#f00",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/SA/Dapes_SA",
       "duracao": 2072.056,
       "capitulos": [
         {
@@ -18903,7 +18942,26 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
           "nome": "Final",
           "timecode": 2072.056
         }
-      ]
+      ],
+      "conteudo": {
+        "marcos": [
+          {
+            "ano": 1965,
+            "titulo": "LEI_1965",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1982,
+            "titulo": "LEI_1982",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1990,
+            "titulo": "LEI_1990",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          }
+        ]
+      }
     },
     {
       "id": "crianca",
@@ -18929,7 +18987,26 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
           "nome": "Final",
           "timecode": 2072.056
         }
-      ]
+      ],
+      "conteudo": {
+        "marcos": [
+          {
+            "ano": 1965,
+            "titulo": "LEI_1965",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1982,
+            "titulo": "LEI_1982",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1990,
+            "titulo": "LEI_1990",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          }
+        ]
+      }
     },
     {
       "id": "adolescente",
@@ -18955,7 +19032,26 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
           "nome": "Final",
           "timecode": 2072.056
         }
-      ]
+      ],
+      "conteudo": {
+        "marcos": [
+          {
+            "ano": 1965,
+            "titulo": "LEI_1965",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1982,
+            "titulo": "LEI_1982",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1990,
+            "titulo": "LEI_1990",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          }
+        ]
+      }
     },
     {
       "id": "deficiente",
@@ -18981,7 +19077,26 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
           "nome": "Final",
           "timecode": 2072.056
         }
-      ]
+      ],
+      "conteudo": {
+        "marcos": [
+          {
+            "ano": 1965,
+            "titulo": "LEI_1965",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1982,
+            "titulo": "LEI_1982",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1990,
+            "titulo": "LEI_1990",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          }
+        ]
+      }
     },
     {
       "id": "preso",
@@ -19007,7 +19122,26 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
           "nome": "Final",
           "timecode": 2072.056
         }
-      ]
+      ],
+      "conteudo": {
+        "marcos": [
+          {
+            "ano": 1965,
+            "titulo": "LEI_1965",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1982,
+            "titulo": "LEI_1982",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1990,
+            "titulo": "LEI_1990",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          }
+        ]
+      }
     }
   ],
   "tocando": "Intro",
@@ -19066,8 +19200,8 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
-require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px}.sidebar{width:248px}.sidebar_content{position:relative;z-index:20}.sidebar_back{background-color:rgba(0,0,0,.2);width:300px;height:100%;position:absolute;top:0;left:0;transition:all .5s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover #capitulos,#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0;background-color:rgba(50,50,50,.8)}#video-controls.hover #tp-cr,#video-controls.hover #tp-tt{opacity:0;font-size:0}");
-var __vue_template__ = "<div v-with=\"params: params, db: db\">\n		<in-bg-video></in-bg-video>\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: eventList.length\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: params.video\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"eventList\" v-transition=\"\">\n					<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields\"></div>\n				</in-sidebar-block>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n		\n		<!-- DEBUG -->\n\n		<div class=\"debug\">\n			<a id=\"um\" class=\"btn\" v-on=\"click: addRandomEvent\">Novo evento</a>\n			<a id=\"dois\" class=\"btn\" v-on=\"click: removeFirstEvent\">Remover primeiro evento</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: removeAllEvents\">Remover todos os eventos</a>\n		</div>\n\n	</div>";
+require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px}.sidebar{width:248px}.sidebar_content{position:relative;z-index:20}.sidebar_back{background-color:rgba(0,0,0,.2);width:300px;height:100%;position:absolute;top:0;left:0;transition:all .5s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}");
+var __vue_template__ = "<div v-with=\"params: params, db: db\">\n\n		<!-- VIDEO -->\n\n		<in-bg-video></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: eventList.length\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: params.video\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"eventList\" v-transition=\"\">\n					<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields\"></div>\n				</in-sidebar-block>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<div class=\"debug\">\n			<a id=\"um\" class=\"btn\" v-on=\"click: addRandomEvent\">Novo evento</a>\n			<a id=\"dois\" class=\"btn\" v-on=\"click: removeFirstEvent\">Remover primeiro evento</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: removeAllEvents\">Remover todos os eventos</a>\n		</div>\n\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
 		// replace para pegar com v-with objetos do parent
@@ -19175,6 +19309,7 @@ var $$$ = require('jquery')
 			'in-topbar-slider': require('../components/topbar-slider.vue'),
 			'in-topbar-capitulos': require('../components/topbar-capitulos.vue'),
 			'in-bg-video': require('../components/bg-video.vue'),
+			'in-botbar-marcos': require('../components/marcos.vue'),
 			'in-sidebar-graph': require('../components/sidebar-graph.vue'),
 			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
@@ -19183,4 +19318,4 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/bg-video.vue":"/home/guzz/hipervideo/vueapp/components/bg-video.vue","../components/example.vue":"/home/guzz/hipervideo/vueapp/components/example.vue","../components/sidebar-block-profile.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-block-profile.vue","../components/sidebar-block.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-block.vue","../components/sidebar-chapter.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-chapter.vue","../components/sidebar-graph.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-graph.vue","../components/topbar-capitulos.vue":"/home/guzz/hipervideo/vueapp/components/topbar-capitulos.vue","../components/topbar-slider.vue":"/home/guzz/hipervideo/vueapp/components/topbar-slider.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}]},{},["/home/guzz/hipervideo/vueapp/main.js"]);
+},{"../components/bg-video.vue":"/home/guzz/hipervideo/vueapp/components/bg-video.vue","../components/example.vue":"/home/guzz/hipervideo/vueapp/components/example.vue","../components/marcos.vue":"/home/guzz/hipervideo/vueapp/components/marcos.vue","../components/sidebar-block-profile.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-block-profile.vue","../components/sidebar-block.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-block.vue","../components/sidebar-chapter.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-chapter.vue","../components/sidebar-graph.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-graph.vue","../components/topbar-capitulos.vue":"/home/guzz/hipervideo/vueapp/components/topbar-capitulos.vue","../components/topbar-slider.vue":"/home/guzz/hipervideo/vueapp/components/topbar-slider.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}]},{},["/home/guzz/hipervideo/vueapp/main.js"]);

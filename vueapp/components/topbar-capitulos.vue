@@ -9,12 +9,25 @@
 	  cursor: pointer;
 	  transition: all 0.5s ease 0s;
 	  @extend %clearfix;
+	  #video-controls.hover & {
+	  	height: 0;
+	  }
 	}
 
 	.capitulo {
 	  transition: all 0.2s ease 0s;
 	  height: 30px;
 	  position: absolute;
+	  #video-controls.hover & {
+	  	height: 0;
+      & hr {
+        height: 3px;
+      }
+      & p {
+        opacity: 0;
+        font-size: 0;
+      }
+	  }
 	  &:hover {
 	    color: black;
 	    background-color: rgba(200,200,200,1);

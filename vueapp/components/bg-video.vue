@@ -1,7 +1,7 @@
 <style lang="scss">
 	#hipVid0 {
 	  background-size: cover;
-	  bottom: 0;
+	  bottom: 60px;
 	  height: auto;
 	  width: 100%;
 	  position: fixed;
@@ -9,6 +9,9 @@
 	  transition: all 0.5s ease 0s;
 	  z-index: -100;
 	  opacity: 0;
+	  #app.marco-fechado & {
+			bottom: 0;
+		}
 	}
 </style>
 

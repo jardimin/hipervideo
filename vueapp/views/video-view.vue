@@ -38,8 +38,6 @@
 		text-align: center;
 	}
 
-	//controles video
-
 	#video-controls {
 	  position: fixed;
 	  top: 0;
@@ -47,48 +45,24 @@
 	  display: none;
 	  z-index: 25;
 	  &.hover {
-	    #capitulos {
-	      height: 0;
-	    }
-	    .capitulo {
-	      height: 0;
-	      & hr {
-	        height: 3px;
-	      }
-	      & p {
-	        opacity: 0;
-	        font-size: 0;
-	      }
-	    }
 	    .rangeslider, .rangeslider__fill {
 	      top: 0px;
 	      height: 3px;
 	    }
-	    .rangeslider__handle {
-	      width: 0;
-	      height: 0;
-	      opacity: 0;
-	      &:after {
-	        height: 0;
-	        width: 0;
-	        background-color: rgba(50, 50, 50, 0.8);
-	      }
-	    }
-	    #tp-cr {
-	      opacity: 0;
-	      font-size: 0;
-	    }
-	    #tp-tt {
-	      opacity: 0;
-	      font-size: 0;
-	    }
 	  }
 	}
+
 </style>
 
 <template>
 	<div v-with="params: params, db: db">
+
+		<!-- VIDEO -->
+
 		<in-bg-video></in-bg-video>
+
+		<!-- NAV-VIDEO -->
+
 		<nav class="hover" id="video-controls">
 			<in-topbar-capitulos></in-topbar-capitulos>
 			<in-topbar-slider></in-topbar-slider>
@@ -113,6 +87,8 @@
 
 			<div class="sidebar_back"></div>
 		</div>
+		
+		<in-botbar-marcos></in-botbar-marcos>
 		
 		<!-- DEBUG -->
 
@@ -233,6 +209,7 @@
 			'in-topbar-slider': require('../components/topbar-slider.vue'),
 			'in-topbar-capitulos': require('../components/topbar-capitulos.vue'),
 			'in-bg-video': require('../components/bg-video.vue'),
+			'in-botbar-marcos': require('../components/marcos.vue'),
 			'in-sidebar-graph': require('../components/sidebar-graph.vue'),
 			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
 			'in-sidebar-block': require('../components/sidebar-block.vue'),

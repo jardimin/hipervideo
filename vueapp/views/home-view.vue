@@ -44,7 +44,7 @@
 		</header>
 		<div class="conteudo">
 			<div class="grid">
-				<div  v-repeat="db.hipervideos">
+				<div v-repeat="db.hipervideos">
 					<a  href="#/{{id}}" class="hipervideo">
 						<div class="col-1-5 " style="background-color: {{cor}};">
 							<div class="areaTematica">
