@@ -19,23 +19,25 @@
 	  width: 25px;
 	  height: 25px;
 	  top: 0;
-	  margin-left: -5px;
+	  margin-left: -9px;
 	  transition: all 0.5s ease 0s;
 	  z-index: 11;
 	  &:after {
-	    height: 10px;
-	    width: 10px;
+	    height: 15px;
+	    width: 15px;
+	    background-color: rgba(50, 50, 50, 0.8);
 	  }
 	}
 
 	#tp-cr {
 	  position: absolute; 
-	  margin: 4px;
+	  margin: 7px;
 	  opacity: 1;
 	  top: 0; 
 	  left: 5px; 
 	  color: black;
-	  font-weight: 500;
+	  font-weight: 700;
+	  font-size: 75%;
 	  z-index: 10;
 	  transition: all 0.5s ease 0s;
 	}
@@ -52,12 +54,13 @@
 
 	#tp-tt {
 	  position: absolute; 
-	  margin: 4px;
+	  margin: 7px;
 	  opacity: 1;
 	  top: 0; 
 	  right: 5px; 
 	  color: white;
-	  font-weight: 500;
+	  font-weight: 700;
+	  font-size: 75%;
 	  z-index: 10;
 	  transition: all 0.5s ease 0s;
 	}

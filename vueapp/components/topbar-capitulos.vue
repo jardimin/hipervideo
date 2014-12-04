@@ -12,12 +12,12 @@
 	}
 
 	.capitulo {
-	  transition: all 0.5s ease 0s;
+	  transition: all 0.2s ease 0s;
 	  height: 30px;
 	  position: absolute;
 	  &:hover {
 	    color: black;
-	    background-color: rgba(150,150,150,1);
+	    background-color: rgba(200,200,200,1);
 	  }
 	  & hr {
 	    -moz-border-bottom-colors: none;
@@ -39,7 +39,9 @@
 	    transition: all 0.5s ease 0s;
 	  }
 	  & p {
-	    margin: 6px 24px;
+	    margin: 8px 15px;
+	    font-weight: 700;
+	    font-size: 75%;
 	    transition: all 0.5s ease 0s;
 	  }
 	}
@@ -49,7 +51,7 @@
 	<div v-with="db: db" id="capitulos">
 		<div class="capitulo" v-repeat="db.capitulos" style="width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%" v-on="click: seekCap(posicaoCap[$index]) ">
 			<hr></hr>
-			<p>{{$index + 1}} {{db.capitulos[$index].nome}}</p>
+			<p>{{$index + 1}}.{{db.capitulos[$index].nome | uppercase}}</p>
 		</div>
 	</div>
 </template>

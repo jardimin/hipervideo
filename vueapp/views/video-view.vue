@@ -71,6 +71,7 @@
 	      &:after {
 	        height: 0;
 	        width: 0;
+	        background-color: rgba(50, 50, 50, 0.8);
 	      }
 	    }
 	    #tp-cr {
@@ -177,6 +178,26 @@
 				hiper.code({
 					start: 59.8,
 					end: 106,
+					onStart: function() {
+						document.getElementById("um").click();
+					},
+					onEnd: function() {
+						document.getElementById("dois").click();
+					}
+				});
+				hiper.code({
+					start: 330,
+					end: 360,
+					onStart: function() {
+						document.getElementById("um").click();
+					},
+					onEnd: function() {
+						document.getElementById("dois").click();
+					}
+				});
+				hiper.code({
+					start: 359.8,
+					end: 400,
 					onStart: function() {
 						document.getElementById("um").click();
 					},
