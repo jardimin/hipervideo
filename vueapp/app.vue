@@ -1,5 +1,7 @@
 <style lang="scss">
 	
+	@import "sass/globals";
+
 	%clearfix {
 	  zoom: 1; /* IE6&7 */
 	  &:before, :after,{
@@ -9,6 +11,35 @@
 	  &:after {
 	    clear: both;
 	  }
+	}
+
+	.vue-nav {
+		position: relative;
+		z-index: 20;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		li {
+			display: inline;
+			margin: 0;
+			padding: 0;
+			a {
+				padding: 10px;
+				&:hover {
+					background: #eee;
+				}
+			}
+		}
+	}
+
+	.view {
+		transition: opacity .3s ease .3s;
+		&.v-enter, &.v-leave {
+			opacity: 0;
+		}
+		&.v-leave {
+			transition-delay: 0;
+		}
 	}
 
 	body {
@@ -56,7 +87,8 @@
 
 <template>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<div class="view" v-component="{{view}}" v-transition></div>
+	<div class="view" v-class="className, is-video: view=='video-view'" v-component="{{view}}" v-transition />
+	</div>
 </template>
 
 <script>

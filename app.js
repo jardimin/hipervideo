@@ -38,9 +38,9 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', routes.index);
-app.use('/users', routes.users);
-app.use('/vue', routes.vue);
+app.use('/', routes.vue);
+// app.use('/users', routes.users);
+// app.use('/vue', routes.vue);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

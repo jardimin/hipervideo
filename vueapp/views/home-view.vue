@@ -1,7 +1,6 @@
 <style lang="scss">
 	header {
 		height: 200px;
-		background-color: gray;
 	}
 
 	.areaTematica {
@@ -12,12 +11,6 @@
 	// grid
 
 	$pad: 1%;
-
-	*, *:after, *:before {
-	  -webkit-box-sizing: border-box;
-	  -moz-box-sizing: border-box;
-	  box-sizing: border-box;
-	}
 
 	.grid {
 	  background: transparent;
@@ -52,7 +45,7 @@
 		<div class="conteudo">
 			<div class="grid">
 				<div  v-repeat="db.hipervideos">
-					<a  href="#/video/{{id}}" class="hipervideo">
+					<a  href="#/{{id}}" class="hipervideo">
 						<div class="col-1-5" style="background-color: {{cor}};">
 							<div class="areaTematica">
 								<h2>{{nome}}</h2>
@@ -72,9 +65,6 @@
 		replace: true,
 		attached: function () {
 			$$$('body').removeClass("tocando");
-		},
-		components: {
-			example: require('../components/example.vue')
 		}
 	}
 </script>

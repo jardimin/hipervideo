@@ -18662,8 +18662,8 @@ p.teardown = function () {
 
 module.exports = Watcher
 },{"./batcher":"/home/guzz/hipervideo/node_modules/vue/src/batcher.js","./config":"/home/guzz/hipervideo/node_modules/vue/src/config.js","./observer":"/home/guzz/hipervideo/node_modules/vue/src/observer/index.js","./parse/expression":"/home/guzz/hipervideo/node_modules/vue/src/parse/expression.js","./util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/vueapp/app.vue":[function(require,module,exports){
-require("insert-css")(".conteudo{zoom:1}.conteudo :after,.conteudo:before{content:\"\";display:table}.conteudo:after{clear:both}body{padding:0;margin:0;font:16px \"Lucida Grande\",Helvetica,Arial,sans-serif}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando #hipVid0{opacity:1}body.tocando #video-controls{display:block}a{color:#00B7FF}a.hipervideo{cursor:pointer;transition:all .5s ease 0s}a.hipervideo:hover{color:#000;background-color:#fff}.conteudo{width:95%;margin:0 auto;min-height:60px}");
-var __vue_template__ = "<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n	<div class=\"view\" v-component=\"{{view}}\" v-transition=\"\"></div>";
+require("insert-css")(".conteudo{zoom:1}.conteudo :after,.conteudo:before{content:\"\";display:table}.conteudo:after{clear:both}.vue-nav{position:relative;z-index:20;list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:opacity .3s ease .3s}.view.v-enter,.view.v-leave{opacity:0}.view.v-leave{transition-delay:0}body{padding:0;margin:0;font:16px \"Lucida Grande\",Helvetica,Arial,sans-serif}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando #hipVid0{opacity:1}body.tocando #video-controls{display:block}a{color:#00B7FF}a.hipervideo{cursor:pointer;transition:all .5s ease 0s}a.hipervideo:hover{color:#000;background-color:#fff}.conteudo{width:95%;margin:0 auto;min-height:60px}");
+var __vue_template__ = "<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n	<div class=\"view\" v-class=\"className, is-video: view=='video-view'\" v-component=\"{{view}}\" v-transition=\"\">\n	</div>";
 module.exports = {
 		el: '#app',
 		data: require('./db.json'),
@@ -18746,11 +18746,34 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
+},{}],"/home/guzz/hipervideo/vueapp/components/sidebar-block-profile.vue":[function(require,module,exports){
+var __vue_template__ = "<p>\n		<strong>{{name}}</strong><br>\n		{{text}}\n	</p>";
+module.exports = {
+
+	}
+module.exports.template = __vue_template__;
+
 },{}],"/home/guzz/hipervideo/vueapp/components/sidebar-block.vue":[function(require,module,exports){
-require("insert-css")(".sidebar_block__header{background:#555;color:#fff;padding:10px}.sidebar_block__content{padding:10px}");
-var __vue_template__ = "<div class=\"sidebar_block\">\n		<div class=\"sidebar_block__header\">{{title}}</div>\n		<div class=\"sidebar_block__content\">\n			<content>\n		</content></div>\n	</div>";
+require("insert-css")(".sidebar_block{width:348px;height:300px;overflow:hidden;transition:all .3s ease}.sidebar_block.v-enter,.sidebar_block.v-leave{transform:translate3d(-400px,0,0);height:0}.sidebar_block__header{color:#fff;padding:10px;height:28px;line-height:28px}.sidebar_block__content{padding:10px 58px 10px 10px}");
+var __vue_template__ = "<div class=\"sidebar_block\">\n		<div class=\"sidebar_block__header context-bg\">{{title}}</div>\n		<div class=\"sidebar_block__content\">\n			<content>\n		</content></div>\n	</div>";
 module.exports = {
 		replace: true,
+	}
+module.exports.template = __vue_template__;
+
+},{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/components/sidebar-chapter.vue":[function(require,module,exports){
+require("insert-css")(".sidebar_chapter{position:relative;width:300px}.sidebar_chapter .sidebar_chapter_title{position:relative;z-index:2;display:inline-block;background:#fff;color:#555;padding:10px 58px 10px 10px;height:28px;line-height:28px}.sidebar_chapter .sidebar_chapter_bg{position:absolute;top:0;left:0;transition:all .5s;transform:translate3d(-100%,0,0);width:100%;height:100%;background:#fff}.sidebar.is-open .sidebar_chapter .sidebar_chapter_bg{transform:translate3d(0,0,0)}");
+var __vue_template__ = "<div class=\"sidebar_chapter\">\n		<div class=\"sidebar_chapter_title\">{{title}}</div>\n		<div class=\"sidebar_chapter_bg\"></div>\n	</div>";
+module.exports = {
+		replace: true,
+	}
+module.exports.template = __vue_template__;
+
+},{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/components/sidebar-graph.vue":[function(require,module,exports){
+require("insert-css")(".sidebar_graph{width:240px;height:240px;padding:30px;transition:all .5s ease}.sidebar_graph:hover{width:260px;height:260px;padding:20px}.sidebar_graph .sidebar_graph_svg{background:rgba(100,100,100,.5);width:100%;height:100%;border-radius:50%}");
+var __vue_template__ = "<div class=\"sidebar_graph\">\n		<div class=\"sidebar_graph_svg\"></div>\n	</div>";
+module.exports = {
+		replace: true
 	}
 module.exports.template = __vue_template__;
 
@@ -18852,7 +18875,7 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/db.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
+module.exports={
   "title": "Redes Estratégicas",
   "texto": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   "hipervideos": [
@@ -18989,25 +19012,27 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
   ],
   "tocando": "Intro",
   "view": "",
+  "className": "",
   "params": {
     "video": null
   }
 }
 },{}],"/home/guzz/hipervideo/vueapp/main.js":[function(require,module,exports){
+var _ = require('underscore')
 var Vue = require('vue')
 var Router = require('director').Router
 var app = new Vue(require('./app.vue'))
 var router = new Router()
 var database = require('./db.json')
 var $ = require('jquery')
-var _ = require('underscore')
 
 router.on('/', function () {
 	app.view = 'home-view'
+	app.className = 'is-home'
 	app.db = database
 })
 
-router.on('/video/:id', function (id) {
+router.on('/:id', function (id) {
 	if (app.view === 'video-view' && app.params.video === id) {
 		return // prevent transition on the same id
 	}
@@ -19015,6 +19040,7 @@ router.on('/video/:id', function (id) {
 	Vue.nextTick(function () {
 		app.view = 'video-view'
 		app.params.video = id
+		app.className = 'is-video-' + id
 		app.db = _.findWhere(database.hipervideos,{"id": id})
 	})
 })
@@ -19028,30 +19054,28 @@ router.configure({
 router.init('/')
 
 },{"./app.vue":"/home/guzz/hipervideo/vueapp/app.vue","./db.json":"/home/guzz/hipervideo/vueapp/db.json","director":"/home/guzz/hipervideo/node_modules/director/build/director.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js","underscore":"/home/guzz/hipervideo/node_modules/underscore/underscore.js","vue":"/home/guzz/hipervideo/node_modules/vue/src/vue.js"}],"/home/guzz/hipervideo/vueapp/views/home-view.vue":[function(require,module,exports){
-require("insert-css")("header{height:200px;background-color:gray}.areaTematica{text-align:center;padding:5%}*,:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.grid{background:0 0;margin:0 0 1%}[class*=col-]{float:left;padding-right:1%}[class*=col-]:last-of-type{padding-right:0}.col-1-5{width:20%}");
-var __vue_template__ = "<div v-with=\"db: db\">\n		<header>\n			<div class=\"conteudo\">\n				<h1>{{db.title}}</h1>\n				<p>{{db.texto}}</p>\n			</div>\n		</header>\n		<div class=\"conteudo\">\n			<div class=\"grid\">\n				<div v-repeat=\"db.hipervideos\">\n					<a href=\"#/video/{{id}}\" class=\"hipervideo\">\n						<div class=\"col-1-5\" style=\"background-color: {{cor}}\">\n							<div class=\"areaTematica\">\n								<h2>{{nome}}</h2>\n								<p>{{descricao}}</p>\n							</div>\n						</div>\n					</a>\n				</div>\n			</div>\n		</div>\n	</div>";
+require("insert-css")("header{height:200px}.areaTematica{text-align:center;padding:5%}.grid{background:0 0;margin:0 0 1%}[class*=col-]{float:left;padding-right:1%}[class*=col-]:last-of-type{padding-right:0}.col-1-5{width:20%}");
+var __vue_template__ = "<div v-with=\"db: db\">\n		<header>\n			<div class=\"conteudo\">\n				<h1>{{db.title}}</h1>\n				<p>{{db.texto}}</p>\n			</div>\n		</header>\n		<div class=\"conteudo\">\n			<div class=\"grid\">\n				<div v-repeat=\"db.hipervideos\">\n					<a href=\"#/{{id}}\" class=\"hipervideo\">\n						<div class=\"col-1-5\" style=\"background-color: {{cor}}\">\n							<div class=\"areaTematica\">\n								<h2>{{nome}}</h2>\n								<p>{{descricao}}</p>\n							</div>\n						</div>\n					</a>\n				</div>\n			</div>\n		</div>\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
 		replace: true,
 		attached: function () {
 			$$$('body').removeClass("tocando");
-		},
-		components: {
-			example: require('../components/example.vue')
 		}
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/example.vue":"/home/guzz/hipervideo/vueapp/components/example.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
-require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc}#video-controls{position:fixed;top:0;width:100%;display:none}#video-controls.hover #capitulos,#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0}#video-controls.hover #tp-cr,#video-controls.hover #tp-tt{opacity:0;font-size:0}");
-var __vue_template__ = "<div v-with=\"params: params, db: db\">\n		<in-bg-video></in-bg-video>\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n		<h1>video #{{params.video}}</h1>\n		<p>{{db.nome}}</p>\n		<p><a class=\"btn\" v-on=\"click: clickHandle\">Show block: {{toggle}}</a></p>\n		\n		<in-sidebar-block v-show=\"toggle\" v-with=\"video: params.video, title: 'id do video: ' + params.video\">\n			<div v-component=\"in-example\" v-with=\"video:video\">\n				conteudo dentro de um componente do video {{video}}\n			</div>\n		</in-sidebar-block>\n	</div>";
+},{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
+require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px}.sidebar{width:248px}.sidebar_content{position:relative;z-index:20}.sidebar_back{background-color:rgba(0,0,0,.2);width:300px;height:100%;position:absolute;top:0;left:0;transition:all .5s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover #capitulos,#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0}#video-controls.hover #tp-cr,#video-controls.hover #tp-tt{opacity:0;font-size:0}");
+var __vue_template__ = "<div v-with=\"params: params, db: db\">\n		<in-bg-video></in-bg-video>\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: eventList.length\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: params.video\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"eventList\" v-transition=\"\">\n					<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields\"></div>\n				</in-sidebar-block>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n		\n		<!-- DEBUG -->\n\n		<div class=\"debug\">\n			<a class=\"btn\" v-on=\"click: addRandomEvent\">Novo evento</a>\n			<a class=\"btn\" v-on=\"click: removeFirstEvent\">Remover primeiro evento</a>\n			<a class=\"btn\" v-on=\"click: removeAllEvents\">Remover todos os eventos</a>\n		</div>\n\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
 		// replace para pegar com v-with objetos do parent
 		replace: true,
 		data: function(){
 			return {
-				toggle: false
+				counter: 0,
+				eventList: []
 			}
 		},
 		attached: function() {
@@ -19070,9 +19094,22 @@ var $$$ = require('jquery')
 		  }
 		},
 		methods: {
-			clickHandle: function(){
-				this.$data.toggle = !this.$data.toggle;
-				console.log(this, this.$data, this.$data.toggle, this.$data.arr)
+			addRandomEvent: function(){
+				this.counter++
+				this.eventList.push({
+					title: 'Evento ' + this.counter,
+					type: 'profile',
+					fields: {
+						name: 'Maria do ap. ' + Math.round(Math.random()*1000),
+						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.'
+					}
+				})
+			},
+			removeFirstEvent: function () {
+				this.eventList.shift()
+			},
+			removeAllEvents: function () {
+				this.eventList = []
 			}
 		},
 		components: {
@@ -19080,9 +19117,13 @@ var $$$ = require('jquery')
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
 			'in-topbar-slider': require('../components/topbar-slider.vue'),
 			'in-topbar-capitulos': require('../components/topbar-capitulos.vue'),
-			'in-bg-video': require('../components/bg-video.vue')
+			'in-bg-video': require('../components/bg-video.vue'),
+			'in-sidebar-graph': require('../components/sidebar-graph.vue'),
+			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
+			'in-sidebar-block': require('../components/sidebar-block.vue'),
+			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue')
 		}
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/bg-video.vue":"/home/guzz/hipervideo/vueapp/components/bg-video.vue","../components/example.vue":"/home/guzz/hipervideo/vueapp/components/example.vue","../components/sidebar-block.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-block.vue","../components/topbar-capitulos.vue":"/home/guzz/hipervideo/vueapp/components/topbar-capitulos.vue","../components/topbar-slider.vue":"/home/guzz/hipervideo/vueapp/components/topbar-slider.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}]},{},["/home/guzz/hipervideo/vueapp/main.js"]);
+},{"../components/bg-video.vue":"/home/guzz/hipervideo/vueapp/components/bg-video.vue","../components/example.vue":"/home/guzz/hipervideo/vueapp/components/example.vue","../components/sidebar-block-profile.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-block-profile.vue","../components/sidebar-block.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-block.vue","../components/sidebar-chapter.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-chapter.vue","../components/sidebar-graph.vue":"/home/guzz/hipervideo/vueapp/components/sidebar-graph.vue","../components/topbar-capitulos.vue":"/home/guzz/hipervideo/vueapp/components/topbar-capitulos.vue","../components/topbar-slider.vue":"/home/guzz/hipervideo/vueapp/components/topbar-slider.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}]},{},["/home/guzz/hipervideo/vueapp/main.js"]);
