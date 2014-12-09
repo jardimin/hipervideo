@@ -64,21 +64,10 @@
 	  }
 	}
 
-	a {
-	  &.hipervideo {
-	    cursor: pointer;
-	    transition: all 0.5s ease 0s;
-	    &:hover {
-	      color: black;
-	      background-color: white;
-	    }
-	  }
-	}
-
 	.conteudo {
-	  width: 95%;
 	  margin: 0 auto;
-	  min-height: 60px;
+	  height: 100%;
+		width: 100%;
 	  @extend %clearfix;
 	}
 

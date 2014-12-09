@@ -18662,7 +18662,7 @@ p.teardown = function () {
 
 module.exports = Watcher
 },{"./batcher":"/home/guzz/hipervideo/node_modules/vue/src/batcher.js","./config":"/home/guzz/hipervideo/node_modules/vue/src/config.js","./observer":"/home/guzz/hipervideo/node_modules/vue/src/observer/index.js","./parse/expression":"/home/guzz/hipervideo/node_modules/vue/src/parse/expression.js","./util":"/home/guzz/hipervideo/node_modules/vue/src/util/index.js"}],"/home/guzz/hipervideo/vueapp/app.vue":[function(require,module,exports){
-require("insert-css")(".conteudo{zoom:1}.conteudo :after,.conteudo:before{content:\"\";display:table}.conteudo:after{clear:both}.vue-nav{position:relative;z-index:20;list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:opacity .3s ease .3s}.view.v-enter,.view.v-leave{opacity:0}.view.v-leave{transition-delay:0}body{padding:0;margin:0;font:16px \"Lucida Grande\",Helvetica,Arial,sans-serif}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando #hipVid0{opacity:1}body.tocando #video-controls{display:block}a.hipervideo{cursor:pointer;transition:all .5s ease 0s}a.hipervideo:hover{color:#000;background-color:#fff}.conteudo{width:95%;margin:0 auto;min-height:60px}");
+require("insert-css")(".conteudo{zoom:1}.conteudo :after,.conteudo:before{content:\"\";display:table}.conteudo:after{clear:both}.vue-nav{position:relative;z-index:20;list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:opacity .3s ease .3s}.view.v-enter,.view.v-leave{opacity:0}.view.v-leave{transition-delay:0}body{padding:0;margin:0;font:16px \"Lucida Grande\",Helvetica,Arial,sans-serif}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando #hipVid0{opacity:1}body.tocando #video-controls{display:block}.conteudo{margin:0 auto;height:100%;width:100%}");
 var __vue_template__ = "<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n	<div class=\"view\" v-class=\"className, is-video: view=='video-view'\" v-component=\"{{view}}\" v-transition=\"\">\n	</div>";
 module.exports = {
 		el: '#app',
@@ -18679,7 +18679,7 @@ module.exports = {
 module.exports.template = __vue_template__;
 
 },{"./db.json":"/home/guzz/hipervideo/vueapp/db.json","./views/home-view.vue":"/home/guzz/hipervideo/vueapp/views/home-view.vue","./views/video-view.vue":"/home/guzz/hipervideo/vueapp/views/video-view.vue","insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js"}],"/home/guzz/hipervideo/vueapp/components/bg-video.vue":[function(require,module,exports){
-require("insert-css")("#hipVid0{background-size:cover;bottom:60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#app.marco-fechado #hipVid0{bottom:0}");
+require("insert-css")("#hipVid0{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#app.marco-fechado #hipVid0{top:0}");
 var __vue_template__ = "<video v-with=\"db: db\" poster=\"http://jardim.in/hipervideo/img/splash.jpg\" preload=\"auto\" class=\"\" id=\"hipVid0\">\n		<source src=\"{{db.url}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n		</source><source type=\"video/webm\" src=\"{{db.url}}.webm\" id=\"webm\">\n	</source></video>";
 var $$$ = require('jquery')
 	module.exports = {
@@ -18914,14 +18914,14 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/db.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
+module.exports=module.exports={
   "title": "Redes Estratégicas",
   "texto": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   "hipervideos": [
     {
       "id": "mulher",
       "nome": "Mulher",
-      "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",      
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      
       "cor": "#f00",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/SA/Dapes_SA",
       "duracao": 2280.135,
@@ -18940,7 +18940,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
         },
         {
           "nome": "Final",
-          "timecode": 2072.056
+          "timecode": 2280.135
         }
       ],
       "conteudo": {
@@ -18966,7 +18966,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
     {
       "id": "crianca",
       "nome": "Criança",
-      "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",      
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      
       "cor": "#00f",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
@@ -19011,7 +19011,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
     {
       "id": "adolescente",
       "nome": "Adolescente",
-      "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
       "cor": "#0f0",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
@@ -19056,7 +19056,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
     {
       "id": "deficiente",
       "nome": "Deficiente",
-      "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
       "cor": "#0cc",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
@@ -19101,7 +19101,7 @@ module.exports=module.exports=module.exports=module.exports=module.exports=modul
     {
       "id": "preso",
       "nome": "Preso",
-      "descricao": "T3 comes with a lot of features out of the box, but you can extend its functionality further with “packages”—plugins written by the greater ST3 community. The easiest way to install these packages is t",
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
       "cor": "#00c",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
@@ -19188,11 +19188,46 @@ router.configure({
 router.init('/')
 
 },{"./app.vue":"/home/guzz/hipervideo/vueapp/app.vue","./db.json":"/home/guzz/hipervideo/vueapp/db.json","director":"/home/guzz/hipervideo/node_modules/director/build/director.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js","underscore":"/home/guzz/hipervideo/node_modules/underscore/underscore.js","vue":"/home/guzz/hipervideo/node_modules/vue/src/vue.js"}],"/home/guzz/hipervideo/vueapp/views/home-view.vue":[function(require,module,exports){
-require("insert-css")("header{height:200px}.areaTematica{text-align:center;padding:5%}.grid{background:0 0;margin:0 0 1%}[class*=col-]{float:left;padding-right:1%}[class*=col-]:last-of-type{padding-right:0}.col-1-5{width:20%}");
-var __vue_template__ = "<div v-with=\"db: db\">\n		<header>\n			<div class=\"conteudo\">\n				<h1>{{db.title}}</h1>\n				<p>{{db.texto}}</p>\n			</div>\n		</header>\n		<div class=\"conteudo\">\n			<div class=\"grid\">\n				<div v-repeat=\"db.hipervideos\">\n					<a href=\"#/{{id}}\" class=\"hipervideo\">\n						<div class=\"col-1-5\" style=\"background-color: {{cor}}\">\n							<div class=\"areaTematica\">\n								<h2>{{nome}}</h2>\n								<p>{{descricao}}</p>\n							</div>\n						</div>\n					</a>\n				</div>\n			</div>\n		</div>\n	</div>";
+require("insert-css")("header{position:absolute;height:100%;background-color:rgba(15,15,15,.8);width:100%;box-sizing:border-box;z-index:1;transition:all .5s}header h1{margin:.5%}header.fechado{height:5%;font-size:50%;overflow:hidden;padding:0;text-align:center;transition:all .5s}header.fechado p{opacity:0}header.fechado a{opacity:0!important}header.fechado:hover{font-size:55%}header.fechado.ativo{top:-5%;transition:all .5s}header.fechado .conteudo{padding:0}header.fechado #headHandle{z-index:2;cursor:pointer}header .conteudo{box-sizing:border-box;padding:5%;transition:all .5s}.areaTematica{text-align:center;right:-40%;width:40%;position:fixed;height:100%;background-color:rgba(15,15,15,.8);z-index:1;transition:all .5s}.areaTematica h2{margin-top:10%}.col-1-5{width:20%;text-decoration:none;position:absolute;height:100%;transition:all .5s}.linha{height:100%;position:fixed;right:40%;width:.5%;z-index:1;bottom:-100%;opacity:.6;transition:all .1s}.botao{cursor:pointer;display:inline-block;margin:10px;padding:10px;width:50%;background:#ccc;color:#000;opacity:.6;transition:all .3s;text-align:center}.botao:hover{opacity:1}.botao.cruz{border-radius:16px;height:20px;padding:5px;position:absolute;right:2%;top:2%;width:20px}.fotoFundo{position:absolute}.BW{transition:all .5s ease 0s}#headHandle{z-index:-15;position:absolute;left:0;height:100%;width:100%}.hipervideo{overflow:hidden;cursor:pointer;transition:all .5s ease 0s}.hipervideo:hover .BW{opacity:0}.hipervideo.ativo{width:100%;cursor:default;z-index:2!important;left:0!important}.hipervideo.ativo .areaTematica{right:0}.hipervideo.ativo .linha{transition:all .5s ease .3s;bottom:0}.hipervideo.ativo .fotoFundo{left:0!important}.hipervideo.ativo .BW{z-index:-1!important;opacity:0}");
+var __vue_template__ = "<div v-with=\"db: db\">\n		<header class=\"\">\n			<div class=\"conteudo\">\n				<div id=\"headHandle\" v-on=\"click: abrir\"></div>\n				<h1>{{db.title}}</h1>\n				<p>{{db.texto}}</p>\n				<a v-on=\"click: fechar\" class=\"botao cruz\">X</a>\n			</div>\n		</header>\n		<div class=\"conteudo\" style=\"position: absolute; z-index: 0\">\n			<div class=\"grid\">\n				<div v-repeat=\"db.hipervideos\" class=\"hipervideo col-1-5 {{id}}\" style=\"left: {{posHip[$index]}}%; z-index: -{{$index}}\">\n					<div class=\"linha\" style=\"background-color: {{cor}}\"></div>\n					<div class=\"areaTematica\">\n						<h2>{{nome}}</h2>\n						<p>{{descricao}}</p>\n						<a v-on=\"click: deselect(id)\" class=\"botao cruz\" style=\"background-color: {{cor}}\">X</a>\n						<a href=\"#/{{id}}\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none\">Assistir</a>\n					</div>\n					<img src=\"/img/RE_{{id}}BW.png\" class=\"fotoFundo BW\" style=\"left: -{{posHip[$index]}}%; z-index: 1\" v-on=\"click: select(id)\">\n					<img src=\"/img/RE_{{id}}.png\" class=\"fotoFundo\" style=\"left: -{{posHip[$index]}}%\" v-on=\"click: select(id)\">\n				</div>\n			</div>\n		</div>\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
 		replace: true,
+		methods: {
+			fechar: function() {
+				var head = $$$('header')
+				head.addClass('fechado')
+			},
+			abrir: function() {
+				var head = $$$('header')
+				head.removeClass('fechado')
+			},
+			select: function(id) {
+				var head = $$$('header')
+				var esse = $$$('.'+ id)
+				head.addClass('ativo')
+				esse.addClass('ativo')
+			},
+			deselect: function(id) {
+				var head = $$$('header')
+				var este = $$$('.'+ id)
+				head.removeClass('ativo')
+				este.removeClass('ativo')
+			}
+		},
+		computed: {
+			posHip: {
+				get: function() {
+					var hip = this.$data.db.hipervideos
+					var posicao = []
+					for (var i = 0, antes = 0; i < hip.length; i++) {
+						var left = i * 20
+						posicao.push(left)
+					}
+					return posicao
+				}
+			}
+		},
 		attached: function () {
 			$$$('body').removeClass("tocando");
 		}
@@ -19200,7 +19235,7 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":"/home/guzz/hipervideo/node_modules/insert-css/index.js","jquery":"/home/guzz/hipervideo/node_modules/jquery/dist/jquery.js"}],"/home/guzz/hipervideo/vueapp/views/video-view.vue":[function(require,module,exports){
-require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px}.sidebar{width:248px}.sidebar_content{position:relative;z-index:20}.sidebar_back{background-color:rgba(0,0,0,.2);width:300px;height:100%;position:absolute;top:0;left:0;transition:all .5s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}");
+require("insert-css")(".btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px;color:#000}.sidebar{width:248px}.sidebar_content{position:relative;z-index:20}.sidebar_back{background-color:rgba(0,0,0,.2);width:300px;height:100%;position:absolute;top:0;left:0;transition:all .5s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}");
 var __vue_template__ = "<div v-with=\"params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- VIDEO -->\n\n		<in-bg-video></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: eventList.length\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: params.video\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"eventList\" v-transition=\"\">\n					<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields\"></div>\n				</in-sidebar-block>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<div class=\"debug\">\n			<a id=\"um\" class=\"btn\" v-on=\"click: addRandomEvent\">Novo evento</a>\n			<a id=\"dois\" class=\"btn\" v-on=\"click: removeFirstEvent\">Remover primeiro evento</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: removeAllEvents\">Remover todos os eventos</a>\n		</div>\n\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
@@ -19213,46 +19248,7 @@ var $$$ = require('jquery')
 			}
 		},
 		attached: function() {
-			$$$('body').addClass("tocando");	
-			// toggleFull();
-			// function cancelFullScreen(el) {
-   //          var requestMethod = el.cancelFullScreen||el.webkitCancelFullScreen||el.mozCancelFullScreen||el.exitFullscreen;
-   //          if (requestMethod) { // cancel full screen.
-   //              requestMethod.call(el);
-   //          } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-   //              var wscript = new ActiveXObject("WScript.Shell");
-   //              if (wscript !== null) {
-   //                  wscript.SendKeys("{F11}");
-   //              }
-   //          }
-   //      }
-
-   //      function requestFullScreen(el) {
-   //          // Supports most browsers and their versions.
-   //          var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
-
-   //          if (requestMethod) { // Native full screen.
-   //              requestMethod.call(el);
-   //          } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-   //              var wscript = new ActiveXObject("WScript.Shell");
-   //              if (wscript !== null) {
-   //                  wscript.SendKeys("{F11}");
-   //              }
-   //          }
-   //          return false
-   //      }
-
-   //      function toggleFull() {
-   //          var elem = document.body; // Make the body go full screen.
-   //          var isInFullScreen = (document.fullScreenElement && document.fullScreenElement !== null) ||  (document.mozFullScreen || document.webkitIsFullScreen);
-
-   //          if (isInFullScreen) {
-   //              cancelFullScreen(document);
-   //          } else {
-   //              requestFullScreen(elem);
-   //          }
-   //          return false;
-   //      }
+			$$$('body').addClass("tocando");
 			
 			window.onmousemove = handleMouseMove;
 			var controles = document.getElementById('video-controls');
