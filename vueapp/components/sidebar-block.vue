@@ -10,6 +10,7 @@
 		}
 	}
 	.sidebar_block__header {
+		position: relative;
 		color: #fff;
 		padding: 10px;
 		height: 28px;
@@ -19,11 +20,24 @@
 		padding: 10px;
 		padding-right: 58px;
 	}
+	.timer {
+		display: block;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		width: 28px;
+		height: 28px;
+		background: #fff;
+		border-radius: 14px;
+	}
 </style>
 
 <template>
 	<div class="sidebar_block ">
-		<div class="sidebar_block__header context-bg">{{title}}</div>
+		<div class="sidebar_block__header context-bg">
+			{{title}}
+			<span class="timer clickable" v-on="click: onTimerClick"></span>
+		</div>
 		<div class="sidebar_block__content">
 			<content/>
 		</div>
@@ -33,5 +47,10 @@
 <script>
 	module.exports = {
 		replace: true,
+		methods: {
+			onTimerClick: function(){
+				this.$dispatch('block-timer-clicked', this, this.$data.id)
+			}
+		}
 	}
 </script>

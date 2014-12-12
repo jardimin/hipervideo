@@ -73,14 +73,14 @@
 
 		<!-- SIDEBAR -->
 
-		<div class="sidebar" v-class="is-open: eventList.length">
+		<div class="sidebar" v-class="is-open: contentBlocks.length">
 
 			<!-- CONTENT -->
 
 			<div class="sidebar_content">
 				<in-sidebar-graph></in-sidebar-graph>
 				<in-sidebar-chapter v-with="title: params.video"></in-sidebar-chapter>
-				<in-sidebar-block v-repeat="eventList" v-transition>
+				<in-sidebar-block v-repeat="contentBlocks" v-transition>
 					<div v-component="{{'in-sidebar-block-' + type}}" v-with="fields"></div>
 				</in-sidebar-block>
 			</div>
@@ -95,43 +95,50 @@
 		<!-- DEBUG -->
 
 		<div class="debug">
-			<a id="um" class="btn" v-on="click: addRandomEvent">Novo evento</a>
-			<a id="dois" class="btn" v-on="click: removeFirstEvent">Remover primeiro evento</a>
-			<a id="tres" class="btn" v-on="click: removeAllEvents">Remover todos os eventos</a>
+			<a id="um" class="btn" v-on="click: addRandomBlock">Novo evento</a>
+			<a id="dois" class="btn" v-on="click: removeFirstBlock">Remover primeiro evento</a>
+			<a id="tres" class="btn" v-on="click: removeAllBlocks">Remover todos os eventos</a>
 		</div>
 
 	</div>
 </template>
 
 <script>
+	
 	var $$$ = require('jquery')
+	var _ = require('underscore')
+
 	module.exports = {
 		// replace para pegar com v-with objetos do parent
 		replace: true,
 		data: function(){
 			return {
 				counter: 0,
-				eventList: []
+				contentBlocks: []
 			}
 		},
 		attached: function() {
+
 			$$$('body').addClass("tocando");
 			
 			window.onmousemove = handleMouseMove;
 			var controles = document.getElementById('video-controls');
-		  function handleMouseMove(event) {
-		    event = event || window.event; // IE-ism
-		    // event.clientX and event.clientY contain the mouse position
-		    if (event.clientY < 60) {
-		      controles.className = "";
-		    } else {
-		      controles.className = "hover";
-		    }
-		  }
+			
+			function handleMouseMove(event) {
+				event = event || window.event; // IE-ism
+				// event.clientX and event.clientY contain the mouse position
+				if (event.clientY < 60) {
+					controles.className = "";
+				} else {
+					controles.className = "hover";
+				}
+			}
 
-		  var video = document.getElementById('hipVid0');
-		  video.addEventListener( "loadeddata", function() {
-		  	var hiper = Popcorn("#hipVid0");
+			var video = document.getElementById('hipVid0');
+
+			video.addEventListener( "loadeddata", function() {
+				
+				var hiper = Popcorn("#hipVid0");
 
 				hiper.code({
 					start: 4,
@@ -183,14 +190,21 @@
 						document.getElementById("dois").click();
 					}
 				});
-		  }, false );
+			}, false );
+			
 
+			// CHILD LISTENERS
+
+			this.$on('block-timer-clicked', function (child, id) {
+				this.removeBlock(id);
+			})
 		},
 		methods: {
-			addRandomEvent: function(){
+			addRandomBlock: function(){
 				this.counter++
-				this.eventList.push({
-					title: 'Evento ' + this.counter,
+				this.contentBlocks.push({
+					id: 'block-' + this.counter,
+					title: 'Block ' + this.counter,
 					type: 'profile',
 					fields: {
 						name: 'Maria do ap. ' + Math.round(Math.random()*1000),
@@ -198,11 +212,16 @@
 					}
 				})
 			},
-			removeFirstEvent: function () {
-				this.eventList.shift()
+			removeFirstBlock: function () {
+				this.contentBlocks.shift()
 			},
-			removeAllEvents: function () {
-				this.eventList = []
+			removeAllBlocks: function () {
+				this.contentBlocks = []
+			},
+			removeBlock: function(id) {
+				this.contentBlocks = _.reject(this.contentBlocks, function(block){
+					return block.id === id
+				})
 			}
 		},
 		components: {
