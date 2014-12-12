@@ -3,7 +3,7 @@ var fs = require('fs');
 var db = JSON.parse(fs.readFileSync("./db.json", "utf8"));
 var router = express.Router();
 
-/* GET home page. */
+/* GET vueapp index */
 router.get('/', function(req, res) {
   res.render('index', db);
 });

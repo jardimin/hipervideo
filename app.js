@@ -9,9 +9,7 @@ var livereload = require('express-livereload');
 var $ = require('jquery');
 
 var routes = {
-    index: require('./routes/index'),
-    users: require('./routes/users'),
-    vue:   require('./routes/vue')
+    index: require('./routes/index')
 };
 
 var app = express();
@@ -38,7 +36,7 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', routes.vue);
+app.use('/', routes.index);
 // app.use('/users', routes.users);
 // app.use('/vue', routes.vue);
 
