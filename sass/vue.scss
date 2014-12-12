@@ -1,6 +1,6 @@
 @import "globals";
 
-html,body,#app {
+html,body {
 	height: 100%;
 	overflow: hidden;
 }
@@ -15,6 +15,12 @@ body {
 
 a {
 	color: #fff;
+}
+
+#app,
+#app .view,
+#app .view .sidebar {
+	height: 100%;
 }
 
 // backgrounds de acordo com o contexto

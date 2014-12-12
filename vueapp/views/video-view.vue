@@ -12,6 +12,7 @@
 	}
 	.sidebar_content {
 		position: relative;
+		height: 100%;
 		z-index: 20;
 	}
 	.sidebar_back {

@@ -1,12 +1,12 @@
 <style lang="scss">
 	.sidebar_block {
 		width: 348px;
-		height: 300px;
+		max-height: 80%;
 		overflow: hidden;
 		transition: all .3s ease;
 		&.v-enter, &.v-leave {
 			transform: translate3d(-400px,0,0);
-			height: 0;
+			max-height: 0;
 		}
 	}
 	.sidebar_block__header {
@@ -31,9 +31,7 @@
 </template>
 
 <script>
-
 	module.exports = {
 		replace: true,
 	}
-
 </script>
