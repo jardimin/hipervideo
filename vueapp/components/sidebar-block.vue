@@ -48,7 +48,7 @@
 <template>
 	<div class="sidebar_block ">
 		<div class="sidebar_block__header context-bg">
-			{{title}} {{perc}}
+			{{title}}
 			<svg width="28" height="28" class="timer clickable" v-on="click: onTimerClick">
 				<circle class="base" cx="14" cy="14" r="12"></circle>
 				<circle class="progress" cx="14" cy="14" r="12" stroke-dashoffset="{{perc}}"></circle>
