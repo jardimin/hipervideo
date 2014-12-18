@@ -42,6 +42,22 @@
   			fill: transparent;
   			opacity: 0.2;
 		}
+		.close {
+			transition: transform 0.3s ease, opacity 0.3s linear;
+			opacity: 0;
+			transform: translate(14px,14px) scale(.5);
+			line {
+				stroke: #fff;
+  				stroke-width: 2px;
+  				stroke-linecap: round;
+			}
+		}
+		&:hover {
+			.close {
+				opacity: 1;
+				transform: translate(14px,14px) scale(1);
+			}
+		}
 	}
 </style>
 
@@ -52,6 +68,10 @@
 			<svg width="28" height="28" class="timer clickable" v-on="click: onTimerClick">
 				<circle class="base" cx="14" cy="14" r="12"></circle>
 				<circle class="progress" cx="14" cy="14" r="12" stroke-dashoffset="{{perc}}"></circle>
+				<g class="close">
+					<line x1="-4" y1="-4" x2="4" y2="4" />
+					<line x1="-4" y1="4" x2="4" y2="-4" />
+				</g>
 			</svg>
 		</div>
 		<div class="sidebar_block__content">
