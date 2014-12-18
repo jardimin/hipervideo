@@ -27,6 +27,7 @@
 	module.exports = {
 		replace: true,
 		attached: function() {
+			var $this = this;
 			var hipervideo = $$$('#hipVid0').get(0);
 			var selector = $$$('.rangeslider').get(0);
 			var seekBar = $$$('#seek-bar').get(0);
@@ -76,6 +77,9 @@
 		    seekBar.value = value;
 		    $$$('.rangeslider__fill').css('width', fillWidth+"%")
 		    $$$('.rangeslider__handle').css('left', fillWidth+"%")
+
+		    // Dispatch timeupdate to parent
+		    $this.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
 		  });
 		}
 	}

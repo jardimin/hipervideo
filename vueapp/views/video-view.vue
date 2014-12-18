@@ -80,7 +80,7 @@
 			<div class="sidebar_content">
 				<in-sidebar-graph></in-sidebar-graph>
 				<in-sidebar-chapter v-with="title: params.video"></in-sidebar-chapter>
-				<in-sidebar-block v-repeat="contentBlocks" v-transition>
+				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition>
 					<div v-component="{{'in-sidebar-block-' + type}}" v-with="fields"></div>
 				</in-sidebar-block>
 			</div>
@@ -114,10 +114,17 @@
 		data: function(){
 			return {
 				counter: 0,
-				contentBlocks: []
+				contentBlocks: [],
+				video: {
+					time: 0,
+					duration: 0,
+					progress: 0
+				}
 			}
 		},
 		attached: function() {
+
+			var $this = this;
 
 			$$$('body').addClass("tocando");
 			
@@ -144,7 +151,7 @@
 					start: 4,
 					end: 18,
 					onStart: function() {
-						document.getElementById("um").click();
+						$this.addRandomBlock(4,18)
 					},
 					onEnd: function() {
 						document.getElementById("dois").click();
@@ -154,7 +161,7 @@
 					start: 30,
 					end: 60,
 					onStart: function() {
-						document.getElementById("um").click();
+						$this.addRandomBlock(30,60)
 					},
 					onEnd: function() {
 						document.getElementById("dois").click();
@@ -164,7 +171,7 @@
 					start: 59.8,
 					end: 106,
 					onStart: function() {
-						document.getElementById("um").click();
+						$this.addRandomBlock(60,106)
 					},
 					onEnd: function() {
 						document.getElementById("dois").click();
@@ -174,7 +181,7 @@
 					start: 330,
 					end: 360,
 					onStart: function() {
-						document.getElementById("um").click();
+						$this.addRandomBlock(330,360)
 					},
 					onEnd: function() {
 						document.getElementById("dois").click();
@@ -184,7 +191,7 @@
 					start: 359.8,
 					end: 400,
 					onStart: function() {
-						document.getElementById("um").click();
+						$this.addRandomBlock(360,400)
 					},
 					onEnd: function() {
 						document.getElementById("dois").click();
@@ -198,14 +205,23 @@
 			this.$on('block-timer-clicked', function (child, id) {
 				this.removeBlock(id);
 			})
+
+			this.$on('video-timeupdate', function (time, duration, progress) {
+				this.video.time = time
+				this.video.duration = duration
+				this.video.progress = progress
+				//console.log(this.video, time, duration, progress)
+			})
 		},
 		methods: {
-			addRandomBlock: function(){
+			addRandomBlock: function(start,end){
 				this.counter++
 				this.contentBlocks.push({
 					id: 'block-' + this.counter,
 					title: 'Block ' + this.counter,
 					type: 'profile',
+					start: start,
+					end: end,
 					fields: {
 						name: 'Maria do ap. ' + Math.round(Math.random()*1000),
 						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.'
