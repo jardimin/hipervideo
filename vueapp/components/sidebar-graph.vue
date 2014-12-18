@@ -4,6 +4,10 @@
 		height: 240px;
 		padding: 30px;
 		transition: all 0.5s ease;
+		transform: translate3d(-300px,0,0);
+		.sidebar.is-open & {
+			transform: translate3d(0,0,0);
+		}
 		&:hover {
 			width: 260px;
 			height: 260px;
