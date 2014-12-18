@@ -4,6 +4,7 @@ var Router = require('director').Router
 var app = new Vue(require('./app.vue'))
 var router = new Router()
 var database = require('./db.json')
+var database_events = require('./db-events.json')
 var $ = require('jquery')
 
 router.on('/', function () {
@@ -22,6 +23,7 @@ router.on('/:id', function (id) {
 		app.params.video = id
 		app.className = 'is-video-' + id
 		app.db = _.findWhere(database.hipervideos,{"id": id})
+		app.dbevents = database_events
 	})
 })
 

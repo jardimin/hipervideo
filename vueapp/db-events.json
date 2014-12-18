@@ -1,0 +1,9 @@
+{
+  "events": [
+    {"id": 1, "start":   4, "end":  18},
+    {"id": 2, "start":  30, "end":  60},
+    {"id": 3, "start":  60, "end": 106},
+    {"id": 4, "start": 330, "end": 360},
+    {"id": 5, "start": 360, "end": 400}
+  ]
+}

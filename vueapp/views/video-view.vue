@@ -57,7 +57,7 @@
 </style>
 
 <template>
-	<div v-with="params: params, db: db" allowfullscreen="true">
+	<div v-with="params: params, db: db, dbevents: dbevents" allowfullscreen="true">
 
 		<!-- VIDEO -->
 
@@ -147,56 +147,21 @@
 				
 				var hiper = Popcorn("#hipVid0");
 
-				hiper.code({
-					start: 4,
-					end: 18,
-					onStart: function() {
-						$this.addRandomBlock(4,18)
-					},
-					onEnd: function() {
-						document.getElementById("dois").click();
-					}
+				$this.dbevents.events.map(function(event){
+					hiper.code({
+						start: event.start,
+						end: event.end,
+						onStart: function() {
+							$this.addBlock(event.id,event.start,event.end)
+						},
+						onEnd: function() {
+							$this.removeBlock(event.id)
+						}
+					});
+					return event;
 				});
-				hiper.code({
-					start: 30,
-					end: 60,
-					onStart: function() {
-						$this.addRandomBlock(30,60)
-					},
-					onEnd: function() {
-						document.getElementById("dois").click();
-					}
-				});
-				hiper.code({
-					start: 59.8,
-					end: 106,
-					onStart: function() {
-						$this.addRandomBlock(60,106)
-					},
-					onEnd: function() {
-						document.getElementById("dois").click();
-					}
-				});
-				hiper.code({
-					start: 330,
-					end: 360,
-					onStart: function() {
-						$this.addRandomBlock(330,360)
-					},
-					onEnd: function() {
-						document.getElementById("dois").click();
-					}
-				});
-				hiper.code({
-					start: 359.8,
-					end: 400,
-					onStart: function() {
-						$this.addRandomBlock(360,400)
-					},
-					onEnd: function() {
-						document.getElementById("dois").click();
-					}
-				});
+
+				
 			}, false );
 			
 
@@ -217,13 +182,27 @@
 			addRandomBlock: function(start,end){
 				this.counter++
 				this.contentBlocks.push({
-					id: 'block-' + this.counter,
-					title: 'Block ' + this.counter,
+					id: 'block-r-' + this.counter,
+					title: 'Random Block ' + this.counter,
 					type: 'profile',
 					start: start,
 					end: end,
 					fields: {
 						name: 'Maria do ap. ' + Math.round(Math.random()*1000),
+						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.'
+					}
+				})
+			},
+			addBlock: function(id,start,end){
+				
+				this.contentBlocks.push({
+					id: 'block-' + id,
+					title: 'Block ' + id,
+					type: 'profile',
+					start: start,
+					end: end,
+					fields: {
+						name: 'TITULO',
 						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.'
 					}
 				})
@@ -236,7 +215,7 @@
 			},
 			removeBlock: function(id) {
 				this.contentBlocks = _.reject(this.contentBlocks, function(block){
-					return block.id === id
+					return block.id === id || block.id === 'block-' + id
 				})
 			}
 		},
