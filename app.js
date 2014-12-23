@@ -6,7 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
-var livereload = require('express-livereload');
+var livereload = require('connect-livereload');
 var $ = require('jquery');
 
 var routes = {
@@ -14,8 +14,6 @@ var routes = {
 };
 
 var app = express();
-
-livereload(app, config={watchDir: path.join(__dirname, 'public')});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
@@ -34,6 +32,7 @@ app.use(sassMiddleware({
     outputStyle: 'expanded',
     prefix: '/styles'
 }));
+app.use(livereload());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -72,10 +71,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
-//module.exports = app;
-
 app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function() {
-  debug('Express server listening on port ' + server.address().port);
+app.listen(app.get('port'), function(err) {
+    debug('Express server listening on port ' + app.get('port'));
 });

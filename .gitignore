@@ -2,3 +2,4 @@ node_modules/
 public/styles/
 public/js/hipervideo-vue.js
 npm-debug.log
+.sass-cache/
