@@ -6,6 +6,15 @@ gulp.task('clean', function () {
     return gulp.src(['public/styles/*'], { read: false }).pipe($.clean());
 });
 
+gulp.task("vue", function() {
+    return gulp.src('app/vue/main.js')
+        .pipe($.browserify({
+            transform: 'vueify'
+        }))
+        .pipe(gulp.dest('public/js'))
+        .pipe($.livereload())
+});
+
 gulp.task('styles', ['clean'], function () {
     return gulp.src('app/sass/main.scss')
         .pipe($.rubySass({
@@ -24,7 +33,7 @@ gulp.task('reload', function(){
 gulp.task('serve', function () {
 	$.nodemon({
 		script: 'app.js',
-		ignore: ['app']
+		ignore: ['app','public/js']
 	})
     .on('restart', function () {
         gulp.src('.').pipe($.livereload())
@@ -40,7 +49,8 @@ gulp.task('watch', function () {
 
     gulp.watch(['app/**/*.jade'], ['reload'])
     gulp.watch(['public/**/*.js'], ['reload'])
-    gulp.watch('app/sass/**/*.scss', ['styles'])
+    gulp.watch(['app/sass/**/*.scss'], ['styles'])
+    gulp.watch(['app/vue/**/*.*'], ['vue'])
 
 });
 
