@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "vue": "node ./bin/www | watchify -v -t vueify -e vueapp/main.js -o public/js/hipervideo-vue.js"
+    "start": "node app.js",
+    "vue": "node app.js | watchify -v -t vueify -e app/vue/main.js -o public/js/hipervideo-vue.js"
   },
   "dependencies": {
     "body-parser": "~1.8.1",

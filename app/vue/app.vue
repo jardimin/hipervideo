@@ -1,6 +1,6 @@
 <style lang="scss">
 	
-	@import "sass/globals";
+	@import "app/sass/globals";
 
 	%clearfix {
 	  zoom: 1; /* IE6&7 */
@@ -13,6 +13,12 @@
 	  }
 	}
 
+	#app,
+	#app .view,
+	#app .view .sidebar {
+		height: 100%;
+	}
+	
 	.vue-nav {
 		position: relative;
 		z-index: 20;

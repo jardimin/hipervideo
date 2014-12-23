@@ -1,3 +1,4 @@
+var debug = require('debug')('dapes');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,15 +10,15 @@ var livereload = require('express-livereload');
 var $ = require('jquery');
 
 var routes = {
-    index: require('./routes/index')
+    index: require(path.join(__dirname, 'app/routes/index'))
 };
 
 var app = express();
 
-livereload(app, config={watchDir: __dirname});
+livereload(app, config={watchDir: path.join(__dirname, 'public')});
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -27,8 +28,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(sassMiddleware({
-    src: __dirname + '/sass',
-    dest: __dirname + '/public/styles',
+    src: __dirname + 'app/sass',
+    dest: __dirname + 'public/styles',
     debug: true,
     outputStyle: 'expanded',
     prefix: '/styles'
@@ -71,4 +72,10 @@ app.use(function(err, req, res, next) {
     });
 });
 
-module.exports = app;
+//module.exports = app;
+
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
