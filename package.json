@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "vue": "watchify -v -t vueify -e app/vue/main.js -o public/js/hipervideo-vue.js | gulp"
+    "vue": "watchify -v -t vueify -e app/vue/main.js -o public/js/main.js"
   },
   "dependencies": {
     "body-parser": "^1.8.4",
