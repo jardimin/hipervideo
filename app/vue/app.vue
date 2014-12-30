@@ -89,11 +89,23 @@
 
 	module.exports = {
 		el: '#app',
-		data: require('./db.json'),
-		/*filters: {
-			fromNow: require('./filters/from-now'),
-			domain: require('./filters/domain')
-		},*/
+		data: {
+			db: null,
+			view: "",
+			className: "",
+			params: {
+				video: null
+			}
+		},
+		created: function(){
+			var xhr = new XMLHttpRequest()
+			var self = this
+			xhr.open('GET', '/api/db.json')
+			xhr.onload = function () {
+				self.db = JSON.parse(xhr.responseText)
+			}
+			xhr.send()
+		},
 		components: {
 			'home-view': require('./views/home-view.vue'),
 			'video-view': require('./views/video-view.vue')

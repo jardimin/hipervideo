@@ -3,14 +3,11 @@ var Vue = require('vue')
 var Router = require('director').Router
 var app = new Vue(require('./app.vue'))
 var router = new Router()
-var database = require('./db.json')
-var database_events = require('./db-events.json')
 var $ = require('jquery')
 
 router.on('/', function () {
 	app.view = 'home-view'
 	app.className = 'is-home'
-	app.db = database
 })
 
 router.on('/:id', function (id) {
@@ -22,8 +19,6 @@ router.on('/:id', function (id) {
 		app.view = 'video-view'
 		app.params.video = id
 		app.className = 'is-video-' + id
-		app.db = _.findWhere(database.hipervideos,{"id": id})
-		app.dbevents = database_events
 	})
 })
 

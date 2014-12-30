@@ -57,7 +57,7 @@ gulp.task('watch', function () {
     // watch for changes
 
     gulp.watch(['app/**/*.jade'], ['reload'])
-    gulp.watch(['public/**/*.js'], ['reload'])
+    gulp.watch(['public/**/*.js','public/**/*.json'], ['reload'])
     gulp.watch(['app/sass/**/*.scss'], ['styles'])
     gulp.watch(['app/vue/**/*.*'], ['vue'])
 

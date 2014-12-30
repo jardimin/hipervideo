@@ -57,7 +57,7 @@
 </style>
 
 <template>
-	<div v-with="params: params, db: db, dbevents: dbevents" allowfullscreen="true">
+	<div v-with="params: params, parent_db: db" allowfullscreen="true">
 
 		<!-- VIDEO -->
 
@@ -113,9 +113,12 @@
 		replace: true,
 		data: function(){
 			return {
+				db: null,
+				events: null,
 				counter: 0,
 				contentBlocks: [],
 				video: {
+					popcorn: null,
 					time: 0,
 					duration: 0,
 					progress: 0
@@ -124,44 +127,42 @@
 		},
 		attached: function() {
 
-			var $this = this;
+			var self = this
 
-			$$$('body').addClass("tocando");
+			// DATA
+
+			// db: filter hipervideo data
+
+			this.db = _.findWhere(this.parent_db.hipervideos,{"id": this.params.video})
 			
-			window.onmousemove = handleMouseMove;
-			var controles = document.getElementById('video-controls');
-			
-			function handleMouseMove(event) {
-				event = event || window.event; // IE-ism
-				// event.clientX and event.clientY contain the mouse position
-				if (event.clientY < 60) {
-					controles.className = "";
-				} else {
-					controles.className = "hover";
+			// events: load hipervideo events
+
+			var xhr = new XMLHttpRequest
+			xhr.open('GET', '/api/db-events.json')
+			xhr.onload = function () {
+				self.events = JSON.parse(xhr.responseText).events
+				// attach events if popcorn already loaded
+				if(self.video.popcorn != null){
+					self.attachPopcornEvents();
 				}
 			}
+			xhr.send()
+
+
+			// POPCORN
 
 			var video = document.getElementById('hipVid0');
 
 			video.addEventListener( "loadeddata", function() {
-				
-				var hiper = Popcorn("#hipVid0");
 
-				$this.dbevents.events.map(function(event){
-					hiper.code({
-						start: event.start,
-						end: event.end,
-						onStart: function() {
-							$this.addBlock(event.id,event.start,event.end)
-						},
-						onEnd: function() {
-							$this.removeBlock(event.id)
-						}
-					});
-					return event;
-				});
+				self.video.popcorn = Popcorn("#hipVid0");
 
-				
+				// attach events if data already loaded
+
+				if(self.events != null){
+					self.attachPopcornEvents();
+				}
+
 			}, false );
 			
 
@@ -177,8 +178,47 @@
 				this.video.progress = progress
 				//console.log(this.video, time, duration, progress)
 			})
+
+			// DOM LISTENERS
+
+			$$$('body').addClass("tocando");
+			$$$(window).bind('mousemove', handleMouseMove)
+
+			function handleMouseMove(event) {
+				var controles = document.getElementById('video-controls');
+				event = event || window.event; // IE-ism
+				// event.clientX and event.clientY contain the mouse position
+				if (event.clientY < 60) {
+					controles.className = "";
+				} else {
+					controles.className = "hover";
+				}
+			}
+
+		},
+		detached: function(){
+			$$$(window).unbind('mousemove')
 		},
 		methods: {
+			attachPopcornEvents: function(){
+
+				var self = this
+				var popcorn = this.video.popcorn
+
+				this.events.map(function(event){
+					popcorn.code({
+						start: event.start,
+						end: event.end,
+						onStart: function() {
+							self.addBlock(event.id,event.start,event.end)
+						},
+						onEnd: function() {
+							self.removeBlock(event.id)
+						}
+					});
+					return event;
+				});
+			},
 			addRandomBlock: function(start,end){
 				this.counter++
 				this.contentBlocks.push({

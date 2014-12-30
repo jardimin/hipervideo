@@ -18,7 +18,7 @@
 <template>
 	<video v-with="db: db" poster="http://jardim.in/hipervideo/img/splash.jpg" preload="auto" class="" id="hipVid0" >
 		<source src="{{db.url}}.mp4" type="video/mp4" id="mp4">
-		<source type="video/webm" src="{{db.url}}.webm" id="webm">
+		<source src="{{db.url}}.webm" type="video/webm" id="webm">
 	</video>
 </template>
 
