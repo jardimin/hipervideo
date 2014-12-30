@@ -4,3 +4,5 @@ public/styles/
 public/js/main.js
 *.log
 *.cache
+*.mp4
+*.webm
