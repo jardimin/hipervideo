@@ -23,10 +23,7 @@ gulp.task("vue", function() {
 
 gulp.task('styles', ['clean'], function () {
     return gulp.src('app/sass/main.scss')
-        .pipe($.rubySass({
-            style: 'expanded',
-            precision: 10
-        }))
+        .pipe($.sass())
         .pipe(gulp.dest('public/styles'))
         .pipe($.livereload())
 });

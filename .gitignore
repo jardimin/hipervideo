@@ -3,3 +3,4 @@ node_modules/
 public/styles/
 public/js/main.js
 *.log
+*.cache
