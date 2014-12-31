@@ -74,9 +74,11 @@
 	xhr.send()
 
 	// ROUTER INIT
+	
+	var router = new Router(routes)
 
 	function init(){
-		var router = new Router(routes)
+		router 
 			.configure({
 				recurse: 'forward',
 				notfound: function () {
