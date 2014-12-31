@@ -173,8 +173,8 @@
 						<a v-on="click: deselect(id)" class="botao cruz" style="background-color: {{cor}}">X</a>
 						<a href="#/{{id}}" class="botao" style="background-color: {{cor}}; text-decoration: none;">Assistir</a>
 					</div>
-					<img src="/img/RE_{{id}}BW.png" class="fotoFundo BW" style="left: -{{posHip[$index]}}%; z-index: 1;" v-on="click: select(id)">
-					<img src="/img/RE_{{id}}.png" class="fotoFundo" style="left: -{{posHip[$index]}}%" v-on="click: select(id)">
+					<img v-attr="src: '/img/RE_' + id + 'BW.png'" class="fotoFundo BW" style="left: -{{posHip[$index]}}%; z-index: 1;" v-on="click: select(id)">
+					<img v-attr="src: '/img/RE_' + id + '.png'" class="fotoFundo" style="left: -{{posHip[$index]}}%" v-on="click: select(id)">
 				</div>
 			</div>
 		</div>
