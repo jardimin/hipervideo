@@ -61,7 +61,7 @@
 	        opacity: 0;
 	      }
 	    }
-	    #hipVid0 {
+	    .hipVid {
 	      opacity: 1;
 	    }
 	    #video-controls {
@@ -81,7 +81,7 @@
 
 <template>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<div class="view" v-class="className, is-video: view=='video-view'" v-component="{{view}}" v-transition />
+	<div class="view" v-class="className, is-video: view=='video-view'" v-component="{{view}}" v-transition v-ref="view" />
 	</div>
 </template>
 
@@ -90,21 +90,14 @@
 	module.exports = {
 		el: '#app',
 		data: {
+			fulldb: null,
 			db: null,
 			view: "",
 			className: "",
 			params: {
-				video: null
+				video: null,
+				route: null
 			}
-		},
-		created: function(){
-			var xhr = new XMLHttpRequest()
-			var self = this
-			xhr.open('GET', '/api/db.json')
-			xhr.onload = function () {
-				self.db = JSON.parse(xhr.responseText)
-			}
-			xhr.send()
 		},
 		components: {
 			'home-view': require('./views/home-view.vue'),

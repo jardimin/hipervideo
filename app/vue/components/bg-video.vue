@@ -1,5 +1,5 @@
 <style lang="scss">
-	#hipVid0 {
+	.hipVid {
 	  background-size: cover;
 	  top: -60px;
 	  height: auto;
@@ -16,27 +16,34 @@
 </style>
 
 <template>
-	<video v-with="db: db" poster="http://jardim.in/hipervideo/img/splash.jpg" preload="auto" class="" id="hipVid0" >
+	<video v-with="db: db" poster="http://jardim.in/hipervideo/img/splash.jpg" preload="auto" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
 		<source src="{{db.url}}.mp4" type="video/mp4" id="mp4">
 		<source src="{{db.url}}.webm" type="video/webm" id="webm">
 	</video>
 </template>
 
 <script>
+
+	var Vue = require('vue')
 	var $$$ = require('jquery')
+
 	module.exports = {
 		replace: true,
 		attached: function() {
-			var $this = this;
-			var hipervideo = $$$('#hipVid0').get(0);
+			
+			var self = this;
+
+			var hipervideo = this.$$.hipervideo;
+			var seekBar = $$$('#seek-bar-'+this.db.id).get(0);
 			var selector = $$$('.rangeslider').get(0);
-			var seekBar = $$$('#seek-bar').get(0);
-			hipervideo.play();
+			
+			this.play();
+
 			var tempoCorrido = function(array) {
-			  var min = array[0];
-			  var sec = array[1];
-			  $$$('#tp-cr-min').text(min);
-			  $$$('#tp-cr-sec').text(sec);
+				var min = array[0];
+				var sec = array[1];
+				$$$('#tp-cr-min').text(min);
+				$$$('#tp-cr-sec').text(sec);
 			};
 
 			function toFormat(time) {
@@ -53,34 +60,42 @@
 			  return [min_.toString(), sec_.toString()]
 			}
 
-		  hipervideo.addEventListener("loadedmetadata" , function() {
-		    var duracao = toFormat(hipervideo.duration);
-		    var tempoTotal = function(array) {
-		      var min = array[0];
-		      var sec = array[1];
-		      $$$('#tp-tt-min').text(min);
-		      $$$('#tp-tt-sec').text(sec);
-		    };
+			hipervideo.addEventListener("loadedmetadata" , function() {
+				var duracao = toFormat(hipervideo.duration);
+				var tempoTotal = function(array) {
+					var min = array[0];
+					var sec = array[1];
+					$$$('#tp-tt-min').text(min);
+					$$$('#tp-tt-sec').text(sec);
+				};
 
-		    tempoTotal(duracao);
-		  })
+				tempoTotal(duracao);
+			})
 		  
-		  // Update the seek bar as the video plays
-		  hipervideo.addEventListener("timeupdate", function() {
-		    // Calculate the slider value
-		    var value = (1000 / hipervideo.duration) * hipervideo.currentTime;
-		    var fillWidth = seekBar.value / 10;
-		    var tempo = toFormat(hipervideo.currentTime);
-		    tempoCorrido(tempo);
+			// Update the seek bar as the video plays
+			hipervideo.addEventListener("timeupdate", function() {
+				// Calculate the slider value
+				var value = (1000 / hipervideo.duration) * hipervideo.currentTime;
+				var fillWidth = seekBar.value / 10;
+				var tempo = toFormat(hipervideo.currentTime);
+				tempoCorrido(tempo);
 
-		    // Update the slider value
-		    seekBar.value = value;
-		    $$$('.rangeslider__fill').css('width', fillWidth+"%")
-		    $$$('.rangeslider__handle').css('left', fillWidth+"%")
+				// Update the slider value
+				seekBar.value = value;
+				$$$('.rangeslider__fill').css('width', fillWidth+"%")
+				$$$('.rangeslider__handle').css('left', fillWidth+"%")
 
-		    // Dispatch timeupdate to parent
-		    $this.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
-		  });
+				// Dispatch timeupdate to parent
+				self.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
+			});
+		},
+		methods: {
+			play: function(){
+				this.$$.hipervideo.play()
+			},
+			pause: function(){
+				this.$$.hipervideo.pause()
+			}
 		}
 	}
 </script>

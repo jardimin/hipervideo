@@ -14,7 +14,7 @@
 			padding: 20px;
 		}
 		.sidebar_graph_svg {
-			background: rgba(100,100,100,0.5);
+			background: rgba(100,100,100,0.25);
 			width: 100%;
 			height: 100%;
 			border-radius: 50%;

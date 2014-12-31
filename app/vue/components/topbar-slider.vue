@@ -95,7 +95,7 @@
 </style>
 
 <template>
-	<div class="rangeslider">
+	<div v-with="db: db" class="rangeslider" id="rangeslider-{{db.id}}">
 		<div id="tp-cr">
 			<div id="tp-cr-min">00</div>
 			<div style="position: relative; float: left;">:</div>
@@ -116,48 +116,49 @@
 	module.exports = {
 		replace: true,
 		attached: function() {
-			var hipervideo = $$$('#hipVid0').get(0);
-			var selector = $$$('.rangeslider').get(0);
-			var seekBar = $$$('#seek-bar').get(0);
-			var bol = false;
-		  var seekTime = function(e) {
-		    var janela   = window.innerWidth,
-		        pos      = e.pageX,
-		        relativo = hipervideo.duration * (pos / janela);
 
-		    hipervideo.currentTime = relativo;
-		  };
+			var hipervideo = $$$('#hipVid-'+this.db.id).get(0);
+			var selector = $$$('#rangeslider-'+this.db.id).get(0);
+			var seekBar = $$$('#seek-bar-'+this.db.id).get(0);
+			var bol = false;
+
+			var seekTime = function(e) {
+				var janela   = window.innerWidth,
+					pos      = e.pageX,
+					relativo = hipervideo.duration * (pos / janela);
+
+				hipervideo.currentTime = relativo;
+			};
 
 			seekBar.addEventListener("change", function() {
-		    // Calculate the new time
-		    var time = hipervideo.duration * (seekBar.value / 1000);
-		    console.log(seekBar.value);
+				// Calculate the new time
+				var time = hipervideo.duration * (seekBar.value / 1000);
+				console.log(seekBar.value);
 
-		    // Update the video time
-		    hipervideo.currentTime = time;
-		  });
+				// Update the video time
+				hipervideo.currentTime = time;
+			});
 
-		  selector.addEventListener("mousemove", function(e) {
-		    var janela   = window.innerWidth,
-		        pos      = e.pageX,
-		        relativo = hipervideo.duration * (pos / janela);
+			selector.addEventListener("mousemove", function(e) {
+				var janela   = window.innerWidth,
+				pos      = e.pageX,
+				relativo = hipervideo.duration * (pos / janela);
 
-		    if (bol===true) {
-		      seekTime(e);
-		    }
+				if (bol===true) {
+					seekTime(e);
+				}
+			});
 
-		  });
+			selector.addEventListener("mouseup", function(e) {
+				hipervideo.play();
+				bol = false;
+			});
 
-		  selector.addEventListener("mouseup", function(e) {
-		    hipervideo.play();
-		    bol = false;
-		  });
-
-		  selector.addEventListener("mousedown", function(e) {
-		    hipervideo.pause();
-		    bol = true;
-		    seekTime(e);
-		  });
+			selector.addEventListener("mousedown", function(e) {
+				hipervideo.pause();
+				bol = true;
+				seekTime(e);
+			});
 		}
 	}
 </script>

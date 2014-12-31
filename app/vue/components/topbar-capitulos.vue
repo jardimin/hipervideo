@@ -75,7 +75,7 @@
 		replace: true,
 		methods: {
 			seekCap: function(perc) {
-				var hipervideo = document.getElementById('hipVid0')
+				var hipervideo = document.getElementById('hipVid-'+this.db.id)
 			  var timecode = (hipervideo.duration * perc) / 100
 			  hipervideo.currentTime = timecode;
 			}

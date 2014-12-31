@@ -1,14 +1,6 @@
 <style lang="scss">
-	.btn {
-		cursor: pointer;
-		padding: 10px;
-		background: #ccc;
-		display: inline-block;
-		margin: 4px;
-		color: black;
-	}
 	.sidebar {
-		width: 248px;
+		width: 300px;
 	}
 	.sidebar_content {
 		position: relative;
@@ -20,7 +12,6 @@
 		background-color: rgba(0,0,0,.2);
 		width: 300px;
 		height: 100%;
-		position: absolute;
 		top: 0;
 		left: 0;
 		transition: all 0.5s;
@@ -31,6 +22,35 @@
 		}
 	}
 
+	.infopanel {
+		position: absolute;
+		background-color: rgba(0,0,0,.5);
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		transition: all 0.5s;
+		transform: translate3d(100%,0,0);
+		&.is-open {
+			transform: translate3d(300px,0,0);
+		}
+		.border {
+			position: absolute;
+			height: 100%;
+			width: 10px;
+			top: 0;
+			left: 0;
+		}
+		.back {
+			position: absolute;
+			top: 100px;
+			left: 100px;
+			color: #fff;
+			font-size: 24px;
+		}
+	}
+
 	.debug {
 		position: absolute;
 		width: 400px;
@@ -38,6 +58,15 @@
 		top: 40%;
 		margin-left: -200px;
 		text-align: center;
+		.btn {
+			cursor: pointer;
+			padding: 10px;
+			background: #ccc;
+			display: inline-block;
+			margin: 4px;
+			color: black;
+			font-size: 10px;
+		}
 	}
 
 	#video-controls {
@@ -57,29 +86,29 @@
 </style>
 
 <template>
-	<div v-with="params: params, parent_db: db" allowfullscreen="true">
+	<div v-with="id: params.video, params: params, db: db" allowfullscreen="true">
 
 		<!-- VIDEO -->
 
-		<in-bg-video></in-bg-video>
+		<in-bg-video v-ref="hipervideo"></in-bg-video>
 
 		<!-- NAV-VIDEO -->
 
 		<nav class="hover" id="video-controls">
 			<in-topbar-capitulos></in-topbar-capitulos>
 			<in-topbar-slider></in-topbar-slider>
-			<input type="range" id="seek-bar" min="0" max="1000" data-rangeslider="" style="display: none;">
+			<input type="range" id="seek-bar-{{id}}" min="0" max="1000" data-rangeslider="" style="display: none;">
 		</nav>
 
 		<!-- SIDEBAR -->
 
-		<div class="sidebar" v-class="is-open: contentBlocks.length">
+		<div class="sidebar" v-class="is-open: hasBlocks || hasInfo">
 
 			<!-- CONTENT -->
 
 			<div class="sidebar_content">
 				<in-sidebar-graph></in-sidebar-graph>
-				<in-sidebar-chapter v-with="title: params.video"></in-sidebar-chapter>
+				<in-sidebar-chapter v-with="title: db.nome"></in-sidebar-chapter>
 				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition>
 					<div v-component="{{'in-sidebar-block-' + type}}" v-with="fields"></div>
 				</in-sidebar-block>
@@ -89,15 +118,32 @@
 
 			<div class="sidebar_back"></div>
 		</div>
+
+		<!-- INFO -->
+	
+		<div class="infopanel" v-class="is-open: hasInfo">
+			<div class="border context-bg"></div>
+			<a class="back" href="#/{{id}}">voltar ao video</a>
+		</div>
+
+		<!-- MARCOS -->
 		
 		<in-botbar-marcos></in-botbar-marcos>
 		
 		<!-- DEBUG -->
 
 		<div class="debug">
-			<a id="um" class="btn" v-on="click: addRandomBlock">Novo evento</a>
-			<a id="dois" class="btn" v-on="click: removeFirstBlock">Remover primeiro evento</a>
-			<a id="tres" class="btn" v-on="click: removeAllBlocks">Remover todos os eventos</a>
+			<a id="um" class="btn" v-on="click: addRandomBlock">+1 evento</a>
+			<a id="dois" class="btn" v-on="click: removeFirstBlock">-1 evento</a>
+			<a id="tres" class="btn" v-on="click: removeAllBlocks">-N eventos</a>
+			<br>
+			<a id="tres" class="btn" href="#/{{id}}">{{id}}</a>
+			<a id="tres" class="btn" href="#/{{id}}/info/teste">info/teste</a>
+			<a id="tres" class="btn" href="#/{{id}}/info/teste2">info/teste2</a>
+			<br>
+			<a id="tres" class="btn" href="#/home">home</a>
+			<a id="tres" class="btn" href="#/mulher">mulher</a>
+			<a id="tres" class="btn" href="#/crianca">crianca</a>
 		</div>
 
 	</div>
@@ -105,6 +151,7 @@
 
 <script>
 	
+	var Vue = require('vue')
 	var $$$ = require('jquery')
 	var _ = require('underscore')
 
@@ -125,15 +172,19 @@
 				}
 			}
 		},
+		computed: {
+			hasBlocks: function() {
+				return this.contentBlocks.length > 0
+			},
+			hasInfo: function(){
+				return this.params.route.length > 1 && this.params.route[1] == 'info'
+			}
+		},
 		attached: function() {
 
 			var self = this
 
 			// DATA
-
-			// db: filter hipervideo data
-
-			this.db = _.findWhere(this.parent_db.hipervideos,{"id": this.params.video})
 			
 			// events: load hipervideo events
 
@@ -151,11 +202,11 @@
 
 			// POPCORN
 
-			var video = document.getElementById('hipVid0');
+			var video = document.getElementById('hipVid-' + self.id);
 
 			video.addEventListener( "loadeddata", function() {
 
-				self.video.popcorn = Popcorn("#hipVid0");
+				self.video.popcorn = Popcorn("#hipVid-" + self.id);
 
 				// attach events if data already loaded
 
@@ -164,7 +215,6 @@
 				}
 
 			}, false );
-			
 
 			// CHILD LISTENERS
 
@@ -182,24 +232,22 @@
 			// DOM LISTENERS
 
 			$$$('body').addClass("tocando");
-			$$$(window).bind('mousemove', handleMouseMove)
+			$$$(window).bind('mousemove', this.handleMouseMove)
 
-			function handleMouseMove(event) {
-				var controles = document.getElementById('video-controls');
-				event = event || window.event; // IE-ism
-				// event.clientX and event.clientY contain the mouse position
-				if (event.clientY < 60) {
-					controles.className = "";
-				} else {
-					controles.className = "hover";
-				}
-			}
-
+		},
+		ready: function(){
+			this.$dispatch('video-view-ready');
 		},
 		detached: function(){
-			$$$(window).unbind('mousemove')
+			$$$(window).unbind('mousemove', this.handleMouseMove)
 		},
 		methods: {
+			openinfo: function(info){
+				this.$.hipervideo.pause()
+			},
+			closeinfo: function(){
+				this.$.hipervideo.play()
+			},
 			attachPopcornEvents: function(){
 
 				var self = this
@@ -218,6 +266,16 @@
 					});
 					return event;
 				});
+			},
+			handleMouseMove: function(event) {
+				var controles = document.getElementById('video-controls');
+				event = event || window.event; // IE-ism
+				// event.clientX and event.clientY contain the mouse position
+				if (event.clientY < 60) {
+					controles.className = "";
+				} else {
+					controles.className = "hover";
+				}
 			},
 			addRandomBlock: function(start,end){
 				this.counter++

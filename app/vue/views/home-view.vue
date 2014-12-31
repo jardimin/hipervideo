@@ -154,7 +154,7 @@
 </style>
 
 <template>
-	<div v-with="db: db">
+	<div v-with="db: fulldb">
 		<header class="">
 			<div class="conteudo">
 				<div id="headHandle" v-on="click: abrir"></div>
