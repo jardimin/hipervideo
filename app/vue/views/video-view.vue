@@ -133,10 +133,6 @@
 		<!-- DEBUG -->
 
 		<div class="debug">
-			<a id="um" class="btn" v-on="click: addRandomBlock">+1 evento</a>
-			<a id="dois" class="btn" v-on="click: removeFirstBlock">-1 evento</a>
-			<a id="tres" class="btn" v-on="click: removeAllBlocks">-N eventos</a>
-			<br>
 			<a id="tres" class="btn" href="#/{{id}}">{{id}}</a>
 			<a id="tres" class="btn" href="#/{{id}}/info/teste">info/teste</a>
 			<a id="tres" class="btn" href="#/{{id}}/info/teste2">info/teste2</a>
@@ -191,7 +187,7 @@
 			var xhr = new XMLHttpRequest
 			xhr.open('GET', '/api/db-events.json')
 			xhr.onload = function () {
-				self.events = JSON.parse(xhr.responseText).events
+				self.events = JSON.parse(xhr.responseText)
 				// attach events if popcorn already loaded
 				if(self.video.popcorn != null){
 					self.attachPopcornEvents();
@@ -252,19 +248,26 @@
 
 				var self = this
 				var popcorn = this.video.popcorn
+				var id = 1
 
-				this.events.map(function(event){
+				this.events.timecode.map(function(event){
+					
+					event.id = id
+					
 					popcorn.code({
 						start: event.start,
 						end: event.end,
 						onStart: function() {
-							self.addBlock(event.id,event.start,event.end)
+							self.addBlock(event)
 						},
 						onEnd: function() {
 							self.removeBlock(event.id)
 						}
 					});
-					return event;
+					
+					id++
+
+					return event
 				});
 			},
 			handleMouseMove: function(event) {
@@ -277,43 +280,22 @@
 					controles.className = "hover";
 				}
 			},
-			addRandomBlock: function(start,end){
-				this.counter++
-				this.contentBlocks.push({
-					id: 'block-r-' + this.counter,
-					title: 'Random Block ' + this.counter,
-					type: 'profile',
-					start: start,
-					end: end,
-					fields: {
-						name: 'Maria do ap. ' + Math.round(Math.random()*1000),
-						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.'
-					}
-				})
-			},
-			addBlock: function(id,start,end){
+			addBlock: function(event){
 				
+				var node = _.findWhere(this.events.nodes,{"id": event.node})
+
 				this.contentBlocks.push({
-					id: 'block-' + id,
-					title: 'Block ' + id,
-					type: 'profile',
-					start: start,
-					end: end,
-					fields: {
-						name: 'TITULO',
-						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.'
-					}
+					id: event.id,
+					title: node.title,
+					type: node.component.type,
+					start: event.start,
+					end: event.end,
+					fields: node.component.fields
 				})
-			},
-			removeFirstBlock: function () {
-				this.contentBlocks.shift()
-			},
-			removeAllBlocks: function () {
-				this.contentBlocks = []
 			},
 			removeBlock: function(id) {
 				this.contentBlocks = _.reject(this.contentBlocks, function(block){
-					return block.id === id || block.id === 'block-' + id
+					return block.id === id
 				})
 			}
 		},
@@ -327,6 +309,7 @@
 			'in-sidebar-graph': require('../components/sidebar-graph.vue'),
 			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
+			'in-sidebar-block-text': require('../components/sidebar-block-text.vue'),
 			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue')
 		}
 	}

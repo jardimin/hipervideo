@@ -4,9 +4,6 @@
 
 <template>
 	<p>
-		<img v-attr="src:image">
-	</p>
-	<p>
 		{{excerpt}}
 	</p>
 </template>
