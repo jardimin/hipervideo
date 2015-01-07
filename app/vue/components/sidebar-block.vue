@@ -19,6 +19,9 @@
 	.sidebar_block__content {
 		padding: 10px;
 		padding-right: 58px;
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 1.4em;
 	}
 	.timer {
 		display: block;

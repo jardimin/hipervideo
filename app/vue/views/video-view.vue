@@ -110,7 +110,7 @@
 				<in-sidebar-graph></in-sidebar-graph>
 				<in-sidebar-chapter v-with="title: db.nome"></in-sidebar-chapter>
 				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition>
-					<div v-component="{{'in-sidebar-block-' + type}}" v-with="fields"></div>
+					<div v-component="{{'in-sidebar-block-' + type}}" v-with="id: id, videoID: videoID,fields: fields"></div>
 				</in-sidebar-block>
 			</div>
 
@@ -286,6 +286,7 @@
 
 				this.contentBlocks.unshift({
 					id: event.id,
+					videoID: this.params.video,
 					title: node.title,
 					type: node.component.type,
 					start: event.start,

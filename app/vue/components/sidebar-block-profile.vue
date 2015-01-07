@@ -4,11 +4,12 @@
 
 <template>
 	<p>
-		<img v-attr="src:image">
+		<img v-attr="src: fields.image">
 	</p>
 	<p>
-		{{excerpt}}
+		{{fields.excerpt}}
 	</p>
+	<p><strong><a href="#/{{videoID}}/info/{{id}}">leia mais</a></strong></p>
 </template>
 
 <script>
