@@ -8,6 +8,10 @@
 			transform: translate3d(-400px,0,0);
 			max-height: 0;
 		}
+		.sidebar.has-info & {
+			width: 300px;
+			max-height: 48px;
+		}
 	}
 	.sidebar_block__header {
 		position: relative;

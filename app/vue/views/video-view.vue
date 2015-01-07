@@ -102,7 +102,7 @@
 
 		<!-- SIDEBAR -->
 
-		<div class="sidebar" v-class="is-open: hasBlocks || hasInfo">
+		<div class="sidebar" v-class="is-open: hasBlocks || hasInfo, has-info: hasInfo">
 
 			<!-- CONTENT -->
 
