@@ -73,7 +73,7 @@
 			{{title}}
 			<svg width="28" height="28" class="timer clickable" v-on="click: onTimerClick">
 				<circle class="base" cx="14" cy="14" r="12"></circle>
-				<circle v-class="fadeout: perc > 72 || perc < 3" class="progress" cx="14" cy="14" r="12" stroke-dashoffset="{{perc}}"></circle>
+				<circle v-class="fadeout: perc < 3" class="progress" cx="14" cy="14" r="12" stroke-dashoffset="{{perc}}"></circle>
 				<g class="close">
 					<line x1="-4" y1="-4" x2="4" y2="4" />
 					<line x1="-4" y1="4" x2="4" y2="-4" />
