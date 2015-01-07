@@ -14,7 +14,7 @@
 		height: 100%;
 		top: 0;
 		left: 0;
-		transition: all 0.5s;
+		transition: all 0.6s;
 		transform: translate3d(-300px,0,0);
 		z-index: 10;
 		.sidebar.is-open & {
@@ -30,7 +30,7 @@
 		top: 0;
 		left: 0;
 		z-index: 10;
-		transition: all 0.5s;
+		transition: all 0.6s;
 		transform: translate3d(100%,0,0);
 		&.is-open {
 			transform: translate3d(300px,0,0);
@@ -256,7 +256,7 @@
 					
 					popcorn.code({
 						start: event.start,
-						end: event.end,
+						end: event.end + 0.3,
 						onStart: function() {
 							self.addBlock(event)
 						},
@@ -284,7 +284,7 @@
 				
 				var node = _.findWhere(this.events.nodes,{"id": event.node})
 
-				this.contentBlocks.push({
+				this.contentBlocks.unshift({
 					id: event.id,
 					title: node.title,
 					type: node.component.type,
