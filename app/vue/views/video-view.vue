@@ -83,6 +83,26 @@
 	  }
 	}
 
+	.sidebar_opener {
+		position: relative;
+		transition: all 0.6s ease 0.6s;
+		overflow: hidden;
+		&.v-enter, &.v-leave {
+			transform: translate3d(-100px,0,0);
+		}
+		&.v-leave {
+			transition: all 0.3s ease 0;
+		}
+		.sidebar_opener__inside {
+			display: inline-block;
+			color: #fff;
+			padding: 10px;
+			height: 28px;
+			line-height: 28px;
+			transition: all 0.6s ease;
+		}
+	}
+
 </style>
 
 <template>
@@ -102,7 +122,7 @@
 
 		<!-- SIDEBAR -->
 
-		<div class="sidebar" v-class="is-open: hasBlocks || hasInfo, has-info: hasInfo">
+		<div class="sidebar" v-class="is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo">
 
 			<!-- CONTENT -->
 
@@ -112,6 +132,9 @@
 				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition>
 					<div v-component="{{'in-sidebar-block-' + type}}" v-with="id: id, videoID: videoID,fields: fields"></div>
 				</in-sidebar-block>
+				<div class="sidebar_opener clickable" v-on="click: makeFixedSidebar" v-show="!hasBlocks && !fixedSidebar && !hasInfo" v-transition>
+					<div class="sidebar_opener__inside context-bg">open</div>
+				</div>
 			</div>
 
 			<!-- BACKGROUND -->
@@ -159,6 +182,7 @@
 				events: null,
 				counter: 0,
 				contentBlocks: [],
+				fixedSidebar: false,
 				video: {
 					popcorn: null,
 					time: 0,
@@ -249,6 +273,9 @@
 			videoPlay: function(){
 				this.$.hipervideo.play()
 			},
+			makeFixedSidebar: function(){
+				this.fixedSidebar = true;
+			},
 			attachPopcornEvents: function(){
 
 				var self = this
@@ -298,6 +325,8 @@
 					end: event.end,
 					fields: node.component.fields
 				})
+
+				this.fixedSidebar = false;
 			},
 			removeBlock: function(id) {
 				this.contentBlocks = _.reject(this.contentBlocks, function(block){

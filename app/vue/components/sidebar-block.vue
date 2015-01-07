@@ -26,6 +26,7 @@
 		font-size: 14px;
 		font-weight: 300;
 		line-height: 1.4em;
+		width: 280px;
 	}
 	.timer {
 		display: block;
