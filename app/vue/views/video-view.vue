@@ -133,13 +133,12 @@
 		<!-- DEBUG -->
 
 		<div class="debug">
-			<a id="tres" class="btn" href="#/{{id}}">{{id}}</a>
-			<a id="tres" class="btn" href="#/{{id}}/info/teste">info/teste</a>
-			<a id="tres" class="btn" href="#/{{id}}/info/teste2">info/teste2</a>
-			<br>
 			<a id="tres" class="btn" href="#/home">home</a>
 			<a id="tres" class="btn" href="#/mulher">mulher</a>
 			<a id="tres" class="btn" href="#/crianca">crianca</a>
+			<br/>
+			<a id="tres" class="btn" v-on="click: play">play</a>
+			<a id="tres" class="btn" v-on="click: pause">pause</a>
 		</div>
 
 	</div>
@@ -239,9 +238,15 @@
 		},
 		methods: {
 			openinfo: function(info){
-				this.$.hipervideo.pause()
+				this.pause();
 			},
 			closeinfo: function(){
+				this.play();
+			},
+			pause: function(){
+				this.$.hipervideo.pause()
+			},
+			play: function(){
 				this.$.hipervideo.play()
 			},
 			attachPopcornEvents: function(){
