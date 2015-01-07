@@ -27,6 +27,13 @@ strong {
 	cursor: pointer;
 }
 
+.disable-select {
+	-webkit-user-select: none;  
+	-moz-user-select: none;    
+	-ms-user-select: none;      
+	user-select: none;
+}
+
 // backgrounds de acordo com o contexto
 
 .context-bg {
