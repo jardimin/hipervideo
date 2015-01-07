@@ -29,66 +29,85 @@
 <script>
 	
 	var _ = require('underscore')
-	var $d3 = {}
+	var radius = 260
 
 	module.exports = {
+
 		replace: true,
+
 		data: function(){
 			return {
-				interval: null,
-				radius: 260
+				_interval: null,
+				_force: null,
+				_svg: null,
+				_nodes: [],
+				_edges: [],
 			}
 		},
+
 		attached: function(){
+
 			var self = this
 
 			this.createGraph()
 			this.addRootNode()
 			this.updateGraph()
 
-			this.interval = setInterval(function(){
-				self.checkTimecode()
-			},2000)
+			this._interval = setInterval(this.checkTimecode,2000)
+
 		},
-		detached: function(){
-			setInterval()
+
+		beforeDestroy: function(){
+			clearInterval(this._interval)
 		},
+
 		methods: {
+
 			createGraph: function(){
 				
 				var self = this
 
-				$d3.$nodes = []
-				$d3.$edges = []
+				self._nodes = []
+				self._edges = []
 
-				$d3.$force = d3.layout.force()
-					.size([self.radius, self.radius])
+				self._force = d3.layout.force()
+					.size([radius, radius])
+					.charge(function(d){return d.r * -20;})
+					.nodes(self._nodes)
+					.links(self._edges)
 					.start()
 					.on('tick',function(){
 						self.tickGraph();
 					})
 
 
-				$d3.$svg = d3.select(self.$$.graph).append("svg")
-					.attr("width", self.radius)
-					.attr("height", self.radius);
+				self._svg = d3.select(self.$$.graph).append("svg")
+					.attr("width", radius)
+					.attr("height", radius);
 					
 			},
+
 			updateGraph: function(){
-				var edge = $d3.$svg.selectAll(".edge")
-					.data($d3.$edges, function(d){ return d.source + '_' + d.target;})
+
+				this._force
+					.links(this._edges)
+					.nodes(this._nodes)
+
+				var edge = this._svg.selectAll(".edge")
+					.data(this._edges)
 					.enter().append("line")
 					.attr("class", "edge")
 					.style("stroke-width", 1)
+					.style("stroke", 'rgba(255,255,255,0.2)')
 
-				var node = $d3.$svg.selectAll(".node")
-					.data($d3.$nodes, function(d){ return d.id;})
+				var node = this._svg.selectAll(".node")
+					.data(this._nodes, function(d){ return d.id;})
 					.enter().append("circle")
 					.attr("class", "node")
 					.attr("r", function(d) { return d.r; })
 					.style("fill", function(d) {
 						var color;
-						switch(d.type){
+						switch(d.icon){
 							case 'root':
 								color = '#f00'
 								break
@@ -99,37 +118,37 @@
 						return color;
 					})
 
-				$d3.$force
-					.nodes($d3.$nodes)
-					.links($d3.$edges)
-					.resume()
-					
+				this._force
+					.start()
 			},
+
 			addRootNode: function(){
-				$d3.$nodes.push({
+				this._nodes.push({
 					id: 0,
 					r: 6,
 					px: 0,
 					py: 0,
 					x: 0,
 					y: 0,
-					type: 'root'
+					icon: 'root'
 				})
 			},
+
 			tickGraph: function(){
 
-				var edge = $d3.$svg.selectAll(".edge")
+				var edge = this._svg.selectAll(".edge")
 					.attr("x1", function(d) { return d.source.x })
 					.attr("y1", function(d) { return d.source.y })
 					.attr("x2", function(d) { return d.target.x })
 					.attr("y2", function(d) { return d.target.y })
 				
-				var node = $d3.$svg.selectAll(".node")
+				var node = this._svg.selectAll(".node")
 					.attr("cx", function(d) { return d.x })
 					.attr("cy", function(d) { return d.y })
 				
 
 			},
+
 			checkTimecode: function(){
 				
 				var self = this
@@ -143,13 +162,19 @@
 				var nodes = []
 
 				timecodes.map(function(timecode){
-					var node = _.findWhere($d3.$nodes, {id: timecode.node})
+					var node = _.findWhere(self._nodes, {id: timecode.node})
 					if(!node){
-						node = _.findWhere(self.events.nodes, {id: timecode.node})
-						node.px = 0
-						node.py = 0
-						node.x = 0
-						node.y = 0
+						var $node = _.findWhere(self.events.nodes, {id: timecode.node})
+						var x = Math.random() * radius
+						var y = Math.random() * radius
+						node = {}
+						node.id = $node.id;
+						node.title = $node.title;
+						node.icon = $node.icon;
+						node.px = x
+						node.py = y
+						node.x = x
+						node.y = y
 						node.r = 4
 						nodes.push(node)
 					}
@@ -157,19 +182,20 @@
 
 				if(!nodes.length){return}
 
-				$d3.$nodes = $d3.$nodes.concat(nodes)
+				self._nodes = self._nodes.concat(nodes)
+				
+				self._edges = []
 
-				$d3.$edges = []
-
-				/*this.events.edges.map(function(edge){
-					var source = _.findWhere(self.d3.$nodes, {id: edge.source})
-					var target = _.findWhere(self.d3.$nodes, {id: edge.target})
+				this.events.edges.map(function(edge){
+					var source = _.findWhere(self._nodes, {id: edge.source})
+					var target = _.findWhere(self._nodes, {id: edge.target})
 					if(source && target){
+						edge = {}
 						edge.source = source
 						edge.target = target
-						self.d3.$edges.push(edge)
+						self._edges.push(edge)
 					}
-				})*/
+				})
 
 				this.updateGraph()
 				
