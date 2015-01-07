@@ -137,8 +137,8 @@
 			<a id="tres" class="btn" href="#/mulher">mulher</a>
 			<a id="tres" class="btn" href="#/crianca">crianca</a>
 			<br/>
-			<a id="tres" class="btn" v-on="click: play">play</a>
-			<a id="tres" class="btn" v-on="click: pause">pause</a>
+			<a id="tres" class="btn" v-on="click: videoPlay">play</a>
+			<a id="tres" class="btn" v-on="click: videoPause">pause</a>
 		</div>
 
 	</div>
@@ -237,16 +237,16 @@
 			$$$(window).unbind('mousemove', this.handleMouseMove)
 		},
 		methods: {
-			openinfo: function(info){
-				this.pause();
+			infoOpen: function(info){
+				this.videoPause();
 			},
-			closeinfo: function(){
-				this.play();
+			infoClose: function(){
+				this.videoPlay();
 			},
-			pause: function(){
+			videoPause: function(){
 				this.$.hipervideo.pause()
 			},
-			play: function(){
+			videoPlay: function(){
 				this.$.hipervideo.play()
 			},
 			attachPopcornEvents: function(){
