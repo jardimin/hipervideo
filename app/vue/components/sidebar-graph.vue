@@ -1,4 +1,26 @@
 <style lang="scss">
+
+	@import "app/sass/globals";
+
+	@mixin graph-node-styles($color) {
+		&.root {
+			fill: $color;
+		}
+		&.dispositivo {
+			fill: #fff;
+			stroke: $color;
+			stroke-width: 2px;
+		}
+		&.funcao {
+			fill: #fff;
+		}
+		&.conceito {
+			fill: $color;
+			stroke: #fff;
+			stroke-width: 2px;
+		}
+	}
+
 	.sidebar_graph {
 		width: 260px;
 		height: 260px;
@@ -15,6 +37,21 @@
 			border-radius: 50%;
 			.node {
 				cursor: pointer;
+				.is-video-mulher & {
+					@include graph-node-styles($color-video-1);
+				}
+				.is-video-adolescente & {
+					@include graph-node-styles($color-video-2);
+				}
+				.is-video-crianca & {
+					@include graph-node-styles($color-video-3);
+				}
+				.is-video-preso & {
+					@include graph-node-styles($color-video-4);
+				}
+				.is-video-deficiente & {
+					@include graph-node-styles($color-video-5);
+				}
 			}
 			.edge {
 				stroke: rgba(255,255,255,0.2);
@@ -53,13 +90,11 @@
 
 		attached: function(){
 
-			var self = this
-
 			this.createGraph()
 			this.addRootNode()
 			this.updateGraph()
 
-			this._interval = setInterval(this.checkTimecode,2000)
+			this._interval = setInterval(this.checkTimecode,1000)
 
 		},
 
@@ -78,7 +113,9 @@
 
 				self._force = d3.layout.force()
 					.size([radius, radius])
-					.charge(function(d){return d.r * -20;})
+					.charge(function(d){return self.calcNodeRadius(d.icon) * -20})
+					.linkStrength(0.1)
+					.linkDistance(10)
 					.nodes(self._nodes)
 					.links(self._edges)
 					.start()
@@ -98,6 +135,8 @@
 
 			updateGraph: function(){
 
+				var self = this
+
 				this._force
 					.links(this._edges)
 					.nodes(this._nodes)
@@ -110,29 +149,28 @@
 				var node = this._svg_nodes.selectAll(".node")
 					.data(this._nodes, function(d){ return d.id;})
 					.enter().append("circle")
-					.attr("class", "node")
-					.attr("r", function(d) { return d.r; })
-					.style("fill", function(d) {
-						var color;
-						switch(d.icon){
-							case 'root':
-								color = '#f00'
-								break
-							default:
-								color = '#fff'
-								break
-						}
-						return color;
+					.attr("class", function(d) {
+						return "node " + d.icon
 					})
+					.attr('r', function(d) { return self.calcNodeRadius(d.icon) })
+					.call(this._force.drag)
 
 				this._force
 					.start()
 			},
 
+			calcNodeRadius: function(type){
+				return {
+						'root': 8,
+						'dispositivo': 5,
+						'funcao': 4,
+						'conceito': 3
+					}[type]
+			},
+
 			addRootNode: function(){
 				this._nodes.push({
 					id: 0,
-					r: 6,
 					px: 0,
 					py: 0,
 					x: 0,
@@ -182,7 +220,6 @@
 						node.py = y
 						node.x = x
 						node.y = y
-						node.r = 4
 						nodes.push(node)
 					}
 				})
