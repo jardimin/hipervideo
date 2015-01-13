@@ -16,6 +16,10 @@
 			.node {
 				cursor: pointer;
 			}
+			.edge {
+				stroke: rgba(255,255,255,0.2);
+				stroke-width: 1;
+			}
 		}
 	}
 </style>
@@ -40,6 +44,8 @@
 				_interval: null,
 				_force: null,
 				_svg: null,
+				_svg_nodes: null,
+				_svg_edges: null,
 				_nodes: [],
 				_edges: [],
 			}
@@ -84,6 +90,9 @@
 				self._svg = d3.select(self.$$.graph).append("svg")
 					.attr("width", radius)
 					.attr("height", radius);
+
+				self._svg_edges = self._svg.append("g").attr("class", "edges")
+				self._svg_nodes = self._svg.append("g").attr("class", "nodes")
 					
 			},
 
@@ -93,14 +102,12 @@
 					.links(this._edges)
 					.nodes(this._nodes)
 
-				var edge = this._svg.selectAll(".edge")
+				var edge = this._svg_edges.selectAll(".edge")
 					.data(this._edges)
 					.enter().append("line")
 					.attr("class", "edge")
-					.style("stroke-width", 1)
-					.style("stroke", 'rgba(255,255,255,0.2)')
 
-				var node = this._svg.selectAll(".node")
+				var node = this._svg_nodes.selectAll(".node")
 					.data(this._nodes, function(d){ return d.id;})
 					.enter().append("circle")
 					.attr("class", "node")
@@ -136,13 +143,13 @@
 
 			tickGraph: function(){
 
-				var edge = this._svg.selectAll(".edge")
+				var edge = this._svg_edges.selectAll(".edge")
 					.attr("x1", function(d) { return d.source.x })
 					.attr("y1", function(d) { return d.source.y })
 					.attr("x2", function(d) { return d.target.x })
 					.attr("y2", function(d) { return d.target.y })
 				
-				var node = this._svg.selectAll(".node")
+				var node = this._svg_nodes.selectAll(".node")
 					.attr("cx", function(d) { return d.x })
 					.attr("cy", function(d) { return d.y })
 				
