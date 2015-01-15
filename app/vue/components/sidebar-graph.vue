@@ -57,12 +57,20 @@
 				stroke: rgba(255,255,255,0.2);
 				stroke-width: 1;
 			}
+			.label-anchor {
+				text {
+					@extend .disable-select;
+					cursor: default;
+					font-size: 12px;
+					fill: #fff;
+				}
+			}
 		}
 	}
 </style>
 
 <template>
-	<div class="sidebar_graph" v-with="id: id, video: video, events: events">
+	<div class="sidebar_graph" v-with="id: id, title: db.nome, video: video, events: events">
 		<div v-el="graph" class="sidebar_graph_svg"></div>
 	</div>
 </template>
@@ -80,11 +88,16 @@
 			return {
 				_interval: null,
 				_force: null,
+				_forceL: null,
 				_svg: null,
 				_svg_nodes: null,
 				_svg_edges: null,
+				_svg_labels: null,
 				_nodes: [],
 				_edges: [],
+				_labelAnchors: [],
+				_labelLinks: []
+
 			}
 		},
 
@@ -108,29 +121,42 @@
 				
 				var self = this
 
-				self._nodes = []
-				self._edges = []
+				this._nodes = []
+				this._edges = []
+				this._labelAnchors = []
+				this._labelLinks = []
 
-				self._force = d3.layout.force()
+				this._force = d3.layout.force()
 					.size([radius, radius])
 					.charge(function(d){return self.calcNodeRadius(d.icon) * -20})
 					.linkStrength(0.1)
 					.linkDistance(10)
-					.nodes(self._nodes)
-					.links(self._edges)
+					.nodes(this._nodes)
+					.links(this._edges)
 					.start()
 					.on('tick',function(){
 						self.tickGraph();
 					})
 
+				this._forceL = d3.layout.force()
+					.size([radius, radius])
+					.charge(-50)//-100
+					.linkStrength(0.5)//8
+					.linkDistance(5)
+					.gravity(0)
+					.friction(0.5)
+					.nodes(this._labelAnchors)
+					.links(this._labelLinks)
+					.start()
 
-				self._svg = d3.select(self.$$.graph).append("svg")
+				this._svg = d3.select(this.$$.graph).append("svg")
 					.attr("width", radius)
 					.attr("height", radius);
 
-				self._svg_edges = self._svg.append("g").attr("class", "edges")
-				self._svg_nodes = self._svg.append("g").attr("class", "nodes")
-					
+				this._svg_edges = this._svg.append("g").attr("class", "edges")
+				this._svg_nodes = this._svg.append("g").attr("class", "nodes")
+				this._svg_labels = this._svg.append("g").attr("class", "labels")
+				
 			},
 
 			updateGraph: function(){
@@ -138,8 +164,12 @@
 				var self = this
 
 				this._force
-					.links(this._edges)
 					.nodes(this._nodes)
+					.links(this._edges)
+
+				this._forceL
+					.nodes(this._labelAnchors)
+					.links(this._labelLinks)
 
 				var edge = this._svg_edges.selectAll(".edge")
 					.data(this._edges)
@@ -147,7 +177,7 @@
 					.attr("class", "edge")
 
 				var node = this._svg_nodes.selectAll(".node")
-					.data(this._nodes, function(d){ return d.id;})
+					.data(this._nodes, function(d){ return d.id })
 					.enter().append("circle")
 					.attr("class", function(d) {
 						return "node " + d.icon
@@ -155,9 +185,26 @@
 					.attr('r', function(d) { return self.calcNodeRadius(d.icon) })
 					.call(this._force.drag)
 
-				this._force
-					.start()
-			},
+				var labelLink = this._svg_labels.selectAll(".label-link")
+					.data(this._labelLinks)
+					//.enter().append("svg:line")
+					//.attr("class", "label-link")
+					//.style("stroke", "#999")
+
+				var labelAnchor = this._svg_labels.selectAll(".label-anchor")
+					.data(this._labelAnchors)
+					.enter().append("svg:g")
+					.attr("class", "label-anchor")
+
+				labelAnchor.append("svg:circle").attr("r", 0).style("fill", "#FFF");
+				labelAnchor.append("svg:text")
+					.text(function(d, i) {
+						return i % 2 == 0 ? "" : d.node.title
+					})
+
+					this._force
+						.start()
+				},
 
 			calcNodeRadius: function(type){
 				return {
@@ -168,18 +215,34 @@
 					}[type]
 			},
 
+			addNode: function(obj){
+				// array.push in js returns new length
+				var node = this._nodes.push(obj);
+				// create labels objects for last node
+				var a1 = this._labelAnchors.push({node: this._nodes[node-1]})
+				var a2 = this._labelAnchors.push({node: this._nodes[node-1]})
+				// create link for label objects
+				this._labelLinks.push({
+					source: this._labelAnchors[a1-1],
+					target: this._labelAnchors[a2-1]
+				})
+			},
+
 			addRootNode: function(){
-				this._nodes.push({
+				this.addNode({
 					id: 0,
 					px: 0,
 					py: 0,
 					x: 0,
 					y: 0,
-					icon: 'root'
+					icon: 'root',
+					title: this.title
 				})
 			},
 
 			tickGraph: function(){
+
+				this._forceL.start()
 
 				var edge = this._svg_edges.selectAll(".edge")
 					.attr("x1", function(d) { return d.source.x })
@@ -188,9 +251,40 @@
 					.attr("y2", function(d) { return d.target.y })
 				
 				var node = this._svg_nodes.selectAll(".node")
-					.attr("cx", function(d) { return d.x })
-					.attr("cy", function(d) { return d.y })
+					.attr("transform", function(d) {
+						return "translate(" + d.x + "," + d.y + ")";
+					})
 				
+				var labelLink = this._svg_labels.selectAll(".label-link")
+					.attr("x1", function(d) { return d.source.x })
+					.attr("y1", function(d) { return d.source.y })
+					.attr("x2", function(d) { return d.target.x })
+					.attr("y2", function(d) { return d.target.y })
+
+				var labelAnchor = this._svg_labels.selectAll(".label-anchor")
+					.attr("transform", function(d) {
+						return "translate(" + d.x + "," + d.y + ")";
+					})
+					.each(function(d, i) {
+						if(i % 2 == 0) {
+							d.x = d.node.x
+							d.y = d.node.y
+						} else {
+							var b = this.childNodes[1].getBBox()
+
+							var diffX = d.x - d.node.x
+							var diffY = d.y - d.node.y
+
+							var dist = Math.sqrt(diffX * diffX + diffY * diffY)
+
+							var shiftX = b.width * (diffX - dist) / (dist * 2)
+							var shiftY = 5
+
+							shiftX = Math.max(-b.width, Math.min(0, shiftX))
+							
+							this.childNodes[1].setAttribute("transform", "translate(" + shiftX + "," + shiftY + ")")
+						}
+					})
 
 			},
 
@@ -221,12 +315,13 @@
 						node.x = x
 						node.y = y
 						nodes.push(node)
+						self.addNode(node)
 					}
 				})
 
 				if(!nodes.length){return}
 
-				self._nodes = self._nodes.concat(nodes)
+				//self._nodes = self._nodes.concat(nodes)
 				
 				self._edges = []
 
