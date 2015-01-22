@@ -22,6 +22,13 @@
 		}
 	}
 
+	.sidebar-right {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 300px;
+	}
+
 	.infopanel {
 		position: absolute;
 		background-color: rgba(0,0,0,.5);
@@ -140,6 +147,12 @@
 			<!-- BACKGROUND -->
 
 			<div class="sidebar_back"></div>
+		</div>
+
+		<!-- RIGHT SIDE -->
+
+		<div class="sidebar-right">
+			<in-event-block-map></in-event-block-map>
 		</div>
 
 		<!-- INFO -->
@@ -341,6 +354,7 @@
 			'in-topbar-capitulos': require('../components/topbar-capitulos.vue'),
 			'in-bg-video': require('../components/bg-video.vue'),
 			'in-botbar-marcos': require('../components/marcos.vue'),
+			'in-event-block-map': require('../components/event-block-map.vue'),
 			'in-sidebar-graph': require('../components/sidebar-graph.vue'),
 			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
 			'in-sidebar-block': require('../components/sidebar-block.vue'),

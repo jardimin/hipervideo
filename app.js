@@ -34,6 +34,7 @@ app.use(sassMiddleware({
 }));
 app.use(livereload());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/modules', express.static(path.join(__dirname, 'node_modules')));
 
 
 app.use('/', routes.index);
