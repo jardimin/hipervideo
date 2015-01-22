@@ -9,6 +9,9 @@
 		height: 100%;
 		overflow: hidden;
 	}
+	.leaflet-top, .leaflet-bottom {
+		z-index: 1;
+	}
 </style>
 
 <template>
@@ -33,7 +36,7 @@
 
 		ready: function(){
 
-			this._map = L.map(this.$$.map).setView([51.505, -0.09], 13);
+			this._map = L.map(this.$$.map).setView([-19, -43], 6);
 
 			// add an OpenStreetMap tile layer
 			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
