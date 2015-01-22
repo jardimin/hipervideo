@@ -152,7 +152,7 @@
 		<!-- RIGHT SIDE -->
 
 		<div class="sidebar-right">
-			<in-event-block-map></in-event-block-map>
+			<in-event-block-map v-ref="map"></in-event-block-map>
 		</div>
 
 		<!-- INFO -->
@@ -338,6 +338,10 @@
 					end: event.end,
 					fields: node.component.fields
 				})
+
+				if(node.geo){
+					this.$.map.panTo(node.geo)
+				}
 
 				this.fixedSidebar = false;
 			},

@@ -12,6 +12,7 @@
       "id": 1,
       "title": "CPN",
       "icon": "dispositivo",
+      "geo": [-19.5,-43.5],
       "component": {
         "type": "text",
         "fields": {
@@ -23,6 +24,7 @@
       "id": 2,
       "title": "Doula",
       "icon": "funcao",
+      "geo": [-18,-44],
       "component": {
         "type": "profile",
         "fields": {

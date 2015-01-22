@@ -52,18 +52,23 @@
 
 		ready: function(){
 
-			this._map = L.map(this.$$.map).setView([-19, -43], 6);
+			this._map = L.map(this.$$.map, { zoomControl: false }).setView([-19, -43], 6)
+
+			new L.Control.Zoom({ position: 'topright' }).addTo(this._map)
 
 			// add an OpenStreetMap tile layer
 			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-			}).addTo(this._map);
+			}).addTo(this._map)
 
 		},
 
 		methods: {
 			toggle: function(){
-				this.isOpen = !this.isOpen;
+				this.isOpen = !this.isOpen
+			},
+			panTo: function(latlng){
+				this._map.panTo(latlng)
 			}
 		}
 	}
