@@ -251,6 +251,10 @@
 			// CHILD LISTENERS
 
 			this.$on('block-timer-clicked', function (child, id) {
+				var node = _.findWhere(this.contentBlocks,{"id": id})
+				if(node && node.start == null){
+					node.start = -1
+				}
 				this.removeBlock(id);
 			})
 
@@ -259,6 +263,14 @@
 				this.video.duration = duration
 				this.video.progress = progress
 				//console.log(this.video, time, duration, progress)
+			})
+
+			this.$on('graph-node-clicked', function (node) {
+				if(node.id == 0){
+
+				} else {
+					self.addBlockById(node.id)
+				}
 			})
 
 			// DOM LISTENERS
@@ -345,9 +357,32 @@
 
 				this.fixedSidebar = false;
 			},
+			addBlockById: function(id){
+
+				if(_.findWhere(this.contentBlocks,{"id": id})) return;
+
+				var node = _.findWhere(this.events.nodes,{"id": id})
+
+				this.contentBlocks.unshift({
+					id: node.id,
+					videoID: this.params.video,
+					title: node.title,
+					type: node.component.type,
+					start: null,
+					end: null,
+					fields: node.component.fields
+				})
+
+				if(node.geo){
+					this.$.map.panTo(node.geo)
+				}
+
+				this.fixedSidebar = false;
+
+			},
 			removeBlock: function(id) {
 				this.contentBlocks = _.reject(this.contentBlocks, function(block){
-					return block.id === id
+					return block.start === null ? false : block.id === id
 				})
 			}
 		},

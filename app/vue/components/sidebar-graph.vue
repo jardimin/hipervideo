@@ -184,6 +184,11 @@
 					})
 					.attr('r', function(d) { return self.calcNodeRadius(d.icon) })
 					.call(this._force.drag)
+					.on('click',function(d){
+						if (d3.event.defaultPrevented) return;
+						//console.log('click node ',d.id)
+						self.$dispatch('graph-node-clicked', d)
+					})
 
 				var labelLink = this._svg_labels.selectAll(".label-link")
 					.data(this._labelLinks)

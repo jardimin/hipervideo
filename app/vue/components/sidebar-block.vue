@@ -63,6 +63,7 @@
   				stroke-linecap: round;
 			}
 		}
+		&.fixed,
 		&:hover {
 			.close {
 				opacity: 1;
@@ -76,7 +77,7 @@
 	<div class="sidebar_block ">
 		<div class="sidebar_block__header context-bg">
 			{{title}}
-			<svg width="28" height="28" class="timer clickable" v-on="click: onTimerClick">
+			<svg width="28" height="28" class="timer clickable" v-on="click: onTimerClick" v-class="fixed: start == null">
 				<circle class="base" cx="14" cy="14" r="12"></circle>
 				<circle v-class="fadeout: perc < 3" class="progress" cx="14" cy="14" r="12" stroke-dashoffset="{{perc}}"></circle>
 				<g class="close">
