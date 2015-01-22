@@ -25,7 +25,7 @@
 	.sidebar-right {
 		position: absolute;
 		right: 0;
-		top: 0;
+		top: 57px;
 		width: 300px;
 	}
 
