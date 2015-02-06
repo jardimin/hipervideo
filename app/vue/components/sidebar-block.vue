@@ -3,10 +3,14 @@
 		width: 348px;
 		max-height: 80%;
 		overflow: hidden;
-		transition: all .3s ease;
+		transition: all .6s ease;
 		&.v-enter, &.v-leave {
 			transform: translate3d(-400px,0,0);
 			max-height: 0;
+		}
+		.sidebar.has-info & {
+			width: 300px;
+			max-height: 48px;
 		}
 	}
 	.sidebar_block__header {
@@ -19,6 +23,10 @@
 	.sidebar_block__content {
 		padding: 10px;
 		padding-right: 58px;
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 1.4em;
+		width: 280px;
 	}
 	.timer {
 		display: block;
@@ -31,10 +39,13 @@
 			fill: transparent;
 			stroke: #fff;
   			stroke-width: 2px;
-  			stroke-dasharray: 76 76;
+  			stroke-dasharray: 75 75;
   			stroke-linecap: round;
-  			transition: stroke-dashoffset 0.5s linear;
+  			transition: all 0.5s linear;
   			transform: translate(0px,28px) rotate(-90deg);
+  			&.fadeout {
+  				opacity: 0;
+  			}
 		}
 		.base {
 			stroke: #fff;
@@ -52,6 +63,7 @@
   				stroke-linecap: round;
 			}
 		}
+		&.fixed,
 		&:hover {
 			.close {
 				opacity: 1;
@@ -65,9 +77,9 @@
 	<div class="sidebar_block ">
 		<div class="sidebar_block__header context-bg">
 			{{title}}
-			<svg width="28" height="28" class="timer clickable" v-on="click: onTimerClick">
+			<svg width="28" height="28" class="timer clickable" v-on="click: onTimerClick" v-class="fixed: start == null">
 				<circle class="base" cx="14" cy="14" r="12"></circle>
-				<circle class="progress" cx="14" cy="14" r="12" stroke-dashoffset="{{perc}}"></circle>
+				<circle v-class="fadeout: perc < 3" class="progress" cx="14" cy="14" r="12" stroke-dashoffset="{{perc}}"></circle>
 				<g class="close">
 					<line x1="-4" y1="-4" x2="4" y2="4" />
 					<line x1="-4" y1="4" x2="4" y2="-4" />
@@ -88,7 +100,7 @@
 				var start = this.$data.start;
 				var end = this.$data.end;
 				var time = this.$data.video.time;
-				return 76 - Math.floor(76 * (time - start) / (end - start));
+				return 75 - Math.floor(75 * (time - start) / (end - start));
 			}
 		},
 		methods: {

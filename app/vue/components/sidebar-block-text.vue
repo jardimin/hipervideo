@@ -4,9 +4,6 @@
 
 <template>
 	<p>
-		<img v-attr="src: fields.image">
-	</p>
-	<p>
 		{{fields.excerpt}}
 	</p>
 	<p><strong><a href="#/{{videoID}}/info/{{id}}">leia mais</a></strong></p>

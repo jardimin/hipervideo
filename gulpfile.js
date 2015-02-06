@@ -58,7 +58,7 @@ gulp.task('watch', function () {
 
     gulp.watch(['app/**/*.jade'], ['reload'])
     gulp.watch(['public/**/*.js','public/**/*.json'], ['reload'])
-    gulp.watch(['app/sass/**/*.scss'], ['styles'])
+    gulp.watch(['app/sass/**/*.scss'], ['styles','reload'])
     gulp.watch(['app/vue/**/*.*'], ['vue'])
 
 });

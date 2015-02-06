@@ -14,12 +14,19 @@
 		height: 100%;
 		top: 0;
 		left: 0;
-		transition: all 0.5s;
+		transition: all 0.6s;
 		transform: translate3d(-300px,0,0);
 		z-index: 10;
 		.sidebar.is-open & {
 			transform: translate3d(0,0,0);
 		}
+	}
+
+	.sidebar-right {
+		position: absolute;
+		right: 0;
+		top: 57px;
+		width: 300px;
 	}
 
 	.infopanel {
@@ -30,7 +37,7 @@
 		top: 0;
 		left: 0;
 		z-index: 10;
-		transition: all 0.5s;
+		transition: all 0.6s;
 		transform: translate3d(100%,0,0);
 		&.is-open {
 			transform: translate3d(300px,0,0);
@@ -83,6 +90,26 @@
 	  }
 	}
 
+	.sidebar_opener {
+		position: relative;
+		transition: all 0.6s ease 0.6s;
+		overflow: hidden;
+		&.v-enter, &.v-leave {
+			transform: translate3d(-100px,0,0);
+		}
+		&.v-leave {
+			transition: all 0.3s ease 0;
+		}
+		.sidebar_opener__inside {
+			display: inline-block;
+			color: #fff;
+			padding: 10px;
+			height: 28px;
+			line-height: 28px;
+			transition: all 0.6s ease;
+		}
+	}
+
 </style>
 
 <template>
@@ -102,7 +129,7 @@
 
 		<!-- SIDEBAR -->
 
-		<div class="sidebar" v-class="is-open: hasBlocks || hasInfo">
+		<div class="sidebar" v-class="is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo">
 
 			<!-- CONTENT -->
 
@@ -110,13 +137,22 @@
 				<in-sidebar-graph></in-sidebar-graph>
 				<in-sidebar-chapter v-with="title: db.nome"></in-sidebar-chapter>
 				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition>
-					<div v-component="{{'in-sidebar-block-' + type}}" v-with="fields"></div>
+					<div v-component="{{'in-sidebar-block-' + type}}" v-with="id: id, videoID: videoID,fields: fields"></div>
 				</in-sidebar-block>
+				<div class="sidebar_opener clickable" v-on="click: makeFixedSidebar" v-show="!hasBlocks && !fixedSidebar && !hasInfo" v-transition>
+					<div class="sidebar_opener__inside context-bg">open</div>
+				</div>
 			</div>
 
 			<!-- BACKGROUND -->
 
 			<div class="sidebar_back"></div>
+		</div>
+
+		<!-- RIGHT SIDE -->
+
+		<div class="sidebar-right">
+			<in-event-block-map v-ref="map"></in-event-block-map>
 		</div>
 
 		<!-- INFO -->
@@ -133,17 +169,12 @@
 		<!-- DEBUG -->
 
 		<div class="debug">
-			<a id="um" class="btn" v-on="click: addRandomBlock">+1 evento</a>
-			<a id="dois" class="btn" v-on="click: removeFirstBlock">-1 evento</a>
-			<a id="tres" class="btn" v-on="click: removeAllBlocks">-N eventos</a>
-			<br>
-			<a id="tres" class="btn" href="#/{{id}}">{{id}}</a>
-			<a id="tres" class="btn" href="#/{{id}}/info/teste">info/teste</a>
-			<a id="tres" class="btn" href="#/{{id}}/info/teste2">info/teste2</a>
-			<br>
 			<a id="tres" class="btn" href="#/home">home</a>
 			<a id="tres" class="btn" href="#/mulher">mulher</a>
 			<a id="tres" class="btn" href="#/crianca">crianca</a>
+			<br/>
+			<a id="tres" class="btn" v-on="click: videoPlay">play</a>
+			<a id="tres" class="btn" v-on="click: videoPause">pause</a>
 		</div>
 
 	</div>
@@ -164,6 +195,7 @@
 				events: null,
 				counter: 0,
 				contentBlocks: [],
+				fixedSidebar: false,
 				video: {
 					popcorn: null,
 					time: 0,
@@ -191,7 +223,7 @@
 			var xhr = new XMLHttpRequest
 			xhr.open('GET', '/api/db-events.json')
 			xhr.onload = function () {
-				self.events = JSON.parse(xhr.responseText).events
+				self.events = JSON.parse(xhr.responseText)
 				// attach events if popcorn already loaded
 				if(self.video.popcorn != null){
 					self.attachPopcornEvents();
@@ -219,6 +251,10 @@
 			// CHILD LISTENERS
 
 			this.$on('block-timer-clicked', function (child, id) {
+				var node = _.findWhere(this.contentBlocks,{"id": id})
+				if(node && node.start == null){
+					node.start = -1
+				}
 				this.removeBlock(id);
 			})
 
@@ -227,6 +263,14 @@
 				this.video.duration = duration
 				this.video.progress = progress
 				//console.log(this.video, time, duration, progress)
+			})
+
+			this.$on('graph-node-clicked', function (node) {
+				if(node.id == 0){
+
+				} else {
+					self.addBlockById(node.id)
+				}
 			})
 
 			// DOM LISTENERS
@@ -242,29 +286,45 @@
 			$$$(window).unbind('mousemove', this.handleMouseMove)
 		},
 		methods: {
-			openinfo: function(info){
+			infoOpen: function(info){
+				this.videoPause();
+			},
+			infoClose: function(){
+				this.videoPlay();
+			},
+			videoPause: function(){
 				this.$.hipervideo.pause()
 			},
-			closeinfo: function(){
+			videoPlay: function(){
 				this.$.hipervideo.play()
+			},
+			makeFixedSidebar: function(){
+				this.fixedSidebar = true;
 			},
 			attachPopcornEvents: function(){
 
 				var self = this
 				var popcorn = this.video.popcorn
+				var id = 1
 
-				this.events.map(function(event){
+				this.events.timecode.map(function(event){
+					
+					event.id = id
+					
 					popcorn.code({
 						start: event.start,
-						end: event.end,
+						end: event.end + 0.3,
 						onStart: function() {
-							self.addBlock(event.id,event.start,event.end)
+							self.addBlock(event)
 						},
 						onEnd: function() {
 							self.removeBlock(event.id)
 						}
 					});
-					return event;
+					
+					id++
+
+					return event
 				});
 			},
 			handleMouseMove: function(event) {
@@ -277,43 +337,52 @@
 					controles.className = "hover";
 				}
 			},
-			addRandomBlock: function(start,end){
-				this.counter++
-				this.contentBlocks.push({
-					id: 'block-r-' + this.counter,
-					title: 'Random Block ' + this.counter,
-					type: 'profile',
-					start: start,
-					end: end,
-					fields: {
-						name: 'Maria do ap. ' + Math.round(Math.random()*1000),
-						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.'
-					}
-				})
-			},
-			addBlock: function(id,start,end){
+			addBlock: function(event){
 				
-				this.contentBlocks.push({
-					id: 'block-' + id,
-					title: 'Block ' + id,
-					type: 'profile',
-					start: start,
-					end: end,
-					fields: {
-						name: 'TITULO',
-						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.'
-					}
+				var node = _.findWhere(this.events.nodes,{"id": event.node})
+
+				this.contentBlocks.unshift({
+					id: event.id,
+					videoID: this.params.video,
+					title: node.title,
+					type: node.component.type,
+					start: event.start,
+					end: event.end,
+					fields: node.component.fields
 				})
+
+				if(node.geo){
+					this.$.map.panTo(node.geo)
+				}
+
+				this.fixedSidebar = false;
 			},
-			removeFirstBlock: function () {
-				this.contentBlocks.shift()
-			},
-			removeAllBlocks: function () {
-				this.contentBlocks = []
+			addBlockById: function(id){
+
+				if(_.findWhere(this.contentBlocks,{"id": id})) return;
+
+				var node = _.findWhere(this.events.nodes,{"id": id})
+
+				this.contentBlocks.unshift({
+					id: node.id,
+					videoID: this.params.video,
+					title: node.title,
+					type: node.component.type,
+					start: null,
+					end: null,
+					fields: node.component.fields
+				})
+
+				if(node.geo){
+					this.$.map.panTo(node.geo)
+				}
+
+				this.fixedSidebar = false;
+
 			},
 			removeBlock: function(id) {
 				this.contentBlocks = _.reject(this.contentBlocks, function(block){
-					return block.id === id || block.id === 'block-' + id
+					return block.start === null ? false : block.id === id
 				})
 			}
 		},
@@ -324,9 +393,11 @@
 			'in-topbar-capitulos': require('../components/topbar-capitulos.vue'),
 			'in-bg-video': require('../components/bg-video.vue'),
 			'in-botbar-marcos': require('../components/marcos.vue'),
+			'in-event-block-map': require('../components/event-block-map.vue'),
 			'in-sidebar-graph': require('../components/sidebar-graph.vue'),
 			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
+			'in-sidebar-block-text': require('../components/sidebar-block-text.vue'),
 			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue')
 		}
 	}

@@ -49,9 +49,6 @@
 	}
 
 	body {
-	  padding: 0px;
-	  margin: 0px;
-	  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 	  &.tocando {
 	    & header {
 	      opacity: 0;
