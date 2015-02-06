@@ -1,0 +1,42 @@
+@import "globals";
+
+html,body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	background: #333;
+	color: #fff;
+	padding: 0;
+	margin: 0;
+	font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+	color: #fff;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+// backgrounds de acordo com o contexto
+
+.context-bg {
+	.is-video-mulher & {
+		background: $color-video-1;
+	}
+	.is-video-adolescente & {
+		background: $color-video-2;
+	}
+	.is-video-crianca & {
+		background: $color-video-3;
+	}
+	.is-video-preso & {
+		background: $color-video-4;
+	}
+	.is-video-deficiente & {
+		background: $color-video-5;
+	}
+}

@@ -1,0 +1,237 @@
+{
+  "title": "Redes Estratégicas",
+  "texto": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "hipervideos": [
+    {
+      "id": "mulher",
+      "nome": "Mulher",
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      
+      "cor": "#f00",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/SA/Dapes_SA",
+      "duracao": 2280.135,
+      "capitulos": [
+        {
+          "nome": "Comeco",
+          "timecode": 350.50
+        },
+        {
+          "nome": "Meio1",
+          "timecode": 980.468
+        },
+        {
+          "nome": "Meio2",
+          "timecode": 1568.9684
+        },
+        {
+          "nome": "Final",
+          "timecode": 2280.135
+        }
+      ],
+      "conteudo": {
+        "marcos": [
+          {
+            "ano": 1965,
+            "titulo": "LEI_1965",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1982,
+            "titulo": "LEI_1982",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1990,
+            "titulo": "LEI_1990",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          }
+        ]
+      }
+    },
+    {
+      "id": "crianca",
+      "nome": "Criança",
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      
+      "cor": "#00f",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "duracao": 2072.056,
+      "capitulos": [
+        {
+          "nome": "Comeco",
+          "timecode": 350.50
+        },
+        {
+          "nome": "Meio1",
+          "timecode": 980.468
+        },
+        {
+          "nome": "Meio2",
+          "timecode": 1568.9684
+        },
+        {
+          "nome": "Final",
+          "timecode": 2072.056
+        }
+      ],
+      "conteudo": {
+        "marcos": [
+          {
+            "ano": 1965,
+            "titulo": "LEI_1965",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1982,
+            "titulo": "LEI_1982",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1990,
+            "titulo": "LEI_1990",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          }
+        ]
+      }
+    },
+    {
+      "id": "adolescente",
+      "nome": "Adolescente",
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
+      "cor": "#0f0",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "duracao": 2072.056,
+      "capitulos": [
+        {
+          "nome": "Comeco",
+          "timecode": 350.50
+        },
+        {
+          "nome": "Meio1",
+          "timecode": 980.468
+        },
+        {
+          "nome": "Meio2",
+          "timecode": 1568.9684
+        },
+        {
+          "nome": "Final",
+          "timecode": 2072.056
+        }
+      ],
+      "conteudo": {
+        "marcos": [
+          {
+            "ano": 1965,
+            "titulo": "LEI_1965",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1982,
+            "titulo": "LEI_1982",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1990,
+            "titulo": "LEI_1990",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          }
+        ]
+      }
+    },
+    {
+      "id": "deficiente",
+      "nome": "Deficiente",
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
+      "cor": "#0cc",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "duracao": 2072.056,
+      "capitulos": [
+        {
+          "nome": "Comeco",
+          "timecode": 350.50
+        },
+        {
+          "nome": "Meio1",
+          "timecode": 980.468
+        },
+        {
+          "nome": "Meio2",
+          "timecode": 1568.9684
+        },
+        {
+          "nome": "Final",
+          "timecode": 2072.056
+        }
+      ],
+      "conteudo": {
+        "marcos": [
+          {
+            "ano": 1965,
+            "titulo": "LEI_1965",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1982,
+            "titulo": "LEI_1982",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1990,
+            "titulo": "LEI_1990",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          }
+        ]
+      }
+    },
+    {
+      "id": "preso",
+      "nome": "Preso",
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
+      "cor": "#00c",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "duracao": 2072.056,
+      "capitulos": [
+        {
+          "nome": "Comeco",
+          "timecode": 350.50
+        },
+        {
+          "nome": "Meio1",
+          "timecode": 980.468
+        },
+        {
+          "nome": "Meio2",
+          "timecode": 1568.9684
+        },
+        {
+          "nome": "Final",
+          "timecode": 2072.056
+        }
+      ],
+      "conteudo": {
+        "marcos": [
+          {
+            "ano": 1965,
+            "titulo": "LEI_1965",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1982,
+            "titulo": "LEI_1982",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          },
+          {
+            "ano": 1990,
+            "titulo": "LEI_1990",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
+          }
+        ]
+      }
+    }
+  ],
+  "tocando": "Intro",
+  "view": "",
+  "className": "",
+  "params": {
+    "video": null
+  }
+}
