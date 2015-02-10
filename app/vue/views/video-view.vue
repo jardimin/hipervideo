@@ -489,6 +489,7 @@
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
 			'in-sidebar-block-text': require('../components/sidebar-block-text.vue'),
 			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue'),
+			'in-sidebar-block-databars': require('../components/sidebar-block-databars.vue'),
 			'in-sidebar-info': require('../components/sidebar-info.vue'),
 			'in-creditos': require('../components/creditos.vue')
 		}
