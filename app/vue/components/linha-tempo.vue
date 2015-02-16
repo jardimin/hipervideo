@@ -18,7 +18,7 @@
 		height: 5px;
 		width: 5px;
 		border-radius: 5px;
-		background-color: rgba(250,250,250,0.2);
+		background-color: rgba(150,150,150,1);
 		position: absolute;
 		bottom: -2.5px;
 		list-style: none;
@@ -46,25 +46,50 @@
 		<p class="ano" style="left: 81%;">2010</p>
 		<p class="ano" style="left: 93.75%;">2020</p>
 		<ul>
-			<li v-repeat="db.conteudo.marcos" class="marco" style="left: {{posMarco[$index]}}%;"></li>
+			<li v-repeat="marcos" class="marco" style="left: {{posMarco[$index]}}%;" v-on="click: marcoBlock($index)"></li>
 		</ul>
 	</div>
 </template>
 <script>
 	var $$$ = require('jquery')
+	var _ = require('underscore')
 	module.exports = {
 		replace: true,
+		data: function() {
+			return {
+				marcos: null
+			}
+		},
 		computed: {
 			posMarco: {
 				get: function () {
-					var marcos = this.$data.db.conteudo.marcos
+					var marc = this.marcos
 					var pos = []
-					for (var i = 0; i < marcos.length; i++) {
-						var calc = (marcos[i].ano - 1950) * 1.295 + 4.3
+					for (var i = 0; i < marc.length; i++) {
+						var calc = (marc[i].component.ano - 1950) * 1.295 + 4.3
 						pos.push(calc)
 					}
 					return pos
 				}
+			}
+		},
+		attached: function() {
+			var self = this;
+
+			var xhr = new XMLHttpRequest
+			xhr.open('GET', '/api/events-' + this.db.id + '.json')
+			xhr.onload = function () {
+				var t = JSON.parse(xhr.responseText)
+
+				var m = _.where(t.nodes, {icon: "marco"});
+				self.marcos = m;
+			}
+			xhr.send()
+		},
+		methods: {
+			marcoBlock: function(id) {
+				var ma = this.marcos[id]
+				this.$dispatch('graph-node-clicked', ma)
 			}
 		}
 	}

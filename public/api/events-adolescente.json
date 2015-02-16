@@ -1,0 +1,215 @@
+{
+  "timecode": [
+    {"start":   31, "end":  42, "node": 1},
+    {"start":   5, "end":  10, "node": 13},
+    {"start":  53, "end":  68, "node": 2},
+    {"start":  113, "end":  121, "node": 3},
+    {"start":  145, "end": 160, "node": 4},
+    {"start":  189, "end": 209, "node": 5},
+    {"start": 245, "end": 255, "node": 6},
+    {"start": 308, "end": 318, "node": 7},
+    {"start": 367, "end": 377, "node": 8},
+    {"start": 685, "end": 695, "node": 9},
+    {"start": 1413, "end": 1425, "node": 10},
+    {"start": 1474, "end": 1490, "node": 11},
+    {"start": 1496, "end": 1506, "node": 12}
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "title": "CONANDA",
+      "icon": "dispositivo",
+      "geo": [-19.9268, -43.9450],
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Conselho Nacional dos Direitos da Criança e do Adolescente"
+        }
+      },
+      "conteudo": {
+        "texto": "###Lorem ipsum dolor sit amet, \n\nconsectetur adipisicing elit. Modi voluptatum, **non quaerat**. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae "
+      }
+    },
+    {
+      "id": 2,
+      "title": "Mapa da Violência",
+      "icon": "conceito",
+      "geo": [-18,-44],
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "###Mapa da Violência: os jovens do Brasil \nO **Mapa da Violência** é um diagnóstico da violência contra os jovens brasileiros e oferece subsídios ao trabalho de gestores de políticas públicas, parlamentares, governantes, profissionais de segurança pública e instituições de pesquisa nacionais e internacionais, na formulação de políticas de combate à violência contra a juventude."
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 3,
+      "title": "Redes de Atenção",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2010,
+        "fields": {
+          "excerpt": "As **Redes de Atenção à Saúde** *(RAS)* são arranjos organizativos de ações e serviços de saúde, de diferentes densidades tecnológicas que, integradas por meio de sistemas de apoio técnico, logístico e de gestão, buscam garantir a integralidade do cuidado \n*(Ministério da Saúde, 2010 – portaria nº 4.279, de 30/12/2010)*."
+        }
+      },
+      "conteudo": {
+        "texto": "As Redes de Atenção à Saúde (RAS) são arranjos organizativos de ações e serviços de saúde, de diferentes densidades tecnológicas que, integradas por meio de sistemas de apoio técnico, logístico e de gestão, buscam garantir a integralidade do cuidado (Ministério da Saúde, 2010 – portaria nº 4.279, de 30/12/2010). \n\nA implementação das RAS aponta para uma maior eficácia na produção de saúde, melhoria na eficiência da gestão do sistema de saúde no espaço regional, e contribui para o avanço do processo de efetivação do SUS. A transição entre o ideário de um sistema integrado de saúde conformado em redes e a sua concretização passam pela construção permanente nos territórios, que permita conhecer o real valor de uma proposta de inovação na organização e na gestão do sistema de saúde. \n\nAs principais redes de atenção à saúde são: Rede de Atenção Psicossocial - RAPS; Rede de Urgência e Emergência; Rede Cegonha e Viver sem Limites. "
+      }
+    },
+    {
+      "id": 4,
+      "title": "Medidas Socioeducativas",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "De acordo com o artigo 112 do ECA as medidas socioeducativas que poderão ser aplicadas aos adolescentes que cometeram ato infracional são: \n - 1. advertência; - 2. obrigação de reparar o dano; - 3. prestação de serviços à comunidade; - 4. liberdade assistida; - 5. inserção em regime de semiliberdade; - 6. internação em estabelecimento educacional (unidade socioeducativa); - 7. medidas protetivas "
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "LEI Nº 8.069",
+          "link": "www.planalto.gov.br/ccivil_03/leis/l8069.htm"
+        }],
+        "discursoes": []
+      }
+    },
+    {
+      "id": 5,
+      "title": "PNAISARI",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2008,
+        "fields": {
+          "excerpt": "###Politica Nacional de Atenção Integral à Saúde de Adolescentes em Conflito com a Lei \n\nA Pnaisari tem como principal objetivo garantir e ampliar o acesso aos cuidados em saúde de adolescentes em conflito com a lei. "
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 6,
+      "title": "Estatística",
+      "icon": "dispositivo",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "###Adolescentes em Medida Socioeducativa \nEssa estatística representa uma porcentagem pequena, do ponto de vista quantitativo, e que deve ser alvo das políticas públicas, atuando em busca de soluções para assegurar que direitos estabelecidos em lei, repercutam diretamente na materialização de políticas públicas sociais, que incluam o (a) adolescente em atendimento socioeducativo. \n\n*Fonte: Levantamento da Secretaria de Direitos Humanos dos (as) adolescentes em cumprimento de medida socioeducativa. 2012.*"
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 7,
+      "title": "Saúde",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Atenção básica passa a ser a principal referência para as unidades socioeducativas"
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 8,
+      "title": "Uso de algemas",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2008.5,
+        "fields": {
+          "excerpt": "“Só é lícito o uso de algemas em caso de resistência e de fundado receio de fuga ou de perigo à integridade física própria ou alheia, por parte do preso ou de terceiros, justificada a excepcionalidade por escrito, sob pena de responsabilidade disciplinar civil e penal do agente ou da autoridade e de nulidade da prisão ou do ato processual a que se refere, sem prejuízo da responsabilidade civil do Estado”. - *Súmula Vinculante nº 11 do STF*"
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 9,
+      "title": "Matriciamento",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Matriciamento ou apoio matricial é um novo modo de produzir saúde em que duas ou mais equipes, num processo de construção compartilhada, criam uma proposta de intervenção pedagógico-terapêutica."
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 10,
+      "title": "Psicólogo",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "A atuação do Agente Socioeducador compreende, entre outras atividades, zelar pela segurança e bem-estar, observando e acompanhando os adolescentes em todos os locais de atividades; acompanhar os adolescnetes nas atividades de rotina diária, orientando-os quanto às normas de conduta, cuidados pessoais e relacionamentos com outros; manter-se atento às condições de saúde dos adolescnetes, sugerindo que sejam providenciados atendimentos e encaminhamentos aos serviços médicos e odontológicos sempre que necessário e atender às determinações e orientações médicas, ministrando os medicamentos prescritos, quando necessário. \n\n*Fonte: Formação continuada de socioeducadores, caderno 2/ Paulo C. Duarte Paes, Sandra Maria Francisco de Amorim, Dulce Regina dos Santos Pedrossian, organizadores. - Campos Grande, MS: Ed. UFMS, 2010.*",
+          "image": "/img/eventos/teste.jpg"
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 11,
+      "title": "Socioeducador",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "A atuação do **Agente Socioeducador** compreende, entre outras atividades, zelar pela segurança e bem-estar, observando e acompanhando os adolescentes em todos os locais de atividades; acompanhar os adolescnetes nas atividades de rotina diária, orientando-os quanto às normas de conduta, cuidados pessoais e relacionamentos com outros; manter-se atento às condições de saúde dos adolescnetes, sugerindo que sejam providenciados atendimentos e encaminhamentos aos serviços médicos e odontológicos sempre que necessário e atender às determinações e orientações médicas, ministrando os medicamentos prescritos, quando necessário. \n\n*Fonte: Formação continuada de socioeducadores, caderno 2/ Paulo C. Duarte Paes, Sandra Maria Francisco de Amorim, Dulce Regina dos Santos Pedrossian, organizadores. - Campos Grande, MS: Ed. UFMS, 2010.*"
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 12,
+      "title": "Caderneta de Saúde",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "O objetivo da **Caderneta de Saúde de Adolescentes** é melhorar a atenção à saúde da população juvenil promovendo o crescimento e desenvolvimento saudáveis através do acompanhamento sistemático nas unidades de saúde. Tem-se nela um importante instrumento de cidadania para adolescentes, na prevenção de doenças e agravos à saúde, além de facilitar as ações educativas que promovam o aprendizado e a consolidação de estilos de vida saudáveis."
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 13,
+      "title": "Dona Joana",
+      "funcao": "dona do hospital"
+    }
+  ],
+  "edges": [
+    {"source": 0,"target": 1},
+    {"source": 0,"target": 2},
+    {"source": 2,"target": 4},
+    {"source": 2,"target": 6},
+    {"source": 0,"target": 7},
+    {"source": 1,"target": 10},
+    {"source": 9,"target": 10},
+    {"source": 9,"target": 11},
+    {"source": 1,"target": 11},
+    {"source": 7,"target": 12}
+  ]
+}

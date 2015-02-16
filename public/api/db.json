@@ -4,9 +4,11 @@
   "hipervideos": [
     {
       "id": "mulher",
+      "cidade": "SA",
+      "geo": [-12.9764, -38.4727, 13],
       "nome": "Mulher",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      
-      "cor": "#f00",
+      "cor": "#ed1e79",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/SA/Dapes_SA",
       "duracao": 2280.135,
       "capitulos": [
@@ -49,11 +51,13 @@
     },
     {
       "id": "crianca",
+      "cidade": "FL",
+      "geo": [-27.6039, -48.5388, 13],
       "nome": "Criança",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      
-      "cor": "#00f",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
-      "duracao": 2072.056,
+      "cor": "#0cc",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/dapes_FPA_final-cor",
+      "duracao": 1172.404,
       "capitulos": [
         {
           "nome": "Comeco",
@@ -66,10 +70,6 @@
         {
           "nome": "Meio2",
           "timecode": 1568.9684
-        },
-        {
-          "nome": "Final",
-          "timecode": 2072.056
         }
       ],
       "conteudo": {
@@ -94,9 +94,11 @@
     },
     {
       "id": "adolescente",
+      "cidade": "BH",
+      "geo": [-19.9268, -43.9450, 13],
       "nome": "Adolescente",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
-      "cor": "#0f0",
+      "cor": "#00a300",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -139,9 +141,11 @@
     },
     {
       "id": "deficiente",
+      "cidade": "GO",
+      "geo": [-16.6936, -49.2521, 12],
       "nome": "Deficiente",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
-      "cor": "#0cc",
+      "cor": "#00f",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
       "duracao": 2072.056,
       "capitulos": [
@@ -184,11 +188,13 @@
     },
     {
       "id": "preso",
+      "cidade": "PA",
+      "geo": [-30.0520, -51.2056, 12],
       "nome": "Preso",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
-      "cor": "#00c",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
-      "duracao": 2072.056,
+      "cor": "#f00",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/dapes_poa_final-cor",
+      "duracao": 1294.914,
       "capitulos": [
         {
           "nome": "Comeco",
@@ -196,15 +202,11 @@
         },
         {
           "nome": "Meio1",
-          "timecode": 980.468
+          "timecode": 750.468
         },
         {
           "nome": "Meio2",
-          "timecode": 1568.9684
-        },
-        {
-          "nome": "Final",
-          "timecode": 2072.056
+          "timecode": 1294.914
         }
       ],
       "conteudo": {

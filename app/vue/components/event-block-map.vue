@@ -17,10 +17,15 @@
 	}
 	.block_map__toggle {
 		position: absolute;
+		-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+		box-sizing: border-box;
+		font-size: 20px;
+		font-weight: 900;
+		padding: 4% 4% 4% 3%;
 		top: 0;
 		left: 0;
 		width: 48px;
-		height: 48px;
 		transform: translate3d(-100%,0,0);
 	}
 	.leaflet-top, .leaflet-bottom {
@@ -29,8 +34,10 @@
 </style>
 
 <template>
-	<div class="block_map" v-class="is-open: isOpen">
-		<div class="block_map__toggle context-bg clickable" v-on="click: toggle"></div>
+	<div class="block_map" v-with="db: db" v-class="is-open: isOpen">
+		<div class="block_map__toggle context-bg clickable" v-on="click: toggle">
+			{{db.cidade}}
+		</div>
 		<div class="block_map__map" v-el="map"></div>
 	</div>
 </template>
@@ -52,7 +59,7 @@
 
 		ready: function(){
 
-			this._map = L.map(this.$$.map, { zoomControl: false }).setView([-19, -43], 6)
+			this._map = L.map(this.$$.map, { zoomControl: false }).setView([this.db.geo[0], this.db.geo[1]], this.db.geo[2])
 
 			new L.Control.Zoom({ position: 'topright' }).addTo(this._map)
 

@@ -1,4 +1,12 @@
 @import "globals";
+@font-face {
+	font-family: 'fonte-normal';
+	src: url('/fonts/SANS_regular.ttf');
+}
+@font-face {
+	font-family: 'fonte-bold';
+	src: url('/fonts/SANS_bold.ttf');
+}
 
 html,body {
 	height: 100%;

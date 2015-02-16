@@ -1,6 +1,6 @@
 <style lang="scss">
 	.sidebar {
-		width: 300px;
+		width: 22%;
 	}
 	.sidebar_content {
 		position: relative;
@@ -9,7 +9,7 @@
 	}
 	.sidebar_back {
 		position: absolute;
-		background-color: rgba(0,0,0,.2);
+		background-color: rgba(0,0,0,.5);
 		width: 300px;
 		height: 100%;
 		top: 0;
@@ -31,14 +31,14 @@
 
 	.infopanel {
 		position: absolute;
-		background-color: rgba(0,0,0,.5);
+		background-color: rgba(0,0,0,.8);
 		width: 100%;
 		height: 100%;
 		top: 0;
 		left: 0;
 		z-index: 10;
 		transition: all 0.6s;
-		transform: translate3d(100%,0,0);
+		transform: translate3d(127%,0,0);
 		&.is-open {
 			transform: translate3d(300px,0,0);
 		}
@@ -51,8 +51,8 @@
 		}
 		.back {
 			position: absolute;
-			top: 100px;
-			left: 100px;
+			top: 10%;
+			left: 79%;
 			color: #fff;
 			font-size: 24px;
 		}
@@ -110,6 +110,18 @@
 		}
 	}
 
+	.infopanel {
+		-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 5% 20% 3% 3%;
+		width: 79%;
+	}
+
+	.is-cartela {
+		height: auto !important;
+	}
+
 </style>
 
 <template>
@@ -137,7 +149,6 @@
 				<in-sidebar-graph></in-sidebar-graph>
 				<in-sidebar-chapter v-with="title: db.nome"></in-sidebar-chapter>
 				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition>
-					<div v-component="{{'in-sidebar-block-' + type}}" v-with="id: id, videoID: videoID,fields: fields"></div>
 				</in-sidebar-block>
 				<div class="sidebar_opener clickable" v-on="click: makeFixedSidebar" v-show="!hasBlocks && !fixedSidebar && !hasInfo" v-transition>
 					<div class="sidebar_opener__inside context-bg">open</div>
@@ -157,10 +168,9 @@
 
 		<!-- INFO -->
 	
-		<div class="infopanel" v-class="is-open: hasInfo">
-			<div class="border context-bg"></div>
-			<a class="back" href="#/{{id}}">voltar ao video</a>
-		</div>
+		<div id="infopanel" class="infopanel" v-class="is-open: hasInfo">
+	    <in-sidebar-info v-with="id: id, conteudo: conteudo"></in-sidebar-info>
+	  </div>
 
 		<!-- MARCOS -->
 		
@@ -185,6 +195,7 @@
 	var Vue = require('vue')
 	var $$$ = require('jquery')
 	var _ = require('underscore')
+	var perfectScrollbar = require('perfect-scrollbar')
 
 	module.exports = {
 		// replace para pegar com v-with objetos do parent
@@ -196,6 +207,7 @@
 				counter: 0,
 				contentBlocks: [],
 				fixedSidebar: false,
+				conteudo: null,
 				video: {
 					popcorn: null,
 					time: 0,
@@ -206,7 +218,7 @@
 		},
 		computed: {
 			hasBlocks: function() {
-				return this.contentBlocks.length > 0
+				return this.contentBlocks.length > 1 || this.contentBlocks.length > 0 && !this.contentBlocks[0].funcao
 			},
 			hasInfo: function(){
 				return this.params.route.length > 1 && this.params.route[1] == 'info'
@@ -221,7 +233,7 @@
 			// events: load hipervideo events
 
 			var xhr = new XMLHttpRequest
-			xhr.open('GET', '/api/db-events.json')
+			xhr.open('GET', '/api/events-' + this.id + '.json')
 			xhr.onload = function () {
 				self.events = JSON.parse(xhr.responseText)
 				// attach events if popcorn already loaded
@@ -276,7 +288,7 @@
 			// DOM LISTENERS
 
 			$$$('body').addClass("tocando");
-			$$$(window).bind('mousemove', this.handleMouseMove)
+			$$$(window).bind('mousemove', this.handleMouseMove);
 
 		},
 		ready: function(){
@@ -287,10 +299,17 @@
 		},
 		methods: {
 			infoOpen: function(info){
+				var i = parseInt(info)
+				var node = _.findWhere(this.events.nodes,{"id": i});
 				this.videoPause();
+				this.conteudo = node.conteudo;
+				this.conteudo.title = node.title;
+				this.$broadcast('create-scrollbar');
 			},
 			infoClose: function(){
 				this.videoPlay();
+				this.conteudo = null;
+				this.$broadcast('destroy-scrollbar');
 			},
 			videoPause: function(){
 				this.$.hipervideo.pause()
@@ -341,15 +360,26 @@
 				
 				var node = _.findWhere(this.events.nodes,{"id": event.node})
 
-				this.contentBlocks.unshift({
-					id: event.id,
-					videoID: this.params.video,
-					title: node.title,
-					type: node.component.type,
-					start: event.start,
-					end: event.end,
-					fields: node.component.fields
-				})
+				if(node.funcao){
+					this.contentBlocks.unshift({
+						id: event.id,
+						videoID: this.params.video,
+						start: event.start,
+						end: event.end,
+						title: node.title,
+						funcao: node.funcao
+					})
+				} else {
+					this.contentBlocks.unshift({
+						id: event.id,
+						videoID: this.params.video,
+						title: node.title,
+						type: node.component.type,
+						start: event.start,
+						end: event.end,
+						fields: node.component.fields
+					})
+				}
 
 				if(node.geo){
 					this.$.map.panTo(node.geo)
@@ -398,7 +428,8 @@
 			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
 			'in-sidebar-block-text': require('../components/sidebar-block-text.vue'),
-			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue')
+			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue'),
+			'in-sidebar-info': require('../components/sidebar-info.vue')
 		}
 	}
 </script>

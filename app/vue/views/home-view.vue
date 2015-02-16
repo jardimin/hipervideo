@@ -1,9 +1,17 @@
 <style lang="scss">
+
+	body {
+		font-family: 'fonte-normal', sans-serif;
+		letter-spacing: -1px;
+	}
+
 	header {
 		position: absolute;
 		height: 100%;
 		background-color: rgba(15,15,15,0.8);
 		width: 100%;
+		-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 		box-sizing: border-box;
 		z-index: 1;
 		transition: all 0.5s;
@@ -40,6 +48,8 @@
 			}
 		}
 		.conteudo {
+			-webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
 			box-sizing: border-box;
 			padding: 5%;
 			transition: all 0.5s;
@@ -48,6 +58,10 @@
 
 	.areaTematica {
 	  text-align: center;
+	  padding: 0 3%;
+	  -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+		box-sizing: border-box;
 	  right: -40%;
 	  width: 40%;
 	  position: fixed;
@@ -158,9 +172,11 @@
 		<header class="">
 			<div class="conteudo">
 				<div id="headHandle" v-on="click: abrir"></div>
-				<h1>{{db.title}}</h1>
-				<p>{{db.texto}}</p>
-				<a v-on="click: fechar" class="botao cruz">X</a>
+				<h1>{{db.title | uppercase}}</h1>
+				<p style="letter-spacing: 0;">{{db.texto}}</p>
+				<a v-on="click: fechar" class="botao">ASSISTIR DEMONSTRAÇÃO</a>
+				<a v-on="click: fechar" class="botao">ASSISTIR HIPERVÍDEOS</a>
+				<a v-on="click: fechar" class="botao">VER AS REDES ESTRATÉGICAS</a>
 			</div>
 		</header>
 		<div class="conteudo" style="position: absolute; z-index: 0;">
@@ -168,10 +184,10 @@
 				<div v-repeat="db.hipervideos" class="hipervideo col-1-5 {{id}}" style="left: {{posHip[$index]}}%; z-index: -{{$index}}">
 					<div class="linha" style="background-color: {{cor}}"></div>
 					<div class="areaTematica">
-						<h2>{{nome}}</h2>
-						<p>{{descricao}}</p>
-						<a v-on="click: deselect(id)" class="botao cruz" style="background-color: {{cor}}">X</a>
-						<a href="#/{{id}}" class="botao" style="background-color: {{cor}}; text-decoration: none;">Assistir</a>
+						<h2>SAÚDE DO {{nome | uppercase}}</h2>
+						<p style="letter-spacing: 0;">{{descricao}}</p>
+						<a href="#/{{id}}" class="botao" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">ASSISTIR</a>
+						<a v-on="click: deselect(id)" class="botao" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">VOLTAR</a>
 					</div>
 					<img v-attr="src: '/img/RE_' + id + 'BW.png'" class="fotoFundo BW" style="left: -{{posHip[$index]}}%; z-index: 1;" v-on="click: select(id)">
 					<img v-attr="src: '/img/RE_' + id + '.png'" class="fotoFundo" style="left: -{{posHip[$index]}}%" v-on="click: select(id)">

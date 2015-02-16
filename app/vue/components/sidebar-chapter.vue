@@ -3,6 +3,8 @@
 		position: relative;
 		width: 300px;
 		.sidebar_chapter_title {
+			font-family: 'fonte-bold', sans-serif;
+			font-weight: 900;
 			position: relative;
 			z-index: 2;
 			display: inline-block;
@@ -23,7 +25,7 @@
 
 <template>
 	<div class="sidebar_chapter">
-		<div class="sidebar_chapter_title">{{title}}</div>
+		<div class="sidebar_chapter_title">{{title | uppercase}}</div>
 	</div>
 </template>
 

@@ -31,7 +31,7 @@
 			transform: translate3d(0,0,0);
 		}
 		.sidebar_graph_svg {
-			background: rgba(100,100,100,0.25);
+			background: rgba(100,100,100,0.5);
 			width: 100%;
 			height: 100%;
 			border-radius: 50%;
@@ -309,18 +309,20 @@
 					var node = _.findWhere(self._nodes, {id: timecode.node})
 					if(!node){
 						var $node = _.findWhere(self.events.nodes, {id: timecode.node})
-						var x = Math.random() * radius
-						var y = Math.random() * radius
-						node = {}
-						node.id = $node.id;
-						node.title = $node.title;
-						node.icon = $node.icon;
-						node.px = x
-						node.py = y
-						node.x = x
-						node.y = y
-						nodes.push(node)
-						self.addNode(node)
+						if($node.icon !== 'marco' && !$node.funcao){
+							var x = Math.random() * radius
+							var y = Math.random() * radius
+							node = {}
+							node.id = $node.id;
+							node.title = $node.title;
+							node.icon = $node.icon;
+							node.px = x
+							node.py = y
+							node.x = x
+							node.y = y
+							nodes.push(node)
+							self.addNode(node)
+						}
 					}
 				})
 

@@ -3,10 +3,7 @@
 </style>
 
 <template>
-	<p>
-		{{fields.excerpt}}
-	</p>
-	<p><strong><a href="#/{{videoID}}/info/{{id}}">leia mais</a></strong></p>
+	{{{html_resumo}}}
 </template>
 
 <script>
