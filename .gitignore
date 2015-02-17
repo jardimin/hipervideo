@@ -1,7 +1,5 @@
 node_modules/
 .sass-cache/
-public/styles/
-public/js/main.js
 *.log
 *.cache
 *.mp4

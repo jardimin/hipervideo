@@ -1,0 +1,46 @@
+.clickable {
+  cursor: pointer; }
+
+.disable-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+@font-face {
+  font-family: 'fonte-normal';
+  src: url('/fonts/SANS_regular.ttf'); }
+
+@font-face {
+  font-family: 'fonte-bold';
+  src: url('/fonts/SANS_bold.ttf'); }
+
+html, body {
+  height: 100%;
+  overflow: hidden; }
+
+body {
+  background: #333;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400; }
+
+a {
+  color: #fff; }
+
+strong {
+  font-weight: 500; }
+
+.is-video-mulher .context-bg {
+  background: #ed1e79; }
+.is-video-adolescente .context-bg {
+  background: #00a300; }
+.is-video-crianca .context-bg {
+  background: #0cc; }
+.is-video-preso .context-bg {
+  background: #f00; }
+.is-video-deficiente .context-bg {
+  background: #00c; }
