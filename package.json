@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "vue": "watchify -v -t vueify -e app/vue/main.js -o public/js/main.js"
+    "vue": "watchify -v -t vueify -e app/vue/main.js -o public/js/main.js",
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "^1.8.4",
