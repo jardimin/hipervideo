@@ -178,14 +178,14 @@
 		
 		<!-- DEBUG -->
 
-		<div class="debug">
+		<!-- <div class="debug">
 			<a id="tres" class="btn" href="#/home">home</a>
 			<a id="tres" class="btn" href="#/mulher">mulher</a>
 			<a id="tres" class="btn" href="#/crianca">crianca</a>
 			<br/>
 			<a id="tres" class="btn" v-on="click: videoPlay">play</a>
 			<a id="tres" class="btn" v-on="click: videoPause">pause</a>
-		</div>
+		</div> -->
 
 	</div>
 </template>
