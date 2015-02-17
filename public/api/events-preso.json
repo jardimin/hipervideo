@@ -1,90 +1,235 @@
 {
   "timecode": [
-    {"start":   4, "end":  18, "node": 1},
-    {"start":  18, "end":  30, "node": 2},
-    {"start":  30, "end":  60, "node": 3},
-    {"start":  60, "end": 106, "node": 4},
-    {"start": 330, "end": 360, "node": 5},
-    {"start": 360, "end": 400, "node": 6}
+    {"start":   5, "end":  32, "node": 1},
+    {"start":  46, "end":  65, "node": 2},
+    {"start":  94, "end":  104, "node": 3},
+    {"start":  140, "end": 170, "node": 4},
+    {"start": 205, "end": 229, "node": 5},
+    {"start": 225, "end": 300, "node": 6},
+    {"start": 308, "end": 325, "node": 7},
+    {"start": 355, "end": 380, "node": 8},
+    {"start": 417, "end": 437, "node": 9},
+    {"start": 489, "end": 540, "node": 10},
+    {"start": 733, "end": 770, "node": 11},
+    {"start": 793, "end": 865, "node": 12},
+    {"start": 911, "end": 960, "node": 13},
+    {"start": 974, "end": 996, "node": 14},
+    {"start": 1009, "end": 1069, "node": 15},
+    {"start": 1144, "end": 1220, "node": 16}
   ],
   "nodes": [
     {
       "id": 1,
-      "title": "CPN",
-      "icon": "dispositivo",
-      "geo": [-19.5,-43.5],
+      "title": "PNAISP",
+      "icon": "conceito",
+      "geo": [-19.9268, -43.9450],
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
+          "excerpt": "###Política Nacional de Atenção Integral à Saúde das Pessoas Privadas de Liberdade no Sistema Prisional \n\nA PNAISP foi intituída, em 02 de janeiro de 2014, com o objetivo de garantir o acesso das pessoas privadas de liberdade no sistema prisional ao cuidado integral no SUS."
         }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Portaria",
+          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2014/pri0001_02_01_2014.html"
+        }]
       }
     },
     {
       "id": 2,
-      "title": "Doula",
-      "icon": "funcao",
-      "geo": [-18,-44],
-      "component": {
-        "type": "profile",
-        "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.",
-          "image": "/img/eventos/teste.jpg"
-        }
-      }
-    },
-    {
-      "id": 3,
-      "title": "Ambiência",
+      "title": "Arquitetura Penal",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
+          "excerpt": "###Art. 196 \n\nA saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação."
         }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [
+          {
+          "nome": "Diretrizes básicas para arquitetura penal",
+          "link": "http://www.criminal.mppr.mp.br/arquivos/File/ExecucaoPenal/CNPCP/2011Diretrizes_ArquiteturaPenal_resolucao_09_11_CNPCP.pdf"
+          },
+          {
+          "nome": "Ambiência",
+          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/ambiencia_2ed.pdf"
+          }
+        ],
+        "video_list": "PLqwF2MOG7-g32N2p1PHl5GR8Dn-pLOkZM"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Constituição da República",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "##Art. 196. \nA saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Constituição da República",
+          "link": "http://www.senado.gov.br/legislacao/const/con1988/CON1988_05.10.1988/CON1988.shtm"
+        },
+        {
+          "nome": "Declaração dos direitos humanos",
+          "link": "http://www.dudh.org.br/declaracao/"
+        },
+        {
+          "nome": "Relator da ONU pede revisao de regras para tratamento de prisioneiros",
+          "link": "http://nacoesunidas.org/relator-especial-da-onu-pede-que-regras-globais-para-tratamento-de-prisioneiros-sejam-atualizadas/"
+        },
+        {
+          "nome": "Normas da ONU sobre prevenção ao crime",
+          "link": "https://www.unodc.org/documents/justice-and-prison-reform/projects/UN_Standards_and_Norms_CPCJ_-_Portuguese1.pdf"
+        },
+        {
+          "nome": "Recomendações internacionais sobre direitos humanos",
+          "link": "http://www.observadh.sdh.gov.br/portal/sistema/encontre-as-recomendacoes"
+        }]
       }
     },
     {
       "id": 4,
-      "title": "Secretaria de saúde",
-      "icon": "dispositivo",
+      "title": "Saúde prisional em debate",
+      "icon": "funcao",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
+          "excerpt": "Quer saber mais sobre saúde no sistema prisional? Assista o Canal Saúde!"
         }
+      },
+      "conteudo": {
+        "texto": "",
+        "video_list": "PLqwF2MOG7-g2mIoorZ0vWPffZIyVBR59x",
+        "arquivos": [{
+          "nome": "ONASP - Colabore",
+          "link": "https://www.ufmg.br/ead/onasp/participe.html"
+        }]
       }
     },
     {
       "id": 5,
-      "title": "Médicos",
-      "icon": "funcao",
+      "title": "Estatística",
+      "icon": "dispositivo",
       "component": {
-        "type": "profile",
+        "type": "text",
         "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.",
-          "image": "/img/eventos/teste.jpg"
+          "excerpt": "###Adolescentes em Medida Socioeducativa \nEssa estatística representa uma porcentagem pequena, do ponto de vista quantitativo, e que deve ser alvo das políticas públicas, atuando em busca de soluções para assegurar que direitos estabelecidos em lei, repercutam diretamente na materialização de políticas públicas sociais, que incluam o (a) adolescente em atendimento socioeducativo. \n\n*Fonte: Levantamento da Secretaria de Direitos Humanos dos (as) adolescentes em cumprimento de medida socioeducativa. 2012.*"
         }
+      },
+      "conteudo": {
+        "texto": ""
       }
     },
     {
-      "id": 6,
+      "id": 7,
       "title": "Saúde",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
+          "excerpt": "Atenção básica passa a ser a principal referência para as unidades socioeducativas"
         }
+      },
+      "conteudo": {
+        "texto": ""
       }
+    },
+    {
+      "id": 8,
+      "title": "Uso de algemas",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2008.5,
+        "fields": {
+          "excerpt": "“Só é lícito o uso de algemas em caso de resistência e de fundado receio de fuga ou de perigo à integridade física própria ou alheia, por parte do preso ou de terceiros, justificada a excepcionalidade por escrito, sob pena de responsabilidade disciplinar civil e penal do agente ou da autoridade e de nulidade da prisão ou do ato processual a que se refere, sem prejuízo da responsabilidade civil do Estado”. - *Súmula Vinculante nº 11 do STF*"
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 9,
+      "title": "Matriciamento",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Matriciamento ou apoio matricial é um novo modo de produzir saúde em que duas ou mais equipes, num processo de construção compartilhada, criam uma proposta de intervenção pedagógico-terapêutica."
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 10,
+      "title": "Psicólogo",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "A atuação do Agente Socioeducador compreende, entre outras atividades, zelar pela segurança e bem-estar, observando e acompanhando os adolescentes em todos os locais de atividades; acompanhar os adolescnetes nas atividades de rotina diária, orientando-os quanto às normas de conduta, cuidados pessoais e relacionamentos com outros; manter-se atento às condições de saúde dos adolescnetes, sugerindo que sejam providenciados atendimentos e encaminhamentos aos serviços médicos e odontológicos sempre que necessário e atender às determinações e orientações médicas, ministrando os medicamentos prescritos, quando necessário. \n\n*Fonte: Formação continuada de socioeducadores, caderno 2/ Paulo C. Duarte Paes, Sandra Maria Francisco de Amorim, Dulce Regina dos Santos Pedrossian, organizadores. - Campos Grande, MS: Ed. UFMS, 2010.*",
+          "image": "/img/eventos/teste.jpg"
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 11,
+      "title": "Socioeducador",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "A atuação do **Agente Socioeducador** compreende, entre outras atividades, zelar pela segurança e bem-estar, observando e acompanhando os adolescentes em todos os locais de atividades; acompanhar os adolescnetes nas atividades de rotina diária, orientando-os quanto às normas de conduta, cuidados pessoais e relacionamentos com outros; manter-se atento às condições de saúde dos adolescnetes, sugerindo que sejam providenciados atendimentos e encaminhamentos aos serviços médicos e odontológicos sempre que necessário e atender às determinações e orientações médicas, ministrando os medicamentos prescritos, quando necessário. \n\n*Fonte: Formação continuada de socioeducadores, caderno 2/ Paulo C. Duarte Paes, Sandra Maria Francisco de Amorim, Dulce Regina dos Santos Pedrossian, organizadores. - Campos Grande, MS: Ed. UFMS, 2010.*"
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 12,
+      "title": "Caderneta de Saúde",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "O objetivo da **Caderneta de Saúde de Adolescentes** é melhorar a atenção à saúde da população juvenil promovendo o crescimento e desenvolvimento saudáveis através do acompanhamento sistemático nas unidades de saúde. Tem-se nela um importante instrumento de cidadania para adolescentes, na prevenção de doenças e agravos à saúde, além de facilitar as ações educativas que promovam o aprendizado e a consolidação de estilos de vida saudáveis."
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 13,
+      "title": "Dona Joana",
+      "funcao": "dona do hospital"
     }
   ],
   "edges": [
     {"source": 0,"target": 1},
-    {"source": 1,"target": 2},
-    {"source": 0,"target": 3},
-    {"source": 0,"target": 4},
-    {"source": 4,"target": 5},
-    {"source": 0,"target": 6}
+    {"source": 0,"target": 2},
+    {"source": 2,"target": 4},
+    {"source": 0,"target": 7},
+    {"source": 1,"target": 10},
+    {"source": 9,"target": 10},
+    {"source": 9,"target": 11},
+    {"source": 1,"target": 11},
+    {"source": 7,"target": 12}
   ]
 }

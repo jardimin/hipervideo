@@ -4,6 +4,7 @@
   "hipervideos": [
     {
       "id": "mulher",
+      "artigo": "a",
       "cidade": "SA",
       "geo": [-12.9764, -38.4727, 13],
       "nome": "Mulher",
@@ -51,6 +52,7 @@
     },
     {
       "id": "crianca",
+      "artigo": "a",
       "cidade": "FL",
       "geo": [-27.6039, -48.5388, 13],
       "nome": "Criança",
@@ -94,6 +96,7 @@
     },
     {
       "id": "adolescente",
+      "artigo": "o",
       "cidade": "BH",
       "geo": [-19.9268, -43.9450, 13],
       "nome": "Adolescente",
@@ -141,6 +144,7 @@
     },
     {
       "id": "deficiente",
+      "artigo": "o",
       "cidade": "GO",
       "geo": [-16.6936, -49.2521, 12],
       "nome": "Deficiente",
@@ -188,6 +192,7 @@
     },
     {
       "id": "preso",
+      "artigo": "o",
       "cidade": "PA",
       "geo": [-30.0520, -51.2056, 12],
       "nome": "Preso",

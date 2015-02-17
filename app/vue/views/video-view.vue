@@ -150,7 +150,7 @@
 				<in-sidebar-chapter v-with="title: db.nome"></in-sidebar-chapter>
 				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition>
 				</in-sidebar-block>
-				<div class="sidebar_opener clickable" v-on="click: makeFixedSidebar" v-show="!hasBlocks && !fixedSidebar && !hasInfo" v-transition>
+				<div class="sidebar_opener clickable" v-on="click: openDefaultBlock" v-show="!hasBlocks && !fixedSidebar && !hasInfo" v-transition>
 					<div class="sidebar_opener__inside context-bg">open</div>
 				</div>
 			</div>
@@ -218,7 +218,8 @@
 		},
 		computed: {
 			hasBlocks: function() {
-				return this.contentBlocks.length > 1 || this.contentBlocks.length > 0 && !this.contentBlocks[0].funcao
+				console.log(this.contentBlocks.length)
+				return this.contentBlocks.length >= 2 || this.contentBlocks.length > 0 && !this.contentBlocks[0].funcao
 			},
 			hasInfo: function(){
 				return this.params.route.length > 1 && this.params.route[1] == 'info'
@@ -274,7 +275,6 @@
 				this.video.time = time
 				this.video.duration = duration
 				this.video.progress = progress
-				//console.log(this.video, time, duration, progress)
 			})
 
 			this.$on('graph-node-clicked', function (node) {
@@ -318,6 +318,20 @@
 				this.$.hipervideo.play()
 			},
 			makeFixedSidebar: function(){
+				this.fixedSidebar = true;
+			},
+			openDefaultBlock: function(){
+				this.contentBlocks.unshift({
+					id: 99,
+					videoID: this.params.video,
+					title: "APRESENTAÇÃO",
+					type: "text",
+					start: null,
+					end: null,
+					fields: {
+						excerpt: this.db.descricao
+					}
+				})
 				this.fixedSidebar = true;
 			},
 			attachPopcornEvents: function(){

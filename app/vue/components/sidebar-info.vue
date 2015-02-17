@@ -92,44 +92,48 @@
 
         this.html_texto = markdown.toHTML(this.$parent.conteudo.texto);
 
-        $$$('.image-list').slick({
-          infinite: false,
-          slidesToShow: 3,
-          slidesToScroll: 3
-        });
-        for (var i = this.$parent.conteudo.imagens.length - 1; i >= 0; i--) {
-          $$$('.image-list').slick('slickAdd','<img src="' + this.$parent.conteudo.imagens[i].src + '">');
-        };
-
-        $$$('.video-list').slick({
-          infinite: false,
-          slidesToShow: 3,
-          slidesToScroll: 3
-        })
-        var playlistUrl = 'http://gdata.youtube.com/feeds/api/playlists/' + this.$parent.conteudo.video_list + '?v=2&alt=json&callback=?';
-        var videoURL= 'http://www.youtube.com/watch?v=';
-        $$$.getJSON(playlistUrl, function(data) {
-          var list_data=[];
-          $$$.each(data.feed.entry, function(i, item) {
-            var video_data = {};
-            video_data.title = item.title.$t;
-            var feedURL = item.link[1].href;
-            var fragments = feedURL.split("/");
-            video_data.id = fragments[fragments.length - 2];
-            video_data.url = videoURL + video_data.id;
-            list_data.push(video_data);
+        if (this.$parent.conteudo.imagens) {
+          $$$('.image-list').slick({
+            infinite: false,
+            slidesToShow: 3,
+            slidesToScroll: 3
           });
-          for (var i = list_data.length - 1; i >= 0; i--) {
-            $$$('.video-list').slick('slickAdd','<a href="'+ list_data[i].url +'" title="'+ list_data[i].title +'"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a>');
+          for (var i = this.$parent.conteudo.imagens.length - 1; i >= 0; i--) {
+            $$$('.image-list').slick('slickAdd','<img src="' + this.$parent.conteudo.imagens[i].src + '">');
           };
-        });
+        }
+
+        if (this.$parent.conteudo.video_list) {
+          $$$('.video-list').slick({
+            infinite: false,
+            slidesToShow: 3,
+            slidesToScroll: 3
+          })
+          var playlistUrl = 'http://gdata.youtube.com/feeds/api/playlists/' + this.$parent.conteudo.video_list + '?v=2&alt=json&callback=?';
+          var videoURL= 'http://www.youtube.com/watch?v=';
+          $$$.getJSON(playlistUrl, function(data) {
+            var list_data=[];
+            $$$.each(data.feed.entry, function(i, item) {
+              var video_data = {};
+              video_data.title = item.title.$t;
+              var feedURL = item.link[1].href;
+              var fragments = feedURL.split("/");
+              video_data.id = fragments[fragments.length - 2];
+              video_data.url = videoURL + video_data.id;
+              list_data.push(video_data);
+            });
+            for (var i = list_data.length - 1; i >= 0; i--) {
+              $$$('.video-list').slick('slickAdd','<a href="'+ list_data[i].url +'" title="'+ list_data[i].title +'"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a>');
+            };
+          });
+        }
+        
       })
 
       this.$on('destroy-scrollbar', function() {
         $$$('#conteudo_info').perfectScrollbar('destroy');
-        $$$('.image-list').slick('unslick');
         $$$('.image-list').empty();
-        $$$('.video-list').slick('unslick');
+        console.log('test');
         $$$('.video-list').empty();
       })
     }

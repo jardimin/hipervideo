@@ -174,7 +174,7 @@
 				<div id="headHandle" v-on="click: abrir"></div>
 				<h1>{{db.title | uppercase}}</h1>
 				<p style="letter-spacing: 0;">{{db.texto}}</p>
-				<a v-on="click: fechar" class="botao">ASSISTIR DEMONSTRAÇÃO</a>
+				<a v-on="click: fechar" class="botao">O QUE É O HIPERVÍDEO?</a>
 				<a v-on="click: fechar" class="botao">ASSISTIR HIPERVÍDEOS</a>
 				<a v-on="click: fechar" class="botao">VER AS REDES ESTRATÉGICAS</a>
 			</div>
@@ -184,7 +184,7 @@
 				<div v-repeat="db.hipervideos" class="hipervideo col-1-5 {{id}}" style="left: {{posHip[$index]}}%; z-index: -{{$index}}">
 					<div class="linha" style="background-color: {{cor}}"></div>
 					<div class="areaTematica">
-						<h2>SAÚDE DO {{nome | uppercase}}</h2>
+						<h2>SAÚDE D{{artigo | uppercase}} {{nome | uppercase}}</h2>
 						<p style="letter-spacing: 0;">{{descricao}}</p>
 						<a href="#/{{id}}" class="botao" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">ASSISTIR</a>
 						<a v-on="click: deselect(id)" class="botao" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">VOLTAR</a>
