@@ -14,6 +14,25 @@
 		bottom: -8px;
 	}
 
+	.marco-detalhe {
+		width: 150px;
+		position: absolute;
+		height: 0;
+		bottom: 0;
+		border-right: 1px solid;
+		z-index: -1;
+		right: 4px;
+		overflow: hidden;
+		opacity: 0;
+		transition: all .2s ease-in-out;
+	}
+
+	.marco-titulo {
+		padding: 6px;
+		font-size: 12px;
+		transition: all .2s ease-in-out;
+	}
+
 	.marco {
 		height: 5px;
 		width: 5px;
@@ -24,6 +43,18 @@
 		list-style: none;
 		cursor: pointer;
 		transition: all .2s ease-in-out;
+		&.hover {
+			height: 10px;
+			width: 10px;
+			border-radius: 10px;
+			background-color: rgba(250,250,250,1);
+			bottom: -5px;
+			margin-left: -2.5px;
+			.marco-detalhe {
+				height: 50px;
+				opacity: 1;
+			}
+		}
 		&:hover {
 			height: 10px;
 			width: 10px;
@@ -31,6 +62,10 @@
 			background-color: rgba(250,250,250,1);
 			bottom: -5px;
 			margin-left: -2.5px;
+			.marco-detalhe {
+				height: 50px;
+				opacity: 1;
+			}
 		}
 	}
 </style>
@@ -46,7 +81,13 @@
 		<p class="ano" style="left: 81%;">2010</p>
 		<p class="ano" style="left: 93.75%;">2020</p>
 		<ul>
-			<li v-repeat="marcos" class="marco" style="left: {{posMarco[$index]}}%;" v-on="click: marcoBlock($index)"></li>
+			<li id="marco-{{id}}" v-repeat="marcos" class="marco" style="left: {{posMarco[$index]}}%;" v-on="click: marcoBlock($index)">
+				<div class="marco-detalhe">
+					<div class="marco-titulo context-bg">
+						{{title | uppercase}}
+					</div>
+				</div>
+			</li>
 		</ul>
 	</div>
 </template>
@@ -84,7 +125,13 @@
 				var m = _.where(t.nodes, {icon: "marco"});
 				self.marcos = m;
 			}
-			xhr.send()
+			xhr.send();
+
+			this.$on('hover-marco', function (node) {
+				var marco_hover = _.findWhere(self.marcos, {id: node.id})
+				$$$('#marco-'+marco_hover.id).addClass('hover');
+			});
+
 		},
 		methods: {
 			marcoBlock: function(id) {

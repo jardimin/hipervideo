@@ -19,6 +19,21 @@
 			stroke: #fff;
 			stroke-width: 2px;
 		}
+		&.mulher {
+			fill: $color-video-1;
+		}
+		&.crianca {
+			fill: $color-video-3;
+		}
+		&.preso {
+			fill: $color-video-4;
+		}
+		&.adolescente {
+			fill: $color-video-2;
+		}
+		&.deficiente {
+			fill: $color-video-5;
+		}
 	}
 
 	.sidebar_graph {
@@ -216,7 +231,12 @@
 						'root': 8,
 						'dispositivo': 5,
 						'funcao': 4,
-						'conceito': 3
+						'conceito': 3,
+						'mulher': 5,
+						'deficiente': 5,
+						'preso': 5,
+						'crianca': 5,
+						'adolescente': 5
 					}[type]
 			},
 

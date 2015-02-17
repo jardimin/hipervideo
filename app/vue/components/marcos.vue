@@ -27,6 +27,7 @@
 		top: -25px;
 		background-color: rgba(50,50,50,1);
 		left: 40%;
+		z-index: -2;
 	}
 </style>
 

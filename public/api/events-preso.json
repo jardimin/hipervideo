@@ -65,9 +65,10 @@
     {
       "id": 3,
       "title": "Constituição da República",
-      "icon": "conceito",
+      "icon": "marco",
       "component": {
         "type": "text",
+        "ano": 1988,
         "fields": {
           "excerpt": "##Art. 196. \nA saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação."
         }
@@ -117,45 +118,83 @@
     },
     {
       "id": 5,
-      "title": "Estatística",
-      "icon": "dispositivo",
+      "title": "Saúde da Mulher",
+      "icon": "mulher",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "###Adolescentes em Medida Socioeducativa \nEssa estatística representa uma porcentagem pequena, do ponto de vista quantitativo, e que deve ser alvo das políticas públicas, atuando em busca de soluções para assegurar que direitos estabelecidos em lei, repercutam diretamente na materialização de políticas públicas sociais, que incluam o (a) adolescente em atendimento socioeducativo. \n\n*Fonte: Levantamento da Secretaria de Direitos Humanos dos (as) adolescentes em cumprimento de medida socioeducativa. 2012.*"
+          "excerpt": "**A Política Nacional de Atenção Integral à Saúde da Mulher** reconhece a necessidade de acesso diferenciado das mulheres em situação de prisão ao Sistema Único de Saúde - SUS"
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "**Política Nacional de Atenção Integral à Saúde da Mulher** identifica 'a necessidade de acesso dessa população às ações de atenção à saúde, tanto com a implantação de ações no nível da atenção básica dentro dos presídios, como pelas referências para média e alta complexidade, com garantia do atendimento das demandas específicas das mulheres presidiárias por meio de uma atenção diferenciada dentro do conjunto de ações do Sistema Único de Saúde'.",
+        "arquivos": [{
+          "nome": "Mulheres ainda são presas por abortos espontâneos",
+          "link": "http://www.redehumanizasus.net/88663-mulheres-continuam-sendo-condenadas-e-presas-por-sofrerem-abortos-espontaneos"
+          },
+          {
+          "nome": "Principios e Diretrizes da PNAISM",
+          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_mulher_principios_diretrizes.pdf"
+          }],
+        "video_list": "PLqwF2MOG7-g2jJdUZUZ6tI6X-2t_o1O28",
+        "hipervideo": {
+          "nome": "Veja também o hipervideo sobre a saúde da mulher",
+          "link": "/#/mulher"
+        }
       }
     },
     {
-      "id": 7,
-      "title": "Saúde",
+      "id": 6,
+      "title": "Doenças contagiosas",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Atenção básica passa a ser a principal referência para as unidades socioeducativas"
+          "excerpt": "###Doenças infectocontagiosas no sistema prisional \n\nA tuberculose continua sendo uma alarmante causa de sofrimento e morte de homens e mulheres em seus anos mais produtivos, principalmente os mais pobres e marginalizados."
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "",
+        "arquivos": [{
+          "nome": "",
+          "link": "http://portalsaude.saude.gov.br/images/pdf/2014/novembro/24/panorama-tuberculose-brasil-out14-web.pdf"
+          },
+          {
+            "nome": "Portal da Saúde - Tuberculose",
+            "link": "http://portalsaude.saude.gov.br/index.php/o-ministerio/principal/leia-mais-o-ministerio/743-secretaria-svs/vigilancia-de-a-a-z/tuberculose/l2-tuberculose/11941-viajantes-tuberculose"
+            },
+            {
+              "nome": "Panorama da tuberculose no brasil",
+              "link": "http://portalsaude.saude.gov.br/images/pdf/2014/novembro/24/panorama-tuberculose-brasil-out14-web.pdf"
+            },
+            {
+              "nome": "Manual de controle da tuberculose nas prisões",
+              "link": "http://bvsms.saude.gov.br/bvs/publicacoes/manual_intervencoes_ambientais_controle_tuberculose_prisoes.pdf"
+              }]
       }
     },
     {
-      "id": 8,
-      "title": "Uso de algemas",
+      "id": 7,
+      "title": "PNH",
       "icon": "marco",
       "component": {
         "type": "text",
-        "ano": 2008.5,
+        "ano": 2003,
         "fields": {
-          "excerpt": "“Só é lícito o uso de algemas em caso de resistência e de fundado receio de fuga ou de perigo à integridade física própria ou alheia, por parte do preso ou de terceiros, justificada a excepcionalidade por escrito, sob pena de responsabilidade disciplinar civil e penal do agente ou da autoridade e de nulidade da prisão ou do ato processual a que se refere, sem prejuízo da responsabilidade civil do Estado”. - *Súmula Vinculante nº 11 do STF*"
+          "excerpt": "###Política Nacional de Humanização - PNH \n\nO que é a PNH?"
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "",
+        "arquivos": [{
+          "nome": "Trabalho e redes de saúde",
+          "link": "http://www.redehumanizasus.net/sites/default/files/10_0383_final_trabalho_e_redes_de_saude.pdf"
+          },
+          {
+          "nome": "Mapa de ações da PNH",
+          "link": "http://www.redehumanizasus.net/mapa-acoes"
+          }],
+        "video_list": "PLqwF2MOG7-g3hbV9tRIm11qJcMhcuksi4"
       }
     },
     {
@@ -225,11 +264,9 @@
     {"source": 0,"target": 1},
     {"source": 0,"target": 2},
     {"source": 2,"target": 4},
-    {"source": 0,"target": 7},
     {"source": 1,"target": 10},
     {"source": 9,"target": 10},
     {"source": 9,"target": 11},
-    {"source": 1,"target": 11},
-    {"source": 7,"target": 12}
+    {"source": 1,"target": 11}
   ]
 }

@@ -40,6 +40,26 @@
     text-decoration: none;
   }
 
+  .mulher-bg {
+    background-color: #ed1e79;
+  }
+
+  .adolescente-bg {
+    background-color: #00a300;
+  }
+
+  .crianca-bg {
+    background-color: #0cc;
+  }
+
+  .preso-bg {
+    background-color: #f00;
+  }
+
+  .deficiente-bg {
+    background-color: #00c;
+  }
+
 </style>
 
 <template>
@@ -65,6 +85,11 @@
     <div class="link context-bg" v-repeat="conteudo.discursoes">
       <a href="{{link}}" target="_blank" class="link context-bg">
         {{nome | uppercase}}
+      </a>
+    </div>
+    <div class="link {{conteudo.icon}}-bg" v-if="conteudo.hipervideo">
+      <a href="{{conteudo.hipervideo.link}}" class="link {{conteudo.icon}}-bg">
+        {{conteudo.hipervideo.nome | uppercase}}
       </a>
     </div>
   </div>

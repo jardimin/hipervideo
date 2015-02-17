@@ -218,7 +218,6 @@
 		},
 		computed: {
 			hasBlocks: function() {
-				console.log(this.contentBlocks.length)
 				return this.contentBlocks.length >= 2 || this.contentBlocks.length > 0 && !this.contentBlocks[0].funcao
 			},
 			hasInfo: function(){
@@ -304,6 +303,7 @@
 				this.videoPause();
 				this.conteudo = node.conteudo;
 				this.conteudo.title = node.title;
+				this.conteudo.icon = node.icon;
 				this.$broadcast('create-scrollbar');
 			},
 			infoClose: function(){
@@ -399,6 +399,11 @@
 					this.$.map.panTo(node.geo)
 				}
 
+				if (node.icon === 'marco') {
+					$$$('#app').removeClass('marco-fechado');
+					this.$broadcast('hover-marco', node);
+				}
+
 				this.fixedSidebar = false;
 			},
 			addBlockById: function(id){
@@ -425,6 +430,8 @@
 
 			},
 			removeBlock: function(id) {
+				$$$('#app').addClass('marco-fechado');
+				$$$('#marco-'+id).removeClass('hover');
 				this.contentBlocks = _.reject(this.contentBlocks, function(block){
 					return block.start === null ? false : block.id === id
 				})
