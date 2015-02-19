@@ -1,7 +1,6 @@
 {
   "timecode": [
     {"start":   31, "end":  42, "node": 1},
-    {"start":   5, "end":  10, "node": 13},
     {"start":  53, "end":  68, "node": 2},
     {"start":  113, "end":  121, "node": 3},
     {"start":  145, "end": 160, "node": 4},
