@@ -29,26 +29,7 @@
           "nome": "Final",
           "timecode": 2280.135
         }
-      ],
-      "conteudo": {
-        "marcos": [
-          {
-            "ano": 1965,
-            "titulo": "LEI_1965",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          },
-          {
-            "ano": 1982,
-            "titulo": "LEI_1982",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          },
-          {
-            "ano": 1990,
-            "titulo": "LEI_1990",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "crianca",
@@ -73,26 +54,7 @@
           "nome": "Meio2",
           "timecode": 1568.9684
         }
-      ],
-      "conteudo": {
-        "marcos": [
-          {
-            "ano": 1965,
-            "titulo": "LEI_1965",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          },
-          {
-            "ano": 1982,
-            "titulo": "LEI_1982",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          },
-          {
-            "ano": 1990,
-            "titulo": "LEI_1990",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "adolescente",
@@ -102,7 +64,7 @@
       "nome": "Adolescente",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
       "cor": "#00a300",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/dapes_BH_final1",
       "duracao": 2072.056,
       "capitulos": [
         {
@@ -121,26 +83,7 @@
           "nome": "Final",
           "timecode": 2072.056
         }
-      ],
-      "conteudo": {
-        "marcos": [
-          {
-            "ano": 1965,
-            "titulo": "LEI_1965",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          },
-          {
-            "ano": 1982,
-            "titulo": "LEI_1982",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          },
-          {
-            "ano": 1990,
-            "titulo": "LEI_1990",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "deficiente",
@@ -150,7 +93,7 @@
       "nome": "Deficiente",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
       "cor": "#00f",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/Dapes_BH",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/GYN/dapes_gyn_final",
       "duracao": 2072.056,
       "capitulos": [
         {
@@ -169,26 +112,7 @@
           "nome": "Final",
           "timecode": 2072.056
         }
-      ],
-      "conteudo": {
-        "marcos": [
-          {
-            "ano": 1965,
-            "titulo": "LEI_1965",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          },
-          {
-            "ano": 1982,
-            "titulo": "LEI_1982",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          },
-          {
-            "ano": 1990,
-            "titulo": "LEI_1990",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "preso",
@@ -213,26 +137,7 @@
           "nome": "Meio2",
           "timecode": 1294.914
         }
-      ],
-      "conteudo": {
-        "marcos": [
-          {
-            "ano": 1965,
-            "titulo": "LEI_1965",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          },
-          {
-            "ano": 1982,
-            "titulo": "LEI_1982",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          },
-          {
-            "ano": 1990,
-            "titulo": "LEI_1990",
-            "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente."
-          }
-        ]
-      }
+      ]
     }
   ],
   "tocando": "Intro",
