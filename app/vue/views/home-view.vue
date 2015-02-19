@@ -8,7 +8,8 @@
 	header {
 		position: absolute;
 		height: 100%;
-		background-color: rgba(15,15,15,0.8);
+		background-image: url(http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png);
+		background-size: 100% auto;
 		width: 100%;
 		-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -18,6 +19,7 @@
 		@extend clearfix;
 		& h1 {
 			margin: 0.5%;
+			display: none;
 		}
 		&.fechado {
 			height: 5%;
@@ -25,7 +27,11 @@
 			overflow: hidden;
 			padding: 0;
 			text-align: center;
+			background: #141414;
 			transition: all 0.5s;
+			& h1 {
+				display: block;
+			}
 			& p {
 				opacity: 0;
 			}
@@ -51,7 +57,7 @@
 			-webkit-box-sizing: border-box;
 	    -moz-box-sizing: border-box;
 			box-sizing: border-box;
-			padding: 5%;
+			padding: 20% 2% 2% 50%;
 			transition: all 0.5s;
 		}
 	}
@@ -98,7 +104,7 @@
     display: inline-block;
     margin: 10px;
     padding: 10px;
-    width: 50%;
+    width: 26%;
 		background: #ccc;
 		color: black;
 		opacity: 0.6;
@@ -134,6 +140,23 @@
 		width: 100%;
 	}
 
+	.nest {
+    bottom: -35%;
+    height: 35%;
+    opacity: 0.8;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    padding: 17%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+		box-sizing: border-box;
+    transition: all 0.5s ease 0s;
+    & h2 {
+    	text-align: center;
+    }
+	}
+
 	.hipervideo {
 		overflow: hidden;
 		cursor: pointer;
@@ -141,6 +164,9 @@
 	  &:hover {
 	  	.BW {
 	  		opacity: 0;
+	  	}
+	  	.nest {
+	  		bottom: 0;
 	  	}
 	  }
 		&.ativo {
@@ -150,6 +176,10 @@
 			left: 0 !important;
 			.areaTematica {
 				right: 0;
+			}
+			.nest {
+				padding: 0;
+				opacity: 0;
 			}
 			.linha {
 				transition: all 0.5s ease 0.3s;
@@ -173,15 +203,20 @@
 			<div class="conteudo">
 				<div id="headHandle" v-on="click: abrir"></div>
 				<h1>{{db.title | uppercase}}</h1>
-				<p style="letter-spacing: 0;">{{db.texto}}</p>
+				<p style="letter-spacing: 0; text-align: center;">{{db.texto}}</p>
 				<a v-on="click: fechar" class="botao">O QUE É O HIPERVÍDEO?</a>
 				<a v-on="click: fechar" class="botao">ASSISTIR HIPERVÍDEOS</a>
-				<a v-on="click: fechar" class="botao">VER AS REDES ESTRATÉGICAS</a>
+				<a v-on="click: fechar" class="botao">VER REDES</a>
+				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_PNH.png" style="width: 20%; margin: 5% 10% 0;">
+				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png" style="width: 50%;">
 			</div>
 		</header>
 		<div class="conteudo" style="position: absolute; z-index: 0;">
 			<div class="grid">
 				<div v-repeat="db.hipervideos" class="hipervideo col-1-5 {{id}}" style="left: {{posHip[$index]}}%; z-index: -{{$index}}">
+					<div v-on="click: select(id)" class="nest" style="background-color: {{cor}};">
+						<h2>SAÚDE D{{artigo | uppercase}} {{nome | uppercase}}</h2>
+					</div>
 					<div class="linha" style="background-color: {{cor}}"></div>
 					<div class="areaTematica">
 						<h2>SAÚDE D{{artigo | uppercase}} {{nome | uppercase}}</h2>

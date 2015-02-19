@@ -28,12 +28,19 @@
 		background-color: rgba(50,50,50,1);
 		left: 40%;
 		z-index: -2;
+		transition: all 0.5s;
+		&.cima {
+			top: -25px !important;
+		}
+		#app.marco-fechado & {
+			top: 0;
+		}
 	}
 </style>
 
 <template>
 	<div v-with="db: db" class="marcos-historicos">
-		<div class="marcos_handle" v-on="click: handleMarcos">LINHA DO TEMPO</div>
+		<div id="linha-do-tempo" class="marcos_handle" v-on="click: handleMarcos">LINHA DO TEMPO</div>
 		<in-linha-tempo></in-linha-tempo>
 	</div>
 </template>

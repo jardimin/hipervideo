@@ -106,10 +106,26 @@
   module.exports = {
     data: function(){
       return {
-        html_texto: null
+        html_texto: null,
+        videoIndex: 0,
+        imageIndex: 0
       }
     },
     attached: function() {
+      var self = this
+
+      $$$('.image-list').slick({
+        infinite: false,
+        slidesToShow: 3,
+        slidesToScroll: 3
+      });
+
+      $$$('.video-list').slick({
+        infinite: false,
+        slidesToShow: 3,
+        slidesToScroll: 3
+      })
+
       this.$on('create-scrollbar', function() {
         $$$('#conteudo_info').perfectScrollbar({
           suppressScrollX: true
@@ -118,22 +134,13 @@
         this.html_texto = markdown.toHTML(this.$parent.conteudo.texto);
 
         if (this.$parent.conteudo.imagens) {
-          $$$('.image-list').slick({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 3
-          });
           for (var i = this.$parent.conteudo.imagens.length - 1; i >= 0; i--) {
             $$$('.image-list').slick('slickAdd','<img src="' + this.$parent.conteudo.imagens[i].src + '">');
+            self.imageIndex ++;
           };
         }
 
         if (this.$parent.conteudo.video_list) {
-          $$$('.video-list').slick({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 3
-          })
           var playlistUrl = 'http://gdata.youtube.com/feeds/api/playlists/' + this.$parent.conteudo.video_list + '?v=2&alt=json&callback=?';
           var videoURL= 'http://www.youtube.com/watch?v=';
           $$$.getJSON(playlistUrl, function(data) {
@@ -148,7 +155,8 @@
               list_data.push(video_data);
             });
             for (var i = list_data.length - 1; i >= 0; i--) {
-              $$$('.video-list').slick('slickAdd','<a href="'+ list_data[i].url +'" title="'+ list_data[i].title +'"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a>');
+              $$$('.video-list').slick('slickAdd','<a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a>');
+              self.videoIndex ++;
             };
           });
         }
@@ -157,9 +165,14 @@
 
       this.$on('destroy-scrollbar', function() {
         $$$('#conteudo_info').perfectScrollbar('destroy');
-        $$$('.image-list').empty();
-        console.log('test');
-        $$$('.video-list').empty();
+        for (var i = 0; i < this.imageIndex; i++) {
+          $$$('.image-list').slick('slickRemove', i);
+        }
+        for (var i = 0; i < this.videoIndex; i++) {
+          $$$('.video-list').slick('slickRemove', i);
+        }
+        this.imageIndex = 0;
+        this.videoIndex = 0;
       })
     }
 

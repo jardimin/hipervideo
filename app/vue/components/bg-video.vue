@@ -16,7 +16,7 @@
 </style>
 
 <template>
-	<video v-with="db: db" poster="http://jardim.in/hipervideo/img/splash.jpg" preload="auto" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
+	<video v-with="db: db" poster="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png" preload="auto" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
 		<source v-attr="src: db.url + '.mp4'" type="video/mp4" id="mp4">
 		<source v-attr="src: db.url + '.webm'" type="video/webm" id="webm">
 	</video>

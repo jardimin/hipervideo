@@ -127,6 +127,10 @@
 <template>
 	<div v-with="id: params.video, params: params, db: db" allowfullscreen="true">
 
+		<!-- CREDITOS -->
+
+		<in-creditos></in-creditos>
+
 		<!-- VIDEO -->
 
 		<in-bg-video v-ref="hipervideo"></in-bg-video>
@@ -148,10 +152,9 @@
 			<div class="sidebar_content">
 				<in-sidebar-graph></in-sidebar-graph>
 				<in-sidebar-chapter v-with="title: db.nome"></in-sidebar-chapter>
-				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition>
-				</in-sidebar-block>
+				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition></in-sidebar-block>
 				<div class="sidebar_opener clickable" v-on="click: openDefaultBlock" v-show="!hasBlocks && !fixedSidebar && !hasInfo" v-transition>
-					<div class="sidebar_opener__inside context-bg">open</div>
+					<div class="sidebar_opener__inside context-bg">abrir</div>
 				</div>
 			</div>
 
@@ -247,6 +250,7 @@
 			// POPCORN
 
 			var video = document.getElementById('hipVid-' + self.id);
+			var creditos = document.getElementById('creditos');
 
 			video.addEventListener( "loadeddata", function() {
 
@@ -260,6 +264,13 @@
 
 			}, false );
 
+			video.addEventListener( "ended", function() {
+
+				creditos.className = 'finalizado';
+				video.pause();
+
+			}, false );
+
 			// CHILD LISTENERS
 
 			this.$on('block-timer-clicked', function (child, id) {
@@ -267,6 +278,9 @@
 				if(node && node.start == null){
 					node.start = -1
 				}
+				if (this.conteudo && this.conteudo.id === id) {
+					this.$broadcast('destroy-scrollbar');
+				}				
 				this.removeBlock(id);
 			})
 
@@ -288,6 +302,7 @@
 
 			$$$('body').addClass("tocando");
 			$$$(window).bind('mousemove', this.handleMouseMove);
+			$$$(document).bind('keydown', this.keyEvents)
 
 		},
 		ready: function(){
@@ -302,7 +317,11 @@
 				var node = _.findWhere(this.events.nodes,{"id": i});
 				this.videoPause();
 				this.conteudo = node.conteudo;
+				if (node.conteudo.texto === "") {
+					this.conteudo.texto = node.component.fields.excerpt
+				}
 				this.conteudo.title = node.title;
+				this.conteudo.id = node.id;
 				this.conteudo.icon = node.icon;
 				this.$broadcast('create-scrollbar');
 			},
@@ -323,6 +342,7 @@
 			openDefaultBlock: function(){
 				this.contentBlocks.unshift({
 					id: 99,
+					ap: true,
 					videoID: this.params.video,
 					title: "APRESENTAÇÃO",
 					type: "text",
@@ -332,7 +352,6 @@
 						excerpt: this.db.descricao
 					}
 				})
-				this.fixedSidebar = true;
 			},
 			attachPopcornEvents: function(){
 
@@ -362,12 +381,31 @@
 			},
 			handleMouseMove: function(event) {
 				var controles = document.getElementById('video-controls');
+				var linha = document.getElementById('linha-do-tempo');
 				event = event || window.event; // IE-ism
 				// event.clientX and event.clientY contain the mouse position
 				if (event.clientY < 60) {
 					controles.className = "";
 				} else {
 					controles.className = "hover";
+				}
+				if (event.clientY > window.innerHeight - 40) {
+					linha.className = "marcos_handle cima";
+				} else {
+					linha.className = "marcos_handle";
+				}
+			},
+			keyEvents: function(e) {
+				var video = document.getElementById('hipVid-' + this.id);
+				console.log('test');
+				switch(e.which) {
+					case 32 : 
+						if (video.paused && this.conteudo === null) {
+							video.play();
+						} else if (!video.paused) {
+							video.pause();
+						}
+						break;
 				}
 			},
 			addBlock: function(event){
@@ -381,7 +419,8 @@
 						start: event.start,
 						end: event.end,
 						title: node.title,
-						funcao: node.funcao
+						funcao: node.funcao,
+						ap: true
 					})
 				} else {
 					this.contentBlocks.unshift({
@@ -450,7 +489,8 @@
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
 			'in-sidebar-block-text': require('../components/sidebar-block-text.vue'),
 			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue'),
-			'in-sidebar-info': require('../components/sidebar-info.vue')
+			'in-sidebar-info': require('../components/sidebar-info.vue'),
+			'in-creditos': require('../components/creditos.vue')
 		}
 	}
 </script>

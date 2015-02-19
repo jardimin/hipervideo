@@ -1,7 +1,7 @@
 {
   "timecode": [
     {"start":   5, "end":  32, "node": 1},
-    {"start":  46, "end":  65, "node": 2},
+    {"start":  50, "end":  69, "node": 2},
     {"start":  94, "end":  104, "node": 3},
     {"start":  140, "end": 170, "node": 4},
     {"start": 205, "end": 229, "node": 5},
@@ -15,16 +15,18 @@
     {"start": 911, "end": 960, "node": 13},
     {"start": 974, "end": 996, "node": 14},
     {"start": 1009, "end": 1069, "node": 15},
-    {"start": 1144, "end": 1220, "node": 16}
+    {"start": 1144, "end": 1220, "node": 16},
+    {"start":  45, "end":  49, "node": 17}
   ],
   "nodes": [
     {
       "id": 1,
       "title": "PNAISP",
-      "icon": "conceito",
-      "geo": [-19.9268, -43.9450],
+      "icon": "marco",
+      "graph": true,
       "component": {
         "type": "text",
+        "ano": 2014,
         "fields": {
           "excerpt": "###Política Nacional de Atenção Integral à Saúde das Pessoas Privadas de Liberdade no Sistema Prisional \n\nA PNAISP foi intituída, em 02 de janeiro de 2014, com o objetivo de garantir o acesso das pessoas privadas de liberdade no sistema prisional ao cuidado integral no SUS."
         }
@@ -155,10 +157,7 @@
       },
       "conteudo": {
         "texto": "",
-        "arquivos": [{
-          "nome": "",
-          "link": "http://portalsaude.saude.gov.br/images/pdf/2014/novembro/24/panorama-tuberculose-brasil-out14-web.pdf"
-          },
+        "arquivos": [
           {
             "nome": "Portal da Saúde - Tuberculose",
             "link": "http://portalsaude.saude.gov.br/index.php/o-ministerio/principal/leia-mais-o-ministerio/743-secretaria-svs/vigilancia-de-a-a-z/tuberculose/l2-tuberculose/11941-viajantes-tuberculose"
@@ -177,6 +176,7 @@
       "id": 7,
       "title": "PNH",
       "icon": "marco",
+      "graph": true,
       "component": {
         "type": "text",
         "ano": 2003,
@@ -198,56 +198,110 @@
       }
     },
     {
+      "id": 8,
+      "title": "Saúde da Criança",
+      "icon": "crianca",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "O aleitamento materno é fundamental para o desenvolvimento sadio da criança e está garantido no Artigo 5º inciso L da contituição Federal o direito das mulheres em situação de liberdade as condições para que possam permanecer com seus filhos durante o periodo de amamentação."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Regras das Nações Unidas para o tratamento de mulheres presas",
+          "link": "http://carceraria.org.br/wp-content/uploads/2012/09/Tradu%C3%A7%C3%A3o-n%C3%A3o-oficial-das-Regras-de-Bangkok-em-11-04-2012.pdf"
+          },
+          {
+          "nome": "Regras internacionais de direitos humanos garantem prisão domiciliar a gestante",
+          "link": "http://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=283125"
+          }],
+        "video_list": "PLqwF2MOG7-g1iWfMBPDIMR0S1sPPhAE6j",
+        "hipervideo": {
+          "nome": "Veja também o hipervideo sobre a saúde da criança",
+          "link": "/#/crianca"
+        }
+      }
+    },
+    {
       "id": 9,
-      "title": "Matriciamento",
+      "title": "Acolhimento",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Matriciamento ou apoio matricial é um novo modo de produzir saúde em que duas ou mais equipes, num processo de construção compartilhada, criam uma proposta de intervenção pedagógico-terapêutica."
+          "excerpt": "O acolhimento é uma atitude de acompanhamento do paciente desde a porta de entrada até a sua saída."
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "",
+        "arquivos": [{
+          "nome": "Acolhimento e classificação de risco nos serviços de urgência",
+          "link": "http://www.redehumanizasus.net/sites/default/files/10_0378_final_acolhimento_e_classificacao_de_risco_ue.pdf"
+        }]
       }
     },
     {
       "id": 10,
-      "title": "Psicólogo",
-      "icon": "funcao",
-      "component": {
-        "type": "text",
-        "fields": {
-          "excerpt": "A atuação do Agente Socioeducador compreende, entre outras atividades, zelar pela segurança e bem-estar, observando e acompanhando os adolescentes em todos os locais de atividades; acompanhar os adolescnetes nas atividades de rotina diária, orientando-os quanto às normas de conduta, cuidados pessoais e relacionamentos com outros; manter-se atento às condições de saúde dos adolescnetes, sugerindo que sejam providenciados atendimentos e encaminhamentos aos serviços médicos e odontológicos sempre que necessário e atender às determinações e orientações médicas, ministrando os medicamentos prescritos, quando necessário. \n\n*Fonte: Formação continuada de socioeducadores, caderno 2/ Paulo C. Duarte Paes, Sandra Maria Francisco de Amorim, Dulce Regina dos Santos Pedrossian, organizadores. - Campos Grande, MS: Ed. UFMS, 2010.*",
-          "image": "/img/eventos/teste.jpg"
-        }
-      },
-      "conteudo": {
-        "texto": ""
-      }
-    },
-    {
-      "id": 11,
-      "title": "Socioeducador",
-      "icon": "funcao",
-      "component": {
-        "type": "text",
-        "fields": {
-          "excerpt": "A atuação do **Agente Socioeducador** compreende, entre outras atividades, zelar pela segurança e bem-estar, observando e acompanhando os adolescentes em todos os locais de atividades; acompanhar os adolescnetes nas atividades de rotina diária, orientando-os quanto às normas de conduta, cuidados pessoais e relacionamentos com outros; manter-se atento às condições de saúde dos adolescnetes, sugerindo que sejam providenciados atendimentos e encaminhamentos aos serviços médicos e odontológicos sempre que necessário e atender às determinações e orientações médicas, ministrando os medicamentos prescritos, quando necessário. \n\n*Fonte: Formação continuada de socioeducadores, caderno 2/ Paulo C. Duarte Paes, Sandra Maria Francisco de Amorim, Dulce Regina dos Santos Pedrossian, organizadores. - Campos Grande, MS: Ed. UFMS, 2010.*"
-        }
-      },
-      "conteudo": {
-        "texto": ""
-      }
-    },
-    {
-      "id": 12,
-      "title": "Caderneta de Saúde",
+      "title": "Clínica Ampliada e PTS",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "O objetivo da **Caderneta de Saúde de Adolescentes** é melhorar a atenção à saúde da população juvenil promovendo o crescimento e desenvolvimento saudáveis através do acompanhamento sistemático nas unidades de saúde. Tem-se nela um importante instrumento de cidadania para adolescentes, na prevenção de doenças e agravos à saúde, além de facilitar as ações educativas que promovam o aprendizado e a consolidação de estilos de vida saudáveis."
+          "excerpt": "A Clínica Ampliada é uma aposta para lidar com a complexidade biopsicosocial presente no sistema prisional."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Clínica ampliada e compartilhada",
+          "link": "http://www.redehumanizasus.net/sites/default/files/10_0379_final_clinica_ampliada.pdf"
+        }],
+        "video_list": "PLqwF2MOG7-g1DqSVvy02X8SUuLasB6I77"
+      }
+    },
+    {
+      "id": 11,
+      "title": "Rede de Saúde",
+      "icon": "dispositivo",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "O sistema prisional é um nó da rede de saúde que compõe o território"
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Redes de produção de saúde",
+          "link": "http://www.redehumanizasus.net/sites/default/files/10_0382_redes_de_producao_de_saude.pdf"
+        }],
+        "video_list": "PLqwF2MOG7-g0JbF3k-ol4SMFzHeGK9Whl"
+      }
+    },
+    {
+      "id": 12,
+      "title": "Ética do cuidado",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Na relação entre saúde e justiça a direção ética é aquela que evita os estados de dominação para afirmar a vida."
+        }
+      },
+      "conteudo": {
+        "texto": "Por uma perspectiva ética das práticas de cuidado no contenporâneo."
+      }
+    },
+    {
+      "id": 13,
+      "title": "Justiça Criminal",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Saúde e Segurança no sistema prisional são dois lados da mesma moeda."
         }
       },
       "conteudo": {
@@ -255,18 +309,105 @@
       }
     },
     {
-      "id": 13,
-      "title": "Dona Joana",
-      "funcao": "dona do hospital"
+      "id": 14,
+      "title": "Luta antimanicomial",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "No âmbito do Sistema prisional, é preciso analisar também a atual situação das pessoas com transtorno mental em conflito com a lei, mantidas sob custódia. \nAssim, complementarmente à Política surgiu a EAP, com o objetivo de  reorientar o modelo de atenção aos pacientes com transtorno mental em conflito com a lei, de maneira a evitar o tratamento em meio fechado, ou garantir o retorno à liberdade no menor tempo possível."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Luta antimanicomial",
+          "link": "http://www.redehumanizasus.net/85171-luta-antimanicomial-2014f"
+        },
+        {
+          "nome": "Portaria Nº 94",
+          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2014/prt0094_14_01_2014.html"
+        },
+        {
+          "nome": "Programa de Atenção Integral ao Louco Infrator (PAILI)",
+          "link": "http://www.saude.go.gov.br/index.php?idMateria=153172"
+        },
+        {
+          "nome": "Observatório nacional de saúde mental e justiça criminal",
+          "link": "http://observasmjc.uff.br/"
+        },
+        {
+          "nome": "Programa de Atenção Integral ao Paciente Judiciário Portador de Sofrimento Mental (PAI-PJ)",
+          "link": "http://ftp.tjmg.jus.br/presidencia/projetonovosrumos/pai_pj/"
+        }]
+      }
+    },
+    {
+      "id": 15,
+      "title": "Movimento Social LGBT",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Desde o início da epdemia de AIDS a resposta brasileira conduzida pelo Departamento de DST, Aids e Hepatites Virais do Ministério da Saúde contou com a participação da sociedade civil. "
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Portal da Saúde",
+          "link": "http://portalsaude.saude.gov.br/index.php/profissional-e-gestor/principal"
+        },
+        {
+          "nome": "Quilombo X",
+          "link": "https://quilomboxis.wordpress.com/"
+        }]
+      }
+    },
+    {
+      "id": 16,
+      "title": "Sistema ùnico de Saúde - SUS",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1990,
+        "fields": {
+          "excerpt": "O objetivo final da PNAISP é incluir 100% da população privada de liberdade do sistema prisional no SUS."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "LEI Nº 8.080",
+          "link": "http://www.planalto.gov.br/ccivil_03/leis/l8080.htm"
+        }],
+        "video_list": "PLqwF2MOG7-g1Vgcw8GpV3ezOsOc21U9nY"
+      }
+    },
+    {
+      "id": 17,
+      "title": "Marden Marques Soares Filho",
+      "funcao": "coordenador do dapes"
     }
   ],
   "edges": [
     {"source": 0,"target": 1},
-    {"source": 0,"target": 2},
-    {"source": 2,"target": 4},
+    {"source": 1,"target": 2},
+    {"source": 1,"target": 4},
+    {"source": 1,"target": 6},
+    {"source": 0,"target": 7},
+    {"source": 1,"target": 7},
+    {"source": 5,"target": 7},
+    {"source": 7,"target": 8},
+    {"source": 1,"target": 9},
+    {"source": 7,"target": 9},
     {"source": 1,"target": 10},
-    {"source": 9,"target": 10},
-    {"source": 9,"target": 11},
-    {"source": 1,"target": 11}
+    {"source": 7,"target": 11},
+    {"source": 7,"target": 12},
+    {"source": 0,"target": 13},
+    {"source": 11,"target": 14},
+    {"source": 11,"target": 15},
+    {"source": 1,"target": 16},
+    {"source": 7,"target": 16}
   ]
 }

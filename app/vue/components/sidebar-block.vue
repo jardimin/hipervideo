@@ -93,13 +93,13 @@
 
 <template>
 	<div class="sidebar_block" v-transition>
-		<div v-if="funcao" class="sidebar_block__header context-bg">
-			<div id="cartela_nome">
+		<div v-if="funcao" class="sidebar_block__header context-bg" style="margin-top: 50%;" v-transition>
+			<div id="cartela_nome" v-transition>
 				{{title | uppercase}}
 			</div>
 		</div>
 		<div v-if="funcao" class="sidebar_block__header" style="width: 80%; background: #fff;" v-transition>
-			<div id="cartela_funcao">
+			<div id="cartela_funcao" v-transition>
 				{{funcao}}
 			</div>
 		</div>
@@ -117,7 +117,7 @@
 		<div v-if="!funcao" id="sidebar_block__content" class="sidebar_block__content">
 			{{{html_resumo}}}
 		</div>
-		<p v-if="!funcao" style="padding-left: 10px;"><strong><a style="font-weight: 900; text-decoration: none;" href="#/{{videoID}}/info/{{id}}">LEIA MAIS</a></strong></p>
+		<p v-if="!ap" style="padding-left: 10px;"><strong><a style="font-weight: 900; text-decoration: none;" href="#/{{videoID}}/info/{{id}}">SAIBA MAIS</a></strong></p>
 	</div>
 </template>
 
@@ -155,7 +155,9 @@
 		methods: {
 			onTimerClick: function(){
 				this.$dispatch('block-timer-clicked', this, this.$data.id)
-				window.location.href = "/#/" + this.$parent.params.video;
+				if (this.$parent.conteudo && this.$parent.conteudo.id === this.$data.id) {
+					window.location.href = "/#/" + this.$parent.params.video;
+				}
 			}
 		}
 	}

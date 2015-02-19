@@ -19,6 +19,9 @@
 			stroke: #fff;
 			stroke-width: 2px;
 		}
+		&.marco {
+			fill: rgba(150,150,150,1);
+		}
 		&.mulher {
 			fill: $color-video-1;
 		}
@@ -232,6 +235,7 @@
 						'dispositivo': 5,
 						'funcao': 4,
 						'conceito': 3,
+						'marco': 3,
 						'mulher': 5,
 						'deficiente': 5,
 						'preso': 5,
@@ -329,7 +333,7 @@
 					var node = _.findWhere(self._nodes, {id: timecode.node})
 					if(!node){
 						var $node = _.findWhere(self.events.nodes, {id: timecode.node})
-						if($node.icon !== 'marco' && !$node.funcao){
+						if($node.icon !== 'marco' && !$node.funcao || $node.icon === 'marco' && $node.graph){
 							var x = Math.random() * radius
 							var y = Math.random() * radius
 							node = {}
