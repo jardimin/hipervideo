@@ -14,9 +14,10 @@
       "icon": "dispositivo",
       "geo": [-19.5,-43.5],
       "component": {
-        "type": "text",
+        "type": "databars",
         "fields": {
-          "excerpt": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
+          "excerpt": "[Lorem ipsum](http://google.com) dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat.",
+          "spreadsheet": "1XUwjuSfy79P9MaRIPbPMyevvhR4nnxl4-3g_vUQGJQc"
         }
       }
     },

@@ -152,7 +152,9 @@
 			<div class="sidebar_content">
 				<in-sidebar-graph></in-sidebar-graph>
 				<in-sidebar-chapter v-with="title: db.nome"></in-sidebar-chapter>
-				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition></in-sidebar-block>
+				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition>
+					<div v-component="{{'in-sidebar-block-' + type}}" v-with="id: id, videoID: videoID,fields: fields"></div>
+				</in-sidebar-block>
 				<div class="sidebar_opener clickable" v-on="click: openDefaultBlock" v-show="!hasBlocks && !fixedSidebar && !hasInfo" v-transition>
 					<div class="sidebar_opener__inside context-bg">abrir</div>
 				</div>

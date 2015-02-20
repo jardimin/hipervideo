@@ -3,13 +3,20 @@
 </style>
 
 <template>
-	{{{html_resumo}}}
+	<div>
+		{{{fields.excerpt | marked}}}
+	</div>
 </template>
 
 <script>
 
-	module.exports = {
+	var marked = require('marked')
 
+	module.exports = {
+		replace: true,
+		filters: {
+			'marked': marked
+		}
 	}
 
 </script>

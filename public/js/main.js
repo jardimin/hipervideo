@@ -20,7 +20,7 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"./views/home-view.vue":17,"./views/video-view.vue":18,"insert-css":24}],2:[function(require,module,exports){
+},{"./views/home-view.vue":18,"./views/video-view.vue":19,"insert-css":21}],2:[function(require,module,exports){
 require("insert-css")(".hipVid{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#app.marco-fechado .hipVid{top:0}");
 var __vue_template__ = "<video v-with=\"db: db\" poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" preload=\"auto\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n		<source v-attr=\"src: db.url + '.mp4'\" type=\"video/mp4\" id=\"mp4\">\n		</source><source v-attr=\"src: db.url + '.webm'\" type=\"video/webm\" id=\"webm\">\n	</source></video>";
 var Vue = require('vue')
@@ -99,7 +99,7 @@ var Vue = require('vue')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":24,"jquery":25,"vue":91}],3:[function(require,module,exports){
+},{"insert-css":21,"jquery":22,"vue":87}],3:[function(require,module,exports){
 require("insert-css")("#creditos{width:100%;position:fixed;height:100%;z-index:-100;background-color:#141414;opacity:0;transition:all .3s ease 0}#creditos.finalizado{z-index:100;opacity:1}#creditos h1{text-align:center}.info{background-color:rgba(200,200,200,.3);padding:3%;position:relative;width:80%;margin:0 auto;zoom:1}.info:after,.info:before{content:\"\";display:table}.info:after{clear:both}.info p{margin:0}.papel{width:25%;text-align:center;float:left}");
 var __vue_template__ = "<div id=\"creditos\">\n    <h1>CRÉDITOS</h1>\n    <div class=\"info\">\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>DESIGN E PROGRAMAÇÃO</h3>\n        <p>Marlus Araújo</p>\n        <p>Gustavo Junqueira</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>DIREÇÃO</h3>\n        <p>Julio Braga</p>\n        <p>Giuliano Bonorandi</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>PRODUÇÃO</h3>\n        <p>Janaína Castro Alves</p>\n        <p>Carolina Calcavecchia</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>FOTOGRAFIA</h3>\n        <p>Milena Sá</p>\n        <p>Tito José</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>SOM DIRETO</h3>\n        <p>Alexandre Kubrusly</p>\n        <p>Francisco</p>\n      </div>\n      <div class=\"papel\">\n        <h3>ASSISTÊNCIA DE EDIÇÃO</h3>\n        <p>Raoni Seixas</p>\n        <p>Tatiana Teitelroit</p>\n      </div>\n      <div class=\"papel\">\n        <h3>EDIÇÃO</h3>\n        <p>Tatiana Gouveia</p>\n        <p>Marco Meireles</p>\n        <p>Claudio Tammela</p>\n      </div>\n      <div class=\"papel\" style=\"margin-bottom: 40px\">\n        <h3 style=\"margin-bottom: 0\">FINALIZAÇÃO DE SOM</h3>\n        <h3 style=\"margin-top: 0\">TRILHA SONORA ORIGINAL</h3>\n        <p>Criado Mudo Produções Artísticas</p>\n      </div>\n      <div class=\"papel\" style=\"margin-bottom: 64px\">\n        <h3>CORREÇÃO DE COR</h3>\n        <p>Raoni Seixas</p>\n      </div>\n      <div class=\"papel\" style=\"width: 100%\">\n        <h3>REALIZAÇÃO</h3>\n        <img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_PNH.png\" style=\"width: 10%; float: left; margin-right: 10%; margin-left: 10%\">\n        <img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png\" style=\"width: 30%; margin-top: 2%; float: left; margin-right: 11%\">\n        <a href=\"http://jardim.in\" target=\"_blank\">\n          <img src=\"https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png\" style=\"width: 15%; float: left; margin-top: 1%\">\n        </a>\n      </div>\n    </div>\n    <div style=\"width: 80%; margin: 0 auto\">\n      <a href=\"/#/home\" class=\"botao\" style=\"width: 16%; font-weight: 900; text-decoration: none\">INICIO</a>\n      <a v-if=\"isMulher\" href=\"/#/mulher\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #ed1e79\">SAÚDE DA MULHER</a>\n      <a v-if=\"isCrianca\" href=\"/#/crianca\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #0cc\">SAÚDE DA CRIANÇA</a>\n      <a v-if=\"isAdolescente\" href=\"/#/adolescente\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00a300\">SAÚDE DO ADOLESCENTE</a>\n      <a v-if=\"isDeficiente\" href=\"/#/deficiente\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00c\">SAÚDE DO DEFICIENTE</a>\n      <a v-if=\"isPreso\" href=\"/#/preso\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #f00\">SAÚDE DO PRESO</a>\n    </div>\n  </div>";
 module.exports = {
@@ -124,7 +124,7 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{"insert-css":24}],4:[function(require,module,exports){
+},{"insert-css":21}],4:[function(require,module,exports){
 require("insert-css")(".block_map{position:relative;width:300px;height:300px;background:#333;transition:all .6s ease;transform:translate3d(300px,0,0)}.block_map.is-open{transform:translate3d(0,0,0)}.block_map__map{width:100%;height:100%;overflow:hidden}.block_map__toggle{position:absolute;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-size:20px;font-weight:900;padding:4% 4% 4% 3%;top:0;left:0;width:48px;transform:translate3d(-100%,0,0)}.leaflet-bottom,.leaflet-top{z-index:1}");
 var __vue_template__ = "<div class=\"block_map\" v-with=\"db: db\" v-class=\"is-open: isOpen\">\n		<div class=\"block_map__toggle context-bg clickable\" v-on=\"click: toggle\">\n			{{db.cidade}}\n		</div>\n		<div class=\"block_map__map\" v-el=\"map\"></div>\n	</div>";
 var L = require('leaflet')
@@ -164,7 +164,7 @@ var L = require('leaflet')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":24,"leaflet":26}],5:[function(require,module,exports){
+},{"insert-css":21,"leaflet":23}],5:[function(require,module,exports){
 var __vue_template__ = "<p>\n		<strong>my content is:</strong><br>\n		<content>\n	</content></p>";
 module.exports = {
 
@@ -224,7 +224,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":24,"jquery":25,"underscore":31}],7:[function(require,module,exports){
+},{"insert-css":21,"jquery":22,"underscore":27}],7:[function(require,module,exports){
 require("insert-css")(".marcos-historicos{width:100%;position:fixed;bottom:0;height:60px;box-shadow:0 0 10px #000 inset;background-color:#323232;padding:0 3%;z-index:25;transition:all .5s}#app.marco-fechado .marcos-historicos{bottom:-60px}.marcos_handle{width:15%;font-weight:900;font-size:12px;padding-top:5px;position:absolute;text-align:center;border-radius:5px;height:35px;cursor:pointer;top:-25px;background-color:#323232;left:40%;z-index:-2;transition:all .5s}.marcos_handle.cima{top:-25px!important}#app.marco-fechado .marcos_handle{top:0}");
 var __vue_template__ = "<div v-with=\"db: db\" class=\"marcos-historicos\">\n		<div id=\"linha-do-tempo\" class=\"marcos_handle\" v-on=\"click: handleMarcos\">LINHA DO TEMPO</div>\n		<in-linha-tempo></in-linha-tempo>\n	</div>";
 var $$$ = require('jquery')
@@ -241,35 +241,139 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/linha-tempo.vue":6,"insert-css":24,"jquery":25}],8:[function(require,module,exports){
-var __vue_template__ = "<p>\n		<img v-attr=\"src: fields.image\">\n	</p>\n	<p>\n		{{fields.excerpt}}\n	</p>";
-module.exports = {
+},{"../components/linha-tempo.vue":6,"insert-css":21,"jquery":22}],8:[function(require,module,exports){
+var __vue_template__ = "<div>\n		<p>\n			{{{fields.excerpt | marked}}}\n			</p><div v-el=\"chart\" class=\"chart-databars\"></div>\n		<p></p>\n		<p><strong><a href=\"#/{{videoID}}/info/{{id}}\">leia mais</a></strong></p>\n	</div>";
+var $$$ = require('jquery')
+	var _ = require('underscore')
+	var marked = require('marked')
 
+	module.exports = {
+
+		replace: true,
+
+		data: function(){
+			return {
+				_entries: null,
+				_svg: null
+			}
+		},
+
+		attached: function(){
+
+			// load spreadsheet
+
+			this.loadData()
+
+			// append <svg>
+
+			this._svg = d3.select(this.$$.chart).append("svg")
+				.attr("width", 250)
+				.attr("height", 150);
+
+		},
+
+		methods: {
+
+			loadData: function(){
+				var self = this;
+				var url = 'https://spreadsheets.google.com/feeds/list/' + this.fields.spreadsheet + '/od6/public/values?alt=json-in-script&callback=?';
+
+				console.log('spreadsheet will load now')
+
+				$$$.getJSON(url).success(function(data) {
+
+					var entries = []
+
+					data.feed.entry.map(function(d,i){
+						
+						var o = {}      // object
+						var s = 'gsx$' // string
+
+						for (var prop in d) {
+							if(d.hasOwnProperty(prop) && prop.indexOf(s) == 0){
+								o[prop.split(s).join('')] = d[prop]['$t']
+							}
+						}
+
+						entries.push(o)
+					})
+
+					self._entries = d3.nest().key(function(d)  {
+							return d.legenda;
+						}).entries(entries);
+
+					console.log(self._entries)
+					self.buildChart()
+
+				}).error(function(message) {
+
+					console.log('spreadsheet error: ' + message)
+
+				}).complete(function() {
+
+					console.log('completed spreadsheet load!')
+
+				})
+			},
+
+			buildChart: function(){
+
+				var self = this,
+					year0 = d3.min(self._entries, function(d) { return d.ano; }),
+					year1 = d3.max(self._entries, function(d) { return d.ano; }),
+					x = d3.scale.ordinal()
+						.domain(d3.range(10))
+						.rangeRoundBands([0, 250])
+
+				console.log(year0,year1)
+
+			}
+		},
+
+		filters: {
+			'marked': marked
+		}
 	}
 module.exports.template = __vue_template__;
 
-},{}],9:[function(require,module,exports){
-var __vue_template__ = "{{{html_resumo}}}";
-module.exports = {
-
-	}
-module.exports.template = __vue_template__;
-
-},{}],10:[function(require,module,exports){
-require("insert-css")(".sidebar_block{width:120%;height:100%;overflow:hidden;transition:all .6s ease}.sidebar_block.v-enter,.sidebar_block.v-leave{transform:translate3d(-400px,0,0);max-height:0}.sidebar.has-info .sidebar_block{width:100%;max-height:48px}#cartela_funcao,#cartela_nome{float:right;font-size:16px;margin-right:5%}#cartela_funcao{color:#555}.sidebar_block__header{font-family:fonte-bold,sans-serif;font-weight:900;position:relative;color:#fff;padding:10px;height:28px;line-height:28px}.sidebar_block__content{overflow:hidden;height:19%;position:relative;padding:10px 58px 10px 10px;font-size:14px;font-weight:300;line-height:1.4em;width:65%;letter-spacing:0;transition:all .3s ease}#app.marco-fechado .sidebar_block__content{height:25%}.timer{display:block;position:absolute;top:10px;right:10px;width:28px;height:28px}.timer .progress{fill:transparent;stroke:#fff;stroke-width:2px;stroke-dasharray:75 75;stroke-linecap:round;transition:all .5s linear;transform:translate(0px,28px) rotate(-90deg)}.timer .progress.fadeout{opacity:0}.timer .base{stroke:#fff;stroke-width:2px;fill:transparent;opacity:.2}.timer .close{transition:transform .3s ease,opacity .3s linear;opacity:0;transform:translate(14px,14px) scale(0.5)}.timer .close line{stroke:#fff;stroke-width:2px;stroke-linecap:round}.timer.fixed .close,.timer:hover .close{opacity:1;transform:translate(14px,14px) scale(1)}");
-var __vue_template__ = "<div class=\"sidebar_block\" v-transition=\"\">\n		<div v-if=\"funcao\" class=\"sidebar_block__header context-bg\" style=\"margin-top: 50%\" v-transition=\"\">\n			<div id=\"cartela_nome\" v-transition=\"\">\n				{{title | uppercase}}\n			</div>\n		</div>\n		<div v-if=\"funcao\" class=\"sidebar_block__header\" style=\"width: 80%; background: #fff\" v-transition=\"\">\n			<div id=\"cartela_funcao\" v-transition=\"\">\n				{{funcao}}\n			</div>\n		</div>\n		<div v-if=\"!funcao\" class=\"sidebar_block__header context-bg\">\n			{{title | uppercase}}\n			<svg width=\"28\" height=\"28\" class=\"timer clickable\" v-on=\"click: onTimerClick\" v-class=\"fixed: start == null\">\n				<circle class=\"base\" cx=\"14\" cy=\"14\" r=\"12\"></circle>\n				<circle v-class=\"fadeout: perc < 3\" class=\"progress\" cx=\"14\" cy=\"14\" r=\"12\" stroke-dashoffset=\"{{perc}}\"></circle>\n				<g class=\"close\">\n					<line x1=\"-4\" y1=\"-4\" x2=\"4\" y2=\"4\"></line>\n					<line x1=\"-4\" y1=\"4\" x2=\"4\" y2=\"-4\"></line>\n				</g>\n			</svg>\n		</div>\n		<div v-if=\"!funcao\" id=\"sidebar_block__content\" class=\"sidebar_block__content\">\n			{{{html_resumo}}}\n		</div>\n		<p v-if=\"!ap\" style=\"padding-left: 10px\"><strong><a style=\"font-weight: 900; text-decoration: none\" href=\"#/{{videoID}}/info/{{id}}\">SAIBA MAIS</a></strong></p>\n	</div>";
-var Vue = require('vue')
-	var $$$ = require('jquery')
-  var perfectScrollbar = require('perfect-scrollbar')
-  var markdown = require('markdown').markdown
+},{"jquery":22,"marked":24,"underscore":27}],9:[function(require,module,exports){
+var __vue_template__ = "<div>\n		<p>\n			<img v-attr=\"src: fields.image\">\n		</p>\n		<p>\n			{{{fields.excerpt | marked}}}\n		</p>\n	</div>";
+var marked = require('marked')
 
 	module.exports = {
 		replace: true,
+		filters: {
+			'marked': marked
+		}
+	}
+module.exports.template = __vue_template__;
+
+},{"marked":24}],10:[function(require,module,exports){
+var __vue_template__ = "<div>\n		{{{fields.excerpt | marked}}}\n	</div>";
+var marked = require('marked')
+
+	module.exports = {
+		replace: true,
+		filters: {
+			'marked': marked
+		}
+	}
+module.exports.template = __vue_template__;
+
+},{"marked":24}],11:[function(require,module,exports){
+require("insert-css")(".sidebar_block{width:120%;height:100%;overflow:hidden;transition:all .6s ease}.sidebar_block.v-enter,.sidebar_block.v-leave{transform:translate3d(-400px,0,0);max-height:0}.sidebar.has-info .sidebar_block{width:100%;max-height:48px}#cartela_funcao,#cartela_nome{float:right;font-size:16px;margin-right:5%}#cartela_funcao{color:#555}.sidebar_block__header{font-family:fonte-bold,sans-serif;font-weight:900;position:relative;color:#fff;padding:10px;height:28px;line-height:28px}.sidebar_block__content{overflow:hidden;height:19%;position:relative;padding:10px 58px 10px 10px;font-size:14px;font-weight:300;line-height:1.4em;width:65%;letter-spacing:0;transition:all .3s ease}#app.marco-fechado .sidebar_block__content{height:25%}.timer{display:block;position:absolute;top:10px;right:10px;width:28px;height:28px}.timer .progress{fill:transparent;stroke:#fff;stroke-width:2px;stroke-dasharray:75 75;stroke-linecap:round;transition:all .5s linear;transform:translate(0px,28px) rotate(-90deg)}.timer .progress.fadeout{opacity:0}.timer .base{stroke:#fff;stroke-width:2px;fill:transparent;opacity:.2}.timer .close{transition:transform .3s ease,opacity .3s linear;opacity:0;transform:translate(14px,14px) scale(0.5)}.timer .close line{stroke:#fff;stroke-width:2px;stroke-linecap:round}.timer.fixed .close,.timer:hover .close{opacity:1;transform:translate(14px,14px) scale(1)}");
+var __vue_template__ = "<div class=\"sidebar_block\" v-transition=\"\">\n		<div v-if=\"funcao\" class=\"sidebar_block__header context-bg\" style=\"margin-top: 50%\" v-transition=\"\">\n			<div id=\"cartela_nome\" v-transition=\"\">\n				{{title | uppercase}}\n			</div>\n		</div>\n		<div v-if=\"funcao\" class=\"sidebar_block__header\" style=\"width: 80%; background: #fff\" v-transition=\"\">\n			<div id=\"cartela_funcao\" v-transition=\"\">\n				{{funcao}}\n			</div>\n		</div>\n		<div v-if=\"!funcao\" class=\"sidebar_block__header context-bg\">\n			{{title | uppercase}}\n			<svg width=\"28\" height=\"28\" class=\"timer clickable\" v-on=\"click: onTimerClick\" v-class=\"fixed: start == null\">\n				<circle class=\"base\" cx=\"14\" cy=\"14\" r=\"12\"></circle>\n				<circle v-class=\"fadeout: perc < 3\" class=\"progress\" cx=\"14\" cy=\"14\" r=\"12\" stroke-dashoffset=\"{{perc}}\"></circle>\n				<g class=\"close\">\n					<line x1=\"-4\" y1=\"-4\" x2=\"4\" y2=\"4\"></line>\n					<line x1=\"-4\" y1=\"4\" x2=\"4\" y2=\"-4\"></line>\n				</g>\n			</svg>\n		</div>\n		<div v-if=\"!funcao\" id=\"sidebar_block__content\" class=\"sidebar_block__content\">\n			<content></content>\n		</div>\n		<p v-if=\"!ap\" style=\"padding-left: 10px\"><strong><a style=\"font-weight: 900; text-decoration: none\" href=\"#/{{videoID}}/info/{{id}}\">SAIBA MAIS</a></strong></p>\n	</div>";
+var Vue = require('vue')
+	var $$$ = require('jquery')
+	var perfectScrollbar = require('perfect-scrollbar')
+	
+	module.exports = {
+		replace: true,
 		data: function(){
-      return {
-        html_resumo: null
-      }
-    },
+			return {
+				html_resumo: null
+			}
+		},
 		computed: {
 			perc: function () {
 				var start = this.$data.start;
@@ -280,12 +384,8 @@ var Vue = require('vue')
 		},
 		attached: function() {
 			$$$('#sidebar_block__content').perfectScrollbar({
-        suppressScrollX: true
-      });
-
-      if (!this.funcao) {
-      	this.html_resumo = markdown.toHTML(this.fields.excerpt);
-      };
+				suppressScrollX: true
+			});
 
 		},
 		methods: {
@@ -299,7 +399,7 @@ var Vue = require('vue')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":24,"jquery":25,"markdown":27,"perfect-scrollbar":29,"vue":91}],11:[function(require,module,exports){
+},{"insert-css":21,"jquery":22,"perfect-scrollbar":25,"vue":87}],12:[function(require,module,exports){
 require("insert-css")(".sidebar_chapter{position:relative;width:300px}.sidebar_chapter .sidebar_chapter_title{font-family:fonte-bold,sans-serif;font-weight:900;position:relative;z-index:2;display:inline-block;background:#fff;color:#555;padding:10px 58px 10px 10px;height:28px;line-height:28px;transition:all .5s;min-width:0}.sidebar.is-open .sidebar_chapter .sidebar_chapter_title{min-width:232px}");
 var __vue_template__ = "<div class=\"sidebar_chapter\">\n		<div class=\"sidebar_chapter_title\">{{title | uppercase}}</div>\n	</div>";
 module.exports = {
@@ -307,7 +407,7 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":24}],12:[function(require,module,exports){
+},{"insert-css":21}],13:[function(require,module,exports){
 require("insert-css")(".clickable{cursor:pointer}.disable-select,.sidebar_graph .sidebar_graph_svg .label-anchor text{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.sidebar_graph{width:260px;height:260px;padding:20px;transition:all .5s ease;transform:translate3d(-300px,0,0)}.sidebar.is-open .sidebar_graph{transform:translate3d(0,0,0)}.sidebar_graph .sidebar_graph_svg{background:rgba(100,100,100,.5);width:100%;height:100%;border-radius:50%}.sidebar_graph .sidebar_graph_svg .node{cursor:pointer}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.root{fill:#ed1e79}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#ed1e79;stroke-width:2px}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#ed1e79;stroke:#fff;stroke-width:2px}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.root{fill:#00a300}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#00a300;stroke-width:2px}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#00a300;stroke:#fff;stroke-width:2px}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.root{fill:#0cc}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#0cc;stroke-width:2px}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#0cc;stroke:#fff;stroke-width:2px}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.root{fill:red}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:red;stroke-width:2px}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.conceito{fill:red;stroke:#fff;stroke-width:2px}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.root,.is-video-preso .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#00c;stroke-width:2px}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#00c;stroke:#fff;stroke-width:2px}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.sidebar_graph .sidebar_graph_svg .edge{stroke:rgba(255,255,255,.2);stroke-width:1}.sidebar_graph .sidebar_graph_svg .label-anchor text{cursor:default;font-size:12px;fill:#fff}");
 var __vue_template__ = "<div class=\"sidebar_graph\" v-with=\"id: id, title: db.nome, video: video, events: events\">\n		<div v-el=\"graph\" class=\"sidebar_graph_svg\"></div>\n	</div>";
 var _ = require('underscore')
@@ -589,19 +689,22 @@ var _ = require('underscore')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":24,"underscore":31}],13:[function(require,module,exports){
+},{"insert-css":21,"underscore":27}],14:[function(require,module,exports){
 require("insert-css")("#conteudo_info{overflow:hidden;position:relative;height:96%;padding-left:40px;padding-right:40px;transition:all .3s ease}#app.marco-fechado #conteudo_info{height:100%}.info-texto{letter-spacing:0}.image-list img{position:relative;float:left;margin-right:10px}.video-list img{position:relative;float:left;margin-right:10px;width:220px}.link{font-weight:900;width:100%;padding:8px;margin-bottom:10px;text-decoration:none}.mulher-bg{background-color:#ed1e79}.adolescente-bg{background-color:#00a300}.crianca-bg{background-color:#0cc}.preso-bg{background-color:red}.deficiente-bg{background-color:#00c}");
-var __vue_template__ = "<div class=\"border context-bg\"></div>\n  <div id=\"conteudo_info\">\n    <h2> \n      {{conteudo.title}} \n    </h2>\n    <div class=\"info-texto\">\n      {{{html_texto}}}\n    </div>\n    <h3 v-if=\"conteudo.imagens\"> IMAGENS </h3>\n    <div class=\"image-list\"></div>\n    <h3 v-if=\"conteudo.video_list\"> VÍDEOS </h3>\n    <div class=\"video-list\"></div>\n    <h3 v-if=\"conteudo.arquivos\"> LINKS </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.arquivos\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <h3 v-if=\"conteudo.discursoes\"> DISCUSSÃO </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.discursoes\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <div class=\"link {{conteudo.icon}}-bg\" v-if=\"conteudo.hipervideo\">\n      <a href=\"{{conteudo.hipervideo.link}}\" class=\"link {{conteudo.icon}}-bg\">\n        {{conteudo.hipervideo.nome | uppercase}}\n      </a>\n    </div>\n  </div>\n  <a class=\"back\" href=\"#/{{id}}\">voltar ao video</a>";
+var __vue_template__ = "<div>\n  <div class=\"border context-bg\"></div>\n  <div id=\"conteudo_info\">\n    <h2> \n      {{conteudo.title}} \n    </h2>\n    <div class=\"info-texto\">\n      {{{html_texto | marked}}}\n    </div>\n    <h3 v-if=\"conteudo.imagens\"> IMAGENS </h3>\n    <div class=\"image-list\"></div>\n    <h3 v-if=\"conteudo.video_list\"> VÍDEOS </h3>\n    <div class=\"video-list\"></div>\n    <h3 v-if=\"conteudo.arquivos\"> LINKS </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.arquivos\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <h3 v-if=\"conteudo.discursoes\"> DISCUSSÃO </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.discursoes\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <div class=\"link {{conteudo.icon}}-bg\" v-if=\"conteudo.hipervideo\">\n      <a href=\"{{conteudo.hipervideo.link}}\" class=\"link {{conteudo.icon}}-bg\">\n        {{conteudo.hipervideo.nome | uppercase}}\n      </a>\n    </div>\n  </div>\n  <a class=\"back\" href=\"#/{{id}}\">voltar ao video</a>\n  </div>";
 var Vue = require('vue')
   var $$$ = require('jquery')
   var perfectScrollbar = require('perfect-scrollbar')
   var slick = require('slick-carousel')
-  var markdown = require('markdown').markdown
+  var marked = require('marked')
 
   module.exports = {
+
+    replace: true,
+
     data: function(){
       return {
-        html_texto: null,
+        html_texto: '',
         videoIndex: 0,
         imageIndex: 0
       }
@@ -626,7 +729,7 @@ var Vue = require('vue')
           suppressScrollX: true
         });
 
-        this.html_texto = markdown.toHTML(this.$parent.conteudo.texto);
+        this.html_texto = this.$parent.conteudo.texto;
 
         if (this.$parent.conteudo.imagens) {
           for (var i = this.$parent.conteudo.imagens.length - 1; i >= 0; i--) {
@@ -669,12 +772,16 @@ var Vue = require('vue')
         this.imageIndex = 0;
         this.videoIndex = 0;
       })
+    },
+
+    filters: {
+      'marked': marked
     }
 
   }
 module.exports.template = __vue_template__;
 
-},{"insert-css":24,"jquery":25,"markdown":27,"perfect-scrollbar":29,"slick-carousel":30,"vue":91}],14:[function(require,module,exports){
+},{"insert-css":21,"jquery":22,"marked":24,"perfect-scrollbar":25,"slick-carousel":26,"vue":87}],15:[function(require,module,exports){
 require("insert-css")("#capitulos{background-color:#323232;color:#fff;height:30px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}#video-controls.hover #capitulos{height:0}.capitulo{transition:all .2s ease 0s;height:30px;position:absolute}#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}.capitulo:hover{color:#000;background-color:#c8c8c8}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:100%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:8px 15px;font-weight:700;font-size:75%;transition:all .5s ease 0s}");
 var __vue_template__ = "<div v-with=\"db: db\" id=\"capitulos\">\n		<div class=\"capitulo\" v-repeat=\"db.capitulos\" style=\"width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%\" v-on=\"click: seekCap(posicaoCap[$index]) \">\n			<hr>\n			<p>{{$index + 1}}.{{db.capitulos[$index].nome | uppercase}}</p>\n		</div>\n	</div>";
 var $$$ = require('jquery')
@@ -718,7 +825,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":24,"jquery":25}],15:[function(require,module,exports){
+},{"insert-css":21,"jquery":22}],16:[function(require,module,exports){
 require("insert-css")(".rangeslider{position:fixed;border-radius:0;top:30px;background:rgba(0,0,0,.8);transition:all .5s ease 0s}.rangeslider .rangeslider__fill{border-radius:0}.rangeslider__fill{border-radius:0;transition:all .5s ease 0s}.rangeslider__handle{width:25px;height:25px;top:0;margin-left:-9px;transition:all .5s ease 0s;z-index:11}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0}.rangeslider__handle:after{height:15px;width:15px;background-color:rgba(50,50,50,.8)}.rangeslider__handle:hover:after{background-color:rgba(100,100,100,.8)}#tp-cr{position:absolute;margin:7px;opacity:1;top:0;left:5px;color:#000;font-weight:700;font-size:75%;z-index:10;transition:all .5s ease 0s}#video-controls.hover #tp-cr{opacity:0;font-size:0}#tp-cr-min,#tp-cr-sec{position:relative;float:left}#tp-tt{position:absolute;margin:7px;opacity:1;top:0;right:5px;color:#fff;font-weight:700;font-size:75%;z-index:10;transition:all .5s ease 0s}#video-controls.hover #tp-tt{opacity:0;font-size:0}#tp-tt-min,#tp-tt-sec{position:relative;float:right}");
 var __vue_template__ = "<div v-with=\"db: db\" class=\"rangeslider clickable\" id=\"rangeslider-{{db.id}}\">\n		<div id=\"tp-cr\" class=\"disable-select\">\n			<div id=\"tp-cr-min\">00</div>\n			<div style=\"position: relative; float: left\">:</div>\n			<div id=\"tp-cr-sec\">00</div>\n		</div>\n		<div id=\"tp-tt\" class=\"disable-select\">\n			<div id=\"tp-tt-sec\">00</div>\n			<div style=\"position: relative; float: right\">:</div>\n			<div id=\"tp-tt-min\">00</div>\n		</div>\n		<div class=\"rangeslider__fill context-bg\" style=\"width: 0px\"></div>\n		<div class=\"rangeslider__handle\" style=\"left: 0px\"></div>\n	</div>";
 var $$$ = require('jquery')
@@ -772,7 +879,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":24,"jquery":25}],16:[function(require,module,exports){
+},{"insert-css":21,"jquery":22}],17:[function(require,module,exports){
 (function(){
 
 	var _ = require('underscore')
@@ -865,7 +972,7 @@ module.exports.template = __vue_template__;
 
 })()
 
-},{"./app.vue":1,"director":19,"underscore":31,"vue":91}],17:[function(require,module,exports){
+},{"./app.vue":1,"director":20,"underscore":27,"vue":87}],18:[function(require,module,exports){
 require("insert-css")("body{font-family:fonte-normal,sans-serif;letter-spacing:-1px}header{position:absolute;height:100%;background-image:url(http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png);background-size:100% auto;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;z-index:1;transition:all .5s}header h1{margin:.5%;display:none}header.fechado{height:5%;font-size:50%;overflow:hidden;padding:0;text-align:center;background:#141414;transition:all .5s}header.fechado h1{display:block}header.fechado p{opacity:0}header.fechado a{opacity:0!important}header.fechado:hover{font-size:55%}header.fechado.ativo{top:-5%;transition:all .5s}header.fechado .conteudo{padding:0}header.fechado #headHandle{z-index:2;cursor:pointer}header .conteudo{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:20% 2% 2% 50%;transition:all .5s}.areaTematica{text-align:center;padding:0 3%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;right:-40%;width:40%;position:fixed;height:100%;background-color:rgba(15,15,15,.8);z-index:1;transition:all .5s}.areaTematica h2{margin-top:10%}.col-1-5{width:20%;text-decoration:none;position:absolute;height:100%;transition:all .5s}.linha{height:100%;position:fixed;right:40%;width:.5%;z-index:1;bottom:-100%;opacity:.6;transition:all .1s}.botao{cursor:pointer;display:inline-block;margin:10px;padding:10px;width:26%;background:#ccc;color:#000;opacity:.6;transition:all .3s;text-align:center}.botao:hover{opacity:1}.botao.cruz{border-radius:16px;height:20px;padding:5px;position:absolute;right:2%;top:2%;width:20px}.fotoFundo{position:absolute}.BW{transition:all .5s ease 0s}#headHandle{z-index:-15;position:absolute;left:0;height:100%;width:100%}.nest{bottom:-35%;height:35%;opacity:.8;position:absolute;width:100%;z-index:2;padding:17%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;transition:all .5s ease 0s}.nest h2{text-align:center}.hipervideo{overflow:hidden;cursor:pointer;transition:all .5s ease 0s}.hipervideo:hover .BW{opacity:0}.hipervideo:hover .nest{bottom:0}.hipervideo.ativo{width:100%;cursor:default;z-index:2!important;left:0!important}.hipervideo.ativo .areaTematica{right:0}.hipervideo.ativo .nest{padding:0;opacity:0}.hipervideo.ativo .linha{transition:all .5s ease .3s;bottom:0}.hipervideo.ativo .fotoFundo{left:0!important}.hipervideo.ativo .BW{z-index:-1!important;opacity:0}");
 var __vue_template__ = "<div v-with=\"db: fulldb\">\n		<header class=\"\">\n			<div class=\"conteudo\">\n				<div id=\"headHandle\" v-on=\"click: abrir\"></div>\n				<h1>{{db.title | uppercase}}</h1>\n				<p style=\"letter-spacing: 0; text-align: center\">{{db.texto}}</p>\n				<a v-on=\"click: fechar\" class=\"botao\">O QUE É O HIPERVÍDEO?</a>\n				<a v-on=\"click: fechar\" class=\"botao\">ASSISTIR HIPERVÍDEOS</a>\n				<a v-on=\"click: fechar\" class=\"botao\">VER REDES</a>\n				<img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_PNH.png\" style=\"width: 20%; margin: 5% 10% 0\">\n				<img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png\" style=\"width: 50%\">\n			</div>\n		</header>\n		<div class=\"conteudo\" style=\"position: absolute; z-index: 0\">\n			<div class=\"grid\">\n				<div v-repeat=\"db.hipervideos\" class=\"hipervideo col-1-5 {{id}}\" style=\"left: {{posHip[$index]}}%; z-index: -{{$index}}\">\n					<div v-on=\"click: select(id)\" class=\"nest\" style=\"background-color: {{cor}}\">\n						<h2>SAÚDE D{{artigo | uppercase}} {{nome | uppercase}}</h2>\n					</div>\n					<div class=\"linha\" style=\"background-color: {{cor}}\"></div>\n					<div class=\"areaTematica\">\n						<h2>SAÚDE D{{artigo | uppercase}} {{nome | uppercase}}</h2>\n						<p style=\"letter-spacing: 0\">{{descricao}}</p>\n						<a href=\"#/{{id}}\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ASSISTIR</a>\n						<a v-on=\"click: deselect(id)\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">VOLTAR</a>\n					</div>\n					<img v-attr=\"src: '/img/RE_' + id + 'BW.png'\" class=\"fotoFundo BW\" style=\"left: -{{posHip[$index]}}%; z-index: 1\" v-on=\"click: select(id)\">\n					<img v-attr=\"src: '/img/RE_' + id + '.png'\" class=\"fotoFundo\" style=\"left: -{{posHip[$index]}}%\" v-on=\"click: select(id)\">\n				</div>\n			</div>\n		</div>\n	</div>";
 var $$$ = require('jquery')
@@ -912,9 +1019,9 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":24,"jquery":25}],18:[function(require,module,exports){
+},{"insert-css":21,"jquery":22}],19:[function(require,module,exports){
 require("insert-css")(".sidebar{width:22%}.sidebar_content{position:relative;height:100%;z-index:20}.sidebar_back{position:absolute;background-color:rgba(0,0,0,.5);width:300px;height:100%;top:0;left:0;transition:all .6s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.sidebar-right{position:absolute;right:0;top:57px;width:300px}.infopanel{position:absolute;background-color:rgba(0,0,0,.8);height:100%;top:0;left:0;z-index:10;transition:all .6s;transform:translate3d(127%,0,0)}.infopanel.is-open{transform:translate3d(300px,0,0)}.infopanel .border{position:absolute;height:100%;width:10px;top:0;left:0}.infopanel .back{position:absolute;top:10%;left:79%;color:#fff;font-size:24px}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}.debug .btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px;color:#000;font-size:10px}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}.sidebar_opener{position:relative;transition:all .6s ease .6s;overflow:hidden}.sidebar_opener.v-enter,.sidebar_opener.v-leave{transform:translate3d(-100px,0,0)}.sidebar_opener.v-leave{transition:all .3s ease 0}.sidebar_opener .sidebar_opener__inside{display:inline-block;color:#fff;padding:10px;height:28px;line-height:28px;transition:all .6s ease}.infopanel{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:5% 20% 3% 3%;width:79%}.is-cartela{height:auto!important}");
-var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: db.nome\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\"></in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<!-- <div class=\"debug\">\n			<a id=\"tres\" class=\"btn\" href=\"#/home\">home</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/mulher\">mulher</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/crianca\">crianca</a>\n			<br/>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPlay\">play</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPause\">pause</a>\n		</div> -->\n\n	</div>";
+var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: db.nome\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\">\n					<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"id: id, videoID: videoID,fields: fields\"></div>\n				</in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<!-- <div class=\"debug\">\n			<a id=\"tres\" class=\"btn\" href=\"#/home\">home</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/mulher\">mulher</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/crianca\">crianca</a>\n			<br/>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPlay\">play</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPause\">pause</a>\n		</div> -->\n\n	</div>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 	var _ = require('underscore')
@@ -1209,18 +1316,19 @@ var Vue = require('vue')
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
 			'in-sidebar-block-text': require('../components/sidebar-block-text.vue'),
 			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue'),
+			'in-sidebar-block-databars': require('../components/sidebar-block-databars.vue'),
 			'in-sidebar-info': require('../components/sidebar-info.vue'),
 			'in-creditos': require('../components/creditos.vue')
 		}
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/bg-video.vue":2,"../components/creditos.vue":3,"../components/event-block-map.vue":4,"../components/example.vue":5,"../components/marcos.vue":7,"../components/sidebar-block-profile.vue":8,"../components/sidebar-block-text.vue":9,"../components/sidebar-block.vue":10,"../components/sidebar-chapter.vue":11,"../components/sidebar-graph.vue":12,"../components/sidebar-info.vue":13,"../components/topbar-capitulos.vue":14,"../components/topbar-slider.vue":15,"insert-css":24,"jquery":25,"perfect-scrollbar":29,"underscore":31,"vue":91}],19:[function(require,module,exports){
+},{"../components/bg-video.vue":2,"../components/creditos.vue":3,"../components/event-block-map.vue":4,"../components/example.vue":5,"../components/marcos.vue":7,"../components/sidebar-block-databars.vue":8,"../components/sidebar-block-profile.vue":9,"../components/sidebar-block-text.vue":10,"../components/sidebar-block.vue":11,"../components/sidebar-chapter.vue":12,"../components/sidebar-graph.vue":13,"../components/sidebar-info.vue":14,"../components/topbar-capitulos.vue":15,"../components/topbar-slider.vue":16,"insert-css":21,"jquery":22,"perfect-scrollbar":25,"underscore":27,"vue":87}],20:[function(require,module,exports){
 
 
 //
-// Generated on Fri Dec 27 2013 12:02:11 GMT-0500 (EST) by Nodejitsu, Inc (Using Codesurgeon).
-// Version 1.2.2
+// Generated on Tue Dec 16 2014 12:13:47 GMT+0100 (CET) by Charlie Robbins, Paolo Fragomeni & the Contributors (Using Codesurgeon).
+// Version 1.2.6
 //
 
 (function (exports) {
@@ -1228,28 +1336,10 @@ module.exports.template = __vue_template__;
 /*
  * browser.js: Browser specific functionality for director.
  *
- * (C) 2011, Nodejitsu Inc.
+ * (C) 2011, Charlie Robbins, Paolo Fragomeni, & the Contributors.
  * MIT LICENSE
  *
  */
-
-if (!Array.prototype.filter) {
-  Array.prototype.filter = function(filter, that) {
-    var other = [], v;
-    for (var i = 0, n = this.length; i < n; i++) {
-      if (i in this && filter.call(that, v = this[i], i, this)) {
-        other.push(v);
-      }
-    }
-    return other;
-  };
-}
-
-if (!Array.isArray){
-  Array.isArray = function(obj) {
-    return Object.prototype.toString.call(obj) === '[object Array]';
-  };
-}
 
 var dloc = document.location;
 
@@ -1414,7 +1504,8 @@ var Router = exports.Router = function (routes) {
 };
 
 Router.prototype.init = function (r) {
-  var self = this;
+  var self = this
+    , routeTo;
   this.handler = function(onChangeEvent) {
     var newURL = onChangeEvent && onChangeEvent.newURL || window.location.hash;
     var url = self.history === true ? self.getPath() : newURL.replace(/.*#/, '');
@@ -1431,9 +1522,16 @@ Router.prototype.init = function (r) {
     }
   }
   else {
-    var routeTo = dlocHashEmpty() && r ? r : !dlocHashEmpty() ? dloc.hash.replace(/^#/, '') : null;
-    if (routeTo) {
-      window.history.replaceState({}, document.title, routeTo);
+    if (this.convert_hash_in_init) {
+      // Use hash as route
+      routeTo = dlocHashEmpty() && r ? r : !dlocHashEmpty() ? dloc.hash.replace(/^#/, '') : null;
+      if (routeTo) {
+        window.history.replaceState({}, document.title, routeTo);
+      }
+    }
+    else {
+      // Use canonical url
+      routeTo = this.getPath();
     }
 
     // Router has been initialized, but due to the chrome bug it will not
@@ -1569,7 +1667,7 @@ function paramifyString(str, params, mod) {
       }
     }
   }
-  return mod === str ? "([._a-zA-Z0-9-]+)" : mod;
+  return mod === str ? "([._a-zA-Z0-9-%()]+)" : mod;
 }
 
 function regifyString(str, params) {
@@ -1615,6 +1713,8 @@ function terminator(routes, delimiter, start, stop) {
   return routes;
 }
 
+var QUERY_SEPARATOR = /\?.*/;
+
 Router.prototype.configure = function(options) {
   options = options || {};
   for (var i = 0; i < this.methods.length; i++) {
@@ -1628,6 +1728,7 @@ Router.prototype.configure = function(options) {
   this.resource = options.resource;
   this.history = options.html5history && this.historySupport || false;
   this.run_in_init = this.history === true && options.run_handler_in_init !== false;
+  this.convert_hash_in_init = this.history === true && options.convert_hash_in_init !== false;
   this.every = {
     after: options.after || null,
     before: options.before || null,
@@ -1644,6 +1745,7 @@ Router.prototype.param = function(token, matcher) {
   this.params[token] = function(str) {
     return str.replace(compiled, matcher.source || matcher);
   };
+  return this;
 };
 
 Router.prototype.on = Router.prototype.route = function(method, path, route) {
@@ -1671,8 +1773,20 @@ Router.prototype.on = Router.prototype.route = function(method, path, route) {
   this.insert(method, this.scope.concat(path), route);
 };
 
+Router.prototype.path = function(path, routesFn) {
+  var self = this, length = this.scope.length;
+  if (path.source) {
+    path = path.source.replace(/\\\//ig, "/");
+  }
+  path = path.split(new RegExp(this.delimiter));
+  path = terminator(path, this.delimiter);
+  this.scope = this.scope.concat(path);
+  routesFn.call(this, this);
+  this.scope.splice(length, path.length);
+};
+
 Router.prototype.dispatch = function(method, path, callback) {
-  var self = this, fns = this.traverse(method, path, this.routes, ""), invoked = this._invoked, after;
+  var self = this, fns = this.traverse(method, path.replace(QUERY_SEPARATOR, ""), this.routes, ""), invoked = this._invoked, after;
   this._invoked = true;
   if (!fns || fns.length === 0) {
     this.last = [];
@@ -1713,7 +1827,7 @@ Router.prototype.invoke = function(fns, thisArg, callback) {
       if (Array.isArray(fn)) {
         return _asyncEverySeries(fn, apply, next);
       } else if (typeof fn == "function") {
-        fn.apply(thisArg, fns.captures.concat(next));
+        fn.apply(thisArg, (fns.captures || []).concat(next));
       }
     };
     _asyncEverySeries(fns, apply, function() {
@@ -1935,694 +2049,7 @@ Router.prototype.mount = function(routes, path) {
 
 
 }(typeof exports === "object" ? exports : window));
-},{}],20:[function(require,module,exports){
-if (typeof Object.create === 'function') {
-  // implementation from standard node.js 'util' module
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    ctor.prototype = Object.create(superCtor.prototype, {
-      constructor: {
-        value: ctor,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-  };
-} else {
-  // old school shim for old browsers
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    var TempCtor = function () {}
-    TempCtor.prototype = superCtor.prototype
-    ctor.prototype = new TempCtor()
-    ctor.prototype.constructor = ctor
-  }
-}
-
 },{}],21:[function(require,module,exports){
-// shim for using process in browser
-
-var process = module.exports = {};
-
-process.nextTick = (function () {
-    var canSetImmediate = typeof window !== 'undefined'
-    && window.setImmediate;
-    var canPost = typeof window !== 'undefined'
-    && window.postMessage && window.addEventListener
-    ;
-
-    if (canSetImmediate) {
-        return function (f) { return window.setImmediate(f) };
-    }
-
-    if (canPost) {
-        var queue = [];
-        window.addEventListener('message', function (ev) {
-            var source = ev.source;
-            if ((source === window || source === null) && ev.data === 'process-tick') {
-                ev.stopPropagation();
-                if (queue.length > 0) {
-                    var fn = queue.shift();
-                    fn();
-                }
-            }
-        }, true);
-
-        return function nextTick(fn) {
-            queue.push(fn);
-            window.postMessage('process-tick', '*');
-        };
-    }
-
-    return function nextTick(fn) {
-        setTimeout(fn, 0);
-    };
-})();
-
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-}
-
-// TODO(shtylman)
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-
-},{}],22:[function(require,module,exports){
-module.exports = function isBuffer(arg) {
-  return arg && typeof arg === 'object'
-    && typeof arg.copy === 'function'
-    && typeof arg.fill === 'function'
-    && typeof arg.readUInt8 === 'function';
-}
-},{}],23:[function(require,module,exports){
-(function (process,global){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-var formatRegExp = /%[sdj%]/g;
-exports.format = function(f) {
-  if (!isString(f)) {
-    var objects = [];
-    for (var i = 0; i < arguments.length; i++) {
-      objects.push(inspect(arguments[i]));
-    }
-    return objects.join(' ');
-  }
-
-  var i = 1;
-  var args = arguments;
-  var len = args.length;
-  var str = String(f).replace(formatRegExp, function(x) {
-    if (x === '%%') return '%';
-    if (i >= len) return x;
-    switch (x) {
-      case '%s': return String(args[i++]);
-      case '%d': return Number(args[i++]);
-      case '%j':
-        try {
-          return JSON.stringify(args[i++]);
-        } catch (_) {
-          return '[Circular]';
-        }
-      default:
-        return x;
-    }
-  });
-  for (var x = args[i]; i < len; x = args[++i]) {
-    if (isNull(x) || !isObject(x)) {
-      str += ' ' + x;
-    } else {
-      str += ' ' + inspect(x);
-    }
-  }
-  return str;
-};
-
-
-// Mark that a method should not be used.
-// Returns a modified function which warns once by default.
-// If --no-deprecation is set, then it is a no-op.
-exports.deprecate = function(fn, msg) {
-  // Allow for deprecating things in the process of starting up.
-  if (isUndefined(global.process)) {
-    return function() {
-      return exports.deprecate(fn, msg).apply(this, arguments);
-    };
-  }
-
-  if (process.noDeprecation === true) {
-    return fn;
-  }
-
-  var warned = false;
-  function deprecated() {
-    if (!warned) {
-      if (process.throwDeprecation) {
-        throw new Error(msg);
-      } else if (process.traceDeprecation) {
-        console.trace(msg);
-      } else {
-        console.error(msg);
-      }
-      warned = true;
-    }
-    return fn.apply(this, arguments);
-  }
-
-  return deprecated;
-};
-
-
-var debugs = {};
-var debugEnviron;
-exports.debuglog = function(set) {
-  if (isUndefined(debugEnviron))
-    debugEnviron = process.env.NODE_DEBUG || '';
-  set = set.toUpperCase();
-  if (!debugs[set]) {
-    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
-      var pid = process.pid;
-      debugs[set] = function() {
-        var msg = exports.format.apply(exports, arguments);
-        console.error('%s %d: %s', set, pid, msg);
-      };
-    } else {
-      debugs[set] = function() {};
-    }
-  }
-  return debugs[set];
-};
-
-
-/**
- * Echos the value of a value. Trys to print the value out
- * in the best way possible given the different types.
- *
- * @param {Object} obj The object to print out.
- * @param {Object} opts Optional options object that alters the output.
- */
-/* legacy: obj, showHidden, depth, colors*/
-function inspect(obj, opts) {
-  // default options
-  var ctx = {
-    seen: [],
-    stylize: stylizeNoColor
-  };
-  // legacy...
-  if (arguments.length >= 3) ctx.depth = arguments[2];
-  if (arguments.length >= 4) ctx.colors = arguments[3];
-  if (isBoolean(opts)) {
-    // legacy...
-    ctx.showHidden = opts;
-  } else if (opts) {
-    // got an "options" object
-    exports._extend(ctx, opts);
-  }
-  // set default options
-  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
-  if (isUndefined(ctx.depth)) ctx.depth = 2;
-  if (isUndefined(ctx.colors)) ctx.colors = false;
-  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
-  if (ctx.colors) ctx.stylize = stylizeWithColor;
-  return formatValue(ctx, obj, ctx.depth);
-}
-exports.inspect = inspect;
-
-
-// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
-inspect.colors = {
-  'bold' : [1, 22],
-  'italic' : [3, 23],
-  'underline' : [4, 24],
-  'inverse' : [7, 27],
-  'white' : [37, 39],
-  'grey' : [90, 39],
-  'black' : [30, 39],
-  'blue' : [34, 39],
-  'cyan' : [36, 39],
-  'green' : [32, 39],
-  'magenta' : [35, 39],
-  'red' : [31, 39],
-  'yellow' : [33, 39]
-};
-
-// Don't use 'blue' not visible on cmd.exe
-inspect.styles = {
-  'special': 'cyan',
-  'number': 'yellow',
-  'boolean': 'yellow',
-  'undefined': 'grey',
-  'null': 'bold',
-  'string': 'green',
-  'date': 'magenta',
-  // "name": intentionally not styling
-  'regexp': 'red'
-};
-
-
-function stylizeWithColor(str, styleType) {
-  var style = inspect.styles[styleType];
-
-  if (style) {
-    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
-           '\u001b[' + inspect.colors[style][1] + 'm';
-  } else {
-    return str;
-  }
-}
-
-
-function stylizeNoColor(str, styleType) {
-  return str;
-}
-
-
-function arrayToHash(array) {
-  var hash = {};
-
-  array.forEach(function(val, idx) {
-    hash[val] = true;
-  });
-
-  return hash;
-}
-
-
-function formatValue(ctx, value, recurseTimes) {
-  // Provide a hook for user-specified inspect functions.
-  // Check that value is an object with an inspect function on it
-  if (ctx.customInspect &&
-      value &&
-      isFunction(value.inspect) &&
-      // Filter out the util module, it's inspect function is special
-      value.inspect !== exports.inspect &&
-      // Also filter out any prototype objects using the circular check.
-      !(value.constructor && value.constructor.prototype === value)) {
-    var ret = value.inspect(recurseTimes, ctx);
-    if (!isString(ret)) {
-      ret = formatValue(ctx, ret, recurseTimes);
-    }
-    return ret;
-  }
-
-  // Primitive types cannot have properties
-  var primitive = formatPrimitive(ctx, value);
-  if (primitive) {
-    return primitive;
-  }
-
-  // Look up the keys of the object.
-  var keys = Object.keys(value);
-  var visibleKeys = arrayToHash(keys);
-
-  if (ctx.showHidden) {
-    keys = Object.getOwnPropertyNames(value);
-  }
-
-  // IE doesn't make error fields non-enumerable
-  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
-  if (isError(value)
-      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
-    return formatError(value);
-  }
-
-  // Some type of object without properties can be shortcutted.
-  if (keys.length === 0) {
-    if (isFunction(value)) {
-      var name = value.name ? ': ' + value.name : '';
-      return ctx.stylize('[Function' + name + ']', 'special');
-    }
-    if (isRegExp(value)) {
-      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
-    }
-    if (isDate(value)) {
-      return ctx.stylize(Date.prototype.toString.call(value), 'date');
-    }
-    if (isError(value)) {
-      return formatError(value);
-    }
-  }
-
-  var base = '', array = false, braces = ['{', '}'];
-
-  // Make Array say that they are Array
-  if (isArray(value)) {
-    array = true;
-    braces = ['[', ']'];
-  }
-
-  // Make functions say that they are functions
-  if (isFunction(value)) {
-    var n = value.name ? ': ' + value.name : '';
-    base = ' [Function' + n + ']';
-  }
-
-  // Make RegExps say that they are RegExps
-  if (isRegExp(value)) {
-    base = ' ' + RegExp.prototype.toString.call(value);
-  }
-
-  // Make dates with properties first say the date
-  if (isDate(value)) {
-    base = ' ' + Date.prototype.toUTCString.call(value);
-  }
-
-  // Make error with message first say the error
-  if (isError(value)) {
-    base = ' ' + formatError(value);
-  }
-
-  if (keys.length === 0 && (!array || value.length == 0)) {
-    return braces[0] + base + braces[1];
-  }
-
-  if (recurseTimes < 0) {
-    if (isRegExp(value)) {
-      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
-    } else {
-      return ctx.stylize('[Object]', 'special');
-    }
-  }
-
-  ctx.seen.push(value);
-
-  var output;
-  if (array) {
-    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
-  } else {
-    output = keys.map(function(key) {
-      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
-    });
-  }
-
-  ctx.seen.pop();
-
-  return reduceToSingleString(output, base, braces);
-}
-
-
-function formatPrimitive(ctx, value) {
-  if (isUndefined(value))
-    return ctx.stylize('undefined', 'undefined');
-  if (isString(value)) {
-    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
-                                             .replace(/'/g, "\\'")
-                                             .replace(/\\"/g, '"') + '\'';
-    return ctx.stylize(simple, 'string');
-  }
-  if (isNumber(value))
-    return ctx.stylize('' + value, 'number');
-  if (isBoolean(value))
-    return ctx.stylize('' + value, 'boolean');
-  // For some reason typeof null is "object", so special case here.
-  if (isNull(value))
-    return ctx.stylize('null', 'null');
-}
-
-
-function formatError(value) {
-  return '[' + Error.prototype.toString.call(value) + ']';
-}
-
-
-function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
-  var output = [];
-  for (var i = 0, l = value.length; i < l; ++i) {
-    if (hasOwnProperty(value, String(i))) {
-      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
-          String(i), true));
-    } else {
-      output.push('');
-    }
-  }
-  keys.forEach(function(key) {
-    if (!key.match(/^\d+$/)) {
-      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
-          key, true));
-    }
-  });
-  return output;
-}
-
-
-function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
-  var name, str, desc;
-  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
-  if (desc.get) {
-    if (desc.set) {
-      str = ctx.stylize('[Getter/Setter]', 'special');
-    } else {
-      str = ctx.stylize('[Getter]', 'special');
-    }
-  } else {
-    if (desc.set) {
-      str = ctx.stylize('[Setter]', 'special');
-    }
-  }
-  if (!hasOwnProperty(visibleKeys, key)) {
-    name = '[' + key + ']';
-  }
-  if (!str) {
-    if (ctx.seen.indexOf(desc.value) < 0) {
-      if (isNull(recurseTimes)) {
-        str = formatValue(ctx, desc.value, null);
-      } else {
-        str = formatValue(ctx, desc.value, recurseTimes - 1);
-      }
-      if (str.indexOf('\n') > -1) {
-        if (array) {
-          str = str.split('\n').map(function(line) {
-            return '  ' + line;
-          }).join('\n').substr(2);
-        } else {
-          str = '\n' + str.split('\n').map(function(line) {
-            return '   ' + line;
-          }).join('\n');
-        }
-      }
-    } else {
-      str = ctx.stylize('[Circular]', 'special');
-    }
-  }
-  if (isUndefined(name)) {
-    if (array && key.match(/^\d+$/)) {
-      return str;
-    }
-    name = JSON.stringify('' + key);
-    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
-      name = name.substr(1, name.length - 2);
-      name = ctx.stylize(name, 'name');
-    } else {
-      name = name.replace(/'/g, "\\'")
-                 .replace(/\\"/g, '"')
-                 .replace(/(^"|"$)/g, "'");
-      name = ctx.stylize(name, 'string');
-    }
-  }
-
-  return name + ': ' + str;
-}
-
-
-function reduceToSingleString(output, base, braces) {
-  var numLinesEst = 0;
-  var length = output.reduce(function(prev, cur) {
-    numLinesEst++;
-    if (cur.indexOf('\n') >= 0) numLinesEst++;
-    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
-  }, 0);
-
-  if (length > 60) {
-    return braces[0] +
-           (base === '' ? '' : base + '\n ') +
-           ' ' +
-           output.join(',\n  ') +
-           ' ' +
-           braces[1];
-  }
-
-  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
-}
-
-
-// NOTE: These type checking functions intentionally don't use `instanceof`
-// because it is fragile and can be easily faked with `Object.create()`.
-function isArray(ar) {
-  return Array.isArray(ar);
-}
-exports.isArray = isArray;
-
-function isBoolean(arg) {
-  return typeof arg === 'boolean';
-}
-exports.isBoolean = isBoolean;
-
-function isNull(arg) {
-  return arg === null;
-}
-exports.isNull = isNull;
-
-function isNullOrUndefined(arg) {
-  return arg == null;
-}
-exports.isNullOrUndefined = isNullOrUndefined;
-
-function isNumber(arg) {
-  return typeof arg === 'number';
-}
-exports.isNumber = isNumber;
-
-function isString(arg) {
-  return typeof arg === 'string';
-}
-exports.isString = isString;
-
-function isSymbol(arg) {
-  return typeof arg === 'symbol';
-}
-exports.isSymbol = isSymbol;
-
-function isUndefined(arg) {
-  return arg === void 0;
-}
-exports.isUndefined = isUndefined;
-
-function isRegExp(re) {
-  return isObject(re) && objectToString(re) === '[object RegExp]';
-}
-exports.isRegExp = isRegExp;
-
-function isObject(arg) {
-  return typeof arg === 'object' && arg !== null;
-}
-exports.isObject = isObject;
-
-function isDate(d) {
-  return isObject(d) && objectToString(d) === '[object Date]';
-}
-exports.isDate = isDate;
-
-function isError(e) {
-  return isObject(e) &&
-      (objectToString(e) === '[object Error]' || e instanceof Error);
-}
-exports.isError = isError;
-
-function isFunction(arg) {
-  return typeof arg === 'function';
-}
-exports.isFunction = isFunction;
-
-function isPrimitive(arg) {
-  return arg === null ||
-         typeof arg === 'boolean' ||
-         typeof arg === 'number' ||
-         typeof arg === 'string' ||
-         typeof arg === 'symbol' ||  // ES6 symbol
-         typeof arg === 'undefined';
-}
-exports.isPrimitive = isPrimitive;
-
-exports.isBuffer = require('./support/isBuffer');
-
-function objectToString(o) {
-  return Object.prototype.toString.call(o);
-}
-
-
-function pad(n) {
-  return n < 10 ? '0' + n.toString(10) : n.toString(10);
-}
-
-
-var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-              'Oct', 'Nov', 'Dec'];
-
-// 26 Feb 16:19:34
-function timestamp() {
-  var d = new Date();
-  var time = [pad(d.getHours()),
-              pad(d.getMinutes()),
-              pad(d.getSeconds())].join(':');
-  return [d.getDate(), months[d.getMonth()], time].join(' ');
-}
-
-
-// log is just a thin wrapper to console.log that prepends a timestamp
-exports.log = function() {
-  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
-};
-
-
-/**
- * Inherit the prototype methods from one constructor into another.
- *
- * The Function.prototype.inherits from lang.js rewritten as a standalone
- * function (not on Function.prototype). NOTE: If this file is to be loaded
- * during bootstrapping this function needs to be rewritten using some native
- * functions as prototype setup using normal JavaScript does not work as
- * expected during bootstrapping (see mirror.js in r114903).
- *
- * @param {function} ctor Constructor function which needs to inherit the
- *     prototype.
- * @param {function} superCtor Constructor function to inherit prototype from.
- */
-exports.inherits = require('inherits');
-
-exports._extend = function(origin, add) {
-  // Don't do anything if add isn't an object
-  if (!add || !isObject(add)) return origin;
-
-  var keys = Object.keys(add);
-  var i = keys.length;
-  while (i--) {
-    origin[keys[i]] = add[keys[i]];
-  }
-  return origin;
-};
-
-function hasOwnProperty(obj, prop) {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
-}
-
-}).call(this,require("oMfpAn"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":22,"inherits":20,"oMfpAn":21}],24:[function(require,module,exports){
 var inserted = {};
 
 module.exports = function (css, options) {
@@ -2646,9 +2073,9 @@ module.exports = function (css, options) {
     }
 };
 
-},{}],25:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.1.1
+ * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -2658,19 +2085,19 @@ module.exports = function (css, options) {
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-05-01T17:11Z
+ * Date: 2014-12-18T15:11Z
  */
 
 (function( global, factory ) {
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
-		// For CommonJS and CommonJS-like environments where a proper window is present,
-		// execute the factory and get jQuery
-		// For environments that do not inherently posses a window with a document
-		// (such as Node.js), expose a jQuery-making factory as module.exports
-		// This accentuates the need for the creation of a real window
+		// For CommonJS and CommonJS-like environments where a proper `window`
+		// is present, execute the factory and get jQuery.
+		// For environments that do not have a `window` with a `document`
+		// (such as Node.js), expose a factory as module.exports.
+		// This accentuates the need for the creation of a real `window`.
 		// e.g. var jQuery = require("jquery")(window);
-		// See ticket #14549 for more info
+		// See ticket #14549 for more info.
 		module.exports = global.document ?
 			factory( global, true ) :
 			function( w ) {
@@ -2686,10 +2113,10 @@ module.exports = function (css, options) {
 // Pass this if window is not defined yet
 }(typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
 
-// Can't do this because several apps including ASP.NET trace
+// Support: Firefox 18+
+// Can't be in strict mode, several libs including ASP.NET trace
 // the stack via arguments.caller.callee and Firefox dies if
 // you try to trace through "use strict" call chains. (#13335)
-// Support: Firefox 18+
 //
 
 var arr = [];
@@ -2716,7 +2143,7 @@ var
 	// Use the correct document accordingly with window argument (sandbox)
 	document = window.document,
 
-	version = "2.1.1",
+	version = "2.1.3",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -2834,7 +2261,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 	if ( typeof target === "boolean" ) {
 		deep = target;
 
-		// skip the boolean and the target
+		// Skip the boolean and the target
 		target = arguments[ i ] || {};
 		i++;
 	}
@@ -2844,7 +2271,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 		target = {};
 	}
 
-	// extend jQuery itself if only one argument is passed
+	// Extend jQuery itself if only one argument is passed
 	if ( i === length ) {
 		target = this;
 		i--;
@@ -2901,9 +2328,6 @@ jQuery.extend({
 
 	noop: function() {},
 
-	// See test/unit/core.js for details concerning isFunction.
-	// Since version 1.3, DOM methods and functions like alert
-	// aren't supported. They return false on IE (#2968).
 	isFunction: function( obj ) {
 		return jQuery.type(obj) === "function";
 	},
@@ -2918,7 +2342,8 @@ jQuery.extend({
 		// parseFloat NaNs numeric-cast false positives (null|true|false|"")
 		// ...but misinterprets leading-number strings, particularly hex literals ("0x...")
 		// subtraction forces infinities to NaN
-		return !jQuery.isArray( obj ) && obj - parseFloat( obj ) >= 0;
+		// adding 1 corrects loss of precision from parseFloat (#15100)
+		return !jQuery.isArray( obj ) && (obj - parseFloat( obj ) + 1) >= 0;
 	},
 
 	isPlainObject: function( obj ) {
@@ -2952,7 +2377,7 @@ jQuery.extend({
 		if ( obj == null ) {
 			return obj + "";
 		}
-		// Support: Android < 4.0, iOS < 6 (functionish RegExp)
+		// Support: Android<4.0, iOS<6 (functionish RegExp)
 		return typeof obj === "object" || typeof obj === "function" ?
 			class2type[ toString.call(obj) ] || "object" :
 			typeof obj;
@@ -2982,6 +2407,7 @@ jQuery.extend({
 	},
 
 	// Convert dashed to camelCase; used by the css and data modules
+	// Support: IE9-11+
 	// Microsoft forgot to hump their vendor prefix (#9572)
 	camelCase: function( string ) {
 		return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
@@ -3197,14 +2623,14 @@ function isArraylike( obj ) {
 }
 var Sizzle =
 /*!
- * Sizzle CSS Selector Engine v1.10.19
+ * Sizzle CSS Selector Engine v2.2.0-pre
  * http://sizzlejs.com/
  *
- * Copyright 2013 jQuery Foundation, Inc. and other contributors
+ * Copyright 2008, 2014 jQuery Foundation, Inc. and other contributors
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-04-18
+ * Date: 2014-12-16
  */
 (function( window ) {
 
@@ -3231,7 +2657,7 @@ var i,
 	contains,
 
 	// Instance-specific data
-	expando = "sizzle" + -(new Date()),
+	expando = "sizzle" + 1 * new Date(),
 	preferredDoc = window.document,
 	dirruns = 0,
 	done = 0,
@@ -3246,7 +2672,6 @@ var i,
 	},
 
 	// General-purpose constants
-	strundefined = typeof undefined,
 	MAX_NEGATIVE = 1 << 31,
 
 	// Instance methods
@@ -3256,12 +2681,13 @@ var i,
 	push_native = arr.push,
 	push = arr.push,
 	slice = arr.slice,
-	// Use a stripped-down indexOf if we can't use a native one
-	indexOf = arr.indexOf || function( elem ) {
+	// Use a stripped-down indexOf as it's faster than native
+	// http://jsperf.com/thor-indexof-vs-for/5
+	indexOf = function( list, elem ) {
 		var i = 0,
-			len = this.length;
+			len = list.length;
 		for ( ; i < len; i++ ) {
-			if ( this[i] === elem ) {
+			if ( list[i] === elem ) {
 				return i;
 			}
 		}
@@ -3301,6 +2727,7 @@ var i,
 		")\\)|)",
 
 	// Leading and non-escaped trailing whitespace, capturing some non-whitespace characters preceding the latter
+	rwhitespace = new RegExp( whitespace + "+", "g" ),
 	rtrim = new RegExp( "^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$", "g" ),
 
 	rcomma = new RegExp( "^" + whitespace + "*," + whitespace + "*" ),
@@ -3352,6 +2779,14 @@ var i,
 				String.fromCharCode( high + 0x10000 ) :
 				// Supplemental Plane codepoint (surrogate pair)
 				String.fromCharCode( high >> 10 | 0xD800, high & 0x3FF | 0xDC00 );
+	},
+
+	// Used for iframes
+	// See setDocument()
+	// Removing the function wrapper causes a "Permission Denied"
+	// error in IE
+	unloadHandler = function() {
+		setDocument();
 	};
 
 // Optimize for push.apply( _, NodeList )
@@ -3394,19 +2829,18 @@ function Sizzle( selector, context, results, seed ) {
 
 	context = context || document;
 	results = results || [];
+	nodeType = context.nodeType;
 
-	if ( !selector || typeof selector !== "string" ) {
+	if ( typeof selector !== "string" || !selector ||
+		nodeType !== 1 && nodeType !== 9 && nodeType !== 11 ) {
+
 		return results;
 	}
 
-	if ( (nodeType = context.nodeType) !== 1 && nodeType !== 9 ) {
-		return [];
-	}
+	if ( !seed && documentIsHTML ) {
 
-	if ( documentIsHTML && !seed ) {
-
-		// Shortcuts
-		if ( (match = rquickExpr.exec( selector )) ) {
+		// Try to shortcut find operations when possible (e.g., not under DocumentFragment)
+		if ( nodeType !== 11 && (match = rquickExpr.exec( selector )) ) {
 			// Speed-up: Sizzle("#ID")
 			if ( (m = match[1]) ) {
 				if ( nodeType === 9 ) {
@@ -3438,7 +2872,7 @@ function Sizzle( selector, context, results, seed ) {
 				return results;
 
 			// Speed-up: Sizzle(".CLASS")
-			} else if ( (m = match[3]) && support.getElementsByClassName && context.getElementsByClassName ) {
+			} else if ( (m = match[3]) && support.getElementsByClassName ) {
 				push.apply( results, context.getElementsByClassName( m ) );
 				return results;
 			}
@@ -3448,7 +2882,7 @@ function Sizzle( selector, context, results, seed ) {
 		if ( support.qsa && (!rbuggyQSA || !rbuggyQSA.test( selector )) ) {
 			nid = old = expando;
 			newContext = context;
-			newSelector = nodeType === 9 && selector;
+			newSelector = nodeType !== 1 && selector;
 
 			// qSA works strangely on Element-rooted queries
 			// We can work around this by specifying an extra ID on the root
@@ -3635,7 +3069,7 @@ function createPositionalPseudo( fn ) {
  * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
  */
 function testContext( context ) {
-	return context && typeof context.getElementsByTagName !== strundefined && context;
+	return context && typeof context.getElementsByTagName !== "undefined" && context;
 }
 
 // Expose support vars for convenience
@@ -3659,9 +3093,8 @@ isXML = Sizzle.isXML = function( elem ) {
  * @returns {Object} Returns the current document
  */
 setDocument = Sizzle.setDocument = function( node ) {
-	var hasCompare,
-		doc = node ? node.ownerDocument || node : preferredDoc,
-		parent = doc.defaultView;
+	var hasCompare, parent,
+		doc = node ? node.ownerDocument || node : preferredDoc;
 
 	// If no document and documentElement is available, return
 	if ( doc === document || doc.nodeType !== 9 || !doc.documentElement ) {
@@ -3671,9 +3104,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// Set our document
 	document = doc;
 	docElem = doc.documentElement;
-
-	// Support tests
-	documentIsHTML = !isXML( doc );
+	parent = doc.defaultView;
 
 	// Support: IE>8
 	// If iframe document is assigned to "document" variable and if iframe has been reloaded,
@@ -3682,21 +3113,22 @@ setDocument = Sizzle.setDocument = function( node ) {
 	if ( parent && parent !== parent.top ) {
 		// IE11 does not have attachEvent, so all must suffer
 		if ( parent.addEventListener ) {
-			parent.addEventListener( "unload", function() {
-				setDocument();
-			}, false );
+			parent.addEventListener( "unload", unloadHandler, false );
 		} else if ( parent.attachEvent ) {
-			parent.attachEvent( "onunload", function() {
-				setDocument();
-			});
+			parent.attachEvent( "onunload", unloadHandler );
 		}
 	}
+
+	/* Support tests
+	---------------------------------------------------------------------- */
+	documentIsHTML = !isXML( doc );
 
 	/* Attributes
 	---------------------------------------------------------------------- */
 
 	// Support: IE<8
-	// Verify that getAttribute really returns attributes and not properties (excepting IE8 booleans)
+	// Verify that getAttribute really returns attributes and not properties
+	// (excepting IE8 booleans)
 	support.attributes = assert(function( div ) {
 		div.className = "i";
 		return !div.getAttribute("className");
@@ -3711,17 +3143,8 @@ setDocument = Sizzle.setDocument = function( node ) {
 		return !div.getElementsByTagName("*").length;
 	});
 
-	// Check if getElementsByClassName can be trusted
-	support.getElementsByClassName = rnative.test( doc.getElementsByClassName ) && assert(function( div ) {
-		div.innerHTML = "<div class='a'></div><div class='a i'></div>";
-
-		// Support: Safari<4
-		// Catch class over-caching
-		div.firstChild.className = "i";
-		// Support: Opera<10
-		// Catch gEBCN failure to find non-leading classes
-		return div.getElementsByClassName("i").length === 2;
-	});
+	// Support: IE<9
+	support.getElementsByClassName = rnative.test( doc.getElementsByClassName );
 
 	// Support: IE<10
 	// Check if getElementById returns elements by name
@@ -3735,7 +3158,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// ID find and filter
 	if ( support.getById ) {
 		Expr.find["ID"] = function( id, context ) {
-			if ( typeof context.getElementById !== strundefined && documentIsHTML ) {
+			if ( typeof context.getElementById !== "undefined" && documentIsHTML ) {
 				var m = context.getElementById( id );
 				// Check parentNode to catch when Blackberry 4.6 returns
 				// nodes that are no longer in the document #6963
@@ -3756,7 +3179,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		Expr.filter["ID"] =  function( id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
-				var node = typeof elem.getAttributeNode !== strundefined && elem.getAttributeNode("id");
+				var node = typeof elem.getAttributeNode !== "undefined" && elem.getAttributeNode("id");
 				return node && node.value === attrId;
 			};
 		};
@@ -3765,14 +3188,20 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// Tag
 	Expr.find["TAG"] = support.getElementsByTagName ?
 		function( tag, context ) {
-			if ( typeof context.getElementsByTagName !== strundefined ) {
+			if ( typeof context.getElementsByTagName !== "undefined" ) {
 				return context.getElementsByTagName( tag );
+
+			// DocumentFragment nodes don't have gEBTN
+			} else if ( support.qsa ) {
+				return context.querySelectorAll( tag );
 			}
 		} :
+
 		function( tag, context ) {
 			var elem,
 				tmp = [],
 				i = 0,
+				// By happy coincidence, a (broken) gEBTN appears on DocumentFragment nodes too
 				results = context.getElementsByTagName( tag );
 
 			// Filter out possible comments
@@ -3790,7 +3219,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 	// Class
 	Expr.find["CLASS"] = support.getElementsByClassName && function( className, context ) {
-		if ( typeof context.getElementsByClassName !== strundefined && documentIsHTML ) {
+		if ( documentIsHTML ) {
 			return context.getElementsByClassName( className );
 		}
 	};
@@ -3819,13 +3248,15 @@ setDocument = Sizzle.setDocument = function( node ) {
 			// setting a boolean content attribute,
 			// since its presence should be enough
 			// http://bugs.jquery.com/ticket/12359
-			div.innerHTML = "<select msallowclip=''><option selected=''></option></select>";
+			docElem.appendChild( div ).innerHTML = "<a id='" + expando + "'></a>" +
+				"<select id='" + expando + "-\f]' msallowcapture=''>" +
+				"<option selected=''></option></select>";
 
 			// Support: IE8, Opera 11-12.16
 			// Nothing should be selected when empty strings follow ^= or $= or *=
 			// The test attribute must be unknown in Opera but "safe" for WinRT
 			// http://msdn.microsoft.com/en-us/library/ie/hh465388.aspx#attribute_section
-			if ( div.querySelectorAll("[msallowclip^='']").length ) {
+			if ( div.querySelectorAll("[msallowcapture^='']").length ) {
 				rbuggyQSA.push( "[*^$]=" + whitespace + "*(?:''|\"\")" );
 			}
 
@@ -3835,11 +3266,23 @@ setDocument = Sizzle.setDocument = function( node ) {
 				rbuggyQSA.push( "\\[" + whitespace + "*(?:value|" + booleans + ")" );
 			}
 
+			// Support: Chrome<29, Android<4.2+, Safari<7.0+, iOS<7.0+, PhantomJS<1.9.7+
+			if ( !div.querySelectorAll( "[id~=" + expando + "-]" ).length ) {
+				rbuggyQSA.push("~=");
+			}
+
 			// Webkit/Opera - :checked should return selected option elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
 			// IE8 throws error here and will not see later tests
 			if ( !div.querySelectorAll(":checked").length ) {
 				rbuggyQSA.push(":checked");
+			}
+
+			// Support: Safari 8+, iOS 8+
+			// https://bugs.webkit.org/show_bug.cgi?id=136851
+			// In-page `selector#id sibing-combinator selector` fails
+			if ( !div.querySelectorAll( "a#" + expando + "+*" ).length ) {
+				rbuggyQSA.push(".#.+[+~]");
 			}
 		});
 
@@ -3957,7 +3400,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 			// Maintain original order
 			return sortInput ?
-				( indexOf.call( sortInput, a ) - indexOf.call( sortInput, b ) ) :
+				( indexOf( sortInput, a ) - indexOf( sortInput, b ) ) :
 				0;
 		}
 
@@ -3984,7 +3427,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 				aup ? -1 :
 				bup ? 1 :
 				sortInput ?
-				( indexOf.call( sortInput, a ) - indexOf.call( sortInput, b ) ) :
+				( indexOf( sortInput, a ) - indexOf( sortInput, b ) ) :
 				0;
 
 		// If the nodes are siblings, we can do a quick check
@@ -4047,7 +3490,7 @@ Sizzle.matchesSelector = function( elem, expr ) {
 					elem.document && elem.document.nodeType !== 11 ) {
 				return ret;
 			}
-		} catch(e) {}
+		} catch (e) {}
 	}
 
 	return Sizzle( expr, document, null, [ elem ] ).length > 0;
@@ -4266,7 +3709,7 @@ Expr = Sizzle.selectors = {
 			return pattern ||
 				(pattern = new RegExp( "(^|" + whitespace + ")" + className + "(" + whitespace + "|$)" )) &&
 				classCache( className, function( elem ) {
-					return pattern.test( typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== strundefined && elem.getAttribute("class") || "" );
+					return pattern.test( typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== "undefined" && elem.getAttribute("class") || "" );
 				});
 		},
 
@@ -4288,7 +3731,7 @@ Expr = Sizzle.selectors = {
 					operator === "^=" ? check && result.indexOf( check ) === 0 :
 					operator === "*=" ? check && result.indexOf( check ) > -1 :
 					operator === "$=" ? check && result.slice( -check.length ) === check :
-					operator === "~=" ? ( " " + result + " " ).indexOf( check ) > -1 :
+					operator === "~=" ? ( " " + result.replace( rwhitespace, " " ) + " " ).indexOf( check ) > -1 :
 					operator === "|=" ? result === check || result.slice( 0, check.length + 1 ) === check + "-" :
 					false;
 			};
@@ -4408,7 +3851,7 @@ Expr = Sizzle.selectors = {
 							matched = fn( seed, argument ),
 							i = matched.length;
 						while ( i-- ) {
-							idx = indexOf.call( seed, matched[i] );
+							idx = indexOf( seed, matched[i] );
 							seed[ idx ] = !( matches[ idx ] = matched[i] );
 						}
 					}) :
@@ -4447,6 +3890,8 @@ Expr = Sizzle.selectors = {
 				function( elem, context, xml ) {
 					input[0] = elem;
 					matcher( input, null, xml, results );
+					// Don't keep the element (issue #299)
+					input[0] = null;
 					return !results.pop();
 				};
 		}),
@@ -4458,6 +3903,7 @@ Expr = Sizzle.selectors = {
 		}),
 
 		"contains": markFunction(function( text ) {
+			text = text.replace( runescape, funescape );
 			return function( elem ) {
 				return ( elem.textContent || elem.innerText || getText( elem ) ).indexOf( text ) > -1;
 			};
@@ -4879,7 +4325,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 				i = matcherOut.length;
 				while ( i-- ) {
 					if ( (elem = matcherOut[i]) &&
-						(temp = postFinder ? indexOf.call( seed, elem ) : preMap[i]) > -1 ) {
+						(temp = postFinder ? indexOf( seed, elem ) : preMap[i]) > -1 ) {
 
 						seed[temp] = !(results[temp] = elem);
 					}
@@ -4914,13 +4360,16 @@ function matcherFromTokens( tokens ) {
 			return elem === checkContext;
 		}, implicitRelative, true ),
 		matchAnyContext = addCombinator( function( elem ) {
-			return indexOf.call( checkContext, elem ) > -1;
+			return indexOf( checkContext, elem ) > -1;
 		}, implicitRelative, true ),
 		matchers = [ function( elem, context, xml ) {
-			return ( !leadingRelative && ( xml || context !== outermostContext ) ) || (
+			var ret = ( !leadingRelative && ( xml || context !== outermostContext ) ) || (
 				(checkContext = context).nodeType ?
 					matchContext( elem, context, xml ) :
 					matchAnyContext( elem, context, xml ) );
+			// Avoid hanging onto element (issue #299)
+			checkContext = null;
+			return ret;
 		} ];
 
 	for ( ; i < len; i++ ) {
@@ -5170,7 +4619,7 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 // Sort stability
 support.sortStable = expando.split("").sort( sortOrder ).join("") === expando;
 
-// Support: Chrome<14
+// Support: Chrome 14-35+
 // Always assume duplicates if they aren't passed to the comparison function
 support.detectDuplicates = !!hasDuplicate;
 
@@ -5379,7 +4828,7 @@ var rootjQuery,
 				if ( match[1] ) {
 					context = context instanceof jQuery ? context[0] : context;
 
-					// scripts is true for back-compat
+					// Option to run scripts is true for back-compat
 					// Intentionally let the error be thrown if parseHTML is not present
 					jQuery.merge( this, jQuery.parseHTML(
 						match[1],
@@ -5407,8 +4856,8 @@ var rootjQuery,
 				} else {
 					elem = document.getElementById( match[2] );
 
-					// Check parentNode to catch when Blackberry 4.6 returns
-					// nodes that are no longer in the document #6963
+					// Support: Blackberry 4.6
+					// gEBID returns nodes no longer in the document (#6963)
 					if ( elem && elem.parentNode ) {
 						// Inject the element directly into the jQuery object
 						this.length = 1;
@@ -5461,7 +4910,7 @@ rootjQuery = jQuery( document );
 
 
 var rparentsprev = /^(?:parents|prev(?:Until|All))/,
-	// methods guaranteed to produce a unique set when starting from a unique set
+	// Methods guaranteed to produce a unique set when starting from a unique set
 	guaranteedUnique = {
 		children: true,
 		contents: true,
@@ -5541,8 +4990,7 @@ jQuery.fn.extend({
 		return this.pushStack( matched.length > 1 ? jQuery.unique( matched ) : matched );
 	},
 
-	// Determine the position of an element within
-	// the matched set of elements
+	// Determine the position of an element within the set
 	index: function( elem ) {
 
 		// No argument, return index in parent
@@ -5550,7 +4998,7 @@ jQuery.fn.extend({
 			return ( this[ 0 ] && this[ 0 ].parentNode ) ? this.first().prevAll().length : -1;
 		}
 
-		// index in selector
+		// Index in selector
 		if ( typeof elem === "string" ) {
 			return indexOf.call( jQuery( elem ), this[ 0 ] );
 		}
@@ -5966,7 +5414,7 @@ jQuery.extend({
 
 			progressValues, progressContexts, resolveContexts;
 
-		// add listeners to Deferred subordinates; treat others as resolved
+		// Add listeners to Deferred subordinates; treat others as resolved
 		if ( length > 1 ) {
 			progressValues = new Array( length );
 			progressContexts = new Array( length );
@@ -5983,7 +5431,7 @@ jQuery.extend({
 			}
 		}
 
-		// if we're not waiting on anything, resolve the master
+		// If we're not waiting on anything, resolve the master
 		if ( !remaining ) {
 			deferred.resolveWith( resolveContexts, resolveValues );
 		}
@@ -6062,7 +5510,7 @@ jQuery.ready.promise = function( obj ) {
 		readyList = jQuery.Deferred();
 
 		// Catch cases where $(document).ready() is called after the browser event has already occurred.
-		// we once tried to use readyState "interactive" here, but it caused issues like the one
+		// We once tried to use readyState "interactive" here, but it caused issues like the one
 		// discovered by ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15
 		if ( document.readyState === "complete" ) {
 			// Handle it asynchronously to allow scripts the opportunity to delay ready
@@ -6156,7 +5604,7 @@ jQuery.acceptData = function( owner ) {
 
 
 function Data() {
-	// Support: Android < 4,
+	// Support: Android<4,
 	// Old WebKit does not have Object.preventExtensions/freeze method,
 	// return new empty object instead with no [[set]] accessor
 	Object.defineProperty( this.cache = {}, 0, {
@@ -6165,7 +5613,7 @@ function Data() {
 		}
 	});
 
-	this.expando = jQuery.expando + Math.random();
+	this.expando = jQuery.expando + Data.uid++;
 }
 
 Data.uid = 1;
@@ -6193,7 +5641,7 @@ Data.prototype = {
 				descriptor[ this.expando ] = { value: unlock };
 				Object.defineProperties( owner, descriptor );
 
-			// Support: Android < 4
+			// Support: Android<4
 			// Fallback to a less secure definition
 			} catch ( e ) {
 				descriptor[ this.expando ] = unlock;
@@ -6333,17 +5781,16 @@ var data_user = new Data();
 
 
 
-/*
-	Implementation Summary
+//	Implementation Summary
+//
+//	1. Enforce API surface and semantic compatibility with 1.9.x branch
+//	2. Improve the module's maintainability by reducing the storage
+//		paths to a single mechanism.
+//	3. Use the same single mechanism to support "private" and "user" data.
+//	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
+//	5. Avoid exposing implementation details on user objects (eg. expando properties)
+//	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
-	1. Enforce API surface and semantic compatibility with 1.9.x branch
-	2. Improve the module's maintainability by reducing the storage
-		paths to a single mechanism.
-	3. Use the same single mechanism to support "private" and "user" data.
-	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
-	5. Avoid exposing implementation details on user objects (eg. expando properties)
-	6. Provide a clear path for implementation upgrade to WeakMap in 2014
-*/
 var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
 	rmultiDash = /([A-Z])/g;
 
@@ -6548,7 +5995,7 @@ jQuery.extend({
 				queue.unshift( "inprogress" );
 			}
 
-			// clear up the last queue stop function
+			// Clear up the last queue stop function
 			delete hooks.stop;
 			fn.call( elem, next, hooks );
 		}
@@ -6558,7 +6005,7 @@ jQuery.extend({
 		}
 	},
 
-	// not intended for public consumption - generates a queueHooks object, or returns the current one
+	// Not public - generate a queueHooks object, or return the current one
 	_queueHooks: function( elem, type ) {
 		var key = type + "queueHooks";
 		return data_priv.get( elem, key ) || data_priv.access( elem, key, {
@@ -6588,7 +6035,7 @@ jQuery.fn.extend({
 			this.each(function() {
 				var queue = jQuery.queue( this, type, data );
 
-				// ensure a hooks for this queue
+				// Ensure a hooks for this queue
 				jQuery._queueHooks( this, type );
 
 				if ( type === "fx" && queue[0] !== "inprogress" ) {
@@ -6655,21 +6102,22 @@ var rcheckableType = (/^(?:checkbox|radio)$/i);
 		div = fragment.appendChild( document.createElement( "div" ) ),
 		input = document.createElement( "input" );
 
-	// #11217 - WebKit loses check when the name is after the checked attribute
+	// Support: Safari<=5.1
+	// Check state lost if the name is set (#11217)
 	// Support: Windows Web Apps (WWA)
-	// `name` and `type` need .setAttribute for WWA
+	// `name` and `type` must use .setAttribute for WWA (#14901)
 	input.setAttribute( "type", "radio" );
 	input.setAttribute( "checked", "checked" );
 	input.setAttribute( "name", "t" );
 
 	div.appendChild( input );
 
-	// Support: Safari 5.1, iOS 5.1, Android 4.x, Android 2.3
-	// old WebKit doesn't clone checked state correctly in fragments
+	// Support: Safari<=5.1, Android<4.2
+	// Older WebKit doesn't clone checked state correctly in fragments
 	support.checkClone = div.cloneNode( true ).cloneNode( true ).lastChild.checked;
 
+	// Support: IE<=11+
 	// Make sure textarea (and checkbox) defaultValue is properly cloned
-	// Support: IE9-IE11+
 	div.innerHTML = "<textarea>x</textarea>";
 	support.noCloneChecked = !!div.cloneNode( true ).lastChild.defaultValue;
 })();
@@ -7047,8 +6495,8 @@ jQuery.event = {
 			j = 0;
 			while ( (handleObj = matched.handlers[ j++ ]) && !event.isImmediatePropagationStopped() ) {
 
-				// Triggered event must either 1) have no namespace, or
-				// 2) have namespace(s) a subset or equal to those in the bound event (both can have no namespace).
+				// Triggered event must either 1) have no namespace, or 2) have namespace(s)
+				// a subset or equal to those in the bound event (both can have no namespace).
 				if ( !event.namespace_re || event.namespace_re.test( handleObj.namespace ) ) {
 
 					event.handleObj = handleObj;
@@ -7198,7 +6646,7 @@ jQuery.event = {
 			event.target = document;
 		}
 
-		// Support: Safari 6.0+, Chrome < 28
+		// Support: Safari 6.0+, Chrome<28
 		// Target should not be a text node (#504, #13143)
 		if ( event.target.nodeType === 3 ) {
 			event.target = event.target.parentNode;
@@ -7303,7 +6751,7 @@ jQuery.Event = function( src, props ) {
 		// by a handler lower down the tree; reflect the correct value.
 		this.isDefaultPrevented = src.defaultPrevented ||
 				src.defaultPrevented === undefined &&
-				// Support: Android < 4.0
+				// Support: Android<4.0
 				src.returnValue === false ?
 			returnTrue :
 			returnFalse;
@@ -7393,8 +6841,8 @@ jQuery.each({
 	};
 });
 
-// Create "bubbling" focus and blur events
 // Support: Firefox, Chrome, Safari
+// Create "bubbling" focus and blur events
 if ( !support.focusinBubbles ) {
 	jQuery.each({ focus: "focusin", blur: "focusout" }, function( orig, fix ) {
 
@@ -7547,7 +6995,7 @@ var
 	// We have to close these tags to support XHTML (#13200)
 	wrapMap = {
 
-		// Support: IE 9
+		// Support: IE9
 		option: [ 1, "<select multiple='multiple'>", "</select>" ],
 
 		thead: [ 1, "<table>", "</table>" ],
@@ -7558,7 +7006,7 @@ var
 		_default: [ 0, "", "" ]
 	};
 
-// Support: IE 9
+// Support: IE9
 wrapMap.optgroup = wrapMap.option;
 
 wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead;
@@ -7648,7 +7096,7 @@ function getAll( context, tag ) {
 		ret;
 }
 
-// Support: IE >= 9
+// Fix IE bugs, see support tests
 function fixInput( src, dest ) {
 	var nodeName = dest.nodeName.toLowerCase();
 
@@ -7668,8 +7116,7 @@ jQuery.extend({
 			clone = elem.cloneNode( true ),
 			inPage = jQuery.contains( elem.ownerDocument, elem );
 
-		// Support: IE >= 9
-		// Fix Cloning issues
+		// Fix IE cloning issues
 		if ( !support.noCloneChecked && ( elem.nodeType === 1 || elem.nodeType === 11 ) &&
 				!jQuery.isXMLDoc( elem ) ) {
 
@@ -7720,8 +7167,8 @@ jQuery.extend({
 
 				// Add nodes directly
 				if ( jQuery.type( elem ) === "object" ) {
-					// Support: QtWebKit
-					// jQuery.merge because push.apply(_, arraylike) throws
+					// Support: QtWebKit, PhantomJS
+					// push.apply(_, arraylike) throws on ancient WebKit
 					jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
 				// Convert non-html into a text node
@@ -7743,15 +7190,14 @@ jQuery.extend({
 						tmp = tmp.lastChild;
 					}
 
-					// Support: QtWebKit
-					// jQuery.merge because push.apply(_, arraylike) throws
+					// Support: QtWebKit, PhantomJS
+					// push.apply(_, arraylike) throws on ancient WebKit
 					jQuery.merge( nodes, tmp.childNodes );
 
 					// Remember the top-level container
 					tmp = fragment.firstChild;
 
-					// Fixes #12346
-					// Support: Webkit, IE
+					// Ensure the created nodes are orphaned (#12392)
 					tmp.textContent = "";
 				}
 			}
@@ -8113,7 +7559,7 @@ function actualDisplay( name, doc ) {
 		// getDefaultComputedStyle might be reliably used only on attached element
 		display = window.getDefaultComputedStyle && ( style = window.getDefaultComputedStyle( elem[ 0 ] ) ) ?
 
-			// Use of this method is a temporary fix (more like optmization) until something better comes along,
+			// Use of this method is a temporary fix (more like optimization) until something better comes along,
 			// since it was removed from specification and supported only in FF
 			style.display : jQuery.css( elem[ 0 ], "display" );
 
@@ -8163,7 +7609,14 @@ var rmargin = (/^margin/);
 var rnumnonpx = new RegExp( "^(" + pnum + ")(?!px)[a-z%]+$", "i" );
 
 var getStyles = function( elem ) {
-		return elem.ownerDocument.defaultView.getComputedStyle( elem, null );
+		// Support: IE<=11+, Firefox<=30+ (#15098, #14150)
+		// IE throws on elements created in popups
+		// FF meanwhile throws on frame elements through "defaultView.getComputedStyle"
+		if ( elem.ownerDocument.defaultView.opener ) {
+			return elem.ownerDocument.defaultView.getComputedStyle( elem, null );
+		}
+
+		return window.getComputedStyle( elem, null );
 	};
 
 
@@ -8175,7 +7628,7 @@ function curCSS( elem, name, computed ) {
 	computed = computed || getStyles( elem );
 
 	// Support: IE9
-	// getPropertyValue is only needed for .css('filter') in IE9, see #12537
+	// getPropertyValue is only needed for .css('filter') (#12537)
 	if ( computed ) {
 		ret = computed.getPropertyValue( name ) || computed[ name ];
 	}
@@ -8221,15 +7674,13 @@ function addGetHookIf( conditionFn, hookFn ) {
 	return {
 		get: function() {
 			if ( conditionFn() ) {
-				// Hook not needed (or it's not possible to use it due to missing dependency),
-				// remove it.
-				// Since there are no other hooks for marginRight, remove the whole object.
+				// Hook not needed (or it's not possible to use it due
+				// to missing dependency), remove it.
 				delete this.get;
 				return;
 			}
 
 			// Hook needed; redefine it so that the support test is not executed again.
-
 			return (this.get = hookFn).apply( this, arguments );
 		}
 	};
@@ -8246,6 +7697,8 @@ function addGetHookIf( conditionFn, hookFn ) {
 		return;
 	}
 
+	// Support: IE9-11+
+	// Style of cloned element affects source element cloned (#8908)
 	div.style.backgroundClip = "content-box";
 	div.cloneNode( true ).style.backgroundClip = "";
 	support.clearCloneStyle = div.style.backgroundClip === "content-box";
@@ -8278,6 +7731,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 	if ( window.getComputedStyle ) {
 		jQuery.extend( support, {
 			pixelPosition: function() {
+
 				// This test is executed only once but we still do memoizing
 				// since we can use the boxSizingReliable pre-computing.
 				// No need to check if the test was already performed, though.
@@ -8291,6 +7745,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 				return boxSizingReliableVal;
 			},
 			reliableMarginRight: function() {
+
 				// Support: Android 2.3
 				// Check if div with explicit width and no margin-right incorrectly
 				// gets computed margin-right based on width of container. (#3333)
@@ -8312,6 +7767,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 				ret = !parseFloat( window.getComputedStyle( marginDiv, null ).marginRight );
 
 				docElem.removeChild( container );
+				div.removeChild( marginDiv );
 
 				return ret;
 			}
@@ -8343,8 +7799,8 @@ jQuery.swap = function( elem, options, callback, args ) {
 
 
 var
-	// swappable if display is none or starts with table except "table", "table-cell", or "table-caption"
-	// see here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
+	// Swappable if display is none or starts with table except "table", "table-cell", or "table-caption"
+	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
 	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
 	rnumsplit = new RegExp( "^(" + pnum + ")(.*)$", "i" ),
 	rrelNum = new RegExp( "^([+-])=(" + pnum + ")", "i" ),
@@ -8357,15 +7813,15 @@ var
 
 	cssPrefixes = [ "Webkit", "O", "Moz", "ms" ];
 
-// return a css property mapped to a potentially vendor prefixed property
+// Return a css property mapped to a potentially vendor prefixed property
 function vendorPropName( style, name ) {
 
-	// shortcut for names that are not vendor prefixed
+	// Shortcut for names that are not vendor prefixed
 	if ( name in style ) {
 		return name;
 	}
 
-	// check for vendor prefixed names
+	// Check for vendor prefixed names
 	var capName = name[0].toUpperCase() + name.slice(1),
 		origName = name,
 		i = cssPrefixes.length;
@@ -8398,7 +7854,7 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 		val = 0;
 
 	for ( ; i < 4; i += 2 ) {
-		// both box models exclude margin, so add it if we want it
+		// Both box models exclude margin, so add it if we want it
 		if ( extra === "margin" ) {
 			val += jQuery.css( elem, extra + cssExpand[ i ], true, styles );
 		}
@@ -8409,15 +7865,15 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 				val -= jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 			}
 
-			// at this point, extra isn't border nor margin, so remove border
+			// At this point, extra isn't border nor margin, so remove border
 			if ( extra !== "margin" ) {
 				val -= jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
 		} else {
-			// at this point, extra isn't content, so add padding
+			// At this point, extra isn't content, so add padding
 			val += jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 
-			// at this point, extra isn't content nor padding, so add border
+			// At this point, extra isn't content nor padding, so add border
 			if ( extra !== "padding" ) {
 				val += jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
@@ -8435,7 +7891,7 @@ function getWidthOrHeight( elem, name, extra ) {
 		styles = getStyles( elem ),
 		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
 
-	// some non-html elements return undefined for offsetWidth, so check for null/undefined
+	// Some non-html elements return undefined for offsetWidth, so check for null/undefined
 	// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
 	// MathML - https://bugzilla.mozilla.org/show_bug.cgi?id=491668
 	if ( val <= 0 || val == null ) {
@@ -8450,7 +7906,7 @@ function getWidthOrHeight( elem, name, extra ) {
 			return val;
 		}
 
-		// we need the check for style in case a browser which returns unreliable values
+		// Check for style in case a browser which returns unreliable values
 		// for getComputedStyle silently falls back to the reliable elem.style
 		valueIsBorderBox = isBorderBox &&
 			( support.boxSizingReliable() || val === elem.style[ name ] );
@@ -8459,7 +7915,7 @@ function getWidthOrHeight( elem, name, extra ) {
 		val = parseFloat( val ) || 0;
 	}
 
-	// use the active box-sizing model to add/subtract irrelevant styles
+	// Use the active box-sizing model to add/subtract irrelevant styles
 	return ( val +
 		augmentWidthOrHeight(
 			elem,
@@ -8523,12 +7979,14 @@ function showHide( elements, show ) {
 }
 
 jQuery.extend({
+
 	// Add in style property hooks for overriding the default
 	// behavior of getting and setting a style property
 	cssHooks: {
 		opacity: {
 			get: function( elem, computed ) {
 				if ( computed ) {
+
 					// We should always get a number back from opacity
 					var ret = curCSS( elem, "opacity" );
 					return ret === "" ? "1" : ret;
@@ -8556,12 +8014,12 @@ jQuery.extend({
 	// Add in properties whose names you wish to fix before
 	// setting or getting the value
 	cssProps: {
-		// normalize float css property
 		"float": "cssFloat"
 	},
 
 	// Get and set the style property on a DOM Node
 	style: function( elem, name, value, extra ) {
+
 		// Don't set styles on text and comment nodes
 		if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style ) {
 			return;
@@ -8574,33 +8032,32 @@ jQuery.extend({
 
 		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( style, origName ) );
 
-		// gets hook for the prefixed version
-		// followed by the unprefixed version
+		// Gets hook for the prefixed version, then unprefixed version
 		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
 		// Check if we're setting a value
 		if ( value !== undefined ) {
 			type = typeof value;
 
-			// convert relative number strings (+= or -=) to relative numbers. #7345
+			// Convert "+=" or "-=" to relative numbers (#7345)
 			if ( type === "string" && (ret = rrelNum.exec( value )) ) {
 				value = ( ret[1] + 1 ) * ret[2] + parseFloat( jQuery.css( elem, name ) );
 				// Fixes bug #9237
 				type = "number";
 			}
 
-			// Make sure that null and NaN values aren't set. See: #7116
+			// Make sure that null and NaN values aren't set (#7116)
 			if ( value == null || value !== value ) {
 				return;
 			}
 
-			// If a number was passed in, add 'px' to the (except for certain CSS properties)
+			// If a number, add 'px' to the (except for certain CSS properties)
 			if ( type === "number" && !jQuery.cssNumber[ origName ] ) {
 				value += "px";
 			}
 
-			// Fixes #8908, it can be done more correctly by specifying setters in cssHooks,
-			// but it would mean to define eight (for every problematic property) identical functions
+			// Support: IE9-11+
+			// background-* props affect original clone's values
 			if ( !support.clearCloneStyle && value === "" && name.indexOf( "background" ) === 0 ) {
 				style[ name ] = "inherit";
 			}
@@ -8628,8 +8085,7 @@ jQuery.extend({
 		// Make sure that we're working with the right name
 		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( elem.style, origName ) );
 
-		// gets hook for the prefixed version
-		// followed by the unprefixed version
+		// Try prefixed name followed by the unprefixed name
 		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
 		// If a hook was provided get the computed value from there
@@ -8642,12 +8098,12 @@ jQuery.extend({
 			val = curCSS( elem, name, styles );
 		}
 
-		//convert "normal" to computed value
+		// Convert "normal" to computed value
 		if ( val === "normal" && name in cssNormalTransform ) {
 			val = cssNormalTransform[ name ];
 		}
 
-		// Return, converting to number if forced or a qualifier was provided and val looks numeric
+		// Make numeric if forced or a qualifier was provided and val looks numeric
 		if ( extra === "" || extra ) {
 			num = parseFloat( val );
 			return extra === true || jQuery.isNumeric( num ) ? num || 0 : val;
@@ -8660,8 +8116,9 @@ jQuery.each([ "height", "width" ], function( i, name ) {
 	jQuery.cssHooks[ name ] = {
 		get: function( elem, computed, extra ) {
 			if ( computed ) {
-				// certain elements can have dimension info if we invisibly show them
-				// however, it must have a current display style that would benefit from this
+
+				// Certain elements can have dimension info if we invisibly show them
+				// but it must have a current display style that would benefit
 				return rdisplayswap.test( jQuery.css( elem, "display" ) ) && elem.offsetWidth === 0 ?
 					jQuery.swap( elem, cssShow, function() {
 						return getWidthOrHeight( elem, name, extra );
@@ -8689,8 +8146,6 @@ jQuery.each([ "height", "width" ], function( i, name ) {
 jQuery.cssHooks.marginRight = addGetHookIf( support.reliableMarginRight,
 	function( elem, computed ) {
 		if ( computed ) {
-			// WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
-			// Work around by temporarily setting element display to inline-block
 			return jQuery.swap( elem, { "display": "inline-block" },
 				curCSS, [ elem, "marginRight" ] );
 		}
@@ -8708,7 +8163,7 @@ jQuery.each({
 			var i = 0,
 				expanded = {},
 
-				// assumes a single number if not a string
+				// Assumes a single number if not a string
 				parts = typeof value === "string" ? value.split(" ") : [ value ];
 
 			for ( ; i < 4; i++ ) {
@@ -8831,17 +8286,18 @@ Tween.propHooks = {
 				return tween.elem[ tween.prop ];
 			}
 
-			// passing an empty string as a 3rd parameter to .css will automatically
-			// attempt a parseFloat and fallback to a string if the parse fails
-			// so, simple values such as "10px" are parsed to Float.
-			// complex values such as "rotate(1rad)" are returned as is.
+			// Passing an empty string as a 3rd parameter to .css will automatically
+			// attempt a parseFloat and fallback to a string if the parse fails.
+			// Simple values such as "10px" are parsed to Float;
+			// complex values such as "rotate(1rad)" are returned as-is.
 			result = jQuery.css( tween.elem, tween.prop, "" );
 			// Empty strings, null, undefined and "auto" are converted to 0.
 			return !result || result === "auto" ? 0 : result;
 		},
 		set: function( tween ) {
-			// use step hook for back compat - use cssHook if its there - use .style if its
-			// available and use plain properties where available
+			// Use step hook for back compat.
+			// Use cssHook if its there.
+			// Use .style if available and use plain properties where available.
 			if ( jQuery.fx.step[ tween.prop ] ) {
 				jQuery.fx.step[ tween.prop ]( tween );
 			} else if ( tween.elem.style && ( tween.elem.style[ jQuery.cssProps[ tween.prop ] ] != null || jQuery.cssHooks[ tween.prop ] ) ) {
@@ -8855,7 +8311,6 @@ Tween.propHooks = {
 
 // Support: IE9
 // Panic based approach to setting things on disconnected nodes
-
 Tween.propHooks.scrollTop = Tween.propHooks.scrollLeft = {
 	set: function( tween ) {
 		if ( tween.elem.nodeType && tween.elem.parentNode ) {
@@ -8911,16 +8366,16 @@ var
 				start = +target || 1;
 
 				do {
-					// If previous iteration zeroed out, double until we get *something*
-					// Use a string for doubling factor so we don't accidentally see scale as unchanged below
+					// If previous iteration zeroed out, double until we get *something*.
+					// Use string for doubling so we don't accidentally see scale as unchanged below
 					scale = scale || ".5";
 
 					// Adjust and apply
 					start = start / scale;
 					jQuery.style( tween.elem, prop, start + unit );
 
-				// Update scale, tolerating zero or NaN from tween.cur()
-				// And breaking the loop if scale is unchanged or perfect, or if we've just had enough
+				// Update scale, tolerating zero or NaN from tween.cur(),
+				// break the loop if scale is unchanged or perfect, or if we've just had enough
 				} while ( scale !== (scale = tween.cur() / target) && scale !== 1 && --maxIterations );
 			}
 
@@ -8952,8 +8407,8 @@ function genFx( type, includeWidth ) {
 		i = 0,
 		attrs = { height: type };
 
-	// if we include width, step value is 1 to do all cssExpand values,
-	// if we don't include width, step value is 2 to skip over Left and Right
+	// If we include width, step value is 1 to do all cssExpand values,
+	// otherwise step value is 2 to skip over Left and Right
 	includeWidth = includeWidth ? 1 : 0;
 	for ( ; i < 4 ; i += 2 - includeWidth ) {
 		which = cssExpand[ i ];
@@ -8975,7 +8430,7 @@ function createTween( value, prop, animation ) {
 	for ( ; index < length; index++ ) {
 		if ( (tween = collection[ index ].call( animation, prop, value )) ) {
 
-			// we're done with this property
+			// We're done with this property
 			return tween;
 		}
 	}
@@ -8990,7 +8445,7 @@ function defaultPrefilter( elem, props, opts ) {
 		hidden = elem.nodeType && isHidden( elem ),
 		dataShow = data_priv.get( elem, "fxshow" );
 
-	// handle queue: false promises
+	// Handle queue: false promises
 	if ( !opts.queue ) {
 		hooks = jQuery._queueHooks( elem, "fx" );
 		if ( hooks.unqueued == null ) {
@@ -9005,8 +8460,7 @@ function defaultPrefilter( elem, props, opts ) {
 		hooks.unqueued++;
 
 		anim.always(function() {
-			// doing this makes sure that the complete handler will be called
-			// before this completes
+			// Ensure the complete handler is called before this completes
 			anim.always(function() {
 				hooks.unqueued--;
 				if ( !jQuery.queue( elem, "fx" ).length ) {
@@ -9016,7 +8470,7 @@ function defaultPrefilter( elem, props, opts ) {
 		});
 	}
 
-	// height/width overflow pass
+	// Height/width overflow pass
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
 		// Make sure that nothing sneaks out
 		// Record all 3 overflow attributes because IE9-10 do not
@@ -9078,7 +8532,7 @@ function defaultPrefilter( elem, props, opts ) {
 			dataShow = data_priv.access( elem, "fxshow", {} );
 		}
 
-		// store state if its toggle - enables .stop().toggle() to "reverse"
+		// Store state if its toggle - enables .stop().toggle() to "reverse"
 		if ( toggle ) {
 			dataShow.hidden = !hidden;
 		}
@@ -9138,8 +8592,8 @@ function propFilter( props, specialEasing ) {
 			value = hooks.expand( value );
 			delete props[ name ];
 
-			// not quite $.extend, this wont overwrite keys already present.
-			// also - reusing 'index' from above because we have the correct "name"
+			// Not quite $.extend, this won't overwrite existing keys.
+			// Reusing 'index' because we have the correct "name"
 			for ( index in value ) {
 				if ( !( index in props ) ) {
 					props[ index ] = value[ index ];
@@ -9158,7 +8612,7 @@ function Animation( elem, properties, options ) {
 		index = 0,
 		length = animationPrefilters.length,
 		deferred = jQuery.Deferred().always( function() {
-			// don't match elem in the :animated selector
+			// Don't match elem in the :animated selector
 			delete tick.elem;
 		}),
 		tick = function() {
@@ -9167,7 +8621,8 @@ function Animation( elem, properties, options ) {
 			}
 			var currentTime = fxNow || createFxNow(),
 				remaining = Math.max( 0, animation.startTime + animation.duration - currentTime ),
-				// archaic crash bug won't allow us to use 1 - ( 0.5 || 0 ) (#12497)
+				// Support: Android 2.3
+				// Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (#12497)
 				temp = remaining / animation.duration || 0,
 				percent = 1 - temp,
 				index = 0,
@@ -9203,7 +8658,7 @@ function Animation( elem, properties, options ) {
 			},
 			stop: function( gotoEnd ) {
 				var index = 0,
-					// if we are going to the end, we want to run all the tweens
+					// If we are going to the end, we want to run all the tweens
 					// otherwise we skip this part
 					length = gotoEnd ? animation.tweens.length : 0;
 				if ( stopped ) {
@@ -9214,8 +8669,7 @@ function Animation( elem, properties, options ) {
 					animation.tweens[ index ].run( 1 );
 				}
 
-				// resolve when we played the last frame
-				// otherwise, reject
+				// Resolve when we played the last frame; otherwise, reject
 				if ( gotoEnd ) {
 					deferred.resolveWith( elem, [ animation, gotoEnd ] );
 				} else {
@@ -9297,7 +8751,7 @@ jQuery.speed = function( speed, easing, fn ) {
 	opt.duration = jQuery.fx.off ? 0 : typeof opt.duration === "number" ? opt.duration :
 		opt.duration in jQuery.fx.speeds ? jQuery.fx.speeds[ opt.duration ] : jQuery.fx.speeds._default;
 
-	// normalize opt.queue - true/undefined/null -> "fx"
+	// Normalize opt.queue - true/undefined/null -> "fx"
 	if ( opt.queue == null || opt.queue === true ) {
 		opt.queue = "fx";
 	}
@@ -9321,10 +8775,10 @@ jQuery.speed = function( speed, easing, fn ) {
 jQuery.fn.extend({
 	fadeTo: function( speed, to, easing, callback ) {
 
-		// show any hidden elements after setting opacity to 0
+		// Show any hidden elements after setting opacity to 0
 		return this.filter( isHidden ).css( "opacity", 0 ).show()
 
-			// animate to the value specified
+			// Animate to the value specified
 			.end().animate({ opacity: to }, speed, easing, callback );
 	},
 	animate: function( prop, speed, easing, callback ) {
@@ -9387,9 +8841,9 @@ jQuery.fn.extend({
 				}
 			}
 
-			// start the next in the queue if the last step wasn't forced
-			// timers currently will call their complete callbacks, which will dequeue
-			// but only if they were gotoEnd
+			// Start the next in the queue if the last step wasn't forced.
+			// Timers currently will call their complete callbacks, which
+			// will dequeue but only if they were gotoEnd.
 			if ( dequeue || !gotoEnd ) {
 				jQuery.dequeue( this, type );
 			}
@@ -9407,17 +8861,17 @@ jQuery.fn.extend({
 				timers = jQuery.timers,
 				length = queue ? queue.length : 0;
 
-			// enable finishing flag on private data
+			// Enable finishing flag on private data
 			data.finish = true;
 
-			// empty the queue first
+			// Empty the queue first
 			jQuery.queue( this, type, [] );
 
 			if ( hooks && hooks.stop ) {
 				hooks.stop.call( this, true );
 			}
 
-			// look for any active animations, and finish them
+			// Look for any active animations, and finish them
 			for ( index = timers.length; index--; ) {
 				if ( timers[ index ].elem === this && timers[ index ].queue === type ) {
 					timers[ index ].anim.stop( true );
@@ -9425,14 +8879,14 @@ jQuery.fn.extend({
 				}
 			}
 
-			// look for any animations in the old queue and finish them
+			// Look for any animations in the old queue and finish them
 			for ( index = 0; index < length; index++ ) {
 				if ( queue[ index ] && queue[ index ].finish ) {
 					queue[ index ].finish.call( this );
 				}
 			}
 
-			// turn off finishing flag
+			// Turn off finishing flag
 			delete data.finish;
 		});
 	}
@@ -9535,21 +8989,21 @@ jQuery.fn.delay = function( time, type ) {
 
 	input.type = "checkbox";
 
-	// Support: iOS 5.1, Android 4.x, Android 2.3
-	// Check the default checkbox/radio value ("" on old WebKit; "on" elsewhere)
+	// Support: iOS<=5.1, Android<=4.2+
+	// Default value for a checkbox should be "on"
 	support.checkOn = input.value !== "";
 
-	// Must access the parent to make an option select properly
-	// Support: IE9, IE10
+	// Support: IE<=11+
+	// Must access selectedIndex to make default options select
 	support.optSelected = opt.selected;
 
-	// Make sure that the options inside disabled selects aren't marked as disabled
-	// (WebKit marks them as disabled)
+	// Support: Android<=2.3
+	// Options inside disabled selects are incorrectly marked as disabled
 	select.disabled = true;
 	support.optDisabled = !opt.disabled;
 
-	// Check if an input maintains its value after becoming a radio
-	// Support: IE9, IE10
+	// Support: IE<=11+
+	// An input loses its value after becoming a radio
 	input = document.createElement( "input" );
 	input.value = "t";
 	input.type = "radio";
@@ -9646,8 +9100,6 @@ jQuery.extend({
 			set: function( elem, value ) {
 				if ( !support.radioValue && value === "radio" &&
 					jQuery.nodeName( elem, "input" ) ) {
-					// Setting the type on a radio button after the value resets the value in IE6-9
-					// Reset value to default in case type is set after value during creation
 					var val = elem.value;
 					elem.setAttribute( "type", value );
 					if ( val ) {
@@ -9717,7 +9169,7 @@ jQuery.extend({
 		var ret, hooks, notxml,
 			nType = elem.nodeType;
 
-		// don't get/set properties on text, comment and attribute nodes
+		// Don't get/set properties on text, comment and attribute nodes
 		if ( !elem || nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
@@ -9753,8 +9205,6 @@ jQuery.extend({
 	}
 });
 
-// Support: IE9+
-// Selectedness for an option in an optgroup can be inaccurate
 if ( !support.optSelected ) {
 	jQuery.propHooks.selected = {
 		get: function( elem ) {
@@ -9862,7 +9312,7 @@ jQuery.fn.extend({
 						}
 					}
 
-					// only assign if different to avoid unneeded rendering.
+					// Only assign if different to avoid unneeded rendering.
 					finalValue = value ? jQuery.trim( cur ) : "";
 					if ( elem.className !== finalValue ) {
 						elem.className = finalValue;
@@ -9889,14 +9339,14 @@ jQuery.fn.extend({
 
 		return this.each(function() {
 			if ( type === "string" ) {
-				// toggle individual class names
+				// Toggle individual class names
 				var className,
 					i = 0,
 					self = jQuery( this ),
 					classNames = value.match( rnotwhite ) || [];
 
 				while ( (className = classNames[ i++ ]) ) {
-					// check each className given, space separated list
+					// Check each className given, space separated list
 					if ( self.hasClass( className ) ) {
 						self.removeClass( className );
 					} else {
@@ -9911,7 +9361,7 @@ jQuery.fn.extend({
 					data_priv.set( this, "__className__", this.className );
 				}
 
-				// If the element has a class name or if we're passed "false",
+				// If the element has a class name or if we're passed `false`,
 				// then remove the whole classname (if there was one, the above saved it).
 				// Otherwise bring back whatever was previously saved (if anything),
 				// falling back to the empty string if nothing was stored.
@@ -9955,9 +9405,9 @@ jQuery.fn.extend({
 				ret = elem.value;
 
 				return typeof ret === "string" ?
-					// handle most common string cases
+					// Handle most common string cases
 					ret.replace(rreturn, "") :
-					// handle cases where value is null/undef or number
+					// Handle cases where value is null/undef or number
 					ret == null ? "" : ret;
 			}
 
@@ -10065,7 +9515,7 @@ jQuery.extend({
 					}
 				}
 
-				// force browsers to behave consistently when non-matching value is set
+				// Force browsers to behave consistently when non-matching value is set
 				if ( !optionSet ) {
 					elem.selectedIndex = -1;
 				}
@@ -10086,8 +9536,6 @@ jQuery.each([ "radio", "checkbox" ], function() {
 	};
 	if ( !support.checkOn ) {
 		jQuery.valHooks[ this ].get = function( elem ) {
-			// Support: Webkit
-			// "" is returned instead of "on" if a value isn't specified
 			return elem.getAttribute("value") === null ? "on" : elem.value;
 		};
 	}
@@ -10169,10 +9617,6 @@ jQuery.parseXML = function( data ) {
 
 
 var
-	// Document location
-	ajaxLocParts,
-	ajaxLocation,
-
 	rhash = /#.*$/,
 	rts = /([?&])_=[^&]*/,
 	rheaders = /^(.*?):[ \t]*([^\r\n]*)$/mg,
@@ -10201,22 +9645,13 @@ var
 	transports = {},
 
 	// Avoid comment-prolog char sequence (#10098); must appease lint and evade compression
-	allTypes = "*/".concat("*");
+	allTypes = "*/".concat( "*" ),
 
-// #8138, IE may throw an exception when accessing
-// a field from window.location if document.domain has been set
-try {
-	ajaxLocation = location.href;
-} catch( e ) {
-	// Use the href attribute of an A element
-	// since IE will modify it given document.location
-	ajaxLocation = document.createElement( "a" );
-	ajaxLocation.href = "";
-	ajaxLocation = ajaxLocation.href;
-}
+	// Document location
+	ajaxLocation = window.location.href,
 
-// Segment location into parts
-ajaxLocParts = rurl.exec( ajaxLocation.toLowerCase() ) || [];
+	// Segment location into parts
+	ajaxLocParts = rurl.exec( ajaxLocation.toLowerCase() ) || [];
 
 // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
 function addToPrefiltersOrTransports( structure ) {
@@ -10695,7 +10130,8 @@ jQuery.extend({
 		}
 
 		// We can fire global events as of now if asked to
-		fireGlobals = s.global;
+		// Don't fire events if jQuery.event is undefined in an AMD-usage scenario (#15118)
+		fireGlobals = jQuery.event && s.global;
 
 		// Watch for a new set of requests
 		if ( fireGlobals && jQuery.active++ === 0 ) {
@@ -10768,7 +10204,7 @@ jQuery.extend({
 			return jqXHR.abort();
 		}
 
-		// aborting is no longer a cancellation
+		// Aborting is no longer a cancellation
 		strAbort = "abort";
 
 		// Install callbacks on deferreds
@@ -10880,8 +10316,7 @@ jQuery.extend({
 					isSuccess = !error;
 				}
 			} else {
-				// We extract error from statusText
-				// then normalize statusText and status for non-aborts
+				// Extract error from statusText and normalize for non-aborts
 				error = statusText;
 				if ( status || !statusText ) {
 					statusText = "error";
@@ -10937,7 +10372,7 @@ jQuery.extend({
 
 jQuery.each( [ "get", "post" ], function( i, method ) {
 	jQuery[ method ] = function( url, data, callback, type ) {
-		// shift arguments if data argument was omitted
+		// Shift arguments if data argument was omitted
 		if ( jQuery.isFunction( data ) ) {
 			type = type || callback;
 			callback = data;
@@ -10951,13 +10386,6 @@ jQuery.each( [ "get", "post" ], function( i, method ) {
 			data: data,
 			success: callback
 		});
-	};
-});
-
-// Attach a bunch of functions for handling common AJAX events
-jQuery.each( [ "ajaxStart", "ajaxStop", "ajaxComplete", "ajaxError", "ajaxSuccess", "ajaxSend" ], function( i, type ) {
-	jQuery.fn[ type ] = function( fn ) {
-		return this.on( type, fn );
 	};
 });
 
@@ -11178,8 +10606,9 @@ var xhrId = 0,
 
 // Support: IE9
 // Open requests must be manually aborted on unload (#5280)
-if ( window.ActiveXObject ) {
-	jQuery( window ).on( "unload", function() {
+// See https://support.microsoft.com/kb/2856746 for more info
+if ( window.attachEvent ) {
+	window.attachEvent( "onunload", function() {
 		for ( var key in xhrCallbacks ) {
 			xhrCallbacks[ key ]();
 		}
@@ -11532,6 +10961,16 @@ jQuery.fn.load = function( url, params, callback ) {
 
 
 
+// Attach a bunch of functions for handling common AJAX events
+jQuery.each( [ "ajaxStart", "ajaxStop", "ajaxComplete", "ajaxError", "ajaxSuccess", "ajaxSend" ], function( i, type ) {
+	jQuery.fn[ type ] = function( fn ) {
+		return this.on( type, fn );
+	};
+});
+
+
+
+
 jQuery.expr.filters.animated = function( elem ) {
 	return jQuery.grep(jQuery.timers, function( fn ) {
 		return elem === fn.elem;
@@ -11568,7 +11007,8 @@ jQuery.offset = {
 		calculatePosition = ( position === "absolute" || position === "fixed" ) &&
 			( curCSSTop + curCSSLeft ).indexOf("auto") > -1;
 
-		// Need to be able to calculate position if either top or left is auto and position is either absolute or fixed
+		// Need to be able to calculate position if either
+		// top or left is auto and position is either absolute or fixed
 		if ( calculatePosition ) {
 			curPosition = curElem.position();
 			curTop = curPosition.top;
@@ -11625,8 +11065,8 @@ jQuery.fn.extend({
 			return box;
 		}
 
+		// Support: BlackBerry 5, iOS 3 (original iPhone)
 		// If we don't have gBCR, just use 0,0 rather than error
-		// BlackBerry 5, iOS 3 (original iPhone)
 		if ( typeof elem.getBoundingClientRect !== strundefined ) {
 			box = elem.getBoundingClientRect();
 		}
@@ -11648,7 +11088,7 @@ jQuery.fn.extend({
 
 		// Fixed elements are offset from window (parentOffset = {top:0, left: 0}, because it is its only offset parent
 		if ( jQuery.css( elem, "position" ) === "fixed" ) {
-			// We assume that getBoundingClientRect is available when computed position is fixed
+			// Assume getBoundingClientRect is there when computed position is fixed
 			offset = elem.getBoundingClientRect();
 
 		} else {
@@ -11711,16 +11151,18 @@ jQuery.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function( 
 	};
 });
 
+// Support: Safari<7+, Chrome<37+
 // Add the top/left cssHooks using jQuery.fn.position
 // Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
-// getComputedStyle returns percent when specified for top/left/bottom/right
-// rather than make the css module depend on the offset module, we just check for it here
+// Blink bug: https://code.google.com/p/chromium/issues/detail?id=229280
+// getComputedStyle returns percent when specified for top/left/bottom/right;
+// rather than make the css module depend on the offset module, just check for it here
 jQuery.each( [ "top", "left" ], function( i, prop ) {
 	jQuery.cssHooks[ prop ] = addGetHookIf( support.pixelPosition,
 		function( elem, computed ) {
 			if ( computed ) {
 				computed = curCSS( elem, prop );
-				// if curCSS returns percentage, fallback to offset
+				// If curCSS returns percentage, fallback to offset
 				return rnumnonpx.test( computed ) ?
 					jQuery( elem ).position()[ prop ] + "px" :
 					computed;
@@ -11733,7 +11175,7 @@ jQuery.each( [ "top", "left" ], function( i, prop ) {
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
 jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 	jQuery.each( { padding: "inner" + name, content: type, "": "outer" + name }, function( defaultExtra, funcName ) {
-		// margin is only for outerHeight, outerWidth
+		// Margin is only for outerHeight, outerWidth
 		jQuery.fn[ funcName ] = function( margin, value ) {
 			var chainable = arguments.length && ( defaultExtra || typeof margin !== "boolean" ),
 				extra = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
@@ -11824,8 +11266,8 @@ jQuery.noConflict = function( deep ) {
 	return jQuery;
 };
 
-// Expose jQuery and $ identifiers, even in
-// AMD (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
+// Expose jQuery and $ identifiers, even in AMD
+// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 // and CommonJS for browser emulators (#13566)
 if ( typeof noGlobal === strundefined ) {
 	window.jQuery = window.$ = jQuery;
@@ -11838,7 +11280,7 @@ return jQuery;
 
 }));
 
-},{}],26:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /*
  Leaflet, a JavaScript library for mobile-friendly interactive maps. http://leafletjs.com
  (c) 2010-2013, Vladimir Agafonkin
@@ -21019,1739 +20461,1283 @@ L.Map.include({
 
 
 }(window, document));
-},{}],27:[function(require,module,exports){
-// super simple module for the most common nodejs use case.
-exports.markdown = require("./markdown");
-exports.parse = exports.markdown.toHTML;
+},{}],24:[function(require,module,exports){
+(function (global){
+/**
+ * marked - a markdown parser
+ * Copyright (c) 2011-2014, Christopher Jeffrey. (MIT Licensed)
+ * https://github.com/chjj/marked
+ */
 
-},{"./markdown":28}],28:[function(require,module,exports){
-// Released under MIT license
-// Copyright (c) 2009-2010 Dominic Baggott
-// Copyright (c) 2009-2010 Ash Berlin
-// Copyright (c) 2011 Christoph Dorn <christoph@christophdorn.com> (http://www.christophdorn.com)
-
-/*jshint browser:true, devel:true */
-
-(function( expose ) {
+;(function() {
 
 /**
- *  class Markdown
- *
- *  Markdown processing in Javascript done right. We have very particular views
- *  on what constitutes 'right' which include:
- *
- *  - produces well-formed HTML (this means that em and strong nesting is
- *    important)
- *
- *  - has an intermediate representation to allow processing of parsed data (We
- *    in fact have two, both as [JsonML]: a markdown tree and an HTML tree).
- *
- *  - is easily extensible to add new dialects without having to rewrite the
- *    entire parsing mechanics
- *
- *  - has a good test suite
- *
- *  This implementation fulfills all of these (except that the test suite could
- *  do with expanding to automatically run all the fixtures from other Markdown
- *  implementations.)
- *
- *  ##### Intermediate Representation
- *
- *  *TODO* Talk about this :) Its JsonML, but document the node names we use.
- *
- *  [JsonML]: http://jsonml.org/ "JSON Markup Language"
- **/
-var Markdown = expose.Markdown = function(dialect) {
-  switch (typeof dialect) {
-    case "undefined":
-      this.dialect = Markdown.dialects.Gruber;
-      break;
-    case "object":
-      this.dialect = dialect;
-      break;
-    default:
-      if ( dialect in Markdown.dialects ) {
-        this.dialect = Markdown.dialects[dialect];
-      }
-      else {
-        throw new Error("Unknown Markdown dialect '" + String(dialect) + "'");
-      }
-      break;
+ * Block-Level Grammar
+ */
+
+var block = {
+  newline: /^\n+/,
+  code: /^( {4}[^\n]+\n*)+/,
+  fences: noop,
+  hr: /^( *[-*_]){3,} *(?:\n+|$)/,
+  heading: /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,
+  nptable: noop,
+  lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,
+  blockquote: /^( *>[^\n]+(\n(?!def)[^\n]+)*\n*)+/,
+  list: /^( *)(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,
+  html: /^ *(?:comment *(?:\n|\s*$)|closed *(?:\n{2,}|\s*$)|closing *(?:\n{2,}|\s*$))/,
+  def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,
+  table: noop,
+  paragraph: /^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|tag|def))+)\n*/,
+  text: /^[^\n]+/
+};
+
+block.bullet = /(?:[*+-]|\d+\.)/;
+block.item = /^( *)(bull) [^\n]*(?:\n(?!\1bull )[^\n]*)*/;
+block.item = replace(block.item, 'gm')
+  (/bull/g, block.bullet)
+  ();
+
+block.list = replace(block.list)
+  (/bull/g, block.bullet)
+  ('hr', '\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))')
+  ('def', '\\n+(?=' + block.def.source + ')')
+  ();
+
+block.blockquote = replace(block.blockquote)
+  ('def', block.def)
+  ();
+
+block._tag = '(?!(?:'
+  + 'a|em|strong|small|s|cite|q|dfn|abbr|data|time|code'
+  + '|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo'
+  + '|span|br|wbr|ins|del|img)\\b)\\w+(?!:/|[^\\w\\s@]*@)\\b';
+
+block.html = replace(block.html)
+  ('comment', /<!--[\s\S]*?-->/)
+  ('closed', /<(tag)[\s\S]+?<\/\1>/)
+  ('closing', /<tag(?:"[^"]*"|'[^']*'|[^'">])*?>/)
+  (/tag/g, block._tag)
+  ();
+
+block.paragraph = replace(block.paragraph)
+  ('hr', block.hr)
+  ('heading', block.heading)
+  ('lheading', block.lheading)
+  ('blockquote', block.blockquote)
+  ('tag', '<' + block._tag)
+  ('def', block.def)
+  ();
+
+/**
+ * Normal Block Grammar
+ */
+
+block.normal = merge({}, block);
+
+/**
+ * GFM Block Grammar
+ */
+
+block.gfm = merge({}, block.normal, {
+  fences: /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/,
+  paragraph: /^/
+});
+
+block.gfm.paragraph = replace(block.paragraph)
+  ('(?!', '(?!'
+    + block.gfm.fences.source.replace('\\1', '\\2') + '|'
+    + block.list.source.replace('\\1', '\\3') + '|')
+  ();
+
+/**
+ * GFM + Tables Block Grammar
+ */
+
+block.tables = merge({}, block.gfm, {
+  nptable: /^ *(\S.*\|.*)\n *([-:]+ *\|[-| :]*)\n((?:.*\|.*(?:\n|$))*)\n*/,
+  table: /^ *\|(.+)\n *\|( *[-:]+[-| :]*)\n((?: *\|.*(?:\n|$))*)\n*/
+});
+
+/**
+ * Block Lexer
+ */
+
+function Lexer(options) {
+  this.tokens = [];
+  this.tokens.links = {};
+  this.options = options || marked.defaults;
+  this.rules = block.normal;
+
+  if (this.options.gfm) {
+    if (this.options.tables) {
+      this.rules = block.tables;
+    } else {
+      this.rules = block.gfm;
+    }
   }
-  this.em_state = [];
-  this.strong_state = [];
-  this.debug_indent = "";
+}
+
+/**
+ * Expose Block Rules
+ */
+
+Lexer.rules = block;
+
+/**
+ * Static Lex Method
+ */
+
+Lexer.lex = function(src, options) {
+  var lexer = new Lexer(options);
+  return lexer.lex(src);
 };
 
 /**
- *  parse( markdown, [dialect] ) -> JsonML
- *  - markdown (String): markdown string to parse
- *  - dialect (String | Dialect): the dialect to use, defaults to gruber
- *
- *  Parse `markdown` and return a markdown document as a Markdown.JsonML tree.
- **/
-expose.parse = function( source, dialect ) {
-  // dialect will default if undefined
-  var md = new Markdown( dialect );
-  return md.toTree( source );
+ * Preprocessing
+ */
+
+Lexer.prototype.lex = function(src) {
+  src = src
+    .replace(/\r\n|\r/g, '\n')
+    .replace(/\t/g, '    ')
+    .replace(/\u00a0/g, ' ')
+    .replace(/\u2424/g, '\n');
+
+  return this.token(src, true);
 };
 
 /**
- *  toHTML( markdown, [dialect]  ) -> String
- *  toHTML( md_tree ) -> String
- *  - markdown (String): markdown string to parse
- *  - md_tree (Markdown.JsonML): parsed markdown tree
- *
- *  Take markdown (either as a string or as a JsonML tree) and run it through
- *  [[toHTMLTree]] then turn it into a well-formated HTML fragment.
- **/
-expose.toHTML = function toHTML( source , dialect , options ) {
-  var input = expose.toHTMLTree( source , dialect , options );
+ * Lexing
+ */
 
-  return expose.renderJsonML( input );
-};
+Lexer.prototype.token = function(src, top, bq) {
+  var src = src.replace(/^ +$/gm, '')
+    , next
+    , loose
+    , cap
+    , bull
+    , b
+    , item
+    , space
+    , i
+    , l;
 
-/**
- *  toHTMLTree( markdown, [dialect] ) -> JsonML
- *  toHTMLTree( md_tree ) -> JsonML
- *  - markdown (String): markdown string to parse
- *  - dialect (String | Dialect): the dialect to use, defaults to gruber
- *  - md_tree (Markdown.JsonML): parsed markdown tree
- *
- *  Turn markdown into HTML, represented as a JsonML tree. If a string is given
- *  to this function, it is first parsed into a markdown tree by calling
- *  [[parse]].
- **/
-expose.toHTMLTree = function toHTMLTree( input, dialect , options ) {
-  // convert string input to an MD tree
-  if ( typeof input ==="string" ) input = this.parse( input, dialect );
+  while (src) {
+    // newline
+    if (cap = this.rules.newline.exec(src)) {
+      src = src.substring(cap[0].length);
+      if (cap[0].length > 1) {
+        this.tokens.push({
+          type: 'space'
+        });
+      }
+    }
 
-  // Now convert the MD tree to an HTML tree
+    // code
+    if (cap = this.rules.code.exec(src)) {
+      src = src.substring(cap[0].length);
+      cap = cap[0].replace(/^ {4}/gm, '');
+      this.tokens.push({
+        type: 'code',
+        text: !this.options.pedantic
+          ? cap.replace(/\n+$/, '')
+          : cap
+      });
+      continue;
+    }
 
-  // remove references from the tree
-  var attrs = extract_attr( input ),
-      refs = {};
+    // fences (gfm)
+    if (cap = this.rules.fences.exec(src)) {
+      src = src.substring(cap[0].length);
+      this.tokens.push({
+        type: 'code',
+        lang: cap[2],
+        text: cap[3]
+      });
+      continue;
+    }
 
-  if ( attrs && attrs.references ) {
-    refs = attrs.references;
+    // heading
+    if (cap = this.rules.heading.exec(src)) {
+      src = src.substring(cap[0].length);
+      this.tokens.push({
+        type: 'heading',
+        depth: cap[1].length,
+        text: cap[2]
+      });
+      continue;
+    }
+
+    // table no leading pipe (gfm)
+    if (top && (cap = this.rules.nptable.exec(src))) {
+      src = src.substring(cap[0].length);
+
+      item = {
+        type: 'table',
+        header: cap[1].replace(/^ *| *\| *$/g, '').split(/ *\| */),
+        align: cap[2].replace(/^ *|\| *$/g, '').split(/ *\| */),
+        cells: cap[3].replace(/\n$/, '').split('\n')
+      };
+
+      for (i = 0; i < item.align.length; i++) {
+        if (/^ *-+: *$/.test(item.align[i])) {
+          item.align[i] = 'right';
+        } else if (/^ *:-+: *$/.test(item.align[i])) {
+          item.align[i] = 'center';
+        } else if (/^ *:-+ *$/.test(item.align[i])) {
+          item.align[i] = 'left';
+        } else {
+          item.align[i] = null;
+        }
+      }
+
+      for (i = 0; i < item.cells.length; i++) {
+        item.cells[i] = item.cells[i].split(/ *\| */);
+      }
+
+      this.tokens.push(item);
+
+      continue;
+    }
+
+    // lheading
+    if (cap = this.rules.lheading.exec(src)) {
+      src = src.substring(cap[0].length);
+      this.tokens.push({
+        type: 'heading',
+        depth: cap[2] === '=' ? 1 : 2,
+        text: cap[1]
+      });
+      continue;
+    }
+
+    // hr
+    if (cap = this.rules.hr.exec(src)) {
+      src = src.substring(cap[0].length);
+      this.tokens.push({
+        type: 'hr'
+      });
+      continue;
+    }
+
+    // blockquote
+    if (cap = this.rules.blockquote.exec(src)) {
+      src = src.substring(cap[0].length);
+
+      this.tokens.push({
+        type: 'blockquote_start'
+      });
+
+      cap = cap[0].replace(/^ *> ?/gm, '');
+
+      // Pass `top` to keep the current
+      // "toplevel" state. This is exactly
+      // how markdown.pl works.
+      this.token(cap, top, true);
+
+      this.tokens.push({
+        type: 'blockquote_end'
+      });
+
+      continue;
+    }
+
+    // list
+    if (cap = this.rules.list.exec(src)) {
+      src = src.substring(cap[0].length);
+      bull = cap[2];
+
+      this.tokens.push({
+        type: 'list_start',
+        ordered: bull.length > 1
+      });
+
+      // Get each top-level item.
+      cap = cap[0].match(this.rules.item);
+
+      next = false;
+      l = cap.length;
+      i = 0;
+
+      for (; i < l; i++) {
+        item = cap[i];
+
+        // Remove the list item's bullet
+        // so it is seen as the next token.
+        space = item.length;
+        item = item.replace(/^ *([*+-]|\d+\.) +/, '');
+
+        // Outdent whatever the
+        // list item contains. Hacky.
+        if (~item.indexOf('\n ')) {
+          space -= item.length;
+          item = !this.options.pedantic
+            ? item.replace(new RegExp('^ {1,' + space + '}', 'gm'), '')
+            : item.replace(/^ {1,4}/gm, '');
+        }
+
+        // Determine whether the next list item belongs here.
+        // Backpedal if it does not belong in this list.
+        if (this.options.smartLists && i !== l - 1) {
+          b = block.bullet.exec(cap[i + 1])[0];
+          if (bull !== b && !(bull.length > 1 && b.length > 1)) {
+            src = cap.slice(i + 1).join('\n') + src;
+            i = l - 1;
+          }
+        }
+
+        // Determine whether item is loose or not.
+        // Use: /(^|\n)(?! )[^\n]+\n\n(?!\s*$)/
+        // for discount behavior.
+        loose = next || /\n\n(?!\s*$)/.test(item);
+        if (i !== l - 1) {
+          next = item.charAt(item.length - 1) === '\n';
+          if (!loose) loose = next;
+        }
+
+        this.tokens.push({
+          type: loose
+            ? 'loose_item_start'
+            : 'list_item_start'
+        });
+
+        // Recurse.
+        this.token(item, false, bq);
+
+        this.tokens.push({
+          type: 'list_item_end'
+        });
+      }
+
+      this.tokens.push({
+        type: 'list_end'
+      });
+
+      continue;
+    }
+
+    // html
+    if (cap = this.rules.html.exec(src)) {
+      src = src.substring(cap[0].length);
+      this.tokens.push({
+        type: this.options.sanitize
+          ? 'paragraph'
+          : 'html',
+        pre: cap[1] === 'pre' || cap[1] === 'script' || cap[1] === 'style',
+        text: cap[0]
+      });
+      continue;
+    }
+
+    // def
+    if ((!bq && top) && (cap = this.rules.def.exec(src))) {
+      src = src.substring(cap[0].length);
+      this.tokens.links[cap[1].toLowerCase()] = {
+        href: cap[2],
+        title: cap[3]
+      };
+      continue;
+    }
+
+    // table (gfm)
+    if (top && (cap = this.rules.table.exec(src))) {
+      src = src.substring(cap[0].length);
+
+      item = {
+        type: 'table',
+        header: cap[1].replace(/^ *| *\| *$/g, '').split(/ *\| */),
+        align: cap[2].replace(/^ *|\| *$/g, '').split(/ *\| */),
+        cells: cap[3].replace(/(?: *\| *)?\n$/, '').split('\n')
+      };
+
+      for (i = 0; i < item.align.length; i++) {
+        if (/^ *-+: *$/.test(item.align[i])) {
+          item.align[i] = 'right';
+        } else if (/^ *:-+: *$/.test(item.align[i])) {
+          item.align[i] = 'center';
+        } else if (/^ *:-+ *$/.test(item.align[i])) {
+          item.align[i] = 'left';
+        } else {
+          item.align[i] = null;
+        }
+      }
+
+      for (i = 0; i < item.cells.length; i++) {
+        item.cells[i] = item.cells[i]
+          .replace(/^ *\| *| *\| *$/g, '')
+          .split(/ *\| */);
+      }
+
+      this.tokens.push(item);
+
+      continue;
+    }
+
+    // top-level paragraph
+    if (top && (cap = this.rules.paragraph.exec(src))) {
+      src = src.substring(cap[0].length);
+      this.tokens.push({
+        type: 'paragraph',
+        text: cap[1].charAt(cap[1].length - 1) === '\n'
+          ? cap[1].slice(0, -1)
+          : cap[1]
+      });
+      continue;
+    }
+
+    // text
+    if (cap = this.rules.text.exec(src)) {
+      // Top-level should never reach here.
+      src = src.substring(cap[0].length);
+      this.tokens.push({
+        type: 'text',
+        text: cap[0]
+      });
+      continue;
+    }
+
+    if (src) {
+      throw new
+        Error('Infinite loop on byte: ' + src.charCodeAt(0));
+    }
   }
 
-  var html = convert_tree_to_html( input, refs , options );
-  merge_text_nodes( html );
+  return this.tokens;
+};
+
+/**
+ * Inline-Level Grammar
+ */
+
+var inline = {
+  escape: /^\\([\\`*{}\[\]()#+\-.!_>])/,
+  autolink: /^<([^ >]+(@|:\/)[^ >]+)>/,
+  url: noop,
+  tag: /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
+  link: /^!?\[(inside)\]\(href\)/,
+  reflink: /^!?\[(inside)\]\s*\[([^\]]*)\]/,
+  nolink: /^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,
+  strong: /^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,
+  em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+  code: /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
+  br: /^ {2,}\n(?!\s*$)/,
+  del: noop,
+  text: /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/
+};
+
+inline._inside = /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/;
+inline._href = /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/;
+
+inline.link = replace(inline.link)
+  ('inside', inline._inside)
+  ('href', inline._href)
+  ();
+
+inline.reflink = replace(inline.reflink)
+  ('inside', inline._inside)
+  ();
+
+/**
+ * Normal Inline Grammar
+ */
+
+inline.normal = merge({}, inline);
+
+/**
+ * Pedantic Inline Grammar
+ */
+
+inline.pedantic = merge({}, inline.normal, {
+  strong: /^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
+  em: /^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/
+});
+
+/**
+ * GFM Inline Grammar
+ */
+
+inline.gfm = merge({}, inline.normal, {
+  escape: replace(inline.escape)('])', '~|])')(),
+  url: /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,
+  del: /^~~(?=\S)([\s\S]*?\S)~~/,
+  text: replace(inline.text)
+    (']|', '~]|')
+    ('|', '|https?://|')
+    ()
+});
+
+/**
+ * GFM + Line Breaks Inline Grammar
+ */
+
+inline.breaks = merge({}, inline.gfm, {
+  br: replace(inline.br)('{2,}', '*')(),
+  text: replace(inline.gfm.text)('{2,}', '*')()
+});
+
+/**
+ * Inline Lexer & Compiler
+ */
+
+function InlineLexer(links, options) {
+  this.options = options || marked.defaults;
+  this.links = links;
+  this.rules = inline.normal;
+  this.renderer = this.options.renderer || new Renderer;
+  this.renderer.options = this.options;
+
+  if (!this.links) {
+    throw new
+      Error('Tokens array requires a `links` property.');
+  }
+
+  if (this.options.gfm) {
+    if (this.options.breaks) {
+      this.rules = inline.breaks;
+    } else {
+      this.rules = inline.gfm;
+    }
+  } else if (this.options.pedantic) {
+    this.rules = inline.pedantic;
+  }
+}
+
+/**
+ * Expose Inline Rules
+ */
+
+InlineLexer.rules = inline;
+
+/**
+ * Static Lexing/Compiling Method
+ */
+
+InlineLexer.output = function(src, links, options) {
+  var inline = new InlineLexer(links, options);
+  return inline.output(src);
+};
+
+/**
+ * Lexing/Compiling
+ */
+
+InlineLexer.prototype.output = function(src) {
+  var out = ''
+    , link
+    , text
+    , href
+    , cap;
+
+  while (src) {
+    // escape
+    if (cap = this.rules.escape.exec(src)) {
+      src = src.substring(cap[0].length);
+      out += cap[1];
+      continue;
+    }
+
+    // autolink
+    if (cap = this.rules.autolink.exec(src)) {
+      src = src.substring(cap[0].length);
+      if (cap[2] === '@') {
+        text = cap[1].charAt(6) === ':'
+          ? this.mangle(cap[1].substring(7))
+          : this.mangle(cap[1]);
+        href = this.mangle('mailto:') + text;
+      } else {
+        text = escape(cap[1]);
+        href = text;
+      }
+      out += this.renderer.link(href, null, text);
+      continue;
+    }
+
+    // url (gfm)
+    if (!this.inLink && (cap = this.rules.url.exec(src))) {
+      src = src.substring(cap[0].length);
+      text = escape(cap[1]);
+      href = text;
+      out += this.renderer.link(href, null, text);
+      continue;
+    }
+
+    // tag
+    if (cap = this.rules.tag.exec(src)) {
+      if (!this.inLink && /^<a /i.test(cap[0])) {
+        this.inLink = true;
+      } else if (this.inLink && /^<\/a>/i.test(cap[0])) {
+        this.inLink = false;
+      }
+      src = src.substring(cap[0].length);
+      out += this.options.sanitize
+        ? escape(cap[0])
+        : cap[0];
+      continue;
+    }
+
+    // link
+    if (cap = this.rules.link.exec(src)) {
+      src = src.substring(cap[0].length);
+      this.inLink = true;
+      out += this.outputLink(cap, {
+        href: cap[2],
+        title: cap[3]
+      });
+      this.inLink = false;
+      continue;
+    }
+
+    // reflink, nolink
+    if ((cap = this.rules.reflink.exec(src))
+        || (cap = this.rules.nolink.exec(src))) {
+      src = src.substring(cap[0].length);
+      link = (cap[2] || cap[1]).replace(/\s+/g, ' ');
+      link = this.links[link.toLowerCase()];
+      if (!link || !link.href) {
+        out += cap[0].charAt(0);
+        src = cap[0].substring(1) + src;
+        continue;
+      }
+      this.inLink = true;
+      out += this.outputLink(cap, link);
+      this.inLink = false;
+      continue;
+    }
+
+    // strong
+    if (cap = this.rules.strong.exec(src)) {
+      src = src.substring(cap[0].length);
+      out += this.renderer.strong(this.output(cap[2] || cap[1]));
+      continue;
+    }
+
+    // em
+    if (cap = this.rules.em.exec(src)) {
+      src = src.substring(cap[0].length);
+      out += this.renderer.em(this.output(cap[2] || cap[1]));
+      continue;
+    }
+
+    // code
+    if (cap = this.rules.code.exec(src)) {
+      src = src.substring(cap[0].length);
+      out += this.renderer.codespan(escape(cap[2], true));
+      continue;
+    }
+
+    // br
+    if (cap = this.rules.br.exec(src)) {
+      src = src.substring(cap[0].length);
+      out += this.renderer.br();
+      continue;
+    }
+
+    // del (gfm)
+    if (cap = this.rules.del.exec(src)) {
+      src = src.substring(cap[0].length);
+      out += this.renderer.del(this.output(cap[1]));
+      continue;
+    }
+
+    // text
+    if (cap = this.rules.text.exec(src)) {
+      src = src.substring(cap[0].length);
+      out += escape(this.smartypants(cap[0]));
+      continue;
+    }
+
+    if (src) {
+      throw new
+        Error('Infinite loop on byte: ' + src.charCodeAt(0));
+    }
+  }
+
+  return out;
+};
+
+/**
+ * Compile Link
+ */
+
+InlineLexer.prototype.outputLink = function(cap, link) {
+  var href = escape(link.href)
+    , title = link.title ? escape(link.title) : null;
+
+  return cap[0].charAt(0) !== '!'
+    ? this.renderer.link(href, title, this.output(cap[1]))
+    : this.renderer.image(href, title, escape(cap[1]));
+};
+
+/**
+ * Smartypants Transformations
+ */
+
+InlineLexer.prototype.smartypants = function(text) {
+  if (!this.options.smartypants) return text;
+  return text
+    // em-dashes
+    .replace(/--/g, '\u2014')
+    // opening singles
+    .replace(/(^|[-\u2014/(\[{"\s])'/g, '$1\u2018')
+    // closing singles & apostrophes
+    .replace(/'/g, '\u2019')
+    // opening doubles
+    .replace(/(^|[-\u2014/(\[{\u2018\s])"/g, '$1\u201c')
+    // closing doubles
+    .replace(/"/g, '\u201d')
+    // ellipses
+    .replace(/\.{3}/g, '\u2026');
+};
+
+/**
+ * Mangle Links
+ */
+
+InlineLexer.prototype.mangle = function(text) {
+  var out = ''
+    , l = text.length
+    , i = 0
+    , ch;
+
+  for (; i < l; i++) {
+    ch = text.charCodeAt(i);
+    if (Math.random() > 0.5) {
+      ch = 'x' + ch.toString(16);
+    }
+    out += '&#' + ch + ';';
+  }
+
+  return out;
+};
+
+/**
+ * Renderer
+ */
+
+function Renderer(options) {
+  this.options = options || {};
+}
+
+Renderer.prototype.code = function(code, lang, escaped) {
+  if (this.options.highlight) {
+    var out = this.options.highlight(code, lang);
+    if (out != null && out !== code) {
+      escaped = true;
+      code = out;
+    }
+  }
+
+  if (!lang) {
+    return '<pre><code>'
+      + (escaped ? code : escape(code, true))
+      + '\n</code></pre>';
+  }
+
+  return '<pre><code class="'
+    + this.options.langPrefix
+    + escape(lang, true)
+    + '">'
+    + (escaped ? code : escape(code, true))
+    + '\n</code></pre>\n';
+};
+
+Renderer.prototype.blockquote = function(quote) {
+  return '<blockquote>\n' + quote + '</blockquote>\n';
+};
+
+Renderer.prototype.html = function(html) {
   return html;
 };
 
-// For Spidermonkey based engines
-function mk_block_toSource() {
-  return "Markdown.mk_block( " +
-          uneval(this.toString()) +
-          ", " +
-          uneval(this.trailing) +
-          ", " +
-          uneval(this.lineNumber) +
-          " )";
-}
-
-// node
-function mk_block_inspect() {
-  var util = require("util");
-  return "Markdown.mk_block( " +
-          util.inspect(this.toString()) +
-          ", " +
-          util.inspect(this.trailing) +
-          ", " +
-          util.inspect(this.lineNumber) +
-          " )";
-
-}
-
-var mk_block = Markdown.mk_block = function(block, trail, line) {
-  // Be helpful for default case in tests.
-  if ( arguments.length == 1 ) trail = "\n\n";
-
-  var s = new String(block);
-  s.trailing = trail;
-  // To make it clear its not just a string
-  s.inspect = mk_block_inspect;
-  s.toSource = mk_block_toSource;
-
-  if ( line != undefined )
-    s.lineNumber = line;
-
-  return s;
+Renderer.prototype.heading = function(text, level, raw) {
+  return '<h'
+    + level
+    + ' id="'
+    + this.options.headerPrefix
+    + raw.toLowerCase().replace(/[^\w]+/g, '-')
+    + '">'
+    + text
+    + '</h'
+    + level
+    + '>\n';
 };
 
-function count_lines( str ) {
-  var n = 0, i = -1;
-  while ( ( i = str.indexOf("\n", i + 1) ) !== -1 ) n++;
-  return n;
-}
+Renderer.prototype.hr = function() {
+  return this.options.xhtml ? '<hr/>\n' : '<hr>\n';
+};
 
-// Internal - split source into rough blocks
-Markdown.prototype.split_blocks = function splitBlocks( input, startLine ) {
-  input = input.replace(/(\r\n|\n|\r)/g, "\n");
-  // [\s\S] matches _anything_ (newline or space)
-  // [^] is equivalent but doesn't work in IEs.
-  var re = /([\s\S]+?)($|\n#|\n(?:\s*\n|$)+)/g,
-      blocks = [],
-      m;
+Renderer.prototype.list = function(body, ordered) {
+  var type = ordered ? 'ol' : 'ul';
+  return '<' + type + '>\n' + body + '</' + type + '>\n';
+};
 
-  var line_no = 1;
+Renderer.prototype.listitem = function(text) {
+  return '<li>' + text + '</li>\n';
+};
 
-  if ( ( m = /^(\s*\n)/.exec(input) ) != null ) {
-    // skip (but count) leading blank lines
-    line_no += count_lines( m[0] );
-    re.lastIndex = m[0].length;
-  }
+Renderer.prototype.paragraph = function(text) {
+  return '<p>' + text + '</p>\n';
+};
 
-  while ( ( m = re.exec(input) ) !== null ) {
-    if (m[2] == "\n#") {
-      m[2] = "\n";
-      re.lastIndex--;
+Renderer.prototype.table = function(header, body) {
+  return '<table>\n'
+    + '<thead>\n'
+    + header
+    + '</thead>\n'
+    + '<tbody>\n'
+    + body
+    + '</tbody>\n'
+    + '</table>\n';
+};
+
+Renderer.prototype.tablerow = function(content) {
+  return '<tr>\n' + content + '</tr>\n';
+};
+
+Renderer.prototype.tablecell = function(content, flags) {
+  var type = flags.header ? 'th' : 'td';
+  var tag = flags.align
+    ? '<' + type + ' style="text-align:' + flags.align + '">'
+    : '<' + type + '>';
+  return tag + content + '</' + type + '>\n';
+};
+
+// span level renderer
+Renderer.prototype.strong = function(text) {
+  return '<strong>' + text + '</strong>';
+};
+
+Renderer.prototype.em = function(text) {
+  return '<em>' + text + '</em>';
+};
+
+Renderer.prototype.codespan = function(text) {
+  return '<code>' + text + '</code>';
+};
+
+Renderer.prototype.br = function() {
+  return this.options.xhtml ? '<br/>' : '<br>';
+};
+
+Renderer.prototype.del = function(text) {
+  return '<del>' + text + '</del>';
+};
+
+Renderer.prototype.link = function(href, title, text) {
+  if (this.options.sanitize) {
+    try {
+      var prot = decodeURIComponent(unescape(href))
+        .replace(/[^\w:]/g, '')
+        .toLowerCase();
+    } catch (e) {
+      return '';
     }
-    blocks.push( mk_block( m[1], m[2], line_no ) );
-    line_no += count_lines( m[0] );
+    if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0) {
+      return '';
+    }
   }
+  var out = '<a href="' + href + '"';
+  if (title) {
+    out += ' title="' + title + '"';
+  }
+  out += '>' + text + '</a>';
+  return out;
+};
 
-  return blocks;
+Renderer.prototype.image = function(href, title, text) {
+  var out = '<img src="' + href + '" alt="' + text + '"';
+  if (title) {
+    out += ' title="' + title + '"';
+  }
+  out += this.options.xhtml ? '/>' : '>';
+  return out;
 };
 
 /**
- *  Markdown#processBlock( block, next ) -> undefined | [ JsonML, ... ]
- *  - block (String): the block to process
- *  - next (Array): the following blocks
- *
- * Process `block` and return an array of JsonML nodes representing `block`.
- *
- * It does this by asking each block level function in the dialect to process
- * the block until one can. Succesful handling is indicated by returning an
- * array (with zero or more JsonML nodes), failure by a false value.
- *
- * Blocks handlers are responsible for calling [[Markdown#processInline]]
- * themselves as appropriate.
- *
- * If the blocks were split incorrectly or adjacent blocks need collapsing you
- * can adjust `next` in place using shift/splice etc.
- *
- * If any of this default behaviour is not right for the dialect, you can
- * define a `__call__` method on the dialect that will get invoked to handle
- * the block processing.
+ * Parsing & Compiling
  */
-Markdown.prototype.processBlock = function processBlock( block, next ) {
-  var cbs = this.dialect.block,
-      ord = cbs.__order__;
 
-  if ( "__call__" in cbs ) {
-    return cbs.__call__.call(this, block, next);
-  }
-
-  for ( var i = 0; i < ord.length; i++ ) {
-    //D:this.debug( "Testing", ord[i] );
-    var res = cbs[ ord[i] ].call( this, block, next );
-    if ( res ) {
-      //D:this.debug("  matched");
-      if ( !isArray(res) || ( res.length > 0 && !( isArray(res[0]) ) ) )
-        this.debug(ord[i], "didn't return a proper array");
-      //D:this.debug( "" );
-      return res;
-    }
-  }
-
-  // Uhoh! no match! Should we throw an error?
-  return [];
-};
-
-Markdown.prototype.processInline = function processInline( block ) {
-  return this.dialect.inline.__call__.call( this, String( block ) );
-};
-
-/**
- *  Markdown#toTree( source ) -> JsonML
- *  - source (String): markdown source to parse
- *
- *  Parse `source` into a JsonML tree representing the markdown document.
- **/
-// custom_tree means set this.tree to `custom_tree` and restore old value on return
-Markdown.prototype.toTree = function toTree( source, custom_root ) {
-  var blocks = source instanceof Array ? source : this.split_blocks( source );
-
-  // Make tree a member variable so its easier to mess with in extensions
-  var old_tree = this.tree;
-  try {
-    this.tree = custom_root || this.tree || [ "markdown" ];
-
-    blocks:
-    while ( blocks.length ) {
-      var b = this.processBlock( blocks.shift(), blocks );
-
-      // Reference blocks and the like won't return any content
-      if ( !b.length ) continue blocks;
-
-      this.tree.push.apply( this.tree, b );
-    }
-    return this.tree;
-  }
-  finally {
-    if ( custom_root ) {
-      this.tree = old_tree;
-    }
-  }
-};
-
-// Noop by default
-Markdown.prototype.debug = function () {
-  var args = Array.prototype.slice.call( arguments);
-  args.unshift(this.debug_indent);
-  if ( typeof print !== "undefined" )
-      print.apply( print, args );
-  if ( typeof console !== "undefined" && typeof console.log !== "undefined" )
-      console.log.apply( null, args );
+function Parser(options) {
+  this.tokens = [];
+  this.token = null;
+  this.options = options || marked.defaults;
+  this.options.renderer = this.options.renderer || new Renderer;
+  this.renderer = this.options.renderer;
+  this.renderer.options = this.options;
 }
 
-Markdown.prototype.loop_re_over_block = function( re, block, cb ) {
-  // Dont use /g regexps with this
-  var m,
-      b = block.valueOf();
+/**
+ * Static Parse Method
+ */
 
-  while ( b.length && (m = re.exec(b) ) != null ) {
-    b = b.substr( m[0].length );
-    cb.call(this, m);
-  }
-  return b;
+Parser.parse = function(src, options, renderer) {
+  var parser = new Parser(options, renderer);
+  return parser.parse(src);
 };
 
 /**
- * Markdown.dialects
- *
- * Namespace of built-in dialects.
- **/
-Markdown.dialects = {};
+ * Parse Loop
+ */
+
+Parser.prototype.parse = function(src) {
+  this.inline = new InlineLexer(src.links, this.options, this.renderer);
+  this.tokens = src.reverse();
+
+  var out = '';
+  while (this.next()) {
+    out += this.tok();
+  }
+
+  return out;
+};
 
 /**
- * Markdown.dialects.Gruber
- *
- * The default dialect that follows the rules set out by John Gruber's
- * markdown.pl as closely as possible. Well actually we follow the behaviour of
- * that script which in some places is not exactly what the syntax web page
- * says.
- **/
-Markdown.dialects.Gruber = {
-  block: {
-    atxHeader: function atxHeader( block, next ) {
-      var m = block.match( /^(#{1,6})\s*(.*?)\s*#*\s*(?:\n|$)/ );
+ * Next Token
+ */
 
-      if ( !m ) return undefined;
+Parser.prototype.next = function() {
+  return this.token = this.tokens.pop();
+};
 
-      var header = [ "header", { level: m[ 1 ].length } ];
-      Array.prototype.push.apply(header, this.processInline(m[ 2 ]));
+/**
+ * Preview Next Token
+ */
 
-      if ( m[0].length < block.length )
-        next.unshift( mk_block( block.substr( m[0].length ), block.trailing, block.lineNumber + 2 ) );
+Parser.prototype.peek = function() {
+  return this.tokens[this.tokens.length - 1] || 0;
+};
 
-      return [ header ];
-    },
+/**
+ * Parse Text Tokens
+ */
 
-    setextHeader: function setextHeader( block, next ) {
-      var m = block.match( /^(.*)\n([-=])\2\2+(?:\n|$)/ );
+Parser.prototype.parseText = function() {
+  var body = this.token.text;
 
-      if ( !m ) return undefined;
+  while (this.peek().type === 'text') {
+    body += '\n' + this.next().text;
+  }
 
-      var level = ( m[ 2 ] === "=" ) ? 1 : 2;
-      var header = [ "header", { level : level }, m[ 1 ] ];
+  return this.inline.output(body);
+};
 
-      if ( m[0].length < block.length )
-        next.unshift( mk_block( block.substr( m[0].length ), block.trailing, block.lineNumber + 2 ) );
+/**
+ * Parse Current Token
+ */
 
-      return [ header ];
-    },
+Parser.prototype.tok = function() {
+  switch (this.token.type) {
+    case 'space': {
+      return '';
+    }
+    case 'hr': {
+      return this.renderer.hr();
+    }
+    case 'heading': {
+      return this.renderer.heading(
+        this.inline.output(this.token.text),
+        this.token.depth,
+        this.token.text);
+    }
+    case 'code': {
+      return this.renderer.code(this.token.text,
+        this.token.lang,
+        this.token.escaped);
+    }
+    case 'table': {
+      var header = ''
+        , body = ''
+        , i
+        , row
+        , cell
+        , flags
+        , j;
 
-    code: function code( block, next ) {
-      // |    Foo
-      // |bar
-      // should be a code block followed by a paragraph. Fun
-      //
-      // There might also be adjacent code block to merge.
-
-      var ret = [],
-          re = /^(?: {0,3}\t| {4})(.*)\n?/,
-          lines;
-
-      // 4 spaces + content
-      if ( !block.match( re ) ) return undefined;
-
-      block_search:
-      do {
-        // Now pull out the rest of the lines
-        var b = this.loop_re_over_block(
-                  re, block.valueOf(), function( m ) { ret.push( m[1] ); } );
-
-        if ( b.length ) {
-          // Case alluded to in first comment. push it back on as a new block
-          next.unshift( mk_block(b, block.trailing) );
-          break block_search;
-        }
-        else if ( next.length ) {
-          // Check the next block - it might be code too
-          if ( !next[0].match( re ) ) break block_search;
-
-          // Pull how how many blanks lines follow - minus two to account for .join
-          ret.push ( block.trailing.replace(/[^\n]/g, "").substring(2) );
-
-          block = next.shift();
-        }
-        else {
-          break block_search;
-        }
-      } while ( true );
-
-      return [ [ "code_block", ret.join("\n") ] ];
-    },
-
-    horizRule: function horizRule( block, next ) {
-      // this needs to find any hr in the block to handle abutting blocks
-      var m = block.match( /^(?:([\s\S]*?)\n)?[ \t]*([-_*])(?:[ \t]*\2){2,}[ \t]*(?:\n([\s\S]*))?$/ );
-
-      if ( !m ) {
-        return undefined;
-      }
-
-      var jsonml = [ [ "hr" ] ];
-
-      // if there's a leading abutting block, process it
-      if ( m[ 1 ] ) {
-        jsonml.unshift.apply( jsonml, this.processBlock( m[ 1 ], [] ) );
-      }
-
-      // if there's a trailing abutting block, stick it into next
-      if ( m[ 3 ] ) {
-        next.unshift( mk_block( m[ 3 ] ) );
-      }
-
-      return jsonml;
-    },
-
-    // There are two types of lists. Tight and loose. Tight lists have no whitespace
-    // between the items (and result in text just in the <li>) and loose lists,
-    // which have an empty line between list items, resulting in (one or more)
-    // paragraphs inside the <li>.
-    //
-    // There are all sorts weird edge cases about the original markdown.pl's
-    // handling of lists:
-    //
-    // * Nested lists are supposed to be indented by four chars per level. But
-    //   if they aren't, you can get a nested list by indenting by less than
-    //   four so long as the indent doesn't match an indent of an existing list
-    //   item in the 'nest stack'.
-    //
-    // * The type of the list (bullet or number) is controlled just by the
-    //    first item at the indent. Subsequent changes are ignored unless they
-    //    are for nested lists
-    //
-    lists: (function( ) {
-      // Use a closure to hide a few variables.
-      var any_list = "[*+-]|\\d+\\.",
-          bullet_list = /[*+-]/,
-          number_list = /\d+\./,
-          // Capture leading indent as it matters for determining nested lists.
-          is_list_re = new RegExp( "^( {0,3})(" + any_list + ")[ \t]+" ),
-          indent_re = "(?: {0,3}\\t| {4})";
-
-      // TODO: Cache this regexp for certain depths.
-      // Create a regexp suitable for matching an li for a given stack depth
-      function regex_for_depth( depth ) {
-
-        return new RegExp(
-          // m[1] = indent, m[2] = list_type
-          "(?:^(" + indent_re + "{0," + depth + "} {0,3})(" + any_list + ")\\s+)|" +
-          // m[3] = cont
-          "(^" + indent_re + "{0," + (depth-1) + "}[ ]{0,4})"
+      // header
+      cell = '';
+      for (i = 0; i < this.token.header.length; i++) {
+        flags = { header: true, align: this.token.align[i] };
+        cell += this.renderer.tablecell(
+          this.inline.output(this.token.header[i]),
+          { header: true, align: this.token.align[i] }
         );
       }
-      function expand_tab( input ) {
-        return input.replace( / {0,3}\t/g, "    " );
-      }
+      header += this.renderer.tablerow(cell);
 
-      // Add inline content `inline` to `li`. inline comes from processInline
-      // so is an array of content
-      function add(li, loose, inline, nl) {
-        if ( loose ) {
-          li.push( [ "para" ].concat(inline) );
-          return;
-        }
-        // Hmmm, should this be any block level element or just paras?
-        var add_to = li[li.length -1] instanceof Array && li[li.length - 1][0] == "para"
-                   ? li[li.length -1]
-                   : li;
+      for (i = 0; i < this.token.cells.length; i++) {
+        row = this.token.cells[i];
 
-        // If there is already some content in this list, add the new line in
-        if ( nl && li.length > 1 ) inline.unshift(nl);
-
-        for ( var i = 0; i < inline.length; i++ ) {
-          var what = inline[i],
-              is_str = typeof what == "string";
-          if ( is_str && add_to.length > 1 && typeof add_to[add_to.length-1] == "string" ) {
-            add_to[ add_to.length-1 ] += what;
-          }
-          else {
-            add_to.push( what );
-          }
-        }
-      }
-
-      // contained means have an indent greater than the current one. On
-      // *every* line in the block
-      function get_contained_blocks( depth, blocks ) {
-
-        var re = new RegExp( "^(" + indent_re + "{" + depth + "}.*?\\n?)*$" ),
-            replace = new RegExp("^" + indent_re + "{" + depth + "}", "gm"),
-            ret = [];
-
-        while ( blocks.length > 0 ) {
-          if ( re.exec( blocks[0] ) ) {
-            var b = blocks.shift(),
-                // Now remove that indent
-                x = b.replace( replace, "");
-
-            ret.push( mk_block( x, b.trailing, b.lineNumber ) );
-          }
-          else {
-            break;
-          }
-        }
-        return ret;
-      }
-
-      // passed to stack.forEach to turn list items up the stack into paras
-      function paragraphify(s, i, stack) {
-        var list = s.list;
-        var last_li = list[list.length-1];
-
-        if ( last_li[1] instanceof Array && last_li[1][0] == "para" ) {
-          return;
-        }
-        if ( i + 1 == stack.length ) {
-          // Last stack frame
-          // Keep the same array, but replace the contents
-          last_li.push( ["para"].concat( last_li.splice(1, last_li.length - 1) ) );
-        }
-        else {
-          var sublist = last_li.pop();
-          last_li.push( ["para"].concat( last_li.splice(1, last_li.length - 1) ), sublist );
-        }
-      }
-
-      // The matcher function
-      return function( block, next ) {
-        var m = block.match( is_list_re );
-        if ( !m ) return undefined;
-
-        function make_list( m ) {
-          var list = bullet_list.exec( m[2] )
-                   ? ["bulletlist"]
-                   : ["numberlist"];
-
-          stack.push( { list: list, indent: m[1] } );
-          return list;
+        cell = '';
+        for (j = 0; j < row.length; j++) {
+          cell += this.renderer.tablecell(
+            this.inline.output(row[j]),
+            { header: false, align: this.token.align[j] }
+          );
         }
 
+        body += this.renderer.tablerow(cell);
+      }
+      return this.renderer.table(header, body);
+    }
+    case 'blockquote_start': {
+      var body = '';
 
-        var stack = [], // Stack of lists for nesting.
-            list = make_list( m ),
-            last_li,
-            loose = false,
-            ret = [ stack[0].list ],
-            i;
-
-        // Loop to search over block looking for inner block elements and loose lists
-        loose_search:
-        while ( true ) {
-          // Split into lines preserving new lines at end of line
-          var lines = block.split( /(?=\n)/ );
-
-          // We have to grab all lines for a li and call processInline on them
-          // once as there are some inline things that can span lines.
-          var li_accumulate = "";
-
-          // Loop over the lines in this block looking for tight lists.
-          tight_search:
-          for ( var line_no = 0; line_no < lines.length; line_no++ ) {
-            var nl = "",
-                l = lines[line_no].replace(/^\n/, function(n) { nl = n; return ""; });
-
-            // TODO: really should cache this
-            var line_re = regex_for_depth( stack.length );
-
-            m = l.match( line_re );
-            //print( "line:", uneval(l), "\nline match:", uneval(m) );
-
-            // We have a list item
-            if ( m[1] !== undefined ) {
-              // Process the previous list item, if any
-              if ( li_accumulate.length ) {
-                add( last_li, loose, this.processInline( li_accumulate ), nl );
-                // Loose mode will have been dealt with. Reset it
-                loose = false;
-                li_accumulate = "";
-              }
-
-              m[1] = expand_tab( m[1] );
-              var wanted_depth = Math.floor(m[1].length/4)+1;
-              //print( "want:", wanted_depth, "stack:", stack.length);
-              if ( wanted_depth > stack.length ) {
-                // Deep enough for a nested list outright
-                //print ( "new nested list" );
-                list = make_list( m );
-                last_li.push( list );
-                last_li = list[1] = [ "listitem" ];
-              }
-              else {
-                // We aren't deep enough to be strictly a new level. This is
-                // where Md.pl goes nuts. If the indent matches a level in the
-                // stack, put it there, else put it one deeper then the
-                // wanted_depth deserves.
-                var found = false;
-                for ( i = 0; i < stack.length; i++ ) {
-                  if ( stack[ i ].indent != m[1] ) continue;
-                  list = stack[ i ].list;
-                  stack.splice( i+1, stack.length - (i+1) );
-                  found = true;
-                  break;
-                }
-
-                if (!found) {
-                  //print("not found. l:", uneval(l));
-                  wanted_depth++;
-                  if ( wanted_depth <= stack.length ) {
-                    stack.splice(wanted_depth, stack.length - wanted_depth);
-                    //print("Desired depth now", wanted_depth, "stack:", stack.length);
-                    list = stack[wanted_depth-1].list;
-                    //print("list:", uneval(list) );
-                  }
-                  else {
-                    //print ("made new stack for messy indent");
-                    list = make_list(m);
-                    last_li.push(list);
-                  }
-                }
-
-                //print( uneval(list), "last", list === stack[stack.length-1].list );
-                last_li = [ "listitem" ];
-                list.push(last_li);
-              } // end depth of shenegains
-              nl = "";
-            }
-
-            // Add content
-            if ( l.length > m[0].length ) {
-              li_accumulate += nl + l.substr( m[0].length );
-            }
-          } // tight_search
-
-          if ( li_accumulate.length ) {
-            add( last_li, loose, this.processInline( li_accumulate ), nl );
-            // Loose mode will have been dealt with. Reset it
-            loose = false;
-            li_accumulate = "";
-          }
-
-          // Look at the next block - we might have a loose list. Or an extra
-          // paragraph for the current li
-          var contained = get_contained_blocks( stack.length, next );
-
-          // Deal with code blocks or properly nested lists
-          if ( contained.length > 0 ) {
-            // Make sure all listitems up the stack are paragraphs
-            forEach( stack, paragraphify, this);
-
-            last_li.push.apply( last_li, this.toTree( contained, [] ) );
-          }
-
-          var next_block = next[0] && next[0].valueOf() || "";
-
-          if ( next_block.match(is_list_re) || next_block.match( /^ / ) ) {
-            block = next.shift();
-
-            // Check for an HR following a list: features/lists/hr_abutting
-            var hr = this.dialect.block.horizRule( block, next );
-
-            if ( hr ) {
-              ret.push.apply(ret, hr);
-              break;
-            }
-
-            // Make sure all listitems up the stack are paragraphs
-            forEach( stack, paragraphify, this);
-
-            loose = true;
-            continue loose_search;
-          }
-          break;
-        } // loose_search
-
-        return ret;
-      };
-    })(),
-
-    blockquote: function blockquote( block, next ) {
-      if ( !block.match( /^>/m ) )
-        return undefined;
-
-      var jsonml = [];
-
-      // separate out the leading abutting block, if any. I.e. in this case:
-      //
-      //  a
-      //  > b
-      //
-      if ( block[ 0 ] != ">" ) {
-        var lines = block.split( /\n/ ),
-            prev = [],
-            line_no = block.lineNumber;
-
-        // keep shifting lines until you find a crotchet
-        while ( lines.length && lines[ 0 ][ 0 ] != ">" ) {
-            prev.push( lines.shift() );
-            line_no++;
-        }
-
-        var abutting = mk_block( prev.join( "\n" ), "\n", block.lineNumber );
-        jsonml.push.apply( jsonml, this.processBlock( abutting, [] ) );
-        // reassemble new block of just block quotes!
-        block = mk_block( lines.join( "\n" ), block.trailing, line_no );
+      while (this.next().type !== 'blockquote_end') {
+        body += this.tok();
       }
 
+      return this.renderer.blockquote(body);
+    }
+    case 'list_start': {
+      var body = ''
+        , ordered = this.token.ordered;
 
-      // if the next block is also a blockquote merge it in
-      while ( next.length && next[ 0 ][ 0 ] == ">" ) {
-        var b = next.shift();
-        block = mk_block( block + block.trailing + b, b.trailing, block.lineNumber );
+      while (this.next().type !== 'list_end') {
+        body += this.tok();
       }
 
-      // Strip off the leading "> " and re-process as a block.
-      var input = block.replace( /^> ?/gm, "" ),
-          old_tree = this.tree,
-          processedBlock = this.toTree( input, [ "blockquote" ] ),
-          attr = extract_attr( processedBlock );
+      return this.renderer.list(body, ordered);
+    }
+    case 'list_item_start': {
+      var body = '';
 
-      // If any link references were found get rid of them
-      if ( attr && attr.references ) {
-        delete attr.references;
-        // And then remove the attribute object if it's empty
-        if ( isEmpty( attr ) ) {
-          processedBlock.splice( 1, 1 );
-        }
+      while (this.next().type !== 'list_item_end') {
+        body += this.token.type === 'text'
+          ? this.parseText()
+          : this.tok();
       }
 
-      jsonml.push( processedBlock );
-      return jsonml;
-    },
+      return this.renderer.listitem(body);
+    }
+    case 'loose_item_start': {
+      var body = '';
 
-    referenceDefn: function referenceDefn( block, next) {
-      var re = /^\s*\[(.*?)\]:\s*(\S+)(?:\s+(?:(['"])(.*?)\3|\((.*?)\)))?\n?/;
-      // interesting matches are [ , ref_id, url, , title, title ]
-
-      if ( !block.match(re) )
-        return undefined;
-
-      // make an attribute node if it doesn't exist
-      if ( !extract_attr( this.tree ) ) {
-        this.tree.splice( 1, 0, {} );
+      while (this.next().type !== 'list_item_end') {
+        body += this.tok();
       }
 
-      var attrs = extract_attr( this.tree );
-
-      // make a references hash if it doesn't exist
-      if ( attrs.references === undefined ) {
-        attrs.references = {};
-      }
-
-      var b = this.loop_re_over_block(re, block, function( m ) {
-
-        if ( m[2] && m[2][0] == "<" && m[2][m[2].length-1] == ">" )
-          m[2] = m[2].substring( 1, m[2].length - 1 );
-
-        var ref = attrs.references[ m[1].toLowerCase() ] = {
-          href: m[2]
-        };
-
-        if ( m[4] !== undefined )
-          ref.title = m[4];
-        else if ( m[5] !== undefined )
-          ref.title = m[5];
-
-      } );
-
-      if ( b.length )
-        next.unshift( mk_block( b, block.trailing ) );
-
-      return [];
-    },
-
-    para: function para( block, next ) {
-      // everything's a para!
-      return [ ["para"].concat( this.processInline( block ) ) ];
+      return this.renderer.listitem(body);
+    }
+    case 'html': {
+      var html = !this.token.pre && !this.options.pedantic
+        ? this.inline.output(this.token.text)
+        : this.token.text;
+      return this.renderer.html(html);
+    }
+    case 'paragraph': {
+      return this.renderer.paragraph(this.inline.output(this.token.text));
+    }
+    case 'text': {
+      return this.renderer.paragraph(this.parseText());
     }
   }
 };
 
-Markdown.dialects.Gruber.inline = {
-
-    __oneElement__: function oneElement( text, patterns_or_re, previous_nodes ) {
-      var m,
-          res,
-          lastIndex = 0;
-
-      patterns_or_re = patterns_or_re || this.dialect.inline.__patterns__;
-      var re = new RegExp( "([\\s\\S]*?)(" + (patterns_or_re.source || patterns_or_re) + ")" );
-
-      m = re.exec( text );
-      if (!m) {
-        // Just boring text
-        return [ text.length, text ];
-      }
-      else if ( m[1] ) {
-        // Some un-interesting text matched. Return that first
-        return [ m[1].length, m[1] ];
-      }
-
-      var res;
-      if ( m[2] in this.dialect.inline ) {
-        res = this.dialect.inline[ m[2] ].call(
-                  this,
-                  text.substr( m.index ), m, previous_nodes || [] );
-      }
-      // Default for now to make dev easier. just slurp special and output it.
-      res = res || [ m[2].length, m[2] ];
-      return res;
-    },
-
-    __call__: function inline( text, patterns ) {
-
-      var out = [],
-          res;
-
-      function add(x) {
-        //D:self.debug("  adding output", uneval(x));
-        if ( typeof x == "string" && typeof out[out.length-1] == "string" )
-          out[ out.length-1 ] += x;
-        else
-          out.push(x);
-      }
-
-      while ( text.length > 0 ) {
-        res = this.dialect.inline.__oneElement__.call(this, text, patterns, out );
-        text = text.substr( res.shift() );
-        forEach(res, add )
-      }
-
-      return out;
-    },
-
-    // These characters are intersting elsewhere, so have rules for them so that
-    // chunks of plain text blocks don't include them
-    "]": function () {},
-    "}": function () {},
-
-    __escape__ : /^\\[\\`\*_{}\[\]()#\+.!\-]/,
-
-    "\\": function escaped( text ) {
-      // [ length of input processed, node/children to add... ]
-      // Only esacape: \ ` * _ { } [ ] ( ) # * + - . !
-      if ( this.dialect.inline.__escape__.exec( text ) )
-        return [ 2, text.charAt( 1 ) ];
-      else
-        // Not an esacpe
-        return [ 1, "\\" ];
-    },
-
-    "![": function image( text ) {
-
-      // Unlike images, alt text is plain text only. no other elements are
-      // allowed in there
-
-      // ![Alt text](/path/to/img.jpg "Optional title")
-      //      1          2            3       4         <--- captures
-      var m = text.match( /^!\[(.*?)\][ \t]*\([ \t]*([^")]*?)(?:[ \t]+(["'])(.*?)\3)?[ \t]*\)/ );
-
-      if ( m ) {
-        if ( m[2] && m[2][0] == "<" && m[2][m[2].length-1] == ">" )
-          m[2] = m[2].substring( 1, m[2].length - 1 );
-
-        m[2] = this.dialect.inline.__call__.call( this, m[2], /\\/ )[0];
-
-        var attrs = { alt: m[1], href: m[2] || "" };
-        if ( m[4] !== undefined)
-          attrs.title = m[4];
-
-        return [ m[0].length, [ "img", attrs ] ];
-      }
-
-      // ![Alt text][id]
-      m = text.match( /^!\[(.*?)\][ \t]*\[(.*?)\]/ );
-
-      if ( m ) {
-        // We can't check if the reference is known here as it likely wont be
-        // found till after. Check it in md tree->hmtl tree conversion
-        return [ m[0].length, [ "img_ref", { alt: m[1], ref: m[2].toLowerCase(), original: m[0] } ] ];
-      }
-
-      // Just consume the '!['
-      return [ 2, "![" ];
-    },
-
-    "[": function link( text ) {
-
-      var orig = String(text);
-      // Inline content is possible inside `link text`
-      var res = Markdown.DialectHelpers.inline_until_char.call( this, text.substr(1), "]" );
-
-      // No closing ']' found. Just consume the [
-      if ( !res ) return [ 1, "[" ];
-
-      var consumed = 1 + res[ 0 ],
-          children = res[ 1 ],
-          link,
-          attrs;
-
-      // At this point the first [...] has been parsed. See what follows to find
-      // out which kind of link we are (reference or direct url)
-      text = text.substr( consumed );
-
-      // [link text](/path/to/img.jpg "Optional title")
-      //                 1            2       3         <--- captures
-      // This will capture up to the last paren in the block. We then pull
-      // back based on if there a matching ones in the url
-      //    ([here](/url/(test))
-      // The parens have to be balanced
-      var m = text.match( /^\s*\([ \t]*([^"']*)(?:[ \t]+(["'])(.*?)\2)?[ \t]*\)/ );
-      if ( m ) {
-        var url = m[1];
-        consumed += m[0].length;
-
-        if ( url && url[0] == "<" && url[url.length-1] == ">" )
-          url = url.substring( 1, url.length - 1 );
-
-        // If there is a title we don't have to worry about parens in the url
-        if ( !m[3] ) {
-          var open_parens = 1; // One open that isn't in the capture
-          for ( var len = 0; len < url.length; len++ ) {
-            switch ( url[len] ) {
-            case "(":
-              open_parens++;
-              break;
-            case ")":
-              if ( --open_parens == 0) {
-                consumed -= url.length - len;
-                url = url.substring(0, len);
-              }
-              break;
-            }
-          }
-        }
-
-        // Process escapes only
-        url = this.dialect.inline.__call__.call( this, url, /\\/ )[0];
-
-        attrs = { href: url || "" };
-        if ( m[3] !== undefined)
-          attrs.title = m[3];
-
-        link = [ "link", attrs ].concat( children );
-        return [ consumed, link ];
-      }
-
-      // [Alt text][id]
-      // [Alt text] [id]
-      m = text.match( /^\s*\[(.*?)\]/ );
-
-      if ( m ) {
-
-        consumed += m[ 0 ].length;
-
-        // [links][] uses links as its reference
-        attrs = { ref: ( m[ 1 ] || String(children) ).toLowerCase(),  original: orig.substr( 0, consumed ) };
-
-        link = [ "link_ref", attrs ].concat( children );
-
-        // We can't check if the reference is known here as it likely wont be
-        // found till after. Check it in md tree->hmtl tree conversion.
-        // Store the original so that conversion can revert if the ref isn't found.
-        return [ consumed, link ];
-      }
-
-      // [id]
-      // Only if id is plain (no formatting.)
-      if ( children.length == 1 && typeof children[0] == "string" ) {
-
-        attrs = { ref: children[0].toLowerCase(),  original: orig.substr( 0, consumed ) };
-        link = [ "link_ref", attrs, children[0] ];
-        return [ consumed, link ];
-      }
-
-      // Just consume the "["
-      return [ 1, "[" ];
-    },
-
-
-    "<": function autoLink( text ) {
-      var m;
-
-      if ( ( m = text.match( /^<(?:((https?|ftp|mailto):[^>]+)|(.*?@.*?\.[a-zA-Z]+))>/ ) ) != null ) {
-        if ( m[3] ) {
-          return [ m[0].length, [ "link", { href: "mailto:" + m[3] }, m[3] ] ];
-
-        }
-        else if ( m[2] == "mailto" ) {
-          return [ m[0].length, [ "link", { href: m[1] }, m[1].substr("mailto:".length ) ] ];
-        }
-        else
-          return [ m[0].length, [ "link", { href: m[1] }, m[1] ] ];
-      }
-
-      return [ 1, "<" ];
-    },
-
-    "`": function inlineCode( text ) {
-      // Inline code block. as many backticks as you like to start it
-      // Always skip over the opening ticks.
-      var m = text.match( /(`+)(([\s\S]*?)\1)/ );
-
-      if ( m && m[2] )
-        return [ m[1].length + m[2].length, [ "inlinecode", m[3] ] ];
-      else {
-        // TODO: No matching end code found - warn!
-        return [ 1, "`" ];
-      }
-    },
-
-    "  \n": function lineBreak( text ) {
-      return [ 3, [ "linebreak" ] ];
-    }
-
-};
-
-// Meta Helper/generator method for em and strong handling
-function strong_em( tag, md ) {
-
-  var state_slot = tag + "_state",
-      other_slot = tag == "strong" ? "em_state" : "strong_state";
-
-  function CloseTag(len) {
-    this.len_after = len;
-    this.name = "close_" + md;
-  }
-
-  return function ( text, orig_match ) {
-
-    if ( this[state_slot][0] == md ) {
-      // Most recent em is of this type
-      //D:this.debug("closing", md);
-      this[state_slot].shift();
-
-      // "Consume" everything to go back to the recrusion in the else-block below
-      return[ text.length, new CloseTag(text.length-md.length) ];
-    }
-    else {
-      // Store a clone of the em/strong states
-      var other = this[other_slot].slice(),
-          state = this[state_slot].slice();
-
-      this[state_slot].unshift(md);
-
-      //D:this.debug_indent += "  ";
-
-      // Recurse
-      var res = this.processInline( text.substr( md.length ) );
-      //D:this.debug_indent = this.debug_indent.substr(2);
-
-      var last = res[res.length - 1];
-
-      //D:this.debug("processInline from", tag + ": ", uneval( res ) );
-
-      var check = this[state_slot].shift();
-      if ( last instanceof CloseTag ) {
-        res.pop();
-        // We matched! Huzzah.
-        var consumed = text.length - last.len_after;
-        return [ consumed, [ tag ].concat(res) ];
-      }
-      else {
-        // Restore the state of the other kind. We might have mistakenly closed it.
-        this[other_slot] = other;
-        this[state_slot] = state;
-
-        // We can't reuse the processed result as it could have wrong parsing contexts in it.
-        return [ md.length, md ];
-      }
-    }
-  }; // End returned function
+/**
+ * Helpers
+ */
+
+function escape(html, encode) {
+  return html
+    .replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
-Markdown.dialects.Gruber.inline["**"] = strong_em("strong", "**");
-Markdown.dialects.Gruber.inline["__"] = strong_em("strong", "__");
-Markdown.dialects.Gruber.inline["*"]  = strong_em("em", "*");
-Markdown.dialects.Gruber.inline["_"]  = strong_em("em", "_");
-
-
-// Build default order from insertion order.
-Markdown.buildBlockOrder = function(d) {
-  var ord = [];
-  for ( var i in d ) {
-    if ( i == "__order__" || i == "__call__" ) continue;
-    ord.push( i );
-  }
-  d.__order__ = ord;
-};
-
-// Build patterns for inline matcher
-Markdown.buildInlinePatterns = function(d) {
-  var patterns = [];
-
-  for ( var i in d ) {
-    // __foo__ is reserved and not a pattern
-    if ( i.match( /^__.*__$/) ) continue;
-    var l = i.replace( /([\\.*+?|()\[\]{}])/g, "\\$1" )
-             .replace( /\n/, "\\n" );
-    patterns.push( i.length == 1 ? l : "(?:" + l + ")" );
-  }
-
-  patterns = patterns.join("|");
-  d.__patterns__ = patterns;
-  //print("patterns:", uneval( patterns ) );
-
-  var fn = d.__call__;
-  d.__call__ = function(text, pattern) {
-    if ( pattern != undefined ) {
-      return fn.call(this, text, pattern);
+function unescape(html) {
+  return html.replace(/&([#\w]+);/g, function(_, n) {
+    n = n.toLowerCase();
+    if (n === 'colon') return ':';
+    if (n.charAt(0) === '#') {
+      return n.charAt(1) === 'x'
+        ? String.fromCharCode(parseInt(n.substring(2), 16))
+        : String.fromCharCode(+n.substring(1));
     }
-    else
-    {
-      return fn.call(this, text, patterns);
-    }
-  };
-};
-
-Markdown.DialectHelpers = {};
-Markdown.DialectHelpers.inline_until_char = function( text, want ) {
-  var consumed = 0,
-      nodes = [];
-
-  while ( true ) {
-    if ( text.charAt( consumed ) == want ) {
-      // Found the character we were looking for
-      consumed++;
-      return [ consumed, nodes ];
-    }
-
-    if ( consumed >= text.length ) {
-      // No closing char found. Abort.
-      return null;
-    }
-
-    var res = this.dialect.inline.__oneElement__.call(this, text.substr( consumed ) );
-    consumed += res[ 0 ];
-    // Add any returned nodes.
-    nodes.push.apply( nodes, res.slice( 1 ) );
-  }
+    return '';
+  });
 }
 
-// Helper function to make sub-classing a dialect easier
-Markdown.subclassDialect = function( d ) {
-  function Block() {}
-  Block.prototype = d.block;
-  function Inline() {}
-  Inline.prototype = d.inline;
-
-  return { block: new Block(), inline: new Inline() };
-};
-
-Markdown.buildBlockOrder ( Markdown.dialects.Gruber.block );
-Markdown.buildInlinePatterns( Markdown.dialects.Gruber.inline );
-
-Markdown.dialects.Maruku = Markdown.subclassDialect( Markdown.dialects.Gruber );
-
-Markdown.dialects.Maruku.processMetaHash = function processMetaHash( meta_string ) {
-  var meta = split_meta_hash( meta_string ),
-      attr = {};
-
-  for ( var i = 0; i < meta.length; ++i ) {
-    // id: #foo
-    if ( /^#/.test( meta[ i ] ) ) {
-      attr.id = meta[ i ].substring( 1 );
-    }
-    // class: .foo
-    else if ( /^\./.test( meta[ i ] ) ) {
-      // if class already exists, append the new one
-      if ( attr["class"] ) {
-        attr["class"] = attr["class"] + meta[ i ].replace( /./, " " );
-      }
-      else {
-        attr["class"] = meta[ i ].substring( 1 );
-      }
-    }
-    // attribute: foo=bar
-    else if ( /\=/.test( meta[ i ] ) ) {
-      var s = meta[ i ].split( /\=/ );
-      attr[ s[ 0 ] ] = s[ 1 ];
-    }
-  }
-
-  return attr;
-}
-
-function split_meta_hash( meta_string ) {
-  var meta = meta_string.split( "" ),
-      parts = [ "" ],
-      in_quotes = false;
-
-  while ( meta.length ) {
-    var letter = meta.shift();
-    switch ( letter ) {
-      case " " :
-        // if we're in a quoted section, keep it
-        if ( in_quotes ) {
-          parts[ parts.length - 1 ] += letter;
-        }
-        // otherwise make a new part
-        else {
-          parts.push( "" );
-        }
-        break;
-      case "'" :
-      case '"' :
-        // reverse the quotes and move straight on
-        in_quotes = !in_quotes;
-        break;
-      case "\\" :
-        // shift off the next letter to be used straight away.
-        // it was escaped so we'll keep it whatever it is
-        letter = meta.shift();
-      default :
-        parts[ parts.length - 1 ] += letter;
-        break;
-    }
-  }
-
-  return parts;
-}
-
-Markdown.dialects.Maruku.block.document_meta = function document_meta( block, next ) {
-  // we're only interested in the first block
-  if ( block.lineNumber > 1 ) return undefined;
-
-  // document_meta blocks consist of one or more lines of `Key: Value\n`
-  if ( ! block.match( /^(?:\w+:.*\n)*\w+:.*$/ ) ) return undefined;
-
-  // make an attribute node if it doesn't exist
-  if ( !extract_attr( this.tree ) ) {
-    this.tree.splice( 1, 0, {} );
-  }
-
-  var pairs = block.split( /\n/ );
-  for ( p in pairs ) {
-    var m = pairs[ p ].match( /(\w+):\s*(.*)$/ ),
-        key = m[ 1 ].toLowerCase(),
-        value = m[ 2 ];
-
-    this.tree[ 1 ][ key ] = value;
-  }
-
-  // document_meta produces no content!
-  return [];
-};
-
-Markdown.dialects.Maruku.block.block_meta = function block_meta( block, next ) {
-  // check if the last line of the block is an meta hash
-  var m = block.match( /(^|\n) {0,3}\{:\s*((?:\\\}|[^\}])*)\s*\}$/ );
-  if ( !m ) return undefined;
-
-  // process the meta hash
-  var attr = this.dialect.processMetaHash( m[ 2 ] );
-
-  var hash;
-
-  // if we matched ^ then we need to apply meta to the previous block
-  if ( m[ 1 ] === "" ) {
-    var node = this.tree[ this.tree.length - 1 ];
-    hash = extract_attr( node );
-
-    // if the node is a string (rather than JsonML), bail
-    if ( typeof node === "string" ) return undefined;
-
-    // create the attribute hash if it doesn't exist
-    if ( !hash ) {
-      hash = {};
-      node.splice( 1, 0, hash );
-    }
-
-    // add the attributes in
-    for ( a in attr ) {
-      hash[ a ] = attr[ a ];
-    }
-
-    // return nothing so the meta hash is removed
-    return [];
-  }
-
-  // pull the meta hash off the block and process what's left
-  var b = block.replace( /\n.*$/, "" ),
-      result = this.processBlock( b, [] );
-
-  // get or make the attributes hash
-  hash = extract_attr( result[ 0 ] );
-  if ( !hash ) {
-    hash = {};
-    result[ 0 ].splice( 1, 0, hash );
-  }
-
-  // attach the attributes to the block
-  for ( a in attr ) {
-    hash[ a ] = attr[ a ];
-  }
-
-  return result;
-};
-
-Markdown.dialects.Maruku.block.definition_list = function definition_list( block, next ) {
-  // one or more terms followed by one or more definitions, in a single block
-  var tight = /^((?:[^\s:].*\n)+):\s+([\s\S]+)$/,
-      list = [ "dl" ],
-      i, m;
-
-  // see if we're dealing with a tight or loose block
-  if ( ( m = block.match( tight ) ) ) {
-    // pull subsequent tight DL blocks out of `next`
-    var blocks = [ block ];
-    while ( next.length && tight.exec( next[ 0 ] ) ) {
-      blocks.push( next.shift() );
-    }
-
-    for ( var b = 0; b < blocks.length; ++b ) {
-      var m = blocks[ b ].match( tight ),
-          terms = m[ 1 ].replace( /\n$/, "" ).split( /\n/ ),
-          defns = m[ 2 ].split( /\n:\s+/ );
-
-      // print( uneval( m ) );
-
-      for ( i = 0; i < terms.length; ++i ) {
-        list.push( [ "dt", terms[ i ] ] );
-      }
-
-      for ( i = 0; i < defns.length; ++i ) {
-        // run inline processing over the definition
-        list.push( [ "dd" ].concat( this.processInline( defns[ i ].replace( /(\n)\s+/, "$1" ) ) ) );
-      }
-    }
-  }
-  else {
-    return undefined;
-  }
-
-  return [ list ];
-};
-
-// splits on unescaped instances of @ch. If @ch is not a character the result
-// can be unpredictable
-
-Markdown.dialects.Maruku.block.table = function table (block, next) {
-
-    var _split_on_unescaped = function(s, ch) {
-        ch = ch || '\\s';
-        if (ch.match(/^[\\|\[\]{}?*.+^$]$/)) { ch = '\\' + ch; }
-        var res = [ ],
-            r = new RegExp('^((?:\\\\.|[^\\\\' + ch + '])*)' + ch + '(.*)'),
-            m;
-        while(m = s.match(r)) {
-            res.push(m[1]);
-            s = m[2];
-        }
-        res.push(s);
-        return res;
-    }
-
-    var leading_pipe = /^ {0,3}\|(.+)\n {0,3}\|\s*([\-:]+[\-| :]*)\n((?:\s*\|.*(?:\n|$))*)(?=\n|$)/,
-        // find at least an unescaped pipe in each line
-        no_leading_pipe = /^ {0,3}(\S(?:\\.|[^\\|])*\|.*)\n {0,3}([\-:]+\s*\|[\-| :]*)\n((?:(?:\\.|[^\\|])*\|.*(?:\n|$))*)(?=\n|$)/,
-        i, m;
-    if (m = block.match(leading_pipe)) {
-        // remove leading pipes in contents
-        // (header and horizontal rule already have the leading pipe left out)
-        m[3] = m[3].replace(/^\s*\|/gm, '');
-    } else if (! ( m = block.match(no_leading_pipe))) {
-        return undefined;
-    }
-
-    var table = [ "table", [ "thead", [ "tr" ] ], [ "tbody" ] ];
-
-    // remove trailing pipes, then split on pipes
-    // (no escaped pipes are allowed in horizontal rule)
-    m[2] = m[2].replace(/\|\s*$/, '').split('|');
-
-    // process alignment
-    var html_attrs = [ ];
-    forEach (m[2], function (s) {
-        if (s.match(/^\s*-+:\s*$/))       html_attrs.push({align: "right"});
-        else if (s.match(/^\s*:-+\s*$/))  html_attrs.push({align: "left"});
-        else if (s.match(/^\s*:-+:\s*$/)) html_attrs.push({align: "center"});
-        else                              html_attrs.push({});
-    });
-
-    // now for the header, avoid escaped pipes
-    m[1] = _split_on_unescaped(m[1].replace(/\|\s*$/, ''), '|');
-    for (i = 0; i < m[1].length; i++) {
-        table[1][1].push(['th', html_attrs[i] || {}].concat(
-            this.processInline(m[1][i].trim())));
-    }
-
-    // now for body contents
-    forEach (m[3].replace(/\|\s*$/mg, '').split('\n'), function (row) {
-        var html_row = ['tr'];
-        row = _split_on_unescaped(row, '|');
-        for (i = 0; i < row.length; i++) {
-            html_row.push(['td', html_attrs[i] || {}].concat(this.processInline(row[i].trim())));
-        }
-        table[2].push(html_row);
-    }, this);
-
-    return [table];
-}
-
-Markdown.dialects.Maruku.inline[ "{:" ] = function inline_meta( text, matches, out ) {
-  if ( !out.length ) {
-    return [ 2, "{:" ];
-  }
-
-  // get the preceeding element
-  var before = out[ out.length - 1 ];
-
-  if ( typeof before === "string" ) {
-    return [ 2, "{:" ];
-  }
-
-  // match a meta hash
-  var m = text.match( /^\{:\s*((?:\\\}|[^\}])*)\s*\}/ );
-
-  // no match, false alarm
-  if ( !m ) {
-    return [ 2, "{:" ];
-  }
-
-  // attach the attributes to the preceeding element
-  var meta = this.dialect.processMetaHash( m[ 1 ] ),
-      attr = extract_attr( before );
-
-  if ( !attr ) {
-    attr = {};
-    before.splice( 1, 0, attr );
-  }
-
-  for ( var k in meta ) {
-    attr[ k ] = meta[ k ];
-  }
-
-  // cut out the string and replace it with nothing
-  return [ m[ 0 ].length, "" ];
-};
-
-Markdown.dialects.Maruku.inline.__escape__ = /^\\[\\`\*_{}\[\]()#\+.!\-|:]/;
-
-Markdown.buildBlockOrder ( Markdown.dialects.Maruku.block );
-Markdown.buildInlinePatterns( Markdown.dialects.Maruku.inline );
-
-var isArray = Array.isArray || function(obj) {
-  return Object.prototype.toString.call(obj) == "[object Array]";
-};
-
-var forEach;
-// Don't mess with Array.prototype. Its not friendly
-if ( Array.prototype.forEach ) {
-  forEach = function( arr, cb, thisp ) {
-    return arr.forEach( cb, thisp );
+function replace(regex, opt) {
+  regex = regex.source;
+  opt = opt || '';
+  return function self(name, val) {
+    if (!name) return new RegExp(regex, opt);
+    val = val.source || val;
+    val = val.replace(/(^|[^\[])\^/g, '$1');
+    regex = regex.replace(name, val);
+    return self;
   };
 }
-else {
-  forEach = function(arr, cb, thisp) {
-    for (var i = 0; i < arr.length; i++) {
-      cb.call(thisp || arr, arr[i], i, arr);
+
+function noop() {}
+noop.exec = noop;
+
+function merge(obj) {
+  var i = 1
+    , target
+    , key;
+
+  for (; i < arguments.length; i++) {
+    target = arguments[i];
+    for (key in target) {
+      if (Object.prototype.hasOwnProperty.call(target, key)) {
+        obj[key] = target[key];
+      }
     }
   }
+
+  return obj;
 }
-
-var isEmpty = function( obj ) {
-  for ( var key in obj ) {
-    if ( hasOwnProperty.call( obj, key ) ) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-function extract_attr( jsonml ) {
-  return isArray(jsonml)
-      && jsonml.length > 1
-      && typeof jsonml[ 1 ] === "object"
-      && !( isArray(jsonml[ 1 ]) )
-      ? jsonml[ 1 ]
-      : undefined;
-}
-
 
 
 /**
- *  renderJsonML( jsonml[, options] ) -> String
- *  - jsonml (Array): JsonML array to render to XML
- *  - options (Object): options
- *
- *  Converts the given JsonML into well-formed XML.
- *
- *  The options currently understood are:
- *
- *  - root (Boolean): wether or not the root node should be included in the
- *    output, or just its children. The default `false` is to not include the
- *    root itself.
+ * Marked
  */
-expose.renderJsonML = function( jsonml, options ) {
-  options = options || {};
-  // include the root element in the rendered output?
-  options.root = options.root || false;
 
-  var content = [];
-
-  if ( options.root ) {
-    content.push( render_tree( jsonml ) );
-  }
-  else {
-    jsonml.shift(); // get rid of the tag
-    if ( jsonml.length && typeof jsonml[ 0 ] === "object" && !( jsonml[ 0 ] instanceof Array ) ) {
-      jsonml.shift(); // get rid of the attributes
+function marked(src, opt, callback) {
+  if (callback || typeof opt === 'function') {
+    if (!callback) {
+      callback = opt;
+      opt = null;
     }
 
-    while ( jsonml.length ) {
-      content.push( render_tree( jsonml.shift() ) );
-    }
-  }
+    opt = merge({}, marked.defaults, opt || {});
 
-  return content.join( "\n\n" );
+    var highlight = opt.highlight
+      , tokens
+      , pending
+      , i = 0;
+
+    try {
+      tokens = Lexer.lex(src, opt)
+    } catch (e) {
+      return callback(e);
+    }
+
+    pending = tokens.length;
+
+    var done = function(err) {
+      if (err) {
+        opt.highlight = highlight;
+        return callback(err);
+      }
+
+      var out;
+
+      try {
+        out = Parser.parse(tokens, opt);
+      } catch (e) {
+        err = e;
+      }
+
+      opt.highlight = highlight;
+
+      return err
+        ? callback(err)
+        : callback(null, out);
+    };
+
+    if (!highlight || highlight.length < 3) {
+      return done();
+    }
+
+    delete opt.highlight;
+
+    if (!pending) return done();
+
+    for (; i < tokens.length; i++) {
+      (function(token) {
+        if (token.type !== 'code') {
+          return --pending || done();
+        }
+        return highlight(token.text, token.lang, function(err, code) {
+          if (err) return done(err);
+          if (code == null || code === token.text) {
+            return --pending || done();
+          }
+          token.text = code;
+          token.escaped = true;
+          --pending || done();
+        });
+      })(tokens[i]);
+    }
+
+    return;
+  }
+  try {
+    if (opt) opt = merge({}, marked.defaults, opt);
+    return Parser.parse(Lexer.lex(src, opt), opt);
+  } catch (e) {
+    e.message += '\nPlease report this to https://github.com/chjj/marked.';
+    if ((opt || marked.defaults).silent) {
+      return '<p>An error occured:</p><pre>'
+        + escape(e.message + '', true)
+        + '</pre>';
+    }
+    throw e;
+  }
+}
+
+/**
+ * Options
+ */
+
+marked.options =
+marked.setOptions = function(opt) {
+  merge(marked.defaults, opt);
+  return marked;
 };
 
-function escapeHTML( text ) {
-  return text.replace( /&/g, "&amp;" )
-             .replace( /</g, "&lt;" )
-             .replace( />/g, "&gt;" )
-             .replace( /"/g, "&quot;" )
-             .replace( /'/g, "&#39;" );
+marked.defaults = {
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  smartLists: false,
+  silent: false,
+  highlight: null,
+  langPrefix: 'lang-',
+  smartypants: false,
+  headerPrefix: '',
+  renderer: new Renderer,
+  xhtml: false
+};
+
+/**
+ * Expose
+ */
+
+marked.Parser = Parser;
+marked.parser = Parser.parse;
+
+marked.Renderer = Renderer;
+
+marked.Lexer = Lexer;
+marked.lexer = Lexer.lex;
+
+marked.InlineLexer = InlineLexer;
+marked.inlineLexer = InlineLexer.output;
+
+marked.parse = marked;
+
+if (typeof module !== 'undefined' && typeof exports === 'object') {
+  module.exports = marked;
+} else if (typeof define === 'function' && define.amd) {
+  define(function() { return marked; });
+} else {
+  this.marked = marked;
 }
 
-function render_tree( jsonml ) {
-  // basic case
-  if ( typeof jsonml === "string" ) {
-    return escapeHTML( jsonml );
-  }
+}).call(function() {
+  return this || (typeof window !== 'undefined' ? window : global);
+}());
 
-  var tag = jsonml.shift(),
-      attributes = {},
-      content = [];
-
-  if ( jsonml.length && typeof jsonml[ 0 ] === "object" && !( jsonml[ 0 ] instanceof Array ) ) {
-    attributes = jsonml.shift();
-  }
-
-  while ( jsonml.length ) {
-    content.push( render_tree( jsonml.shift() ) );
-  }
-
-  var tag_attrs = "";
-  for ( var a in attributes ) {
-    tag_attrs += " " + a + '="' + escapeHTML( attributes[ a ] ) + '"';
-  }
-
-  // be careful about adding whitespace here for inline elements
-  if ( tag == "img" || tag == "br" || tag == "hr" ) {
-    return "<"+ tag + tag_attrs + "/>";
-  }
-  else {
-    return "<"+ tag + tag_attrs + ">" + content.join( "" ) + "</" + tag + ">";
-  }
-}
-
-function convert_tree_to_html( tree, references, options ) {
-  var i;
-  options = options || {};
-
-  // shallow clone
-  var jsonml = tree.slice( 0 );
-
-  if ( typeof options.preprocessTreeNode === "function" ) {
-      jsonml = options.preprocessTreeNode(jsonml, references);
-  }
-
-  // Clone attributes if they exist
-  var attrs = extract_attr( jsonml );
-  if ( attrs ) {
-    jsonml[ 1 ] = {};
-    for ( i in attrs ) {
-      jsonml[ 1 ][ i ] = attrs[ i ];
-    }
-    attrs = jsonml[ 1 ];
-  }
-
-  // basic case
-  if ( typeof jsonml === "string" ) {
-    return jsonml;
-  }
-
-  // convert this node
-  switch ( jsonml[ 0 ] ) {
-    case "header":
-      jsonml[ 0 ] = "h" + jsonml[ 1 ].level;
-      delete jsonml[ 1 ].level;
-      break;
-    case "bulletlist":
-      jsonml[ 0 ] = "ul";
-      break;
-    case "numberlist":
-      jsonml[ 0 ] = "ol";
-      break;
-    case "listitem":
-      jsonml[ 0 ] = "li";
-      break;
-    case "para":
-      jsonml[ 0 ] = "p";
-      break;
-    case "markdown":
-      jsonml[ 0 ] = "html";
-      if ( attrs ) delete attrs.references;
-      break;
-    case "code_block":
-      jsonml[ 0 ] = "pre";
-      i = attrs ? 2 : 1;
-      var code = [ "code" ];
-      code.push.apply( code, jsonml.splice( i, jsonml.length - i ) );
-      jsonml[ i ] = code;
-      break;
-    case "inlinecode":
-      jsonml[ 0 ] = "code";
-      break;
-    case "img":
-      jsonml[ 1 ].src = jsonml[ 1 ].href;
-      delete jsonml[ 1 ].href;
-      break;
-    case "linebreak":
-      jsonml[ 0 ] = "br";
-    break;
-    case "link":
-      jsonml[ 0 ] = "a";
-      break;
-    case "link_ref":
-      jsonml[ 0 ] = "a";
-
-      // grab this ref and clean up the attribute node
-      var ref = references[ attrs.ref ];
-
-      // if the reference exists, make the link
-      if ( ref ) {
-        delete attrs.ref;
-
-        // add in the href and title, if present
-        attrs.href = ref.href;
-        if ( ref.title ) {
-          attrs.title = ref.title;
-        }
-
-        // get rid of the unneeded original text
-        delete attrs.original;
-      }
-      // the reference doesn't exist, so revert to plain text
-      else {
-        return attrs.original;
-      }
-      break;
-    case "img_ref":
-      jsonml[ 0 ] = "img";
-
-      // grab this ref and clean up the attribute node
-      var ref = references[ attrs.ref ];
-
-      // if the reference exists, make the link
-      if ( ref ) {
-        delete attrs.ref;
-
-        // add in the href and title, if present
-        attrs.src = ref.href;
-        if ( ref.title ) {
-          attrs.title = ref.title;
-        }
-
-        // get rid of the unneeded original text
-        delete attrs.original;
-      }
-      // the reference doesn't exist, so revert to plain text
-      else {
-        return attrs.original;
-      }
-      break;
-  }
-
-  // convert all the children
-  i = 1;
-
-  // deal with the attribute node, if it exists
-  if ( attrs ) {
-    // if there are keys, skip over it
-    for ( var key in jsonml[ 1 ] ) {
-        i = 2;
-        break;
-    }
-    // if there aren't, remove it
-    if ( i === 1 ) {
-      jsonml.splice( i, 1 );
-    }
-  }
-
-  for ( ; i < jsonml.length; ++i ) {
-    jsonml[ i ] = convert_tree_to_html( jsonml[ i ], references, options );
-  }
-
-  return jsonml;
-}
-
-
-// merges adjacent text nodes into a single node
-function merge_text_nodes( jsonml ) {
-  // skip the tag name and attribute hash
-  var i = extract_attr( jsonml ) ? 2 : 1;
-
-  while ( i < jsonml.length ) {
-    // if it's a string check the next item too
-    if ( typeof jsonml[ i ] === "string" ) {
-      if ( i + 1 < jsonml.length && typeof jsonml[ i + 1 ] === "string" ) {
-        // merge the second string into the first and remove it
-        jsonml[ i ] += jsonml.splice( i + 1, 1 )[ 0 ];
-      }
-      else {
-        ++i;
-      }
-    }
-    // if it's not a string recurse
-    else {
-      merge_text_nodes( jsonml[ i ] );
-      ++i;
-    }
-  }
-}
-
-} )( (function() {
-  if ( typeof exports === "undefined" ) {
-    window.markdown = {};
-    return window.markdown;
-  }
-  else {
-    return exports;
-  }
-} )() );
-
-},{"util":23}],29:[function(require,module,exports){
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],25:[function(require,module,exports){
 /* Copyright (c) 2015 Hyunje Alex Jun and other contributors
  * Licensed under the MIT License
  */
@@ -23630,7 +22616,7 @@ function merge_text_nodes( jsonml ) {
   };
 });
 
-},{"jquery":25}],30:[function(require,module,exports){
+},{"jquery":22}],26:[function(require,module,exports){
 /*
      _ _      _       _
  ___| (_) ___| | __  (_)___
@@ -25781,7 +24767,7 @@ function merge_text_nodes( jsonml ) {
 
 }));
 
-},{"jquery":25}],31:[function(require,module,exports){
+},{"jquery":22}],27:[function(require,module,exports){
 //     Underscore.js 1.7.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -27198,7 +26184,7 @@ function merge_text_nodes( jsonml ) {
   }
 }.call(this));
 
-},{}],32:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -27252,7 +26238,7 @@ exports.$addChild = function (opts, BaseCtor) {
   this._children.push(child)
   return child
 }
-},{"../util":88}],33:[function(require,module,exports){
+},{"../util":84}],29:[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
 var Path = require('../parse/path')
@@ -27411,7 +26397,7 @@ exports.$log = function (path) {
     : this._data
   console.log(JSON.parse(JSON.stringify(data)))
 }
-},{"../parse/directive":76,"../parse/expression":77,"../parse/path":78,"../parse/text":80,"../util":88,"../watcher":92}],34:[function(require,module,exports){
+},{"../parse/directive":72,"../parse/expression":73,"../parse/path":74,"../parse/text":76,"../util":84,"../watcher":88}],30:[function(require,module,exports){
 var _ = require('../util')
 var transition = require('../transition')
 
@@ -27621,7 +26607,7 @@ function remove (el, vm, cb) {
   _.remove(el)
   if (cb) cb()
 }
-},{"../transition":82,"../util":88}],35:[function(require,module,exports){
+},{"../transition":78,"../util":84}],31:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -27798,7 +26784,7 @@ function modifyListenerCount (vm, event, count) {
     parent = parent.$parent
   }
 }
-},{"../util":88}],36:[function(require,module,exports){
+},{"../util":84}],32:[function(require,module,exports){
 var _ = require('../util')
 var mergeOptions = require('../util/merge-option')
 
@@ -27932,7 +26918,7 @@ function createAssetRegisters (Constructor) {
 }
 
 createAssetRegisters(exports)
-},{"../config":43,"../util":88,"../util/merge-option":90}],37:[function(require,module,exports){
+},{"../config":39,"../util":84,"../util/merge-option":86}],33:[function(require,module,exports){
 var _ = require('../util')
 var compile = require('../compile/compile')
 
@@ -28078,7 +27064,7 @@ function cleanup (vm) {
 exports.$compile = function (el) {
   return compile(el, this.$options, true)(this, el)
 }
-},{"../compile/compile":41,"../util":88}],38:[function(require,module,exports){
+},{"../compile/compile":37,"../util":84}],34:[function(require,module,exports){
 var _ = require('./util')
 
 /**
@@ -28144,7 +27130,7 @@ p.reset = function () {
 }
 
 module.exports = Batcher
-},{"./util":88}],39:[function(require,module,exports){
+},{"./util":84}],35:[function(require,module,exports){
 var uid = 0
 
 /**
@@ -28195,7 +27181,7 @@ p.notify = function () {
 }
 
 module.exports = Binding
-},{}],40:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 /**
  * A doubly linked list-based Least Recently Used (LRU)
  * cache. Will keep most recently used items while
@@ -28308,7 +27294,7 @@ p.get = function (key, returnEntry) {
 }
 
 module.exports = Cache
-},{}],41:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 var _ = require('../util')
 var config = require('../config')
 var textParser = require('../parse/text')
@@ -28846,7 +27832,7 @@ function directiveComparator (a, b) {
   b = b.def.priority || 0
   return a > b ? 1 : -1
 }
-},{"../config":43,"../parse/directive":76,"../parse/template":79,"../parse/text":80,"../util":88}],42:[function(require,module,exports){
+},{"../config":39,"../parse/directive":72,"../parse/template":75,"../parse/text":76,"../util":84}],38:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parse/template')
 
@@ -29010,7 +27996,7 @@ function insertContentAt (outlet, contents) {
   }
   parent.removeChild(outlet)
 }
-},{"../parse/template":79,"../util":88}],43:[function(require,module,exports){
+},{"../parse/template":75,"../util":84}],39:[function(require,module,exports){
 module.exports = {
 
   /**
@@ -29090,7 +28076,7 @@ Object.defineProperty(module.exports, 'delimiters', {
     this._delimitersChanged = true
   }
 })
-},{}],44:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 var _ = require('./util')
 var config = require('./config')
 var Watcher = require('./watcher')
@@ -29293,7 +28279,7 @@ p.set = function (value, lock) {
 }
 
 module.exports = Directive
-},{"./config":43,"./parse/expression":77,"./parse/text":80,"./util":88,"./watcher":92}],45:[function(require,module,exports){
+},{"./config":39,"./parse/expression":73,"./parse/text":76,"./util":84,"./watcher":88}],41:[function(require,module,exports){
 // xlink
 var xlinkNS = 'http://www.w3.org/1999/xlink'
 var xlinkRE = /^xlink:/
@@ -29326,7 +28312,7 @@ function xlinkHandler (value) {
     this.el.removeAttributeNS(xlinkNS, 'href')
   }
 }
-},{}],46:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 var _ = require('../util')
 var addClass = _.addClass
 var removeClass = _.removeClass
@@ -29345,7 +28331,7 @@ module.exports = function (value) {
     }
   }
 }
-},{"../util":88}],47:[function(require,module,exports){
+},{"../util":84}],43:[function(require,module,exports){
 var config = require('../config')
 
 module.exports = {
@@ -29358,7 +28344,7 @@ module.exports = {
   }
 
 }
-},{"../config":43}],48:[function(require,module,exports){
+},{"../config":39}],44:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parse/template')
 
@@ -29515,7 +28501,7 @@ module.exports = {
   }
 
 }
-},{"../parse/template":79,"../util":88}],49:[function(require,module,exports){
+},{"../parse/template":75,"../util":84}],45:[function(require,module,exports){
 module.exports = {
 
   isLiteral: true,
@@ -29529,7 +28515,7 @@ module.exports = {
   }
   
 }
-},{}],50:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parse/template')
 
@@ -29567,7 +28553,7 @@ module.exports = {
   }
 
 }
-},{"../parse/template":79,"../util":88}],51:[function(require,module,exports){
+},{"../parse/template":75,"../util":84}],47:[function(require,module,exports){
 var _ = require('../util')
 var compile = require('../compile/compile')
 var templateParser = require('../parse/template')
@@ -29636,7 +28622,7 @@ module.exports = {
   }
 
 }
-},{"../compile/compile":41,"../parse/template":79,"../transition":82,"../util":88}],52:[function(require,module,exports){
+},{"../compile/compile":37,"../parse/template":75,"../transition":78,"../util":84}],48:[function(require,module,exports){
 // manipulation directives
 exports.text       = require('./text')
 exports.html       = require('./html')
@@ -29659,7 +28645,7 @@ exports.component  = require('./component')
 exports.repeat     = require('./repeat')
 exports['if']      = require('./if')
 exports['with']    = require('./with')
-},{"./attr":45,"./class":46,"./cloak":47,"./component":48,"./el":49,"./html":50,"./if":51,"./model":55,"./on":58,"./partial":59,"./ref":60,"./repeat":61,"./show":62,"./style":63,"./text":64,"./transition":65,"./with":66}],53:[function(require,module,exports){
+},{"./attr":41,"./class":42,"./cloak":43,"./component":44,"./el":45,"./html":46,"./if":47,"./model":51,"./on":54,"./partial":55,"./ref":56,"./repeat":57,"./show":58,"./style":59,"./text":60,"./transition":61,"./with":62}],49:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -29685,7 +28671,7 @@ module.exports = {
   }
 
 }
-},{"../../util":88}],54:[function(require,module,exports){
+},{"../../util":84}],50:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -29803,7 +28789,7 @@ module.exports = {
   }
 
 }
-},{"../../util":88}],55:[function(require,module,exports){
+},{"../../util":84}],51:[function(require,module,exports){
 var _ = require('../../util')
 
 var handlers = {
@@ -29860,7 +28846,7 @@ module.exports = {
   }
 
 }
-},{"../../util":88,"./checkbox":53,"./default":54,"./radio":56,"./select":57}],56:[function(require,module,exports){
+},{"../../util":84,"./checkbox":49,"./default":50,"./radio":52,"./select":53}],52:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -29887,7 +28873,7 @@ module.exports = {
   }
 
 }
-},{"../../util":88}],57:[function(require,module,exports){
+},{"../../util":84}],53:[function(require,module,exports){
 var _ = require('../../util')
 var Watcher = require('../../watcher')
 
@@ -30055,7 +29041,7 @@ function indexOf (arr, val) {
   }
   return -1
 }
-},{"../../util":88,"../../watcher":92}],58:[function(require,module,exports){
+},{"../../util":84,"../../watcher":88}],54:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -30115,7 +29101,7 @@ module.exports = {
     _.off(this.el, 'load', this.iframeBind)
   }
 }
-},{"../util":88}],59:[function(require,module,exports){
+},{"../util":84}],55:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parse/template')
 var transition = require('../transition')
@@ -30171,7 +29157,7 @@ module.exports = {
   }
 
 }
-},{"../parse/template":79,"../transition":82,"../util":88}],60:[function(require,module,exports){
+},{"../parse/template":75,"../transition":78,"../util":84}],56:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -30196,7 +29182,7 @@ module.exports = {
   }
   
 }
-},{"../util":88}],61:[function(require,module,exports){
+},{"../util":84}],57:[function(require,module,exports){
 var _ = require('../util')
 var isObject = _.isObject
 var textParser = require('../parse/text')
@@ -30704,7 +29690,7 @@ function range (n) {
   }
   return ret
 }
-},{"../compile/compile":41,"../compile/transclude":42,"../parse/expression":77,"../parse/template":79,"../parse/text":80,"../util":88,"../util/merge-option":90}],62:[function(require,module,exports){
+},{"../compile/compile":37,"../compile/transclude":38,"../parse/expression":73,"../parse/template":75,"../parse/text":76,"../util":84,"../util/merge-option":86}],58:[function(require,module,exports){
 var transition = require('../transition')
 
 module.exports = function (value) {
@@ -30713,7 +29699,7 @@ module.exports = function (value) {
     el.style.display = value ? '' : 'none'
   }, this.vm)
 }
-},{"../transition":82}],63:[function(require,module,exports){
+},{"../transition":78}],59:[function(require,module,exports){
 var prefixes = ['-webkit-', '-moz-', '-ms-']
 var importantRE = /!important;?$/
 
@@ -30760,7 +29746,7 @@ module.exports = {
   }
 
 }
-},{}],64:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -30776,7 +29762,7 @@ module.exports = {
   }
   
 }
-},{"../util":88}],65:[function(require,module,exports){
+},{"../util":84}],61:[function(require,module,exports){
 module.exports = {
 
   priority: 1000,
@@ -30789,7 +29775,7 @@ module.exports = {
   }
 
 }
-},{}],66:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
 
@@ -30837,7 +29823,7 @@ module.exports = {
   }
 
 }
-},{"../util":88,"../watcher":92}],67:[function(require,module,exports){
+},{"../util":84,"../watcher":88}],63:[function(require,module,exports){
 var _ = require('../util')
 var Path = require('../parse/path')
 
@@ -30925,7 +29911,7 @@ function contains (val, search) {
     return val.toString().toLowerCase().indexOf(search) > -1
   }
 }
-},{"../parse/path":78,"../util":88}],68:[function(require,module,exports){
+},{"../parse/path":74,"../util":84}],64:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -31047,7 +30033,7 @@ exports.key = function (handler, key) {
  */
 
 _.extend(exports, require('./array-filters'))
-},{"../util":88,"./array-filters":67}],69:[function(require,module,exports){
+},{"../util":84,"./array-filters":63}],65:[function(require,module,exports){
 var _ = require('../util')
 var Directive = require('../directive')
 var compile = require('../compile/compile')
@@ -31119,7 +30105,7 @@ exports._bindDir = function (name, node, desc, def, linker) {
     new Directive(name, node, this, desc, def, linker)
   )
 }
-},{"../compile/compile":41,"../compile/transclude":42,"../directive":44,"../util":88}],70:[function(require,module,exports){
+},{"../compile/compile":37,"../compile/transclude":38,"../directive":40,"../util":84}],66:[function(require,module,exports){
 var _ = require('../util')
 var inDoc = _.inDoc
 
@@ -31242,7 +30228,7 @@ exports._callHook = function (hook) {
   }
   this.$emit('hook:' + hook)
 }
-},{"../util":88}],71:[function(require,module,exports){
+},{"../util":84}],67:[function(require,module,exports){
 var mergeOptions = require('../util/merge-option')
 
 /**
@@ -31319,7 +30305,7 @@ exports._init = function (options) {
     this.$mount(options.el)
   }
 }
-},{"../util/merge-option":90}],72:[function(require,module,exports){
+},{"../util/merge-option":86}],68:[function(require,module,exports){
 var _ = require('../util')
 var Observer = require('../observer')
 var Binding = require('../binding')
@@ -31537,7 +30523,7 @@ exports._defineMeta = function (key, value) {
     }
   })
 }
-},{"../binding":39,"../observer":74,"../util":88}],73:[function(require,module,exports){
+},{"../binding":35,"../observer":70,"../util":84}],69:[function(require,module,exports){
 var _ = require('../util')
 var arrayProto = Array.prototype
 var arrayMethods = Object.create(arrayProto)
@@ -31628,7 +30614,7 @@ _.define(
 )
 
 module.exports = arrayMethods
-},{"../util":88}],74:[function(require,module,exports){
+},{"../util":84}],70:[function(require,module,exports){
 var _ = require('../util')
 var config = require('../config')
 var Binding = require('../binding')
@@ -31865,7 +30851,7 @@ p.removeVm = function (vm) {
 
 module.exports = Observer
 
-},{"../binding":39,"../config":43,"../util":88,"./array":73,"./object":75}],75:[function(require,module,exports){
+},{"../binding":35,"../config":39,"../util":84,"./array":69,"./object":71}],71:[function(require,module,exports){
 var _ = require('../util')
 var objProto = Object.prototype
 
@@ -31941,7 +30927,7 @@ _.define(
     }
   }
 )
-},{"../util":88}],76:[function(require,module,exports){
+},{"../util":84}],72:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var cache = new Cache(1000)
@@ -32101,7 +31087,7 @@ exports.parse = function (s) {
   cache.put(s, dirs)
   return dirs
 }
-},{"../cache":40,"../util":88}],77:[function(require,module,exports){
+},{"../cache":36,"../util":84}],73:[function(require,module,exports){
 var _ = require('../util')
 var Path = require('./path')
 var Cache = require('../cache')
@@ -32328,7 +31314,7 @@ exports.parse = function (exp, needSet) {
 
 // Export the pathRegex for external use
 exports.pathTestRE = pathTestRE
-},{"../cache":40,"../util":88,"./path":78}],78:[function(require,module,exports){
+},{"../cache":36,"../util":84,"./path":74}],74:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var pathCache = new Cache(1000)
@@ -32629,7 +31615,7 @@ exports.set = function (obj, path, val) {
   }
   return true
 }
-},{"../cache":40,"../util":88}],79:[function(require,module,exports){
+},{"../cache":36,"../util":84}],75:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var templateCache = new Cache(100)
@@ -32852,7 +31838,7 @@ exports.parse = function (template, clone) {
     ? exports.clone(frag)
     : frag
 }
-},{"../cache":40,"../util":88}],80:[function(require,module,exports){
+},{"../cache":36,"../util":84}],76:[function(require,module,exports){
 var Cache = require('../cache')
 var config = require('../config')
 var dirParser = require('./directive')
@@ -33031,7 +32017,7 @@ function inlineFilters (exp) {
     }
   }
 }
-},{"../cache":40,"../config":43,"./directive":76}],81:[function(require,module,exports){
+},{"../cache":36,"../config":39,"./directive":72}],77:[function(require,module,exports){
 var _ = require('../util')
 var addClass = _.addClass
 var removeClass = _.removeClass
@@ -33221,7 +32207,7 @@ module.exports = function (el, direction, op, data, cb) {
     push(el, direction, op, leaveClass, cb)
   }
 }
-},{"../util":88}],82:[function(require,module,exports){
+},{"../util":84}],78:[function(require,module,exports){
 var _ = require('../util')
 var applyCSSTransition = require('./css')
 var applyJSTransition = require('./js')
@@ -33373,7 +32359,7 @@ var apply = exports.apply = function (el, direction, op, vm, cb) {
     if (cb) cb()
   }
 }
-},{"../util":88,"./css":81,"./js":83}],83:[function(require,module,exports){
+},{"../util":84,"./css":77,"./js":79}],79:[function(require,module,exports){
 /**
  * Apply JavaScript enter/leave functions.
  *
@@ -33417,7 +32403,7 @@ module.exports = function (el, direction, op, data, def, vm, cb) {
     }
   }
 }
-},{}],84:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 var config = require('../config')
 
 /**
@@ -33468,7 +32454,7 @@ function enableDebug () {
     }
   }
 }
-},{"../config":43}],85:[function(require,module,exports){
+},{"../config":39}],81:[function(require,module,exports){
 var config = require('../config')
 
 /**
@@ -33645,7 +32631,7 @@ exports.removeClass = function (el, cls) {
     el.setAttribute('class', cur.trim())
   }
 }
-},{"../config":43}],86:[function(require,module,exports){
+},{"../config":39}],82:[function(require,module,exports){
 /**
  * Can we use __proto__?
  *
@@ -33720,7 +32706,7 @@ if (inBrowser && !exports.isIE9) {
     ? 'webkitAnimationEnd'
     : 'animationend'
 }
-},{}],87:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 var _ = require('./debug')
 
 /**
@@ -33793,7 +32779,7 @@ exports.applyFilters = function (value, filters, vm, oldVal) {
   }
   return value
 }
-},{"./debug":84}],88:[function(require,module,exports){
+},{"./debug":80}],84:[function(require,module,exports){
 var lang   = require('./lang')
 var extend = lang.extend
 
@@ -33802,7 +32788,7 @@ extend(exports, require('./env'))
 extend(exports, require('./dom'))
 extend(exports, require('./filter'))
 extend(exports, require('./debug'))
-},{"./debug":84,"./dom":85,"./env":86,"./filter":87,"./lang":89}],89:[function(require,module,exports){
+},{"./debug":80,"./dom":81,"./env":82,"./filter":83,"./lang":85}],85:[function(require,module,exports){
 /**
  * Check is a string starts with $ or _
  *
@@ -33977,7 +32963,7 @@ exports.define = function (obj, key, val, enumerable) {
     configurable : true
   })
 }
-},{}],90:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 var _ = require('./index')
 var extend = _.extend
 
@@ -34207,7 +33193,7 @@ module.exports = function mergeOptions (parent, child, vm) {
   }
   return options
 }
-},{"./index":88}],91:[function(require,module,exports){
+},{"./index":84}],87:[function(require,module,exports){
 var _ = require('./util')
 var extend = _.extend
 
@@ -34292,7 +33278,7 @@ extend(p, require('./api/child'))
 extend(p, require('./api/lifecycle'))
 
 module.exports = _.Vue = Vue
-},{"./api/child":32,"./api/data":33,"./api/dom":34,"./api/events":35,"./api/global":36,"./api/lifecycle":37,"./directives":52,"./filters":68,"./instance/compile":69,"./instance/events":70,"./instance/init":71,"./instance/scope":72,"./util":88}],92:[function(require,module,exports){
+},{"./api/child":28,"./api/data":29,"./api/dom":30,"./api/events":31,"./api/global":32,"./api/lifecycle":33,"./directives":48,"./filters":64,"./instance/compile":65,"./instance/events":66,"./instance/init":67,"./instance/scope":68,"./util":84}],88:[function(require,module,exports){
 var _ = require('./util')
 var config = require('./config')
 var Observer = require('./observer')
@@ -34508,4 +33494,4 @@ p.teardown = function () {
 }
 
 module.exports = Watcher
-},{"./batcher":38,"./config":43,"./observer":74,"./parse/expression":77,"./util":88}]},{},[16])
+},{"./batcher":34,"./config":39,"./observer":70,"./parse/expression":73,"./util":84}]},{},[17])

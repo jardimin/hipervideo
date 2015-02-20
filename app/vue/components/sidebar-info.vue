@@ -63,13 +63,14 @@
 </style>
 
 <template>
+  <div>
   <div class="border context-bg"></div>
   <div id="conteudo_info">
     <h2> 
       {{conteudo.title}} 
     </h2>
     <div class="info-texto">
-      {{{html_texto}}}
+      {{{html_texto | marked}}}
     </div>
     <h3 v-if="conteudo.imagens"> IMAGENS </h3>
     <div class="image-list"></div>
@@ -94,6 +95,7 @@
     </div>
   </div>
   <a class="back" href="#/{{id}}">voltar ao video</a>
+  </div>
 </template>
 
 <script>
@@ -101,12 +103,15 @@
   var $$$ = require('jquery')
   var perfectScrollbar = require('perfect-scrollbar')
   var slick = require('slick-carousel')
-  var markdown = require('markdown').markdown
+  var marked = require('marked')
 
   module.exports = {
+
+    replace: true,
+
     data: function(){
       return {
-        html_texto: null,
+        html_texto: '',
         videoIndex: 0,
         imageIndex: 0
       }
@@ -131,7 +136,7 @@
           suppressScrollX: true
         });
 
-        this.html_texto = markdown.toHTML(this.$parent.conteudo.texto);
+        this.html_texto = this.$parent.conteudo.texto;
 
         if (this.$parent.conteudo.imagens) {
           for (var i = this.$parent.conteudo.imagens.length - 1; i >= 0; i--) {
@@ -174,6 +179,10 @@
         this.imageIndex = 0;
         this.videoIndex = 0;
       })
+    },
+
+    filters: {
+      'marked': marked
     }
 
   }

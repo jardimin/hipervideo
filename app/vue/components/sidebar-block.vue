@@ -115,7 +115,7 @@
 			</svg>
 		</div>
 		<div v-if="!funcao" id="sidebar_block__content" class="sidebar_block__content">
-			{{{html_resumo}}}
+			<content></content>
 		</div>
 		<p v-if="!ap" style="padding-left: 10px;"><strong><a style="font-weight: 900; text-decoration: none;" href="#/{{videoID}}/info/{{id}}">SAIBA MAIS</a></strong></p>
 	</div>
@@ -124,16 +124,15 @@
 <script>
 	var Vue = require('vue')
 	var $$$ = require('jquery')
-  var perfectScrollbar = require('perfect-scrollbar')
-  var markdown = require('markdown').markdown
-
+	var perfectScrollbar = require('perfect-scrollbar')
+	
 	module.exports = {
 		replace: true,
 		data: function(){
-      return {
-        html_resumo: null
-      }
-    },
+			return {
+				html_resumo: null
+			}
+		},
 		computed: {
 			perc: function () {
 				var start = this.$data.start;
@@ -144,12 +143,8 @@
 		},
 		attached: function() {
 			$$$('#sidebar_block__content').perfectScrollbar({
-        suppressScrollX: true
-      });
-
-      if (!this.funcao) {
-      	this.html_resumo = markdown.toHTML(this.fields.excerpt);
-      };
+				suppressScrollX: true
+			});
 
 		},
 		methods: {
