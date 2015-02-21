@@ -3,6 +3,9 @@
 	body {
 		font-family: 'fonte-normal', sans-serif;
 		letter-spacing: -1px;
+		@media screen and (min-width: 1600px) {
+			font-size: 140%;
+		}
 	}
 
 	header {
@@ -31,6 +34,9 @@
 			transition: all 0.5s;
 			& h1 {
 				display: block;
+				@media screen and (min-width: 1600px) {
+					font-size: 300%;
+				}
 			}
 			& p {
 				opacity: 0;
@@ -147,7 +153,7 @@
     position: absolute;
     width: 100%;
     z-index: 2;
-    padding: 17%;
+    padding: 17% 5%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 		box-sizing: border-box;
@@ -215,11 +221,11 @@
 			<div class="grid">
 				<div v-repeat="db.hipervideos" class="hipervideo col-1-5 {{id}}" style="left: {{posHip[$index]}}%; z-index: -{{$index}}">
 					<div v-on="click: select(id)" class="nest" style="background-color: {{cor}};">
-						<h2>SAÚDE D{{artigo | uppercase}} {{nome | uppercase}}</h2>
+						<h2>{{formato | uppercase}}</h2>
 					</div>
 					<div class="linha" style="background-color: {{cor}}"></div>
 					<div class="areaTematica">
-						<h2>SAÚDE D{{artigo | uppercase}} {{nome | uppercase}}</h2>
+						<h2>{{formato | uppercase}}</h2>
 						<p style="letter-spacing: 0;">{{descricao}}</p>
 						<a href="#/{{id}}" class="botao" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">ASSISTIR</a>
 						<a v-on="click: deselect(id)" class="botao" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">VOLTAR</a>

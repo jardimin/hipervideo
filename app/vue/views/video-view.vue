@@ -1,6 +1,14 @@
 <style lang="scss">
 	.sidebar {
 		width: 22%;
+		@media screen and (min-width: 1600px) {
+			width: 15%;
+		}
+		&.has-info {
+			@media screen and (min-width: 1600px) {
+				width: 16%;
+			}
+		}
 	}
 	.sidebar_content {
 		position: relative;
@@ -116,6 +124,9 @@
 		box-sizing: border-box;
 		padding: 5% 20% 3% 3%;
 		width: 79%;
+		@media screen and (min-width: 1600px) {
+			width: 85%;
+		}
 	}
 
 	.is-cartela {

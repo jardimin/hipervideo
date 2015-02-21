@@ -17,20 +17,20 @@
 	.marcos_handle {
 		width: 15%;
 		font-weight: 900;
-		font-size: 12px;
+		font-size: 75%;
 		padding-top: 5px;
 		position: absolute;
 		text-align: center;
 		border-radius: 5px;
-		height: 35px;
+		height: 40px;
 		cursor: pointer;
-		top: -25px;
+		top: -30px;
 		background-color: rgba(50,50,50,1);
 		left: 40%;
 		z-index: -2;
 		transition: all 0.5s;
 		&.cima {
-			top: -25px !important;
+			top: -30px !important;
 		}
 		#app.marco-fechado & {
 			top: 0;
@@ -40,7 +40,7 @@
 
 <template>
 	<div v-with="db: db" class="marcos-historicos">
-		<div id="linha-do-tempo" class="marcos_handle" v-on="click: handleMarcos">LINHA DO TEMPO</div>
+		<div id="linha-do-tempo" class="marcos_handle" v-on="click: handleMarcos">CRONOLOGIA</div>
 		<in-linha-tempo></in-linha-tempo>
 	</div>
 </template>
