@@ -1,16 +1,16 @@
 <style lang="scss">
-.chart-databars {
+.info-chart-databars {
+
+	.labels text,
+	.axis text {
+		fill: #fff;
+	}
 
 	.axis path,
 	.axis line {
 		fill: none;
 		stroke: #fff;
 		shape-rendering: crispEdges;
-	}
-
-	.axis text {
-		fill: #fff;
-		font-size: 10px;
 	}
 
 	.bar {
@@ -25,10 +25,7 @@
 
 <template>
 	<div>
-		<p>
-			{{{fields.excerpt | marked}}}
-			<div v-el="chart" class="chart-databars"></div>
-		</p>
+		<div v-el="chart" class="info-chart-databars"></div>
 	</div>
 </template>
 
@@ -49,15 +46,17 @@
 			}
 		},
 
+		ready: function(){
+			console.log('content-databars ready!')
+		},
+
 		attached: function(){
+
+			console.log('content-databars attached!')
 
 			// load spreadsheet
 
 			this.loadData()
-
-			// append <svg>
-
-			this._svg = d3.select(this.$$.chart).append("svg")
 
 		},
 
@@ -65,7 +64,7 @@
 
 			loadData: function(){
 				var self = this;
-				var url = 'https://spreadsheets.google.com/feeds/list/' + this.fields.spreadsheet + '/od6/public/values?alt=json-in-script&callback=?';
+				var url = 'https://spreadsheets.google.com/feeds/list/' + this.databars + '/od6/public/values?alt=json-in-script&callback=?';
 
 				console.log('spreadsheet will load now')
 
@@ -106,9 +105,9 @@
 				var self = this;
 
 
-				var margin = {top: 20, right: 20, bottom: 30, left: 40},
-					width = 250 - margin.left - margin.right,
-					height = 150 - margin.top - margin.bottom;
+				var margin = {top: 80, right: 20, bottom: 30, left: 40},
+					width = 400 - margin.left - margin.right,
+					height = 300 - margin.top - margin.bottom;
 
 				var x0 = d3.scale.ordinal()
 					.rangeRoundBands([0, width], .1);
@@ -119,7 +118,7 @@
 					.range([height, 0]);
 
 				var color = d3.scale.ordinal()
-					.range(["#fff", "#ddd","#bbb", "#999", "#777", "#555", "#333", "#111"]);
+					.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
 				var xAxis = d3.svg.axis()
 					.scale(x0)
@@ -130,11 +129,11 @@
 					.orient("left")
 					.tickFormat(d3.format(".2s"));
 
-				self._svg
+				self._svg = d3.select(this.$$.chart).append("svg")
 					.attr("width", width + margin.left + margin.right)
 					.attr("height", height + margin.top + margin.bottom)
 					.append("g")
-						.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+					.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
 					data = self._entries
 				
@@ -153,10 +152,20 @@
 							.attr("transform", "translate(0," + height + ")")
 							.call(xAxis);
 
+					self._svg.append("g")
+							.attr("class", "y axis")
+							.call(yAxis)
+						// .append("text")
+						// 	.attr("transform", "rotate(-90)")
+						// 	.attr("y", 6)
+						// 	.attr("dy", ".71em")
+						// 	.style("text-anchor", "end")
+						// 	.text("Population");
+
 					var state = self._svg.selectAll(".state")
 						.data(data)
 						.enter().append("g")
-							.attr("class", "state")
+							.attr("class", "g")
 							.attr("transform", function(d) { return "translate(" + x0(d.filtro) + ",0)"; });
 
 					state.selectAll("rect")
@@ -167,6 +176,25 @@
 							.attr("y", function(d) { return y(d.value); })
 							.attr("height", function(d) { return height - y(d.value); })
 							.style("fill", function(d) { return color(d.name); });
+
+					var labels = self._svg.selectAll(".labels")
+						.data(filtro.slice().reverse())
+						.enter().append("g")
+							.attr("class", "labels")
+							.attr("transform", function(d, i) { return "translate(0," + (i * 20 - margin.top) + ")"; });
+
+					labels.append("rect")
+						.attr("x", width - 18)
+						.attr("width", 18)
+						.attr("height", 18)
+						.style("fill", color);
+
+					labels.append("text")
+						.attr("x", width - 24)
+						.attr("y", 9)
+						.attr("dy", ".35em")
+						.style("text-anchor", "end")
+						.text(function(d) { return d; });
 
 
 			}

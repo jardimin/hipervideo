@@ -115,7 +115,7 @@
 			</svg>
 		</div>
 		<div v-if="!funcao" id="sidebar_block__content" class="sidebar_block__content">
-			<content></content>
+			<div v-component="{{'in-sidebar-block-' + type}}" v-with="fields: fields"></div>
 		</div>
 		<p v-if="!ap" style="padding-left: 10px;"><strong><a style="font-weight: 900; text-decoration: none;" href="#/{{videoID}}/info/{{id}}">SAIBA MAIS</a></strong></p>
 	</div>
@@ -154,6 +154,11 @@
 					window.location.href = "/#/" + this.$parent.params.video;
 				}
 			}
+		},
+		components: {
+			'in-sidebar-block-text': require('../components/sidebar-block-text.vue'),
+			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue'),
+			'in-sidebar-block-databars': require('../components/sidebar-block-databars.vue')
 		}
 	}
 </script>

@@ -20,7 +20,7 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"./views/home-view.vue":18,"./views/video-view.vue":19,"insert-css":21}],2:[function(require,module,exports){
+},{"./views/home-view.vue":19,"./views/video-view.vue":20,"insert-css":22}],2:[function(require,module,exports){
 require("insert-css")(".hipVid{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#app.marco-fechado .hipVid{top:0}");
 var __vue_template__ = "<video v-with=\"db: db\" poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" preload=\"auto\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n		<source v-attr=\"src: db.url + '.mp4'\" type=\"video/mp4\" id=\"mp4\">\n		</source><source v-attr=\"src: db.url + '.webm'\" type=\"video/webm\" id=\"webm\">\n	</source></video>";
 var Vue = require('vue')
@@ -99,7 +99,185 @@ var Vue = require('vue')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":21,"jquery":22,"vue":87}],3:[function(require,module,exports){
+},{"insert-css":22,"jquery":23,"vue":89}],3:[function(require,module,exports){
+require("insert-css")(".info-chart-databars .axis text,.info-chart-databars .labels text{fill:#fff}.info-chart-databars .axis line,.info-chart-databars .axis path{fill:none;stroke:#fff;shape-rendering:crispEdges}.info-chart-databars .bar{fill:#4682b4}.info-chart-databars .x.axis path{display:none}");
+var __vue_template__ = "<div>\n		<div v-el=\"chart\" class=\"info-chart-databars\"></div>\n	</div>";
+var $$$ = require('jquery')
+	var _ = require('underscore')
+	var marked = require('marked')
+
+	module.exports = {
+
+		replace: true,
+
+		data: function(){
+			return {
+				_entries: null,
+				_svg: null
+			}
+		},
+
+		ready: function(){
+			console.log('content-databars ready!')
+		},
+
+		attached: function(){
+
+			console.log('content-databars attached!')
+
+			// load spreadsheet
+
+			this.loadData()
+
+		},
+
+		methods: {
+
+			loadData: function(){
+				var self = this;
+				var url = 'https://spreadsheets.google.com/feeds/list/' + this.databars + '/od6/public/values?alt=json-in-script&callback=?';
+
+				console.log('spreadsheet will load now')
+
+				$$$.getJSON(url).success(function(data) {
+
+					var entries = []
+
+					data.feed.entry.map(function(d,i){
+						
+						var o = {}      // object
+						var s = 'gsx$' // string
+
+						for (var prop in d) {
+							if(d.hasOwnProperty(prop) && prop.indexOf(s) == 0){
+								o[prop.split(s).join('')] = d[prop]['$t']
+							}
+						}
+
+						entries.push(o)
+					})
+
+					self._entries = entries
+					self.buildChart()
+
+				}).error(function(message) {
+
+					console.log('spreadsheet error: ' + message)
+
+				}).complete(function() {
+
+					console.log('completed spreadsheet load!')
+
+				})
+			},
+
+			buildChart: function(){
+
+				var self = this;
+
+
+				var margin = {top: 80, right: 20, bottom: 30, left: 40},
+					width = 400 - margin.left - margin.right,
+					height = 300 - margin.top - margin.bottom;
+
+				var x0 = d3.scale.ordinal()
+					.rangeRoundBands([0, width], .1);
+
+				var x1 = d3.scale.ordinal();
+
+				var y = d3.scale.linear()
+					.range([height, 0]);
+
+				var color = d3.scale.ordinal()
+					.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+				var xAxis = d3.svg.axis()
+					.scale(x0)
+					.orient("bottom");
+
+				var yAxis = d3.svg.axis()
+					.scale(y)
+					.orient("left")
+					.tickFormat(d3.format(".2s"));
+
+				self._svg = d3.select(this.$$.chart).append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+					.append("g")
+					.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+					data = self._entries
+				
+					var filtro = d3.keys(data[0]).filter(function(key) { return key !== "filtro"; });
+
+					data.forEach(function(d) {
+						d.legenda = filtro.map(function(name) { return {name: name, value: +d[name]}; });
+					});
+
+					x0.domain(data.map(function(d) { return d.filtro; }));
+					x1.domain(filtro).rangeRoundBands([0, x0.rangeBand()]);
+					y.domain([0, d3.max(data, function(d) { return d3.max(d.legenda, function(d) { return d.value; }); })]);
+
+					self._svg.append("g")
+							.attr("class", "x axis")
+							.attr("transform", "translate(0," + height + ")")
+							.call(xAxis);
+
+					self._svg.append("g")
+							.attr("class", "y axis")
+							.call(yAxis)
+						// .append("text")
+						// 	.attr("transform", "rotate(-90)")
+						// 	.attr("y", 6)
+						// 	.attr("dy", ".71em")
+						// 	.style("text-anchor", "end")
+						// 	.text("Population");
+
+					var state = self._svg.selectAll(".state")
+						.data(data)
+						.enter().append("g")
+							.attr("class", "g")
+							.attr("transform", function(d) { return "translate(" + x0(d.filtro) + ",0)"; });
+
+					state.selectAll("rect")
+						.data(function(d) { return d.legenda; })
+						.enter().append("rect")
+							.attr("width", x1.rangeBand())
+							.attr("x", function(d) { return x1(d.name); })
+							.attr("y", function(d) { return y(d.value); })
+							.attr("height", function(d) { return height - y(d.value); })
+							.style("fill", function(d) { return color(d.name); });
+
+					var labels = self._svg.selectAll(".labels")
+						.data(filtro.slice().reverse())
+						.enter().append("g")
+							.attr("class", "labels")
+							.attr("transform", function(d, i) { return "translate(0," + (i * 20 - margin.top) + ")"; });
+
+					labels.append("rect")
+						.attr("x", width - 18)
+						.attr("width", 18)
+						.attr("height", 18)
+						.style("fill", color);
+
+					labels.append("text")
+						.attr("x", width - 24)
+						.attr("y", 9)
+						.attr("dy", ".35em")
+						.style("text-anchor", "end")
+						.text(function(d) { return d; });
+
+
+			}
+		},
+
+		filters: {
+			'marked': marked
+		}
+	}
+module.exports.template = __vue_template__;
+
+},{"insert-css":22,"jquery":23,"marked":25,"underscore":28}],4:[function(require,module,exports){
 require("insert-css")("#creditos{width:100%;position:fixed;height:100%;z-index:-100;background-color:#141414;opacity:0;transition:all .3s ease 0}#creditos.finalizado{z-index:100;opacity:1}#creditos h1{text-align:center}.info{background-color:rgba(200,200,200,.3);padding:3%;position:relative;width:80%;margin:0 auto;zoom:1}.info:after,.info:before{content:\"\";display:table}.info:after{clear:both}.info p{margin:0}.papel{width:25%;text-align:center;float:left}");
 var __vue_template__ = "<div id=\"creditos\">\n    <h1>CRÉDITOS</h1>\n    <div class=\"info\">\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>DESIGN E PROGRAMAÇÃO</h3>\n        <p>Marlus Araújo</p>\n        <p>Gustavo Junqueira</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>DIREÇÃO</h3>\n        <p>Julio Braga</p>\n        <p>Giuliano Bonorandi</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>PRODUÇÃO</h3>\n        <p>Janaína Castro Alves</p>\n        <p>Carolina Calcavecchia</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>FOTOGRAFIA</h3>\n        <p>Milena Sá</p>\n        <p>Tito José</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>SOM DIRETO</h3>\n        <p>Alexandre Kubrusly</p>\n        <p>Francisco</p>\n      </div>\n      <div class=\"papel\">\n        <h3>ASSISTÊNCIA DE EDIÇÃO</h3>\n        <p>Raoni Seixas</p>\n        <p>Tatiana Teitelroit</p>\n      </div>\n      <div class=\"papel\">\n        <h3>EDIÇÃO</h3>\n        <p>Tatiana Gouveia</p>\n        <p>Marco Meireles</p>\n        <p>Claudio Tammela</p>\n      </div>\n      <div class=\"papel\" style=\"margin-bottom: 40px\">\n        <h3 style=\"margin-bottom: 0\">FINALIZAÇÃO DE SOM</h3>\n        <h3 style=\"margin-top: 0\">TRILHA SONORA ORIGINAL</h3>\n        <p>Criado Mudo Produções Artísticas</p>\n      </div>\n      <div class=\"papel\" style=\"margin-bottom: 64px\">\n        <h3>CORREÇÃO DE COR</h3>\n        <p>Raoni Seixas</p>\n      </div>\n      <div class=\"papel\" style=\"width: 100%\">\n        <h3>REALIZAÇÃO</h3>\n        <img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_PNH.png\" style=\"width: 10%; float: left; margin-right: 10%; margin-left: 10%\">\n        <img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png\" style=\"width: 30%; margin-top: 2%; float: left; margin-right: 11%\">\n        <a href=\"http://jardim.in\" target=\"_blank\">\n          <img src=\"https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png\" style=\"width: 15%; float: left; margin-top: 1%\">\n        </a>\n      </div>\n    </div>\n    <div style=\"width: 80%; margin: 0 auto\">\n      <a href=\"/#/home\" class=\"botao\" style=\"width: 16%; font-weight: 900; text-decoration: none\">INICIO</a>\n      <a v-if=\"isMulher\" href=\"/#/mulher\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #ed1e79\">SAÚDE DA MULHER</a>\n      <a v-if=\"isCrianca\" href=\"/#/crianca\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #0cc\">SAÚDE DA CRIANÇA</a>\n      <a v-if=\"isAdolescente\" href=\"/#/adolescente\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00a300\">SAÚDE DO ADOLESCENTE</a>\n      <a v-if=\"isDeficiente\" href=\"/#/deficiente\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00c\">SAÚDE DO DEFICIENTE</a>\n      <a v-if=\"isPreso\" href=\"/#/preso\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #f00\">SAÚDE DO PRESO</a>\n    </div>\n  </div>";
 module.exports = {
@@ -124,7 +302,7 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{"insert-css":21}],4:[function(require,module,exports){
+},{"insert-css":22}],5:[function(require,module,exports){
 require("insert-css")(".block_map{position:relative;width:300px;height:300px;background:#333;transition:all .6s ease;transform:translate3d(300px,0,0)}.block_map.is-open{transform:translate3d(0,0,0)}.block_map__map{width:100%;height:100%;overflow:hidden}.block_map__toggle{position:absolute;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-size:20px;font-weight:900;padding:4% 4% 4% 3%;top:0;left:0;width:48px;transform:translate3d(-100%,0,0)}.leaflet-bottom,.leaflet-top{z-index:1}");
 var __vue_template__ = "<div class=\"block_map\" v-with=\"db: db\" v-class=\"is-open: isOpen\">\n		<div class=\"block_map__toggle context-bg clickable\" v-on=\"click: toggle\">\n			{{db.cidade}}\n		</div>\n		<div class=\"block_map__map\" v-el=\"map\"></div>\n	</div>";
 var L = require('leaflet')
@@ -164,14 +342,14 @@ var L = require('leaflet')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":21,"leaflet":23}],5:[function(require,module,exports){
+},{"insert-css":22,"leaflet":24}],6:[function(require,module,exports){
 var __vue_template__ = "<p>\n		<strong>my content is:</strong><br>\n		<content>\n	</content></p>";
 module.exports = {
 
 	}
 module.exports.template = __vue_template__;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 require("insert-css")(".linha_do_tempo{width:88%;position:absolute;height:60%;border-bottom:1px solid rgba(250,250,250,.2)}.ano{position:absolute;color:rgba(250,250,250,.5);font-size:75%;font-weight:700;bottom:-8px}.marco-detalhe{width:150px;position:absolute;height:0;bottom:0;border-right:1px solid;z-index:-1;right:4px;overflow:hidden;opacity:0;transition:all .2s ease-in-out}.marco-titulo{padding:6px;font-size:12px;transition:all .2s ease-in-out}.marco{height:5px;width:5px;border-radius:5px;background-color:#969696;position:absolute;bottom:-2.5px;list-style:none;cursor:pointer;transition:all .2s ease-in-out}.marco.hover{height:10px;width:10px;border-radius:10px;background-color:#fafafa;bottom:-5px;margin-left:-2.5px}.marco.hover .marco-detalhe{height:50px;opacity:1}.marco:hover{height:10px;width:10px;border-radius:10px;background-color:#fafafa;bottom:-5px;margin-left:-2.5px}.marco:hover .marco-detalhe{height:50px;opacity:1}");
 var __vue_template__ = "<div v-with=\"db: db\" class=\"linha_do_tempo\">\n		<p class=\"ano\" style=\"left: 3%\">1950</p>\n		<p class=\"ano\" style=\"left: 16%\">1960</p>\n		<p class=\"ano\" style=\"left: 29%\">1970</p>\n		<p class=\"ano\" style=\"left: 42%\">1980</p>\n		<p class=\"ano\" style=\"left: 55%\">1990</p>\n		<p class=\"ano\" style=\"left: 68%\">2000</p>\n		<p class=\"ano\" style=\"left: 81%\">2010</p>\n		<p class=\"ano\" style=\"left: 93.75%\">2020</p>\n		<ul>\n			<li id=\"marco-{{id}}\" v-repeat=\"marcos\" class=\"marco\" style=\"left: {{posMarco[$index]}}%\" v-on=\"click: marcoBlock($index)\">\n				<div class=\"marco-detalhe\">\n					<div class=\"marco-titulo context-bg\">\n						{{title | uppercase}}\n					</div>\n				</div>\n			</li>\n		</ul>\n	</div>";
 var $$$ = require('jquery')
@@ -224,7 +402,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":21,"jquery":22,"underscore":27}],7:[function(require,module,exports){
+},{"insert-css":22,"jquery":23,"underscore":28}],8:[function(require,module,exports){
 require("insert-css")(".marcos-historicos{width:100%;position:fixed;bottom:0;height:60px;box-shadow:0 0 10px #000 inset;background-color:#323232;padding:0 3%;z-index:25;transition:all .5s}#app.marco-fechado .marcos-historicos{bottom:-60px}.marcos_handle{width:15%;font-weight:900;font-size:12px;padding-top:5px;position:absolute;text-align:center;border-radius:5px;height:35px;cursor:pointer;top:-25px;background-color:#323232;left:40%;z-index:-2;transition:all .5s}.marcos_handle.cima{top:-25px!important}#app.marco-fechado .marcos_handle{top:0}");
 var __vue_template__ = "<div v-with=\"db: db\" class=\"marcos-historicos\">\n		<div id=\"linha-do-tempo\" class=\"marcos_handle\" v-on=\"click: handleMarcos\">LINHA DO TEMPO</div>\n		<in-linha-tempo></in-linha-tempo>\n	</div>";
 var $$$ = require('jquery')
@@ -241,8 +419,9 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/linha-tempo.vue":6,"insert-css":21,"jquery":22}],8:[function(require,module,exports){
-var __vue_template__ = "<div>\n		<p>\n			{{{fields.excerpt | marked}}}\n			</p><div v-el=\"chart\" class=\"chart-databars\"></div>\n		<p></p>\n		<p><strong><a href=\"#/{{videoID}}/info/{{id}}\">leia mais</a></strong></p>\n	</div>";
+},{"../components/linha-tempo.vue":7,"insert-css":22,"jquery":23}],9:[function(require,module,exports){
+require("insert-css")(".chart-databars .axis line,.chart-databars .axis path{fill:none;stroke:#fff;shape-rendering:crispEdges}.chart-databars .axis text{fill:#fff;font-size:10px}.chart-databars .bar{fill:#4682b4}.chart-databars .x.axis path{display:none}");
+var __vue_template__ = "<div>\n		<p>\n			{{{fields.excerpt | marked}}}\n			</p><div v-el=\"chart\" class=\"chart-databars\"></div>\n		<p></p>\n	</div>";
 var $$$ = require('jquery')
 	var _ = require('underscore')
 	var marked = require('marked')
@@ -267,8 +446,6 @@ var $$$ = require('jquery')
 			// append <svg>
 
 			this._svg = d3.select(this.$$.chart).append("svg")
-				.attr("width", 250)
-				.attr("height", 150);
 
 		},
 
@@ -298,11 +475,7 @@ var $$$ = require('jquery')
 						entries.push(o)
 					})
 
-					self._entries = d3.nest().key(function(d)  {
-							return d.legenda;
-						}).entries(entries);
-
-					console.log(self._entries)
+					self._entries = entries
 					self.buildChart()
 
 				}).error(function(message) {
@@ -318,14 +491,71 @@ var $$$ = require('jquery')
 
 			buildChart: function(){
 
-				var self = this,
-					year0 = d3.min(self._entries, function(d) { return d.ano; }),
-					year1 = d3.max(self._entries, function(d) { return d.ano; }),
-					x = d3.scale.ordinal()
-						.domain(d3.range(10))
-						.rangeRoundBands([0, 250])
+				var self = this;
 
-				console.log(year0,year1)
+
+				var margin = {top: 20, right: 20, bottom: 30, left: 40},
+					width = 250 - margin.left - margin.right,
+					height = 150 - margin.top - margin.bottom;
+
+				var x0 = d3.scale.ordinal()
+					.rangeRoundBands([0, width], .1);
+
+				var x1 = d3.scale.ordinal();
+
+				var y = d3.scale.linear()
+					.range([height, 0]);
+
+				var color = d3.scale.ordinal()
+					.range(["#fff", "#ddd","#bbb", "#999", "#777", "#555", "#333", "#111"]);
+
+				var xAxis = d3.svg.axis()
+					.scale(x0)
+					.orient("bottom");
+
+				var yAxis = d3.svg.axis()
+					.scale(y)
+					.orient("left")
+					.tickFormat(d3.format(".2s"));
+
+				self._svg
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+					.append("g")
+						.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+					data = self._entries
+				
+					var filtro = d3.keys(data[0]).filter(function(key) { return key !== "filtro"; });
+
+					data.forEach(function(d) {
+						d.legenda = filtro.map(function(name) { return {name: name, value: +d[name]}; });
+					});
+
+					x0.domain(data.map(function(d) { return d.filtro; }));
+					x1.domain(filtro).rangeRoundBands([0, x0.rangeBand()]);
+					y.domain([0, d3.max(data, function(d) { return d3.max(d.legenda, function(d) { return d.value; }); })]);
+
+					self._svg.append("g")
+							.attr("class", "x axis")
+							.attr("transform", "translate(0," + height + ")")
+							.call(xAxis);
+
+					var state = self._svg.selectAll(".state")
+						.data(data)
+						.enter().append("g")
+							.attr("class", "state")
+							.attr("transform", function(d) { return "translate(" + x0(d.filtro) + ",0)"; });
+
+					state.selectAll("rect")
+						.data(function(d) { return d.legenda; })
+						.enter().append("rect")
+							.attr("width", x1.rangeBand())
+							.attr("x", function(d) { return x1(d.name); })
+							.attr("y", function(d) { return y(d.value); })
+							.attr("height", function(d) { return height - y(d.value); })
+							.style("fill", function(d) { return color(d.name); });
+
 
 			}
 		},
@@ -336,7 +566,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"jquery":22,"marked":24,"underscore":27}],9:[function(require,module,exports){
+},{"insert-css":22,"jquery":23,"marked":25,"underscore":28}],10:[function(require,module,exports){
 var __vue_template__ = "<div>\n		<p>\n			<img v-attr=\"src: fields.image\">\n		</p>\n		<p>\n			{{{fields.excerpt | marked}}}\n		</p>\n	</div>";
 var marked = require('marked')
 
@@ -348,7 +578,7 @@ var marked = require('marked')
 	}
 module.exports.template = __vue_template__;
 
-},{"marked":24}],10:[function(require,module,exports){
+},{"marked":25}],11:[function(require,module,exports){
 var __vue_template__ = "<div>\n		{{{fields.excerpt | marked}}}\n	</div>";
 var marked = require('marked')
 
@@ -360,9 +590,9 @@ var marked = require('marked')
 	}
 module.exports.template = __vue_template__;
 
-},{"marked":24}],11:[function(require,module,exports){
+},{"marked":25}],12:[function(require,module,exports){
 require("insert-css")(".sidebar_block{width:120%;height:100%;overflow:hidden;transition:all .6s ease}.sidebar_block.v-enter,.sidebar_block.v-leave{transform:translate3d(-400px,0,0);max-height:0}.sidebar.has-info .sidebar_block{width:100%;max-height:48px}#cartela_funcao,#cartela_nome{float:right;font-size:16px;margin-right:5%}#cartela_funcao{color:#555}.sidebar_block__header{font-family:fonte-bold,sans-serif;font-weight:900;position:relative;color:#fff;padding:10px;height:28px;line-height:28px}.sidebar_block__content{overflow:hidden;height:19%;position:relative;padding:10px 58px 10px 10px;font-size:14px;font-weight:300;line-height:1.4em;width:65%;letter-spacing:0;transition:all .3s ease}#app.marco-fechado .sidebar_block__content{height:25%}.timer{display:block;position:absolute;top:10px;right:10px;width:28px;height:28px}.timer .progress{fill:transparent;stroke:#fff;stroke-width:2px;stroke-dasharray:75 75;stroke-linecap:round;transition:all .5s linear;transform:translate(0px,28px) rotate(-90deg)}.timer .progress.fadeout{opacity:0}.timer .base{stroke:#fff;stroke-width:2px;fill:transparent;opacity:.2}.timer .close{transition:transform .3s ease,opacity .3s linear;opacity:0;transform:translate(14px,14px) scale(0.5)}.timer .close line{stroke:#fff;stroke-width:2px;stroke-linecap:round}.timer.fixed .close,.timer:hover .close{opacity:1;transform:translate(14px,14px) scale(1)}");
-var __vue_template__ = "<div class=\"sidebar_block\" v-transition=\"\">\n		<div v-if=\"funcao\" class=\"sidebar_block__header context-bg\" style=\"margin-top: 50%\" v-transition=\"\">\n			<div id=\"cartela_nome\" v-transition=\"\">\n				{{title | uppercase}}\n			</div>\n		</div>\n		<div v-if=\"funcao\" class=\"sidebar_block__header\" style=\"width: 80%; background: #fff\" v-transition=\"\">\n			<div id=\"cartela_funcao\" v-transition=\"\">\n				{{funcao}}\n			</div>\n		</div>\n		<div v-if=\"!funcao\" class=\"sidebar_block__header context-bg\">\n			{{title | uppercase}}\n			<svg width=\"28\" height=\"28\" class=\"timer clickable\" v-on=\"click: onTimerClick\" v-class=\"fixed: start == null\">\n				<circle class=\"base\" cx=\"14\" cy=\"14\" r=\"12\"></circle>\n				<circle v-class=\"fadeout: perc < 3\" class=\"progress\" cx=\"14\" cy=\"14\" r=\"12\" stroke-dashoffset=\"{{perc}}\"></circle>\n				<g class=\"close\">\n					<line x1=\"-4\" y1=\"-4\" x2=\"4\" y2=\"4\"></line>\n					<line x1=\"-4\" y1=\"4\" x2=\"4\" y2=\"-4\"></line>\n				</g>\n			</svg>\n		</div>\n		<div v-if=\"!funcao\" id=\"sidebar_block__content\" class=\"sidebar_block__content\">\n			<content></content>\n		</div>\n		<p v-if=\"!ap\" style=\"padding-left: 10px\"><strong><a style=\"font-weight: 900; text-decoration: none\" href=\"#/{{videoID}}/info/{{id}}\">SAIBA MAIS</a></strong></p>\n	</div>";
+var __vue_template__ = "<div class=\"sidebar_block\" v-transition=\"\">\n		<div v-if=\"funcao\" class=\"sidebar_block__header context-bg\" style=\"margin-top: 50%\" v-transition=\"\">\n			<div id=\"cartela_nome\" v-transition=\"\">\n				{{title | uppercase}}\n			</div>\n		</div>\n		<div v-if=\"funcao\" class=\"sidebar_block__header\" style=\"width: 80%; background: #fff\" v-transition=\"\">\n			<div id=\"cartela_funcao\" v-transition=\"\">\n				{{funcao}}\n			</div>\n		</div>\n		<div v-if=\"!funcao\" class=\"sidebar_block__header context-bg\">\n			{{title | uppercase}}\n			<svg width=\"28\" height=\"28\" class=\"timer clickable\" v-on=\"click: onTimerClick\" v-class=\"fixed: start == null\">\n				<circle class=\"base\" cx=\"14\" cy=\"14\" r=\"12\"></circle>\n				<circle v-class=\"fadeout: perc < 3\" class=\"progress\" cx=\"14\" cy=\"14\" r=\"12\" stroke-dashoffset=\"{{perc}}\"></circle>\n				<g class=\"close\">\n					<line x1=\"-4\" y1=\"-4\" x2=\"4\" y2=\"4\"></line>\n					<line x1=\"-4\" y1=\"4\" x2=\"4\" y2=\"-4\"></line>\n				</g>\n			</svg>\n		</div>\n		<div v-if=\"!funcao\" id=\"sidebar_block__content\" class=\"sidebar_block__content\">\n			<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields: fields\"></div>\n		</div>\n		<p v-if=\"!ap\" style=\"padding-left: 10px\"><strong><a style=\"font-weight: 900; text-decoration: none\" href=\"#/{{videoID}}/info/{{id}}\">SAIBA MAIS</a></strong></p>\n	</div>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 	var perfectScrollbar = require('perfect-scrollbar')
@@ -395,11 +625,16 @@ var Vue = require('vue')
 					window.location.href = "/#/" + this.$parent.params.video;
 				}
 			}
+		},
+		components: {
+			'in-sidebar-block-text': require('../components/sidebar-block-text.vue'),
+			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue'),
+			'in-sidebar-block-databars': require('../components/sidebar-block-databars.vue')
 		}
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":21,"jquery":22,"perfect-scrollbar":25,"vue":87}],12:[function(require,module,exports){
+},{"../components/sidebar-block-databars.vue":9,"../components/sidebar-block-profile.vue":10,"../components/sidebar-block-text.vue":11,"insert-css":22,"jquery":23,"perfect-scrollbar":26,"vue":89}],13:[function(require,module,exports){
 require("insert-css")(".sidebar_chapter{position:relative;width:300px}.sidebar_chapter .sidebar_chapter_title{font-family:fonte-bold,sans-serif;font-weight:900;position:relative;z-index:2;display:inline-block;background:#fff;color:#555;padding:10px 58px 10px 10px;height:28px;line-height:28px;transition:all .5s;min-width:0}.sidebar.is-open .sidebar_chapter .sidebar_chapter_title{min-width:232px}");
 var __vue_template__ = "<div class=\"sidebar_chapter\">\n		<div class=\"sidebar_chapter_title\">{{title | uppercase}}</div>\n	</div>";
 module.exports = {
@@ -407,7 +642,7 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":21}],13:[function(require,module,exports){
+},{"insert-css":22}],14:[function(require,module,exports){
 require("insert-css")(".clickable{cursor:pointer}.disable-select,.sidebar_graph .sidebar_graph_svg .label-anchor text{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.sidebar_graph{width:260px;height:260px;padding:20px;transition:all .5s ease;transform:translate3d(-300px,0,0)}.sidebar.is-open .sidebar_graph{transform:translate3d(0,0,0)}.sidebar_graph .sidebar_graph_svg{background:rgba(100,100,100,.5);width:100%;height:100%;border-radius:50%}.sidebar_graph .sidebar_graph_svg .node{cursor:pointer}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.root{fill:#ed1e79}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#ed1e79;stroke-width:2px}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#ed1e79;stroke:#fff;stroke-width:2px}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.root{fill:#00a300}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#00a300;stroke-width:2px}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#00a300;stroke:#fff;stroke-width:2px}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.root{fill:#0cc}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#0cc;stroke-width:2px}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#0cc;stroke:#fff;stroke-width:2px}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.root{fill:red}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:red;stroke-width:2px}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.conceito{fill:red;stroke:#fff;stroke-width:2px}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.root,.is-video-preso .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#00c;stroke-width:2px}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#00c;stroke:#fff;stroke-width:2px}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.sidebar_graph .sidebar_graph_svg .edge{stroke:rgba(255,255,255,.2);stroke-width:1}.sidebar_graph .sidebar_graph_svg .label-anchor text{cursor:default;font-size:12px;fill:#fff}");
 var __vue_template__ = "<div class=\"sidebar_graph\" v-with=\"id: id, title: db.nome, video: video, events: events\">\n		<div v-el=\"graph\" class=\"sidebar_graph_svg\"></div>\n	</div>";
 var _ = require('underscore')
@@ -689,9 +924,9 @@ var _ = require('underscore')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":21,"underscore":27}],14:[function(require,module,exports){
+},{"insert-css":22,"underscore":28}],15:[function(require,module,exports){
 require("insert-css")("#conteudo_info{overflow:hidden;position:relative;height:96%;padding-left:40px;padding-right:40px;transition:all .3s ease}#app.marco-fechado #conteudo_info{height:100%}.info-texto{letter-spacing:0}.image-list img{position:relative;float:left;margin-right:10px}.video-list img{position:relative;float:left;margin-right:10px;width:220px}.link{font-weight:900;width:100%;padding:8px;margin-bottom:10px;text-decoration:none}.mulher-bg{background-color:#ed1e79}.adolescente-bg{background-color:#00a300}.crianca-bg{background-color:#0cc}.preso-bg{background-color:red}.deficiente-bg{background-color:#00c}");
-var __vue_template__ = "<div>\n  <div class=\"border context-bg\"></div>\n  <div id=\"conteudo_info\">\n    <h2> \n      {{conteudo.title}} \n    </h2>\n    <div class=\"info-texto\">\n      {{{html_texto | marked}}}\n    </div>\n    <h3 v-if=\"conteudo.imagens\"> IMAGENS </h3>\n    <div class=\"image-list\"></div>\n    <h3 v-if=\"conteudo.video_list\"> VÍDEOS </h3>\n    <div class=\"video-list\"></div>\n    <h3 v-if=\"conteudo.arquivos\"> LINKS </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.arquivos\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <h3 v-if=\"conteudo.discursoes\"> DISCUSSÃO </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.discursoes\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <div class=\"link {{conteudo.icon}}-bg\" v-if=\"conteudo.hipervideo\">\n      <a href=\"{{conteudo.hipervideo.link}}\" class=\"link {{conteudo.icon}}-bg\">\n        {{conteudo.hipervideo.nome | uppercase}}\n      </a>\n    </div>\n  </div>\n  <a class=\"back\" href=\"#/{{id}}\">voltar ao video</a>\n  </div>";
+var __vue_template__ = "<div>\n  <div class=\"border context-bg\"></div>\n  <div id=\"conteudo_info\">\n    <h2> \n      {{conteudo.title}} \n    </h2>\n    <div class=\"info-texto\">\n      {{{html_texto | marked}}}\n    </div>\n\n    <div v-component=\"in-databars\" v-with=\"databars: conteudo.databars\" v-if=\"hasDatabars\"></div>\n    \n    <h3 v-if=\"conteudo.imagens\"> IMAGENS </h3>\n    <div class=\"image-list\"></div>\n    <h3 v-if=\"conteudo.video_list\"> VÍDEOS </h3>\n    <div class=\"video-list\"></div>\n    <h3 v-if=\"conteudo.arquivos\"> LINKS </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.arquivos\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <h3 v-if=\"conteudo.discursoes\"> DISCUSSÃO </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.discursoes\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <div class=\"link {{conteudo.icon}}-bg\" v-if=\"conteudo.hipervideo\">\n      <a href=\"{{conteudo.hipervideo.link}}\" class=\"link {{conteudo.icon}}-bg\">\n        {{conteudo.hipervideo.nome | uppercase}}\n      </a>\n    </div>\n  </div>\n  <a class=\"back\" href=\"#/{{id}}\">voltar ao video</a>\n  </div>";
 var Vue = require('vue')
   var $$$ = require('jquery')
   var perfectScrollbar = require('perfect-scrollbar')
@@ -704,9 +939,15 @@ var Vue = require('vue')
 
     data: function(){
       return {
+        conteudo: {},
         html_texto: '',
         videoIndex: 0,
         imageIndex: 0
+      }
+    },
+    computed: {
+      hasDatabars: function(){
+        return this.conteudo.databars !== undefined
       }
     },
     attached: function() {
@@ -774,6 +1015,10 @@ var Vue = require('vue')
       })
     },
 
+    components: {
+      'in-databars': require('../components/content-databars.vue'),
+    },
+
     filters: {
       'marked': marked
     }
@@ -781,7 +1026,7 @@ var Vue = require('vue')
   }
 module.exports.template = __vue_template__;
 
-},{"insert-css":21,"jquery":22,"marked":24,"perfect-scrollbar":25,"slick-carousel":26,"vue":87}],15:[function(require,module,exports){
+},{"../components/content-databars.vue":3,"insert-css":22,"jquery":23,"marked":25,"perfect-scrollbar":26,"slick-carousel":27,"vue":89}],16:[function(require,module,exports){
 require("insert-css")("#capitulos{background-color:#323232;color:#fff;height:30px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}#video-controls.hover #capitulos{height:0}.capitulo{transition:all .2s ease 0s;height:30px;position:absolute}#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}.capitulo:hover{color:#000;background-color:#c8c8c8}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:100%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:8px 15px;font-weight:700;font-size:75%;transition:all .5s ease 0s}");
 var __vue_template__ = "<div v-with=\"db: db\" id=\"capitulos\">\n		<div class=\"capitulo\" v-repeat=\"db.capitulos\" style=\"width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%\" v-on=\"click: seekCap(posicaoCap[$index]) \">\n			<hr>\n			<p>{{$index + 1}}.{{db.capitulos[$index].nome | uppercase}}</p>\n		</div>\n	</div>";
 var $$$ = require('jquery')
@@ -825,7 +1070,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":21,"jquery":22}],16:[function(require,module,exports){
+},{"insert-css":22,"jquery":23}],17:[function(require,module,exports){
 require("insert-css")(".rangeslider{position:fixed;border-radius:0;top:30px;background:rgba(0,0,0,.8);transition:all .5s ease 0s}.rangeslider .rangeslider__fill{border-radius:0}.rangeslider__fill{border-radius:0;transition:all .5s ease 0s}.rangeslider__handle{width:25px;height:25px;top:0;margin-left:-9px;transition:all .5s ease 0s;z-index:11}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0}.rangeslider__handle:after{height:15px;width:15px;background-color:rgba(50,50,50,.8)}.rangeslider__handle:hover:after{background-color:rgba(100,100,100,.8)}#tp-cr{position:absolute;margin:7px;opacity:1;top:0;left:5px;color:#000;font-weight:700;font-size:75%;z-index:10;transition:all .5s ease 0s}#video-controls.hover #tp-cr{opacity:0;font-size:0}#tp-cr-min,#tp-cr-sec{position:relative;float:left}#tp-tt{position:absolute;margin:7px;opacity:1;top:0;right:5px;color:#fff;font-weight:700;font-size:75%;z-index:10;transition:all .5s ease 0s}#video-controls.hover #tp-tt{opacity:0;font-size:0}#tp-tt-min,#tp-tt-sec{position:relative;float:right}");
 var __vue_template__ = "<div v-with=\"db: db\" class=\"rangeslider clickable\" id=\"rangeslider-{{db.id}}\">\n		<div id=\"tp-cr\" class=\"disable-select\">\n			<div id=\"tp-cr-min\">00</div>\n			<div style=\"position: relative; float: left\">:</div>\n			<div id=\"tp-cr-sec\">00</div>\n		</div>\n		<div id=\"tp-tt\" class=\"disable-select\">\n			<div id=\"tp-tt-sec\">00</div>\n			<div style=\"position: relative; float: right\">:</div>\n			<div id=\"tp-tt-min\">00</div>\n		</div>\n		<div class=\"rangeslider__fill context-bg\" style=\"width: 0px\"></div>\n		<div class=\"rangeslider__handle\" style=\"left: 0px\"></div>\n	</div>";
 var $$$ = require('jquery')
@@ -879,7 +1124,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":21,"jquery":22}],17:[function(require,module,exports){
+},{"insert-css":22,"jquery":23}],18:[function(require,module,exports){
 (function(){
 
 	var _ = require('underscore')
@@ -972,7 +1217,7 @@ module.exports.template = __vue_template__;
 
 })()
 
-},{"./app.vue":1,"director":20,"underscore":27,"vue":87}],18:[function(require,module,exports){
+},{"./app.vue":1,"director":21,"underscore":28,"vue":89}],19:[function(require,module,exports){
 require("insert-css")("body{font-family:fonte-normal,sans-serif;letter-spacing:-1px}header{position:absolute;height:100%;background-image:url(http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png);background-size:100% auto;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;z-index:1;transition:all .5s}header h1{margin:.5%;display:none}header.fechado{height:5%;font-size:50%;overflow:hidden;padding:0;text-align:center;background:#141414;transition:all .5s}header.fechado h1{display:block}header.fechado p{opacity:0}header.fechado a{opacity:0!important}header.fechado:hover{font-size:55%}header.fechado.ativo{top:-5%;transition:all .5s}header.fechado .conteudo{padding:0}header.fechado #headHandle{z-index:2;cursor:pointer}header .conteudo{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:20% 2% 2% 50%;transition:all .5s}.areaTematica{text-align:center;padding:0 3%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;right:-40%;width:40%;position:fixed;height:100%;background-color:rgba(15,15,15,.8);z-index:1;transition:all .5s}.areaTematica h2{margin-top:10%}.col-1-5{width:20%;text-decoration:none;position:absolute;height:100%;transition:all .5s}.linha{height:100%;position:fixed;right:40%;width:.5%;z-index:1;bottom:-100%;opacity:.6;transition:all .1s}.botao{cursor:pointer;display:inline-block;margin:10px;padding:10px;width:26%;background:#ccc;color:#000;opacity:.6;transition:all .3s;text-align:center}.botao:hover{opacity:1}.botao.cruz{border-radius:16px;height:20px;padding:5px;position:absolute;right:2%;top:2%;width:20px}.fotoFundo{position:absolute}.BW{transition:all .5s ease 0s}#headHandle{z-index:-15;position:absolute;left:0;height:100%;width:100%}.nest{bottom:-35%;height:35%;opacity:.8;position:absolute;width:100%;z-index:2;padding:17%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;transition:all .5s ease 0s}.nest h2{text-align:center}.hipervideo{overflow:hidden;cursor:pointer;transition:all .5s ease 0s}.hipervideo:hover .BW{opacity:0}.hipervideo:hover .nest{bottom:0}.hipervideo.ativo{width:100%;cursor:default;z-index:2!important;left:0!important}.hipervideo.ativo .areaTematica{right:0}.hipervideo.ativo .nest{padding:0;opacity:0}.hipervideo.ativo .linha{transition:all .5s ease .3s;bottom:0}.hipervideo.ativo .fotoFundo{left:0!important}.hipervideo.ativo .BW{z-index:-1!important;opacity:0}");
 var __vue_template__ = "<div v-with=\"db: fulldb\">\n		<header class=\"\">\n			<div class=\"conteudo\">\n				<div id=\"headHandle\" v-on=\"click: abrir\"></div>\n				<h1>{{db.title | uppercase}}</h1>\n				<p style=\"letter-spacing: 0; text-align: center\">{{db.texto}}</p>\n				<a v-on=\"click: fechar\" class=\"botao\">O QUE É O HIPERVÍDEO?</a>\n				<a v-on=\"click: fechar\" class=\"botao\">ASSISTIR HIPERVÍDEOS</a>\n				<a v-on=\"click: fechar\" class=\"botao\">VER REDES</a>\n				<img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_PNH.png\" style=\"width: 20%; margin: 5% 10% 0\">\n				<img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png\" style=\"width: 50%\">\n			</div>\n		</header>\n		<div class=\"conteudo\" style=\"position: absolute; z-index: 0\">\n			<div class=\"grid\">\n				<div v-repeat=\"db.hipervideos\" class=\"hipervideo col-1-5 {{id}}\" style=\"left: {{posHip[$index]}}%; z-index: -{{$index}}\">\n					<div v-on=\"click: select(id)\" class=\"nest\" style=\"background-color: {{cor}}\">\n						<h2>SAÚDE D{{artigo | uppercase}} {{nome | uppercase}}</h2>\n					</div>\n					<div class=\"linha\" style=\"background-color: {{cor}}\"></div>\n					<div class=\"areaTematica\">\n						<h2>SAÚDE D{{artigo | uppercase}} {{nome | uppercase}}</h2>\n						<p style=\"letter-spacing: 0\">{{descricao}}</p>\n						<a href=\"#/{{id}}\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ASSISTIR</a>\n						<a v-on=\"click: deselect(id)\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">VOLTAR</a>\n					</div>\n					<img v-attr=\"src: '/img/RE_' + id + 'BW.png'\" class=\"fotoFundo BW\" style=\"left: -{{posHip[$index]}}%; z-index: 1\" v-on=\"click: select(id)\">\n					<img v-attr=\"src: '/img/RE_' + id + '.png'\" class=\"fotoFundo\" style=\"left: -{{posHip[$index]}}%\" v-on=\"click: select(id)\">\n				</div>\n			</div>\n		</div>\n	</div>";
 var $$$ = require('jquery')
@@ -1019,9 +1264,9 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":21,"jquery":22}],19:[function(require,module,exports){
+},{"insert-css":22,"jquery":23}],20:[function(require,module,exports){
 require("insert-css")(".sidebar{width:22%}.sidebar_content{position:relative;height:100%;z-index:20}.sidebar_back{position:absolute;background-color:rgba(0,0,0,.5);width:300px;height:100%;top:0;left:0;transition:all .6s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.sidebar-right{position:absolute;right:0;top:57px;width:300px}.infopanel{position:absolute;background-color:rgba(0,0,0,.8);height:100%;top:0;left:0;z-index:10;transition:all .6s;transform:translate3d(127%,0,0)}.infopanel.is-open{transform:translate3d(300px,0,0)}.infopanel .border{position:absolute;height:100%;width:10px;top:0;left:0}.infopanel .back{position:absolute;top:10%;left:79%;color:#fff;font-size:24px}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}.debug .btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px;color:#000;font-size:10px}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}.sidebar_opener{position:relative;transition:all .6s ease .6s;overflow:hidden}.sidebar_opener.v-enter,.sidebar_opener.v-leave{transform:translate3d(-100px,0,0)}.sidebar_opener.v-leave{transition:all .3s ease 0}.sidebar_opener .sidebar_opener__inside{display:inline-block;color:#fff;padding:10px;height:28px;line-height:28px;transition:all .6s ease}.infopanel{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:5% 20% 3% 3%;width:79%}.is-cartela{height:auto!important}");
-var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: db.nome\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\">\n					<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"id: id, videoID: videoID,fields: fields\"></div>\n				</in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<!-- <div class=\"debug\">\n			<a id=\"tres\" class=\"btn\" href=\"#/home\">home</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/mulher\">mulher</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/crianca\">crianca</a>\n			<br/>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPlay\">play</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPause\">pause</a>\n		</div> -->\n\n	</div>";
+var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: db.nome\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\"></in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<!-- <div class=\"debug\">\n			<a id=\"tres\" class=\"btn\" href=\"#/home\">home</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/mulher\">mulher</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/crianca\">crianca</a>\n			<br/>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPlay\">play</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPause\">pause</a>\n		</div> -->\n\n	</div>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 	var _ = require('underscore')
@@ -1314,16 +1559,13 @@ var Vue = require('vue')
 			'in-sidebar-graph': require('../components/sidebar-graph.vue'),
 			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
-			'in-sidebar-block-text': require('../components/sidebar-block-text.vue'),
-			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue'),
-			'in-sidebar-block-databars': require('../components/sidebar-block-databars.vue'),
 			'in-sidebar-info': require('../components/sidebar-info.vue'),
 			'in-creditos': require('../components/creditos.vue')
 		}
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/bg-video.vue":2,"../components/creditos.vue":3,"../components/event-block-map.vue":4,"../components/example.vue":5,"../components/marcos.vue":7,"../components/sidebar-block-databars.vue":8,"../components/sidebar-block-profile.vue":9,"../components/sidebar-block-text.vue":10,"../components/sidebar-block.vue":11,"../components/sidebar-chapter.vue":12,"../components/sidebar-graph.vue":13,"../components/sidebar-info.vue":14,"../components/topbar-capitulos.vue":15,"../components/topbar-slider.vue":16,"insert-css":21,"jquery":22,"perfect-scrollbar":25,"underscore":27,"vue":87}],20:[function(require,module,exports){
+},{"../components/bg-video.vue":2,"../components/creditos.vue":4,"../components/event-block-map.vue":5,"../components/example.vue":6,"../components/marcos.vue":8,"../components/sidebar-block.vue":12,"../components/sidebar-chapter.vue":13,"../components/sidebar-graph.vue":14,"../components/sidebar-info.vue":15,"../components/topbar-capitulos.vue":16,"../components/topbar-slider.vue":17,"insert-css":22,"jquery":23,"perfect-scrollbar":26,"underscore":28,"vue":89}],21:[function(require,module,exports){
 
 
 //
@@ -2049,7 +2291,7 @@ Router.prototype.mount = function(routes, path) {
 
 
 }(typeof exports === "object" ? exports : window));
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 var inserted = {};
 
 module.exports = function (css, options) {
@@ -2073,7 +2315,7 @@ module.exports = function (css, options) {
     }
 };
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
@@ -11280,7 +11522,7 @@ return jQuery;
 
 }));
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 /*
  Leaflet, a JavaScript library for mobile-friendly interactive maps. http://leafletjs.com
  (c) 2010-2013, Vladimir Agafonkin
@@ -20461,7 +20703,7 @@ L.Map.include({
 
 
 }(window, document));
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 (function (global){
 /**
  * marked - a markdown parser
@@ -21737,7 +21979,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
 }());
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /* Copyright (c) 2015 Hyunje Alex Jun and other contributors
  * Licensed under the MIT License
  */
@@ -22616,7 +22858,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
   };
 });
 
-},{"jquery":22}],26:[function(require,module,exports){
+},{"jquery":23}],27:[function(require,module,exports){
 /*
      _ _      _       _
  ___| (_) ___| | __  (_)___
@@ -24767,7 +25009,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
 
 }));
 
-},{"jquery":22}],27:[function(require,module,exports){
+},{"jquery":23}],28:[function(require,module,exports){
 //     Underscore.js 1.7.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -26184,7 +26426,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
   }
 }.call(this));
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -26208,9 +26450,6 @@ exports.$addChild = function (opts, BaseCtor) {
     : BaseCtor.options.inherit
   if (inherit) {
     var ctors = parent._childCtors
-    if (!ctors) {
-      ctors = parent._childCtors = {}
-    }
     ChildVue = ctors[BaseCtor.cid]
     if (!ChildVue) {
       var optionName = BaseCtor.options.name
@@ -26232,19 +26471,16 @@ exports.$addChild = function (opts, BaseCtor) {
   opts._parent = parent
   opts._root = parent.$root
   var child = new ChildVue(opts)
-  if (!this._children) {
-    this._children = []
-  }
   this._children.push(child)
   return child
 }
-},{"../util":84}],29:[function(require,module,exports){
+},{"../util":86}],30:[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
-var Path = require('../parse/path')
-var textParser = require('../parse/text')
-var dirParser = require('../parse/directive')
-var expParser = require('../parse/expression')
+var Path = require('../parsers/path')
+var textParser = require('../parsers/text')
+var dirParser = require('../parsers/directive')
+var expParser = require('../parsers/expression')
 var filterRE = /[^|]\|[^|]/
 
 /**
@@ -26318,7 +26554,10 @@ exports.$watch = function (exp, cb, deep, immediate) {
   }
   if (!watcher) {
     watcher = vm._userWatchers[key] =
-      new Watcher(vm, exp, wrappedCb, null, false, deep)
+      new Watcher(vm, exp, wrappedCb, {
+        deep: deep,
+        user: true
+      })
   } else {
     watcher.addCb(wrappedCb)
   }
@@ -26393,11 +26632,14 @@ exports.$interpolate = function (text) {
 
 exports.$log = function (path) {
   var data = path
-    ? Path.get(this, path)
+    ? Path.get(this._data, path)
     : this._data
-  console.log(JSON.parse(JSON.stringify(data)))
+  if (data) {
+    data = JSON.parse(JSON.stringify(data))
+  }
+  console.log(data)
 }
-},{"../parse/directive":72,"../parse/expression":73,"../parse/path":74,"../parse/text":76,"../util":84,"../watcher":88}],30:[function(require,module,exports){
+},{"../parsers/directive":74,"../parsers/expression":75,"../parsers/path":76,"../parsers/text":78,"../util":86,"../watcher":90}],31:[function(require,module,exports){
 var _ = require('../util')
 var transition = require('../transition')
 
@@ -26410,13 +26652,10 @@ var transition = require('../transition')
  */
 
 exports.$appendTo = function (target, cb, withTransition) {
-  target = query(target)
-  var targetIsDetached = !_.inDoc(target)
-  var op = withTransition === false || targetIsDetached
-    ? append
-    : transition.append
-  insert(this, target, op, targetIsDetached, cb)
-  return this
+  return insert(
+    this, target, cb, withTransition,
+    append, transition.append
+  )
 }
 
 /**
@@ -26446,13 +26685,10 @@ exports.$prependTo = function (target, cb, withTransition) {
  */
 
 exports.$before = function (target, cb, withTransition) {
-  target = query(target)
-  var targetIsDetached = !_.inDoc(target)
-  var op = withTransition === false || targetIsDetached
-    ? before
-    : transition.before
-  insert(this, target, op, targetIsDetached, cb)
-  return this
+  return insert(
+    this, target, cb, withTransition,
+    before, transition.before
+  )
 }
 
 /**
@@ -26497,7 +26733,7 @@ exports.$remove = function (cb, withTransition) {
   ) {
     op = withTransition === false
       ? append
-      : transition.removeThenAppend 
+      : transition.removeThenAppend
     blockOp(this, this._blockFragment, op, realCb)
   } else {
     op = withTransition === false
@@ -26513,12 +26749,19 @@ exports.$remove = function (cb, withTransition) {
  *
  * @param {Vue} vm
  * @param {Element} target
- * @param {Function} op
- * @param {Boolean} targetIsDetached
  * @param {Function} [cb]
+ * @param {Boolean} [withTransition]
+ * @param {Function} op1 - op for non-transition insert
+ * @param {Function} op2 - op for transition insert
+ * @return vm
  */
 
-function insert (vm, target, op, targetIsDetached, cb) {
+function insert (vm, target, cb, withTransition, op1, op2) {
+  target = query(target)
+  var targetIsDetached = !_.inDoc(target)
+  var op = withTransition === false || targetIsDetached
+    ? op1
+    : op2
   var shouldCallHook =
     !targetIsDetached &&
     !vm._isAttached &&
@@ -26531,6 +26774,7 @@ function insert (vm, target, op, targetIsDetached, cb) {
   if (shouldCallHook) {
     vm._callHook('attached')
   }
+  return vm
 }
 
 /**
@@ -26607,7 +26851,7 @@ function remove (el, vm, cb) {
   _.remove(el)
   if (cb) cb()
 }
-},{"../transition":78,"../util":84}],31:[function(require,module,exports){
+},{"../transition":80,"../util":86}],32:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -26732,13 +26976,11 @@ exports.$broadcast = function (event) {
   // then there's no need to broadcast.
   if (!this._eventsCount[event]) return
   var children = this._children
-  if (children) {
-    for (var i = 0, l = children.length; i < l; i++) {
-      var child = children[i]
-      child.$emit.apply(child, arguments)
-      if (!child._eventCancelled) {
-        child.$broadcast.apply(child, arguments)
-      }
+  for (var i = 0, l = children.length; i < l; i++) {
+    var child = children[i]
+    child.$emit.apply(child, arguments)
+    if (!child._eventCancelled) {
+      child.$broadcast.apply(child, arguments)
     }
   }
   return this
@@ -26784,7 +27026,7 @@ function modifyListenerCount (vm, event, count) {
     parent = parent.$parent
   }
 }
-},{"../util":84}],32:[function(require,module,exports){
+},{"../util":86}],33:[function(require,module,exports){
 var _ = require('../util')
 var mergeOptions = require('../util/merge-option')
 
@@ -26792,9 +27034,22 @@ var mergeOptions = require('../util/merge-option')
  * Expose useful internals
  */
 
-exports.util       = _
-exports.nextTick   = _.nextTick
-exports.config     = require('../config')
+exports.util = _
+exports.nextTick = _.nextTick
+exports.config = require('../config')
+
+exports.compiler = {
+  compile: require('../compiler/compile'),
+  transclude: require('../compiler/transclude')
+}
+
+exports.parsers = {
+  path: require('../parsers/path'),
+  text: require('../parsers/text'),
+  template: require('../parsers/template'),
+  directive: require('../parsers/directive'),
+  expression: require('../parsers/expression')
+}
 
 /**
  * Each instance constructor, including Vue, has a unique
@@ -26918,9 +27173,9 @@ function createAssetRegisters (Constructor) {
 }
 
 createAssetRegisters(exports)
-},{"../config":39,"../util":84,"../util/merge-option":86}],33:[function(require,module,exports){
+},{"../compiler/compile":37,"../compiler/transclude":38,"../config":39,"../parsers/directive":74,"../parsers/expression":75,"../parsers/path":76,"../parsers/template":77,"../parsers/text":78,"../util":86,"../util/merge-option":88}],34:[function(require,module,exports){
 var _ = require('../util')
-var compile = require('../compile/compile')
+var compile = require('../compiler/compile')
 
 /**
  * Set instance target element and kick off the compilation
@@ -26972,85 +27227,12 @@ function ready () {
 }
 
 /**
- * Teardown an instance, unobserves the data, unbind all the
- * directives, turn off all the event listeners, etc.
- *
- * @param {Boolean} remove - whether to remove the DOM node.
- * @public
+ * Teardown the instance, simply delegate to the internal
+ * _destroy.
  */
 
-exports.$destroy = function (remove) {
-  if (this._isBeingDestroyed) {
-    return
-  }
-  this._callHook('beforeDestroy')
-  this._isBeingDestroyed = true
-  var i
-  // remove self from parent. only necessary
-  // if parent is not being destroyed as well.
-  var parent = this.$parent
-  if (parent && !parent._isBeingDestroyed) {
-    i = parent._children.indexOf(this)
-    parent._children.splice(i, 1)
-  }
-  // destroy all children.
-  if (this._children) {
-    i = this._children.length
-    while (i--) {
-      this._children[i].$destroy()
-    }
-  }
-  // teardown all directives. this also tearsdown all
-  // directive-owned watchers.
-  i = this._directives.length
-  while (i--) {
-    this._directives[i]._teardown()
-  }
-  // teardown all user watchers.
-  for (i in this._userWatchers) {
-    this._userWatchers[i].teardown()
-  }
-  // remove reference to self on $el
-  if (this.$el) {
-    this.$el.__vue__ = null
-  }
-  // remove DOM element
-  var self = this
-  if (remove && this.$el) {
-    this.$remove(function () {
-      cleanup(self)
-    })
-  } else {
-    cleanup(self)
-  }
-}
-
-/**
- * Clean up to ensure garbage collection.
- * This is called after the leave transition if there
- * is any.
- *
- * @param {Vue} vm
- */
-
-function cleanup (vm) {
-  // remove reference from data ob
-  vm._data.__ob__.removeVm(vm)
-  vm._data =
-  vm._watchers =
-  vm._userWatchers =
-  vm._watcherList =
-  vm.$el =
-  vm.$parent =
-  vm.$root =
-  vm._children =
-  vm._bindings =
-  vm._directives = null
-  // call the last hook...
-  vm._isDestroyed = true
-  vm._callHook('destroyed')
-  // turn off all instance listeners.
-  vm.$off() 
+exports.$destroy = function (remove, deferCleanup) {
+  this._destroy(remove, deferCleanup)
 }
 
 /**
@@ -27064,19 +27246,58 @@ function cleanup (vm) {
 exports.$compile = function (el) {
   return compile(el, this.$options, true)(this, el)
 }
-},{"../compile/compile":37,"../util":84}],34:[function(require,module,exports){
+},{"../compiler/compile":37,"../util":86}],35:[function(require,module,exports){
 var _ = require('./util')
+var MAX_UPDATE_COUNT = 10
+
+// we have two separate queues: one for directive updates
+// and one for user watcher registered via $watch().
+// we want to guarantee directive updates to be called
+// before user watchers so that when user watchers are
+// triggered, the DOM would have already been in updated
+// state.
+var queue = []
+var userQueue = []
+var has = {}
+var waiting = false
+var flushing = false
 
 /**
- * The Batcher maintains a job queue to be run
- * async on the next event loop.
+ * Reset the batcher's state.
  */
 
-function Batcher () {
-  this.reset()
+function reset () {
+  queue = []
+  userQueue = []
+  has = {}
+  waiting = false
+  flushing = false
 }
 
-var p = Batcher.prototype
+/**
+ * Flush both queues and run the jobs.
+ */
+
+function flush () {
+  flushing = true
+  run(queue)
+  run(userQueue)
+  reset()
+}
+
+/**
+ * Run the jobs in a single queue.
+ *
+ * @param {Array} queue
+ */
+
+function run (queue) {
+  // do not cache length because more jobs might be pushed
+  // as we run existing jobs
+  for (var i = 0; i < queue.length; i++) {
+    queue[i].run()
+  }
+}
 
 /**
  * Push a job into the job queue.
@@ -27089,99 +27310,38 @@ var p = Batcher.prototype
  *   - {Function}      run
  */
 
-p.push = function (job) {
-  if (!job.id || !this.has[job.id] || this.flushing) {
-    this.queue.push(job)
-    this.has[job.id] = job
-    if (!this.waiting) {
-      this.waiting = true
-      _.nextTick(this.flush, this)
+exports.push = function (job) {
+  var id = job.id
+  if (!id || !has[id] || flushing) {
+    if (!has[id]) {
+      has[id] = 1
+    } else {
+      has[id]++
+      // detect possible infinite update loops
+      if (has[id] > MAX_UPDATE_COUNT) {
+        _.warn(
+          'You may have an infinite update loop for the ' +
+          'watcher with expression: "' + job.expression + '".'
+        )
+        return
+      }
     }
-  }
-}
-
-/**
- * Flush the queue and run the jobs.
- * Will call a preFlush hook if has one.
- */
-
-p.flush = function () {
-  this.flushing = true
-  // do not cache length because more jobs might be pushed
-  // as we run existing jobs
-  for (var i = 0; i < this.queue.length; i++) {
-    var job = this.queue[i]
-    if (!job.cancelled) {
+    // A user watcher callback could trigger another
+    // directive update during the flushing; at that time
+    // the directive queue would already have been run, so
+    // we call that update immediately as it is pushed.
+    if (flushing && !job.user) {
       job.run()
+      return
+    }
+    ;(job.user ? userQueue : queue).push(job)
+    if (!waiting) {
+      waiting = true
+      _.nextTick(flush)
     }
   }
-  this.reset()
 }
-
-/**
- * Reset the batcher's state.
- */
-
-p.reset = function () {
-  this.has = {}
-  this.queue = []
-  this.waiting = false
-  this.flushing = false
-}
-
-module.exports = Batcher
-},{"./util":84}],35:[function(require,module,exports){
-var uid = 0
-
-/**
- * A binding is an observable that can have multiple
- * directives subscribing to it.
- *
- * @constructor
- */
-
-function Binding () {
-  this.id = ++uid
-  this.subs = []
-}
-
-var p = Binding.prototype
-
-/**
- * Add a directive subscriber.
- *
- * @param {Directive} sub
- */
-
-p.addSub = function (sub) {
-  this.subs.push(sub)
-}
-
-/**
- * Remove a directive subscriber.
- *
- * @param {Directive} sub
- */
-
-p.removeSub = function (sub) {
-  if (this.subs.length) {
-    var i = this.subs.indexOf(sub)
-    if (i > -1) this.subs.splice(i, 1)
-  }
-}
-
-/**
- * Notify all subscribers of a new value.
- */
-
-p.notify = function () {
-  for (var i = 0, l = this.subs.length; i < l; i++) {
-    this.subs[i].update()
-  }
-}
-
-module.exports = Binding
-},{}],36:[function(require,module,exports){
+},{"./util":86}],36:[function(require,module,exports){
 /**
  * A doubly linked list-based Least Recently Used (LRU)
  * cache. Will keep most recently used items while
@@ -27297,9 +27457,9 @@ module.exports = Cache
 },{}],37:[function(require,module,exports){
 var _ = require('../util')
 var config = require('../config')
-var textParser = require('../parse/text')
-var dirParser = require('../parse/directive')
-var templateParser = require('../parse/template')
+var textParser = require('../parsers/text')
+var dirParser = require('../parsers/directive')
+var templateParser = require('../parsers/template')
 
 /**
  * Compile a template and return a reusable composite link
@@ -27307,22 +27467,31 @@ var templateParser = require('../parse/template')
  * inside. This top level compile function should only be
  * called on instance root nodes.
  *
+ * When the `asParent` flag is true, this means we are doing
+ * a partial compile for a component's parent scope markup
+ * (See #502). This could **only** be triggered during
+ * compilation of `v-component`, and we need to skip v-with,
+ * v-ref & v-component in this situation.
+ *
  * @param {Element|DocumentFragment} el
  * @param {Object} options
  * @param {Boolean} partial
+ * @param {Boolean} asParent - compiling a component
+ *                             container as its parent.
  * @return {Function}
  */
 
-module.exports = function compile (el, options, partial) {
+module.exports = function compile (el, options, partial, asParent) {
   var params = !partial && options.paramAttributes
   var paramsLinkFn = params
     ? compileParamAttributes(el, params, options)
     : null
   var nodeLinkFn = el instanceof DocumentFragment
     ? null
-    : compileNode(el, options)
+    : compileNode(el, options, asParent)
   var childLinkFn =
-    (!nodeLinkFn || !nodeLinkFn.terminal) &&
+    !(nodeLinkFn && nodeLinkFn.terminal) &&
+    el.tagName !== 'SCRIPT' &&
     el.hasChildNodes()
       ? compileNodeList(el.childNodes, options)
       : null
@@ -27340,8 +27509,10 @@ module.exports = function compile (el, options, partial) {
   return function link (vm, el) {
     var originalDirCount = vm._directives.length
     if (paramsLinkFn) paramsLinkFn(vm, el)
+    // cache childNodes before linking parent, fix #657
+    var childNodes = _.toArray(el.childNodes)
     if (nodeLinkFn) nodeLinkFn(vm, el)
-    if (childLinkFn) childLinkFn(vm, el.childNodes)
+    if (childLinkFn) childLinkFn(vm, childNodes)
 
     /**
      * If this is a partial compile, the linker function
@@ -27370,13 +27541,14 @@ module.exports = function compile (el, options, partial) {
  *
  * @param {Node} node
  * @param {Object} options
+ * @param {Boolean} asParent
  * @return {Function|undefined}
  */
 
-function compileNode (node, options) {
+function compileNode (node, options, asParent) {
   var type = node.nodeType
   if (type === 1 && node.tagName !== 'SCRIPT') {
-    return compileElement(node, options)
+    return compileElement(node, options, asParent)
   } else if (type === 3 && config.interpolate) {
     return compileTextNode(node, options)
   }
@@ -27387,13 +27559,14 @@ function compileNode (node, options) {
  *
  * @param {Element} el
  * @param {Object} options
+ * @param {Boolean} asParent
  * @return {Function|null}
  */
 
-function compileElement (el, options) {
+function compileElement (el, options, asParent) {
   var linkFn, tag, component
   // check custom element component, but only on non-root
-  if (!el.__vue__) {
+  if (!asParent && !el.__vue__) {
     tag = el.tagName.toLowerCase()
     component =
       tag.indexOf('-') > 0 &&
@@ -27404,12 +27577,14 @@ function compileElement (el, options) {
   }
   if (component || el.hasAttributes()) {
     // check terminal direcitves
-    linkFn = checkTerminalDirectives(el, options)
+    if (!asParent) {
+      linkFn = checkTerminalDirectives(el, options)
+    }
     // if not terminal, build normal link function
     if (!linkFn) {
-      var directives = collectDirectives(el, options)
-      linkFn = directives.length
-        ? makeDirectivesLinkFn(directives)
+      var dirs = collectDirectives(el, options, asParent)
+      linkFn = dirs.length
+        ? makeDirectivesLinkFn(dirs)
         : null
     }
   }
@@ -27419,7 +27594,7 @@ function compileElement (el, options) {
     var realLinkFn = linkFn
     linkFn = function (vm, el) {
       el.value = vm.$interpolate(el.value)
-      if (realLinkFn) realLinkFn(vm, el)      
+      if (realLinkFn) realLinkFn(vm, el)
     }
     linkFn.terminal = true
   }
@@ -27468,41 +27643,50 @@ function compileTextNode (node, options) {
     return null
   }
   var frag = document.createDocumentFragment()
-  var dirs = options.directives
-  var el, token, value
+  var el, token
   for (var i = 0, l = tokens.length; i < l; i++) {
     token = tokens[i]
-    value = token.value
-    if (token.tag) {
-      if (token.oneTime) {
-        el = document.createTextNode(value)
-      } else {
-        if (token.html) {
-          el = document.createComment('v-html')
-          token.type = 'html'
-          token.def = dirs.html
-          token.descriptor = dirParser.parse(value)[0]
-        } else if (token.partial) {
-          el = document.createComment('v-partial')
-          token.type = 'partial'
-          token.def = dirs.partial
-          token.descriptor = dirParser.parse(value)[0]
-        } else {
-          // IE will clean up empty textNodes during
-          // frag.cloneNode(true), so we have to give it
-          // something here...
-          el = document.createTextNode(' ')
-          token.type = 'text'
-          token.def = dirs.text
-          token.descriptor = dirParser.parse(value)[0]
-        }
-      }
-    } else {
-      el = document.createTextNode(value)
-    }
+    el = token.tag
+      ? processTextToken(token, options)
+      : document.createTextNode(token.value)
     frag.appendChild(el)
   }
   return makeTextNodeLinkFn(tokens, frag, options)
+}
+
+/**
+ * Process a single text token.
+ *
+ * @param {Object} token
+ * @param {Object} options
+ * @return {Node}
+ */
+
+function processTextToken (token, options) {
+  var el
+  if (token.oneTime) {
+    el = document.createTextNode(token.value)
+  } else {
+    if (token.html) {
+      el = document.createComment('v-html')
+      setTokenType('html')
+    } else if (token.partial) {
+      el = document.createComment('v-partial')
+      setTokenType('partial')
+    } else {
+      // IE will clean up empty textNodes during
+      // frag.cloneNode(true), so we have to give it
+      // something here...
+      el = document.createTextNode(' ')
+      setTokenType('text')
+    }
+  }
+  function setTokenType (type) {
+    token.type = type
+    token.def = options.directives[type]
+    token.descriptor = dirParser.parse(token.value)[0]
+  }
+  return el
 }
 
 /**
@@ -27554,7 +27738,8 @@ function compileNodeList (nodeList, options) {
     node = nodeList[i]
     nodeLinkFn = compileNode(node, options)
     childLinkFn =
-      (!nodeLinkFn || !nodeLinkFn.terminal) &&
+      !(nodeLinkFn && nodeLinkFn.terminal) &&
+      node.tagName !== 'SCRIPT' &&
       node.hasChildNodes()
         ? compileNodeList(node.childNodes, options)
         : null
@@ -27574,18 +27759,18 @@ function compileNodeList (nodeList, options) {
 
 function makeChildLinkFn (linkFns) {
   return function childLinkFn (vm, nodes) {
-    // stablize nodes
-    nodes = _.toArray(nodes)
     var node, nodeLinkFn, childrenLinkFn
     for (var i = 0, n = 0, l = linkFns.length; i < l; n++) {
       node = nodes[n]
       nodeLinkFn = linkFns[i++]
       childrenLinkFn = linkFns[i++]
+      // cache childNodes before linking parent, fix #657
+      var childNodes = _.toArray(node.childNodes)
       if (nodeLinkFn) {
         nodeLinkFn(vm, node)
       }
       if (childrenLinkFn) {
-        childrenLinkFn(vm, node.childNodes)
+        childrenLinkFn(vm, childNodes)
       }
     }
   }
@@ -27607,6 +27792,15 @@ function compileParamAttributes (el, attrs, options) {
   var name, value, param
   while (i--) {
     name = attrs[i]
+    if (/[A-Z]/.test(name)) {
+      _.warn(
+        'You seem to be using camelCase for a paramAttribute, ' +
+        'but HTML doesn\'t differentiate between upper and ' +
+        'lower case. You should use hyphen-delimited ' +
+        'attribute names. For more info see ' +
+        'http://vuejs.org/api/options.html#paramAttributes'
+      )
+    }
     value = el.getAttribute(name)
     if (value !== null) {
       param = {
@@ -27718,16 +27912,6 @@ function checkTerminalDirectives (el, options) {
 function makeTeriminalLinkFn (el, dirName, value, options) {
   var descriptor = dirParser.parse(value)[0]
   var def = options.directives[dirName]
-  // special case: we need to collect directives found
-  // on a component root node, but defined in the parent
-  // template. These directives need to be compiled in
-  // the parent scope.
-  if (dirName === 'component') {
-    var dirs = collectDirectives(el, options, true)
-    el._parentLinker = dirs.length
-      ? makeDirectivesLinkFn(dirs)
-      : null
-  }
   var terminalLinkFn = function (vm, el) {
     vm._bindDir(dirName, el, descriptor, def)
   }
@@ -27754,10 +27938,9 @@ function collectDirectives (el, options, asParent) {
     attrName = attr.name
     if (attrName.indexOf(config.prefix) === 0) {
       dirName = attrName.slice(config.prefix.length)
-      if (
-        asParent &&
-        (dirName === 'with' || dirName === 'ref')
-      ) {
+      if (asParent &&
+          (dirName === 'with' ||
+           dirName === 'component')) {
         continue
       }
       dirDef = options.directives[dirName]
@@ -27794,6 +27977,10 @@ function collectDirectives (el, options, asParent) {
  */
 
 function collectAttrDirective (el, name, value, options) {
+  if (options._skipAttrs &&
+      options._skipAttrs.indexOf(name) > -1) {
+    return
+  }
   var tokens = textParser.parse(value)
   if (tokens) {
     var def = options.directives.attr
@@ -27832,9 +28019,9 @@ function directiveComparator (a, b) {
   b = b.def.priority || 0
   return a > b ? 1 : -1
 }
-},{"../config":39,"../parse/directive":72,"../parse/template":75,"../parse/text":76,"../util":84}],38:[function(require,module,exports){
+},{"../config":39,"../parsers/directive":74,"../parsers/template":77,"../parsers/text":78,"../util":86}],38:[function(require,module,exports){
 var _ = require('../util')
-var templateParser = require('../parse/template')
+var templateParser = require('../parsers/template')
 
 /**
  * Process an element or a DocumentFragment based on a
@@ -27879,39 +28066,24 @@ function transcludeTemplate (el, options) {
   if (!frag) {
     _.warn('Invalid template option: ' + template)
   } else {
-    collectRawContent(el)
+    var rawContent = options._content || _.extractContent(el)
     if (options.replace) {
       if (frag.childNodes.length > 1) {
-        transcludeContent(frag)
+        transcludeContent(frag, rawContent)
+        // TODO: store directives on placeholder node
+        // and compile it somehow
+        // probably only check for v-with, v-ref & paramAttributes
         return frag
       } else {
         var replacer = frag.firstChild
         _.copyAttributes(el, replacer)
-        transcludeContent(replacer)
+        transcludeContent(replacer, rawContent)
         return replacer
       }
     } else {
       el.appendChild(frag)
-      transcludeContent(el)
+      transcludeContent(el, rawContent)
       return el
-    }
-  }
-}
-
-/**
- * Collect raw content inside $el before they are
- * replaced by template content.
- */
-
-var rawContent
-function collectRawContent (el) {
-  var child
-  rawContent = null
-  if (el.hasChildNodes()) {
-    rawContent = document.createElement('div')
-    /* jshint boss:true */
-    while (child = el.firstChild) {
-      rawContent.appendChild(child)
     }
   }
 }
@@ -27923,9 +28095,10 @@ function collectRawContent (el) {
  *   http://w3c.github.io/webcomponents/spec/shadow/#insertion-points
  *
  * @param {Element|DocumentFragment} el
+ * @param {Element} raw
  */
 
-function transcludeContent (el) {
+function transcludeContent (el, raw) {
   var outlets = getOutlets(el)
   var i = outlets.length
   if (!i) return
@@ -27934,10 +28107,10 @@ function transcludeContent (el) {
   // for each outlet.
   while (i--) {
     outlet = outlets[i]
-    if (rawContent) {
+    if (raw) {
       select = outlet.getAttribute('select')
       if (select) {  // select content
-        selected = rawContent.querySelectorAll(select)
+        selected = raw.querySelectorAll(select)
         outlet.content = _.toArray(
           selected.length
             ? selected
@@ -27959,7 +28132,7 @@ function transcludeContent (el) {
   }
   // finally insert the main content
   if (main) {
-    insertContentAt(main, _.toArray(rawContent.childNodes))
+    insertContentAt(main, _.toArray(raw.childNodes))
   }
 }
 
@@ -27996,7 +28169,7 @@ function insertContentAt (outlet, contents) {
   }
   parent.removeChild(outlet)
 }
-},{"../parse/template":75,"../util":84}],39:[function(require,module,exports){
+},{"../parsers/template":77,"../util":86}],39:[function(require,module,exports){
 module.exports = {
 
   /**
@@ -28048,6 +28221,13 @@ module.exports = {
   async: true,
 
   /**
+   * Whether to warn against errors caught when evaluating
+   * expressions.
+   */
+
+  warnExpressionErrors: true,
+
+  /**
    * Internal flag to indicate the delimiters have been
    * changed.
    *
@@ -28080,8 +28260,8 @@ Object.defineProperty(module.exports, 'delimiters', {
 var _ = require('./util')
 var config = require('./config')
 var Watcher = require('./watcher')
-var textParser = require('./parse/text')
-var expParser = require('./parse/expression')
+var textParser = require('./parsers/text')
+var expParser = require('./parsers/expression')
 
 /**
  * A directive links a DOM element with a piece of data,
@@ -28097,11 +28277,10 @@ var expParser = require('./parse/expression')
  *                 - {String} [arg]
  *                 - {Array<Object>} [filters]
  * @param {Object} def - directive definition object
- * @param {Function} [linker] - pre-compiled linker function
  * @constructor
  */
 
-function Directive (name, el, vm, descriptor, def, linker) {
+function Directive (name, el, vm, descriptor, def) {
   // public
   this.name = name
   this.el = el
@@ -28112,7 +28291,6 @@ function Directive (name, el, vm, descriptor, def, linker) {
   this.arg = descriptor.arg
   this.filters = _.resolveFilters(vm, descriptor.filters)
   // private
-  this._linker = linker
   this._locked = false
   this._bound = false
   // init
@@ -28143,28 +28321,35 @@ p._bind = function (def) {
   if (this.bind) {
     this.bind()
   }
-  if (
-    this.update && this._watcherExp &&
-    (!this.isLiteral || this._isDynamicLiteral) &&
-    !this._checkStatement()
-  ) {
+  if (this._watcherExp &&
+      (this.update || this.twoWay) &&
+      (!this.isLiteral || this._isDynamicLiteral) &&
+      !this._checkStatement()) {
+    // wrapped updater for context
+    var dir = this
+    var update = this._update = this.update
+      ? function (val, oldVal) {
+          if (!dir._locked) {
+            dir.update(val, oldVal)
+          }
+        }
+      : function () {} // noop if no update is provided
     // use raw expression as identifier because filters
     // make them different watchers
     var watcher = this.vm._watchers[this.raw]
-    // wrapped updater for context
-    var dir = this
-    var update = this._update = function (val, oldVal) {
-      if (!dir._locked) {
-        dir.update(val, oldVal)
-      }
-    }
-    if (!watcher) {
+    // v-repeat always creates a new watcher because it has
+    // a special filter that's bound to its directive
+    // instance.
+    if (!watcher || this.name === 'repeat') {
       watcher = this.vm._watchers[this.raw] = new Watcher(
         this.vm,
         this._watcherExp,
         update, // callback
-        this.filters,
-        this.twoWay // need setter
+        {
+          filters: this.filters,
+          twoWay: this.twoWay,
+          deep: this.deep
+        }
       )
     } else {
       watcher.addCb(update)
@@ -28172,7 +28357,7 @@ p._bind = function (def) {
     this._watcher = watcher
     if (this._initValue != null) {
       watcher.set(this._initValue)
-    } else {
+    } else if (this.update) {
       this.update(watcher.value)
     }
   }
@@ -28233,6 +28418,21 @@ p._checkStatement = function () {
 }
 
 /**
+ * Check for an attribute directive param, e.g. lazy
+ *
+ * @param {String} name
+ * @return {String}
+ */
+
+p._checkParam = function (name) {
+  var param = this.el.getAttribute(name)
+  if (param !== null) {
+    this.el.removeAttribute(name)
+  }
+  return param
+}
+
+/**
  * Teardown the watcher and call unbind.
  */
 
@@ -28272,14 +28472,14 @@ p.set = function (value, lock) {
     if (lock) {
       var self = this
       _.nextTick(function () {
-        self._locked = false        
+        self._locked = false
       })
     }
   }
 }
 
 module.exports = Directive
-},{"./config":39,"./parse/expression":73,"./parse/text":76,"./util":84,"./watcher":88}],41:[function(require,module,exports){
+},{"./config":39,"./parsers/expression":75,"./parsers/text":78,"./util":86,"./watcher":90}],41:[function(require,module,exports){
 // xlink
 var xlinkNS = 'http://www.w3.org/1999/xlink'
 var xlinkRE = /^xlink:/
@@ -28331,7 +28531,7 @@ module.exports = function (value) {
     }
   }
 }
-},{"../util":84}],43:[function(require,module,exports){
+},{"../util":86}],43:[function(require,module,exports){
 var config = require('../config')
 
 module.exports = {
@@ -28346,7 +28546,7 @@ module.exports = {
 }
 },{"../config":39}],44:[function(require,module,exports){
 var _ = require('../util')
-var templateParser = require('../parse/template')
+var templateParser = require('../parsers/template')
 
 module.exports = {
 
@@ -28367,37 +28567,33 @@ module.exports = {
       // create a ref anchor
       this.ref = document.createComment('v-component')
       _.replace(this.el, this.ref)
-      // check keep-alive options
-      this.checkKeepAlive()
-      // check parent directives
-      this.parentLinker = this.el._parentLinker
+      // check keep-alive options.
+      // If yes, instead of destroying the active vm when
+      // hiding (v-if) or switching (dynamic literal) it,
+      // we simply remove it from the DOM and save it in a
+      // cache object, with its constructor id as the key.
+      this.keepAlive = this._checkParam('keep-alive') != null
+      // check ref
+      this.refID = _.attr(this.el, 'ref')
+      if (this.keepAlive) {
+        this.cache = {}
+      }
       // if static, build right now.
       if (!this._isDynamicLiteral) {
         this.resolveCtor(this.expression)
-        this.build()
+        var child = this.build()
+        child.$before(this.ref)
+        this.setCurrent(child)
+      } else {
+        // check dynamic component params
+        this.readyEvent = this._checkParam('wait-for')
+        this.transMode = this._checkParam('transition-mode')
       }
     } else {
       _.warn(
         'v-component="' + this.expression + '" cannot be ' +
         'used on an already mounted instance.'
       )
-    }
-  },
-
-  /**
-   * Check if the "keep-alive" flag is present.
-   * If yes, instead of destroying the active vm when
-   * hiding (v-if) or switching (dynamic literal) it,
-   * we simply remove it from the DOM and save it in a
-   * cache object, with its constructor id as the key.
-   */
-
-  checkKeepAlive: function () {
-    // check keep-alive flag
-    this.keepAlive = this.el.hasAttribute('keep-alive')
-    if (this.keepAlive) {
-      this.el.removeAttribute('keep-alive')
-      this.cache = {}
     }
   },
 
@@ -28416,64 +28612,64 @@ module.exports = {
    * Instantiate/insert a new child vm.
    * If keep alive and has cached instance, insert that
    * instance; otherwise build a new one and cache it.
+   *
+   * @return {Vue} - the created instance
    */
 
   build: function () {
     if (this.keepAlive) {
       var cached = this.cache[this.ctorId]
       if (cached) {
-        this.childVM = cached
-        cached.$before(this.ref)
-        return
+        return cached
       }
     }
     var vm = this.vm
-    if (this.Ctor && !this.childVM) {
-      this.childVM = vm.$addChild({
-        el: templateParser.clone(this.el)
+    var el = templateParser.clone(this.el)
+    if (this.Ctor) {
+      var child = vm.$addChild({
+        el: el,
+        _asComponent: true
       }, this.Ctor)
-      if (this.parentLinker) {
-        var dirCount = vm._directives.length
-        var targetVM = this.childVM.$options.inherit
-          ? this.childVM
-          : vm
-        this.parentLinker(targetVM, this.childVM.$el)
-        this.parentDirs = vm._directives.slice(dirCount)
-      }
       if (this.keepAlive) {
-        this.cache[this.ctorId] = this.childVM
+        this.cache[this.ctorId] = child
       }
-      this.childVM.$before(this.ref)
+      return child
     }
   },
 
   /**
-   * Teardown the active vm.
-   * If keep alive, simply remove it; otherwise destroy it.
-   *
-   * @param {Boolean} remove
+   * Teardown the current child, but defers cleanup so
+   * that we can separate the destroy and removal steps.
    */
 
-  unbuild: function (remove) {
+  unbuild: function () {
     var child = this.childVM
-    if (!child) {
+    if (!child || this.keepAlive) {
       return
     }
-    if (this.keepAlive) {
-      if (remove) {
-        child.$remove()
-      }
-    } else {
-      child.$destroy(remove)
-      var parentDirs = this.parentDirs
-      if (parentDirs) {
-        var i = parentDirs.length
-        while (i--) {
-          parentDirs[i]._teardown()
-        }
-      }
+    // the sole purpose of `deferCleanup` is so that we can
+    // "deactivate" the vm right now and perform DOM removal
+    // later.
+    child.$destroy(false, true)
+  },
+
+  /**
+   * Remove current destroyed child and manually do
+   * the cleanup after removal.
+   *
+   * @param {Function} cb
+   */
+
+  remove: function (child, cb) {
+    var keepAlive = this.keepAlive
+    if (child) {
+      child.$remove(function () {
+        if (!keepAlive) child._cleanup()
+        if (cb) cb()
+      })
+    } else if (cb) {
+      cb()
     }
-    this.childVM = null
   },
 
   /**
@@ -28482,26 +28678,97 @@ module.exports = {
    */
 
   update: function (value) {
-    this.unbuild(true)
-    if (value) {
+    if (!value) {
+      // just destroy and remove current
+      this.unbuild()
+      this.remove(this.childVM)
+      this.unsetCurrent()
+    } else {
       this.resolveCtor(value)
-      this.build()
+      this.unbuild()
+      var newComponent = this.build()
+      var self = this
+      if (this.readyEvent) {
+        newComponent.$once(this.readyEvent, function () {
+          self.swapTo(newComponent)
+        })
+      } else {
+        this.swapTo(newComponent)
+      }
+    }
+  },
+
+  /**
+   * Actually swap the components, depending on the
+   * transition mode. Defaults to simultaneous.
+   *
+   * @param {Vue} target
+   */
+
+  swapTo: function (target) {
+    var self = this
+    var current = this.childVM
+    this.unsetCurrent()
+    this.setCurrent(target)
+    switch (self.transMode) {
+      case 'in-out':
+        target.$before(self.ref, function () {
+          self.remove(current)
+        })
+        break
+      case 'out-in':
+        self.remove(current, function () {
+          target.$before(self.ref)
+        })
+        break
+      default:
+        self.remove(current)
+        target.$before(self.ref)
+    }
+  },
+
+  /**
+   * Set childVM and parent ref
+   */
+  
+  setCurrent: function (child) {
+    this.childVM = child
+    var refID = child._refID || this.refID
+    if (refID) {
+      this.vm.$[refID] = child
+    }
+  },
+
+  /**
+   * Unset childVM and parent ref
+   */
+
+  unsetCurrent: function () {
+    var child = this.childVM
+    this.childVM = null
+    var refID = (child && child._refID) || this.refID
+    if (refID) {
+      this.vm.$[refID] = null
     }
   },
 
   /**
    * Unbind.
-   * Make sure keepAlive is set to false so that the
-   * instance is always destroyed.
    */
 
   unbind: function () {
-    this.keepAlive = false
     this.unbuild()
+    // destroy all keep-alive cached instances
+    if (this.cache) {
+      for (var key in this.cache) {
+        this.cache[key].$destroy()
+      }
+      this.cache = null
+    }
   }
 
 }
-},{"../parse/template":75,"../util":84}],45:[function(require,module,exports){
+},{"../parsers/template":77,"../util":86}],45:[function(require,module,exports){
 module.exports = {
 
   isLiteral: true,
@@ -28517,7 +28784,35 @@ module.exports = {
 }
 },{}],46:[function(require,module,exports){
 var _ = require('../util')
-var templateParser = require('../parse/template')
+
+module.exports = { 
+
+  bind: function () {
+    var child = this.el.__vue__
+    if (!child || this.vm !== child.$parent) {
+      _.warn(
+        '`v-events` should only be used on a child component ' +
+        'from the parent template.'
+      )
+      return
+    }
+    var method = this.vm[this.expression]
+    if (!method) {
+      _.warn(
+        '`v-events` cannot find method "' + this.expression +
+        '" on the parent instance.'
+      )
+    }
+    child.$on(this.arg, method)
+  }
+
+  // when child is destroyed, all events are turned off,
+  // so no need for unbind here.
+
+}
+},{"../util":86}],47:[function(require,module,exports){
+var _ = require('../util')
+var templateParser = require('../parsers/template')
 
 module.exports = {
 
@@ -28546,17 +28841,18 @@ module.exports = {
       _.remove(this.nodes[i])
     }
     // convert new value to a fragment
-    var frag = templateParser.parse(value, true)
+    // do not attempt to retrieve from id selector
+    var frag = templateParser.parse(value, true, true)
     // save a reference to these nodes so we can remove later
     this.nodes = _.toArray(frag.childNodes)
     _.before(frag, this.el)
   }
 
 }
-},{"../parse/template":75,"../util":84}],47:[function(require,module,exports){
+},{"../parsers/template":77,"../util":86}],48:[function(require,module,exports){
 var _ = require('../util')
-var compile = require('../compile/compile')
-var templateParser = require('../parse/template')
+var compile = require('../compiler/compile')
+var templateParser = require('../parsers/template')
 var transition = require('../transition')
 
 module.exports = {
@@ -28601,28 +28897,43 @@ module.exports = {
   insert: function () {
     // avoid duplicate inserts, since update() can be
     // called with different truthy values
-    if (this.decompile) {
-      return
+    if (!this.unlink) {
+      this.compile(this.template) 
     }
+  },
+
+  compile: function (template) {
     var vm = this.vm
-    var frag = templateParser.clone(this.template)
-    var decompile = this.linker(vm, frag)
-    this.decompile = function () {
-      decompile()
-      transition.blockRemove(this.start, this.end, vm)
-    }
+    var frag = templateParser.clone(template)
+    var originalChildLength = vm._children.length
+    this.unlink = this.linker
+      ? this.linker(vm, frag)
+      : vm.$compile(frag)
     transition.blockAppend(frag, this.end, vm)
+    this.children = vm._children.slice(originalChildLength)
+    if (this.children.length && _.inDoc(vm.$el)) {
+      this.children.forEach(function (child) {
+        child._callHook('attached')
+      })
+    }
   },
 
   teardown: function () {
-    if (this.decompile) {
-      this.decompile()
-      this.decompile = null
+    if (!this.unlink) return
+    transition.blockRemove(this.start, this.end, this.vm)
+    if (this.children && _.inDoc(this.vm.$el)) {
+      this.children.forEach(function (child) {
+        if (!child._isDestroyed) {
+          child._callHook('detached')
+        }
+      })
     }
+    this.unlink()
+    this.unlink = null
   }
 
 }
-},{"../compile/compile":37,"../parse/template":75,"../transition":78,"../util":84}],48:[function(require,module,exports){
+},{"../compiler/compile":37,"../parsers/template":77,"../transition":80,"../util":86}],49:[function(require,module,exports){
 // manipulation directives
 exports.text       = require('./text')
 exports.html       = require('./html')
@@ -28644,8 +28955,11 @@ exports.model      = require('./model')
 exports.component  = require('./component')
 exports.repeat     = require('./repeat')
 exports['if']      = require('./if')
+
+// child vm communication directives
 exports['with']    = require('./with')
-},{"./attr":41,"./class":42,"./cloak":43,"./component":44,"./el":45,"./html":46,"./if":47,"./model":51,"./on":54,"./partial":55,"./ref":56,"./repeat":57,"./show":58,"./style":59,"./text":60,"./transition":61,"./with":62}],49:[function(require,module,exports){
+exports.events     = require('./events')
+},{"./attr":41,"./class":42,"./cloak":43,"./component":44,"./el":45,"./events":46,"./html":47,"./if":48,"./model":52,"./on":55,"./partial":56,"./ref":57,"./repeat":58,"./show":59,"./style":60,"./text":61,"./transition":62,"./with":63}],50:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -28671,7 +28985,7 @@ module.exports = {
   }
 
 }
-},{"../../util":84}],50:[function(require,module,exports){
+},{"../../util":86}],51:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -28682,17 +28996,9 @@ module.exports = {
 
     // check params
     // - lazy: update model on "change" instead of "input"
-    var lazy = el.hasAttribute('lazy')
-    if (lazy) {
-      el.removeAttribute('lazy')
-    }
+    var lazy = this._checkParam('lazy') != null
     // - number: cast value into number when updating model.
-    var number =
-      el.hasAttribute('number') ||
-      el.type === 'number'
-    if (number) {
-      el.removeAttribute('number')
-    }
+    var number = this._checkParam('number') != null
 
     // handle composition events.
     // http://blog.evanyou.me/2014/01/03/composition-event/
@@ -28721,30 +29027,44 @@ module.exports = {
     // if the directive has filters, we need to
     // record cursor position and restore it after updating
     // the input with the filtered value.
-    this.listener = function textInputListener () {
-      if (cpLocked) return
-      var charsOffset
-      // some HTML5 input types throw error here
-      try {
-        // record how many chars from the end of input
-        // the cursor was at
-        charsOffset = el.value.length - el.selectionStart
-      } catch (e) {}
-      set()
-      // force a value update, because in
-      // certain cases the write filters output the same
-      // result for different input values, and the Observer
-      // set events won't be triggered.
-      _.nextTick(function () {
-        var newVal = self._watcher.value
-        self.update(newVal)
-        if (charsOffset != null) {
-          var cursorPos =
-            _.toString(newVal).length - charsOffset
-          el.setSelectionRange(cursorPos, cursorPos)
+    // also force update for type="range" inputs to enable
+    // "lock in range" (see #506)
+    this.listener = this.filters || el.type === 'range'
+      ? function textInputListener () {
+          if (cpLocked) return
+          var charsOffset
+          // some HTML5 input types throw error here
+          try {
+            // record how many chars from the end of input
+            // the cursor was at
+            charsOffset = el.value.length - el.selectionStart
+          } catch (e) {}
+          // Fix IE10/11 infinite update cycle
+          // https://github.com/yyx990803/vue/issues/592
+          /* istanbul ignore if */
+          if (charsOffset < 0) {
+            return
+          }
+          set()
+          _.nextTick(function () {
+            // force a value update, because in
+            // certain cases the write filters output the
+            // same result for different input values, and
+            // the Observer set events won't be triggered.
+            var newVal = self._watcher.value
+            self.update(newVal)
+            if (charsOffset != null) {
+              var cursorPos =
+                _.toString(newVal).length - charsOffset
+              el.setSelectionRange(cursorPos, cursorPos)
+            }
+          })
         }
-      })
-    }
+      : function textInputListener () {
+          if (cpLocked) return
+          set()
+        }
+
     this.event = lazy ? 'change' : 'input'
     _.on(el, this.event, this.listener)
 
@@ -28789,7 +29109,7 @@ module.exports = {
   }
 
 }
-},{"../../util":84}],51:[function(require,module,exports){
+},{"../../util":86}],52:[function(require,module,exports){
 var _ = require('../../util')
 
 var handlers = {
@@ -28846,7 +29166,7 @@ module.exports = {
   }
 
 }
-},{"../../util":84,"./checkbox":49,"./default":50,"./radio":52,"./select":53}],52:[function(require,module,exports){
+},{"../../util":86,"./checkbox":50,"./default":51,"./radio":53,"./select":54}],53:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -28873,7 +29193,7 @@ module.exports = {
   }
 
 }
-},{"../../util":84}],53:[function(require,module,exports){
+},{"../../util":86}],54:[function(require,module,exports){
 var _ = require('../../util')
 var Watcher = require('../../watcher')
 
@@ -28883,16 +29203,19 @@ module.exports = {
     var self = this
     var el = this.el
     // check options param
-    var optionsParam = el.getAttribute('options')
+    var optionsParam = this._checkParam('options')
     if (optionsParam) {
-      el.removeAttribute('options')
       initOptions.call(this, optionsParam)
     }
+    this.number = this._checkParam('number') != null
     this.multiple = el.hasAttribute('multiple')
     this.listener = function () {
       var value = self.multiple
         ? getMultiValue(el)
         : el.value
+      value = self.number
+        ? _.toNumber(value)
+        : value
       self.set(value, true)
     }
     _.on(el, 'change', this.listener)
@@ -28946,7 +29269,8 @@ function initOptions (expression) {
   this.optionWatcher = new Watcher(
     this.vm,
     expression,
-    optionUpdateWatcher
+    optionUpdateWatcher,
+    { deep: true }
   )
   // update with initial value
   optionUpdateWatcher(this.optionWatcher.value)
@@ -29000,7 +29324,9 @@ function checkInitialValue () {
     }
   }
   if (initValue) {
-    this._initValue = initValue
+    this._initValue = this.number
+      ? _.toNumber(initValue)
+      : initValue
   }
 }
 
@@ -29041,7 +29367,7 @@ function indexOf (arr, val) {
   }
   return -1
 }
-},{"../../util":84,"../../watcher":88}],54:[function(require,module,exports){
+},{"../../util":86,"../../watcher":90}],55:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -29101,14 +29427,18 @@ module.exports = {
     _.off(this.el, 'load', this.iframeBind)
   }
 }
-},{"../util":84}],55:[function(require,module,exports){
+},{"../util":86}],56:[function(require,module,exports){
 var _ = require('../util')
-var templateParser = require('../parse/template')
-var transition = require('../transition')
+var templateParser = require('../parsers/template')
+var vIf = require('./if')
 
 module.exports = {
 
   isLiteral: true,
+
+  // same logic reuse from v-if
+  compile: vIf.compile,
+  teardown: vIf.teardown,
 
   bind: function () {
     var el = this.el
@@ -29124,40 +29454,25 @@ module.exports = {
     }
     _.before(this.start, this.end)
     if (!this._isDynamicLiteral) {
-      this.compile(this.expression)
+      this.insert(this.expression)
     }
   },
 
   update: function (id) {
     this.teardown()
-    this.compile(id)
+    this.insert(id)
   },
 
-  compile: function (id) {
+  insert: function (id) {
     var partial = this.vm.$options.partials[id]
     _.assertAsset(partial, 'partial', id)
-    if (!partial) {
-      return
-    }
-    var vm = this.vm
-    var frag = templateParser.parse(partial, true)
-    var decompile = vm.$compile(frag)
-    this.decompile = function () {
-      decompile()
-      transition.blockRemove(this.start, this.end, vm)
-    }
-    transition.blockAppend(frag, this.end, vm)
-  },
-
-  teardown: function () {
-    if (this.decompile) {
-      this.decompile()
-      this.decompile = null
+    if (partial) {
+      this.compile(templateParser.parse(partial))
     }
   }
 
 }
-},{"../parse/template":75,"../transition":78,"../util":84}],56:[function(require,module,exports){
+},{"../parsers/template":77,"../util":86,"./if":48}],57:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -29165,31 +29480,31 @@ module.exports = {
   isLiteral: true,
 
   bind: function () {
-    if (this.el !== this.vm.$el) {
+    var vm = this.el.__vue__
+    if (!vm) {
       _.warn(
-        'v-ref should only be used on instance root nodes.'
+        'v-ref should only be used on a component root element.'
       )
       return
     }
-    this.owner = this.vm.$parent
-    this.owner.$[this.expression] = this.vm
-  },
-
-  unbind: function () {
-    if (this.owner.$[this.expression] === this.vm) {
-      delete this.owner.$[this.expression]
-    }
+    // If we get here, it means this is a `v-ref` on a
+    // child, because parent scope `v-ref` is stripped in
+    // `v-component` already. So we just record our own ref
+    // here - it will overwrite parent ref in `v-component`,
+    // if any.
+    vm._refID = this.expression
   }
   
 }
-},{"../util":84}],57:[function(require,module,exports){
+},{"../util":86}],58:[function(require,module,exports){
 var _ = require('../util')
 var isObject = _.isObject
-var textParser = require('../parse/text')
-var expParser = require('../parse/expression')
-var templateParser = require('../parse/template')
-var compile = require('../compile/compile')
-var transclude = require('../compile/transclude')
+var isPlainObject = _.isPlainObject
+var textParser = require('../parsers/text')
+var expParser = require('../parsers/expression')
+var templateParser = require('../parsers/template')
+var compile = require('../compiler/compile')
+var transclude = require('../compiler/transclude')
 var mergeOptions = require('../util/merge-option')
 var uid = 0
 
@@ -29203,7 +29518,8 @@ module.exports = {
     // uid as a cache identifier
     this.id = '__v_repeat_' + (++uid)
     // we need to insert the objToArray converter
-    // as the first read filter.
+    // as the first read filter, because it has to be invoked
+    // before any user filters. (can't do it in `update`)
     if (!this.filters) {
       this.filters = {}
     }
@@ -29225,8 +29541,11 @@ module.exports = {
     // at v-repeat level
     this.checkIf()
     this.checkRef()
-    this.checkTrackById()
     this.checkComponent()
+    // check for trackby param
+    this.idKey =
+      this._checkParam('track-by') ||
+      this._checkParam('trackby') // 0.11.0 compat
     // cache for primitive value instances
     this.cache = Object.create(null)
   },
@@ -29249,27 +29568,14 @@ module.exports = {
    */
 
   checkRef: function () {
-    var childId = _.attr(this.el, 'ref')
-    this.childId = childId
-      ? this.vm.$interpolate(childId)
+    var refID = _.attr(this.el, 'ref')
+    this.refID = refID
+      ? this.vm.$interpolate(refID)
       : null
     var elId = _.attr(this.el, 'el')
     this.elId = elId
       ? this.vm.$interpolate(elId)
       : null
-  },
-
-  /**
-   * Check for a track-by ID, which allows us to identify
-   * a piece of data and its associated instance by its
-   * unique id.
-   */
-
-  checkTrackById: function () {
-    this.idKey = this.el.getAttribute('trackby')
-    if (this.idKey !== null) {
-      this.el.removeAttribute('trackby')
-    }
   },
 
   /**
@@ -29287,22 +29593,26 @@ module.exports = {
       // important: transclude with no options, just
       // to ensure block start and block end
       this.template = transclude(this.template)
-      this._linker = compile(this.template, options)
+      this._linkFn = compile(this.template, options)
     } else {
+      this._asComponent = true
       var tokens = textParser.parse(id)
       if (!tokens) { // static component
         var Ctor = this.Ctor = options.components[id]
         _.assertAsset(Ctor, 'component', id)
-        if (Ctor) {
+        // If there's no parent scope directives and no
+        // content to be transcluded, we can optimize the
+        // rendering by pre-transcluding + compiling here
+        // and provide a link function to every instance.
+        if (!this.el.hasChildNodes() &&
+            !this.el.hasAttributes()) {
           // merge an empty object with owner vm as parent
           // so child vms can access parent assets.
-          var merged = mergeOptions(
-            Ctor.options,
-            {},
-            { $parent: this.vm }
-          )
+          var merged = mergeOptions(Ctor.options, {}, {
+            $parent: this.vm
+          })
           this.template = transclude(this.template, merged)
-          this._linker = compile(this.template, merged)
+          this._linkFn = compile(this.template, merged, false, true)
         }
       } else {
         // to be resolved later
@@ -29325,8 +29635,8 @@ module.exports = {
     }
     this.vms = this.diff(data || [], this.vms)
     // update v-ref
-    if (this.childId) {
-      this.vm.$[this.childId] = this.vms
+    if (this.refID) {
+      this.vm.$[this.refID] = this.vms
     }
     if (this.elId) {
       this.vm.$$[this.elId] = this.vms.map(function (vm) {
@@ -29457,7 +29767,7 @@ module.exports = {
     }
     var raw = this.converted ? data.value : data
     var alias = this.arg
-    var hasAlias = !isObject(raw) || alias
+    var hasAlias = !isPlainObject(raw) || alias
     // wrap the raw data with alias
     data = hasAlias ? {} : raw
     if (alias) {
@@ -29469,7 +29779,8 @@ module.exports = {
     var Ctor = this.Ctor || this.resolveCtor(data, meta)
     var vm = this.vm.$addChild({
       el: templateParser.clone(this.template),
-      _linker: this._linker,
+      _asComponent: this._asComponent,
+      _linkFn: this._linkFn,
       _meta: meta,
       data: data,
       inherit: this.inherit
@@ -29513,8 +29824,8 @@ module.exports = {
    */
 
   unbind: function () {
-    if (this.childId) {
-      delete this.vm.$[this.childId]
+    if (this.refID) {
+      this.vm.$[this.refID] = null
     }
     if (this.vms) {
       var i = this.vms.length
@@ -29656,7 +29967,7 @@ function findNextVm (vm, ref) {
  */
 
 function objToArray (obj) {
-  if (!_.isPlainObject(obj)) {
+  if (!isPlainObject(obj)) {
     return obj
   }
   var keys = Object.keys(obj)
@@ -29690,7 +30001,7 @@ function range (n) {
   }
   return ret
 }
-},{"../compile/compile":37,"../compile/transclude":38,"../parse/expression":73,"../parse/template":75,"../parse/text":76,"../util":84,"../util/merge-option":86}],58:[function(require,module,exports){
+},{"../compiler/compile":37,"../compiler/transclude":38,"../parsers/expression":75,"../parsers/template":77,"../parsers/text":78,"../util":86,"../util/merge-option":88}],59:[function(require,module,exports){
 var transition = require('../transition')
 
 module.exports = function (value) {
@@ -29699,30 +30010,47 @@ module.exports = function (value) {
     el.style.display = value ? '' : 'none'
   }, this.vm)
 }
-},{"../transition":78}],59:[function(require,module,exports){
+},{"../transition":80}],60:[function(require,module,exports){
+var _ = require('../util')
 var prefixes = ['-webkit-', '-moz-', '-ms-']
+var camelPrefixes = ['Webkit', 'Moz', 'ms']
 var importantRE = /!important;?$/
+var camelRE = /([a-z])([A-Z])/g
+var testEl = null
+var propCache = {}
 
 module.exports = {
 
-  bind: function () {
-    var prop = this.arg
-    if (!prop) return
-    if (prop.charAt(0) === '$') {
-      // properties that start with $ will be auto-prefixed
-      prop = prop.slice(1)
-      this.prefixed = true
-    }
-    this.prop = prop
-  },
+  deep: true,
 
   update: function (value) {
-    var prop = this.prop
-    // cast possible numbers/booleans into strings
-    if (value != null) {
-      value += ''
+    if (this.arg) {
+      this.setProp(this.arg, value)
+    } else {
+      if (typeof value === 'object') {
+        // cache object styles so that only changed props
+        // are actually updated.
+        if (!this.cache) this.cache = {}
+        for (var prop in value) {
+          this.setProp(prop, value[prop])
+          /* jshint eqeqeq: false */
+          if (value[prop] != this.cache[prop]) {
+            this.cache[prop] = value[prop]
+            this.setProp(prop, value[prop])
+          }
+        }
+      } else {
+        this.el.style.cssText = value
+      }
     }
-    if (prop) {
+  },
+
+  setProp: function (prop, value) {
+    prop = normalize(prop)
+    if (!prop) return // unsupported prop
+    // cast possible numbers/booleans into strings
+    if (value != null) value += ''
+    if (value) {
       var isImportant = importantRE.test(value)
         ? 'important'
         : ''
@@ -29730,23 +30058,60 @@ module.exports = {
         value = value.replace(importantRE, '').trim()
       }
       this.el.style.setProperty(prop, value, isImportant)
-      if (this.prefixed) {
-        var i = prefixes.length
-        while (i--) {
-          this.el.style.setProperty(
-            prefixes[i] + prop,
-            value,
-            isImportant
-          )
-        }
-      }
     } else {
-      this.el.style.cssText = value
+      this.el.style.removeProperty(prop)
     }
   }
 
 }
-},{}],60:[function(require,module,exports){
+
+/**
+ * Normalize a CSS property name.
+ * - cache result
+ * - auto prefix
+ * - camelCase -> dash-case
+ *
+ * @param {String} prop
+ * @return {String}
+ */
+
+function normalize (prop) {
+  if (propCache[prop]) {
+    return propCache[prop]
+  }
+  var res = prefix(prop)
+  propCache[prop] = propCache[res] = res
+  return res
+}
+
+/**
+ * Auto detect the appropriate prefix for a CSS property.
+ * https://gist.github.com/paulirish/523692
+ *
+ * @param {String} prop
+ * @return {String}
+ */
+
+function prefix (prop) {
+  prop = prop.replace(camelRE, '$1-$2').toLowerCase()
+  var camel = _.camelize(prop)
+  var upper = camel.charAt(0).toUpperCase() + camel.slice(1)
+  if (!testEl) {
+    testEl = document.createElement('div')
+  }
+  if (camel in testEl.style) {
+    return prop
+  }
+  var i = prefixes.length
+  var prefixed
+  while (i--) {
+    prefixed = camelPrefixes[i] + upper
+    if (prefixed in testEl.style) {
+      return prefixes[i] + prop
+    }
+  }
+}
+},{"../util":86}],61:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -29762,7 +30127,7 @@ module.exports = {
   }
   
 }
-},{"../util":84}],61:[function(require,module,exports){
+},{"../util":86}],62:[function(require,module,exports){
 module.exports = {
 
   priority: 1000,
@@ -29770,12 +30135,14 @@ module.exports = {
 
   bind: function () {
     this.el.__v_trans = {
-      id: this.expression
+      id: this.expression,
+      // resolve the custom transition functions now
+      fns: this.vm.$options.transitions[this.expression]
     }
   }
 
 }
-},{}],62:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
 
@@ -29784,48 +30151,74 @@ module.exports = {
   priority: 900,
 
   bind: function () {
-    var vm = this.vm
-    if (this.el !== vm.$el) {
+
+    var child = this.vm
+    var parent = child.$parent
+    var childKey = this.arg || '$data'
+    var parentKey = this.expression
+
+    if (this.el !== child.$el) {
       _.warn(
         'v-with can only be used on instance root elements.'
       )
-    } else if (!vm.$parent) {
+    } else if (!parent) {
       _.warn(
         'v-with must be used on an instance with a parent.'
       )
     } else {
-      var key = this.arg
-      this.watcher = new Watcher(
-        vm.$parent,
-        this.expression,
-        key
-          ? function (val) {
-              vm.$set(key, val)
-            }
-          : function (val) {
-              vm.$data = val
-            }
-      )
-      // initial set
-      var initialVal = this.watcher.value
-      if (key) {
-        vm.$set(key, initialVal)
-      } else {
-        vm.$data = initialVal
+
+      // simple lock to avoid circular updates.
+      // without this it would stabilize too, but this makes
+      // sure it doesn't cause other watchers to re-evaluate.
+      var locked = false
+      var lock = function () {
+        locked = true
+        _.nextTick(unlock)
       }
+      var unlock = function () {
+        locked = false
+      }
+
+      this.parentWatcher = new Watcher(
+        parent,
+        parentKey,
+        function (val) {
+          if (!locked) {
+            lock()
+            child.$set(childKey, val)
+          }
+        }
+      )
+      
+      // set the child initial value first, before setting
+      // up the child watcher to avoid triggering it
+      // immediately.
+      child.$set(childKey, this.parentWatcher.value)
+
+      this.childWatcher = new Watcher(
+        child,
+        childKey,
+        function (val) {
+          if (!locked) {
+            lock()
+            parent.$set(parentKey, val)
+          }
+        }
+      )
     }
   },
 
   unbind: function () {
-    if (this.watcher) {
-      this.watcher.teardown()
+    if (this.parentWatcher) {
+      this.parentWatcher.teardown()
+      this.childWatcher.teardown()
     }
   }
 
 }
-},{"../util":84,"../watcher":88}],63:[function(require,module,exports){
+},{"../util":86,"../watcher":90}],64:[function(require,module,exports){
 var _ = require('../util')
-var Path = require('../parse/path')
+var Path = require('../parsers/path')
 
 /**
  * Filter filter for v-repeat
@@ -29848,7 +30241,7 @@ exports.filterBy = function (arr, searchKey, delimiter, dataKey) {
   if (!search) {
     return arr
   }
-  search = search.toLowerCase()
+  search = ('' + search).toLowerCase()
   // get the optional dataKey
   dataKey =
     dataKey &&
@@ -29911,7 +30304,7 @@ function contains (val, search) {
     return val.toString().toLowerCase().indexOf(search) > -1
   }
 }
-},{"../parse/path":74,"../util":84}],64:[function(require,module,exports){
+},{"../parsers/path":76,"../util":86}],65:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -29920,8 +30313,19 @@ var _ = require('../util')
  * @param {Number} indent
  */
 
-exports.json = function (value, indent) {
-  return JSON.stringify(value, null, Number(indent) || 2)
+exports.json = {
+  read: function (value, indent) {
+    return typeof value === 'string'
+      ? value
+      : JSON.stringify(value, null, Number(indent) || 2)
+  },
+  write: function (value) {
+    try {
+      return JSON.parse(value)
+    } catch (e) {
+      return value
+    }
+  }
 }
 
 /**
@@ -30028,16 +30432,19 @@ exports.key = function (handler, key) {
   }
 }
 
+// expose keycode hash
+exports.key.keyCodes = keyCodes
+
 /**
  * Install special array filters
  */
 
 _.extend(exports, require('./array-filters'))
-},{"../util":84,"./array-filters":63}],65:[function(require,module,exports){
+},{"../util":86,"./array-filters":64}],66:[function(require,module,exports){
 var _ = require('../util')
 var Directive = require('../directive')
-var compile = require('../compile/compile')
-var transclude = require('../compile/transclude')
+var compile = require('../compiler/compile')
+var transclude = require('../compiler/transclude')
 
 /**
  * Transclude, compile and link element.
@@ -30054,15 +30461,46 @@ var transclude = require('../compile/transclude')
 
 exports._compile = function (el) {
   var options = this.$options
-  if (options._linker) {
+  var parent = options._parent
+  if (options._linkFn) {
     this._initElement(el)
-    options._linker(this, el)
+    options._linkFn(this, el)
   } else {
     var raw = el
-    el = transclude(el, options)
-    this._initElement(el)
-    var linker = compile(el, options)
-    linker(this, el)
+    if (options._asComponent) {
+      // separate container element and content
+      var content = options._content = _.extractContent(raw)
+      // create two separate linekrs for container and content
+      var parentOptions = parent.$options
+      
+      // hack: we need to skip the paramAttributes for this
+      // child instance when compiling its parent container
+      // linker. there could be a better way to do this.
+      parentOptions._skipAttrs = options.paramAttributes
+      var containerLinkFn =
+        compile(raw, parentOptions, true, true)
+      parentOptions._skipAttrs = null
+
+      if (content) {
+        var ol = parent._children.length
+        var contentLinkFn =
+          compile(content, parentOptions, true)
+        // call content linker now, before transclusion
+        this._contentUnlinkFn = contentLinkFn(parent, content)
+        this._transCpnts = parent._children.slice(ol)
+      }
+      // tranclude, this possibly replaces original
+      el = transclude(el, options)
+      this._initElement(el)
+      // now call the container linker on the resolved el
+      this._containerUnlinkFn = containerLinkFn(parent, el)
+    } else {
+      // simply transclude
+      el = transclude(el, options)
+      this._initElement(el)
+    }
+    var linkFn = compile(el, options)
+    linkFn(this, el)
     if (options.replace) {
       _.replace(raw, el)
     }
@@ -30097,15 +30535,101 @@ exports._initElement = function (el) {
  * @param {Node} node   - target node
  * @param {Object} desc - parsed directive descriptor
  * @param {Object} def  - directive definition object
- * @param {Function} [linker] - pre-compiled linker fn
  */
 
-exports._bindDir = function (name, node, desc, def, linker) {
+exports._bindDir = function (name, node, desc, def) {
   this._directives.push(
-    new Directive(name, node, this, desc, def, linker)
+    new Directive(name, node, this, desc, def)
   )
 }
-},{"../compile/compile":37,"../compile/transclude":38,"../directive":40,"../util":84}],66:[function(require,module,exports){
+
+/**
+ * Teardown an instance, unobserves the data, unbind all the
+ * directives, turn off all the event listeners, etc.
+ *
+ * @param {Boolean} remove - whether to remove the DOM node.
+ * @param {Boolean} deferCleanup - if true, defer cleanup to
+ *                                 be called later
+ */
+
+exports._destroy = function (remove, deferCleanup) {
+  if (this._isBeingDestroyed) {
+    return
+  }
+  this._callHook('beforeDestroy')
+  this._isBeingDestroyed = true
+  var i
+  // remove self from parent. only necessary
+  // if parent is not being destroyed as well.
+  var parent = this.$parent
+  if (parent && !parent._isBeingDestroyed) {
+    i = parent._children.indexOf(this)
+    parent._children.splice(i, 1)
+  }
+  // destroy all children.
+  i = this._children.length
+  while (i--) {
+    this._children[i].$destroy()
+  }
+  // teardown parent linkers
+  if (this._containerUnlinkFn) {
+    this._containerUnlinkFn()
+  }
+  if (this._contentUnlinkFn) {
+    this._contentUnlinkFn()
+  }
+  // teardown all directives. this also tearsdown all
+  // directive-owned watchers. intentionally check for
+  // directives array length on every loop since directives
+  // that manages partial compilation can splice ones out
+  for (i = 0; i < this._directives.length; i++) {
+    this._directives[i]._teardown()
+  }
+  // teardown all user watchers.
+  for (i in this._userWatchers) {
+    this._userWatchers[i].teardown()
+  }
+  // remove reference to self on $el
+  if (this.$el) {
+    this.$el.__vue__ = null
+  }
+  // remove DOM element
+  var self = this
+  if (remove && this.$el) {
+    this.$remove(function () {
+      self._cleanup()
+    })
+  } else if (!deferCleanup) {
+    this._cleanup()
+  }
+}
+
+/**
+ * Clean up to ensure garbage collection.
+ * This is called after the leave transition if there
+ * is any.
+ */
+
+exports._cleanup = function () {
+  // remove reference from data ob
+  this._data.__ob__.removeVm(this)
+  this._data =
+  this._watchers =
+  this._userWatchers =
+  this._watcherList =
+  this.$el =
+  this.$parent =
+  this.$root =
+  this._children =
+  this._transCpnts =
+  this._directives = null
+  // call the last hook...
+  this._isDestroyed = true
+  this._callHook('destroyed')
+  // turn off all instance listeners.
+  this.$off()
+}
+},{"../compiler/compile":37,"../compiler/transclude":38,"../directive":40,"../util":86}],67:[function(require,module,exports){
 var _ = require('../util')
 var inDoc = _.inDoc
 
@@ -30187,13 +30711,21 @@ exports._initDOMHooks = function () {
 
 function onAttached () {
   this._isAttached = true
-  var children = this._children
-  if (!children) return
-  for (var i = 0, l = children.length; i < l; i++) {
-    var child = children[i]
-    if (!child._isAttached && inDoc(child.$el)) {
-      child._callHook('attached')
-    }
+  this._children.forEach(callAttach)
+  if (this._transCpnts) {
+    this._transCpnts.forEach(callAttach)
+  }
+}
+
+/**
+ * Iterator to call attached hook
+ * 
+ * @param {Vue} child
+ */
+
+function callAttach (child) {
+  if (!child._isAttached && inDoc(child.$el)) {
+    child._callHook('attached')
   }
 }
 
@@ -30203,13 +30735,21 @@ function onAttached () {
 
 function onDetached () {
   this._isAttached = false
-  var children = this._children
-  if (!children) return
-  for (var i = 0, l = children.length; i < l; i++) {
-    var child = children[i]
-    if (child._isAttached && !inDoc(child.$el)) {
-      child._callHook('detached')
-    }
+  this._children.forEach(callDetach)
+  if (this._transCpnts) {
+    this._transCpnts.forEach(callDetach)
+  }
+}
+
+/**
+ * Iterator to call detached hook
+ * 
+ * @param {Vue} child
+ */
+
+function callDetach (child) {
+  if (child._isAttached && !inDoc(child.$el)) {
+    child._callHook('detached')
   }
 }
 
@@ -30228,7 +30768,7 @@ exports._callHook = function (hook) {
   }
   this.$emit('hook:' + hook)
 }
-},{"../util":84}],67:[function(require,module,exports){
+},{"../util":86}],68:[function(require,module,exports){
 var mergeOptions = require('../util/merge-option')
 
 /**
@@ -30277,9 +30817,10 @@ exports._init = function (options) {
   this._isBeingDestroyed = false
 
   // children
-  this._children =         // @type {Array}
-  this._childCtors = null  // @type {Object} - hash to cache
-                           // child constructors
+  this._children = []
+  this._childCtors = {}
+  // transcluded components that belong to the parent
+  this._transCpnts = null
 
   // merge options.
   options = this.$options = mergeOptions(
@@ -30305,10 +30846,10 @@ exports._init = function (options) {
     this.$mount(options.el)
   }
 }
-},{"../util/merge-option":86}],68:[function(require,module,exports){
+},{"../util/merge-option":88}],69:[function(require,module,exports){
 var _ = require('../util')
 var Observer = require('../observer')
-var Binding = require('../binding')
+var Dep = require('../observer/dep')
 
 /**
  * Setup the scope of an instance, which contains:
@@ -30425,14 +30966,11 @@ exports._digest = function () {
     this._watcherList[i].update()
   }
   var children = this._children
-  var child
-  if (children) {
-    i = children.length
-    while (i--) {
-      child = children[i]
-      if (child.$options.inherit) {
-        child._digest()
-      }
+  i = children.length
+  while (i--) {
+    var child = children[i]
+    if (child.$options.inherit) {
+      child._digest()
     }
   }
 }
@@ -30505,25 +31043,25 @@ exports._initMeta = function () {
  */
 
 exports._defineMeta = function (key, value) {
-  var binding = new Binding()
+  var dep = new Dep()
   Object.defineProperty(this, key, {
     enumerable: true,
     configurable: true,
     get: function metaGetter () {
       if (Observer.target) {
-        Observer.target.addDep(binding)
+        Observer.target.addDep(dep)
       }
       return value
     },
     set: function metaSetter (val) {
       if (val !== value) {
         value = val
-        binding.notify()
+        dep.notify()
       }
     }
   })
 }
-},{"../binding":35,"../observer":70,"../util":84}],69:[function(require,module,exports){
+},{"../observer":72,"../observer/dep":71,"../util":86}],70:[function(require,module,exports){
 var _ = require('../util')
 var arrayProto = Array.prototype
 var arrayMethods = Object.create(arrayProto)
@@ -30614,10 +31152,61 @@ _.define(
 )
 
 module.exports = arrayMethods
-},{"../util":84}],70:[function(require,module,exports){
+},{"../util":86}],71:[function(require,module,exports){
+var uid = 0
+
+/**
+ * A dep is an observable that can have multiple
+ * directives subscribing to it.
+ *
+ * @constructor
+ */
+
+function Dep () {
+  this.id = ++uid
+  this.subs = []
+}
+
+var p = Dep.prototype
+
+/**
+ * Add a directive subscriber.
+ *
+ * @param {Directive} sub
+ */
+
+p.addSub = function (sub) {
+  this.subs.push(sub)
+}
+
+/**
+ * Remove a directive subscriber.
+ *
+ * @param {Directive} sub
+ */
+
+p.removeSub = function (sub) {
+  if (this.subs.length) {
+    var i = this.subs.indexOf(sub)
+    if (i > -1) this.subs.splice(i, 1)
+  }
+}
+
+/**
+ * Notify all subscribers of a new value.
+ */
+
+p.notify = function () {
+  for (var i = 0, subs = this.subs; i < subs.length; i++) {
+    subs[i].update()
+  }
+}
+
+module.exports = Dep
+},{}],72:[function(require,module,exports){
 var _ = require('../util')
 var config = require('../config')
-var Binding = require('../binding')
+var Dep = require('./dep')
 var arrayMethods = require('./array')
 var arrayKeys = Object.getOwnPropertyNames(arrayMethods)
 require('./object')
@@ -30675,7 +31264,7 @@ function Observer (value, type) {
   this.id = ++uid
   this.value = value
   this.active = true
-  this.bindings = []
+  this.deps = []
   _.define(value, '__ob__', this)
   if (type === ARRAY) {
     var augment = config.proto && _.hasProto
@@ -30743,10 +31332,10 @@ p.walk = function (obj) {
 
 /**
  * Try to carete an observer for a child value,
- * and if value is array, link binding to the array.
+ * and if value is array, link dep to the array.
  *
  * @param {*} val
- * @return {Binding|undefined}
+ * @return {Dep|undefined}
  */
 
 p.observe = function (val) {
@@ -30777,9 +31366,9 @@ p.observeArray = function (items) {
 p.convert = function (key, val) {
   var ob = this
   var childOb = ob.observe(val)
-  var binding = new Binding()
+  var dep = new Dep()
   if (childOb) {
-    childOb.bindings.push(binding)
+    childOb.deps.push(dep)
   }
   Object.defineProperty(ob.value, key, {
     enumerable: true,
@@ -30788,40 +31377,40 @@ p.convert = function (key, val) {
       // Observer.target is a watcher whose getter is
       // currently being evaluated.
       if (ob.active && Observer.target) {
-        Observer.target.addDep(binding)
+        Observer.target.addDep(dep)
       }
       return val
     },
     set: function (newVal) {
       if (newVal === val) return
-      // remove binding from old value
+      // remove dep from old value
       var oldChildOb = val && val.__ob__
       if (oldChildOb) {
-        var oldBindings = oldChildOb.bindings
-        oldBindings.splice(oldBindings.indexOf(binding), 1)
+        var oldDeps = oldChildOb.deps
+        oldDeps.splice(oldDeps.indexOf(dep), 1)
       }
       val = newVal
-      // add binding to new value
+      // add dep to new value
       var newChildOb = ob.observe(newVal)
       if (newChildOb) {
-        newChildOb.bindings.push(binding)
+        newChildOb.deps.push(dep)
       }
-      binding.notify()
+      dep.notify()
     }
   })
 }
 
 /**
- * Notify change on all self bindings on an observer.
+ * Notify change on all self deps on an observer.
  * This is called when a mutable value mutates. e.g.
  * when an Array's mutating methods are called, or an
  * Object's $add/$delete are called.
  */
 
 p.notify = function () {
-  var bindings = this.bindings
-  for (var i = 0, l = bindings.length; i < l; i++) {
-    bindings[i].notify()
+  var deps = this.deps
+  for (var i = 0, l = deps.length; i < l; i++) {
+    deps[i].notify()
   }
 }
 
@@ -30851,7 +31440,7 @@ p.removeVm = function (vm) {
 
 module.exports = Observer
 
-},{"../binding":35,"../config":39,"../util":84,"./array":69,"./object":71}],71:[function(require,module,exports){
+},{"../config":39,"../util":86,"./array":70,"./dep":71,"./object":73}],73:[function(require,module,exports){
 var _ = require('../util')
 var objProto = Object.prototype
 
@@ -30868,16 +31457,12 @@ _.define(
   objProto,
   '$add',
   function $add (key, val) {
+    if (this.hasOwnProperty(key)) return
     var ob = this.__ob__
-    if (!ob) {
+    if (!ob || _.isReserved(key)) {
       this[key] = val
       return
     }
-    if (_.isReserved(key)) {
-      _.warn('Refused to $add reserved key: ' + key)
-      return
-    }
-    if (this.hasOwnProperty(key)) return
     ob.convert(key, val)
     if (ob.vms) {
       var i = ob.vms.length
@@ -30904,17 +31489,12 @@ _.define(
   objProto,
   '$delete',
   function $delete (key) {
-    var ob = this.__ob__
-    if (!ob) {
-      delete this[key]
-      return
-    }
-    if (_.isReserved(key)) {
-      _.warn('Refused to $add reserved key: ' + key)
-      return
-    }
     if (!this.hasOwnProperty(key)) return
     delete this[key]
+    var ob = this.__ob__
+    if (!ob || _.isReserved(key)) {
+      return
+    }
     if (ob.vms) {
       var i = ob.vms.length
       while (i--) {
@@ -30927,7 +31507,7 @@ _.define(
     }
   }
 )
-},{"../util":84}],72:[function(require,module,exports){
+},{"../util":86}],74:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var cache = new Cache(1000)
@@ -31087,7 +31667,7 @@ exports.parse = function (s) {
   cache.put(s, dirs)
   return dirs
 }
-},{"../cache":36,"../util":84}],73:[function(require,module,exports){
+},{"../cache":36,"../util":86}],75:[function(require,module,exports){
 var _ = require('../util')
 var Path = require('./path')
 var Cache = require('../cache')
@@ -31108,7 +31688,7 @@ var wsRE = /\s/g
 var newlineRE = /\n/g
 var saveRE = /[\{,]\s*[\w\$_]+\s*:|'[^']*'|"[^"]*"/g
 var restoreRE = /"(\d+)"/g
-var pathTestRE = /^[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*|\['.*?'\]|\[".*?"\])*$/
+var pathTestRE = /^[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*|\['.*?'\]|\[".*?"\]|\[\d+\])*$/
 var pathReplaceRE = /[^\w$\.]([A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*|\['.*?'\]|\[".*?"\])*)/g
 var keywordsRE = new RegExp('^(' + keywords.replace(/,/g, '\\b|') + '\\b)')
 
@@ -31244,7 +31824,7 @@ function makeGetter (body) {
     return new Function('scope', 'return ' + body + ';')
   } catch (e) {
     _.warn(
-      'Invalid expression. ' + 
+      'Invalid expression. ' +
       'Generated function body: ' + body
     )
   }
@@ -31305,7 +31885,8 @@ exports.parse = function (exp, needSet) {
   // we do a simple path check to optimize for them.
   // the check fails valid paths with unusal whitespaces,
   // but that's too rare and we don't care.
-  var res = pathTestRE.test(exp)
+  // also skip paths that start with global "Math"
+  var res = pathTestRE.test(exp) && exp.slice(0, 5) !== 'Math.'
     ? compilePathFns(exp)
     : compileExpFns(exp, needSet)
   expressionCache.put(exp, res)
@@ -31314,7 +31895,7 @@ exports.parse = function (exp, needSet) {
 
 // Export the pathRegex for external use
 exports.pathTestRE = pathTestRE
-},{"../cache":36,"../util":84,"./path":74}],74:[function(require,module,exports){
+},{"../cache":36,"../util":86,"./path":76}],76:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var pathCache = new Cache(1000)
@@ -31528,9 +32109,9 @@ function formatAccessor(key) {
   if (identRE.test(key)) { // identifier
     return '.' + key
   } else if (+key === key >>> 0) { // bracket index
-    return '[' + key + ']';
+    return '[' + key + ']'
   } else { // bracket string
-    return '["' + key.replace(/"/g, '\\"') + '"]';
+    return '["' + key.replace(/"/g, '\\"') + '"]'
   }
 }
 
@@ -31542,10 +32123,7 @@ function formatAccessor(key) {
  */
 
 exports.compileGetter = function (path) {
-  var body =
-    'try{return o' +
-    path.map(formatAccessor).join('') +
-    '}catch(e){};'
+  var body = 'return o' + path.map(formatAccessor).join('')
   return new Function('o', body)
 }
 
@@ -31615,23 +32193,11 @@ exports.set = function (obj, path, val) {
   }
   return true
 }
-},{"../cache":36,"../util":84}],75:[function(require,module,exports){
+},{"../cache":36,"../util":86}],77:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
-var templateCache = new Cache(100)
-
-/**
- * Test for the presence of the Safari template cloning bug
- * https://bugs.webkit.org/show_bug.cgi?id=137755
- */
-
-var hasBrokenTemplate = _.inBrowser
-  ? (function () {
-      var a = document.createElement('div')
-      a.innerHTML = '<template>1</template>'
-      return !a.cloneNode(true).firstChild.innerHTML
-    })()
-  : false
+var templateCache = new Cache(1000)
+var idSelectorCache = new Cache(1000)
 
 var map = {
   _default : [0, '', ''],
@@ -31686,7 +32252,8 @@ map.rect = [
   '</svg>'
 ]
 
-var TAG_RE = /<([\w:]+)/
+var tagRE = /<([\w:]+)/
+var entityRE = /&\w+;/
 
 /**
  * Convert a string template to a DocumentFragment.
@@ -31705,16 +32272,17 @@ function stringToFragment (templateString) {
   }
 
   var frag = document.createDocumentFragment()
-  var tagMatch = TAG_RE.exec(templateString)
+  var tagMatch = templateString.match(tagRE)
+  var entityMatch = entityRE.test(templateString)
 
-  if (!tagMatch) {
+  if (!tagMatch && !entityMatch) {
     // text only, return a single text node.
     frag.appendChild(
       document.createTextNode(templateString)
     )
   } else {
 
-    var tag    = tagMatch[1]
+    var tag    = tagMatch && tagMatch[1]
     var wrap   = map[tag] || map._default
     var depth  = wrap[0]
     var prefix = wrap[1]
@@ -31759,9 +32327,30 @@ function nodeToFragment (node) {
     : stringToFragment(node.innerHTML)
 }
 
+// Test for the presence of the Safari template cloning bug
+// https://bugs.webkit.org/show_bug.cgi?id=137755
+var hasBrokenTemplate = _.inBrowser
+  ? (function () {
+      var a = document.createElement('div')
+      a.innerHTML = '<template>1</template>'
+      return !a.cloneNode(true).firstChild.innerHTML
+    })()
+  : false
+
+// Test for IE10/11 textarea placeholder clone bug
+var hasTextareaCloneBug = _.inBrowser
+  ? (function () {
+      var t = document.createElement('textarea')
+      t.placeholder = 't'
+      return t.cloneNode(true).value === 't'
+    })()
+  : false
+
 /**
- * Deal with Safari cloning nested <template> bug by
- * manually cloning all template instances.
+ * 1. Deal with Safari cloning nested <template> bug by
+ *    manually cloning all template instances.
+ * 2. Deal with IE10/11 textarea placeholder bug by setting
+ *    the correct value after cloning.
  *
  * @param {Element|DocumentFragment} node
  * @return {Element|DocumentFragment}
@@ -31769,17 +32358,33 @@ function nodeToFragment (node) {
 
 exports.clone = function (node) {
   var res = node.cloneNode(true)
+  var i, original, cloned
   /* istanbul ignore if */
   if (hasBrokenTemplate) {
-    var templates = node.querySelectorAll('template')
-    if (templates.length) {
-      var cloned = res.querySelectorAll('template')
-      var i = cloned.length
+    original = node.querySelectorAll('template')
+    if (original.length) {
+      cloned = res.querySelectorAll('template')
+      i = cloned.length
       while (i--) {
         cloned[i].parentNode.replaceChild(
-          templates[i].cloneNode(true),
+          original[i].cloneNode(true),
           cloned[i]
         )
+      }
+    }
+  }
+  /* istanbul ignore if */
+  if (hasTextareaCloneBug) {
+    if (node.tagName === 'TEXTAREA') {
+      res.value = node.value
+    } else {
+      original = node.querySelectorAll('textarea')
+      if (original.length) {
+        cloned = res.querySelectorAll('textarea')
+        i = cloned.length
+        while (i--) {
+          cloned[i].value = original[i].value
+        }
       }
     }
   }
@@ -31798,10 +32403,11 @@ exports.clone = function (node) {
  *    - id selector: '#some-template-id'
  *    - template string: '<div><span>{{msg}}</span></div>'
  * @param {Boolean} clone
+ * @param {Boolean} noSelector
  * @return {DocumentFragment|undefined}
  */
 
-exports.parse = function (template, clone) {
+exports.parse = function (template, clone, noSelector) {
   var node, frag
 
   // if the template is already a document fragment,
@@ -31814,15 +32420,15 @@ exports.parse = function (template, clone) {
 
   if (typeof template === 'string') {
     // id selector
-    if (template.charAt(0) === '#') {
+    if (!noSelector && template.charAt(0) === '#') {
       // id selector can be cached too
-      frag = templateCache.get(template)
+      frag = idSelectorCache.get(template)
       if (!frag) {
         node = document.getElementById(template.slice(1))
         if (node) {
           frag = nodeToFragment(node)
           // save selector to cache
-          templateCache.put(template, frag)
+          idSelectorCache.put(template, frag)
         }
       }
     } else {
@@ -31838,7 +32444,7 @@ exports.parse = function (template, clone) {
     ? exports.clone(frag)
     : frag
 }
-},{"../cache":36,"../util":84}],76:[function(require,module,exports){
+},{"../cache":36,"../util":86}],78:[function(require,module,exports){
 var Cache = require('../cache')
 var config = require('../config')
 var dirParser = require('./directive')
@@ -32017,7 +32623,7 @@ function inlineFilters (exp) {
     }
   }
 }
-},{"../cache":36,"../config":39,"./directive":72}],77:[function(require,module,exports){
+},{"../cache":36,"../config":39,"./directive":74}],79:[function(require,module,exports){
 var _ = require('../util')
 var addClass = _.addClass
 var removeClass = _.removeClass
@@ -32207,7 +32813,7 @@ module.exports = function (el, direction, op, data, cb) {
     push(el, direction, op, leaveClass, cb)
   }
 }
-},{"../util":84}],78:[function(require,module,exports){
+},{"../util":86}],80:[function(require,module,exports){
 var _ = require('../util')
 var applyCSSTransition = require('./css')
 var applyJSTransition = require('./js')
@@ -32332,7 +32938,7 @@ var apply = exports.apply = function (el, direction, op, vm, cb) {
     return
   }
   // determine the transition type on the element
-  var jsTransition = vm.$options.transitions[transData.id]
+  var jsTransition = transData.fns
   if (jsTransition) {
     // js
     applyJSTransition(
@@ -32359,7 +32965,7 @@ var apply = exports.apply = function (el, direction, op, vm, cb) {
     if (cb) cb()
   }
 }
-},{"../util":84,"./css":77,"./js":79}],79:[function(require,module,exports){
+},{"../util":86,"./css":79,"./js":81}],81:[function(require,module,exports){
 /**
  * Apply JavaScript enter/leave functions.
  *
@@ -32403,7 +33009,7 @@ module.exports = function (el, direction, op, data, def, vm, cb) {
     }
   }
 }
-},{}],80:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 var config = require('../config')
 
 /**
@@ -32415,6 +33021,7 @@ var config = require('../config')
 enableDebug()
 
 function enableDebug () {
+
   var hasConsole = typeof console !== 'undefined'
   
   /**
@@ -32435,11 +33042,20 @@ function enableDebug () {
    * @param {String} msg
    */
 
+  var warned = false
   exports.warn = function (msg) {
-    if (hasConsole && !config.silent) {
+    if (hasConsole && (!config.silent || config.debug)) {
+      if (!config.debug && !warned) {
+        warned = true
+        console.log(
+          'Set `Vue.config.debug = true` to enable debug mode.'
+        )
+      }
       console.warn('[Vue warn]: ' + msg)
-      if (config.debug && console.trace) {
-        console.trace()
+      /* istanbul ignore if */
+      if (config.debug) {
+        /* jshint debug: true */
+        debugger
       }
     }
   }
@@ -32454,7 +33070,7 @@ function enableDebug () {
     }
   }
 }
-},{"../config":39}],81:[function(require,module,exports){
+},{"../config":39}],83:[function(require,module,exports){
 var config = require('../config')
 
 /**
@@ -32631,7 +33247,28 @@ exports.removeClass = function (el, cls) {
     el.setAttribute('class', cur.trim())
   }
 }
-},{"../config":39}],82:[function(require,module,exports){
+
+/**
+ * Extract raw content inside an element into a temporary
+ * container div
+ *
+ * @param {Element} el
+ * @return {Element}
+ */
+
+exports.extractContent = function (el) {
+  var child
+  var rawContent
+  if (el.hasChildNodes()) {
+    rawContent = document.createElement('div')
+    /* jshint boss:true */
+    while (child = el.firstChild) {
+      rawContent.appendChild(child)
+    }
+  }
+  return rawContent
+}
+},{"../config":39}],84:[function(require,module,exports){
 /**
  * Can we use __proto__?
  *
@@ -32652,17 +33289,49 @@ var inBrowser = exports.inBrowser =
   toString.call(window) !== '[object Object]'
 
 /**
- * Defer a task to the start of the next event loop
+ * Defer a task to execute it asynchronously. Ideally this
+ * should be executed as a microtask, so we leverage
+ * MutationObserver if it's available.
+ * 
+ * If the user has included a setImmediate polyfill, we can
+ * also use that. In Node we actually prefer setImmediate to
+ * process.nextTick so we don't block the I/O.
+ * 
+ * Finally, fallback to setTimeout(0) if nothing else works.
  *
  * @param {Function} cb
  * @param {Object} ctx
  */
 
-var defer = inBrowser
-  ? (window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    setTimeout)
-  : setTimeout
+var defer
+/* istanbul ignore if */
+if (typeof MutationObserver !== 'undefined') {
+  defer = deferFromMutationObserver(MutationObserver)
+} else
+/* istanbul ignore if */
+if (typeof WebkitMutationObserver !== 'undefined') {
+  defer = deferFromMutationObserver(WebkitMutationObserver)
+} else {
+  defer = setTimeout
+}
+
+/* istanbul ignore next */
+function deferFromMutationObserver (Observer) {
+  var queue = []
+  var node = document.createTextNode('0')
+  var i = 0
+  new Observer(function () {
+    var l = queue.length
+    for (var i = 0; i < l; i++) {
+      queue[i]()
+    }
+    queue = queue.slice(l)
+  }).observe(node, { characterData: true })
+  return function mutationObserverDefer (cb) {
+    queue.push(cb)
+    node.nodeValue = (i = ++i % 2)
+  }
+}
 
 exports.nextTick = function (cb, ctx) {
   if (ctx) {
@@ -32706,7 +33375,7 @@ if (inBrowser && !exports.isIE9) {
     ? 'webkitAnimationEnd'
     : 'animationend'
 }
-},{}],83:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 var _ = require('./debug')
 
 /**
@@ -32779,7 +33448,7 @@ exports.applyFilters = function (value, filters, vm, oldVal) {
   }
   return value
 }
-},{"./debug":80}],84:[function(require,module,exports){
+},{"./debug":82}],86:[function(require,module,exports){
 var lang   = require('./lang')
 var extend = lang.extend
 
@@ -32788,7 +33457,7 @@ extend(exports, require('./env'))
 extend(exports, require('./dom'))
 extend(exports, require('./filter'))
 extend(exports, require('./debug'))
-},{"./debug":80,"./dom":81,"./env":82,"./filter":83,"./lang":85}],85:[function(require,module,exports){
+},{"./debug":82,"./dom":83,"./env":84,"./filter":85,"./lang":87}],87:[function(require,module,exports){
 /**
  * Check is a string starts with $ or _
  *
@@ -32860,7 +33529,7 @@ var capitalCamelRE = /(?:^|[-_])(\w)/g
 exports.camelize = function (str, cap) {
   var RE = cap ? capitalCamelRE : camelRE
   return str.replace(RE, function (_, c) {
-    return c ? c.toUpperCase () : '';
+    return c ? c.toUpperCase () : ''
   })
 }
 
@@ -32907,6 +33576,7 @@ exports.extend = function (to, from) {
   for (var key in from) {
     to[key] = from[key]
   }
+  return to
 }
 
 /**
@@ -32963,7 +33633,7 @@ exports.define = function (obj, key, val, enumerable) {
     configurable : true
   })
 }
-},{}],86:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 var _ = require('./index')
 var extend = _.extend
 
@@ -32982,39 +33652,68 @@ var extend = _.extend
 var strats = Object.create(null)
 
 /**
+ * Helper that recursively merges two data objects together.
+ */
+
+function mergeData (to, from) {
+  var key, toVal, fromVal
+  for (key in from) {
+    toVal = to[key]
+    fromVal = from[key]
+    if (!to.hasOwnProperty(key)) {
+      to.$add(key, fromVal)
+    } else if (_.isObject(toVal) && _.isObject(fromVal)) {
+      mergeData(toVal, fromVal)
+    }
+  }
+  return to
+}
+
+/**
  * Data
  */
 
 strats.data = function (parentVal, childVal, vm) {
-  // in a class merge, both should be functions
-  // so we just return child if it exists
   if (!vm) {
-    if (childVal && typeof childVal !== 'function') {
+    // in a Vue.extend merge, both should be functions
+    if (!childVal) {
+      return parentVal
+    }
+    if (typeof childVal !== 'function') {
       _.warn(
         'The "data" option should be a function ' +
         'that returns a per-instance value in component ' +
         'definitions.'
       )
-      return
+      return parentVal
     }
-    return childVal || parentVal
-  }
-  var instanceData = typeof childVal === 'function'
-    ? childVal.call(vm)
-    : childVal
-  var defaultData = typeof parentVal === 'function'
-    ? parentVal.call(vm)
-    : undefined
-  if (instanceData) {
-    // mix default data into instance data
-    for (var key in defaultData) {
-      if (!instanceData.hasOwnProperty(key)) {
-        instanceData.$add(key, defaultData[key])
-      }
+    if (!parentVal) {
+      return childVal
     }
-    return instanceData
+    // when parentVal & childVal are both present,
+    // we need to return a function that returns the
+    // merged result of both functions... no need to
+    // check if parentVal is a function here because
+    // it has to be a function to pass previous merges.
+    return function mergedDataFn () {
+      return mergeData(
+        childVal.call(this),
+        parentVal.call(this)
+      )
+    }
   } else {
-    return defaultData
+    // instance merge, return raw object
+    var instanceData = typeof childVal === 'function'
+      ? childVal.call(vm)
+      : childVal
+    var defaultData = typeof parentVal === 'function'
+      ? parentVal.call(vm)
+      : undefined
+    if (instanceData) {
+      return mergeData(instanceData, defaultData)
+    } else {
+      return defaultData
+    }
   }
 }
 
@@ -33107,6 +33806,9 @@ strats.events = function (parentVal, childVal) {
   for (var key in childVal) {
     var parent = ret[key]
     var child = childVal[key]
+    if (parent && !_.isArray(parent)) {
+      parent = [parent]
+    }
     ret[key] = parent
       ? parent.concat(child)
       : [child]
@@ -33171,29 +33873,26 @@ module.exports = function mergeOptions (parent, child, vm) {
   guardComponents(child.components)
   var options = {}
   var key
+  if (child.mixins) {
+    for (var i = 0, l = child.mixins.length; i < l; i++) {
+      parent = mergeOptions(parent, child.mixins[i], vm)
+    }
+  }
   for (key in parent) {
-    merge(parent[key], child[key], key)
+    merge(key)
   }
   for (key in child) {
     if (!(parent.hasOwnProperty(key))) {
-      merge(parent[key], child[key], key)
+      merge(key)
     }
   }
-  var mixins = child.mixins
-  if (mixins) {
-    for (var i = 0, l = mixins.length; i < l; i++) {
-      for (key in mixins[i]) {
-        merge(options[key], mixins[i][key], key)
-      }
-    }
-  }
-  function merge (parentVal, childVal, key) {
+  function merge (key) {
     var strat = strats[key] || defaultStrat
-    options[key] = strat(parentVal, childVal, vm, key)
+    options[key] = strat(parent[key], child[key], vm, key)
   }
   return options
 }
-},{"./index":84}],87:[function(require,module,exports){
+},{"./index":86}],89:[function(require,module,exports){
 var _ = require('./util')
 var extend = _.extend
 
@@ -33278,14 +33977,12 @@ extend(p, require('./api/child'))
 extend(p, require('./api/lifecycle'))
 
 module.exports = _.Vue = Vue
-},{"./api/child":28,"./api/data":29,"./api/dom":30,"./api/events":31,"./api/global":32,"./api/lifecycle":33,"./directives":48,"./filters":64,"./instance/compile":65,"./instance/events":66,"./instance/init":67,"./instance/scope":68,"./util":84}],88:[function(require,module,exports){
+},{"./api/child":29,"./api/data":30,"./api/dom":31,"./api/events":32,"./api/global":33,"./api/lifecycle":34,"./directives":49,"./filters":65,"./instance/compile":66,"./instance/events":67,"./instance/init":68,"./instance/scope":69,"./util":86}],90:[function(require,module,exports){
 var _ = require('./util')
 var config = require('./config')
 var Observer = require('./observer')
-var expParser = require('./parse/expression')
-var Batcher = require('./batcher')
-
-var batcher = new Batcher()
+var expParser = require('./parsers/expression')
+var batcher = require('./batcher')
 var uid = 0
 
 /**
@@ -33296,29 +33993,35 @@ var uid = 0
  * @param {Vue} vm
  * @param {String} expression
  * @param {Function} cb
- * @param {Array} [filters]
- * @param {Boolean} [needSet]
- * @param {Boolean} [deep]
+ * @param {Object} options
+ *                 - {Array} filters
+ *                 - {Boolean} twoWay
+ *                 - {Boolean} deep
+ *                 - {Boolean} user
  * @constructor
  */
 
-function Watcher (vm, expression, cb, filters, needSet, deep) {
+function Watcher (vm, expression, cb, options) {
   this.vm = vm
   vm._watcherList.push(this)
   this.expression = expression
   this.cbs = [cb]
   this.id = ++uid // uid for batching
   this.active = true
-  this.deep = deep
+  options = options || {}
+  this.deep = options.deep
+  this.user = options.user
   this.deps = Object.create(null)
   // setup filters if any.
   // We delegate directive filters here to the watcher
   // because they need to be included in the dependency
   // collection process.
-  this.readFilters = filters && filters.read
-  this.writeFilters = filters && filters.write
+  if (options.filters) {
+    this.readFilters = options.filters.read
+    this.writeFilters = options.filters.write
+  }
   // parse expression for getter/setter
-  var res = expParser.parse(expression, needSet)
+  var res = expParser.parse(expression, options.twoWay)
   this.getter = res.get
   this.setter = res.set
   this.value = this.get()
@@ -33327,18 +34030,18 @@ function Watcher (vm, expression, cb, filters, needSet, deep) {
 var p = Watcher.prototype
 
 /**
- * Add a binding dependency to this directive.
+ * Add a dependency to this directive.
  *
- * @param {Binding} binding
+ * @param {Dep} dep
  */
 
-p.addDep = function (binding) {
-  var id = binding.id
+p.addDep = function (dep) {
+  var id = dep.id
   if (!this.newDeps[id]) {
-    this.newDeps[id] = binding
+    this.newDeps[id] = dep
     if (!this.deps[id]) {
-      this.deps[id] = binding
-      binding.addSub(this)
+      this.deps[id] = dep
+      dep.addSub(this)
     }
   }
 }
@@ -33353,11 +34056,19 @@ p.get = function () {
   var value
   try {
     value = this.getter.call(vm, vm)
-  } catch (e) {}
-  // use JSON.stringify to "touch" every property
-  // so they are all tracked as dependencies for
-  // deep watching
-  if (this.deep) JSON.stringify(value)
+  } catch (e) {
+    if (config.warnExpressionErrors) {
+      _.warn(
+        'Error when evaluating expression "' +
+        this.expression + '":\n   ' + e
+      )
+    }
+  }
+  // "touch" every property so they are all tracked as
+  // dependencies for deep watching
+  if (this.deep) {
+    traverse(value)
+  }
   value = _.applyFilters(value, this.readFilters, vm)
   this.afterGet()
   return value
@@ -33376,7 +34087,14 @@ p.set = function (value) {
   )
   try {
     this.setter.call(vm, vm, value)
-  } catch (e) {}
+  } catch (e) {
+    if (config.warnExpressionErrors) {
+      _.warn(
+        'Error when evaluating setter "' +
+        this.expression + '":\n   ' + e
+      )
+    }
+  }
 }
 
 /**
@@ -33408,10 +34126,10 @@ p.afterGet = function () {
  */
 
 p.update = function () {
-  if (config.async) {
-    batcher.push(this)
-  } else {
+  if (!config.async || config.debug) {
     this.run()
+  } else {
+    batcher.push(this)
   }
 }
 
@@ -33424,8 +34142,9 @@ p.run = function () {
   if (this.active) {
     var value = this.get()
     if (
-      (typeof value === 'object' && value !== null) ||
-      value !== this.value
+      value !== this.value ||
+      Array.isArray(value) ||
+      this.deep
     ) {
       var oldValue = this.value
       this.value = value
@@ -33493,5 +34212,27 @@ p.teardown = function () {
   }
 }
 
+
+/**
+ * Recrusively traverse an object to evoke all converted
+ * getters, so that every nested property inside the object
+ * is collected as a "deep" dependency.
+ *
+ * @param {Object} obj
+ */
+
+function traverse (obj) {
+  var key, val, i
+  for (key in obj) {
+    val = obj[key]
+    if (_.isArray(val)) {
+      i = val.length
+      while (i--) traverse(val[i])
+    } else if (_.isObject(val)) {
+      traverse(val)
+    }
+  }
+}
+
 module.exports = Watcher
-},{"./batcher":34,"./config":39,"./observer":70,"./parse/expression":73,"./util":84}]},{},[17])
+},{"./batcher":35,"./config":39,"./observer":72,"./parsers/expression":75,"./util":86}]},{},[18])

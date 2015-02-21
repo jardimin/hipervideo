@@ -152,9 +152,7 @@
 			<div class="sidebar_content">
 				<in-sidebar-graph></in-sidebar-graph>
 				<in-sidebar-chapter v-with="title: db.nome"></in-sidebar-chapter>
-				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition>
-					<div v-component="{{'in-sidebar-block-' + type}}" v-with="id: id, videoID: videoID,fields: fields"></div>
-				</in-sidebar-block>
+				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition></in-sidebar-block>
 				<div class="sidebar_opener clickable" v-on="click: openDefaultBlock" v-show="!hasBlocks && !fixedSidebar && !hasInfo" v-transition>
 					<div class="sidebar_opener__inside context-bg">abrir</div>
 				</div>
@@ -489,9 +487,6 @@
 			'in-sidebar-graph': require('../components/sidebar-graph.vue'),
 			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
-			'in-sidebar-block-text': require('../components/sidebar-block-text.vue'),
-			'in-sidebar-block-profile': require('../components/sidebar-block-profile.vue'),
-			'in-sidebar-block-databars': require('../components/sidebar-block-databars.vue'),
 			'in-sidebar-info': require('../components/sidebar-info.vue'),
 			'in-creditos': require('../components/creditos.vue')
 		}

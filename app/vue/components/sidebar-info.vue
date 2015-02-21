@@ -72,6 +72,9 @@
     <div class="info-texto">
       {{{html_texto | marked}}}
     </div>
+
+    <div v-component="in-databars" v-with="databars: conteudo.databars" v-if="hasDatabars"></div>
+    
     <h3 v-if="conteudo.imagens"> IMAGENS </h3>
     <div class="image-list"></div>
     <h3 v-if="conteudo.video_list"> VÍDEOS </h3>
@@ -111,9 +114,15 @@
 
     data: function(){
       return {
+        conteudo: {},
         html_texto: '',
         videoIndex: 0,
         imageIndex: 0
+      }
+    },
+    computed: {
+      hasDatabars: function(){
+        return this.conteudo.databars !== undefined
       }
     },
     attached: function() {
@@ -179,6 +188,10 @@
         this.imageIndex = 0;
         this.videoIndex = 0;
       })
+    },
+
+    components: {
+      'in-databars': require('../components/content-databars.vue'),
     },
 
     filters: {
