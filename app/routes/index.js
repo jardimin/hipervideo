@@ -4,7 +4,13 @@ var router = express.Router();
 
 /* GET vueapp index */
 router.get('/', function(req, res) {
-  res.render('index', {});
+  var ua = req.headers['user-agent']
+
+  if (/mobile/i.test(ua)) {
+    res.render('mobile', {});
+  } else {
+    res.render('index', {});
+  }
 });
 
 module.exports = router;
