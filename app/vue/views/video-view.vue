@@ -162,7 +162,7 @@
 
 			<div class="sidebar_content">
 				<in-sidebar-graph></in-sidebar-graph>
-				<in-sidebar-chapter v-with="title: db.nome"></in-sidebar-chapter>
+				<in-sidebar-chapter v-with="capitulo: capitulo" v-if="capitulo"></in-sidebar-chapter>
 				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition></in-sidebar-block>
 				<div class="sidebar_opener clickable" v-on="click: openDefaultBlock" v-show="!hasBlocks && !fixedSidebar && !hasInfo" v-transition>
 					<div class="sidebar_opener__inside context-bg">abrir</div>
@@ -221,7 +221,8 @@
 				counter: 0,
 				contentBlocks: [],
 				fixedSidebar: false,
-				conteudo: null,
+				conteudo: {},
+				capitulo: null,
 				video: {
 					popcorn: null,
 					time: 0,
@@ -239,6 +240,8 @@
 			}
 		},
 		attached: function() {
+
+			this.capitulo = this.db.capitulos[0];
 
 			var self = this
 
@@ -296,9 +299,19 @@
 			})
 
 			this.$on('video-timeupdate', function (time, duration, progress) {
+				var cap = this.capitulo;
+				var caps = this.db.capitulos;
+				var cap_atual = _.findWhere(caps, {id: cap.id});
+				var cap_next = _.findWhere(caps, {id: cap.id + 1});
+				var cap_prev = _.findWhere(caps, {id: cap.id - 1});
 				this.video.time = time
 				this.video.duration = duration
 				this.video.progress = progress
+				if (cap_next && time >= this.capitulo.timecode) {
+					this.capitulo = cap_next;
+				} else if (cap_prev && time <= cap_prev.timecode) {
+					this.capitulo = cap_prev;
+				}
 			})
 
 			this.$on('graph-node-clicked', function (node) {
@@ -338,7 +351,7 @@
 			},
 			infoClose: function(){
 				this.videoPlay();
-				this.conteudo = null;
+				this.conteudo = {};
 				this.$broadcast('destroy-scrollbar');
 			},
 			videoPause: function(){
@@ -408,7 +421,6 @@
 			},
 			keyEvents: function(e) {
 				var video = document.getElementById('hipVid-' + this.id);
-				console.log('test');
 				switch(e.which) {
 					case 32 : 
 						if (video.paused && this.conteudo === null) {

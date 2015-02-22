@@ -635,8 +635,8 @@ var Vue = require('vue')
 module.exports.template = __vue_template__;
 
 },{"../components/sidebar-block-databars.vue":9,"../components/sidebar-block-profile.vue":10,"../components/sidebar-block-text.vue":11,"insert-css":22,"jquery":23,"perfect-scrollbar":26,"vue":89}],13:[function(require,module,exports){
-require("insert-css")(".sidebar_chapter{position:relative;width:300px}.sidebar_chapter .sidebar_chapter_title{font-family:fonte-bold,sans-serif;font-weight:900;position:relative;z-index:2;display:inline-block;background:#fff;color:#555;padding:10px 58px 10px 10px;height:28px;line-height:28px;transition:all .5s;min-width:0}.sidebar.is-open .sidebar_chapter .sidebar_chapter_title{min-width:232px}");
-var __vue_template__ = "<div class=\"sidebar_chapter\">\n		<div class=\"sidebar_chapter_title\">{{title | uppercase}}</div>\n	</div>";
+require("insert-css")(".sidebar_chapter{position:relative;width:300px}.sidebar_chapter .sidebar_chapter_title{background:#fff;color:#555;display:inline-block;font-family:fonte-bold,sans-serif;font-weight:900;line-height:28px;min-width:0;padding:0 58px 0 10px;position:relative;transition:all .5s ease 0s;z-index:2}.sidebar_chapter .sidebar_chapter_title h4{font-family:fonte-normal,sans-serif;font-size:85%;font-weight:100;margin:0}.sidebar_chapter .sidebar_chapter_title h3{margin:-10px 0 0}@media screen and (min-width:1600px){.sidebar_chapter .sidebar_chapter_title h3{margin:-5px 0 0}}.sidebar.is-open .sidebar_chapter .sidebar_chapter_title{min-width:232px}");
+var __vue_template__ = "<div class=\"sidebar_chapter\">\n		<div class=\"sidebar_chapter_title\">\n		<h4>CAPÍTULO {{capitulo.id}}</h4>\n		<h3>{{capitulo.nome | uppercase}}</h3>\n		<a href=\"/#/\" style=\"position: absolute; right: 0px; top: 0px; color: #555\"><i class=\"fa fa-bars fa-2x\" style=\"position: absolute; right: 10px; top: 7px\"></i></a>\n		</div>\n	</div>";
 module.exports = {
 		replace: true,
 	}
@@ -926,7 +926,7 @@ module.exports.template = __vue_template__;
 
 },{"insert-css":22,"underscore":28}],15:[function(require,module,exports){
 require("insert-css")("#conteudo_info{overflow:hidden;position:relative;height:96%;padding-left:40px;padding-right:40px;transition:all .3s ease}#app.marco-fechado #conteudo_info{height:100%}.info-texto{letter-spacing:0}.image-list img{position:relative;float:left;margin-right:10px}.video-list img{position:relative;float:left;margin-right:10px;width:220px}.link{font-weight:900;width:100%;padding:8px;margin-bottom:10px;text-decoration:none}.mulher-bg{background-color:#ed1e79}.adolescente-bg{background-color:#00a300}.crianca-bg{background-color:#0cc}.preso-bg{background-color:red}.deficiente-bg{background-color:#00c}");
-var __vue_template__ = "<div>\n  <div class=\"border context-bg\"></div>\n  <div id=\"conteudo_info\">\n    <h2> \n      {{conteudo.title}} \n    </h2>\n    <div class=\"info-texto\">\n      {{{html_texto | marked}}}\n    </div>\n\n    <div v-component=\"in-databars\" v-with=\"databars: conteudo.databars\" v-if=\"hasDatabars\"></div>\n    \n    <h3 v-if=\"conteudo.imagens\"> IMAGENS </h3>\n    <div class=\"image-list\"></div>\n    <h3 v-if=\"conteudo.video_list\"> VÍDEOS </h3>\n    <div class=\"video-list\"></div>\n    <h3 v-if=\"conteudo.arquivos\"> LINKS </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.arquivos\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <h3 v-if=\"conteudo.discursoes\"> DISCUSSÃO </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.discursoes\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <div class=\"link {{conteudo.icon}}-bg\" v-if=\"conteudo.hipervideo\">\n      <a href=\"{{conteudo.hipervideo.link}}\" class=\"link {{conteudo.icon}}-bg\">\n        {{conteudo.hipervideo.nome | uppercase}}\n      </a>\n    </div>\n  </div>\n  <a class=\"back\" href=\"#/{{id}}\">voltar ao video</a>\n  </div>";
+var __vue_template__ = "<div>\n  <div class=\"border context-bg\"></div>\n  <div id=\"conteudo_info\">\n    <h2 v-if=\"conteudo &amp;&amp; conteudo.title\"> \n      {{conteudo.title}} \n    </h2>\n    <div class=\"info-texto\">\n      {{{html_texto | marked}}}\n    </div>\n\n    <div v-component=\"in-databars\" v-with=\"databars: conteudo.databars\" v-if=\"conteudo &amp;&amp; hasDatabars\"></div>\n    \n    <h3 v-if=\"conteudo &amp;&amp; conteudo.imagens\"> IMAGENS </h3>\n    <div class=\"image-list\"></div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.video_list\"> VÍDEOS </h3>\n    <div class=\"video-list\"></div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.arquivos\"> LINKS </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.arquivos\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.discursoes\"> DISCUSSÃO </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.discursoes\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <div class=\"link {{conteudo.icon}}-bg\" v-if=\"conteudo &amp;&amp; conteudo.hipervideo\">\n      <a href=\"{{conteudo.hipervideo.link}}\" class=\"link {{conteudo.icon}}-bg\">\n        {{conteudo.hipervideo.nome | uppercase}}\n      </a>\n    </div>\n  </div>\n  <a class=\"back\" href=\"#/{{id}}\">voltar ao video</a>\n  </div>";
 var Vue = require('vue')
   var $$$ = require('jquery')
   var perfectScrollbar = require('perfect-scrollbar')
@@ -970,7 +970,11 @@ var Vue = require('vue')
           suppressScrollX: true
         });
 
-        this.html_texto = this.$parent.conteudo.texto;
+        if (this.$parent.conteudo.texto !== "") {
+          this.html_texto = this.$parent.conteudo.texto;
+        } else {
+          this.html_texto = this.$parent.component.fields.excerpt
+        }
 
         if (this.$parent.conteudo.imagens) {
           for (var i = this.$parent.conteudo.imagens.length - 1; i >= 0; i--) {
@@ -1266,7 +1270,7 @@ module.exports.template = __vue_template__;
 
 },{"insert-css":22,"jquery":23}],20:[function(require,module,exports){
 require("insert-css")(".sidebar{width:22%}@media screen and (min-width:1600px){.sidebar{width:15%}}@media screen and (min-width:1600px){.sidebar.has-info{width:16%}}.sidebar_content{position:relative;height:100%;z-index:20}.sidebar_back{position:absolute;background-color:rgba(0,0,0,.5);width:300px;height:100%;top:0;left:0;transition:all .6s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.sidebar-right{position:absolute;right:0;top:57px;width:300px}.infopanel{position:absolute;background-color:rgba(0,0,0,.8);height:100%;top:0;left:0;z-index:10;transition:all .6s;transform:translate3d(127%,0,0)}.infopanel.is-open{transform:translate3d(300px,0,0)}.infopanel .border{position:absolute;height:100%;width:10px;top:0;left:0}.infopanel .back{position:absolute;top:10%;left:79%;color:#fff;font-size:24px}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}.debug .btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px;color:#000;font-size:10px}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}.sidebar_opener{position:relative;transition:all .6s ease .6s;overflow:hidden}.sidebar_opener.v-enter,.sidebar_opener.v-leave{transform:translate3d(-100px,0,0)}.sidebar_opener.v-leave{transition:all .3s ease 0}.sidebar_opener .sidebar_opener__inside{display:inline-block;color:#fff;padding:10px;height:28px;line-height:28px;transition:all .6s ease}.infopanel{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:5% 20% 3% 3%;width:79%}@media screen and (min-width:1600px){.infopanel{width:85%}}.is-cartela{height:auto!important}");
-var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"title: db.nome\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\"></in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<!-- <div class=\"debug\">\n			<a id=\"tres\" class=\"btn\" href=\"#/home\">home</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/mulher\">mulher</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/crianca\">crianca</a>\n			<br/>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPlay\">play</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPause\">pause</a>\n		</div> -->\n\n	</div>";
+var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"capitulo: capitulo\" v-if=\"capitulo\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\"></in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<!-- <div class=\"debug\">\n			<a id=\"tres\" class=\"btn\" href=\"#/home\">home</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/mulher\">mulher</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/crianca\">crianca</a>\n			<br/>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPlay\">play</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPause\">pause</a>\n		</div> -->\n\n	</div>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 	var _ = require('underscore')
@@ -1282,7 +1286,8 @@ var Vue = require('vue')
 				counter: 0,
 				contentBlocks: [],
 				fixedSidebar: false,
-				conteudo: null,
+				conteudo: {},
+				capitulo: null,
 				video: {
 					popcorn: null,
 					time: 0,
@@ -1300,6 +1305,8 @@ var Vue = require('vue')
 			}
 		},
 		attached: function() {
+
+			this.capitulo = this.db.capitulos[0];
 
 			var self = this
 
@@ -1357,9 +1364,19 @@ var Vue = require('vue')
 			})
 
 			this.$on('video-timeupdate', function (time, duration, progress) {
+				var cap = this.capitulo;
+				var caps = this.db.capitulos;
+				var cap_atual = _.findWhere(caps, {id: cap.id});
+				var cap_next = _.findWhere(caps, {id: cap.id + 1});
+				var cap_prev = _.findWhere(caps, {id: cap.id - 1});
 				this.video.time = time
 				this.video.duration = duration
 				this.video.progress = progress
+				if (cap_next && time >= this.capitulo.timecode) {
+					this.capitulo = cap_next;
+				} else if (cap_prev && time <= cap_prev.timecode) {
+					this.capitulo = cap_prev;
+				}
 			})
 
 			this.$on('graph-node-clicked', function (node) {
@@ -1399,7 +1416,7 @@ var Vue = require('vue')
 			},
 			infoClose: function(){
 				this.videoPlay();
-				this.conteudo = null;
+				this.conteudo = {};
 				this.$broadcast('destroy-scrollbar');
 			},
 			videoPause: function(){
@@ -1469,7 +1486,6 @@ var Vue = require('vue')
 			},
 			keyEvents: function(e) {
 				var video = document.getElementById('hipVid-' + this.id);
-				console.log('test');
 				switch(e.which) {
 					case 32 : 
 						if (video.paused && this.conteudo === null) {

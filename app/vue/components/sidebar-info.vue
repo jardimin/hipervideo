@@ -66,32 +66,32 @@
   <div>
   <div class="border context-bg"></div>
   <div id="conteudo_info">
-    <h2> 
+    <h2 v-if="conteudo && conteudo.title"> 
       {{conteudo.title}} 
     </h2>
     <div class="info-texto">
       {{{html_texto | marked}}}
     </div>
 
-    <div v-component="in-databars" v-with="databars: conteudo.databars" v-if="hasDatabars"></div>
+    <div v-component="in-databars" v-with="databars: conteudo.databars" v-if="conteudo && hasDatabars"></div>
     
-    <h3 v-if="conteudo.imagens"> IMAGENS </h3>
+    <h3 v-if="conteudo && conteudo.imagens"> IMAGENS </h3>
     <div class="image-list"></div>
-    <h3 v-if="conteudo.video_list"> VÍDEOS </h3>
+    <h3 v-if="conteudo && conteudo.video_list"> VÍDEOS </h3>
     <div class="video-list"></div>
-    <h3 v-if="conteudo.arquivos"> LINKS </h3>
+    <h3 v-if="conteudo && conteudo.arquivos"> LINKS </h3>
     <div class="link context-bg" v-repeat="conteudo.arquivos">
       <a href="{{link}}" target="_blank" class="link context-bg">
         {{nome | uppercase}}
       </a>
     </div>
-    <h3 v-if="conteudo.discursoes"> DISCUSSÃO </h3>
+    <h3 v-if="conteudo && conteudo.discursoes"> DISCUSSÃO </h3>
     <div class="link context-bg" v-repeat="conteudo.discursoes">
       <a href="{{link}}" target="_blank" class="link context-bg">
         {{nome | uppercase}}
       </a>
     </div>
-    <div class="link {{conteudo.icon}}-bg" v-if="conteudo.hipervideo">
+    <div class="link {{conteudo.icon}}-bg" v-if="conteudo && conteudo.hipervideo">
       <a href="{{conteudo.hipervideo.link}}" class="link {{conteudo.icon}}-bg">
         {{conteudo.hipervideo.nome | uppercase}}
       </a>
@@ -145,7 +145,11 @@
           suppressScrollX: true
         });
 
-        this.html_texto = this.$parent.conteudo.texto;
+        if (this.$parent.conteudo.texto !== "") {
+          this.html_texto = this.$parent.conteudo.texto;
+        } else {
+          this.html_texto = this.$parent.component.fields.excerpt
+        }
 
         if (this.$parent.conteudo.imagens) {
           for (var i = this.$parent.conteudo.imagens.length - 1; i >= 0; i--) {

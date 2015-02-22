@@ -15,18 +15,22 @@
       "duracao": 2280.135,
       "capitulos": [
         {
+          "id": 1,
           "nome": "Comeco",
           "timecode": 350.50
         },
         {
+          "id": 2,
           "nome": "Meio1",
           "timecode": 980.468
         },
         {
+          "id": 3,
           "nome": "Meio2",
           "timecode": 1568.9684
         },
         {
+          "id": 4,
           "nome": "Final",
           "timecode": 2280.135
         }
@@ -45,14 +49,17 @@
       "duracao": 1172.404,
       "capitulos": [
         {
+          "id": 1,
           "nome": "Comeco",
           "timecode": 350.50
         },
         {
+          "id": 2,
           "nome": "Meio1",
           "timecode": 980.468
         },
         {
+          "id": 3,
           "nome": "Meio2",
           "timecode": 1568.9684
         }
@@ -71,18 +78,22 @@
       "duracao": 2072.056,
       "capitulos": [
         {
+          "id": 1,
           "nome": "Comeco",
           "timecode": 350.50
         },
         {
+          "id": 2,
           "nome": "Meio1",
           "timecode": 980.468
         },
         {
+          "id": 3,
           "nome": "Meio2",
           "timecode": 1568.9684
         },
         {
+          "id": 4,
           "nome": "Final",
           "timecode": 2072.056
         }
@@ -101,18 +112,22 @@
       "duracao": 2072.056,
       "capitulos": [
         {
+          "id": 1,
           "nome": "Comeco",
           "timecode": 350.50
         },
         {
+          "id": 2,
           "nome": "Meio1",
           "timecode": 980.468
         },
         {
+          "id": 3,
           "nome": "Meio2",
           "timecode": 1568.9684
         },
         {
+          "id": 4,
           "nome": "Final",
           "timecode": 2072.056
         }
@@ -131,14 +146,17 @@
       "duracao": 1294.914,
       "capitulos": [
         {
+          "id": 1,
           "nome": "Comeco",
           "timecode": 350.50
         },
         {
+          "id": 2,
           "nome": "Meio1",
           "timecode": 750.468
         },
         {
+          "id": 3,
           "nome": "Meio2",
           "timecode": 1294.914
         }
