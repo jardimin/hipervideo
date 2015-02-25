@@ -52,9 +52,12 @@
       "component": {
         "type": "databars",
         "fields": {
-          "excerpt": "Violência obstétrica é a apropriação do corpo e processos reprodutivos das mulheres por profissionais da saúde, por meio de tratamento desumanizado, abuso de medicalização e patologização dos processos naturais, causando perda da autonomia e capacidade de decidir livremente sobre seus corpos impactando na sexualidade e negativamente na qualidade de vida das mulheres.",
-          "spreadsheet": "/img/eventos/teste.jpg"
+          "excerpt": "Violência obstétrica é a apropriação do corpo e processos reprodutivos das mulheres por profissionais da saúde, por meio de tratamento desumanizado, abuso de medicalização e patologização dos processos naturais, causando perda da autonomia e capacidade de decidir livremente sobre seus corpos impactando na sexualidade e negativamente na qualidade de vida das mulheres."
         }
+      },
+      "conteudo": {
+        "texto": "",
+        "databars": "1g5qlvrvMShdOMNsrRHaQCUYsPh4b-4ldkfDw-tOSzdw"
       }
     },
     {
