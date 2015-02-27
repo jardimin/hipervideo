@@ -62,35 +62,53 @@
     },
     {
       "id": 3,
-      "title": "Ambiência",
-      "icon": "conceito",
-      "component": {
-        "type": "text",
-        "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
-        }
-      }
-    },
-    {
-      "id": 4,
-      "title": "Secretaria de saúde",
+      "title": "Centro de Parto Normal (CPN)",
       "icon": "dispositivo",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
+          "excerpt": "Unidade de saúde destinada à assistência ao parto de baixo risco pertencente a um estabelecimento hospitalar, localizada em suas dependências internas ou imediações."
         }
+      },
+      "conteudo": {
+        "texto": "A Portaria Nº 11, de 7 de janeiro de 2015, define as diretrizes para implantação e habilitação de Centro de Parto Normal (CPN), no âmbito do Sistema Único de Saúde (SUS), para o atendimento à mulher e ao recém-nascido no momento do parto e do nascimento. \nConsidera-se que o parto é de baixo risco quando a gestação atual da parturiente é considerada de baixo risco e sua história reprodutiva não apresenta fatores de risco materno e fetal. Além disso, a avaliação obstétrica no momento da admissão deve evidenciar um trabalho de parto normal, realizado sem intervenção instrumental com ou sem episiotomia. \nO quarto de pré-parto, parto e puerpério (PPP) é um espaço destinado ao pré-parto, parto e puerpério, privativo para cada mulher e seu acompanhante, onde a atenção aos períodos clínicos do parto e do nascimento ocorre no mesmo ambiente, da internação à alta, com ambiência adequada à Resolução - RDC nº 36/ANVISA, de 3 de junho de 2008, que dispõe sobre Regulamento Técnico para Funcionamento dos Serviços de Atenção Obstétrica e Neonatal.",
+        "databars": "1kgOgy4uS68Y0OiuQAY-N8AkNMaQ6SZQuU2gnzt0Sx_4",
+        "arquivos": [{
+          "nome": "Portaria Nº 11, de 7 de janeiro de 2015",
+          "link": "http://www.brasilsus.com.br/images/portarias/janeiro2015/dia08/portaria11.pdf"
+        },
+        {
+          "nome": "RDC nº 36/ANVISA, de 3 de junho de 2008",
+          "link": "http://portal.anvisa.gov.br/wps/wcm/connect/f18c7f80474597439fbbdf3fbc4c6735/RDC+N%C2%B0+36,+DE+3+DE+JUNHO+DE+2008.pdf?MOD=AJPERES"
+        }]
+      }
+    },
+    {
+      "id": 4,
+      "title": "Boas práticas no parto e nascimento",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Em 1996, a Organização Mundial de Saúde baseada em evidencia científicas mundiais divulgou uma classificação de práticas comuns no parto normal e nascimento, recomendando aquelas que foram identificadas como úteis e que devem ser estimuladas."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Boas práticas de atenção ao parto e ao nascimento",
+          "link": "http://www.clam.org.br/uploads/arquivo/OMS%20-%20Boas%20Praticas%20de%20Atencao%20ao%20Parto%20e%20ao%20Nascimento.pdf"
+        }]
       }
     },
     {
       "id": 5,
-      "title": "Médicos",
-      "icon": "funcao",
+      "title": "Mudança do modelo assistencial",
+      "icon": "conceito",
       "component": {
-        "type": "profile",
+        "type": "text",
         "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.",
-          "image": "/img/eventos/teste.jpg"
+          "excerpt": "O CPN, com atuação de enfermeiro obstétrico, e a casa da gestante bebê e puérpera, vinculada a serviços de alto risco, são considerados serviços estratégicos para mudança do modelo de atenção obstétrica e neonatal tecnocrático para o modelo humanizado. As ações ofertadas sinalizam a compreensão de que para o incentivar o parto normal, incrementar as boas práticas e reduzir as cesáreas desnecessárias  é preciso mais que capacitação dos profissionais para atuação na assistência, sendo necessárias mudanças na gestão e ambiência."
         }
       }
     },
@@ -103,6 +121,63 @@
         "fields": {
           "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
         }
+      }
+    },
+    {
+      "id": 36,
+      "title": "RDC nº 36/ANVISA",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2008.5,
+        "fields": {
+          "excerpt": "###RDC nº 36/ANVISA, de 3 de junho de 2008, \n\nDispõe sobre Regulamento Técnico para Funcionamento dos Serviços de Atenção Obstétrica e Neonatal."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "RDC nº 36/ANVISA, de 3 de junho de 2008",
+          "link": "http://portal.anvisa.gov.br/wps/wcm/connect/f18c7f80474597439fbbdf3fbc4c6735/RDC+N%C2%B0+36,+DE+3+DE+JUNHO+DE+2008.pdf?MOD=AJPERES"
+        }]
+      }
+    },
+    {
+      "id": 37,
+      "title": "A Portaria Nº 11",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2015,
+        "fields": {
+          "excerpt": "###A Portaria Nº 11, de 7 de janeiro de 2015 \n\nDefine as diretrizes para implantação e habilitação de Centro de Parto Normal (CPN), no âmbito do Sistema Único de Saúde (SUS), para o atendimento à mulher e ao recém-nascido no momento do parto e do nascimento."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Portaria Nº 11, de 7 de janeiro de 2015",
+          "link": "http://www.brasilsus.com.br/images/portarias/janeiro2015/dia08/portaria11.pdf"
+        }]
+      }
+    },
+    {
+      "id": 38,
+      "title": "Boas práticas - OMS",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1996,
+        "fields": {
+          "excerpt": "Em 1996, a Organização Mundial de Saúde baseada em evidencia científicas mundiais divulgou uma classificação de práticas comuns no parto normal e nascimento, recomendando aquelas que foram identificadas como úteis e que devem ser estimuladas."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Boas práticas de atenção ao parto e ao nascimento",
+          "link": "http://www.clam.org.br/uploads/arquivo/OMS%20-%20Boas%20Praticas%20de%20Atencao%20ao%20Parto%20e%20ao%20Nascimento.pdf"
+        }]
       }
     }
   ],
