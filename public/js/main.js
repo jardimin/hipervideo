@@ -195,7 +195,6 @@ var Vue = require('vue')
 				// Dispatch timeupdate to parent
 				self.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
 			});
-			console.log(hipervideo.event);
 		},
 		methods: {
 			play: function(){
