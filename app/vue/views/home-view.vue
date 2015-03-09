@@ -119,6 +119,9 @@
 		&:hover {
 			opacity: 1;
 		}
+		&.clic {
+			opacity: 1;
+		}
 		&.cruz {
 			border-radius: 16px;
 		  height: 20px;
@@ -186,6 +189,7 @@
 			.nest {
 				padding: 0;
 				opacity: 0;
+				z-index: 0;
 			}
 			.linha {
 				transition: all 0.5s ease 0.3s;
@@ -200,6 +204,13 @@
 			}
 		}
 	}
+	.sub_menu {
+		width: 50%;
+		float: left;
+		.botao {
+			width: 80%;
+		}
+	}
 
 </style>
 
@@ -209,11 +220,11 @@
 			<div class="conteudo">
 				<div id="headHandle" v-on="click: abrir"></div>
 				<h1>{{db.title | uppercase}}</h1>
-				<p style="letter-spacing: 0; text-align: center;">{{db.texto}}</p>
+				<p style="letter-spacing: 0; text-align: center;">{{{db.texto}}}</p>
 				<a v-on="click: fechar" class="botao">O QUE É O HIPERVÍDEO?</a>
 				<a v-on="click: fechar" class="botao">ASSISTIR HIPERVÍDEOS</a>
 				<a v-on="click: fechar" class="botao">VER REDES</a>
-				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_PNH.png" style="width: 20%; margin: 5% 10% 0;">
+				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 30%; margin: 5% 5% 0;">
 				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png" style="width: 50%;">
 			</div>
 		</header>
@@ -229,6 +240,18 @@
 						<p style="letter-spacing: 0;">{{descricao}}</p>
 						<a href="#/{{id}}" class="botao" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">ASSISTIR</a>
 						<a v-on="click: deselect(id)" class="botao" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">VOLTAR</a>
+						<div class="sub_menu">
+							<h2>QUALIDADE</h2>
+							<div v-on="click: selectAlta" class="botao" v-class="clic: isAlta" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">ALTA</div>
+							<div v-on="click: selectMedia" class="botao" v-class="clic: isMedia" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">MEDIA</div>
+							<div v-on="click: selectBaixa" class="botao" v-class="clic: isBaixa" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">BAIXA</div>
+						</div>
+						<div class="sub_menu">
+							<h2>ACESSIBILIDADE</h2>
+							<div v-on="click: selectNada" class="botao" v-class="clic: isNada" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">SEM ACESSIBILIDADE</div>
+							<div v-on="click: selectLibras" class="botao" v-class="clic: isLibras" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">LIBRAS</div>
+							<div v-on="click: selectAudio" class="botao" v-class="clic: isAudio" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">AUDIO DESCRIÇÃO</div>
+						</div>
 					</div>
 					<img v-attr="src: '/img/RE_' + id + 'BW.png'" class="fotoFundo BW" style="left: -{{posHip[$index]}}%; z-index: 1;" v-on="click: select(id)">
 					<img v-attr="src: '/img/RE_' + id + '.png'" class="fotoFundo" style="left: -{{posHip[$index]}}%" v-on="click: select(id)">
@@ -262,9 +285,45 @@
 				var este = $$$('.'+ id)
 				head.removeClass('ativo')
 				este.removeClass('ativo')
-			}
+			},
+      selectAlta: function(){
+        this.$dispatch('video-qualidade', 'alta')
+      },
+      selectMedia: function(){
+        this.$dispatch('video-qualidade', 'media')
+      },
+      selectBaixa: function(){
+        this.$dispatch('video-qualidade', 'baixa')
+      },
+      selectLibras: function(){
+      	this.$dispatch('video-acessibilidade', 'libras')
+      },
+      selectAudio: function(){
+      	this.$dispatch('video-acessibilidade', 'audio')
+      },
+      selectNada: function(){
+      	this.$dispatch('video-acessibilidade', 'nada')
+      }
 		},
 		computed: {
+      isAlta: function() {
+        return this.$parent.qualidade === 'alta';
+      },
+      isMedia: function() {
+        return this.$parent.qualidade === 'media';
+      },
+      isBaixa: function() {
+        return this.$parent.qualidade === 'baixa';
+      },
+      isLibras: function() {
+        return this.$parent.acessibilidade === 'libras';
+      },
+      isAudio: function() {
+        return this.$parent.acessibilidade === 'audio';
+      },
+      isNada: function() {
+        return this.$parent.acessibilidade === 'nada';
+      },
 			posHip: {
 				get: function() {
 					var hip = this.$data.db.hipervideos

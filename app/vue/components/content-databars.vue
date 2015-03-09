@@ -34,6 +34,7 @@
 	var $$$ = require('jquery')
 	var _ = require('underscore')
 	var marked = require('marked')
+	var perfectScrollbar = require('perfect-scrollbar')
 
 	module.exports = {
 

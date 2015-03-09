@@ -16,9 +16,8 @@
 </style>
 
 <template>
-	<video v-with="db: db" poster="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png" preload="auto" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
-		<source v-attr="src: db.url + '.mp4'" type="video/mp4" id="mp4">
-		<source v-attr="src: db.url + '.webm'" type="video/webm" id="webm">
+	<video v-with="db: db" poster="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
+		<source src="{{db.url}}_{{qual}}.mp4" type="video/mp4" id="mp4">
 	</video>
 </template>
 
@@ -29,6 +28,14 @@
 
 	module.exports = {
 		replace: true,
+		data: function(){
+			return {
+				qual: 'alta'
+			}
+		},
+		created: function() {
+			this.qual = this.$parent.$parent.qualidade;
+		},
 		attached: function() {
 			
 			var self = this;
@@ -38,6 +45,14 @@
 			var selector = $$$('.rangeslider').get(0);
 			
 			this.play();
+
+			this.$on('mudou-qualidade', function (qualidade) {
+				self.qual = qualidade;
+				$$$('#mp4').attr('src', self.$parent.db.url + '_' + self.qual + '.mp4')
+				$$$('#webm').attr('src', self.$parent.db.url + '_' + self.qual + '.webm')
+				hipervideo.load();
+				hipervideo.currentTime = self.$parent.video.time;
+			})
 
 			var tempoCorrido = function(array) {
 				var min = array[0];
@@ -88,6 +103,7 @@
 				// Dispatch timeupdate to parent
 				self.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
 			});
+			console.log(hipervideo.event);
 		},
 		methods: {
 			play: function(){

@@ -6,33 +6,60 @@
       "id": "mulher",
       "artigo": "a",
       "cidade": "SA",
-      "geo": [-12.9764, -38.4727, 13],
+      "geo": [-12.9764, -38.4727, 12],
+      "locais": [{
+        "nome": "Maternidade de Referência Professor José Maria de Magalhães Neto",
+        "lat": -12.9627283,
+        "lon": -38.4917117,
+        "site": "http://mtbalbino.blogspot.com.br/"
+      },
+      {
+        "nome": "Maternidade de Referência Professor José Maria de Magalhães Neto",
+        "lat": -12.95990,
+        "lon": -38.48417,
+        "site": "http://www.saude.ba.gov.br/dgrp/index.php?option=com_content&view=article&id=327&Itemid=175"
+      }],
       "nome": "Mulher",
       "formato": "saúde da mulher",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      
       "cor": "#ed1e79",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/SA/dapes_ssa_final-cor",
-      "duracao": 2280.135,
+      "duracao": 1782.434,
       "capitulos": [
         {
-          "id": 1,
-          "nome": "Comeco",
-          "timecode": 350.50
+          "nome": "Introdução",
+          "timecode": 117.873826,
+          "id": 1
         },
         {
+          "nome": "Centro de Parto Normal",
           "id": 2,
-          "nome": "Meio1",
-          "timecode": 980.468
+          "timecode": 449
         },
         {
+          "nome": "Maternidade de Alto Risco",
           "id": 3,
-          "nome": "Meio2",
-          "timecode": 1568.9684
+          "timecode": 957
         },
         {
+          "nome": "Apoio Institucional",
           "id": 4,
+          "timecode": 1243
+        },
+          {
+          "nome": "Fórum Perinatal",
+          "id": 5,
+          "timecode": 1414
+        },
+          {
+          "nome": "Mapa de Vinculação",
+          "id": 6,
+          "timecode": 1566
+        },
+          {
           "nome": "Final",
-          "timecode": 2280.135
+          "id": 7,
+          "timecode": 1800
         }
       ]
     },
@@ -50,18 +77,23 @@
       "capitulos": [
         {
           "id": 1,
-          "nome": "Comeco",
-          "timecode": 350.50
+          "nome": " maternidade",
+          "timecode": 393
         },
         {
           "id": 2,
-          "nome": "Meio1",
-          "timecode": 980.468
+          "nome": "unidade de saude da familia",
+          "timecode": 742
         },
         {
           "id": 3,
-          "nome": "Meio2",
-          "timecode": 1568.9684
+          "nome": "promoção de saude",
+          "timecode": 957
+        },
+        {
+          "id": 4,
+          "nome": "participação popular",
+          "timecode": 1172.404
         }
       ]
     },
@@ -69,33 +101,90 @@
       "id": "adolescente",
       "artigo": "o",
       "cidade": "BH",
-      "geo": [-19.9268, -43.9450, 13],
+      "geo": [-19.8830, -43.9213, 11],
+      "locais": [{
+        "nome": "NAMSEP / CIA BH",
+        "lat": -19.9215938,
+        "lon": -43.94632,
+        "site": "http://ftp.tjmg.jus.br/ciabh/"
+      },
+      {
+        "nome": "CENTRO DE SAÚDE SANTA MÔNICA",
+        "lat": -19.8290296,
+        "lon": -43.9770025,
+        "site": "http://www.guiamais.com.br/local/centro+de+saude+santa+monica-postos+de+saude-belo+horizonte-mg-16353791-1"
+      },
+      {
+        "nome": "CERSAMI",
+        "lat": -19.9728268,
+        "lon": -44.2081893,
+        "site": "http://ftp.tjmg.jus.br/ciabh/"
+      },
+      {
+        "nome": "CENTRO DE INTERNAÇÃO SÃO JERÔNIMO",
+        "lat": -19.8980852,
+        "lon": -43.9143304,
+        "site": "https://www.seds.mg.gov.br/index.php?option=com_content&task=view&id=340&Itemid=164"
+      },
+      {
+        "nome": "CENTRO SAUDE HORTO",
+        "lat": -19.913061,
+        "lon": -43.920491,
+        "site": "http://www.guiamais.com.br/local/centro+de+saude+horto-postos+de+saude-belo+horizonte-mg-16353728-1"
+      },
+      {
+        "nome": "CENTRO DE INTERNAÇÃO DOM BOSCO",
+        "lat": -19.911262,
+        "lon": -43.909458,
+        "site": "https://www.seds.mg.gov.br/index.php?option=com_content&task=view&id=340&Itemid=164"
+      },
+      {
+        "nome": "CENTRO DE INTERNAÇÃO SÃO BENEDITO",
+        "lat": -19.909405,
+        "lon": -43.911859,
+        "site": "https://www.seds.mg.gov.br/index.php?option=com_content&task=view&id=340&Itemid=164"
+      }],
       "nome": "Adolescente",
       "formato": "saúde do adolescente",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
       "cor": "#00a300",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/dapes_BH_final1",
-      "duracao": 2072.056,
+      "duracao": 1801.591,
       "capitulos": [
         {
+          "nome": "Introdução",
           "id": 1,
-          "nome": "Comeco",
-          "timecode": 350.50
+          "timecode": 125.270083
         },
         {
+          "nome": "Atendimento Externo",
           "id": 2,
-          "nome": "Meio1",
-          "timecode": 980.468
+          "timecode": 438
         },
         {
+          "nome": "Intersetorialidade",
           "id": 3,
-          "nome": "Meio2",
-          "timecode": 1568.9684
+          "timecode": 717
         },
         {
+          "nome": "Saúde da Família",
           "id": 4,
-          "nome": "Final",
-          "timecode": 2072.056
+          "timecode": 890
+        },
+          {
+          "nome": "Promoção de Saúde",
+          "id": 5,
+          "timecode": 1220
+        },
+          {
+          "nome": "Internação Provisória",
+          "id": 6,
+          "timecode": 1520
+        },
+          {
+          "nome": "Escuta Vs Criminalização",
+          "id": 7,
+          "timecode": 1806
         }
       ]
     },
@@ -109,27 +198,52 @@
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
       "cor": "#00f",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/GYN/dapes_gyn_final",
-      "duracao": 2072.056,
+      "duracao": 1556.386,
       "capitulos": [
         {
           "id": 1,
-          "nome": "Comeco",
-          "timecode": 350.50
+          "nome": "Introdução",
+          "timecode": 150
         },
         {
           "id": 2,
-          "nome": "Meio1",
-          "timecode": 980.468
+          "nome": "Atendimento Visual",
+          "timecode": 330
         },
         {
           "id": 3,
-          "nome": "Meio2",
-          "timecode": 1568.9684
+          "nome": "Centro de Reabilitação",
+          "timecode": 499
         },
         {
           "id": 4,
-          "nome": "Final",
-          "timecode": 2072.056
+          "nome": "Atendimento Auditivo",
+          "timecode": 729
+        },
+                {
+          "id": 5,
+          "nome": "Atendimento Universal",
+          "timecode": 850
+        },
+                {
+          "id": 6,
+          "nome": "Interdisciplinaridade",
+          "timecode": 1148
+        },
+                {
+          "id": 7,
+          "nome": "Autonomia",
+          "timecode": 1251
+        },
+                {
+          "id": 8,
+          "nome": "Oficina Ortopédica",
+          "timecode": 1425
+        },
+                {
+          "id": 9,
+          "nome": "Projeto Terapêutico",
+          "timecode": 1556.386
         }
       ]
     },
@@ -147,22 +261,95 @@
       "capitulos": [
         {
           "id": 1,
-          "nome": "Comeco",
-          "timecode": 350.50
+          "nome": "arquitetura penal",
+          "timecode": 177.740309
         },
         {
           "id": 2,
-          "nome": "Meio1",
-          "timecode": 750.468
+          "nome": "tuberculose",
+          "timecode": 583.595004
         },
         {
           "id": 3,
-          "nome": "Meio2",
+          "nome": "UBS Prisional",
+          "timecode": 792.191215
+        },
+        {
+          "id": 4,
+          "nome": "segurança",
+          "timecode": 960.935369
+        },
+        {
+          "id": 5,
+          "nome": "participação popular",
+          "timecode": 1156.035438
+        },
+        {
+          "id": 6,
+          "nome": "desafios",
           "timecode": 1294.914
         }
       ]
     }
   ],
+  "teste": {
+      "id": "teste",
+      "geo": [-12.9764, -38.4727, 12],
+      "locais": [{
+        "nome": "Maternidade 2",
+        "lat": -12.9627283,
+        "lon": -38.4917117,
+        "site": "http://mtbalbino.blogspot.com.br/"
+      },
+      {
+        "nome": "Maternidade 1",
+        "lat": -12.95990,
+        "lon": -38.48417,
+        "site": "http://www.saude.ba.gov.br/dgrp/index.php?option=com_content&view=article&id=327&Itemid=175"
+      }],
+      "nome": "Teste",
+      "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      
+      "cor": "#ed1e79",
+      "url": " ",
+      "duracao": 1782.434,
+      "capitulos": [
+        {
+          "nome": "Introdução",
+          "timecode": 117.873826,
+          "id": 1
+        },
+        {
+          "nome": "Continuando",
+          "id": 2,
+          "timecode": 449
+        },
+        {
+          "nome": "Desenvolvendo",
+          "id": 3,
+          "timecode": 957
+        },
+        {
+          "nome": "Caso 1",
+          "id": 4,
+          "timecode": 1243
+        },
+          {
+          "nome": "Caso 2",
+          "id": 5,
+          "timecode": 1414
+        },
+          {
+          "nome": "Transformação",
+          "id": 6,
+          "timecode": 1566
+        },
+          {
+          "nome": "Final",
+          "id": 7,
+          "timecode": 1800
+        }
+      ]
+    },
   "tocando": "Intro",
   "view": "",
   "className": "",

@@ -34,7 +34,7 @@
     }
   }
   .papel {
-    width: 25%;
+    width: 20%;
     text-align: center;
     float: left;
   }
@@ -44,27 +44,27 @@
   <div id="creditos">
     <h1>CRÉDITOS</h1>
     <div class="info">
-      <div class="papel"  style="width: 20%;">
+      <div class="papel">
         <h3>DESIGN E PROGRAMAÇÃO</h3>
         <p>Marlus Araújo</p>
         <p>Gustavo Junqueira</p>
       </div>
-      <div class="papel"  style="width: 20%;">
+      <div class="papel">
         <h3>DIREÇÃO</h3>
         <p>Julio Braga</p>
         <p>Giuliano Bonorandi</p>
       </div>
-      <div class="papel"  style="width: 20%;">
+      <div class="papel">
         <h3>PRODUÇÃO</h3>
         <p>Janaína Castro Alves</p>
         <p>Carolina Calcavecchia</p>
       </div>
-      <div class="papel"  style="width: 20%;">
+      <div class="papel">
         <h3>FOTOGRAFIA</h3>
         <p>Milena Sá</p>
         <p>Tito José</p>
       </div>
-      <div class="papel"  style="width: 20%;">
+      <div class="papel">
         <h3>SOM DIRETO</h3>
         <p>Alexandre Kubrusly</p>
         <p>Francisco</p>
@@ -81,9 +81,13 @@
         <p>Claudio Tammela</p>
       </div>
       <div class="papel" style="margin-bottom: 40px;">
-        <h3 style="margin-bottom: 0;">FINALIZAÇÃO DE SOM</h3>
-        <h3 style="margin-top: 0;">TRILHA SONORA ORIGINAL</h3>
-        <p>Criado Mudo Produções Artísticas</p>
+        <h3>FINALIZAÇÃO DE SOM</h3>
+        <a href="http://criadomudo.net" target="_blank">Criado Mudo Produções Artísticas</a>
+      </div>
+      <div class="papel" style="margin-bottom: 40px;">
+        <h3>TRILHA SONORA</h3>
+        <p>Bernardo Adeodato</p>
+        <p>Pedro Silveira</p>
       </div>
       <div class="papel" style="margin-bottom: 64px;">
         <h3>CORREÇÃO DE COR</h3>
@@ -91,7 +95,7 @@
       </div>
       <div class="papel" style="width: 100%;">
         <h3>REALIZAÇÃO</h3>
-        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_PNH.png" style="width: 10%; float: left; margin-right: 10%; margin-left: 10%;">
+        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 20%; float: left; margin-right: 7%; margin-left: 8%; margin-top: 1.5%;">
         <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png" style="width: 30%; margin-top: 2%; float: left; margin-right: 11%;">
         <a href="http://jardim.in" target="_blank">
           <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 15%; float: left; margin-top: 1%;">
@@ -128,7 +132,7 @@
       },
       isDeficiente: function() {
         return this.$parent.id !== 'deficiente';
-      },
+      }
     }
   }
 

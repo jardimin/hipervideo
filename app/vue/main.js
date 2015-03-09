@@ -52,12 +52,22 @@
 
 				app.view = ''
 
-				Vue.nextTick(function () {
-					app.db = _.findWhere(app.fulldb.hipervideos,{"id": id})
-					app.view = 'video-view'
-					app.params.video = id
-					app.className = 'is-video-' + id
-				})
+				if (id === 'teste') {
+					Vue.nextTick(function () {
+						app.db = app.fulldb.teste
+						app.view = 'video-view'
+						app.params.video = id
+						app.className = 'is-video-mulher'
+					})
+				} else {
+					Vue.nextTick(function () {
+						app.db = _.findWhere(app.fulldb.hipervideos,{"id": id})
+						app.view = 'video-view'
+						app.params.video = id
+						app.className = 'is-video-' + id
+					})
+				}
+				
 			}
 		}
 	}

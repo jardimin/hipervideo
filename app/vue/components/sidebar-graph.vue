@@ -323,7 +323,7 @@
 
 				var timecodes = _.filter(this.events.timecode, function(timecode){
 					return timecode.start < self.video.time
-				})
+				}) || null
 
 				if(!timecodes){return}
 

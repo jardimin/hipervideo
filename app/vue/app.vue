@@ -91,10 +91,45 @@
 			db: null,
 			view: "",
 			className: "",
+			redes: false,
+			qualidade: 'alta',
+			acessibilidade: 'nada',
+			libras: false,
+			audio_desc: false,
 			params: {
 				video: null,
 				route: null
 			}
+		},
+		watch : {
+			qualidade: function (qualidade) {
+				this.$broadcast('mudou-qualidade', qualidade);
+			},
+			libras: function (val) {
+				this.$broadcast('mudou-libras', val);
+			},
+			audio_desc: function (val) {
+				this.$broadcast('mudou-audio_desc', val);
+			}
+		},
+		attached: function() {
+			this.$on('video-qualidade', function (qualidade) {
+				this.qualidade = qualidade;
+			})
+
+			this.$on('video-acessibilidade', function (acess) {
+				if (acess === 'libras') {
+					this.libras = true;
+					this.audio_desc = false;
+				} else if (acess === 'audio') {
+					this.libras = false;
+					this.audio_desc = true;
+				} else if (acess === 'nada') {
+					this.libras = false;
+					this.audio_desc = false;
+				}
+				this.acessibilidade = acess;
+			})
 		},
 		components: {
 			'home-view': require('./views/home-view.vue'),

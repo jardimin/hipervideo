@@ -133,6 +133,16 @@
 		height: auto !important;
 	}
 
+	.sidebar_cartela {
+		transition: all 0.5s ease 0.5s;
+		position: fixed;
+		bottom: 60px;
+		left: 0;
+		&.expand-enter, &.expand-leave {
+			left: -800px;
+		}
+	}
+
 </style>
 
 <template>
@@ -162,10 +172,25 @@
 
 			<div class="sidebar_content">
 				<in-sidebar-graph></in-sidebar-graph>
-				<in-sidebar-chapter v-with="capitulo: capitulo" v-if="capitulo"></in-sidebar-chapter>
+				<in-sidebar-chapter v-with="capitulo: capitulo, libras: libras, audio_desc: audio_desc" v-if="capitulo"></in-sidebar-chapter>
 				<in-sidebar-block v-repeat="contentBlocks" v-with="video: video" v-transition></in-sidebar-block>
 				<div class="sidebar_opener clickable" v-on="click: openDefaultBlock" v-show="!hasBlocks && !fixedSidebar && !hasInfo" v-transition>
 					<div class="sidebar_opener__inside context-bg">abrir</div>
+				</div>
+			</div>
+
+			<!-- CARTELAS -->
+
+			<div v-show="cartela" class="sidebar_cartela" v-transition="expand">
+				<div class="sidebar_block__header context-bg" style="font-size: 100%;">
+					<div id="cartela_nome">
+						{{contentCartela.title | uppercase}}
+					</div>
+				</div>
+				<div class="sidebar_block__header" style="background: #fff;">
+					<div id="cartela_funcao">
+						{{contentCartela.funcao}}
+					</div>
 				</div>
 			</div>
 
@@ -189,18 +214,17 @@
 		<!-- MARCOS -->
 		
 		<in-botbar-marcos></in-botbar-marcos>
+
+		<!-- ACESSIBILIDADE -->
+
+		<div class="libras" v-show="libras" v-transition>
+			<in-libras v-with="id: id"></in-libras>
+		</div>
+
+		<div class="audio_desc" v-show="audio_desc">
+			<in-audio v-with="id: id"></in-audio>
+		</div>
 		
-		<!-- DEBUG -->
-
-		<!-- <div class="debug">
-			<a id="tres" class="btn" href="#/home">home</a>
-			<a id="tres" class="btn" href="#/mulher">mulher</a>
-			<a id="tres" class="btn" href="#/crianca">crianca</a>
-			<br/>
-			<a id="tres" class="btn" v-on="click: videoPlay">play</a>
-			<a id="tres" class="btn" v-on="click: videoPause">pause</a>
-		</div> -->
-
 	</div>
 </template>
 
@@ -218,11 +242,16 @@
 			return {
 				db: null,
 				events: null,
+				geo: false,
 				counter: 0,
 				contentBlocks: [],
+				contentCartela: {title: "", funcao: ""},
+				cartela: false,
 				fixedSidebar: false,
 				conteudo: {},
 				capitulo: null,
+				libras: false,
+				audio_desc: false,
 				video: {
 					popcorn: null,
 					time: 0,
@@ -237,11 +266,16 @@
 			},
 			hasInfo: function(){
 				return this.params.route.length > 1 && this.params.route[1] == 'info'
+			},
+			hasLibras: function() {
+				return this.libras
 			}
 		},
 		attached: function() {
 
 			this.capitulo = this.db.capitulos[0];
+			this.libras = this.$parent.libras;
+			this.audio_desc = this.$parent.audio_desc;
 
 			var self = this
 
@@ -260,6 +294,13 @@
 			}
 			xhr.send()
 
+			this.$on('mudou-libras', function (val) {
+				self.libras = val;
+			})
+
+			this.$on('mudou-audio_desc', function (val) {
+				self.audio_desc = val;
+			})
 
 			// POPCORN
 
@@ -307,9 +348,18 @@
 				this.video.time = time
 				this.video.duration = duration
 				this.video.progress = progress
+				this.$broadcast('libras-update', time);
 				if (cap_next && time >= this.capitulo.timecode) {
 					this.capitulo = cap_next;
+					$$$('#chap').addClass('aberto')
+          setTimeout(function() {
+            $$$('#chap').removeClass('aberto')
+          }, 5000)
 				} else if (cap_prev && time <= cap_prev.timecode) {
+					$$$('#chap').addClass('aberto')
+          setTimeout(function() {
+            $$$('#chap').removeClass('aberto')
+          }, 5000)
 					this.capitulo = cap_prev;
 				}
 			})
@@ -334,6 +384,7 @@
 		},
 		detached: function(){
 			$$$(window).unbind('mousemove', this.handleMouseMove)
+			$$$(document).unbind('keydown', this.keyEvents)
 		},
 		methods: {
 			infoOpen: function(info){
@@ -423,7 +474,7 @@
 				var video = document.getElementById('hipVid-' + this.id);
 				switch(e.which) {
 					case 32 : 
-						if (video.paused && this.conteudo === null) {
+						if (video.paused) {
 							video.play();
 						} else if (!video.paused) {
 							video.pause();
@@ -436,15 +487,14 @@
 				var node = _.findWhere(this.events.nodes,{"id": event.node})
 
 				if(node.funcao){
-					this.contentBlocks.unshift({
+					this.contentCartela = {
 						id: event.id,
 						videoID: this.params.video,
-						start: event.start,
-						end: event.end,
 						title: node.title,
 						funcao: node.funcao,
 						ap: true
-					})
+					}
+					this.cartela = true
 				} else {
 					this.contentBlocks.unshift({
 						id: event.id,
@@ -458,7 +508,8 @@
 				}
 
 				if(node.geo){
-					this.$.map.panTo(node.geo)
+					this.$broadcast('event-map', node.geo);
+					this.geo = true
 				}
 
 				if (node.icon === 'marco') {
@@ -485,7 +536,8 @@
 				})
 
 				if(node.geo){
-					this.$.map.panTo(node.geo)
+					this.$broadcast('event-map', node.geo);
+					this.geo = true
 				}
 
 				this.fixedSidebar = false;
@@ -497,6 +549,9 @@
 				this.contentBlocks = _.reject(this.contentBlocks, function(block){
 					return block.start === null ? false : block.id === id
 				})
+				this.cartela = null
+				this.geo = false
+				this.$broadcast('remove-event-map', this.db.geo);
 			}
 		},
 		components: {
@@ -511,7 +566,9 @@
 			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
 			'in-sidebar-info': require('../components/sidebar-info.vue'),
-			'in-creditos': require('../components/creditos.vue')
+			'in-creditos': require('../components/creditos.vue'),
+			'in-libras': require('../components/libras.vue'),
+			'in-audio': require('../components/audio_desc.vue')
 		}
 	}
 </script>

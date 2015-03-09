@@ -23,13 +23,30 @@
     {"start": 1305, "end": 1315, "node": 21},
     {"start": 1395, "end": 1405, "node": 22},
     {"start": 1430, "end": 1440, "node": 23},
-    {"start": 1500, "end": 1510, "node": 24}
+    {"start": 1500, "end": 1510, "node": 24},
+    {"start": 14, "end": 22, "node": 29},
+    {"start": 64, "end": 69, "node": 30},
+    {"start": 153, "end": 160, "node": 31},
+    {"start": 182, "end": 187, "node": 32},
+    {"start": 387, "end": 393, "node": 33},
+    {"start": 451, "end": 456, "node": 34},
+    {"start": 616, "end": 622, "node": 35},
+    {"start": 626, "end": 633, "node": 36},
+    {"start": 679, "end": 685, "node": 37},
+    {"start": 789, "end": 794, "node": 38},
+    {"start": 814, "end": 822, "node": 39},
+    {"start": 949, "end": 956, "node": 40},
+    {"start": 1008, "end": 1013, "node": 41},
+    {"start": 1144, "end": 1154, "node": 42},
+    {"start": 1244, "end": 1252, "node": 43},
+    {"start": 1285, "end": 1292, "node": 44}
   ],
   "nodes": [
     {
       "id": 1,
       "title": "PNAISM",
       "icon": "marco",
+      "graph": true,
       "component": {
         "type": "text",
         "ano": 2004,
@@ -50,65 +67,647 @@
       "title": "Violência Obstétrica",
       "icon": "conceito",
       "component": {
-        "type": "databars",
+        "type": "text",
         "fields": {
-          "excerpt": "Violência obstétrica é a apropriação do corpo e processos reprodutivos das mulheres por profissionais da saúde, por meio de tratamento desumanizado, abuso de medicalização e patologização dos processos naturais, causando perda da autonomia e capacidade de decidir livremente sobre seus corpos impactando na sexualidade e negativamente na qualidade de vida das mulheres.",
-          "spreadsheet": "/img/eventos/teste.jpg"
+          "excerpt": "Violência obstétrica é a apropriação do corpo e processos reprodutivos das mulheres por profissionais da saúde, por meio de tratamento desumanizado, abuso de medicalização e patologização dos processos naturais, causando perda da autonomia e capacidade de decidir livremente sobre seus corpos impactando na sexualidade e negativamente na qualidade de vida das mulheres."
         }
+      },
+      "conteudo": {
+        "texto": "",
+        "databars": "1g5qlvrvMShdOMNsrRHaQCUYsPh4b-4ldkfDw-tOSzdw" 
       }
     },
     {
       "id": 3,
-      "title": "Ambiência",
-      "icon": "conceito",
+      "title": "Centro de Parto Normal (CPN)",
+      "icon": "dispositivo",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
+          "excerpt": "Unidade de saúde destinada à assistência ao parto de baixo risco pertencente a um estabelecimento hospitalar, localizada em suas dependências internas ou imediações."
+        }
+      },
+      "conteudo": {
+        "texto": "A Portaria Nº 11, de 7 de janeiro de 2015, define as diretrizes para implantação e habilitação de Centro de Parto Normal (CPN), no âmbito do Sistema Único de Saúde (SUS), para o atendimento à mulher e ao recém-nascido no momento do parto e do nascimento. Considera-se que o parto é de baixo risco quando a gestação atual da parturiente é considerada de baixo risco e sua história reprodutiva não apresenta fatores de risco materno e fetal. Além disso, a avaliação obstétrica no momento da admissão deve evidenciar um trabalho de parto normal, realizado sem intervenção instrumental com ou sem episiotomia. O quarto de pré-parto, parto e puerpério (PPP) é um espaço destinado ao pré-parto, parto e puerpério, privativo para cada mulher e seu acompanhante, onde a atenção aos períodos clínicos do parto e do nascimento ocorre no mesmo ambiente, da internação à alta, com ambiência adequada à Resolução - RDC nº 36/ANVISA, de 3 de junho de 2008, que dispõe sobre Regulamento Técnico para Funcionamento dos Serviços de Atenção Obstétrica e Neonatal.",
+        "databars": "1g5qlvrvMShdOMNsrRHaQCUYsPh4b-4ldkfDw-tOSzdw",
+        "mapa": {
+          "geo": [-16.05, -61.08, 4],
+          "locais": "1lRwPcZ3fEffamlrjMxnqLlI8LiETnyK8JeBdP_E1s5E"
         }
       }
     },
     {
       "id": 4,
-      "title": "Secretaria de saúde",
-      "icon": "dispositivo",
+      "title": "Boas práticas no parto e nascimento",
+      "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
+          "excerpt": "Em 1996, a Organização Mundial de Saúde baseada em evidencia científicas mundiais divulgou uma classificação de práticas comuns no parto normal e nascimento, recomendando aquelas que foram identificadas como úteis e que devem ser estimuladas."
         }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Classificação das práticas OMS",
+          "link": ""
+          }]
       }
     },
     {
       "id": 5,
-      "title": "Médicos",
-      "icon": "funcao",
+      "title": "CPN e a Mudança do modelo assistencial",
+      "icon": "conceito",
       "component": {
-        "type": "profile",
+        "type": "text",
         "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.",
-          "image": "/img/eventos/teste.jpg"
+          "excerpt": "O CPN, com atuação de enfermeiro obstétrico, e a casa da gestante bebê e puérpera, vinculada a serviços de alto risco, são considerados serviços estratégicos para mudança do modelo de atenção obstétrica e neonatal tecnocrático para o modelo humanizado. As ações ofertadas sinalizam a compreensão de que para o incentivar o parto normal, incrementar as boas práticas e reduzir as cesáreas desnecessárias  é preciso mais que capacitação dos profissionais para atuação na assistência, sendo necessárias mudanças na gestão e ambiência."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "mapa": {
+          "geo": [-16.05, -61.08, 4],
+          "locais": "1lRwPcZ3fEffamlrjMxnqLlI8LiETnyK8JeBdP_E1s5E"
         }
       }
     },
     {
       "id": 6,
-      "title": "Saúde",
+      "title": "Ambiência",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat."
+          "excerpt": "Ambiência refere-se ao tratamento dado ao espaço físico entendido como espaço social, profissional e de relações interpessoais que deve proporcionar atenção acolhedora, resolutiva e humana. Ao adotar o conceito de Ambiência para a arquitetura nos espaços da Saúde, atinge-se um avanço qualitativo no debate da humanização dos territórios de encontros do SUS. Vai-se além da composição técnica, simples e formal dos ambientes, passando a considerar as situações que são construídas em determinados espaços e num determinado tempo, e vivenciadas por uma grupalidade, um grupo de pessoas com seus valores culturais e relações sociais. "
+        }
+      },
+      "conteudo": {
+        "texto": "Três eixos devem ser considerados na composição de uma ambiência: o espaço que visa à confortabilidade focada na privacidade e individualidade dos sujeitos envolvidos, valorizando elementos do ambiente que interagem com as pessoas – cor, cheiro, som, iluminação, morfologia...–, e garantindo conforto aos trabalhadores e usuários; o espaço que possibilita a produção de subjetividades – encontro de sujeitos – por meio da ação e reflexão sobre os processos de trabalho; e o espaço usado como ferramenta facilitadora do processo de trabalho, favorecendo a otimização de recursos, o atendimento humanizado, acolhedor e resolutivo. (cartilha ambiência)",
+        "arquivos": [{
+          "nome": "Cartilhas HumanizaSUS Ambiência",
+          "link": "http://www.redehumanizasus.net/sites/default/files/ambiencia_2ed.pdf"
+          }]
+      }
+    },
+    {
+      "id": 7,
+      "title": "Vinculação da gestante ",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Toda gestante assistida pelo Sistema Único de Saúde (SUS) tem direito ao conhecimento e à vinculação prévia à maternidade na qual será realizado seu parto e à maternidade na qual ela será atendida nos casos de intercorrência pré-natal."
+        }
+      },
+      "conteudo": {
+        "texto": "Estudo evidenciou que as práticas educativas desenvolvidas por enfermeiras sobre a vivência da gravidez e do parto no Centro de Parto Normal favoreceram a vivência tranquila da gestação, o vínculo mãe-bebê, a melhor aceitação da gravidez e a livre expressão sobre sexualidade. As práticas educativas tiveram repercussões na vivência do parto, pois possibilitaram às mulheres a desmistificação da dor do parto, o empoderamento e a vivência do apreendido (PROGIANTI; COSTA, 2012). \n\nLei nº 11.634, de 27 de setembro 2007 dispõe sobre o direito da gestante ao conhecimento e a vinculação à maternidade onde receberá assistência no âmbito do Sistema Único de Saúde. Artigo PROGIANTI, Jane Márcia; COSTA, Rafael Ferreira da. Práticas educativas desenvolvidas por enfermeiras: repercussões sobre vivências de mulheres na gestação e no parto. Rev. bras. enferm.,  Brasília ,  v. 65, n. 2, Apr.  2012 .",
+        "arquivos": [{
+          "nome": "Repercursões de práticas educativas desenvolvidas por enfermeiras",
+          "link": "http://www.scielo.br/scielo.php?script=sci_arttext&pid=S0034-71672012000200009&lng=en&nrm=iso"
+          }]
+      }
+    },
+    {
+      "id": 8,
+      "title": "Rede Cegonha e Redes de atenção",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2011,
+        "fields": {
+          "excerpt": "A **Rede Cegonha**, foi instituída em **2011**, tendo como objetivos: Fomentar a implementação de novo modelo de atenção à saúde da mulher e à saúde da criança com foco na atenção ao parto, ao nascimento, ao crescimento e ao desenvolvimento da criança de zero aos vinte e quatro meses; Organizar a Rede de Atenção à Saúde Materna e Infantil para que esta garanta acesso, acolhimento e resolutividade; Reduzir a mortalidade materna e infantil com ênfase no componente neonatal."
+        }
+      },
+      "conteudo": {
+        "texto": "A organização da RC visa possibilitar o provimento contínuo de ações de atenção à saúde materna e infantil para a população de determinado território, mediante a articulação dos distintos pontos de atenção à saúde, do sistema de apoio, do sistema logístico e da governança da rede de atenção à saúde, a partir das diretrizes: \n- garantia do acolhimento com avaliação e classificação de risco e vulnerabilidade, ampliação do acesso e melhoria da qualidade do pré-natal; \n- garantia de vinculação da gestante à unidade de referência e ao transporte seguro; \n- garantia das boas práticas e segurança na atenção ao parto e nascimento; \n- garantia da atenção à saúde das crianças de zero a vinte e quatro meses com qualidade e resolutividade; \n- e garantia de acesso às ações do planejamento reprodutivo. \n\nA RC segue as diretrizes para a organização da Rede de Atenção à Saúde no âmbito do SUS.",
+        "arquivos": [{
+          "nome": "PORTARIA Nº 4.279 - Diretrizes Redes de Atenção",
+          "link": "http://conselho.saude.gov.br/ultimas_noticias/2011/img/07_jan_portaria4279_301210.pdf"
+          },
+          {
+          "nome": "PORTARIA Nº 1.459 - Rede Segonha no SUS",
+          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2011/prt1459_24_06_2011.html"
+          }]
+      }
+    },
+    {
+      "id": 9,
+      "title": "Maternidade José Maria",
+      "icon": "dispositivo",
+      "geo": [-12.95939, -38.48457, 16],
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "A Maternidade de Referência Professor José Maria de Magalhães Neto localiza-se no Complexo Hospitalar Cezar de Araújo, Bairro de Pau Miúdo, Salvador/BA. Foi inaugurada em junho de 2006, está estruturada como Referência Terciária, compondo o sistema estadual de referência hospitalar para atendimento a Gestação de Alto Risco, oferecendo serviços de pronto atendimento, ambulatório e internação, especializados para o atendimento da gestante de alto risco, bem como Atenção Neonatal e Terapia Intensiva. O apoio à essa maternidade ofertado pelo MS foi pactuado no mês de março de 2012."
+        }
+      },
+      "conteudo": {
+        "texto": "A Portaria Nº 11, de 7 de janeiro de 2015, define as diretrizes para implantação e habilitação de Centro de Parto Normal (CPN), no âmbito do Sistema Único de Saúde (SUS), para o atendimento à mulher e ao recém-nascido no momento do parto e do nascimento. Considera-se que o parto é de baixo risco quando a gestação atual da parturiente é considerada de baixo risco e sua história reprodutiva não apresenta fatores de risco materno e fetal. Além disso, a avaliação obstétrica no momento da admissão deve evidenciar um trabalho de parto normal, realizado sem intervenção instrumental com ou sem episiotomia. O quarto de pré-parto, parto e puerpério (PPP) é um espaço destinado ao pré-parto, parto e puerpério, privativo para cada mulher e seu acompanhante, onde a atenção aos períodos clínicos do parto e do nascimento ocorre no mesmo ambiente, da internação à alta, com ambiência adequada à Resolução - RDC nº 36/ANVISA, de 3 de junho de 2008, que dispõe sobre Regulamento Técnico para Funcionamento dos Serviços de Atenção Obstétrica e Neonatal.",
+        "mapa": {
+          "geo": [-12.95939, -38.48457, 16],
+          "locais": [{
+            "nome": "Maternidade de Referência Professor José Maria de Magalhães Neto",
+            "lat": -12.95990,
+            "lon": -38.48417,
+            "site": "http://www.saude.ba.gov.br/dgrp/index.php?option=com_content&view=article&id=327&Itemid=175"
+            }]
         }
       }
+    },
+    {
+      "id": 10,
+      "title": "Acolhimento com Classificação de risco",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "O processo de acolhimento deve ocorrer em articulação com as várias diretrizes propostas para as mudanças nos processos de trabalho e gestão dos serviços: Clínica Ampliada, Cogestão, Ambiência, Valorização do trabalho em saúde. O acolhimento no campo da saúde deve ser entendido, ao mesmo tempo, como diretriz ético/estético/política constitutiva dos modos de se produzir saúde e como ferramenta tecnológica relacional de intervenção na escuta, na construção de vínculo, na garantia do acesso com responsabilização e na resolutividade dos serviços."
+        }
+      },
+      "conteudo": {
+        "texto": "O acolhimento como postura e prática nas ações de atenção e gestão nas unidades de saúde, a partir da análise dos processos de trabalho, favorece a construção de relação de confiança e compromisso entre as equipes e os serviços. O acolhimento na porta de entrada ganha sentido ao ser entendido como parte do processo de produção de saúde, como algo que qualifica a relação e que, portanto, é passível de ser apreendido e trabalhado em todo e qualquer encontro no serviço de saúde. \nA classificação de risco é uma ferramenta que, além de organizar a fila de espera e propor outra ordem de atendimento que não a ordem de chegada,  também garante o atendimento imediato do usuário com grau de risco elevado; informa o paciente que não corre risco imediato, assim como a seus familiares, sobre o tempo provável de espera; promove o trabalho em equipe por meio da avaliação contínua do processo; fornece melhores condições de trabalho para os profissionais pela discussão da ambiência e implantação do cuidado horizontalizado; aumenta a satisfação dos usuários e, principalmente, possibilita e instiga a pactuação e a construção de redes internas e externas de atendimento.",
+        "arquivos": [{
+          "nome": "Cartilhas HumanizaSUS Acolhimento e Classificação de Risco PNH",
+          "link": "http://www.redehumanizasus.net/sites/default/files/10_0378_final_acolhimento_e_classificacao_de_risco_ue.pdf"
+          }]
+      }
+    },
+    {
+      "id": 11,
+      "title": "Atuação da enfermeira obstétrica na maternidade",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "No contexto de reorientação assistencial, a enfermeira obstétrica passa a ser incorporada oficialmente no arcabouço legal do SUS, como uma profissional de saúde que busca incentivar o parto normal, promover a expressão da sensibilidade, subjetividade e intersubjetividade no ambiente do cuidado, integrando o companheiro e a família; estimulando a fisiologia do parir, propiciando o protagonismo feminino e respeitando sua cidadania e seus os direitos humanos e reprodutivos."
+        }
+      },
+      "conteudo": {
+        "texto": "A Enfermeira Obstétrica tem seu exercício profissional regulamentado pela Lei n. 7.498/86, o Decreto-Lei 94.406/87. Em relação à atenção obstétrica, a enfermeira realiza a prestação de assistência de enfermagem à gestante, parturiente, puérpera e ao recém-nascido; o acompanhamento da evolução e do trabalho de parto; execução e assistência obstétrica em situação de emergência e execução do parto sem distocia. A partir de 1999, o Ministério da Saúde investiu na formação de enfermeiras obstétricas por meio do financiamento de cursos de especialização como forma de expansão do quantitativo destas profissionais no sistema de saúde. ",
+        "databars": "1bRw6Ni9CxF0HujXlEKdBerxWAUjXRgyKCbxmuUGgeoQ",
+        "arquivos": [{
+          "nome": "Legislação Profissional e Marcos Regulatórios",
+          "link": "http://abenfo.redesindical.com.br/arqs/manuais/039.pdf ; Artigo Reflexões sobre a assistência de enfermagem prestada à parturiente http://dx.doi.org/10.1590/S0034-71672010000400023"
+          }]
+      }
+    },
+    {
+      "id": 12,
+      "title": "Redução da mortalidade materna e infantil e PQM",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "###Plano de Qualificação das Maternidades (PQM) \n\nPara propiciar a mudança do modelo de atenção e gestão ao parto e nascimento no SUS, diminuir a mortalidade materna e infantil e qualificar o cuidado, foi apresentado pelo Ministério da Saúde, como uma das ações do Pacto pela Redução da Mortalidade Infantil na Amazônia Legal e Nordeste, o Plano de Qualificação das Maternidades e Redes Perinatais (PQM), em 2009. Com contribuições da Política Nacional de Humanização, foram definidas como diretrizes a gestão democrática das maternidades; o acolhimento com classificação de risco; o direito a acompanhante e ambiência; e a construção de redes de cuidado perinatal. O apoio institucional foi apresentado como estratégia para fomentar mudanças nas 26 maternidades prioritárias, para uma nova ética no trabalho, baseada na construção coletiva e cooperativa de soluções aos problemas identificados, o que requer a produção de mudanças na lógica e nos modos de organização do trabalho (PASCHE; VILELA; MARTINS, 2010)."
+        }
+      },
+      "conteudo": {
+        "texto": "A elaboração do PQM foi decorrente das avaliações das metas dos Objetivos de Desenvolvimento do Milênio, realizadas nos anos anteriores, que indicavam que o país teria dificuldade para atingir a redução da mortalidade infantil e a qualificação da saúde da mulher, com redução da mortalidade materna. A PNH argumentou que não deveria limitar-se a um pacto macropolítico com governadores e secretários a ser incluído na agenda política de ações para redução da mortalidade infantil e materna, com contrapartida de reforma e equipamentos para serviços de saúde, mantendo a lógica de atuação predominante até o momento. Foi defendido que era necessário alterar, além das estruturas físicas e equipamentos dos serviços, os processos de trabalho e de gestão, pois a mortalidade infantil e materna estava relacionada ao modelo de parto e nascimento. (capitulo 2 SM DAPES)",
+        "databars": "1F5eo1cqpbXrLahGHrDqWO0390SqgqM-eGlyNvmrsEFY",
+        "arquivos": [{
+          "nome": "Cadernos HumanizaSUS - Volume 4 Humanização do parto e do nascimento",
+          "link": "http://www.redehumanizasus.net/sites/default/files/caderno_humanizasus_v4_humanizacao_parto.pdf"
+          },
+          {
+          "nome": "Portal ODM - Objetivos de desenvolvimento do Milênio",
+          "link": "http://www.portalodm.com.br/ "
+          }]
+      }
+    },
+    {
+      "id": 13,
+      "title": "Boas práticas nas UTIN",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "###Unidades de Terapia Intensiva Neonatal - UTIN \n\nNa perspectiva da integralidade e da humanização da assistência, as práticas neonatais que dificultam o relacionamento entre o bebê e seus pais dão lugar àquelas que se preocupam em atender as necessidades psicobiológicas e sociais da criança e da família. O modelo fundamentado na lógica mecanicista cuja finalidade é a manutenção e a recuperação das condições fisiológicas do bebê é substituído por um modelo fundamentado no processo saúde-doença-cuidado que enfatiza a assistência integral, humanizada e preventiva (SCOCHI, 2000). Para isso, precisam ser criadas estratégias que facilitem a permanência da mãe junto ao bebê nas situações em que se fazem necessários os cuidados hospitalares e que possibilitem o acompanhamento e orientação da mãe/família durante a internação do recém-nascido."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Texto Práticas cuidadoras como orientação da atenção à saúde:",
+          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/cadernos_humanizasus_atencao_hospitalar.pdf"
+          }]
+      }
+    },
+    {
+      "id": 14,
+      "title": "Contato pele a pele e Método Canguru",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "O contato pele-a-pele, no Método Canguru, começa com o toque evoluindo até a posição canguru. Inicia-se de forma precoce e crescente, por livre escolha da família, pelo tempo que ambos entenderem ser prazeroso e suficiente. Esse Método permite uma maior participação dos pais e da família nos cuidados neonatais. O Método Canguru é um modelo de assistência perinatal voltado para a melhoria da qualidade do cuidado, desenvolvido em três etapas conforme Portaria GM/MS no 1.683, de 12 de julho de 2007 que: parte dos princípios da atenção humanizada; reduz o tempo de separação entre mãe e recém‐nascido e favorece o vínculo; permite um controle térmico adequado; contribui para a redução do risco de infecção hospitalar; reduz o estresse e a dor do recém‐nascido; aumenta as taxas de aleitamento materno; melhora a qualidade do desenvolvimento neurocomportamental e psico‐afetivo do recém‐nascido; propicia um melhor relacionamento da família com a equipe de saúde; possibilita maior competência e confiança dos pais no cuidado do seu filho inclusive após a alta hospitalar; reduz o número de reinternações; e contribui para a otimização dos leitos de Unidades de Terapia Intensiva e de Cuidados Intermediários Neonatais. "
+        }
+      },
+      "conteudo": {
+        "texto": "O atendimento perinatal tem sido foco prioritário do Ministério da Saúde, já que no componente neonatal reside o maior desafio para a redução da mortalidade infantil nas diferentes regiões brasileiras. O elevado número de neonatos de baixo peso ao nascimento (peso inferior a 2.500g, sem considerar a idade gestacional) constitui um importante problema de saúde e representa um alto percentual na morbimortalidade neonatal. Além disso, tem graves consequências médicas e sociais. Nesse contexto, o Método Canguru, foi introduzido em algumas unidades de saúde brasileiras na década de 90 e incorporado às políticas de saúde no campo perinatal. Tendo como base a Norma de Atenção Humanizada ao Recém‐nascido de Baixo Peso – Método Canguru, a Área Técnica de Saúde da Criança Aleitamento Materno do Ministério da Saúde tem desenvolvido um conjunto de ações visando o fortalecimento do Método Canguru no Brasil.",
+        "arquivos": [{
+          "nome": "Manual técnico Atenção humanizada ao recém‐nascido de baixo peso: Método Canguru",
+          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/metodo_canguru_manual_tecnico_2ed.pdf Portaria nº 1.683, de 12 de julho de 2007, aprova as Normas de Orientação para a Implantação do Método Canguru http://bvsms.saude.gov.br/bvs/saudelegis/gm/2007/prt1683_12_07_2007.html"
+          }]
+      }
+    },
+    {
+      "id": 15,
+      "title": "Direito ao Acompanhante",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2005,
+        "fields": {
+          "excerpt": "Em 2005, foi garantido pela Lei nº 11.108/2005 e regulamentado pela Portaria nº 2.418/2005 o direito de acompanhante à parturiente, de sua livre escolha durante o trabalho de parto, parto e pós-parto imediato. Estão incluídos, no valor da diária de acompanhante, a acomodação adequada e o fornecimento das principais refeições."
+        }
+      },
+      "conteudo": {
+        "texto": "###A Lei nº 11.108, de 7 de abril de 2005 \n\nGarantir às parturientes o direito à presença de acompanhante durante o trabalho de parto, parto e pós-parto imediato, no âmbito do Sistema Único de Saúde - SUS \n###Portaria nº 2.418, de 2 de dezembro de 2005 \n\nRegulamenta a presença de acompanhante para mulheres em trabalho de parto, parto e pós-parto imediato nos hospitais públicos e conveniados com o Sistema Único de Saúde - SUS",
+        "arquivos": [{
+          "nome": "Lei nº 11.108",
+          "link": "http://www.planalto.gov.br/ccivil_03/_Ato2004-2006/2005/Lei/L11108.htm"
+          },
+          {
+          "nome": "Portaria nº 2.418",
+          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2005/prt2418_02_12_2005.html"
+          },
+          {
+          "nome": "HumanizaSUS : visita aberta e direito a acompanhante",
+          "link": "http://www.redehumanizasus.net/sites/default/files/humanizasus_visita_aberta_direito_acompanhante_0.pdf"
+          },
+          {
+          "nome": "Carta dos direitos dos usuários da saúde",
+          "link": "http://www.redehumanizasus.net/sites/default/files/af_carta_usuarios_saude_sem_logo_0.pdf"
+          }]
+      }
+    },
+    {
+      "id": 16,
+      "title": "Doulas",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "As doulas têm sido associadas a diversos resultados positivos para a área Obstétrica, especialmente por meio de alterações na percepção do parto, entendendo-o e restituindo-o como evento social e não como doença, ou seja, restituindo a dimensão social que envolve o processo de parir. Assim, por meio do envolvimento da mulher na protagonização do parto e estando ela acompanhada pela equipe de saúde, mas também por seus familiares e comunidade, aumenta-se a sensação de sua segurança e dos familiares em relação ao processo gravídico (PUGIN, 2008; lOW; MOFFAT; BRENNAN, 2006; KOUMOUITZES- DOUVIA; CARR, 2006). Autores constataram que o papel da doula é significativo, diminuiu o tempo do trabalho de parto, o uso de medicamentos, ansiedade, medo, além de proporcionar bem-estar à mulher acompanhada (GINGER, 2005; GIllIlAND, 2002; KAYNE; GREUlINCH; AlBERS, 2001)."
+        }
+      },
+      "conteudo": {
+        "texto": "Historicamente a palavra doula foi utilizada para descrever aquela que assiste a mulher em casa após o parto, auxiliando no cuidado com o bebê e os afazeres domésticos. Atualmente possui vertente mais técnica ancorada em saberes biomédicos, embora norteada pela humanização da assistência obstétrica (DONA, 2012; SIlvA et al., 2012). Apenas em 2013 as doulas foram classificadas como ocupação laboral no Brasil. Porém, há anos são reconhecidas socialmente por desenvolver atividades assistenciais nos variados cenários do trabalho de parto, parto e puerpério (BRASIl, 2013).",
+        "databars": "1F5eo1cqpbXrLahGHrDqWO0390SqgqM-eGlyNvmrsEFY",
+        "arquivos": [{
+          "nome": "Texto A Doula na Assistência ao Parto e Nascimento",
+          "link": "http://www.redehumanizasus.net/sites/default/files/caderno_humanizasus_v4_humanizacao_parto.pdf"
+          },
+          {
+          "nome": "Portal ODM - Objetivos de desenvolvimento do Milênio",
+          "link": "http://www.portalodm.com.br/ "
+          }]
+      }
+    },
+    {
+      "id": 17,
+      "title": "Maternidade Tsylla Balbino",
+      "icon": "dispositivo",
+      "geo": [-12.9627283, -38.4917117, 18],
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "A Maternidade Tsylla Balbino é um serviço público estadual, referência para gestações de risco habitual, localizada em Salvador, no distrito sanitário da Liberdade.\n\nA unidade desde 2010 recebe apoio institucional do Ministério da Saúde pois fez parte do Plano de Qualificação de Maternidades e Redes Perinatais do Nordeste e Amazônia Legal e posteriormente da Rede Cegonha. "
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "mapa": {
+          "geo": [-12.9627283, -38.4917117, 18],
+          "locais": [{
+            "nome": "Maternidade de Referência Professor José Maria de Magalhães Neto",
+            "lat": -12.9627283,
+            "lon": -38.4917117,
+            "site": "http://mtbalbino.blogspot.com.br/"
+            }]
+        }
+      }
+    },
+    {
+      "id": 18,
+      "title": "Apoio institucional",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Na Rede Cegonha, a realização do apoio institucional tem sido a estratégia para induzir mudanças nas articulações no território. A RC conta com apoiadores matriciais, apoiadores temáticos para cada estado e apoiadores de serviço para as maternidades prioritárias. O modo de trabalho adotado foi o utilizado no PQM, no qual o apoiador institucional atua formando coletivos para discussão dos processos de gestão e atenção nas maternidades visando a humanização e qualificação. (capitulo 2 SM DAPES)"
+        }
+      },
+      "conteudo": {
+        "texto": "Esse modo de trabalhar evidencia a compreensão de que não se alteram modelos de gestão e atenção com o desenvolvimento de ações circunscritas as maternidades, sendo preciso estender o apoio aos outros pontos da rede. Evidencia-se a aposta e confiança no apoio como estratégia para mudança do modelo, por permitir articular com o território, aproximando o MS do cotidiano dos serviços. Essa estratégia modifica radicalmente os eixos de comunicação entre MS e demais entes no sentido da ampliação do diálogo e co-gestão (capitulo 2 SM DAPES). ",
+        "arquivos": [{
+          "nome": "Revista Interface – suplemento “Apoio institucional na Política Nacional de Humanização”",
+          "link": "http://www.scielo.br/scielo.php?script=sci_issuetoc&pid=1414-328320140005&lng=pt&nrm=iso"
+          }]
+      }
+    },
+    {
+      "id": 19,
+      "title": "Gestão colegiada / Cogestão",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "A gestão participativa é um valioso instrumento para a construção de mudanças nos modos de gerir e nas práticas de saúde, contribuindo para tornar o atendimento mais eficaz/efetivo e motivador para as equipes de trabalho. A cogestão é um modo de administrar que inclui o pensar e o fazer coletivo, sendo portanto uma diretriz ético- política que visa democratizar as relações no campo da saúde."
+        }
+      },
+      "conteudo": {
+        "texto": "O modelo de gestão que a Política Nacional de Humanização propõe é centrado no trabalho em equipe, na construção coletiva (planeja quem executa) e em espaços coletivos que garantem que o poder seja de fato compartilhado, por meio de análises, decisões e avaliações construídas coletivamente. Os colegiados são espaços coletivos tanto dos gestores e dos trabalhadores da saúde quanto dos usuários. Espaços em que há discussão e tomada de decisões no seu campo de ação de acordo com as diretrizes e contratos definidos.",
+        "arquivos": [{
+          "nome": "Cartilhas HumanizaSUS Gestão participativa e cogestão",
+          "link": "http://www.redehumanizasus.net/sites/default/files/10_0380_final_gestao_participativa_e_cogestao.pdf"
+          }]
+      }
+    },
+    {
+      "id": 20,
+      "title": "Fórum perinatal",
+      "icon": "dispositivo",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "O Fórum Perinatal, um dos espaços coletivos de fundamental importância para a construção da rede de cuidados perinatal, é entendido como dispositivo e estratégia transformadora dos processos de intervenção em contextos de organização, de articulação de serviços e de qualificação do cuidado em saúde. "
+        }
+      },
+      "conteudo": {
+        "texto": "O Fórum Perinatal é um espaço plural de construção de propostas, projetos, desenvolvimento de ações voltadas para a mudança de modelo de gestão e da atenção obstétrica e neonatal, propiciando a transversalidade das práticas e dos saberes, a tomada de decisões a partir de situações- problema identificados e pactuações para efetivação de propostas para qualificar o cuidado em saúde para mulheres e famílias, em rede. Demanda que seja organizado por um grupo técnico da Secretaria Estadual e ou Municipal de Saúde, com propostas de pautas e logística organizativa prévia a cada encontro, bem como de elaboração de ata/ memória enviada a todos os participantes. Propõe-se que seja constituído como espaço de debates pertinentes à realidade dos serviços, das necessidades locais de saúde baseadas em indicadores epidemiológicos do território e de suas respectivas regiões de saúde, além de percepções e significados presentes no coletivo de participantes envolvidos na proposta de reorganização da rede e do modelo de atenção. Os Fóruns foram incorporados, a partir de 2008, com o Plano de Qualificação das Maternidades, proporcionando experiências práticas e de construções coletivas desenvolvidas pela equipe de apoiadores institucionais e supervisores (FIGUEIREDO; LANSKY, 2014). Em 2011, os Fóruns foram integrados à Rede Cegonha. ",
+        "mapa": {
+          "geo": [-16.05, -61.08, 4],
+          "locais": "1BZRhr7aoRFqHpcLxn-RZcLEgYaaM_OKsSGKvEVhsClM"
+        },
+        "arquivos": [{
+          "nome": "Texto Fóruns Perinatais no Âmbito do Plano de Qualificação,",
+          "link": "http://www.redehumanizasus.net/sites/default/files/caderno_humanizasus_v4_humanizacao_parto.pdf "
+          }]
+      }
+    },
+    {
+      "id": 21,
+      "title": "Opressão social e saúde da mulher",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "É imprescindível a incorporação da perspectiva de gênero na análise do perfil epidemiológico e no planejamento de ações de saúde, que tenham como objetivo promover a melhoria das condições de vida, a igualdade e os direitos de cidadania da mulher. Além disso, a violência contra as mulheres não pode ser entendida sem se considerar a dimensão de gênero, ou seja, a construção social, política e cultural da(s) masculinidade(s) e da(s) feminilidade(s), assim como as relações entre homens e mulheres. É um fenômeno, portanto, que se dá no nível relacional e societal, requerendo mudanças culturais, educativas e sociais para seu enfrentamento, bem como o reconhe- cimento de que as dimensões de raça/etnia, de geração e de classe contribuem para sua exacerbação. "
+        }
+      },
+      "conteudo": {
+        "texto": "O gênero, como elemento constitutivo das relações sociais entre homens e mulheres, é uma construção social e histórica. É construído e alimentado com base em símbolos, normas e instituições que definem modelos de masculinidade e feminilidade e padrões de comportamento aceitáveis ou não para homens e mulheres. O gênero delimita campos de atuação para cada sexo, dá suporte à elaboração de leis e suas formas de aplicação. Também está incluída no gênero a subjetividade de cada sujeito, sendo única sua forma de reagir ao que lhe é oferecido em sociedade. O gênero é uma construção social sobreposta a um corpo sexuado (SCOTT, 1989). Na maioria das sociedades, as relações de gênero são desiguais. As desigualdades de gênero tendem a aprofundar outras desigualdades sociais e a discriminação de classe, raça, casta, idade, orientação sexual, etnia, deficiência, língua ou religião, dentre outras (HERA, 1995).",
+        "arquivos": [{
+          "nome": "Política Nacional de Enfrentamento à Violência Contra às Mulheres",
+          "link": "http://www.spm.gov.br/sobre/publicacoes/publicacoes/2011/politica-nacional"
+          }]
+      }
+    },
+    {
+      "id": 22,
+      "title": "Mapa de vinculação",
+      "icon": "dispositivo",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Vinculação dos territórios da Atenção Básica às maternidades e ao CPN."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "mapa": {
+          "geo": [-16.05, -61.08, 4],
+          "locais": "1lRwPcZ3fEffamlrjMxnqLlI8LiETnyK8JeBdP_E1s5E"
+        }
+      }
+    },
+    {
+      "id": 23,
+      "title": "Pré-natal na APS",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2007,
+        "fields": {
+          "excerpt": "A assistência pré-natal pode favorecer o prognóstico materno e prevenir a mortalidade materna, por meio de intervenções relacionadas a promoção da saúde materna, prevenção dos riscos e garantia de suporte nutricional durante a gestação, além de critérios para investigação do risco gestacional e inclusão da gestante no componente básico do modelo de assistência pré-natal."
+        }
+      },
+      "conteudo": {
+        "texto": "###Lei nº 11.634, de 27 de dezembro 2007, dispõe sobre o direito da gestante ao conhecimento e a vinculação à maternidade onde receberá assistência no âmbito do Sistema Único de Saúden\n\nA vinculação da gestante à maternidade em que se realizará o parto e na qual será atendida nos casos de intercorrência deve ocorrer no ato de sua inscrição no programa de assistência pré-natal, conforme disposto na Lei nº 11.634/2007.",
+        "arquivos": [{
+          "nome": "Texto Fóruns Perinatais no Âmbito do Plano de Qualificação,",
+          "link": "http://dab.saude.gov.br/portaldab/"
+          }]
+      }
+    },
+    {
+      "id": 24,
+      "title": "Ressignificação do parto normal",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "O parto normal humanizado proporciona dignidade, segurança, autonomia e protagonismo à mulher, além de favorecer a saúde e bem-estar do recém-nascido, sobretudo, quando associado ao contato pele a pele, a amamentação na primeira hora e ao clampeamento tardio do cordão. "
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "video_list": "PLqwF2MOG7-g2DJQHNFhiRqOobVvLBKHKu",
+        "hipervideo": {
+          "nome": "Veja também o hipervideo sobre a saúde da criança",
+          "link": "/#/crianca"
+        }
+      }
+    },
+    {
+      "id": 25,
+      "title": "Redes de atenção",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2010,
+        "fields": {
+          "excerpt": "A **Rede Cegonha**, foi instituída em **2011**, tendo como objetivos: Fomentar a implementação de novo modelo de atenção à saúde da mulher e à saúde da criança com foco na atenção ao parto, ao nascimento, ao crescimento e ao desenvolvimento da criança de zero aos vinte e quatro meses; Organizar a Rede de Atenção à Saúde Materna e Infantil para que esta garanta acesso, acolhimento e resolutividade; Reduzir a mortalidade materna e infantil com ênfase no componente neonatal."
+        }
+      },
+      "conteudo": {
+        "texto": "A organização da RC visa possibilitar o provimento contínuo de ações de atenção à saúde materna e infantil para a população de determinado território, mediante a articulação dos distintos pontos de atenção à saúde, do sistema de apoio, do sistema logístico e da governança da rede de atenção à saúde, a partir das diretrizes: \n- garantia do acolhimento com avaliação e classificação de risco e vulnerabilidade, ampliação do acesso e melhoria da qualidade do pré-natal; \n- garantia de vinculação da gestante à unidade de referência e ao transporte seguro; \n- garantia das boas práticas e segurança na atenção ao parto e nascimento; \n- garantia da atenção à saúde das crianças de zero a vinte e quatro meses com qualidade e resolutividade; \n- e garantia de acesso às ações do planejamento reprodutivo. \n\nA RC segue as diretrizes para a organização da Rede de Atenção à Saúde no âmbito do SUS.",
+        "arquivos": [{
+          "nome": "PORTARIA Nº 4.279 - Diretrizes Redes de Atenção",
+          "link": "http://conselho.saude.gov.br/ultimas_noticias/2011/img/07_jan_portaria4279_301210.pdf"
+          },
+          {
+          "nome": "PORTARIA Nº 1.459 - Rede Segonha no SUS",
+          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2011/prt1459_24_06_2011.html"
+          }]
+      }
+    },
+    {
+      "id": 26,
+      "title": "RDC nº 36/ANVISA",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2008.5,
+        "fields": {
+          "excerpt": "###RDC nº 36/ANVISA, de 3 de junho de 2008, \n\nDispõe sobre Regulamento Técnico para Funcionamento dos Serviços de Atenção Obstétrica e Neonatal."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "RDC nº 36/ANVISA, de 3 de junho de 2008",
+          "link": "http://portal.anvisa.gov.br/wps/wcm/connect/f18c7f80474597439fbbdf3fbc4c6735/RDC+N%C2%B0+36,+DE+3+DE+JUNHO+DE+2008.pdf?MOD=AJPERES"
+        }]
+      }
+    },
+    {
+      "id": 27,
+      "title": "A Portaria Nº 11",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2015,
+        "fields": {
+          "excerpt": "###A Portaria Nº 11, de 7 de janeiro de 2015 \n\nDefine as diretrizes para implantação e habilitação de Centro de Parto Normal (CPN), no âmbito do Sistema Único de Saúde (SUS), para o atendimento à mulher e ao recém-nascido no momento do parto e do nascimento."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Portaria Nº 11, de 7 de janeiro de 2015",
+          "link": "http://www.brasilsus.com.br/images/portarias/janeiro2015/dia08/portaria11.pdf"
+        }]
+      }
+    },
+    {
+      "id": 28,
+      "title": "Boas práticas - OMS",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1996,
+        "fields": {
+          "excerpt": "Em 1996, a Organização Mundial de Saúde baseada em evidencia científicas mundiais divulgou uma classificação de práticas comuns no parto normal e nascimento, recomendando aquelas que foram identificadas como úteis e que devem ser estimuladas."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Boas práticas de atenção ao parto e ao nascimento",
+          "link": "http://www.clam.org.br/uploads/arquivo/OMS%20-%20Boas%20Praticas%20de%20Atencao%20ao%20Parto%20e%20ao%20Nascimento.pdf"
+        }]
+      }
+    },
+    {
+      "id": 29,
+      "title": "Maria Esther Vilela",
+      "funcao": "Coordenadora da Saúde da Mulher/MS"
+    },
+    {
+      "id": 30,
+      "title": "Ana Lia Cunha",
+      "funcao": "Apoiadora de Serviço/MS"
+    },
+    {
+      "id": 31,
+      "title": "Núbia dos Santos",
+      "funcao": "Técnica de Enfermagem"
+    },
+    {
+      "id": 32,
+      "title": "Suzana Amaral",
+      "funcao": "Coordenadora da Enfermagem CPN Mansão do Caminho"
+    },
+    {
+      "id": 33,
+      "title": "Gisélia Souza",
+      "funcao": "Secretaria Estadual de Saúde/BA"
+    },
+    {
+      "id": 34,
+      "title": "Nair Amaral",
+      "funcao": "Diretora Médica da Maternidade José Maria Magalhães"
+    },
+    {
+      "id": 35,
+      "title": "Sérgio",
+      "funcao": "Médico"
+    },
+    {
+      "id": 36,
+      "title": "Aline Costa",
+      "funcao": "Ministério da Saúde"
+    },
+    {
+      "id": 37,
+      "title": "Tereza Cristina Carvalho",
+      "funcao": "Médica"
+    },
+    {
+      "id": 38,
+      "title": "Loise Chamusca",
+      "funcao": "Coordenadora da Enfermagem da Maternidade José Maria Magalhães"
+    },
+    {
+      "id": 39,
+      "title": "Amado Nizarala",
+      "funcao": "Médico"
+    },
+    {
+      "id": 40,
+      "title": "Cintia, Doíse e Rosimeira",
+      "funcao": "Doulas"
+    },
+    {
+      "id": 41,
+      "title": "Rita Gramacho",
+      "funcao": "Diretora da Maternidade Tsylla Balbino"
+    },
+    {
+      "id": 42,
+      "title": "Reunião de Cogestão",
+      "funcao": "Maternidade José Maria Magalhães"
+    },
+    {
+      "id": 43,
+      "title": "Fórum Perinatal",
+      "funcao": " "
+    },
+    {
+      "id": 44,
+      "title": "Manoel",
+      "funcao": "Secretaria Estadual de Saúde/BA"
     }
   ],
   "edges": [
     {"source": 0,"target": 1},
     {"source": 1,"target": 2},
     {"source": 0,"target": 3},
+    {"source": 1,"target": 3},
     {"source": 0,"target": 4},
-    {"source": 4,"target": 5},
-    {"source": 0,"target": 6}
+    {"source": 3,"target": 5},
+    {"source": 3,"target": 6},
+    {"source": 4,"target": 6},
+    {"source": 1,"target": 7},
+    {"source": 3,"target": 9},
+    {"source": 0,"target": 10},
+    {"source": 3,"target": 11},
+    {"source": 1,"target": 12},
+    {"source": 1,"target": 13},
+    {"source": 13,"target": 14},
+    {"source": 3,"target": 16},
+    {"source": 7,"target": 16},
+    {"source": 0,"target": 17},
+    {"source": 0,"target": 18},
+    {"source": 0,"target": 19},
+    {"source": 0,"target": 20},
+    {"source": 19,"target": 20},
+    {"source": 1,"target": 21},
+    {"source": 7,"target": 22},
+    {"source": 0,"target": 23},
+    {"source": 0,"target": 24}
   ]
 }

@@ -2,6 +2,17 @@
 	.sidebar_chapter {
 		position: relative;
 		width: 300px;
+		opacity: 0.3;
+		transition: opacity 0.5s;
+		&:hover {
+			opacity: 1;
+		}
+		.sidebar.is-open & {
+				opacity: 1;
+			}
+		&.aberto {
+			opacity: 1;
+		}
 		.sidebar_chapter_title {
 			background: none repeat scroll 0 0 #fff;
 	    color: #555;
@@ -34,11 +45,11 @@
 </style>
 
 <template>
-	<div class="sidebar_chapter">
+	<div class="sidebar_chapter" id="chap">
 		<div class="sidebar_chapter_title">
 		<h4>CAPÍTULO {{capitulo.id}}</h4>
 		<h3>{{capitulo.nome | uppercase}}</h3>
-		<a href="/#/" style="position: absolute; right: 0px; top: 0px; color: #555;"><i class="fa fa-bars fa-2x" style="position: absolute; right: 10px; top: 7px;"></i></a>
+		<div v-component="in-menu" v-with="libras: libras, audio_desc: audio_desc"></div>
 		</div>
 	</div>
 </template>
@@ -47,6 +58,9 @@
 
 	module.exports = {
 		replace: true,
+		components: {
+      'in-menu': require('../components/sidebar-menu.vue')
+    }
 	}
 
 </script>

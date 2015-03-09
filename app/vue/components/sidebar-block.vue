@@ -16,7 +16,9 @@
 	#cartela_nome, #cartela_funcao{
 		float: right;
 		font-size: 16px;
-		margin-right: 5%;
+		font-size: 170%;
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 	#cartela_funcao {
 		color: #555;
@@ -93,16 +95,6 @@
 
 <template>
 	<div class="sidebar_block" v-transition>
-		<div v-if="funcao" class="sidebar_block__header context-bg" style="margin-top: 50%;" v-transition>
-			<div id="cartela_nome" v-transition>
-				{{title | uppercase}}
-			</div>
-		</div>
-		<div v-if="funcao" class="sidebar_block__header" style="width: 80%; background: #fff;" v-transition>
-			<div id="cartela_funcao" v-transition>
-				{{funcao}}
-			</div>
-		</div>
 		<div v-if="!funcao" class="sidebar_block__header context-bg" >
 			{{title | uppercase}}
 			<svg width="28" height="28" class="timer clickable" v-on="click: onTimerClick" v-class="fixed: start == null">

@@ -8,10 +8,45 @@ module.exports = {
 			db: null,
 			view: "",
 			className: "",
+			redes: false,
+			qualidade: 'alta',
+			acessibilidade: 'nada',
+			libras: false,
+			audio_desc: false,
 			params: {
 				video: null,
 				route: null
 			}
+		},
+		watch : {
+			qualidade: function (qualidade) {
+				this.$broadcast('mudou-qualidade', qualidade);
+			},
+			libras: function (val) {
+				this.$broadcast('mudou-libras', val);
+			},
+			audio_desc: function (val) {
+				this.$broadcast('mudou-audio_desc', val);
+			}
+		},
+		attached: function() {
+			this.$on('video-qualidade', function (qualidade) {
+				this.qualidade = qualidade;
+			})
+
+			this.$on('video-acessibilidade', function (acess) {
+				if (acess === 'libras') {
+					this.libras = true;
+					this.audio_desc = false;
+				} else if (acess === 'audio') {
+					this.libras = false;
+					this.audio_desc = true;
+				} else if (acess === 'nada') {
+					this.libras = false;
+					this.audio_desc = false;
+				}
+				this.acessibilidade = acess;
+			})
 		},
 		components: {
 			'home-view': require('./views/home-view.vue'),
@@ -20,14 +55,79 @@ module.exports = {
 	}
 module.exports.template = __vue_template__;
 
-},{"./views/home-view.vue":19,"./views/video-view.vue":20,"insert-css":22}],2:[function(require,module,exports){
+},{"./views/home-view.vue":23,"./views/video-view.vue":24,"insert-css":26}],2:[function(require,module,exports){
+var __vue_template__ = "<audio id=\"audio_desc\" crossorigin=\"anonymous\" style=\"display: none\" preload=\"auto\">\n    <source src=\"{{wav}}\" type=\"audio/wav\" id=\"wav\">\n    </source><source src=\"{{mp3}}\" type=\"audio/mpeg\" id=\"mp3\">\n  </source></audio>";
+var Vue = require('vue')
+
+  module.exports = {
+    replace: true,
+    data: function(){
+      return {
+        wav: "",
+        mp3: ""
+      }
+    },
+    created: function() {
+      this.mp3 = "http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/AUDIO_DESC/audio_desc_"+this.$parent.id+".mp3";
+      this.wav = "http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/AUDIO_DESC/audio_desc_"+this.$parent.id+".wav";
+    },
+    attached: function() {
+      
+      var self = this;
+
+      var audio_desc = document.getElementById("audio_desc");
+      var vid = document.getElementById("hipVid-"+this.$parent.id);
+      audio_desc.volume = 0;
+      
+      audio_desc.currentTime = this.$parent.video.time;
+
+      this.$on('libras-update', function (time) {
+        if (audio_desc.currentTime !== time + 0.5 || audio_desc.currentTime !== time - 0.5) {
+          audio_desc.currentTime = time;
+        }
+      })
+
+      this.$parent.$watch('audio_desc', function (val) {
+        if (val === true) {
+          audio_desc.volume = 1;
+          vid.volume = 0;
+        } else {
+          audio_desc.volume = 0;
+          vid.volume = 1;
+        }
+      })
+
+      vid.addEventListener("play" , function() {
+        audio_desc.play();
+      })
+
+      vid.addEventListener("pause" , function() {
+        audio_desc.pause();
+      })
+      
+    },
+    methods: {
+      
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{"vue":93}],3:[function(require,module,exports){
 require("insert-css")(".hipVid{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#app.marco-fechado .hipVid{top:0}");
-var __vue_template__ = "<video v-with=\"db: db\" poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" preload=\"auto\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n		<source v-attr=\"src: db.url + '.mp4'\" type=\"video/mp4\" id=\"mp4\">\n		</source><source v-attr=\"src: db.url + '.webm'\" type=\"video/webm\" id=\"webm\">\n	</source></video>";
+var __vue_template__ = "<video v-with=\"db: db\" poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n		<source src=\"{{db.url}}_{{qual}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n	</source></video>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 
 	module.exports = {
 		replace: true,
+		data: function(){
+			return {
+				qual: 'alta'
+			}
+		},
+		created: function() {
+			this.qual = this.$parent.$parent.qualidade;
+		},
 		attached: function() {
 			
 			var self = this;
@@ -37,6 +137,14 @@ var Vue = require('vue')
 			var selector = $$$('.rangeslider').get(0);
 			
 			this.play();
+
+			this.$on('mudou-qualidade', function (qualidade) {
+				self.qual = qualidade;
+				$$$('#mp4').attr('src', self.$parent.db.url + '_' + self.qual + '.mp4')
+				$$$('#webm').attr('src', self.$parent.db.url + '_' + self.qual + '.webm')
+				hipervideo.load();
+				hipervideo.currentTime = self.$parent.video.time;
+			})
 
 			var tempoCorrido = function(array) {
 				var min = array[0];
@@ -87,6 +195,7 @@ var Vue = require('vue')
 				// Dispatch timeupdate to parent
 				self.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
 			});
+			console.log(hipervideo.event);
 		},
 		methods: {
 			play: function(){
@@ -99,12 +208,13 @@ var Vue = require('vue')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":22,"jquery":23,"vue":89}],3:[function(require,module,exports){
+},{"insert-css":26,"jquery":27,"vue":93}],4:[function(require,module,exports){
 require("insert-css")(".info-chart-databars .axis text,.info-chart-databars .labels text{fill:#fff}.info-chart-databars .axis line,.info-chart-databars .axis path{fill:none;stroke:#fff;shape-rendering:crispEdges}.info-chart-databars .bar{fill:#4682b4}.info-chart-databars .x.axis path{display:none}");
 var __vue_template__ = "<div>\n		<div v-el=\"chart\" class=\"info-chart-databars\"></div>\n	</div>";
 var $$$ = require('jquery')
 	var _ = require('underscore')
 	var marked = require('marked')
+	var perfectScrollbar = require('perfect-scrollbar')
 
 	module.exports = {
 
@@ -277,9 +387,104 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":22,"jquery":23,"marked":25,"underscore":28}],4:[function(require,module,exports){
-require("insert-css")("#creditos{width:100%;position:fixed;height:100%;z-index:-100;background-color:#141414;opacity:0;transition:all .3s ease 0}#creditos.finalizado{z-index:100;opacity:1}#creditos h1{text-align:center}.info{background-color:rgba(200,200,200,.3);padding:3%;position:relative;width:80%;margin:0 auto;zoom:1}.info:after,.info:before{content:\"\";display:table}.info:after{clear:both}.info p{margin:0}.papel{width:25%;text-align:center;float:left}");
-var __vue_template__ = "<div id=\"creditos\">\n    <h1>CRÉDITOS</h1>\n    <div class=\"info\">\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>DESIGN E PROGRAMAÇÃO</h3>\n        <p>Marlus Araújo</p>\n        <p>Gustavo Junqueira</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>DIREÇÃO</h3>\n        <p>Julio Braga</p>\n        <p>Giuliano Bonorandi</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>PRODUÇÃO</h3>\n        <p>Janaína Castro Alves</p>\n        <p>Carolina Calcavecchia</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>FOTOGRAFIA</h3>\n        <p>Milena Sá</p>\n        <p>Tito José</p>\n      </div>\n      <div class=\"papel\" style=\"width: 20%\">\n        <h3>SOM DIRETO</h3>\n        <p>Alexandre Kubrusly</p>\n        <p>Francisco</p>\n      </div>\n      <div class=\"papel\">\n        <h3>ASSISTÊNCIA DE EDIÇÃO</h3>\n        <p>Raoni Seixas</p>\n        <p>Tatiana Teitelroit</p>\n      </div>\n      <div class=\"papel\">\n        <h3>EDIÇÃO</h3>\n        <p>Tatiana Gouveia</p>\n        <p>Marco Meireles</p>\n        <p>Claudio Tammela</p>\n      </div>\n      <div class=\"papel\" style=\"margin-bottom: 40px\">\n        <h3 style=\"margin-bottom: 0\">FINALIZAÇÃO DE SOM</h3>\n        <h3 style=\"margin-top: 0\">TRILHA SONORA ORIGINAL</h3>\n        <p>Criado Mudo Produções Artísticas</p>\n      </div>\n      <div class=\"papel\" style=\"margin-bottom: 64px\">\n        <h3>CORREÇÃO DE COR</h3>\n        <p>Raoni Seixas</p>\n      </div>\n      <div class=\"papel\" style=\"width: 100%\">\n        <h3>REALIZAÇÃO</h3>\n        <img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_PNH.png\" style=\"width: 10%; float: left; margin-right: 10%; margin-left: 10%\">\n        <img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png\" style=\"width: 30%; margin-top: 2%; float: left; margin-right: 11%\">\n        <a href=\"http://jardim.in\" target=\"_blank\">\n          <img src=\"https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png\" style=\"width: 15%; float: left; margin-top: 1%\">\n        </a>\n      </div>\n    </div>\n    <div style=\"width: 80%; margin: 0 auto\">\n      <a href=\"/#/home\" class=\"botao\" style=\"width: 16%; font-weight: 900; text-decoration: none\">INICIO</a>\n      <a v-if=\"isMulher\" href=\"/#/mulher\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #ed1e79\">SAÚDE DA MULHER</a>\n      <a v-if=\"isCrianca\" href=\"/#/crianca\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #0cc\">SAÚDE DA CRIANÇA</a>\n      <a v-if=\"isAdolescente\" href=\"/#/adolescente\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00a300\">SAÚDE DO ADOLESCENTE</a>\n      <a v-if=\"isDeficiente\" href=\"/#/deficiente\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00c\">SAÚDE DO DEFICIENTE</a>\n      <a v-if=\"isPreso\" href=\"/#/preso\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #f00\">SAÚDE DO PRESO</a>\n    </div>\n  </div>";
+},{"insert-css":26,"jquery":27,"marked":29,"perfect-scrollbar":30,"underscore":32}],5:[function(require,module,exports){
+require("insert-css")(".content_mapa{position:relative;width:100%;height:400px;background:#333}.leaflet-bottom,.leaflet-top{z-index:1}");
+var __vue_template__ = "<div class=\"content_mapa\" v-el=\"mapa\"></div>";
+var L = require('leaflet')
+  var $$$ = require('jquery')
+
+  module.exports = {
+
+    replace: true,
+
+    data: function(){
+      return {
+        _mapa: null,
+        isOpen: false
+      }
+    },
+
+    attached: function() {
+      console.log('content-mapa attached!')
+      this._mapa = L.map(this.$$.mapa, { zoomControl: false }).setView([this.mapa.geo[0], this.mapa.geo[1]], this.mapa.geo[2])
+      console.log('test');
+
+      new L.Control.Zoom({ position: 'topright' }).addTo(this._mapa)
+
+      // add an OpenStreetMap tile layer
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(this._mapa)
+
+      L.Icon.Default.imagePath = 'img/leaflet';
+
+      this.loadData();
+    },
+
+    methods: {
+      loadData: function() {
+        var self = this;
+        if (typeof this.mapa.locais === 'string') {
+          var url = 'https://spreadsheets.google.com/feeds/list/' + self.mapa.locais + '/od6/public/values?alt=json-in-script&callback=?';
+
+          console.log('mapa-spreadsheet will load now')
+
+          $$$.getJSON(url).success(function(data) {
+
+            var entries = []
+
+            data.feed.entry.map(function(d,i){
+              
+              var o = {}      // object
+              var s = 'gsx$' // string
+
+              for (var prop in d) {
+                if(d.hasOwnProperty(prop) && prop.indexOf(s) == 0){
+                  o[prop.split(s).join('')] = d[prop]['$t']
+                }
+              }
+
+              entries.push(o)
+            })          
+
+            var markers = []
+            
+            console.log(self._mapa);
+
+            for (var i = 0; i < entries.length; i++) {
+              console.log(entries[i].lat);
+              markers.push(L.marker([parseFloat(entries[i].lat), parseFloat(entries[i].lon)]).bindPopup('<a href="' + entries[i].site + '" target="_blank">' + entries[i].nome + '</a>'))
+            }
+
+            L.layerGroup(markers).addTo(self._mapa);
+
+          }).error(function(message) {
+
+            console.log('mapa-spreadsheet error: ' + message)
+
+          }).complete(function() {
+
+            console.log('completed mapa-spreadsheet load!')
+
+          })
+        } else if(typeof this.mapa.locais === 'object') {
+          var entries = self.mapa.locais
+          var markers = []
+
+          for (var i = 0; i < entries.length; i++) {
+            markers.push(L.marker([entries[i].lat, entries[i].lon]).bindPopup('<a href="' + entries[i].site + '" target="_blank">' + entries[i].nome + '</a>'))
+          }
+
+          L.layerGroup(markers).addTo(self._mapa);
+        }
+      }
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{"insert-css":26,"jquery":27,"leaflet":28}],6:[function(require,module,exports){
+require("insert-css")("#creditos{width:100%;position:fixed;height:100%;z-index:-100;background-color:#141414;opacity:0;transition:all .3s ease 0}#creditos.finalizado{z-index:100;opacity:1}#creditos h1{text-align:center}.info{background-color:rgba(200,200,200,.3);padding:3%;position:relative;width:80%;margin:0 auto;zoom:1}.info:after,.info:before{content:\"\";display:table}.info:after{clear:both}.info p{margin:0}.papel{width:20%;text-align:center;float:left}");
+var __vue_template__ = "<div id=\"creditos\">\n    <h1>CRÉDITOS</h1>\n    <div class=\"info\">\n      <div class=\"papel\">\n        <h3>DESIGN E PROGRAMAÇÃO</h3>\n        <p>Marlus Araújo</p>\n        <p>Gustavo Junqueira</p>\n      </div>\n      <div class=\"papel\">\n        <h3>DIREÇÃO</h3>\n        <p>Julio Braga</p>\n        <p>Giuliano Bonorandi</p>\n      </div>\n      <div class=\"papel\">\n        <h3>PRODUÇÃO</h3>\n        <p>Janaína Castro Alves</p>\n        <p>Carolina Calcavecchia</p>\n      </div>\n      <div class=\"papel\">\n        <h3>FOTOGRAFIA</h3>\n        <p>Milena Sá</p>\n        <p>Tito José</p>\n      </div>\n      <div class=\"papel\">\n        <h3>SOM DIRETO</h3>\n        <p>Alexandre Kubrusly</p>\n        <p>Francisco</p>\n      </div>\n      <div class=\"papel\">\n        <h3>ASSISTÊNCIA DE EDIÇÃO</h3>\n        <p>Raoni Seixas</p>\n        <p>Tatiana Teitelroit</p>\n      </div>\n      <div class=\"papel\">\n        <h3>EDIÇÃO</h3>\n        <p>Tatiana Gouveia</p>\n        <p>Marco Meireles</p>\n        <p>Claudio Tammela</p>\n      </div>\n      <div class=\"papel\" style=\"margin-bottom: 40px\">\n        <h3>FINALIZAÇÃO DE SOM</h3>\n        <a href=\"http://criadomudo.net\" target=\"_blank\">Criado Mudo Produções Artísticas</a>\n      </div>\n      <div class=\"papel\" style=\"margin-bottom: 40px\">\n        <h3>TRILHA SONORA</h3>\n        <p>Bernardo Adeodato</p>\n        <p>Pedro Silveira</p>\n      </div>\n      <div class=\"papel\" style=\"margin-bottom: 64px\">\n        <h3>CORREÇÃO DE COR</h3>\n        <p>Raoni Seixas</p>\n      </div>\n      <div class=\"papel\" style=\"width: 100%\">\n        <h3>REALIZAÇÃO</h3>\n        <img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png\" style=\"width: 20%; float: left; margin-right: 7%; margin-left: 8%; margin-top: 1.5%\">\n        <img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png\" style=\"width: 30%; margin-top: 2%; float: left; margin-right: 11%\">\n        <a href=\"http://jardim.in\" target=\"_blank\">\n          <img src=\"https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png\" style=\"width: 15%; float: left; margin-top: 1%\">\n        </a>\n      </div>\n    </div>\n    <div style=\"width: 80%; margin: 0 auto\">\n      <a href=\"/#/home\" class=\"botao\" style=\"width: 16%; font-weight: 900; text-decoration: none\">INICIO</a>\n      <a v-if=\"isMulher\" href=\"/#/mulher\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #ed1e79\">SAÚDE DA MULHER</a>\n      <a v-if=\"isCrianca\" href=\"/#/crianca\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #0cc\">SAÚDE DA CRIANÇA</a>\n      <a v-if=\"isAdolescente\" href=\"/#/adolescente\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00a300\">SAÚDE DO ADOLESCENTE</a>\n      <a v-if=\"isDeficiente\" href=\"/#/deficiente\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00c\">SAÚDE DO DEFICIENTE</a>\n      <a v-if=\"isPreso\" href=\"/#/preso\" class=\"botao\" style=\"width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #f00\">SAÚDE DO PRESO</a>\n    </div>\n  </div>";
 module.exports = {
     replace: true,
     computed: {
@@ -297,14 +502,14 @@ module.exports = {
       },
       isDeficiente: function() {
         return this.$parent.id !== 'deficiente';
-      },
+      }
     }
   }
 module.exports.template = __vue_template__;
 
-},{"insert-css":22}],5:[function(require,module,exports){
-require("insert-css")(".block_map{position:relative;width:300px;height:300px;background:#333;transition:all .6s ease;transform:translate3d(300px,0,0)}.block_map.is-open{transform:translate3d(0,0,0)}.block_map__map{width:100%;height:100%;overflow:hidden}.block_map__toggle{position:absolute;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-size:20px;font-weight:900;padding:4% 4% 4% 3%;top:0;left:0;width:48px;transform:translate3d(-100%,0,0)}.leaflet-bottom,.leaflet-top{z-index:1}");
-var __vue_template__ = "<div class=\"block_map\" v-with=\"db: db\" v-class=\"is-open: isOpen\">\n		<div class=\"block_map__toggle context-bg clickable\" v-on=\"click: toggle\">\n			{{db.cidade}}\n		</div>\n		<div class=\"block_map__map\" v-el=\"map\"></div>\n	</div>";
+},{"insert-css":26}],7:[function(require,module,exports){
+require("insert-css")(".block_map{position:relative;width:300px;height:300px;background:#333;transition:all .6s ease;transform:translate3d(300px,0,0)}.block_map.is-open{transform:translate3d(0,0,0)}.block_map.is-open .block_map__toggle{opacity:1}.block_map__map{width:100%;height:100%;overflow:hidden}.block_map__toggle{position:absolute;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-size:20px;font-weight:900;padding:4% 4% 4% 3%;top:0;left:0;width:48px;height:48px;opacity:.3;transform:translate3d(-100%,0,0);transition:opacity .2s}.block_map__toggle.event,.block_map__toggle:hover{opacity:1}.leaflet-bottom,.leaflet-top{z-index:1}");
+var __vue_template__ = "<div class=\"block_map\" v-with=\"db: db, geo: geo\" v-class=\"is-open: isOpen\">\n		<div class=\"block_map__toggle context-bg clickable\" v-class=\"event: geo\" v-on=\"click: toggle\">\n			<i class=\"fa fa-map-marker fa-2x\" style=\"position: absolute; left: 11px; top: 5px\"></i>\n		</div>\n		<div class=\"block_map__map\" v-el=\"map\"></div>\n	</div>";
 var L = require('leaflet')
 
 	module.exports = {
@@ -320,6 +525,8 @@ var L = require('leaflet')
 
 		ready: function(){
 
+			var self = this
+
 			this._map = L.map(this.$$.map, { zoomControl: false }).setView([this.db.geo[0], this.db.geo[1]], this.db.geo[2])
 
 			new L.Control.Zoom({ position: 'topright' }).addTo(this._map)
@@ -328,6 +535,27 @@ var L = require('leaflet')
 			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(this._map)
+
+			L.Icon.Default.imagePath = 'img/leaflet';
+
+			this.$on('event-map', function (geo) {
+				this._map.setView([geo[0], geo[1]], geo[2])
+			})
+
+			this.$on('remove-event-map', function (geo) {
+				this._map.setView([geo[0], geo[1]], geo[2])
+			})
+
+			if (this.db.locais) {
+				var entries = this.db.locais
+				var markers = []
+
+				for (var i = 0; i < entries.length; i++) {
+          markers.push(L.marker([entries[i].lat, entries[i].lon]).bindPopup('<a href="' + entries[i].site + '" target="_blank">' + entries[i].nome + '</a>'))
+        }
+
+        L.layerGroup(markers).addTo(self._map);
+			}
 
 		},
 
@@ -342,14 +570,98 @@ var L = require('leaflet')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":22,"leaflet":24}],6:[function(require,module,exports){
+},{"insert-css":26,"leaflet":28}],8:[function(require,module,exports){
 var __vue_template__ = "<p>\n		<strong>my content is:</strong><br>\n		<content>\n	</content></p>";
 module.exports = {
 
 	}
 module.exports.template = __vue_template__;
 
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
+require("insert-css")(".libras{background-color:rgba(50,50,50,.8);bottom:60px;width:400px;height:300px;position:fixed;right:0;transition:all .5s ease 0s;z-index:9}.libras.v-enter,.libras.v-leave{bottom:-3000px!important}#app.marco-fechado .libras{bottom:0}");
+var __vue_template__ = "<canvas id=\"libras\" height=\"300\" width=\"400\"></canvas>\n  <video id=\"libras_vid\" crossorigin=\"anonymous\" style=\"display: none\" preload=\"auto\">\n    <source src=\"{{mp4}}\" type=\"video/mp4\" id=\"mp4\">\n  </source></video>";
+var Vue = require('vue')
+
+  module.exports = {
+    replace: true,
+    data: function(){
+      return {
+        isPlaying: false,
+        videoExt: "",
+        isBackgroundVideo: true,
+        mp4: "",
+        webm: ""
+      }
+    },
+    created: function() {
+      this.mp4 = "http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/LIBRAS/libras_"+this.$parent.id+".mp4";
+    },
+    attached: function() {
+      
+      var self = this;
+
+      var libras_vid = document.getElementById("libras_vid");
+      var vid = document.getElementById("hipVid-"+this.$parent.id);
+      
+      libras_vid.currentTime = this.$parent.video.time;
+
+      this.$on('libras-update', function (time) {
+        if (libras_vid.currentTime !== time + 0.5 || libras_vid.currentTime !== time - 0.5) {
+          libras_vid.currentTime = time;
+        }
+      })
+
+      vid.addEventListener("play" , function() {
+        libras_vid.play();
+      })
+
+      vid.addEventListener("pause" , function() {
+        libras_vid.pause();
+      })
+
+      this.draw();
+      
+    },
+    methods: {
+      draw: function() {
+        if (window.requestAnimationFrame) window.requestAnimationFrame(this.draw);
+        // IE implementation
+        else if (window.msRequestAnimationFrame) window.msRequestAnimationFrame(this.draw);
+        // Firefox implementation
+        else if (window.mozRequestAnimationFrame) window.mozRequestAnimationFrame(this.draw);
+        // Chrome implementation
+        else if (window.webkitRequestAnimationFrame) window.webkitRequestAnimationFrame(this.draw);
+        // Other browsers that do not yet support feature
+        else setTimeout(this.draw, 16.7);
+        this.DrawVideoOnCanvas();
+      },
+      DrawVideoOnCanvas: function() {
+        var object = document.getElementById("libras_vid");
+
+        var canvas = document.getElementById("libras");
+        var context = canvas.getContext('2d');
+        context.drawImage(object, 0, 0);
+
+        var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+        var data = imageData.data;
+        var start = {
+          red: data[0],
+          green: data[1],
+          blue: data[2]
+        };
+
+        var tolerance = 400;
+        for(var i = 0, n = data.length; i < n; i += 4) {
+          var diff = Math.abs(data[i] - data[0]) + Math.abs(data[i+1] - data[1]) + Math.abs(data[i+2] - data[2]);
+          data[i + 3] = (diff*diff)/tolerance;
+        }
+        context.putImageData(imageData, 0, 0);
+      }
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{"insert-css":26,"vue":93}],10:[function(require,module,exports){
 require("insert-css")(".linha_do_tempo{width:88%;position:absolute;height:60%;border-bottom:1px solid rgba(250,250,250,.2)}.ano{position:absolute;color:rgba(250,250,250,.5);font-size:75%;font-weight:700;bottom:-8px}.marco-detalhe{width:150px;position:absolute;height:0;bottom:0;border-right:1px solid;z-index:-1;right:4px;overflow:hidden;opacity:0;transition:all .2s ease-in-out}.marco-titulo{padding:6px;font-size:12px;transition:all .2s ease-in-out}.marco{height:5px;width:5px;border-radius:5px;background-color:#969696;position:absolute;bottom:-2.5px;list-style:none;cursor:pointer;transition:all .2s ease-in-out}.marco.hover{height:10px;width:10px;border-radius:10px;background-color:#fafafa;bottom:-5px;margin-left:-2.5px}.marco.hover .marco-detalhe{height:50px;opacity:1}.marco:hover{height:10px;width:10px;border-radius:10px;background-color:#fafafa;bottom:-5px;margin-left:-2.5px}.marco:hover .marco-detalhe{height:50px;opacity:1}");
 var __vue_template__ = "<div v-with=\"db: db\" class=\"linha_do_tempo\">\n		<p class=\"ano\" style=\"left: 3%\">1950</p>\n		<p class=\"ano\" style=\"left: 16%\">1960</p>\n		<p class=\"ano\" style=\"left: 29%\">1970</p>\n		<p class=\"ano\" style=\"left: 42%\">1980</p>\n		<p class=\"ano\" style=\"left: 55%\">1990</p>\n		<p class=\"ano\" style=\"left: 68%\">2000</p>\n		<p class=\"ano\" style=\"left: 81%\">2010</p>\n		<p class=\"ano\" style=\"left: 93.75%\">2020</p>\n		<ul>\n			<li id=\"marco-{{id}}\" v-repeat=\"marcos\" class=\"marco\" style=\"left: {{posMarco[$index]}}%\" v-on=\"click: marcoBlock($index)\">\n				<div class=\"marco-detalhe\">\n					<div class=\"marco-titulo context-bg\">\n						{{title | uppercase}}\n					</div>\n				</div>\n			</li>\n		</ul>\n	</div>";
 var $$$ = require('jquery')
@@ -402,7 +714,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":22,"jquery":23,"underscore":28}],8:[function(require,module,exports){
+},{"insert-css":26,"jquery":27,"underscore":32}],11:[function(require,module,exports){
 require("insert-css")(".marcos-historicos{width:100%;position:fixed;bottom:0;height:60px;box-shadow:0 0 10px #000 inset;background-color:#323232;padding:0 3%;z-index:25;transition:all .5s}#app.marco-fechado .marcos-historicos{bottom:-60px}.marcos_handle{width:15%;font-weight:900;font-size:75%;padding-top:5px;position:absolute;text-align:center;border-radius:5px;height:40px;cursor:pointer;top:-30px;background-color:#323232;left:40%;z-index:-2;transition:all .5s}.marcos_handle.cima{top:-30px!important}#app.marco-fechado .marcos_handle{top:0}");
 var __vue_template__ = "<div v-with=\"db: db\" class=\"marcos-historicos\">\n		<div id=\"linha-do-tempo\" class=\"marcos_handle\" v-on=\"click: handleMarcos\">CRONOLOGIA</div>\n		<in-linha-tempo></in-linha-tempo>\n	</div>";
 var $$$ = require('jquery')
@@ -419,7 +731,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/linha-tempo.vue":7,"insert-css":22,"jquery":23}],9:[function(require,module,exports){
+},{"../components/linha-tempo.vue":10,"insert-css":26,"jquery":27}],12:[function(require,module,exports){
 require("insert-css")(".chart-databars .axis line,.chart-databars .axis path{fill:none;stroke:#fff;shape-rendering:crispEdges}.chart-databars .axis text{fill:#fff;font-size:10px}.chart-databars .bar{fill:#4682b4}.chart-databars .x.axis path{display:none}");
 var __vue_template__ = "<div>\n		<p>\n			{{{fields.excerpt | marked}}}\n			</p><div v-el=\"chart\" class=\"chart-databars\"></div>\n		<p></p>\n	</div>";
 var $$$ = require('jquery')
@@ -566,7 +878,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":22,"jquery":23,"marked":25,"underscore":28}],10:[function(require,module,exports){
+},{"insert-css":26,"jquery":27,"marked":29,"underscore":32}],13:[function(require,module,exports){
 var __vue_template__ = "<div>\n		<p>\n			<img v-attr=\"src: fields.image\">\n		</p>\n		<p>\n			{{{fields.excerpt | marked}}}\n		</p>\n	</div>";
 var marked = require('marked')
 
@@ -578,7 +890,7 @@ var marked = require('marked')
 	}
 module.exports.template = __vue_template__;
 
-},{"marked":25}],11:[function(require,module,exports){
+},{"marked":29}],14:[function(require,module,exports){
 var __vue_template__ = "<div>\n		{{{fields.excerpt | marked}}}\n	</div>";
 var marked = require('marked')
 
@@ -590,9 +902,9 @@ var marked = require('marked')
 	}
 module.exports.template = __vue_template__;
 
-},{"marked":25}],12:[function(require,module,exports){
-require("insert-css")(".sidebar_block{width:120%;height:100%;overflow:hidden;transition:all .6s ease}.sidebar_block.v-enter,.sidebar_block.v-leave{transform:translate3d(-400px,0,0);max-height:0}.sidebar.has-info .sidebar_block{width:100%;max-height:48px}#cartela_funcao,#cartela_nome{float:right;font-size:16px;margin-right:5%}#cartela_funcao{color:#555}.sidebar_block__header{font-family:fonte-bold,sans-serif;font-weight:900;position:relative;color:#fff;padding:10px;height:28px;line-height:28px}.sidebar_block__content{overflow:hidden;height:19%;position:relative;padding:10px 58px 10px 10px;font-size:14px;font-weight:300;line-height:1.4em;width:65%;letter-spacing:0;transition:all .3s ease}#app.marco-fechado .sidebar_block__content{height:25%}.timer{display:block;position:absolute;top:10px;right:10px;width:28px;height:28px}.timer .progress{fill:transparent;stroke:#fff;stroke-width:2px;stroke-dasharray:75 75;stroke-linecap:round;transition:all .5s linear;transform:translate(0px,28px) rotate(-90deg)}.timer .progress.fadeout{opacity:0}.timer .base{stroke:#fff;stroke-width:2px;fill:transparent;opacity:.2}.timer .close{transition:transform .3s ease,opacity .3s linear;opacity:0;transform:translate(14px,14px) scale(0.5)}.timer .close line{stroke:#fff;stroke-width:2px;stroke-linecap:round}.timer.fixed .close,.timer:hover .close{opacity:1;transform:translate(14px,14px) scale(1)}");
-var __vue_template__ = "<div class=\"sidebar_block\" v-transition=\"\">\n		<div v-if=\"funcao\" class=\"sidebar_block__header context-bg\" style=\"margin-top: 50%\" v-transition=\"\">\n			<div id=\"cartela_nome\" v-transition=\"\">\n				{{title | uppercase}}\n			</div>\n		</div>\n		<div v-if=\"funcao\" class=\"sidebar_block__header\" style=\"width: 80%; background: #fff\" v-transition=\"\">\n			<div id=\"cartela_funcao\" v-transition=\"\">\n				{{funcao}}\n			</div>\n		</div>\n		<div v-if=\"!funcao\" class=\"sidebar_block__header context-bg\">\n			{{title | uppercase}}\n			<svg width=\"28\" height=\"28\" class=\"timer clickable\" v-on=\"click: onTimerClick\" v-class=\"fixed: start == null\">\n				<circle class=\"base\" cx=\"14\" cy=\"14\" r=\"12\"></circle>\n				<circle v-class=\"fadeout: perc < 3\" class=\"progress\" cx=\"14\" cy=\"14\" r=\"12\" stroke-dashoffset=\"{{perc}}\"></circle>\n				<g class=\"close\">\n					<line x1=\"-4\" y1=\"-4\" x2=\"4\" y2=\"4\"></line>\n					<line x1=\"-4\" y1=\"4\" x2=\"4\" y2=\"-4\"></line>\n				</g>\n			</svg>\n		</div>\n		<div v-if=\"!funcao\" id=\"sidebar_block__content\" class=\"sidebar_block__content\">\n			<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields: fields\"></div>\n		</div>\n		<p v-if=\"!ap\" style=\"padding-left: 10px\"><strong><a style=\"font-weight: 900; text-decoration: none\" href=\"#/{{videoID}}/info/{{id}}\">SAIBA MAIS</a></strong></p>\n	</div>";
+},{"marked":29}],15:[function(require,module,exports){
+require("insert-css")(".sidebar_block{width:120%;height:100%;overflow:hidden;transition:all .6s ease}.sidebar_block.v-enter,.sidebar_block.v-leave{transform:translate3d(-400px,0,0);max-height:0}.sidebar.has-info .sidebar_block{width:100%;max-height:48px}#cartela_funcao,#cartela_nome{float:right;font-size:16px;font-size:170%;padding-left:20px;padding-right:20px}#cartela_funcao{color:#555}.sidebar_block__header{font-family:fonte-bold,sans-serif;font-weight:900;position:relative;color:#fff;padding:10px;height:28px;line-height:28px}.sidebar_block__content{overflow:hidden;height:19%;position:relative;padding:10px 58px 10px 10px;font-size:14px;font-weight:300;line-height:1.4em;width:65%;letter-spacing:0;transition:all .3s ease}#app.marco-fechado .sidebar_block__content{height:25%}.timer{display:block;position:absolute;top:10px;right:10px;width:28px;height:28px}.timer .progress{fill:transparent;stroke:#fff;stroke-width:2px;stroke-dasharray:75 75;stroke-linecap:round;transition:all .5s linear;transform:translate(0px,28px) rotate(-90deg)}.timer .progress.fadeout{opacity:0}.timer .base{stroke:#fff;stroke-width:2px;fill:transparent;opacity:.2}.timer .close{transition:transform .3s ease,opacity .3s linear;opacity:0;transform:translate(14px,14px) scale(0.5)}.timer .close line{stroke:#fff;stroke-width:2px;stroke-linecap:round}.timer.fixed .close,.timer:hover .close{opacity:1;transform:translate(14px,14px) scale(1)}");
+var __vue_template__ = "<div class=\"sidebar_block\" v-transition=\"\">\n		<div v-if=\"!funcao\" class=\"sidebar_block__header context-bg\">\n			{{title | uppercase}}\n			<svg width=\"28\" height=\"28\" class=\"timer clickable\" v-on=\"click: onTimerClick\" v-class=\"fixed: start == null\">\n				<circle class=\"base\" cx=\"14\" cy=\"14\" r=\"12\"></circle>\n				<circle v-class=\"fadeout: perc < 3\" class=\"progress\" cx=\"14\" cy=\"14\" r=\"12\" stroke-dashoffset=\"{{perc}}\"></circle>\n				<g class=\"close\">\n					<line x1=\"-4\" y1=\"-4\" x2=\"4\" y2=\"4\"></line>\n					<line x1=\"-4\" y1=\"4\" x2=\"4\" y2=\"-4\"></line>\n				</g>\n			</svg>\n		</div>\n		<div v-if=\"!funcao\" id=\"sidebar_block__content\" class=\"sidebar_block__content\">\n			<div v-component=\"{{'in-sidebar-block-' + type}}\" v-with=\"fields: fields\"></div>\n		</div>\n		<p v-if=\"!ap\" style=\"padding-left: 10px\"><strong><a style=\"font-weight: 900; text-decoration: none\" href=\"#/{{videoID}}/info/{{id}}\">SAIBA MAIS</a></strong></p>\n	</div>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 	var perfectScrollbar = require('perfect-scrollbar')
@@ -634,15 +946,18 @@ var Vue = require('vue')
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/sidebar-block-databars.vue":9,"../components/sidebar-block-profile.vue":10,"../components/sidebar-block-text.vue":11,"insert-css":22,"jquery":23,"perfect-scrollbar":26,"vue":89}],13:[function(require,module,exports){
-require("insert-css")(".sidebar_chapter{position:relative;width:300px}.sidebar_chapter .sidebar_chapter_title{background:#fff;color:#555;display:inline-block;font-family:fonte-bold,sans-serif;font-weight:900;line-height:28px;min-width:0;padding:0 58px 0 10px;position:relative;transition:all .5s ease 0s;z-index:2}.sidebar_chapter .sidebar_chapter_title h4{font-family:fonte-normal,sans-serif;font-size:85%;font-weight:100;margin:0}.sidebar_chapter .sidebar_chapter_title h3{margin:-10px 0 0}@media screen and (min-width:1600px){.sidebar_chapter .sidebar_chapter_title h3{margin:-5px 0 0}}.sidebar.is-open .sidebar_chapter .sidebar_chapter_title{min-width:232px}");
-var __vue_template__ = "<div class=\"sidebar_chapter\">\n		<div class=\"sidebar_chapter_title\">\n		<h4>CAPÍTULO {{capitulo.id}}</h4>\n		<h3>{{capitulo.nome | uppercase}}</h3>\n		<a href=\"/#/\" style=\"position: absolute; right: 0px; top: 0px; color: #555\"><i class=\"fa fa-bars fa-2x\" style=\"position: absolute; right: 10px; top: 7px\"></i></a>\n		</div>\n	</div>";
+},{"../components/sidebar-block-databars.vue":12,"../components/sidebar-block-profile.vue":13,"../components/sidebar-block-text.vue":14,"insert-css":26,"jquery":27,"perfect-scrollbar":30,"vue":93}],16:[function(require,module,exports){
+require("insert-css")(".sidebar_chapter{position:relative;width:300px;opacity:.3;transition:opacity .5s}.sidebar.is-open .sidebar_chapter,.sidebar_chapter.aberto,.sidebar_chapter:hover{opacity:1}.sidebar_chapter .sidebar_chapter_title{background:#fff;color:#555;display:inline-block;font-family:fonte-bold,sans-serif;font-weight:900;line-height:28px;min-width:0;padding:0 58px 0 10px;position:relative;transition:all .5s ease 0s;z-index:2}.sidebar_chapter .sidebar_chapter_title h4{font-family:fonte-normal,sans-serif;font-size:85%;font-weight:100;margin:0}.sidebar_chapter .sidebar_chapter_title h3{margin:-10px 0 0}@media screen and (min-width:1600px){.sidebar_chapter .sidebar_chapter_title h3{margin:-5px 0 0}}.sidebar.is-open .sidebar_chapter .sidebar_chapter_title{min-width:232px}");
+var __vue_template__ = "<div class=\"sidebar_chapter\" id=\"chap\">\n		<div class=\"sidebar_chapter_title\">\n		<h4>CAPÍTULO {{capitulo.id}}</h4>\n		<h3>{{capitulo.nome | uppercase}}</h3>\n		<div v-component=\"in-menu\" v-with=\"libras: libras, audio_desc: audio_desc\"></div>\n		</div>\n	</div>";
 module.exports = {
 		replace: true,
+		components: {
+      'in-menu': require('../components/sidebar-menu.vue')
+    }
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":22}],14:[function(require,module,exports){
+},{"../components/sidebar-menu.vue":19,"insert-css":26}],17:[function(require,module,exports){
 require("insert-css")(".clickable{cursor:pointer}.disable-select,.sidebar_graph .sidebar_graph_svg .label-anchor text{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.sidebar_graph{width:260px;height:260px;padding:20px;transition:all .5s ease;transform:translate3d(-300px,0,0)}.sidebar.is-open .sidebar_graph{transform:translate3d(0,0,0)}.sidebar_graph .sidebar_graph_svg{background:rgba(100,100,100,.5);width:100%;height:100%;border-radius:50%}.sidebar_graph .sidebar_graph_svg .node{cursor:pointer}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.root{fill:#ed1e79}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#ed1e79;stroke-width:2px}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#ed1e79;stroke:#fff;stroke-width:2px}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-mulher .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.root{fill:#00a300}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#00a300;stroke-width:2px}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#00a300;stroke:#fff;stroke-width:2px}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-adolescente .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.root{fill:#0cc}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#0cc;stroke-width:2px}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#0cc;stroke:#fff;stroke-width:2px}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-crianca .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.root{fill:red}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:red;stroke-width:2px}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.conceito{fill:red;stroke:#fff;stroke-width:2px}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-preso .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.root,.is-video-preso .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.dispositivo{fill:#fff;stroke:#00c;stroke-width:2px}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.funcao{fill:#fff}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.conceito{fill:#00c;stroke:#fff;stroke-width:2px}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.marco{fill:#969696}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.mulher{fill:#ed1e79}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.crianca{fill:#0cc}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.preso{fill:red}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.adolescente{fill:#00a300}.is-video-deficiente .sidebar_graph .sidebar_graph_svg .node.deficiente{fill:#00c}.sidebar_graph .sidebar_graph_svg .edge{stroke:rgba(255,255,255,.2);stroke-width:1}.sidebar_graph .sidebar_graph_svg .label-anchor text{cursor:default;font-size:12px;fill:#fff}");
 var __vue_template__ = "<div class=\"sidebar_graph\" v-with=\"id: id, title: db.nome, video: video, events: events\">\n		<div v-el=\"graph\" class=\"sidebar_graph_svg\"></div>\n	</div>";
 var _ = require('underscore')
@@ -873,7 +1188,7 @@ var _ = require('underscore')
 
 				var timecodes = _.filter(this.events.timecode, function(timecode){
 					return timecode.start < self.video.time
-				})
+				}) || null
 
 				if(!timecodes){return}
 
@@ -924,9 +1239,9 @@ var _ = require('underscore')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":22,"underscore":28}],15:[function(require,module,exports){
+},{"insert-css":26,"underscore":32}],18:[function(require,module,exports){
 require("insert-css")("#conteudo_info{overflow:hidden;position:relative;height:96%;padding-left:40px;padding-right:40px;transition:all .3s ease}#app.marco-fechado #conteudo_info{height:100%}.info-texto{letter-spacing:0}.image-list img{position:relative;float:left;margin-right:10px}.video-list img{position:relative;float:left;margin-right:10px;width:220px}.link{font-weight:900;width:100%;padding:8px;margin-bottom:10px;text-decoration:none}.mulher-bg{background-color:#ed1e79}.adolescente-bg{background-color:#00a300}.crianca-bg{background-color:#0cc}.preso-bg{background-color:red}.deficiente-bg{background-color:#00c}");
-var __vue_template__ = "<div>\n  <div class=\"border context-bg\"></div>\n  <div id=\"conteudo_info\">\n    <h2 v-if=\"conteudo &amp;&amp; conteudo.title\"> \n      {{conteudo.title}} \n    </h2>\n    <div class=\"info-texto\">\n      {{{html_texto | marked}}}\n    </div>\n\n    <div v-component=\"in-databars\" v-with=\"databars: conteudo.databars\" v-if=\"conteudo &amp;&amp; hasDatabars\"></div>\n    \n    <h3 v-if=\"conteudo &amp;&amp; conteudo.imagens\"> IMAGENS </h3>\n    <div class=\"image-list\"></div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.video_list\"> VÍDEOS </h3>\n    <div class=\"video-list\"></div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.arquivos\"> LINKS </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.arquivos\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.discursoes\"> DISCUSSÃO </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.discursoes\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <div class=\"link {{conteudo.icon}}-bg\" v-if=\"conteudo &amp;&amp; conteudo.hipervideo\">\n      <a href=\"{{conteudo.hipervideo.link}}\" class=\"link {{conteudo.icon}}-bg\">\n        {{conteudo.hipervideo.nome | uppercase}}\n      </a>\n    </div>\n  </div>\n  <a class=\"back\" href=\"#/{{id}}\">voltar ao video</a>\n  </div>";
+var __vue_template__ = "<div style=\"height: 100%\">\n  <div class=\"border context-bg\"></div>\n  <div id=\"conteudo_info\">\n\n    <div v-component=\"in-mapa\" v-with=\"mapa: conteudo.mapa\" v-if=\"conteudo &amp;&amp; hasMap\"></div>\n\n    <h2 v-if=\"conteudo &amp;&amp; conteudo.title\"> \n      {{conteudo.title}} \n    </h2>\n    <div class=\"info-texto\">\n      {{{html_texto | marked}}}\n    </div>\n\n    <!-- <div v-component=\"in-databars\" v-with=\"databars: conteudo.databars\" v-if=\"conteudo && hasDatabars\"></div> -->\n    \n    <h3 v-if=\"conteudo &amp;&amp; conteudo.imagens\"> IMAGENS </h3>\n    <div class=\"image-list\"></div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.video_list\"> VÍDEOS </h3>\n    <div class=\"video-list\"></div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.arquivos\"> LINKS </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.arquivos\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.discursoes\"> DISCUSSÃO </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.discursoes\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"link context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <div class=\"link {{conteudo.icon}}-bg\" v-if=\"conteudo &amp;&amp; conteudo.hipervideo\">\n      <a href=\"{{conteudo.hipervideo.link}}\" class=\"link {{conteudo.icon}}-bg\">\n        {{conteudo.hipervideo.nome | uppercase}}\n      </a>\n    </div>\n  </div>\n  <a class=\"back\" href=\"#/{{id}}\">voltar ao video</a>\n  </div>";
 var Vue = require('vue')
   var $$$ = require('jquery')
   var perfectScrollbar = require('perfect-scrollbar')
@@ -948,6 +1263,9 @@ var Vue = require('vue')
     computed: {
       hasDatabars: function(){
         return this.conteudo.databars !== undefined
+      },
+      hasMap: function(){
+        return this.conteudo.mapa !== undefined
       }
     },
     attached: function() {
@@ -1017,10 +1335,12 @@ var Vue = require('vue')
         this.imageIndex = 0;
         this.videoIndex = 0;
       })
+      
     },
 
     components: {
       'in-databars': require('../components/content-databars.vue'),
+      'in-mapa': require('../components/content-map.vue')
     },
 
     filters: {
@@ -1030,7 +1350,115 @@ var Vue = require('vue')
   }
 module.exports.template = __vue_template__;
 
-},{"../components/content-databars.vue":3,"insert-css":22,"jquery":23,"marked":25,"perfect-scrollbar":26,"slick-carousel":27,"vue":89}],16:[function(require,module,exports){
+},{"../components/content-databars.vue":4,"../components/content-map.vue":5,"insert-css":26,"jquery":27,"marked":29,"perfect-scrollbar":30,"slick-carousel":31,"vue":93}],19:[function(require,module,exports){
+require("insert-css")(".sidebar__menu{background-color:#fff;height:46px;overflow:hidden;position:absolute;right:0;top:0;transition:width .25s ease .25s,height .5s ease .5s,left .5s ease .5s,right .5s ease .5s;width:50px}.sidebar__menu.is-open{width:100px;transition:width .25s ease .25s,left .5s ease .5s,right .5s ease .5s}.sidebar__menu.is-after{left:0;top:300px;width:100%;height:150px;position:fixed!important;transition:height 1s ease .5s,width .5s}.menu_handle{transition:opacity .5s}.menu_handle:hover{opacity:.6}.menu_1{left:60px;padding:0 15px;position:absolute}.menu_2{background-color:#f0f0f0;padding:10px 70px;position:absolute;top:60px;width:100%}.menu_item{color:#969696;cursor:pointer;float:left;font-size:130%;font-weight:400;letter-spacing:1px;margin-top:10px;padding:10px 30px 32px;text-decoration:none;transition:all .2s}.menu_item:hover{color:#000}.menu_item.clicado{background-color:#f0f0f0}.menu_item.selecionado{background-color:#555;color:#fff}");
+var __vue_template__ = "<div class=\"sidebar__menu\" v-class=\"is-open: isOpen, is-after: isAfter\">\n    <div v-on=\"click: toggle\" style=\"position: absolute; left: 0px; top: 0px; color: #555; cursor: pointer\" class=\"menu_handle\"><i class=\"fa fa-bars fa-2x\" style=\"position: absolute; left: 10px; top: 6px\"></i></div>\n    <div class=\"menu_1\">\n      <div class=\"menu_item\" v-class=\"clicado: menuAcess\" v-on=\"click: clickAcess\">ACESSIBILIDADE</div>\n      <div class=\"menu_item\" v-class=\"clicado: menuQual\" v-on=\"click: clickQual\">QUALIDADE</div>\n      <div class=\"menu_item\" v-class=\"clicado: menuHip\" v-on=\"click: clickHip\">HIPERVÍDEOS</div>\n      <div class=\"menu_item\" v-on=\"click: clickRedes\">VER REDES</div>\n      <a href=\"/#/\" class=\"menu_item\">INÍCIO</a>\n    </div>\n    <div class=\"menu_2\" v-show=\"menuAcess\">\n      <div class=\"menu_item\" v-class=\"selecionado: audio_desc\" v-on=\"click: selectAudio\">ÁUDIO DESCRIÇÃO</div>\n      <div class=\"menu_item\" v-class=\"selecionado: libras\" v-on=\"click: selectLibras\">LIBRAS</div>\n    </div>\n    <div class=\"menu_2\" v-show=\"menuQual\">\n      <div class=\"menu_item\" v-class=\"selecionado: isAlta\" v-on=\"click: selectAlta\">ALTA</div>\n      <div class=\"menu_item\" v-class=\"selecionado: isMedia\" v-on=\"click: selectMedia\">MÉDIA</div>\n      <div class=\"menu_item\" v-class=\"selecionado: isBaixa\" v-on=\"click: selectBaixa\">BAIXA</div>\n    </div>\n    <div class=\"menu_2\" v-show=\"menuHip\">\n      <div class=\"menu_item context-bg\" v-if=\"isMulher\" style=\"color: white\">MULHER</div>\n      <a href=\"/#/mulher\" class=\"menu_item\" v-if=\"!isMulher\">MULHER</a>\n      <div class=\"menu_item context-bg\" v-if=\"isCrianca\" style=\"color: white\">CRIANÇA</div>\n      <a href=\"/#/crianca\" class=\"menu_item\" v-if=\"!isCrianca\">CRIANÇA</a>\n      <div class=\"menu_item context-bg\" v-if=\"isAdolescente\" style=\"color: white\">ADOLESCENTE</div>\n      <a href=\"/#/adolescente\" class=\"menu_item\" v-if=\"!isAdolescente\">ADOLESCENTE</a>\n      <div class=\"menu_item context-bg\" v-if=\"isDeficiente\" style=\"color: white\">PESSOA COM DEFICIÊNCIA</div>\n      <a href=\"/#/deficiente\" class=\"menu_item\" v-if=\"!isDeficiente\">PESSOA COM DEFICIÊNCIA</a>\n      <div class=\"menu_item context-bg\" v-if=\"isPreso\" style=\"color: white\">PESSOA PRIVADA DE LIBERDADE</div>\n      <a href=\"/#/preso\" class=\"menu_item\" v-if=\"!isPreso\">PESSOA PRIVADA DE LIBERDADE</a>\n    </div>\n  </div>";
+var $$$ = require('jquery')
+
+  module.exports = {
+    replace: true,
+
+    data: function(){
+      return {
+        isOpen: false,
+        isAfter: false,
+        menuAcess: true,
+        menuHip: false,
+        menuQual: false
+      }
+    },
+    computed: {
+      isMulher: function() {
+        return this.$parent.$parent.id === 'mulher';
+      },
+      isCrianca: function() {
+        return this.$parent.$parent.id === 'crianca';
+      },
+      isAdolescente: function() {
+        return this.$parent.$parent.id === 'adolescente';
+      },
+      isPreso: function() {
+        return this.$parent.$parent.id === 'preso';
+      },
+      isDeficiente: function() {
+        return this.$parent.$parent.id === 'deficiente';
+      },
+      isAlta: function() {
+        return this.$parent.$parent.$parent.qualidade === 'alta';
+      },
+      isMedia: function() {
+        return this.$parent.$parent.$parent.qualidade === 'media';
+      },
+      isBaixa: function() {
+        return this.$parent.$parent.$parent.qualidade === 'baixa';
+      }
+    },
+    methods: {
+      toggle: function(){
+        var self = this
+
+        if (!this.isOpen) {
+          this.$parent.$parent.videoPause()
+          this.isOpen = !this.isOpen
+          $$$('#chap').addClass('aberto')
+          setTimeout(function() {
+            self.isAfter = !self.isAfter
+          }, 400)
+        } else {
+          this.$parent.$parent.videoPlay()
+          this.isAfter = !this.isAfter
+          $$$('#chap').removeClass('aberto')
+          setTimeout(function() {
+            self.isOpen = !self.isOpen
+          }, 400)
+        }
+      },
+      clickAcess: function(){
+        this.menuAcess = true
+        this.menuHip = false
+        this.menuQual = false
+      },
+      clickHip: function(){
+        this.menuAcess = false
+        this.menuQual = false
+        this.menuHip = true
+      },
+      clickQual: function(){
+        this.menuQual = true
+        this.menuAcess = false
+        this.menuHip = false
+      },
+      clickRedes: function(){
+        this.$dispatch('redes', true)
+      },
+      selectAudio: function(){
+        if (this.$parent.$parent.audio_desc === true) {
+          this.$dispatch('video-acessibilidade', 'nada')
+        } else {
+          this.$dispatch('video-acessibilidade', 'audio')
+        }
+      },
+      selectLibras: function(){
+        if (this.$parent.$parent.libras === true) {
+          this.$dispatch('video-acessibilidade', 'nada')
+        } else {
+          this.$dispatch('video-acessibilidade', 'libras')
+        }
+      },
+      selectAlta: function(){
+        this.$dispatch('video-qualidade', 'alta')
+      },
+      selectMedia: function(){
+        this.$dispatch('video-qualidade', 'media')
+      },
+      selectBaixa: function(){
+        this.$dispatch('video-qualidade', 'baixa')
+      }
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{"insert-css":26,"jquery":27}],20:[function(require,module,exports){
 require("insert-css")("#capitulos{background-color:#323232;color:#fff;height:30px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}#video-controls.hover #capitulos{height:0}.capitulo{transition:all .2s ease 0s;height:30px;position:absolute}#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}.capitulo:hover{color:#000;background-color:#c8c8c8}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:100%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:8px 15px;font-weight:700;font-size:75%;transition:all .5s ease 0s}");
 var __vue_template__ = "<div v-with=\"db: db\" id=\"capitulos\">\n		<div class=\"capitulo\" v-repeat=\"db.capitulos\" style=\"width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%\" v-on=\"click: seekCap(posicaoCap[$index]) \">\n			<hr>\n			<p>{{$index + 1}}.{{db.capitulos[$index].nome | uppercase}}</p>\n		</div>\n	</div>";
 var $$$ = require('jquery')
@@ -1074,7 +1502,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":22,"jquery":23}],17:[function(require,module,exports){
+},{"insert-css":26,"jquery":27}],21:[function(require,module,exports){
 require("insert-css")(".rangeslider{position:fixed;border-radius:0;top:30px;background:rgba(0,0,0,.8);transition:all .5s ease 0s}.rangeslider .rangeslider__fill{border-radius:0}.rangeslider__fill{border-radius:0;transition:all .5s ease 0s}.rangeslider__handle{width:25px;height:25px;top:0;margin-left:-9px;transition:all .5s ease 0s;z-index:11}#video-controls.hover .rangeslider__handle{width:0;height:0;opacity:0}#video-controls.hover .rangeslider__handle:after{height:0;width:0}.rangeslider__handle:after{height:15px;width:15px;background-color:rgba(50,50,50,.8)}.rangeslider__handle:hover:after{background-color:rgba(100,100,100,.8)}#tp-cr{position:absolute;margin:7px;opacity:1;top:0;left:5px;color:#000;font-weight:700;font-size:75%;z-index:10;transition:all .5s ease 0s}#video-controls.hover #tp-cr{opacity:0;font-size:0}#tp-cr-min,#tp-cr-sec{position:relative;float:left}#tp-tt{position:absolute;margin:7px;opacity:1;top:0;right:5px;color:#fff;font-weight:700;font-size:75%;z-index:10;transition:all .5s ease 0s}#video-controls.hover #tp-tt{opacity:0;font-size:0}#tp-tt-min,#tp-tt-sec{position:relative;float:right}");
 var __vue_template__ = "<div v-with=\"db: db\" class=\"rangeslider clickable\" id=\"rangeslider-{{db.id}}\">\n		<div id=\"tp-cr\" class=\"disable-select\">\n			<div id=\"tp-cr-min\">00</div>\n			<div style=\"position: relative; float: left\">:</div>\n			<div id=\"tp-cr-sec\">00</div>\n		</div>\n		<div id=\"tp-tt\" class=\"disable-select\">\n			<div id=\"tp-tt-sec\">00</div>\n			<div style=\"position: relative; float: right\">:</div>\n			<div id=\"tp-tt-min\">00</div>\n		</div>\n		<div class=\"rangeslider__fill context-bg\" style=\"width: 0px\"></div>\n		<div class=\"rangeslider__handle\" style=\"left: 0px\"></div>\n	</div>";
 var $$$ = require('jquery')
@@ -1128,7 +1556,7 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":22,"jquery":23}],18:[function(require,module,exports){
+},{"insert-css":26,"jquery":27}],22:[function(require,module,exports){
 (function(){
 
 	var _ = require('underscore')
@@ -1183,12 +1611,22 @@ module.exports.template = __vue_template__;
 
 				app.view = ''
 
-				Vue.nextTick(function () {
-					app.db = _.findWhere(app.fulldb.hipervideos,{"id": id})
-					app.view = 'video-view'
-					app.params.video = id
-					app.className = 'is-video-' + id
-				})
+				if (id === 'teste') {
+					Vue.nextTick(function () {
+						app.db = app.fulldb.teste
+						app.view = 'video-view'
+						app.params.video = id
+						app.className = 'is-video-mulher'
+					})
+				} else {
+					Vue.nextTick(function () {
+						app.db = _.findWhere(app.fulldb.hipervideos,{"id": id})
+						app.view = 'video-view'
+						app.params.video = id
+						app.className = 'is-video-' + id
+					})
+				}
+				
 			}
 		}
 	}
@@ -1221,9 +1659,9 @@ module.exports.template = __vue_template__;
 
 })()
 
-},{"./app.vue":1,"director":21,"underscore":28,"vue":89}],19:[function(require,module,exports){
-require("insert-css")("body{font-family:fonte-normal,sans-serif;letter-spacing:-1px}@media screen and (min-width:1600px){body{font-size:140%}}header{position:absolute;height:100%;background-image:url(http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png);background-size:100% auto;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;z-index:1;transition:all .5s}header h1{margin:.5%;display:none}header.fechado{height:5%;font-size:50%;overflow:hidden;padding:0;text-align:center;background:#141414;transition:all .5s}header.fechado h1{display:block}@media screen and (min-width:1600px){header.fechado h1{font-size:300%}}header.fechado p{opacity:0}header.fechado a{opacity:0!important}header.fechado:hover{font-size:55%}header.fechado.ativo{top:-5%;transition:all .5s}header.fechado .conteudo{padding:0}header.fechado #headHandle{z-index:2;cursor:pointer}header .conteudo{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:20% 2% 2% 50%;transition:all .5s}.areaTematica{text-align:center;padding:0 3%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;right:-40%;width:40%;position:fixed;height:100%;background-color:rgba(15,15,15,.8);z-index:1;transition:all .5s}.areaTematica h2{margin-top:10%}.col-1-5{width:20%;text-decoration:none;position:absolute;height:100%;transition:all .5s}.linha{height:100%;position:fixed;right:40%;width:.5%;z-index:1;bottom:-100%;opacity:.6;transition:all .1s}.botao{cursor:pointer;display:inline-block;margin:10px;padding:10px;width:26%;background:#ccc;color:#000;opacity:.6;transition:all .3s;text-align:center}.botao:hover{opacity:1}.botao.cruz{border-radius:16px;height:20px;padding:5px;position:absolute;right:2%;top:2%;width:20px}.fotoFundo{position:absolute}.BW{transition:all .5s ease 0s}#headHandle{z-index:-15;position:absolute;left:0;height:100%;width:100%}.nest{bottom:-35%;height:35%;opacity:.8;position:absolute;width:100%;z-index:2;padding:17% 5%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;transition:all .5s ease 0s}.nest h2{text-align:center}.hipervideo{overflow:hidden;cursor:pointer;transition:all .5s ease 0s}.hipervideo:hover .BW{opacity:0}.hipervideo:hover .nest{bottom:0}.hipervideo.ativo{width:100%;cursor:default;z-index:2!important;left:0!important}.hipervideo.ativo .areaTematica{right:0}.hipervideo.ativo .nest{padding:0;opacity:0}.hipervideo.ativo .linha{transition:all .5s ease .3s;bottom:0}.hipervideo.ativo .fotoFundo{left:0!important}.hipervideo.ativo .BW{z-index:-1!important;opacity:0}");
-var __vue_template__ = "<div v-with=\"db: fulldb\">\n		<header class=\"\">\n			<div class=\"conteudo\">\n				<div id=\"headHandle\" v-on=\"click: abrir\"></div>\n				<h1>{{db.title | uppercase}}</h1>\n				<p style=\"letter-spacing: 0; text-align: center\">{{db.texto}}</p>\n				<a v-on=\"click: fechar\" class=\"botao\">O QUE É O HIPERVÍDEO?</a>\n				<a v-on=\"click: fechar\" class=\"botao\">ASSISTIR HIPERVÍDEOS</a>\n				<a v-on=\"click: fechar\" class=\"botao\">VER REDES</a>\n				<img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_PNH.png\" style=\"width: 20%; margin: 5% 10% 0\">\n				<img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png\" style=\"width: 50%\">\n			</div>\n		</header>\n		<div class=\"conteudo\" style=\"position: absolute; z-index: 0\">\n			<div class=\"grid\">\n				<div v-repeat=\"db.hipervideos\" class=\"hipervideo col-1-5 {{id}}\" style=\"left: {{posHip[$index]}}%; z-index: -{{$index}}\">\n					<div v-on=\"click: select(id)\" class=\"nest\" style=\"background-color: {{cor}}\">\n						<h2>{{formato | uppercase}}</h2>\n					</div>\n					<div class=\"linha\" style=\"background-color: {{cor}}\"></div>\n					<div class=\"areaTematica\">\n						<h2>{{formato | uppercase}}</h2>\n						<p style=\"letter-spacing: 0\">{{descricao}}</p>\n						<a href=\"#/{{id}}\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ASSISTIR</a>\n						<a v-on=\"click: deselect(id)\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">VOLTAR</a>\n					</div>\n					<img v-attr=\"src: '/img/RE_' + id + 'BW.png'\" class=\"fotoFundo BW\" style=\"left: -{{posHip[$index]}}%; z-index: 1\" v-on=\"click: select(id)\">\n					<img v-attr=\"src: '/img/RE_' + id + '.png'\" class=\"fotoFundo\" style=\"left: -{{posHip[$index]}}%\" v-on=\"click: select(id)\">\n				</div>\n			</div>\n		</div>\n	</div>";
+},{"./app.vue":1,"director":25,"underscore":32,"vue":93}],23:[function(require,module,exports){
+require("insert-css")("body{font-family:fonte-normal,sans-serif;letter-spacing:-1px}@media screen and (min-width:1600px){body{font-size:140%}}header{position:absolute;height:100%;background-image:url(http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png);background-size:100% auto;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;z-index:1;transition:all .5s}header h1{margin:.5%;display:none}header.fechado{height:5%;font-size:50%;overflow:hidden;padding:0;text-align:center;background:#141414;transition:all .5s}header.fechado h1{display:block}@media screen and (min-width:1600px){header.fechado h1{font-size:300%}}header.fechado p{opacity:0}header.fechado a{opacity:0!important}header.fechado:hover{font-size:55%}header.fechado.ativo{top:-5%;transition:all .5s}header.fechado .conteudo{padding:0}header.fechado #headHandle{z-index:2;cursor:pointer}header .conteudo{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:20% 2% 2% 50%;transition:all .5s}.areaTematica{text-align:center;padding:0 3%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;right:-40%;width:40%;position:fixed;height:100%;background-color:rgba(15,15,15,.8);z-index:1;transition:all .5s}.areaTematica h2{margin-top:10%}.col-1-5{width:20%;text-decoration:none;position:absolute;height:100%;transition:all .5s}.linha{height:100%;position:fixed;right:40%;width:.5%;z-index:1;bottom:-100%;opacity:.6;transition:all .1s}.botao{cursor:pointer;display:inline-block;margin:10px;padding:10px;width:26%;background:#ccc;color:#000;opacity:.6;transition:all .3s;text-align:center}.botao.clic,.botao:hover{opacity:1}.botao.cruz{border-radius:16px;height:20px;padding:5px;position:absolute;right:2%;top:2%;width:20px}.fotoFundo{position:absolute}.BW{transition:all .5s ease 0s}#headHandle{z-index:-15;position:absolute;left:0;height:100%;width:100%}.nest{bottom:-35%;height:35%;opacity:.8;position:absolute;width:100%;z-index:2;padding:17% 5%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;transition:all .5s ease 0s}.nest h2{text-align:center}.hipervideo{overflow:hidden;cursor:pointer;transition:all .5s ease 0s}.hipervideo:hover .BW{opacity:0}.hipervideo:hover .nest{bottom:0}.hipervideo.ativo{width:100%;cursor:default;z-index:2!important;left:0!important}.hipervideo.ativo .areaTematica{right:0}.hipervideo.ativo .nest{padding:0;opacity:0;z-index:0}.hipervideo.ativo .linha{transition:all .5s ease .3s;bottom:0}.hipervideo.ativo .fotoFundo{left:0!important}.hipervideo.ativo .BW{z-index:-1!important;opacity:0}.sub_menu{width:50%;float:left}.sub_menu .botao{width:80%}");
+var __vue_template__ = "<div v-with=\"db: fulldb\">\n		<header class=\"\">\n			<div class=\"conteudo\">\n				<div id=\"headHandle\" v-on=\"click: abrir\"></div>\n				<h1>{{db.title | uppercase}}</h1>\n				<p style=\"letter-spacing: 0; text-align: center\">{{{db.texto}}}</p>\n				<a v-on=\"click: fechar\" class=\"botao\">O QUE É O HIPERVÍDEO?</a>\n				<a v-on=\"click: fechar\" class=\"botao\">ASSISTIR HIPERVÍDEOS</a>\n				<a v-on=\"click: fechar\" class=\"botao\">VER REDES</a>\n				<img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png\" style=\"width: 30%; margin: 5% 5% 0\">\n				<img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png\" style=\"width: 50%\">\n			</div>\n		</header>\n		<div class=\"conteudo\" style=\"position: absolute; z-index: 0\">\n			<div class=\"grid\">\n				<div v-repeat=\"db.hipervideos\" class=\"hipervideo col-1-5 {{id}}\" style=\"left: {{posHip[$index]}}%; z-index: -{{$index}}\">\n					<div v-on=\"click: select(id)\" class=\"nest\" style=\"background-color: {{cor}}\">\n						<h2>{{formato | uppercase}}</h2>\n					</div>\n					<div class=\"linha\" style=\"background-color: {{cor}}\"></div>\n					<div class=\"areaTematica\">\n						<h2>{{formato | uppercase}}</h2>\n						<p style=\"letter-spacing: 0\">{{descricao}}</p>\n						<a href=\"#/{{id}}\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ASSISTIR</a>\n						<a v-on=\"click: deselect(id)\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">VOLTAR</a>\n						<div class=\"sub_menu\">\n							<h2>QUALIDADE</h2>\n							<div v-on=\"click: selectAlta\" class=\"botao\" v-class=\"clic: isAlta\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ALTA</div>\n							<div v-on=\"click: selectMedia\" class=\"botao\" v-class=\"clic: isMedia\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">MEDIA</div>\n							<div v-on=\"click: selectBaixa\" class=\"botao\" v-class=\"clic: isBaixa\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">BAIXA</div>\n						</div>\n						<div class=\"sub_menu\">\n							<h2>ACESSIBILIDADE</h2>\n							<div v-on=\"click: selectNada\" class=\"botao\" v-class=\"clic: isNada\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">SEM ACESSIBILIDADE</div>\n							<div v-on=\"click: selectLibras\" class=\"botao\" v-class=\"clic: isLibras\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">LIBRAS</div>\n							<div v-on=\"click: selectAudio\" class=\"botao\" v-class=\"clic: isAudio\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">AUDIO DESCRIÇÃO</div>\n						</div>\n					</div>\n					<img v-attr=\"src: '/img/RE_' + id + 'BW.png'\" class=\"fotoFundo BW\" style=\"left: -{{posHip[$index]}}%; z-index: 1\" v-on=\"click: select(id)\">\n					<img v-attr=\"src: '/img/RE_' + id + '.png'\" class=\"fotoFundo\" style=\"left: -{{posHip[$index]}}%\" v-on=\"click: select(id)\">\n				</div>\n			</div>\n		</div>\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
 		replace: true,
@@ -1247,9 +1685,45 @@ var $$$ = require('jquery')
 				var este = $$$('.'+ id)
 				head.removeClass('ativo')
 				este.removeClass('ativo')
-			}
+			},
+      selectAlta: function(){
+        this.$dispatch('video-qualidade', 'alta')
+      },
+      selectMedia: function(){
+        this.$dispatch('video-qualidade', 'media')
+      },
+      selectBaixa: function(){
+        this.$dispatch('video-qualidade', 'baixa')
+      },
+      selectLibras: function(){
+      	this.$dispatch('video-acessibilidade', 'libras')
+      },
+      selectAudio: function(){
+      	this.$dispatch('video-acessibilidade', 'audio')
+      },
+      selectNada: function(){
+      	this.$dispatch('video-acessibilidade', 'nada')
+      }
 		},
 		computed: {
+      isAlta: function() {
+        return this.$parent.qualidade === 'alta';
+      },
+      isMedia: function() {
+        return this.$parent.qualidade === 'media';
+      },
+      isBaixa: function() {
+        return this.$parent.qualidade === 'baixa';
+      },
+      isLibras: function() {
+        return this.$parent.acessibilidade === 'libras';
+      },
+      isAudio: function() {
+        return this.$parent.acessibilidade === 'audio';
+      },
+      isNada: function() {
+        return this.$parent.acessibilidade === 'nada';
+      },
 			posHip: {
 				get: function() {
 					var hip = this.$data.db.hipervideos
@@ -1268,9 +1742,9 @@ var $$$ = require('jquery')
 	}
 module.exports.template = __vue_template__;
 
-},{"insert-css":22,"jquery":23}],20:[function(require,module,exports){
-require("insert-css")(".sidebar{width:22%}@media screen and (min-width:1600px){.sidebar{width:15%}}@media screen and (min-width:1600px){.sidebar.has-info{width:16%}}.sidebar_content{position:relative;height:100%;z-index:20}.sidebar_back{position:absolute;background-color:rgba(0,0,0,.5);width:300px;height:100%;top:0;left:0;transition:all .6s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.sidebar-right{position:absolute;right:0;top:57px;width:300px}.infopanel{position:absolute;background-color:rgba(0,0,0,.8);height:100%;top:0;left:0;z-index:10;transition:all .6s;transform:translate3d(127%,0,0)}.infopanel.is-open{transform:translate3d(300px,0,0)}.infopanel .border{position:absolute;height:100%;width:10px;top:0;left:0}.infopanel .back{position:absolute;top:10%;left:79%;color:#fff;font-size:24px}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}.debug .btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px;color:#000;font-size:10px}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}.sidebar_opener{position:relative;transition:all .6s ease .6s;overflow:hidden}.sidebar_opener.v-enter,.sidebar_opener.v-leave{transform:translate3d(-100px,0,0)}.sidebar_opener.v-leave{transition:all .3s ease 0}.sidebar_opener .sidebar_opener__inside{display:inline-block;color:#fff;padding:10px;height:28px;line-height:28px;transition:all .6s ease}.infopanel{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:5% 20% 3% 3%;width:79%}@media screen and (min-width:1600px){.infopanel{width:85%}}.is-cartela{height:auto!important}");
-var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"capitulo: capitulo\" v-if=\"capitulo\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\"></in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n		\n		<!-- DEBUG -->\n\n		<!-- <div class=\"debug\">\n			<a id=\"tres\" class=\"btn\" href=\"#/home\">home</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/mulher\">mulher</a>\n			<a id=\"tres\" class=\"btn\" href=\"#/crianca\">crianca</a>\n			<br/>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPlay\">play</a>\n			<a id=\"tres\" class=\"btn\" v-on=\"click: videoPause\">pause</a>\n		</div> -->\n\n	</div>";
+},{"insert-css":26,"jquery":27}],24:[function(require,module,exports){
+require("insert-css")(".sidebar{width:22%}@media screen and (min-width:1600px){.sidebar{width:15%}}@media screen and (min-width:1600px){.sidebar.has-info{width:16%}}.sidebar_content{position:relative;height:100%;z-index:20}.sidebar_back{position:absolute;background-color:rgba(0,0,0,.5);width:300px;height:100%;top:0;left:0;transition:all .6s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.sidebar-right{position:absolute;right:0;top:57px;width:300px}.infopanel{position:absolute;background-color:rgba(0,0,0,.8);height:100%;top:0;left:0;z-index:10;transition:all .6s;transform:translate3d(127%,0,0)}.infopanel.is-open{transform:translate3d(300px,0,0)}.infopanel .border{position:absolute;height:100%;width:10px;top:0;left:0}.infopanel .back{position:absolute;top:10%;left:79%;color:#fff;font-size:24px}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}.debug .btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px;color:#000;font-size:10px}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}.sidebar_opener{position:relative;transition:all .6s ease .6s;overflow:hidden}.sidebar_opener.v-enter,.sidebar_opener.v-leave{transform:translate3d(-100px,0,0)}.sidebar_opener.v-leave{transition:all .3s ease 0}.sidebar_opener .sidebar_opener__inside{display:inline-block;color:#fff;padding:10px;height:28px;line-height:28px;transition:all .6s ease}.infopanel{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:5% 20% 3% 3%;width:79%}@media screen and (min-width:1600px){.infopanel{width:85%}}.is-cartela{height:auto!important}.sidebar_cartela{transition:all .5s ease .5s;position:fixed;bottom:60px;left:0}.sidebar_cartela.expand-enter,.sidebar_cartela.expand-leave{left:-800px}");
+var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"capitulo: capitulo, libras: libras, audio_desc: audio_desc\" v-if=\"capitulo\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\"></in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- CARTELAS -->\n\n			<div v-show=\"cartela\" class=\"sidebar_cartela\" v-transition=\"expand\">\n				<div class=\"sidebar_block__header context-bg\" style=\"font-size: 100%\">\n					<div id=\"cartela_nome\">\n						{{contentCartela.title | uppercase}}\n					</div>\n				</div>\n				<div class=\"sidebar_block__header\" style=\"background: #fff\">\n					<div id=\"cartela_funcao\">\n						{{contentCartela.funcao}}\n					</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n\n		<!-- ACESSIBILIDADE -->\n\n		<div class=\"libras\" v-show=\"libras\" v-transition=\"\">\n			<in-libras v-with=\"id: id\"></in-libras>\n		</div>\n\n		<div class=\"audio_desc\" v-show=\"audio_desc\">\n			<in-audio v-with=\"id: id\"></in-audio>\n		</div>\n		\n	</div>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 	var _ = require('underscore')
@@ -1283,11 +1757,16 @@ var Vue = require('vue')
 			return {
 				db: null,
 				events: null,
+				geo: false,
 				counter: 0,
 				contentBlocks: [],
+				contentCartela: {title: "", funcao: ""},
+				cartela: false,
 				fixedSidebar: false,
 				conteudo: {},
 				capitulo: null,
+				libras: false,
+				audio_desc: false,
 				video: {
 					popcorn: null,
 					time: 0,
@@ -1302,11 +1781,16 @@ var Vue = require('vue')
 			},
 			hasInfo: function(){
 				return this.params.route.length > 1 && this.params.route[1] == 'info'
+			},
+			hasLibras: function() {
+				return this.libras
 			}
 		},
 		attached: function() {
 
 			this.capitulo = this.db.capitulos[0];
+			this.libras = this.$parent.libras;
+			this.audio_desc = this.$parent.audio_desc;
 
 			var self = this
 
@@ -1325,6 +1809,13 @@ var Vue = require('vue')
 			}
 			xhr.send()
 
+			this.$on('mudou-libras', function (val) {
+				self.libras = val;
+			})
+
+			this.$on('mudou-audio_desc', function (val) {
+				self.audio_desc = val;
+			})
 
 			// POPCORN
 
@@ -1372,9 +1863,18 @@ var Vue = require('vue')
 				this.video.time = time
 				this.video.duration = duration
 				this.video.progress = progress
+				this.$broadcast('libras-update', time);
 				if (cap_next && time >= this.capitulo.timecode) {
 					this.capitulo = cap_next;
+					$$$('#chap').addClass('aberto')
+          setTimeout(function() {
+            $$$('#chap').removeClass('aberto')
+          }, 5000)
 				} else if (cap_prev && time <= cap_prev.timecode) {
+					$$$('#chap').addClass('aberto')
+          setTimeout(function() {
+            $$$('#chap').removeClass('aberto')
+          }, 5000)
 					this.capitulo = cap_prev;
 				}
 			})
@@ -1399,6 +1899,7 @@ var Vue = require('vue')
 		},
 		detached: function(){
 			$$$(window).unbind('mousemove', this.handleMouseMove)
+			$$$(document).unbind('keydown', this.keyEvents)
 		},
 		methods: {
 			infoOpen: function(info){
@@ -1488,7 +1989,7 @@ var Vue = require('vue')
 				var video = document.getElementById('hipVid-' + this.id);
 				switch(e.which) {
 					case 32 : 
-						if (video.paused && this.conteudo === null) {
+						if (video.paused) {
 							video.play();
 						} else if (!video.paused) {
 							video.pause();
@@ -1501,15 +2002,14 @@ var Vue = require('vue')
 				var node = _.findWhere(this.events.nodes,{"id": event.node})
 
 				if(node.funcao){
-					this.contentBlocks.unshift({
+					this.contentCartela = {
 						id: event.id,
 						videoID: this.params.video,
-						start: event.start,
-						end: event.end,
 						title: node.title,
 						funcao: node.funcao,
 						ap: true
-					})
+					}
+					this.cartela = true
 				} else {
 					this.contentBlocks.unshift({
 						id: event.id,
@@ -1523,7 +2023,8 @@ var Vue = require('vue')
 				}
 
 				if(node.geo){
-					this.$.map.panTo(node.geo)
+					this.$broadcast('event-map', node.geo);
+					this.geo = true
 				}
 
 				if (node.icon === 'marco') {
@@ -1550,7 +2051,8 @@ var Vue = require('vue')
 				})
 
 				if(node.geo){
-					this.$.map.panTo(node.geo)
+					this.$broadcast('event-map', node.geo);
+					this.geo = true
 				}
 
 				this.fixedSidebar = false;
@@ -1562,6 +2064,9 @@ var Vue = require('vue')
 				this.contentBlocks = _.reject(this.contentBlocks, function(block){
 					return block.start === null ? false : block.id === id
 				})
+				this.cartela = null
+				this.geo = false
+				this.$broadcast('remove-event-map', this.db.geo);
 			}
 		},
 		components: {
@@ -1576,12 +2081,14 @@ var Vue = require('vue')
 			'in-sidebar-chapter': require('../components/sidebar-chapter.vue'),
 			'in-sidebar-block': require('../components/sidebar-block.vue'),
 			'in-sidebar-info': require('../components/sidebar-info.vue'),
-			'in-creditos': require('../components/creditos.vue')
+			'in-creditos': require('../components/creditos.vue'),
+			'in-libras': require('../components/libras.vue'),
+			'in-audio': require('../components/audio_desc.vue')
 		}
 	}
 module.exports.template = __vue_template__;
 
-},{"../components/bg-video.vue":2,"../components/creditos.vue":4,"../components/event-block-map.vue":5,"../components/example.vue":6,"../components/marcos.vue":8,"../components/sidebar-block.vue":12,"../components/sidebar-chapter.vue":13,"../components/sidebar-graph.vue":14,"../components/sidebar-info.vue":15,"../components/topbar-capitulos.vue":16,"../components/topbar-slider.vue":17,"insert-css":22,"jquery":23,"perfect-scrollbar":26,"underscore":28,"vue":89}],21:[function(require,module,exports){
+},{"../components/audio_desc.vue":2,"../components/bg-video.vue":3,"../components/creditos.vue":6,"../components/event-block-map.vue":7,"../components/example.vue":8,"../components/libras.vue":9,"../components/marcos.vue":11,"../components/sidebar-block.vue":15,"../components/sidebar-chapter.vue":16,"../components/sidebar-graph.vue":17,"../components/sidebar-info.vue":18,"../components/topbar-capitulos.vue":20,"../components/topbar-slider.vue":21,"insert-css":26,"jquery":27,"perfect-scrollbar":30,"underscore":32,"vue":93}],25:[function(require,module,exports){
 
 
 //
@@ -2301,7 +2808,7 @@ Router.prototype.mount = function(routes, path) {
 
 
 }(typeof exports === "object" ? exports : window));
-},{}],22:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var inserted = {};
 
 module.exports = function (css, options) {
@@ -2325,7 +2832,7 @@ module.exports = function (css, options) {
     }
 };
 
-},{}],23:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
@@ -11517,7 +12024,7 @@ return jQuery;
 
 }));
 
-},{}],24:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 /*
  Leaflet, a JavaScript library for mobile-friendly interactive maps. http://leafletjs.com
  (c) 2010-2013, Vladimir Agafonkin
@@ -20698,7 +21205,7 @@ L.Map.include({
 
 
 }(window, document));
-},{}],25:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 (function (global){
 /**
  * marked - a markdown parser
@@ -21974,7 +22481,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
 }());
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],26:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 /* Copyright (c) 2015 Hyunje Alex Jun and other contributors
  * Licensed under the MIT License
  */
@@ -22853,7 +23360,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
   };
 });
 
-},{"jquery":23}],27:[function(require,module,exports){
+},{"jquery":27}],31:[function(require,module,exports){
 /*
      _ _      _       _
  ___| (_) ___| | __  (_)___
@@ -25004,7 +25511,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
 
 }));
 
-},{"jquery":23}],28:[function(require,module,exports){
+},{"jquery":27}],32:[function(require,module,exports){
 //     Underscore.js 1.7.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -26421,7 +26928,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
   }
 }.call(this));
 
-},{}],29:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -26469,7 +26976,7 @@ exports.$addChild = function (opts, BaseCtor) {
   this._children.push(child)
   return child
 }
-},{"../util":86}],30:[function(require,module,exports){
+},{"../util":90}],34:[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
 var Path = require('../parsers/path')
@@ -26634,7 +27141,7 @@ exports.$log = function (path) {
   }
   console.log(data)
 }
-},{"../parsers/directive":74,"../parsers/expression":75,"../parsers/path":76,"../parsers/text":78,"../util":86,"../watcher":90}],31:[function(require,module,exports){
+},{"../parsers/directive":78,"../parsers/expression":79,"../parsers/path":80,"../parsers/text":82,"../util":90,"../watcher":94}],35:[function(require,module,exports){
 var _ = require('../util')
 var transition = require('../transition')
 
@@ -26846,7 +27353,7 @@ function remove (el, vm, cb) {
   _.remove(el)
   if (cb) cb()
 }
-},{"../transition":80,"../util":86}],32:[function(require,module,exports){
+},{"../transition":84,"../util":90}],36:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -27021,7 +27528,7 @@ function modifyListenerCount (vm, event, count) {
     parent = parent.$parent
   }
 }
-},{"../util":86}],33:[function(require,module,exports){
+},{"../util":90}],37:[function(require,module,exports){
 var _ = require('../util')
 var mergeOptions = require('../util/merge-option')
 
@@ -27168,7 +27675,7 @@ function createAssetRegisters (Constructor) {
 }
 
 createAssetRegisters(exports)
-},{"../compiler/compile":37,"../compiler/transclude":38,"../config":39,"../parsers/directive":74,"../parsers/expression":75,"../parsers/path":76,"../parsers/template":77,"../parsers/text":78,"../util":86,"../util/merge-option":88}],34:[function(require,module,exports){
+},{"../compiler/compile":41,"../compiler/transclude":42,"../config":43,"../parsers/directive":78,"../parsers/expression":79,"../parsers/path":80,"../parsers/template":81,"../parsers/text":82,"../util":90,"../util/merge-option":92}],38:[function(require,module,exports){
 var _ = require('../util')
 var compile = require('../compiler/compile')
 
@@ -27241,7 +27748,7 @@ exports.$destroy = function (remove, deferCleanup) {
 exports.$compile = function (el) {
   return compile(el, this.$options, true)(this, el)
 }
-},{"../compiler/compile":37,"../util":86}],35:[function(require,module,exports){
+},{"../compiler/compile":41,"../util":90}],39:[function(require,module,exports){
 var _ = require('./util')
 var MAX_UPDATE_COUNT = 10
 
@@ -27336,7 +27843,7 @@ exports.push = function (job) {
     }
   }
 }
-},{"./util":86}],36:[function(require,module,exports){
+},{"./util":90}],40:[function(require,module,exports){
 /**
  * A doubly linked list-based Least Recently Used (LRU)
  * cache. Will keep most recently used items while
@@ -27449,7 +27956,7 @@ p.get = function (key, returnEntry) {
 }
 
 module.exports = Cache
-},{}],37:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 var _ = require('../util')
 var config = require('../config')
 var textParser = require('../parsers/text')
@@ -28014,7 +28521,7 @@ function directiveComparator (a, b) {
   b = b.def.priority || 0
   return a > b ? 1 : -1
 }
-},{"../config":39,"../parsers/directive":74,"../parsers/template":77,"../parsers/text":78,"../util":86}],38:[function(require,module,exports){
+},{"../config":43,"../parsers/directive":78,"../parsers/template":81,"../parsers/text":82,"../util":90}],42:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parsers/template')
 
@@ -28164,7 +28671,7 @@ function insertContentAt (outlet, contents) {
   }
   parent.removeChild(outlet)
 }
-},{"../parsers/template":77,"../util":86}],39:[function(require,module,exports){
+},{"../parsers/template":81,"../util":90}],43:[function(require,module,exports){
 module.exports = {
 
   /**
@@ -28251,7 +28758,7 @@ Object.defineProperty(module.exports, 'delimiters', {
     this._delimitersChanged = true
   }
 })
-},{}],40:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 var _ = require('./util')
 var config = require('./config')
 var Watcher = require('./watcher')
@@ -28474,7 +28981,7 @@ p.set = function (value, lock) {
 }
 
 module.exports = Directive
-},{"./config":39,"./parsers/expression":75,"./parsers/text":78,"./util":86,"./watcher":90}],41:[function(require,module,exports){
+},{"./config":43,"./parsers/expression":79,"./parsers/text":82,"./util":90,"./watcher":94}],45:[function(require,module,exports){
 // xlink
 var xlinkNS = 'http://www.w3.org/1999/xlink'
 var xlinkRE = /^xlink:/
@@ -28507,7 +29014,7 @@ function xlinkHandler (value) {
     this.el.removeAttributeNS(xlinkNS, 'href')
   }
 }
-},{}],42:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 var _ = require('../util')
 var addClass = _.addClass
 var removeClass = _.removeClass
@@ -28526,7 +29033,7 @@ module.exports = function (value) {
     }
   }
 }
-},{"../util":86}],43:[function(require,module,exports){
+},{"../util":90}],47:[function(require,module,exports){
 var config = require('../config')
 
 module.exports = {
@@ -28539,7 +29046,7 @@ module.exports = {
   }
 
 }
-},{"../config":39}],44:[function(require,module,exports){
+},{"../config":43}],48:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parsers/template')
 
@@ -28763,7 +29270,7 @@ module.exports = {
   }
 
 }
-},{"../parsers/template":77,"../util":86}],45:[function(require,module,exports){
+},{"../parsers/template":81,"../util":90}],49:[function(require,module,exports){
 module.exports = {
 
   isLiteral: true,
@@ -28777,7 +29284,7 @@ module.exports = {
   }
   
 }
-},{}],46:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = { 
@@ -28805,7 +29312,7 @@ module.exports = {
   // so no need for unbind here.
 
 }
-},{"../util":86}],47:[function(require,module,exports){
+},{"../util":90}],51:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parsers/template')
 
@@ -28844,7 +29351,7 @@ module.exports = {
   }
 
 }
-},{"../parsers/template":77,"../util":86}],48:[function(require,module,exports){
+},{"../parsers/template":81,"../util":90}],52:[function(require,module,exports){
 var _ = require('../util')
 var compile = require('../compiler/compile')
 var templateParser = require('../parsers/template')
@@ -28928,7 +29435,7 @@ module.exports = {
   }
 
 }
-},{"../compiler/compile":37,"../parsers/template":77,"../transition":80,"../util":86}],49:[function(require,module,exports){
+},{"../compiler/compile":41,"../parsers/template":81,"../transition":84,"../util":90}],53:[function(require,module,exports){
 // manipulation directives
 exports.text       = require('./text')
 exports.html       = require('./html')
@@ -28954,7 +29461,7 @@ exports['if']      = require('./if')
 // child vm communication directives
 exports['with']    = require('./with')
 exports.events     = require('./events')
-},{"./attr":41,"./class":42,"./cloak":43,"./component":44,"./el":45,"./events":46,"./html":47,"./if":48,"./model":52,"./on":55,"./partial":56,"./ref":57,"./repeat":58,"./show":59,"./style":60,"./text":61,"./transition":62,"./with":63}],50:[function(require,module,exports){
+},{"./attr":45,"./class":46,"./cloak":47,"./component":48,"./el":49,"./events":50,"./html":51,"./if":52,"./model":56,"./on":59,"./partial":60,"./ref":61,"./repeat":62,"./show":63,"./style":64,"./text":65,"./transition":66,"./with":67}],54:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -28980,7 +29487,7 @@ module.exports = {
   }
 
 }
-},{"../../util":86}],51:[function(require,module,exports){
+},{"../../util":90}],55:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -29104,7 +29611,7 @@ module.exports = {
   }
 
 }
-},{"../../util":86}],52:[function(require,module,exports){
+},{"../../util":90}],56:[function(require,module,exports){
 var _ = require('../../util')
 
 var handlers = {
@@ -29161,7 +29668,7 @@ module.exports = {
   }
 
 }
-},{"../../util":86,"./checkbox":50,"./default":51,"./radio":53,"./select":54}],53:[function(require,module,exports){
+},{"../../util":90,"./checkbox":54,"./default":55,"./radio":57,"./select":58}],57:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -29188,7 +29695,7 @@ module.exports = {
   }
 
 }
-},{"../../util":86}],54:[function(require,module,exports){
+},{"../../util":90}],58:[function(require,module,exports){
 var _ = require('../../util')
 var Watcher = require('../../watcher')
 
@@ -29362,7 +29869,7 @@ function indexOf (arr, val) {
   }
   return -1
 }
-},{"../../util":86,"../../watcher":90}],55:[function(require,module,exports){
+},{"../../util":90,"../../watcher":94}],59:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -29422,7 +29929,7 @@ module.exports = {
     _.off(this.el, 'load', this.iframeBind)
   }
 }
-},{"../util":86}],56:[function(require,module,exports){
+},{"../util":90}],60:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parsers/template')
 var vIf = require('./if')
@@ -29467,7 +29974,7 @@ module.exports = {
   }
 
 }
-},{"../parsers/template":77,"../util":86,"./if":48}],57:[function(require,module,exports){
+},{"../parsers/template":81,"../util":90,"./if":52}],61:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -29491,7 +29998,7 @@ module.exports = {
   }
   
 }
-},{"../util":86}],58:[function(require,module,exports){
+},{"../util":90}],62:[function(require,module,exports){
 var _ = require('../util')
 var isObject = _.isObject
 var isPlainObject = _.isPlainObject
@@ -29996,7 +30503,7 @@ function range (n) {
   }
   return ret
 }
-},{"../compiler/compile":37,"../compiler/transclude":38,"../parsers/expression":75,"../parsers/template":77,"../parsers/text":78,"../util":86,"../util/merge-option":88}],59:[function(require,module,exports){
+},{"../compiler/compile":41,"../compiler/transclude":42,"../parsers/expression":79,"../parsers/template":81,"../parsers/text":82,"../util":90,"../util/merge-option":92}],63:[function(require,module,exports){
 var transition = require('../transition')
 
 module.exports = function (value) {
@@ -30005,7 +30512,7 @@ module.exports = function (value) {
     el.style.display = value ? '' : 'none'
   }, this.vm)
 }
-},{"../transition":80}],60:[function(require,module,exports){
+},{"../transition":84}],64:[function(require,module,exports){
 var _ = require('../util')
 var prefixes = ['-webkit-', '-moz-', '-ms-']
 var camelPrefixes = ['Webkit', 'Moz', 'ms']
@@ -30106,7 +30613,7 @@ function prefix (prop) {
     }
   }
 }
-},{"../util":86}],61:[function(require,module,exports){
+},{"../util":90}],65:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -30122,7 +30629,7 @@ module.exports = {
   }
   
 }
-},{"../util":86}],62:[function(require,module,exports){
+},{"../util":90}],66:[function(require,module,exports){
 module.exports = {
 
   priority: 1000,
@@ -30137,7 +30644,7 @@ module.exports = {
   }
 
 }
-},{}],63:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
 
@@ -30211,7 +30718,7 @@ module.exports = {
   }
 
 }
-},{"../util":86,"../watcher":90}],64:[function(require,module,exports){
+},{"../util":90,"../watcher":94}],68:[function(require,module,exports){
 var _ = require('../util')
 var Path = require('../parsers/path')
 
@@ -30299,7 +30806,7 @@ function contains (val, search) {
     return val.toString().toLowerCase().indexOf(search) > -1
   }
 }
-},{"../parsers/path":76,"../util":86}],65:[function(require,module,exports){
+},{"../parsers/path":80,"../util":90}],69:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -30435,7 +30942,7 @@ exports.key.keyCodes = keyCodes
  */
 
 _.extend(exports, require('./array-filters'))
-},{"../util":86,"./array-filters":64}],66:[function(require,module,exports){
+},{"../util":90,"./array-filters":68}],70:[function(require,module,exports){
 var _ = require('../util')
 var Directive = require('../directive')
 var compile = require('../compiler/compile')
@@ -30624,7 +31131,7 @@ exports._cleanup = function () {
   // turn off all instance listeners.
   this.$off()
 }
-},{"../compiler/compile":37,"../compiler/transclude":38,"../directive":40,"../util":86}],67:[function(require,module,exports){
+},{"../compiler/compile":41,"../compiler/transclude":42,"../directive":44,"../util":90}],71:[function(require,module,exports){
 var _ = require('../util')
 var inDoc = _.inDoc
 
@@ -30763,7 +31270,7 @@ exports._callHook = function (hook) {
   }
   this.$emit('hook:' + hook)
 }
-},{"../util":86}],68:[function(require,module,exports){
+},{"../util":90}],72:[function(require,module,exports){
 var mergeOptions = require('../util/merge-option')
 
 /**
@@ -30841,7 +31348,7 @@ exports._init = function (options) {
     this.$mount(options.el)
   }
 }
-},{"../util/merge-option":88}],69:[function(require,module,exports){
+},{"../util/merge-option":92}],73:[function(require,module,exports){
 var _ = require('../util')
 var Observer = require('../observer')
 var Dep = require('../observer/dep')
@@ -31056,7 +31563,7 @@ exports._defineMeta = function (key, value) {
     }
   })
 }
-},{"../observer":72,"../observer/dep":71,"../util":86}],70:[function(require,module,exports){
+},{"../observer":76,"../observer/dep":75,"../util":90}],74:[function(require,module,exports){
 var _ = require('../util')
 var arrayProto = Array.prototype
 var arrayMethods = Object.create(arrayProto)
@@ -31147,7 +31654,7 @@ _.define(
 )
 
 module.exports = arrayMethods
-},{"../util":86}],71:[function(require,module,exports){
+},{"../util":90}],75:[function(require,module,exports){
 var uid = 0
 
 /**
@@ -31198,7 +31705,7 @@ p.notify = function () {
 }
 
 module.exports = Dep
-},{}],72:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 var _ = require('../util')
 var config = require('../config')
 var Dep = require('./dep')
@@ -31435,7 +31942,7 @@ p.removeVm = function (vm) {
 
 module.exports = Observer
 
-},{"../config":39,"../util":86,"./array":70,"./dep":71,"./object":73}],73:[function(require,module,exports){
+},{"../config":43,"../util":90,"./array":74,"./dep":75,"./object":77}],77:[function(require,module,exports){
 var _ = require('../util')
 var objProto = Object.prototype
 
@@ -31502,7 +32009,7 @@ _.define(
     }
   }
 )
-},{"../util":86}],74:[function(require,module,exports){
+},{"../util":90}],78:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var cache = new Cache(1000)
@@ -31662,7 +32169,7 @@ exports.parse = function (s) {
   cache.put(s, dirs)
   return dirs
 }
-},{"../cache":36,"../util":86}],75:[function(require,module,exports){
+},{"../cache":40,"../util":90}],79:[function(require,module,exports){
 var _ = require('../util')
 var Path = require('./path')
 var Cache = require('../cache')
@@ -31890,7 +32397,7 @@ exports.parse = function (exp, needSet) {
 
 // Export the pathRegex for external use
 exports.pathTestRE = pathTestRE
-},{"../cache":36,"../util":86,"./path":76}],76:[function(require,module,exports){
+},{"../cache":40,"../util":90,"./path":80}],80:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var pathCache = new Cache(1000)
@@ -32188,7 +32695,7 @@ exports.set = function (obj, path, val) {
   }
   return true
 }
-},{"../cache":36,"../util":86}],77:[function(require,module,exports){
+},{"../cache":40,"../util":90}],81:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var templateCache = new Cache(1000)
@@ -32439,7 +32946,7 @@ exports.parse = function (template, clone, noSelector) {
     ? exports.clone(frag)
     : frag
 }
-},{"../cache":36,"../util":86}],78:[function(require,module,exports){
+},{"../cache":40,"../util":90}],82:[function(require,module,exports){
 var Cache = require('../cache')
 var config = require('../config')
 var dirParser = require('./directive')
@@ -32618,7 +33125,7 @@ function inlineFilters (exp) {
     }
   }
 }
-},{"../cache":36,"../config":39,"./directive":74}],79:[function(require,module,exports){
+},{"../cache":40,"../config":43,"./directive":78}],83:[function(require,module,exports){
 var _ = require('../util')
 var addClass = _.addClass
 var removeClass = _.removeClass
@@ -32808,7 +33315,7 @@ module.exports = function (el, direction, op, data, cb) {
     push(el, direction, op, leaveClass, cb)
   }
 }
-},{"../util":86}],80:[function(require,module,exports){
+},{"../util":90}],84:[function(require,module,exports){
 var _ = require('../util')
 var applyCSSTransition = require('./css')
 var applyJSTransition = require('./js')
@@ -32960,7 +33467,7 @@ var apply = exports.apply = function (el, direction, op, vm, cb) {
     if (cb) cb()
   }
 }
-},{"../util":86,"./css":79,"./js":81}],81:[function(require,module,exports){
+},{"../util":90,"./css":83,"./js":85}],85:[function(require,module,exports){
 /**
  * Apply JavaScript enter/leave functions.
  *
@@ -33004,7 +33511,7 @@ module.exports = function (el, direction, op, data, def, vm, cb) {
     }
   }
 }
-},{}],82:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 var config = require('../config')
 
 /**
@@ -33065,7 +33572,7 @@ function enableDebug () {
     }
   }
 }
-},{"../config":39}],83:[function(require,module,exports){
+},{"../config":43}],87:[function(require,module,exports){
 var config = require('../config')
 
 /**
@@ -33263,7 +33770,7 @@ exports.extractContent = function (el) {
   }
   return rawContent
 }
-},{"../config":39}],84:[function(require,module,exports){
+},{"../config":43}],88:[function(require,module,exports){
 /**
  * Can we use __proto__?
  *
@@ -33370,7 +33877,7 @@ if (inBrowser && !exports.isIE9) {
     ? 'webkitAnimationEnd'
     : 'animationend'
 }
-},{}],85:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 var _ = require('./debug')
 
 /**
@@ -33443,7 +33950,7 @@ exports.applyFilters = function (value, filters, vm, oldVal) {
   }
   return value
 }
-},{"./debug":82}],86:[function(require,module,exports){
+},{"./debug":86}],90:[function(require,module,exports){
 var lang   = require('./lang')
 var extend = lang.extend
 
@@ -33452,7 +33959,7 @@ extend(exports, require('./env'))
 extend(exports, require('./dom'))
 extend(exports, require('./filter'))
 extend(exports, require('./debug'))
-},{"./debug":82,"./dom":83,"./env":84,"./filter":85,"./lang":87}],87:[function(require,module,exports){
+},{"./debug":86,"./dom":87,"./env":88,"./filter":89,"./lang":91}],91:[function(require,module,exports){
 /**
  * Check is a string starts with $ or _
  *
@@ -33628,7 +34135,7 @@ exports.define = function (obj, key, val, enumerable) {
     configurable : true
   })
 }
-},{}],88:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 var _ = require('./index')
 var extend = _.extend
 
@@ -33887,7 +34394,7 @@ module.exports = function mergeOptions (parent, child, vm) {
   }
   return options
 }
-},{"./index":86}],89:[function(require,module,exports){
+},{"./index":90}],93:[function(require,module,exports){
 var _ = require('./util')
 var extend = _.extend
 
@@ -33972,7 +34479,7 @@ extend(p, require('./api/child'))
 extend(p, require('./api/lifecycle'))
 
 module.exports = _.Vue = Vue
-},{"./api/child":29,"./api/data":30,"./api/dom":31,"./api/events":32,"./api/global":33,"./api/lifecycle":34,"./directives":49,"./filters":65,"./instance/compile":66,"./instance/events":67,"./instance/init":68,"./instance/scope":69,"./util":86}],90:[function(require,module,exports){
+},{"./api/child":33,"./api/data":34,"./api/dom":35,"./api/events":36,"./api/global":37,"./api/lifecycle":38,"./directives":53,"./filters":69,"./instance/compile":70,"./instance/events":71,"./instance/init":72,"./instance/scope":73,"./util":90}],94:[function(require,module,exports){
 var _ = require('./util')
 var config = require('./config')
 var Observer = require('./observer')
@@ -34230,4 +34737,4 @@ function traverse (obj) {
 }
 
 module.exports = Watcher
-},{"./batcher":35,"./config":39,"./observer":72,"./parsers/expression":75,"./util":86}]},{},[18])
+},{"./batcher":39,"./config":43,"./observer":76,"./parsers/expression":79,"./util":90}]},{},[22])

@@ -63,9 +63,12 @@
 </style>
 
 <template>
-  <div>
+  <div style="height: 100%;">
   <div class="border context-bg"></div>
   <div id="conteudo_info">
+
+    <div v-component="in-mapa" v-with="mapa: conteudo.mapa" v-if="conteudo && hasMap"></div>
+
     <h2 v-if="conteudo && conteudo.title"> 
       {{conteudo.title}} 
     </h2>
@@ -73,7 +76,7 @@
       {{{html_texto | marked}}}
     </div>
 
-    <div v-component="in-databars" v-with="databars: conteudo.databars" v-if="conteudo && hasDatabars"></div>
+    <!-- <div v-component="in-databars" v-with="databars: conteudo.databars" v-if="conteudo && hasDatabars"></div> -->
     
     <h3 v-if="conteudo && conteudo.imagens"> IMAGENS </h3>
     <div class="image-list"></div>
@@ -123,6 +126,9 @@
     computed: {
       hasDatabars: function(){
         return this.conteudo.databars !== undefined
+      },
+      hasMap: function(){
+        return this.conteudo.mapa !== undefined
       }
     },
     attached: function() {
@@ -192,10 +198,12 @@
         this.imageIndex = 0;
         this.videoIndex = 0;
       })
+      
     },
 
     components: {
       'in-databars': require('../components/content-databars.vue'),
+      'in-mapa': require('../components/content-map.vue')
     },
 
     filters: {
