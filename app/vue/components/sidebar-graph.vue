@@ -125,7 +125,7 @@
 			this.addRootNode()
 			this.updateGraph()
 
-			this._interval = setInterval(this.checkTimecode,1000)
+			this._interval = setInterval(this.checkTimecode,1000)		
 
 		},
 

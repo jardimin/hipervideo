@@ -28,6 +28,7 @@
 
 	module.exports = {
 		replace: true,
+		inherit: true,
 		data: function(){
 			return {
 				qual: 'alta'
@@ -51,7 +52,7 @@
 				$$$('#mp4').attr('src', self.$parent.db.url + '_' + self.qual + '.mp4')
 				$$$('#webm').attr('src', self.$parent.db.url + '_' + self.qual + '.webm')
 				hipervideo.load();
-				hipervideo.currentTime = self.$parent.video.time;
+				hipervideo.currentTime = self.video.time;
 			})
 
 			var tempoCorrido = function(array) {
@@ -104,6 +105,40 @@
 				self.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
 			});
 		},
+    beforeDestroy: function(){
+    	var hipervideo = this.$$.hipervideo;
+
+      this.$off('mudou-qualidade')
+
+			hipervideo.removeEventListener("loadedmetadata" , function() {
+				var duracao = toFormat(hipervideo.duration);
+				var tempoTotal = function(array) {
+					var min = array[0];
+					var sec = array[1];
+					$$$('#tp-tt-min').text(min);
+					$$$('#tp-tt-sec').text(sec);
+				};
+
+				tempoTotal(duracao);
+			})
+
+			hipervideo.removeEventListener("timeupdate", function() {
+				// Calculate the slider value
+				var value = (1000 / hipervideo.duration) * hipervideo.currentTime;
+				var fillWidth = seekBar.value / 10;
+				var tempo = toFormat(hipervideo.currentTime);
+				tempoCorrido(tempo);
+
+				// Update the slider value
+				seekBar.value = value;
+				$$$('.rangeslider__fill').css('width', fillWidth+"%")
+				$$$('.rangeslider__handle').css('left', fillWidth+"%")
+
+				// Dispatch timeupdate to parent
+				self.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
+			});
+
+    },
 		methods: {
 			play: function(){
 				this.$$.hipervideo.play()

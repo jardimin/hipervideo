@@ -133,6 +133,9 @@
 			});
 
 		},
+		beforeDestroy: function(){
+			this.$off('hover-marco')
+		},
 		methods: {
 			marcoBlock: function(id) {
 				var ma = this.marcos[id]

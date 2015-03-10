@@ -252,6 +252,8 @@
 				capitulo: null,
 				libras: false,
 				audio_desc: false,
+				viid: null,
+				creditos: null,
 				video: {
 					popcorn: null,
 					time: 0,
@@ -304,10 +306,10 @@
 
 			// POPCORN
 
-			var video = document.getElementById('hipVid-' + self.id);
-			var creditos = document.getElementById('creditos');
+			this.viid = document.getElementById('hipVid-' + self.id);
+			this.creditos = document.getElementById('creditos');
 
-			video.addEventListener( "loadeddata", function() {
+			this.viid.addEventListener( "loadeddata", function() {
 
 				self.video.popcorn = Popcorn("#hipVid-" + self.id);
 
@@ -319,10 +321,10 @@
 
 			}, false );
 
-			video.addEventListener( "ended", function() {
+			this.viid.addEventListener( "ended", function() {
 
 				creditos.className = 'finalizado';
-				video.pause();
+				self.viid.pause();
 
 			}, false );
 
@@ -348,7 +350,11 @@
 				this.video.time = time
 				this.video.duration = duration
 				this.video.progress = progress
-				this.$broadcast('libras-update', time);
+				if (this.libras) {
+					this.$broadcast('libras-update', time);
+				} else if (this.audio_desc) {
+					this.$broadcast('audio-update', time);
+				}
 				if (cap_next && time >= this.capitulo.timecode) {
 					this.capitulo = cap_next;
 					$$$('#chap').addClass('aberto')
@@ -379,6 +385,31 @@
 			$$$(document).bind('keydown', this.keyEvents)
 
 		},
+		beforeDestroy: function(){
+      this.$off('mudou-libras')
+			this.$off('mudou-audio_desc')
+			var self = this
+			this.viid.removeEventListener( "loadeddata", function() {
+
+				self.video.popcorn = Popcorn("#hipVid-" + self.id);
+
+				// attach events if data already loaded
+
+				if(self.events != null){
+					self.attachPopcornEvents();
+				}
+
+			}, false );
+			this.viid.removeEventListener( "ended", function() {
+
+				creditos.className = 'finalizado';
+				self.viid.pause();
+
+			}, false );
+			this.$off('block-timer-clicked')
+			this.$off('video-timeupdate')
+			this.$off('graph-node-clicked')
+    },
 		ready: function(){
 			this.$dispatch('video-view-ready');
 		},

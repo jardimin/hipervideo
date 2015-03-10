@@ -104,6 +104,10 @@
 			}
 
 		},
+		beforeDestroy: function(){
+			this.$off('event-map')
+			this.$off('remove-event-map')
+		},
 
 		methods: {
 			toggle: function(){

@@ -18,7 +18,9 @@
     data: function(){
       return {
         wav: "",
-        mp3: ""
+        mp3: "",
+        audio_desc: null,
+        vid: null
       }
     },
     created: function() {
@@ -29,38 +31,45 @@
       
       var self = this;
 
-      var audio_desc = document.getElementById("audio_desc");
-      var vid = document.getElementById("hipVid-"+this.$parent.id);
+      this.audio_desc = document.getElementById("audio_desc");
+      this.vid = document.getElementById("hipVid-"+this.$parent.id);
       audio_desc.volume = 0;
-      
-      audio_desc.currentTime = this.$parent.video.time;
 
-      this.$on('libras-update', function (time) {
+      this.$on('audio-update', function (time) {
         if (audio_desc.currentTime !== time + 0.5 || audio_desc.currentTime !== time - 0.5) {
-          audio_desc.currentTime = time;
+          self.audio_desc.currentTime = time;
         }
       })
 
-      this.$parent.$watch('audio_desc', function (val) {
+      this.$on('mudou-audio_desc', function (val) {
         if (val === true) {
-          audio_desc.volume = 1;
-          vid.volume = 0;
+          self.audio_desc.volume = 1;
+          self.vid.volume = 0;
         } else {
-          audio_desc.volume = 0;
-          vid.volume = 1;
+          self.audio_desc.volume = 0;
+          self.vid.volume = 1;
         }
       })
 
-      vid.addEventListener("play" , function() {
-        audio_desc.play();
+      this.vid.addEventListener("play" , function() {
+        self.audio_desc.play();
       })
 
-      vid.addEventListener("pause" , function() {
-        audio_desc.pause();
+      this.vid.addEventListener("pause" , function() {
+        self.audio_desc.pause();
       })
       
     },
-    methods: {
+    beforeDestroy: function(){
+      this.$off('audio-update')
+      this.$off('mudou-audio_desc')
+      this.vid.removeEventListener("play" , function() {
+        self.audio_desc.play();
+      })
+
+      this.vid.removeEventListener("pause" , function() {
+        self.audio_desc.pause();
+      })
       
     }
   }

@@ -200,6 +200,10 @@
       })
       
     },
+    beforeDestroy: function(){
+      this.$off('create-scrollbar')
+      this.$off('destroy-scrollbar')
+    },
 
     components: {
       'in-databars': require('../components/content-databars.vue'),

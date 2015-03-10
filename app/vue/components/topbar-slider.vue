@@ -119,48 +119,86 @@
 	var $$$ = require('jquery')
 	module.exports = {
 		replace: true,
+		data: function() {
+			return {
+				hip: null,
+				sel: null,
+				bol: false,
+				seek: null
+			}
+		},
 		attached: function() {
+			var self = this
 
-			var hipervideo = $$$('#hipVid-'+this.db.id).get(0);
-			var selector = $$$('#rangeslider-'+this.db.id).get(0);
-			var seekBar = $$$('#seek-bar-'+this.db.id).get(0);
-			var bol = false;
+			this.hip = $$$('#hipVid-'+this.db.id).get(0);
+			this.sel = $$$('#rangeslider-'+this.db.id).get(0);
+			this.seek = $$$('#seek-bar-'+this.db.id).get(0);
+			this.bol = false;
 
 			var seekTime = function(e) {
 				var janela   = window.innerWidth,
 					pos      = e.pageX,
-					relativo = hipervideo.duration * (pos / janela);
+					relativo = self.hip.duration * (pos / janela);
 
-				hipervideo.currentTime = relativo;
+				self.hip.currentTime = relativo;
 			};
 
-			seekBar.addEventListener("change", function() {
+			this.seek.addEventListener("change", function() {
 				// Calculate the new time
-				var time = hipervideo.duration * (seekBar.value / 1000);
-				console.log(seekBar.value);
+				var time = self.hip.duration * (self.seek.value / 1000);
 
 				// Update the video time
-				hipervideo.currentTime = time;
+				self.hip.currentTime = time;
 			});
 
-			selector.addEventListener("mousemove", function(e) {
+			this.sel.addEventListener("mousemove", function(e) {
 				var janela   = window.innerWidth,
 				pos      = e.pageX,
-				relativo = hipervideo.duration * (pos / janela);
+				relativo = self.hip.duration * (pos / janela);
 
-				if (bol===true) {
+				if (self.bol===true) {
 					seekTime(e);
 				}
 			});
 
-			selector.addEventListener("mouseup", function(e) {
-				hipervideo.play();
-				bol = false;
+			this.sel.addEventListener("mouseup", function(e) {
+				self.hip.play();
+				self.bol = false;
 			});
 
-			selector.addEventListener("mousedown", function(e) {
-				hipervideo.pause();
-				bol = true;
+			this.sel.addEventListener("mousedown", function(e) {
+				self.hip.pause();
+				self.bol = true;
+				seekTime(e);
+			});
+		},
+		beforeDestroy: function(){
+			this.seek.removeEventListener("change", function() {
+				// Calculate the new time
+				var time = self.hip.duration * (self.seek.value / 1000);
+
+				// Update the video time
+				self.hip.currentTime = time;
+			});
+
+			this.sel.removeEventListener("mousemove", function(e) {
+				var janela   = window.innerWidth,
+				pos      = e.pageX,
+				relativo = self.hip.duration * (pos / janela);
+
+				if (self.bol===true) {
+					seekTime(e);
+				}
+			});
+
+			this.sel.removeEventListener("mouseup", function(e) {
+				self.hip.play();
+				self.bol = false;
+			});
+
+			this.sel.removeEventListener("mousedown", function(e) {
+				self.hip.pause();
+				self.bol = true;
 				seekTime(e);
 			});
 		}
