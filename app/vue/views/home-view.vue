@@ -246,12 +246,12 @@
 							<div v-on="click: selectMedia" class="botao" v-class="clic: isMedia" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">MEDIA</div>
 							<div v-on="click: selectBaixa" class="botao" v-class="clic: isBaixa" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">BAIXA</div>
 						</div>
-						<!-- <div class="sub_menu">
+						<div class="sub_menu">
 							<h2>ACESSIBILIDADE</h2>
 							<div v-on="click: selectNada" class="botao" v-class="clic: isNada" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">SEM ACESSIBILIDADE</div>
 							<div v-on="click: selectLibras" class="botao" v-class="clic: isLibras" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">LIBRAS</div>
 							<div v-on="click: selectAudio" class="botao" v-class="clic: isAudio" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">AUDIO DESCRIÇÃO</div>
-						</div> -->
+						</div>
 					</div>
 					<img v-attr="src: '/img/RE_' + id + 'BW.png'" class="fotoFundo BW" style="left: -{{posHip[$index]}}%; z-index: 1;" v-on="click: select(id)">
 					<img v-attr="src: '/img/RE_' + id + '.png'" class="fotoFundo" style="left: -{{posHip[$index]}}%" v-on="click: select(id)">
