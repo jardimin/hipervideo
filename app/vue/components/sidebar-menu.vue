@@ -71,16 +71,16 @@
   <div class="sidebar__menu" v-class="is-open: isOpen, is-after: isAfter">
     <div v-on="click: toggle" style="position: absolute; left: 0px; top: 0px; color: #555; cursor: pointer;" class="menu_handle"><i class="fa fa-bars fa-2x" style="position: absolute; left: 10px; top: 6px;"></i></div>
     <div class="menu_1">
-      <div class="menu_item" v-class="clicado: menuAcess" v-on="click: clickAcess">ACESSIBILIDADE</div>
+<!--       <div class="menu_item" v-class="clicado: menuAcess" v-on="click: clickAcess">ACESSIBILIDADE</div> -->
       <div class="menu_item" v-class="clicado: menuQual" v-on="click: clickQual">QUALIDADE</div>
       <div class="menu_item" v-class="clicado: menuHip" v-on="click: clickHip">HIPERVÍDEOS</div>
       <div class="menu_item" v-on="click: clickRedes">VER REDES</div>
       <a href="/#/" class="menu_item">INÍCIO</a>
     </div>
-    <div class="menu_2" v-show="menuAcess">
+<!--     <div class="menu_2" v-show="menuAcess">
       <div class="menu_item" v-class="selecionado: audio_desc" v-on="click: selectAudio">ÁUDIO DESCRIÇÃO</div>
       <div class="menu_item" v-class="selecionado: libras" v-on="click: selectLibras">LIBRAS</div>
-    </div>
+    </div> -->
     <div class="menu_2" v-show="menuQual">
       <div class="menu_item" v-class="selecionado: isAlta" v-on="click: selectAlta">ALTA</div>
       <div class="menu_item" v-class="selecionado: isMedia" v-on="click: selectMedia">MÉDIA</div>
