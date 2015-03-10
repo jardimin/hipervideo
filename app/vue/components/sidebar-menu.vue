@@ -111,9 +111,9 @@
       return {
         isOpen: false,
         isAfter: false,
-        menuAcess: true,
+        menuAcess: false,
         menuHip: false,
-        menuQual: false
+        menuQual: true
       }
     },
     computed: {

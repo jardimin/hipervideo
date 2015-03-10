@@ -217,13 +217,13 @@
 
 		<!-- ACESSIBILIDADE -->
 
-		<div class="libras" v-show="libras" v-transition>
+		<!-- <div class="libras" v-show="libras" v-transition>
 			<in-libras v-with="id: id"></in-libras>
 		</div>
 
 		<div class="audio_desc" v-show="audio_desc">
 			<in-audio v-with="id: id"></in-audio>
-		</div>
+		</div> -->
 		
 	</div>
 </template>
