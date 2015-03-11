@@ -158,6 +158,7 @@
 		position: fixed;
 		bottom: 60px;
 		left: 0;
+		min-width: 40%;
 		&.expand-enter, &.expand-leave {
 			left: -800px;
 		}
