@@ -143,6 +143,29 @@
 		}
 	}
 
+	.not-loading {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -150;
+		opacity: 0;
+		padding-top: 22%;
+		text-align: center; 
+		background-color: rgba(50, 50, 50, 0.6);
+		transition: opacity 0.5s;
+	}
+
+	.loading {
+		opacity: 1;
+		z-index: 150;
+	}
+
+	.pausado {
+		opacity: 0.3 !important;
+	}
+
 </style>
 
 <template>
@@ -217,13 +240,13 @@
 
 		<!-- ACESSIBILIDADE -->
 
-		<div class="libras" v-show="libras" v-transition>
-			<in-libras v-with="id: id"></in-libras>
-		</div>
+		<in-libras v-with="id: id" v-show="libras"></in-libras>
 
 		<div class="audio_desc" v-show="audio_desc">
 			<in-audio v-with="id: id"></in-audio>
 		</div>
+
+		<div id="loading" class="not-loading"><i class="fa fa-refresh fa-3x fa-spin"></i></div>
 		
 	</div>
 </template>
@@ -254,6 +277,7 @@
 				audio_desc: false,
 				viid: null,
 				creditos: null,
+				seeking: false,
 				video: {
 					popcorn: null,
 					time: 0,
@@ -304,6 +328,10 @@
 				self.audio_desc = val;
 			})
 
+			this.$on('hipervideo-canplay', function() {
+				self.$broadcast('libras-load')
+			})
+
 			// POPCORN
 
 			this.viid = document.getElementById('hipVid-' + self.id);
@@ -321,7 +349,26 @@
 
 			}, false );
 
+			this.viid.addEventListener( "play", function() {
+
+				if (!self.seeking) {
+					self.$broadcast('hipervideo-play')
+					$$$('#hipVid-' + self.id).removeClass('pausado')
+				}
+
+			}, false );
+
+			this.viid.addEventListener( "pause", function() {
+
+				if (!self.seeking) {
+					self.$broadcast('hipervideo-pause')
+					$$$('#hipVid-' + self.id).addClass('pausado')
+				}
+
+			}, false );
+
 			this.viid.addEventListener( "ended", function() {
+				console.log(self.seeking);
 
 				creditos.className = 'finalizado';
 				self.viid.pause();
@@ -388,7 +435,27 @@
 		beforeDestroy: function(){
       this.$off('mudou-libras')
 			this.$off('mudou-audio_desc')
+			this.$off('hipervideo-canplay')
 			var self = this
+			this.viid.removeEventListener( "play", function() {
+
+				if (!self.seeking) {
+					self.$broadcast('hipervideo-play')
+					$$$('#hipVid-' + self.id).removeClass('pausado')
+				}
+
+			}, false );
+
+			this.viid.removeEventListener( "pause", function() {
+				console.log(self.seeking);
+
+				if (!self.seeking) {
+					self.$broadcast('hipervideo-pause')
+					$$$('#hipVid-' + self.id).addClass('pausado')
+				}
+
+			}, false );
+
 			this.viid.removeEventListener( "loadeddata", function() {
 
 				self.video.popcorn = Popcorn("#hipVid-" + self.id);
@@ -409,6 +476,7 @@
 			this.$off('block-timer-clicked')
 			this.$off('video-timeupdate')
 			this.$off('graph-node-clicked')
+			location.reload()
     },
 		ready: function(){
 			this.$dispatch('video-view-ready');
@@ -421,6 +489,7 @@
 			infoOpen: function(info){
 				var i = parseInt(info)
 				var node = _.findWhere(this.events.nodes,{"id": i});
+				this.$broadcast('info-open');
 				this.videoPause();
 				this.conteudo = node.conteudo;
 				if (node.conteudo.texto === "") {
@@ -432,6 +501,7 @@
 				this.$broadcast('create-scrollbar');
 			},
 			infoClose: function(){
+				this.$broadcast('info-close');
 				this.videoPlay();
 				this.conteudo = {};
 				this.$broadcast('destroy-scrollbar');

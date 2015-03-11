@@ -23,7 +23,7 @@
       "formato": "saúde da mulher",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      
       "cor": "#ed1e79",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/SA/dapes_ssa_final-cor",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/SA/dapes_ssa_final",
       "duracao": 1782.434,
       "capitulos": [
         {
@@ -72,7 +72,7 @@
       "formato": "saúde da criança",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      
       "cor": "#0cc",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/dapes_FPA_final-cor",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/dapes_fpa_final",
       "duracao": 1172.404,
       "capitulos": [
         {
@@ -148,7 +148,7 @@
       "formato": "saúde do adolescente",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
       "cor": "#00a300",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/dapes_BH_final1",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/dapes_bh_final",
       "duracao": 1801.591,
       "capitulos": [
         {
@@ -256,7 +256,7 @@
       "formato": "saúde da pessoa privada de liberdade",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",
       "cor": "#f00",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/dapes_poa_final-cor",
+      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/dapes_poa_final",
       "duracao": 1294.914,
       "capitulos": [
         {

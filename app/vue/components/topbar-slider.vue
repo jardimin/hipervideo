@@ -161,18 +161,34 @@
 				}
 			});
 
+			this.sel.addEventListener("click", function(e) {
+				self.$parent.seeking = true
+				setTimeout(function() {
+					self.$parent.seeking = false
+				}, 500)
+			});
+
 			this.sel.addEventListener("mouseup", function(e) {
 				self.hip.play();
+				self.$parent.seeking = false
 				self.bol = false;
 			});
 
 			this.sel.addEventListener("mousedown", function(e) {
+				self.$parent.seeking = true
 				self.hip.pause();
 				self.bol = true;
 				seekTime(e);
 			});
 		},
 		beforeDestroy: function(){
+			this.sel.removeEventListener("click", function(e) {
+				self.$parent.seeking = true
+				setTimeout(function() {
+					self.$parent.seeking = false
+				}, 500)
+			});
+
 			this.seek.removeEventListener("change", function() {
 				// Calculate the new time
 				var time = self.hip.duration * (self.seek.value / 1000);
@@ -193,10 +209,12 @@
 
 			this.sel.removeEventListener("mouseup", function(e) {
 				self.hip.play();
+				self.$parent.seeking = false
 				self.bol = false;
 			});
 
 			this.sel.removeEventListener("mousedown", function(e) {
+				self.$parent.seeking = true
 				self.hip.pause();
 				self.bol = true;
 				seekTime(e);

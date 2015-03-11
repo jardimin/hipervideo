@@ -321,9 +321,13 @@
 				
 				var self = this
 
-				var timecodes = _.filter(this.events.timecode, function(timecode){
-					return timecode.start < self.video.time
-				}) || null
+				var timecodes
+
+				if (this.events) {
+					timecodes = _.filter(this.events.timecode, function(timecode){
+						return timecode.start < self.video.time
+					}) || null
+				}
 
 				if(!timecodes){return}
 

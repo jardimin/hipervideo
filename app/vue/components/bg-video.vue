@@ -16,7 +16,7 @@
 </style>
 
 <template>
-	<video v-with="db: db" poster="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
+	<video poster="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
 		<source src="{{db.url}}_{{qual}}.mp4" type="video/mp4" id="mp4">
 	</video>
 </template>
@@ -27,11 +27,13 @@
 	var $$$ = require('jquery')
 
 	module.exports = {
-		replace: true,
 		inherit: true,
 		data: function(){
 			return {
-				qual: 'alta'
+				qual: 'alta',
+				timecodeAntigo: 0,
+				hipervideo: null,
+				timecode: 0
 			}
 		},
 		created: function() {
@@ -41,18 +43,16 @@
 			
 			var self = this;
 
-			var hipervideo = this.$$.hipervideo;
+			this.hipervideo = this.$$.hipervideo;
+			this.hipervideo.load()
 			var seekBar = $$$('#seek-bar-'+this.db.id).get(0);
 			var selector = $$$('.rangeslider').get(0);
-			
-			this.play();
 
 			this.$on('mudou-qualidade', function (qualidade) {
+				self.timecode = self.video.time;
 				self.qual = qualidade;
-				$$$('#mp4').attr('src', self.$parent.db.url + '_' + self.qual + '.mp4')
-				$$$('#webm').attr('src', self.$parent.db.url + '_' + self.qual + '.webm')
-				hipervideo.load();
-				hipervideo.currentTime = self.video.time;
+				self.hipervideo.load();
+				self.continuarTemp();
 			})
 
 			var tempoCorrido = function(array) {
@@ -76,8 +76,18 @@
 			  return [min_.toString(), sec_.toString()]
 			}
 
-			hipervideo.addEventListener("loadedmetadata" , function() {
-				var duracao = toFormat(hipervideo.duration);
+			this.hipervideo.addEventListener("loadstart" , function() {
+				$$$('#loading').addClass('loading')
+			})
+
+			this.hipervideo.addEventListener("canplay" , function() {
+				$$$('#loading').removeClass('loading')
+				self.$dispatch('hipervideo-canplay')
+			})
+
+			this.hipervideo.addEventListener("loadedmetadata" , function() {
+				var duracao = toFormat(self.hipervideo.duration);
+				this.play();
 				var tempoTotal = function(array) {
 					var min = array[0];
 					var sec = array[1];
@@ -89,29 +99,43 @@
 			})
 		  
 			// Update the seek bar as the video plays
-			hipervideo.addEventListener("timeupdate", function() {
+			this.hipervideo.addEventListener("timeupdate", function() {
 				// Calculate the slider value
-				var value = (1000 / hipervideo.duration) * hipervideo.currentTime;
+				var value = (1000 / self.hipervideo.duration) * self.hipervideo.currentTime;
 				var fillWidth = seekBar.value / 10;
-				var tempo = toFormat(hipervideo.currentTime);
+				var tempo = toFormat(self.hipervideo.currentTime);
+				var t = self.hipervideo.currentTime;
 				tempoCorrido(tempo);
+				if (self.timecode !== self.timecodeAntigo) {
+					self.hipervideo.currentTime = self.timecode;
+					self.timecodeAntigo = self.timecode;
+				}
 
 				// Update the slider value
 				seekBar.value = value;
-				$$$('.rangeslider__fill').css('width', fillWidth+"%")
-				$$$('.rangeslider__handle').css('left', fillWidth+"%")
+				$$$('.rangeslider__fill').css('width', fillWidth+"%");
+				$$$('.rangeslider__handle').css('left', fillWidth+"%");
 
 				// Dispatch timeupdate to parent
-				self.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
+				self.$dispatch('video-timeupdate', self.hipervideo.currentTime, self.hipervideo.duration, self.hipervideo.currentTime/self.hipervideo.duration);
 			});
 		},
     beforeDestroy: function(){
-    	var hipervideo = this.$$.hipervideo;
+    	var self = this
 
       this.$off('mudou-qualidade')
 
-			hipervideo.removeEventListener("loadedmetadata" , function() {
-				var duracao = toFormat(hipervideo.duration);
+      this.hipervideo.removeEventListener("loadstart" , function() {
+				$$$('#loading').addClass('loading')
+			})
+
+			this.hipervideo.removeEventListener("canplay" , function() {
+				$$$('#loading').removeClass('loading')
+				self.$dispatch('hipervideo-canplay')
+			})
+
+			this.hipervideo.removeEventListener("loadedmetadata" , function() {
+				var duracao = toFormat(self.hipervideo.duration);
 				var tempoTotal = function(array) {
 					var min = array[0];
 					var sec = array[1];
@@ -122,11 +146,11 @@
 				tempoTotal(duracao);
 			})
 
-			hipervideo.removeEventListener("timeupdate", function() {
+			this.hipervideo.removeEventListener("timeupdate", function() {
 				// Calculate the slider value
-				var value = (1000 / hipervideo.duration) * hipervideo.currentTime;
+				var value = (1000 / self.hipervideo.duration) * self.hipervideo.currentTime;
 				var fillWidth = seekBar.value / 10;
-				var tempo = toFormat(hipervideo.currentTime);
+				var tempo = toFormat(self.hipervideo.currentTime);
 				tempoCorrido(tempo);
 
 				// Update the slider value
@@ -135,7 +159,7 @@
 				$$$('.rangeslider__handle').css('left', fillWidth+"%")
 
 				// Dispatch timeupdate to parent
-				self.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
+				self.$dispatch('video-timeupdate', self.hipervideo.currentTime, self.hipervideo.duration, self.hipervideo.currentTime/hipervideo.duration);
 			});
 
     },
@@ -145,6 +169,9 @@
 			},
 			pause: function(){
 				this.$$.hipervideo.pause()
+			},
+			continuarTemp: function() {
+				this.hipervideo.currentTime = this.video.time
 			}
 		}
 	}

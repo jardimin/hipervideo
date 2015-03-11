@@ -115,18 +115,22 @@
 		attached: function() {
 			this.$on('video-qualidade', function (qualidade) {
 				this.qualidade = qualidade;
+				document.cookie = "qualidade = " + qualidade;
 			})
 
 			this.$on('video-acessibilidade', function (acess) {
 				if (acess === 'libras') {
 					this.libras = true;
 					this.audio_desc = false;
+					document.cookie = "acessibilidade = libras";
 				} else if (acess === 'audio') {
 					this.libras = false;
 					this.audio_desc = true;
+					document.cookie = "acessibilidade = audio";
 				} else if (acess === 'nada') {
 					this.libras = false;
 					this.audio_desc = false;
+					document.cookie = "acessibilidade = nada";
 				}
 				this.acessibilidade = acess;
 			})

@@ -113,7 +113,8 @@
         isAfter: false,
         menuAcess: true,
         menuHip: false,
-        menuQual: false
+        menuQual: false,
+        infoOpen: false
       }
     },
     computed: {
@@ -142,24 +143,66 @@
         return this.$parent.$parent.$parent.qualidade === 'baixa';
       }
     },
-    methods: {
-      toggle: function(){
-        var self = this
+    attached: function() {
+      var self = this
 
-        if (!this.isOpen) {
-          this.$parent.$parent.videoPause()
-          this.isOpen = !this.isOpen
-          $$$('#chap').addClass('aberto')
-          setTimeout(function() {
-            self.isAfter = !self.isAfter
-          }, 400)
-        } else {
-          this.$parent.$parent.videoPlay()
-          this.isAfter = !this.isAfter
+      this.$on('info-open', function() {
+        self.infoOpen = true
+      })
+      
+      this.$on('info-close', function() {
+        self.infoOpen = false
+      })
+
+      this.$on('hipervideo-play', function() {
+        if (!self.infoOpen) {
+          self.isAfter = false
           $$$('#chap').removeClass('aberto')
           setTimeout(function() {
-            self.isOpen = !self.isOpen
+            self.isOpen = false
           }, 400)
+        }
+      })
+
+      this.$on('hipervideo-pause', function() {
+        if (!self.infoOpen) {
+          self.isOpen = true
+          $$$('#chap').addClass('aberto')
+          setTimeout(function() {
+            self.isAfter = true
+          }, 400)
+        }
+      })
+
+    },
+    beforeDestroy: function(){
+      this.$off('info-open')
+      this.$off('info-close')
+      this.$off('hipervideo-play')
+      this.$off('hipervideo-pause')
+    },
+    methods: {
+      toggle: function(){
+        if (!this.infoOpen) {
+          if (!this.isOpen) {
+            this.$parent.$parent.videoPause()
+          } else {
+            this.$parent.$parent.videoPlay()
+          }
+        } else if (this.infoOpen) {
+          if (!this.isOpen) {
+            self.isAfter = false
+            $$$('#chap').removeClass('aberto')
+            setTimeout(function() {
+              self.isOpen = false
+            }, 400)
+          } else {
+            self.isOpen = true
+            $$$('#chap').addClass('aberto')
+            setTimeout(function() {
+              self.isAfter = true
+            }, 400)
+          }
         }
       },
       clickAcess: function(){

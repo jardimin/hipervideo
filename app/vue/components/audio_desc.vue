@@ -3,7 +3,7 @@
 </style>
 
 <template>
-  <audio id="audio_desc" crossOrigin="anonymous" style="display: none;" preload="auto">
+  <audio id="audio_desc" crossOrigin="anonymous" style="display: none;">
     <source src="{{wav}}" type="audio/wav" id="wav">
     <source src="{{mp3}}" type="audio/mpeg" id="mp3">
   </audio>
@@ -36,7 +36,7 @@
       audio_desc.volume = 0;
 
       this.$on('audio-update', function (time) {
-        if (audio_desc.currentTime !== time + 0.5 || audio_desc.currentTime !== time - 0.5) {
+        if (audio_desc.currentTime > time + 0.5 || audio_desc.currentTime < time - 0.5) {
           self.audio_desc.currentTime = time;
         }
       })

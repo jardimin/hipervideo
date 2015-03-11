@@ -18,10 +18,12 @@
 </style>
 
 <template>
-  <canvas id="libras" height="300" width="400"></canvas>
-  <video id="libras_vid" crossOrigin="anonymous" style="display: none;" preload="auto">
-    <source src="{{mp4}}" type="video/mp4" id="libras_mp4">
-  </video>
+  <div class="libras" v-transition>
+    <canvas id="libras" height="300" width="400"></canvas>
+    <video id="libras_vid" crossOrigin="anonymous" style="display: none;">
+      <source src="{{mp4}}" type="video/mp4" id="libras_mp4">
+    </video>
+  </div>
 </template>
 
 <script>
@@ -68,7 +70,12 @@
         self.libras_vid.pause();
       })
 
-      this._timeout = setInterval(this.draw, 16.7);
+      this.$on('libras-load', function() {
+        if (!self._timeout) {
+          self._timeout = setInterval(self.DrawVideoOnCanvas, 50);
+        }
+        
+      })
       
     },
     beforeDestroy: function(){
@@ -84,11 +91,9 @@
       })
 
       this.$off('libras-update')
+      this.$off('libras-load')
     },
     methods: {
-      draw: function() {
-        this.DrawVideoOnCanvas();
-      },
       DrawVideoOnCanvas: function() {
         var context = this.canvas.getContext('2d');
         context.drawImage(this.libras_vid, 0, 0);

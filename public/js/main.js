@@ -32,18 +32,22 @@ module.exports = {
 		attached: function() {
 			this.$on('video-qualidade', function (qualidade) {
 				this.qualidade = qualidade;
+				document.cookie = "qualidade = " + qualidade;
 			})
 
 			this.$on('video-acessibilidade', function (acess) {
 				if (acess === 'libras') {
 					this.libras = true;
 					this.audio_desc = false;
+					document.cookie = "acessibilidade = libras";
 				} else if (acess === 'audio') {
 					this.libras = false;
 					this.audio_desc = true;
+					document.cookie = "acessibilidade = audio";
 				} else if (acess === 'nada') {
 					this.libras = false;
 					this.audio_desc = false;
+					document.cookie = "acessibilidade = nada";
 				}
 				this.acessibilidade = acess;
 			})
@@ -56,7 +60,7 @@ module.exports = {
 module.exports.template = __vue_template__;
 
 },{"./views/home-view.vue":23,"./views/video-view.vue":24,"insert-css":26}],2:[function(require,module,exports){
-var __vue_template__ = "<audio id=\"audio_desc\" crossorigin=\"anonymous\" style=\"display: none\" preload=\"auto\">\n    <source src=\"{{wav}}\" type=\"audio/wav\" id=\"wav\">\n    </source><source src=\"{{mp3}}\" type=\"audio/mpeg\" id=\"mp3\">\n  </source></audio>";
+var __vue_template__ = "<audio id=\"audio_desc\" crossorigin=\"anonymous\" style=\"display: none\">\n    <source src=\"{{wav}}\" type=\"audio/wav\" id=\"wav\">\n    </source><source src=\"{{mp3}}\" type=\"audio/mpeg\" id=\"mp3\">\n  </source></audio>";
 var Vue = require('vue')
 
   module.exports = {
@@ -82,7 +86,7 @@ var Vue = require('vue')
       audio_desc.volume = 0;
 
       this.$on('audio-update', function (time) {
-        if (audio_desc.currentTime !== time + 0.5 || audio_desc.currentTime !== time - 0.5) {
+        if (audio_desc.currentTime > time + 0.5 || audio_desc.currentTime < time - 0.5) {
           self.audio_desc.currentTime = time;
         }
       })
@@ -123,16 +127,18 @@ module.exports.template = __vue_template__;
 
 },{"vue":93}],3:[function(require,module,exports){
 require("insert-css")(".hipVid{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#app.marco-fechado .hipVid{top:0}");
-var __vue_template__ = "<video v-with=\"db: db\" poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n		<source src=\"{{db.url}}_{{qual}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n	</source></video>";
+var __vue_template__ = "<video poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n		<source src=\"{{db.url}}_{{qual}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n	</source></video>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 
 	module.exports = {
-		replace: true,
 		inherit: true,
 		data: function(){
 			return {
-				qual: 'alta'
+				qual: 'alta',
+				timecodeAntigo: 0,
+				hipervideo: null,
+				timecode: 0
 			}
 		},
 		created: function() {
@@ -142,18 +148,16 @@ var Vue = require('vue')
 			
 			var self = this;
 
-			var hipervideo = this.$$.hipervideo;
+			this.hipervideo = this.$$.hipervideo;
+			this.hipervideo.load()
 			var seekBar = $$$('#seek-bar-'+this.db.id).get(0);
 			var selector = $$$('.rangeslider').get(0);
-			
-			this.play();
 
 			this.$on('mudou-qualidade', function (qualidade) {
+				self.timecode = self.video.time;
 				self.qual = qualidade;
-				$$$('#mp4').attr('src', self.$parent.db.url + '_' + self.qual + '.mp4')
-				$$$('#webm').attr('src', self.$parent.db.url + '_' + self.qual + '.webm')
-				hipervideo.load();
-				hipervideo.currentTime = self.video.time;
+				self.hipervideo.load();
+				self.continuarTemp();
 			})
 
 			var tempoCorrido = function(array) {
@@ -177,8 +181,18 @@ var Vue = require('vue')
 			  return [min_.toString(), sec_.toString()]
 			}
 
-			hipervideo.addEventListener("loadedmetadata" , function() {
-				var duracao = toFormat(hipervideo.duration);
+			this.hipervideo.addEventListener("loadstart" , function() {
+				$$$('#loading').addClass('loading')
+			})
+
+			this.hipervideo.addEventListener("canplay" , function() {
+				$$$('#loading').removeClass('loading')
+				self.$dispatch('hipervideo-canplay')
+			})
+
+			this.hipervideo.addEventListener("loadedmetadata" , function() {
+				var duracao = toFormat(self.hipervideo.duration);
+				this.play();
 				var tempoTotal = function(array) {
 					var min = array[0];
 					var sec = array[1];
@@ -190,29 +204,43 @@ var Vue = require('vue')
 			})
 		  
 			// Update the seek bar as the video plays
-			hipervideo.addEventListener("timeupdate", function() {
+			this.hipervideo.addEventListener("timeupdate", function() {
 				// Calculate the slider value
-				var value = (1000 / hipervideo.duration) * hipervideo.currentTime;
+				var value = (1000 / self.hipervideo.duration) * self.hipervideo.currentTime;
 				var fillWidth = seekBar.value / 10;
-				var tempo = toFormat(hipervideo.currentTime);
+				var tempo = toFormat(self.hipervideo.currentTime);
+				var t = self.hipervideo.currentTime;
 				tempoCorrido(tempo);
+				if (self.timecode !== self.timecodeAntigo) {
+					self.hipervideo.currentTime = self.timecode;
+					self.timecodeAntigo = self.timecode;
+				}
 
 				// Update the slider value
 				seekBar.value = value;
-				$$$('.rangeslider__fill').css('width', fillWidth+"%")
-				$$$('.rangeslider__handle').css('left', fillWidth+"%")
+				$$$('.rangeslider__fill').css('width', fillWidth+"%");
+				$$$('.rangeslider__handle').css('left', fillWidth+"%");
 
 				// Dispatch timeupdate to parent
-				self.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
+				self.$dispatch('video-timeupdate', self.hipervideo.currentTime, self.hipervideo.duration, self.hipervideo.currentTime/self.hipervideo.duration);
 			});
 		},
     beforeDestroy: function(){
-    	var hipervideo = this.$$.hipervideo;
+    	var self = this
 
       this.$off('mudou-qualidade')
 
-			hipervideo.removeEventListener("loadedmetadata" , function() {
-				var duracao = toFormat(hipervideo.duration);
+      this.hipervideo.removeEventListener("loadstart" , function() {
+				$$$('#loading').addClass('loading')
+			})
+
+			this.hipervideo.removeEventListener("canplay" , function() {
+				$$$('#loading').removeClass('loading')
+				self.$dispatch('hipervideo-canplay')
+			})
+
+			this.hipervideo.removeEventListener("loadedmetadata" , function() {
+				var duracao = toFormat(self.hipervideo.duration);
 				var tempoTotal = function(array) {
 					var min = array[0];
 					var sec = array[1];
@@ -223,11 +251,11 @@ var Vue = require('vue')
 				tempoTotal(duracao);
 			})
 
-			hipervideo.removeEventListener("timeupdate", function() {
+			this.hipervideo.removeEventListener("timeupdate", function() {
 				// Calculate the slider value
-				var value = (1000 / hipervideo.duration) * hipervideo.currentTime;
+				var value = (1000 / self.hipervideo.duration) * self.hipervideo.currentTime;
 				var fillWidth = seekBar.value / 10;
-				var tempo = toFormat(hipervideo.currentTime);
+				var tempo = toFormat(self.hipervideo.currentTime);
 				tempoCorrido(tempo);
 
 				// Update the slider value
@@ -236,7 +264,7 @@ var Vue = require('vue')
 				$$$('.rangeslider__handle').css('left', fillWidth+"%")
 
 				// Dispatch timeupdate to parent
-				self.$dispatch('video-timeupdate', hipervideo.currentTime, hipervideo.duration, hipervideo.currentTime/hipervideo.duration);
+				self.$dispatch('video-timeupdate', self.hipervideo.currentTime, self.hipervideo.duration, self.hipervideo.currentTime/hipervideo.duration);
 			});
 
     },
@@ -246,6 +274,9 @@ var Vue = require('vue')
 			},
 			pause: function(){
 				this.$$.hipervideo.pause()
+			},
+			continuarTemp: function() {
+				this.hipervideo.currentTime = this.video.time
 			}
 		}
 	}
@@ -626,7 +657,7 @@ module.exports.template = __vue_template__;
 
 },{}],9:[function(require,module,exports){
 require("insert-css")(".libras{background-color:rgba(50,50,50,0);bottom:60px;width:400px;height:300px;position:fixed;right:0;transition:all .5s ease 0s;z-index:9}.libras.v-enter,.libras.v-leave{bottom:-3000px!important}#app.marco-fechado .libras{bottom:0}");
-var __vue_template__ = "<canvas id=\"libras\" height=\"300\" width=\"400\"></canvas>\n  <video id=\"libras_vid\" crossorigin=\"anonymous\" style=\"display: none\" preload=\"auto\">\n    <source src=\"{{mp4}}\" type=\"video/mp4\" id=\"libras_mp4\">\n  </source></video>";
+var __vue_template__ = "<div class=\"libras\" v-transition=\"\">\n    <canvas id=\"libras\" height=\"300\" width=\"400\"></canvas>\n    <video id=\"libras_vid\" crossorigin=\"anonymous\" style=\"display: none\">\n      <source src=\"{{mp4}}\" type=\"video/mp4\" id=\"libras_mp4\">\n    </source></video>\n  </div>";
 var Vue = require('vue')
 
   module.exports = {
@@ -669,7 +700,12 @@ var Vue = require('vue')
         self.libras_vid.pause();
       })
 
-      this._timeout = setInterval(this.draw, 16.7);
+      this.$on('libras-load', function() {
+        if (!self._timeout) {
+          self._timeout = setInterval(self.DrawVideoOnCanvas, 50);
+        }
+        
+      })
       
     },
     beforeDestroy: function(){
@@ -685,11 +721,9 @@ var Vue = require('vue')
       })
 
       this.$off('libras-update')
+      this.$off('libras-load')
     },
     methods: {
-      draw: function() {
-        this.DrawVideoOnCanvas();
-      },
       DrawVideoOnCanvas: function() {
         var context = this.canvas.getContext('2d');
         context.drawImage(this.libras_vid, 0, 0);
@@ -1241,9 +1275,13 @@ var _ = require('underscore')
 				
 				var self = this
 
-				var timecodes = _.filter(this.events.timecode, function(timecode){
-					return timecode.start < self.video.time
-				}) || null
+				var timecodes
+
+				if (this.events) {
+					timecodes = _.filter(this.events.timecode, function(timecode){
+						return timecode.start < self.video.time
+					}) || null
+				}
 
 				if(!timecodes){return}
 
@@ -1423,7 +1461,8 @@ var $$$ = require('jquery')
         isAfter: false,
         menuAcess: true,
         menuHip: false,
-        menuQual: false
+        menuQual: false,
+        infoOpen: false
       }
     },
     computed: {
@@ -1452,24 +1491,66 @@ var $$$ = require('jquery')
         return this.$parent.$parent.$parent.qualidade === 'baixa';
       }
     },
-    methods: {
-      toggle: function(){
-        var self = this
+    attached: function() {
+      var self = this
 
-        if (!this.isOpen) {
-          this.$parent.$parent.videoPause()
-          this.isOpen = !this.isOpen
-          $$$('#chap').addClass('aberto')
-          setTimeout(function() {
-            self.isAfter = !self.isAfter
-          }, 400)
-        } else {
-          this.$parent.$parent.videoPlay()
-          this.isAfter = !this.isAfter
+      this.$on('info-open', function() {
+        self.infoOpen = true
+      })
+      
+      this.$on('info-close', function() {
+        self.infoOpen = false
+      })
+
+      this.$on('hipervideo-play', function() {
+        if (!self.infoOpen) {
+          self.isAfter = false
           $$$('#chap').removeClass('aberto')
           setTimeout(function() {
-            self.isOpen = !self.isOpen
+            self.isOpen = false
           }, 400)
+        }
+      })
+
+      this.$on('hipervideo-pause', function() {
+        if (!self.infoOpen) {
+          self.isOpen = true
+          $$$('#chap').addClass('aberto')
+          setTimeout(function() {
+            self.isAfter = true
+          }, 400)
+        }
+      })
+
+    },
+    beforeDestroy: function(){
+      this.$off('info-open')
+      this.$off('info-close')
+      this.$off('hipervideo-play')
+      this.$off('hipervideo-pause')
+    },
+    methods: {
+      toggle: function(){
+        if (!this.infoOpen) {
+          if (!this.isOpen) {
+            this.$parent.$parent.videoPause()
+          } else {
+            this.$parent.$parent.videoPlay()
+          }
+        } else if (this.infoOpen) {
+          if (!this.isOpen) {
+            self.isAfter = false
+            $$$('#chap').removeClass('aberto')
+            setTimeout(function() {
+              self.isOpen = false
+            }, 400)
+          } else {
+            self.isOpen = true
+            $$$('#chap').addClass('aberto')
+            setTimeout(function() {
+              self.isAfter = true
+            }, 400)
+          }
         }
       },
       clickAcess: function(){
@@ -1609,18 +1690,34 @@ var $$$ = require('jquery')
 				}
 			});
 
+			this.sel.addEventListener("click", function(e) {
+				self.$parent.seeking = true
+				setTimeout(function() {
+					self.$parent.seeking = false
+				}, 500)
+			});
+
 			this.sel.addEventListener("mouseup", function(e) {
 				self.hip.play();
+				self.$parent.seeking = false
 				self.bol = false;
 			});
 
 			this.sel.addEventListener("mousedown", function(e) {
+				self.$parent.seeking = true
 				self.hip.pause();
 				self.bol = true;
 				seekTime(e);
 			});
 		},
 		beforeDestroy: function(){
+			this.sel.removeEventListener("click", function(e) {
+				self.$parent.seeking = true
+				setTimeout(function() {
+					self.$parent.seeking = false
+				}, 500)
+			});
+
 			this.seek.removeEventListener("change", function() {
 				// Calculate the new time
 				var time = self.hip.duration * (self.seek.value / 1000);
@@ -1641,10 +1738,12 @@ var $$$ = require('jquery')
 
 			this.sel.removeEventListener("mouseup", function(e) {
 				self.hip.play();
+				self.$parent.seeking = false
 				self.bol = false;
 			});
 
 			this.sel.removeEventListener("mousedown", function(e) {
+				self.$parent.seeking = true
 				self.hip.pause();
 				self.bol = true;
 				seekTime(e);
@@ -1840,8 +1939,8 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":26,"jquery":27}],24:[function(require,module,exports){
-require("insert-css")(".sidebar{width:22%}@media screen and (min-width:1600px){.sidebar{width:15%}}@media screen and (min-width:1600px){.sidebar.has-info{width:16%}}.sidebar_content{position:relative;height:100%;z-index:20}.sidebar_back{position:absolute;background-color:rgba(0,0,0,.5);width:300px;height:100%;top:0;left:0;transition:all .6s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.sidebar-right{position:absolute;right:0;top:57px;width:300px}.infopanel{position:absolute;background-color:rgba(0,0,0,.8);height:100%;top:0;left:0;z-index:10;transition:all .6s;transform:translate3d(127%,0,0)}.infopanel.is-open{transform:translate3d(300px,0,0)}.infopanel .border{position:absolute;height:100%;width:10px;top:0;left:0}.infopanel .back{position:absolute;top:10%;left:79%;color:#fff;font-size:24px}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}.debug .btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px;color:#000;font-size:10px}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}.sidebar_opener{position:relative;transition:all .6s ease .6s;overflow:hidden}.sidebar_opener.v-enter,.sidebar_opener.v-leave{transform:translate3d(-100px,0,0)}.sidebar_opener.v-leave{transition:all .3s ease 0}.sidebar_opener .sidebar_opener__inside{display:inline-block;color:#fff;padding:10px;height:28px;line-height:28px;transition:all .6s ease}.infopanel{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:5% 20% 3% 3%;width:79%}@media screen and (min-width:1600px){.infopanel{width:85%}}.is-cartela{height:auto!important}.sidebar_cartela{transition:all .5s ease .5s;position:fixed;bottom:60px;left:0}.sidebar_cartela.expand-enter,.sidebar_cartela.expand-leave{left:-800px}");
-var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"capitulo: capitulo, libras: libras, audio_desc: audio_desc\" v-if=\"capitulo\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\"></in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- CARTELAS -->\n\n			<div v-show=\"cartela\" class=\"sidebar_cartela\" v-transition=\"expand\">\n				<div class=\"sidebar_block__header context-bg\" style=\"font-size: 100%\">\n					<div id=\"cartela_nome\">\n						{{contentCartela.title | uppercase}}\n					</div>\n				</div>\n				<div class=\"sidebar_block__header\" style=\"background: #fff\">\n					<div id=\"cartela_funcao\">\n						{{contentCartela.funcao}}\n					</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n\n		<!-- ACESSIBILIDADE -->\n\n		<div class=\"libras\" v-show=\"libras\" v-transition=\"\">\n			<in-libras v-with=\"id: id\"></in-libras>\n		</div>\n\n		<div class=\"audio_desc\" v-show=\"audio_desc\">\n			<in-audio v-with=\"id: id\"></in-audio>\n		</div>\n		\n	</div>";
+require("insert-css")(".sidebar{width:22%}@media screen and (min-width:1600px){.sidebar{width:15%}}@media screen and (min-width:1600px){.sidebar.has-info{width:16%}}.sidebar_content{position:relative;height:100%;z-index:20}.sidebar_back{position:absolute;background-color:rgba(0,0,0,.5);width:300px;height:100%;top:0;left:0;transition:all .6s;transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{transform:translate3d(0,0,0)}.sidebar-right{position:absolute;right:0;top:57px;width:300px}.infopanel{position:absolute;background-color:rgba(0,0,0,.8);height:100%;top:0;left:0;z-index:10;transition:all .6s;transform:translate3d(127%,0,0)}.infopanel.is-open{transform:translate3d(300px,0,0)}.infopanel .border{position:absolute;height:100%;width:10px;top:0;left:0}.infopanel .back{position:absolute;top:10%;left:79%;color:#fff;font-size:24px}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}.debug .btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px;color:#000;font-size:10px}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}.sidebar_opener{position:relative;transition:all .6s ease .6s;overflow:hidden}.sidebar_opener.v-enter,.sidebar_opener.v-leave{transform:translate3d(-100px,0,0)}.sidebar_opener.v-leave{transition:all .3s ease 0}.sidebar_opener .sidebar_opener__inside{display:inline-block;color:#fff;padding:10px;height:28px;line-height:28px;transition:all .6s ease}.infopanel{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:5% 20% 3% 3%;width:79%}@media screen and (min-width:1600px){.infopanel{width:85%}}.is-cartela{height:auto!important}.sidebar_cartela{transition:all .5s ease .5s;position:fixed;bottom:60px;left:0}.sidebar_cartela.expand-enter,.sidebar_cartela.expand-leave{left:-800px}.not-loading{position:fixed;left:0;top:0;width:100%;height:100%;z-index:-150;opacity:0;padding-top:22%;text-align:center;background-color:rgba(50,50,50,.6);transition:opacity .5s}.loading{opacity:1;z-index:150}.pausado{opacity:.3!important}");
+var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"capitulo: capitulo, libras: libras, audio_desc: audio_desc\" v-if=\"capitulo\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\"></in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- CARTELAS -->\n\n			<div v-show=\"cartela\" class=\"sidebar_cartela\" v-transition=\"expand\">\n				<div class=\"sidebar_block__header context-bg\" style=\"font-size: 100%\">\n					<div id=\"cartela_nome\">\n						{{contentCartela.title | uppercase}}\n					</div>\n				</div>\n				<div class=\"sidebar_block__header\" style=\"background: #fff\">\n					<div id=\"cartela_funcao\">\n						{{contentCartela.funcao}}\n					</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n\n		<!-- ACESSIBILIDADE -->\n\n		<in-libras v-with=\"id: id\" v-show=\"libras\"></in-libras>\n\n		<div class=\"audio_desc\" v-show=\"audio_desc\">\n			<in-audio v-with=\"id: id\"></in-audio>\n		</div>\n\n		<div id=\"loading\" class=\"not-loading\"><i class=\"fa fa-refresh fa-3x fa-spin\"></i></div>\n		\n	</div>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 	var _ = require('underscore')
@@ -1866,6 +1965,7 @@ var Vue = require('vue')
 				audio_desc: false,
 				viid: null,
 				creditos: null,
+				seeking: false,
 				video: {
 					popcorn: null,
 					time: 0,
@@ -1916,6 +2016,10 @@ var Vue = require('vue')
 				self.audio_desc = val;
 			})
 
+			this.$on('hipervideo-canplay', function() {
+				self.$broadcast('libras-load')
+			})
+
 			// POPCORN
 
 			this.viid = document.getElementById('hipVid-' + self.id);
@@ -1933,7 +2037,26 @@ var Vue = require('vue')
 
 			}, false );
 
+			this.viid.addEventListener( "play", function() {
+
+				if (!self.seeking) {
+					self.$broadcast('hipervideo-play')
+					$$$('#hipVid-' + self.id).removeClass('pausado')
+				}
+
+			}, false );
+
+			this.viid.addEventListener( "pause", function() {
+
+				if (!self.seeking) {
+					self.$broadcast('hipervideo-pause')
+					$$$('#hipVid-' + self.id).addClass('pausado')
+				}
+
+			}, false );
+
 			this.viid.addEventListener( "ended", function() {
+				console.log(self.seeking);
 
 				creditos.className = 'finalizado';
 				self.viid.pause();
@@ -2000,7 +2123,27 @@ var Vue = require('vue')
 		beforeDestroy: function(){
       this.$off('mudou-libras')
 			this.$off('mudou-audio_desc')
+			this.$off('hipervideo-canplay')
 			var self = this
+			this.viid.removeEventListener( "play", function() {
+
+				if (!self.seeking) {
+					self.$broadcast('hipervideo-play')
+					$$$('#hipVid-' + self.id).removeClass('pausado')
+				}
+
+			}, false );
+
+			this.viid.removeEventListener( "pause", function() {
+				console.log(self.seeking);
+
+				if (!self.seeking) {
+					self.$broadcast('hipervideo-pause')
+					$$$('#hipVid-' + self.id).addClass('pausado')
+				}
+
+			}, false );
+
 			this.viid.removeEventListener( "loadeddata", function() {
 
 				self.video.popcorn = Popcorn("#hipVid-" + self.id);
@@ -2021,6 +2164,7 @@ var Vue = require('vue')
 			this.$off('block-timer-clicked')
 			this.$off('video-timeupdate')
 			this.$off('graph-node-clicked')
+			location.reload()
     },
 		ready: function(){
 			this.$dispatch('video-view-ready');
@@ -2033,6 +2177,7 @@ var Vue = require('vue')
 			infoOpen: function(info){
 				var i = parseInt(info)
 				var node = _.findWhere(this.events.nodes,{"id": i});
+				this.$broadcast('info-open');
 				this.videoPause();
 				this.conteudo = node.conteudo;
 				if (node.conteudo.texto === "") {
@@ -2044,6 +2189,7 @@ var Vue = require('vue')
 				this.$broadcast('create-scrollbar');
 			},
 			infoClose: function(){
+				this.$broadcast('info-close');
 				this.videoPlay();
 				this.conteudo = {};
 				this.$broadcast('destroy-scrollbar');
