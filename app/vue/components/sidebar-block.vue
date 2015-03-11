@@ -62,6 +62,10 @@
   			stroke-dasharray: 75 75;
   			stroke-linecap: round;
   			transition: all 0.5s linear;
+  			-webkit-transform: translate(0px,28px) rotate(-90deg);
+				-moz-transform: translate(0px,28px) rotate(-90deg);
+				-o-transform: translate(0px,28px) rotate(-90deg);
+				-ms-transform: translate(0px,28px) rotate(-90deg);
   			transform: translate(0px,28px) rotate(-90deg);
   			&.fadeout {
   				opacity: 0;
@@ -76,6 +80,10 @@
 		.close {
 			transition: transform 0.3s ease, opacity 0.3s linear;
 			opacity: 0;
+			-webkit-transform: translate(14px,14px) scale(.5);
+			-moz-transform: translate(14px,14px) scale(.5);
+			-o-transform: translate(14px,14px) scale(.5);
+			-ms-transform: translate(14px,14px) scale(.5);
 			transform: translate(14px,14px) scale(.5);
 			line {
 				stroke: #fff;
@@ -87,6 +95,10 @@
 		&:hover {
 			.close {
 				opacity: 1;
+				-webkit-transform: translate(14px,14px) scale(1);
+				-moz-transform: translate(14px,14px) scale(1);
+				-o-transform: translate(14px,14px) scale(1);
+				-ms-transform: translate(14px,14px) scale(1);
 				transform: translate(14px,14px) scale(1);
 			}
 		}

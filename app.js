@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
 var livereload = require('connect-livereload');
-var $ = require('jquery');
 
 var routes = {
     index: require(path.join(__dirname, 'app/routes/index'))

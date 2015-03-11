@@ -5,6 +5,10 @@
 		height: 300px;
 		background: #333;
 		transition: all 0.6s ease;
+		-webkit-transform: translate3d(300px,0,0);
+		-moz-transform: translate3d(300px,0,0);
+		-o-transform: translate3d(300px,0,0);
+		-ms-transform: translate3d(300px,0,0);
 		transform: translate3d(300px,0,0);
 		&.is-open {
 			transform: translate3d(0,0,0);
@@ -31,6 +35,10 @@
 		width: 48px;
 		height: 48px;
 		opacity: 0.3;
+		-webkit-transform: translate3d(-100%,0,0);
+		-moz-transform: translate3d(-100%,0,0);
+		-o-transform: translate3d(-100%,0,0);
+		-ms-transform: translate3d(-100%,0,0);
 		transform: translate3d(-100%,0,0);
 		transition: opacity 0.2s;
 		&.event {

@@ -44,8 +44,16 @@
 		height: 260px;
 		padding: 20px;
 		transition: all 0.5s ease;
+		-webkit-transform: translate3d(-300px,0,0);
+		-moz-transform: translate3d(-300px,0,0);
+		-o-transform: translate3d(-300px,0,0);
+		-ms-transform: translate3d(-300px,0,0);
 		transform: translate3d(-300px,0,0);
 		.sidebar.is-open & {
+			-webkit-transform: translate3d(0,0,0);
+			-moz-transform: translate3d(0,0,0);
+			-o-transform: translate3d(0,0,0);
+			-ms-transform: translate3d(0,0,0);
 			transform: translate3d(0,0,0);
 		}
 		.sidebar_graph_svg {
