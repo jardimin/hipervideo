@@ -261,14 +261,20 @@
 
 		<!-- ACESSIBILIDADE -->
 
-		<in-libras v-with="id: id" v-show="libras"></in-libras>
+		<!-- <div class="libras" v-show="libras" v-transition>
+			<in-libras v-with="id: id"></in-libras>
+		</div>
 
 		<div class="audio_desc" v-show="audio_desc">
 			<in-audio v-with="id: id"></in-audio>
+<<<<<<< HEAD
 		</div>
 
 		<div id="loading" class="not-loading"><i class="fa fa-refresh fa-3x fa-spin"></i></div>
 		<div id="aviso" style="position: fixed; top: 50px; width: 100%; text-align: center; font-size: 200%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1;">Aperte ESPAÇO para pausar e ENTER para entrar no modo TELA CHEIA</div>
+=======
+		</div> -->
+>>>>>>> merge acess
 		
 	</div>
 </template>
