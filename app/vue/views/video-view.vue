@@ -261,13 +261,13 @@
 
 		<!-- ACESSIBILIDADE -->
 
-		<in-libras v-with="id: id" v-show="libras"></in-libras>
+		<!-- <div class="libras" v-show="libras" v-transition>
+			<in-libras v-with="id: id"></in-libras>
+		</div>
 
 		<div class="audio_desc" v-show="audio_desc">
 			<in-audio v-with="id: id"></in-audio>
-		</div>
-
-		<div id="loading" class="not-loading"><i class="fa fa-refresh fa-3x fa-spin"></i></div>
+		</div> -->
 		
 	</div>
 </template>
