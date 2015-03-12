@@ -95,7 +95,7 @@
 			background: #ccc;
 			display: inline-block;
 			margin: 4px;
-			color: black;
+			color: black; 
 			font-size: 10px;
 		}
 	}
@@ -268,6 +268,8 @@
 		<div class="audio_desc" v-show="audio_desc">
 			<in-audio v-with="id: id"></in-audio>
 		</div> -->
+
+		<div id="loading" class="not-loading"><i class="fa fa-refresh fa-3x fa-spin"></i></div>
 		
 	</div>
 </template>

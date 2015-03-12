@@ -113,7 +113,7 @@
         isAfter: false,
         menuAcess: false,
         menuHip: false,
-        menuQual: false,
+        menuQual: true,
         infoOpen: false
       }
     },
