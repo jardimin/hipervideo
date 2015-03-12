@@ -9,6 +9,9 @@
 	  transition: all 0.5s ease 0s;
 	  z-index: -100;
 	  opacity: 0;
+	  #full:-webkit-full-screen & {
+		  z-index: 0;
+		}
 	  #app.marco-fechado & {
 			top: 0;
 		}

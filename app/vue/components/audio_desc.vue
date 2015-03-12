@@ -43,11 +43,15 @@
 
       this.$on('mudou-audio_desc', function (val) {
         if (val === true) {
+          console.log(this.vid.volume);
           self.audio_desc.volume = 1;
           self.vid.volume = 0;
+          console.log(this.vid.volume);
         } else {
+          console.log(this.vid.volume);
           self.audio_desc.volume = 0;
           self.vid.volume = 1;
+          console.log(this.vid.volume);
         }
       })
 
@@ -58,6 +62,13 @@
       this.vid.addEventListener("pause" , function() {
         self.audio_desc.pause();
       })
+
+      if (this.$parent.$parent.audio_desc) {
+        console.log(this.vid.volume);
+        this.audio_desc.volume = 1;
+        this.vid.volume = 0;
+        console.log(this.vid.volume);
+      }
       
     },
     beforeDestroy: function(){

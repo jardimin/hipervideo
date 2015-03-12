@@ -52,7 +52,7 @@
 	    transition: all 0.5s ease 0s;
 	  }
 	  & p {
-	    margin: 8px 15px;
+	    margin: 8px 15px 15px 8px;
 	    font-weight: 700;
 	    font-size: 75%;
 	    transition: all 0.5s ease 0s;
@@ -64,7 +64,7 @@
 	<div v-with="db: db" id="capitulos">
 		<div class="capitulo" v-repeat="db.capitulos" style="width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%" v-on="click: seekCap(posicaoCap[$index]) ">
 			<hr></hr>
-			<p>{{$index + 1}}.{{db.capitulos[$index].nome | uppercase}}</p>
+			<p>{{$index + 1}} {{db.capitulos[$index].nome | uppercase}}</p>
 		</div>
 	</div>
 </template>

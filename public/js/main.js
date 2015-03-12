@@ -1,6 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-require("insert-css")(".clickable{cursor:pointer}.disable-select{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.conteudo{zoom:1}.conteudo :after,.conteudo:before{content:\"\";display:table}.conteudo:after{clear:both}#app,#app .view,#app .view .sidebar{height:100%}.vue-nav{position:relative;z-index:20;list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:opacity .3s ease .3s}.view.v-enter,.view.v-leave{opacity:0}.view.v-leave{transition-delay:0}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando .hipVid{opacity:1}body.tocando #video-controls{display:block}.conteudo{margin:0 auto;height:100%;width:100%}");
-var __vue_template__ = "<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n	<div class=\"view\" v-class=\"className, is-video: view=='video-view'\" v-component=\"{{view}}\" v-transition=\"\" v-ref=\"view\">\n	</div>";
+require("insert-css")(".clickable{cursor:pointer}.disable-select{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.conteudo{zoom:1}.conteudo :after,.conteudo:before{content:\"\";display:table}.conteudo:after{clear:both}#app,#app .view,#app .view .sidebar{height:100%}#full:-webkit-full-screen{width:100%;height:100%;background-color:#333}.vue-nav{position:relative;z-index:20;list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:opacity .3s ease .3s}.view.v-enter,.view.v-leave{opacity:0}.view.v-leave{transition-delay:0}body.tocando a.hipervideo,body.tocando header{opacity:0}body.tocando .hipVid{opacity:1}body.tocando #video-controls{display:block}.conteudo{margin:0 auto;height:100%;width:100%}");
+var __vue_template__ = "<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n	<div id=\"full\" class=\"view\" v-class=\"className, is-video: view=='video-view'\" v-component=\"{{view}}\" v-transition=\"\" v-ref=\"view\">\n	</div>";
 module.exports = {
 		el: '#app',
 		data: {
@@ -30,6 +30,50 @@ module.exports = {
 			}
 		},
 		attached: function() {
+			var q = getCookie('qualidade')
+			var a = getCookie('acessibilidade')
+
+			if (q === "") {
+				document.cookie = "qualidade=alta";
+			} else if (q === "alta") {
+				console.log('alta');
+				this.qualidade = 'alta';
+			} else if (q === "media") {
+				console.log('media');
+				this.qualidade = 'media';
+			} else if (q === "baixa") {
+				console.log('baixa');
+				this.qualidade = 'baixa';
+			}
+
+			if (a === "") {
+				document.cookie = "acessibilidade=nada";
+			} else if (a === "libras") {
+				this.libras = true;
+				this.audio_desc = false;
+				this.acessibilidade = 'libras';
+			} else if (a === "audio") {
+				this.libras = false;
+				this.audio_desc = true;
+				this.acessibilidade = 'audio';
+				console.log('test-cookie-audio');
+			} else if (a === "nada") {
+				this.libras = false;
+				this.audio_desc = false;
+				this.acessibilidade = 'nada';
+			}
+
+			function getCookie(cname) {
+		    var name = cname + "=";
+		    var ca = document.cookie.split(';');
+		    for(var i=0; i<ca.length; i++) {
+	        var c = ca[i];
+	        while (c.charAt(0)==' ') c = c.substring(1);
+	        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+		    }
+		    return "";
+			} 
+
 			this.$on('video-qualidade', function (qualidade) {
 				this.qualidade = qualidade;
 				document.cookie = "qualidade = " + qualidade;
@@ -93,11 +137,15 @@ var Vue = require('vue')
 
       this.$on('mudou-audio_desc', function (val) {
         if (val === true) {
+          console.log(this.vid.volume);
           self.audio_desc.volume = 1;
           self.vid.volume = 0;
+          console.log(this.vid.volume);
         } else {
+          console.log(this.vid.volume);
           self.audio_desc.volume = 0;
           self.vid.volume = 1;
+          console.log(this.vid.volume);
         }
       })
 
@@ -108,6 +156,13 @@ var Vue = require('vue')
       this.vid.addEventListener("pause" , function() {
         self.audio_desc.pause();
       })
+
+      if (this.$parent.$parent.audio_desc) {
+        console.log(this.vid.volume);
+        this.audio_desc.volume = 1;
+        this.vid.volume = 0;
+        console.log(this.vid.volume);
+      }
       
     },
     beforeDestroy: function(){
@@ -126,7 +181,7 @@ var Vue = require('vue')
 module.exports.template = __vue_template__;
 
 },{"vue":93}],3:[function(require,module,exports){
-require("insert-css")(".hipVid{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#app.marco-fechado .hipVid{top:0}");
+require("insert-css")(".hipVid{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#full:-webkit-full-screen .hipVid{z-index:0}#app.marco-fechado .hipVid{top:0}");
 var __vue_template__ = "<video poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n		<source src=\"{{db.url}}_{{qual}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n	</source></video>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
@@ -1606,8 +1661,8 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":26,"jquery":27}],20:[function(require,module,exports){
-require("insert-css")("#capitulos{background-color:#323232;color:#fff;height:30px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}#video-controls.hover #capitulos{height:0}.capitulo{transition:all .2s ease 0s;height:30px;position:absolute}#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}.capitulo:hover{color:#000;background-color:#c8c8c8}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:100%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:8px 15px;font-weight:700;font-size:75%;transition:all .5s ease 0s}");
-var __vue_template__ = "<div v-with=\"db: db\" id=\"capitulos\">\n		<div class=\"capitulo\" v-repeat=\"db.capitulos\" style=\"width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%\" v-on=\"click: seekCap(posicaoCap[$index]) \">\n			<hr>\n			<p>{{$index + 1}}.{{db.capitulos[$index].nome | uppercase}}</p>\n		</div>\n	</div>";
+require("insert-css")("#capitulos{background-color:#323232;color:#fff;height:30px;position:relative;width:100%;z-index:1;cursor:pointer;transition:all .5s ease 0s}#video-controls.hover #capitulos{height:0}.capitulo{transition:all .2s ease 0s;height:30px;position:absolute}#video-controls.hover .capitulo{height:0}#video-controls.hover .capitulo hr{height:3px}#video-controls.hover .capitulo p{opacity:0;font-size:0}.capitulo:hover{color:#000;background-color:#c8c8c8}.capitulo hr{-moz-border-bottom-colors:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;background-color:#fff;border-color:-moz-use-text-color #fff -moz-use-text-color -moz-use-text-color;border-image:none;border-style:none solid none none;border-width:medium 1px medium medium;color:#fff;float:left;height:100%;margin:0;position:absolute;top:0;width:0;transition:all .5s ease 0s}.capitulo p{margin:8px 15px 15px 8px;font-weight:700;font-size:75%;transition:all .5s ease 0s}");
+var __vue_template__ = "<div v-with=\"db: db\" id=\"capitulos\">\n		<div class=\"capitulo\" v-repeat=\"db.capitulos\" style=\"width: {{tamanhoCap[$index]}}%; left: {{posicaoCap[$index]}}%\" v-on=\"click: seekCap(posicaoCap[$index]) \">\n			<hr>\n			<p>{{$index + 1}} {{db.capitulos[$index].nome | uppercase}}</p>\n		</div>\n	</div>";
 var $$$ = require('jquery')
 	module.exports = {
 		replace: true,
@@ -2276,6 +2331,25 @@ var Vue = require('vue')
 							video.pause();
 						}
 						break;
+					case 13 : 
+						this.toggleFullScreen();
+						break;
+				}
+			},
+			toggleFullScreen: function() {
+				var a = document.getElementById('full')
+				if (!document.mozFullScreen && !document.webkitFullScreen) {
+					if (a.mozRequestFullScreen) {
+						a.mozRequestFullScreen();
+					} else {
+						a.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+					}
+				} else {
+				if (document.mozCancelFullScreen) {
+						document.mozCancelFullScreen();
+					} else {
+						document.webkitCancelFullScreen();
+					}
 				}
 			},
 			addBlock: function(event){
@@ -2292,6 +2366,9 @@ var Vue = require('vue')
 					}
 					this.cartela = true
 				} else {
+					if(this.contentBlocks.length !== 0) {
+						this.contentBlocks = [];
+					}
 					this.contentBlocks.unshift({
 						id: event.id,
 						videoID: this.params.video,
@@ -2318,6 +2395,9 @@ var Vue = require('vue')
 			addBlockById: function(id){
 
 				if(_.findWhere(this.contentBlocks,{"id": id})) return;
+				if(this.contentBlocks.length !== 0) {
+					this.contentBlocks = [];
+				}
 
 				var node = _.findWhere(this.events.nodes,{"id": id})
 

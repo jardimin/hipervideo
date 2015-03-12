@@ -18,7 +18,14 @@
 	#app .view .sidebar {
 		height: 100%;
 	}
-	
+
+	#full {
+		&:-webkit-full-screen {
+		  width: 100%;
+		  height: 100%;
+		  background-color: #333;
+		}
+	}
 	.vue-nav {
 		position: relative;
 		z-index: 20;
@@ -78,7 +85,7 @@
 
 <template>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<div class="view" v-class="className, is-video: view=='video-view'" v-component="{{view}}" v-transition v-ref="view" />
+	<div id="full" class="view" v-class="className, is-video: view=='video-view'" v-component="{{view}}" v-transition v-ref="view" />
 	</div>
 </template>
 
@@ -113,6 +120,50 @@
 			}
 		},
 		attached: function() {
+			var q = getCookie('qualidade')
+			var a = getCookie('acessibilidade')
+
+			if (q === "") {
+				document.cookie = "qualidade=alta";
+			} else if (q === "alta") {
+				console.log('alta');
+				this.qualidade = 'alta';
+			} else if (q === "media") {
+				console.log('media');
+				this.qualidade = 'media';
+			} else if (q === "baixa") {
+				console.log('baixa');
+				this.qualidade = 'baixa';
+			}
+
+			if (a === "") {
+				document.cookie = "acessibilidade=nada";
+			} else if (a === "libras") {
+				this.libras = true;
+				this.audio_desc = false;
+				this.acessibilidade = 'libras';
+			} else if (a === "audio") {
+				this.libras = false;
+				this.audio_desc = true;
+				this.acessibilidade = 'audio';
+				console.log('test-cookie-audio');
+			} else if (a === "nada") {
+				this.libras = false;
+				this.audio_desc = false;
+				this.acessibilidade = 'nada';
+			}
+
+			function getCookie(cname) {
+		    var name = cname + "=";
+		    var ca = document.cookie.split(';');
+		    for(var i=0; i<ca.length; i++) {
+	        var c = ca[i];
+	        while (c.charAt(0)==' ') c = c.substring(1);
+	        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+		    }
+		    return "";
+			} 
+
 			this.$on('video-qualidade', function (qualidade) {
 				this.qualidade = qualidade;
 				document.cookie = "qualidade = " + qualidade;

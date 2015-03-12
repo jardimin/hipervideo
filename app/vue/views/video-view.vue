@@ -602,6 +602,25 @@
 							video.pause();
 						}
 						break;
+					case 13 : 
+						this.toggleFullScreen();
+						break;
+				}
+			},
+			toggleFullScreen: function() {
+				var a = document.getElementById('full')
+				if (!document.mozFullScreen && !document.webkitFullScreen) {
+					if (a.mozRequestFullScreen) {
+						a.mozRequestFullScreen();
+					} else {
+						a.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+					}
+				} else {
+				if (document.mozCancelFullScreen) {
+						document.mozCancelFullScreen();
+					} else {
+						document.webkitCancelFullScreen();
+					}
 				}
 			},
 			addBlock: function(event){
@@ -618,6 +637,9 @@
 					}
 					this.cartela = true
 				} else {
+					if(this.contentBlocks.length !== 0) {
+						this.contentBlocks = [];
+					}
 					this.contentBlocks.unshift({
 						id: event.id,
 						videoID: this.params.video,
@@ -644,6 +666,9 @@
 			addBlockById: function(id){
 
 				if(_.findWhere(this.contentBlocks,{"id": id})) return;
+				if(this.contentBlocks.length !== 0) {
+					this.contentBlocks = [];
+				}
 
 				var node = _.findWhere(this.events.nodes,{"id": id})
 
