@@ -3,14 +3,17 @@
 		position: relative;
 		width: 300px;
 		opacity: 0.3;
-		transition: opacity 0.5s;
+	  left: -253px;
+		transition: opacity 0.5s, left 0.5s;
 		&:hover {
 			opacity: 1;
 		}
 		.sidebar.is-open & {
+				left: 0;
 				opacity: 1;
 			}
 		&.aberto {
+			left: 0;
 			opacity: 1;
 		}
 		.sidebar_chapter_title {
@@ -23,6 +26,7 @@
 	    min-width: 0;
 	    padding: 0 58px 0 10px;
 	    position: relative;
+	    width: 232px;
 	    transition: all 0.5s ease 0s;
 	    z-index: 2;
 	    & h4 {

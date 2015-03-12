@@ -33,10 +33,10 @@
 
       this.audio_desc = document.getElementById("audio_desc");
       this.vid = document.getElementById("hipVid-"+this.$parent.id);
-      audio_desc.volume = 0;
+      this.audio_desc.volume = 0;
 
       this.$on('audio-update', function (time) {
-        if (audio_desc.currentTime > time + 0.5 || audio_desc.currentTime < time - 0.5) {
+        if (self.audio_desc.currentTime > time + 0.5 || self.audio_desc.currentTime < time - 0.5) {
           self.audio_desc.currentTime = time;
         }
       })

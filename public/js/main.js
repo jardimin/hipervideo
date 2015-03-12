@@ -83,10 +83,10 @@ var Vue = require('vue')
 
       this.audio_desc = document.getElementById("audio_desc");
       this.vid = document.getElementById("hipVid-"+this.$parent.id);
-      audio_desc.volume = 0;
+      this.audio_desc.volume = 0;
 
       this.$on('audio-update', function (time) {
-        if (audio_desc.currentTime > time + 0.5 || audio_desc.currentTime < time - 0.5) {
+        if (self.audio_desc.currentTime > time + 0.5 || self.audio_desc.currentTime < time - 0.5) {
           self.audio_desc.currentTime = time;
         }
       })
@@ -1036,7 +1036,7 @@ var Vue = require('vue')
 module.exports.template = __vue_template__;
 
 },{"../components/sidebar-block-databars.vue":12,"../components/sidebar-block-profile.vue":13,"../components/sidebar-block-text.vue":14,"insert-css":26,"jquery":27,"perfect-scrollbar":30,"vue":93}],16:[function(require,module,exports){
-require("insert-css")(".sidebar_chapter{position:relative;width:300px;opacity:.3;transition:opacity .5s}.sidebar.is-open .sidebar_chapter,.sidebar_chapter.aberto,.sidebar_chapter:hover{opacity:1}.sidebar_chapter .sidebar_chapter_title{background:#fff;color:#555;display:inline-block;font-family:fonte-bold,sans-serif;font-weight:900;line-height:28px;min-width:0;padding:0 58px 0 10px;position:relative;transition:all .5s ease 0s;z-index:2}.sidebar_chapter .sidebar_chapter_title h4{font-family:fonte-normal,sans-serif;font-size:85%;font-weight:100;margin:0}.sidebar_chapter .sidebar_chapter_title h3{margin:-10px 0 0}@media screen and (min-width:1600px){.sidebar_chapter .sidebar_chapter_title h3{margin:-5px 0 0}}.sidebar.is-open .sidebar_chapter .sidebar_chapter_title{min-width:232px}");
+require("insert-css")(".sidebar_chapter{position:relative;width:300px;opacity:.3;left:-253px;transition:opacity .5s,left .5s}.sidebar_chapter:hover{opacity:1}.sidebar.is-open .sidebar_chapter,.sidebar_chapter.aberto{left:0;opacity:1}.sidebar_chapter .sidebar_chapter_title{background:#fff;color:#555;display:inline-block;font-family:fonte-bold,sans-serif;font-weight:900;line-height:28px;min-width:0;padding:0 58px 0 10px;position:relative;width:232px;transition:all .5s ease 0s;z-index:2}.sidebar_chapter .sidebar_chapter_title h4{font-family:fonte-normal,sans-serif;font-size:85%;font-weight:100;margin:0}.sidebar_chapter .sidebar_chapter_title h3{margin:-10px 0 0}@media screen and (min-width:1600px){.sidebar_chapter .sidebar_chapter_title h3{margin:-5px 0 0}}.sidebar.is-open .sidebar_chapter .sidebar_chapter_title{min-width:232px}");
 var __vue_template__ = "<div class=\"sidebar_chapter\" id=\"chap\">\n		<div class=\"sidebar_chapter_title\">\n		<h4>CAPÍTULO {{capitulo.id}}</h4>\n		<h3>{{capitulo.nome | uppercase}}</h3>\n		<div v-component=\"in-menu\" v-with=\"libras: libras, audio_desc: audio_desc\"></div>\n		</div>\n	</div>";
 module.exports = {
 		replace: true,
@@ -1448,8 +1448,8 @@ var Vue = require('vue')
 module.exports.template = __vue_template__;
 
 },{"../components/content-databars.vue":4,"../components/content-map.vue":5,"insert-css":26,"jquery":27,"marked":29,"perfect-scrollbar":30,"slick-carousel":31,"vue":93}],19:[function(require,module,exports){
-require("insert-css")(".sidebar__menu{background-color:#fff;height:46px;overflow:hidden;position:absolute;right:0;top:0;transition:width .25s ease .25s,height .5s ease .5s,left .5s ease .5s,right .5s ease .5s;width:50px}.sidebar__menu.is-open{width:100px;transition:width .25s ease .25s,left .5s ease .5s,right .5s ease .5s}.sidebar__menu.is-after{left:0;top:300px;width:100%;height:150px;position:fixed!important;transition:height 1s ease .5s,width .5s}.menu_handle{transition:opacity .5s}.menu_handle:hover{opacity:.6}.menu_1{left:60px;padding:0 15px;position:absolute}.menu_2{background-color:#f0f0f0;padding:10px 70px;position:absolute;top:60px;width:100%}.menu_item{color:#969696;cursor:pointer;float:left;font-size:130%;font-weight:400;letter-spacing:1px;margin-top:10px;padding:10px 30px 32px;text-decoration:none;transition:all .2s}.menu_item:hover{color:#000}.menu_item.clicado{background-color:#f0f0f0}.menu_item.selecionado{background-color:#555;color:#fff}");
-var __vue_template__ = "<div class=\"sidebar__menu\" v-class=\"is-open: isOpen, is-after: isAfter\">\n    <div v-on=\"click: toggle\" style=\"position: absolute; left: 0px; top: 0px; color: #555; cursor: pointer\" class=\"menu_handle\"><i class=\"fa fa-bars fa-2x\" style=\"position: absolute; left: 10px; top: 6px\"></i></div>\n    <div class=\"menu_1\">\n      <div class=\"menu_item\" v-class=\"clicado: menuAcess\" v-on=\"click: clickAcess\">ACESSIBILIDADE</div>\n      <div class=\"menu_item\" v-class=\"clicado: menuQual\" v-on=\"click: clickQual\">QUALIDADE</div>\n      <div class=\"menu_item\" v-class=\"clicado: menuHip\" v-on=\"click: clickHip\">HIPERVÍDEOS</div>\n      <div class=\"menu_item\" v-on=\"click: clickRedes\">VER REDES</div>\n      <a href=\"/#/\" class=\"menu_item\">INÍCIO</a>\n    </div>\n    <div class=\"menu_2\" v-show=\"menuAcess\">\n      <div class=\"menu_item\" v-class=\"selecionado: audio_desc\" v-on=\"click: selectAudio\">ÁUDIO DESCRIÇÃO</div>\n      <div class=\"menu_item\" v-class=\"selecionado: libras\" v-on=\"click: selectLibras\">LIBRAS</div>\n    </div>\n    <div class=\"menu_2\" v-show=\"menuQual\">\n      <div class=\"menu_item\" v-class=\"selecionado: isAlta\" v-on=\"click: selectAlta\">ALTA</div>\n      <div class=\"menu_item\" v-class=\"selecionado: isMedia\" v-on=\"click: selectMedia\">MÉDIA</div>\n      <div class=\"menu_item\" v-class=\"selecionado: isBaixa\" v-on=\"click: selectBaixa\">BAIXA</div>\n    </div>\n    <div class=\"menu_2\" v-show=\"menuHip\">\n      <div class=\"menu_item context-bg\" v-if=\"isMulher\" style=\"color: white\">MULHER</div>\n      <a href=\"/#/mulher\" class=\"menu_item\" v-if=\"!isMulher\">MULHER</a>\n      <div class=\"menu_item context-bg\" v-if=\"isCrianca\" style=\"color: white\">CRIANÇA</div>\n      <a href=\"/#/crianca\" class=\"menu_item\" v-if=\"!isCrianca\">CRIANÇA</a>\n      <div class=\"menu_item context-bg\" v-if=\"isAdolescente\" style=\"color: white\">ADOLESCENTE</div>\n      <a href=\"/#/adolescente\" class=\"menu_item\" v-if=\"!isAdolescente\">ADOLESCENTE</a>\n      <div class=\"menu_item context-bg\" v-if=\"isDeficiente\" style=\"color: white\">PESSOA COM DEFICIÊNCIA</div>\n      <a href=\"/#/deficiente\" class=\"menu_item\" v-if=\"!isDeficiente\">PESSOA COM DEFICIÊNCIA</a>\n      <div class=\"menu_item context-bg\" v-if=\"isPreso\" style=\"color: white\">PESSOA PRIVADA DE LIBERDADE</div>\n      <a href=\"/#/preso\" class=\"menu_item\" v-if=\"!isPreso\">PESSOA PRIVADA DE LIBERDADE</a>\n    </div>\n  </div>";
+require("insert-css")(".sidebar__menu{background-color:#fff;height:46px;overflow:hidden;position:absolute;right:0;top:0;transition:width .5s;width:50px}.sidebar__menu.is-almost{width:50px;left:0;top:300px;position:fixed!important}.sidebar__menu.is-almost .fa{left:7px!important}.sidebar__menu.is-open{width:100%;transition:width .5s,height .5s}.sidebar__menu.is-after{height:150px;transition:height .5s}.menu_handle{transition:opacity .5s}.menu_handle:hover{opacity:.6}.menu_1{left:60px;padding:0 15px;position:absolute}.menu_2{background-color:#f0f0f0;padding:10px 70px;position:absolute;top:60px;width:100%}.menu_item{color:#969696;cursor:pointer;float:left;font-size:130%;font-weight:400;letter-spacing:1px;margin-top:10px;padding:10px 30px 32px;text-decoration:none;transition:all .2s}.menu_item:hover{color:#000}.menu_item.clicado{background-color:#f0f0f0}.menu_item.selecionado{background-color:#555;color:#fff}");
+var __vue_template__ = "<div class=\"sidebar__menu\" v-class=\"is-open: isOpen, is-after: isAfter, is-almost: isAlmost\">\n    <div v-on=\"click: toggle\" style=\"position: absolute; left: 0px; top: 0px; color: #555; cursor: pointer\" class=\"menu_handle\"><i class=\"fa fa-bars fa-2x\" style=\"position: absolute; left: 10px; top: 6px\"></i></div>\n    <div class=\"menu_1\">\n      <div class=\"menu_item\" v-class=\"clicado: menuAcess\" v-on=\"click: clickAcess\">ACESSIBILIDADE</div>\n      <div class=\"menu_item\" v-class=\"clicado: menuQual\" v-on=\"click: clickQual\">QUALIDADE</div>\n      <div class=\"menu_item\" v-class=\"clicado: menuHip\" v-on=\"click: clickHip\">HIPERVÍDEOS</div>\n      <div class=\"menu_item\" v-on=\"click: clickRedes\">VER REDES</div>\n      <a href=\"/#/\" class=\"menu_item\">INÍCIO</a>\n    </div>\n    <div class=\"menu_2\" v-show=\"menuAcess\">\n      <div class=\"menu_item\" v-class=\"selecionado: audio_desc\" v-on=\"click: selectAudio\">ÁUDIO DESCRIÇÃO</div>\n      <div class=\"menu_item\" v-class=\"selecionado: libras\" v-on=\"click: selectLibras\">LIBRAS</div>\n    </div>\n    <div class=\"menu_2\" v-show=\"menuQual\">\n      <div class=\"menu_item\" v-class=\"selecionado: isAlta\" v-on=\"click: selectAlta\">ALTA</div>\n      <div class=\"menu_item\" v-class=\"selecionado: isMedia\" v-on=\"click: selectMedia\">MÉDIA</div>\n      <div class=\"menu_item\" v-class=\"selecionado: isBaixa\" v-on=\"click: selectBaixa\">BAIXA</div>\n    </div>\n    <div class=\"menu_2\" v-show=\"menuHip\">\n      <div class=\"menu_item context-bg\" v-if=\"isMulher\" style=\"color: white\">MULHER</div>\n      <a href=\"/#/mulher\" class=\"menu_item\" v-if=\"!isMulher\">MULHER</a>\n      <div class=\"menu_item context-bg\" v-if=\"isCrianca\" style=\"color: white\">CRIANÇA</div>\n      <a href=\"/#/crianca\" class=\"menu_item\" v-if=\"!isCrianca\">CRIANÇA</a>\n      <div class=\"menu_item context-bg\" v-if=\"isAdolescente\" style=\"color: white\">ADOLESCENTE</div>\n      <a href=\"/#/adolescente\" class=\"menu_item\" v-if=\"!isAdolescente\">ADOLESCENTE</a>\n      <div class=\"menu_item context-bg\" v-if=\"isDeficiente\" style=\"color: white\">PESSOA COM DEFICIÊNCIA</div>\n      <a href=\"/#/deficiente\" class=\"menu_item\" v-if=\"!isDeficiente\">PESSOA COM DEFICIÊNCIA</a>\n      <div class=\"menu_item context-bg\" v-if=\"isPreso\" style=\"color: white\">PESSOA PRIVADA DE LIBERDADE</div>\n      <a href=\"/#/preso\" class=\"menu_item\" v-if=\"!isPreso\">PESSOA PRIVADA DE LIBERDADE</a>\n    </div>\n  </div>";
 var $$$ = require('jquery')
 
   module.exports = {
@@ -1459,6 +1459,7 @@ var $$$ = require('jquery')
       return {
         isOpen: false,
         isAfter: false,
+        isAlmost: false,
         menuAcess: true,
         menuHip: false,
         menuQual: false,
@@ -1508,14 +1509,20 @@ var $$$ = require('jquery')
           $$$('#chap').removeClass('aberto')
           setTimeout(function() {
             self.isOpen = false
-          }, 400)
+          }, 200)
+          setTimeout(function() {
+            self.isAlmost = false
+          }, 700)
         }
       })
 
       this.$on('hipervideo-pause', function() {
         if (!self.infoOpen) {
-          self.isOpen = true
+          self.isAlmost = true
           $$$('#chap').addClass('aberto')
+          setTimeout(function() {
+            self.isOpen = true
+          }, 50)
           setTimeout(function() {
             self.isAfter = true
           }, 400)
