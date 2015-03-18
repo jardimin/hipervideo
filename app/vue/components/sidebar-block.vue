@@ -146,10 +146,9 @@
 			}
 		},
 		attached: function() {
-			$$$('#sidebar_block__content').perfectScrollbar({
+			$$$('.sidebar_block__content').perfectScrollbar({
 				suppressScrollX: true
 			});
-
 		},
 		methods: {
 			onTimerClick: function(){

@@ -52,7 +52,7 @@
 	    transition: all 0.5s ease 0s;
 	  }
 	  & p {
-	    margin: 8px 15px 15px 8px;
+	    margin: 8px 0px 15px 8px;
 	    font-weight: 700;
 	    font-size: 75%;
 	    transition: all 0.5s ease 0s;

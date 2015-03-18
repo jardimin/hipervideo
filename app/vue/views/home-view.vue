@@ -223,7 +223,7 @@
 				<p style="letter-spacing: 0; text-align: center;">{{{db.texto}}}</p>
 				<a v-on="click: fechar" class="botao">O QUE É O HIPERVÍDEO?</a>
 				<a v-on="click: fechar" class="botao">ASSISTIR HIPERVÍDEOS</a>
-				<a v-on="click: fechar" class="botao">VER REDES</a>
+				<a v-on="click: redes" class="botao">VER REDES</a>
 				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 30%; margin: 5% 5% 0;">
 				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png" style="width: 50%;">
 			</div>
@@ -258,6 +258,7 @@
 				</div>
 			</div>
 		</div>
+		<div id="aviso" style="position: fixed; top: 0; width: 100%; text-align: center; font-size: 200%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1; display: none; z-index: 1;">Recomendamos a utilização do navegador GOOGLE CHROME para uma melhor experiência</div>
 	</div>
 </template>
 
@@ -269,6 +270,9 @@
 			fechar: function() {
 				var head = $$$('header')
 				head.addClass('fechado')
+			},
+			redes: function() {
+				this.$parent.redes = true
 			},
 			abrir: function() {
 				var head = $$$('header')
@@ -338,6 +342,18 @@
 		},
 		attached: function () {
 			$$$('body').removeClass("tocando");
+			var usr_ag = navigator.userAgent
+			console.log(usr_ag.search("Chrome"));
+			if (usr_ag.search("Chrome") === -1) {
+				$$$('#aviso').css('display', 'block')
+				setTimeout(function() {
+					$$$('#aviso').css('opacity', 0)
+				}, 6000)
+				setTimeout(function() {
+					$$$('#aviso').css('display', 'none')
+				}, 7000)
+			}
+
 		}
 	}
 </script>

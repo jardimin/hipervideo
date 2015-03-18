@@ -46,7 +46,23 @@
 	}
 
 	.view {
-		transition: opacity .3s ease .3s;
+		transition: all 0.5s, opacity .3s ease .3s;
+		&.is-redes {
+			transition: all 0.5s;
+			-webkit-transform: translate3d(0,110%,0);
+   		-moz-transform: translate3d(0,110%,0);
+   		-o-transform: translate3d(0,110%,0);
+   		-ms-transform: translate3d(0,110%,0);
+   		transform: translate3d(0,110%,0);
+   		#app.marco-fechado & {
+   			transition: all 0.5s;
+				-webkit-transform: translate3d(0,100%,0);
+	   		-moz-transform: translate3d(0,100%,0);
+	   		-o-transform: translate3d(0,100%,0);
+	   		-ms-transform: translate3d(0,100%,0);
+	   		transform: translate3d(0,100%,0);
+   		}
+		}
 		&.v-enter, &.v-leave {
 			opacity: 0;
 		}
@@ -85,7 +101,8 @@
 
 <template>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<div id="full" class="view" v-class="className, is-video: view=='video-view'" v-component="{{view}}" v-transition v-ref="view" />
+	<in-redes></in-redes>
+	<div id="full" class="view" v-class="className, is-video: view=='video-view', is-redes: redes" v-component="{{view}}" v-transition v-ref="view" />
 	</div>
 </template>
 
@@ -117,6 +134,9 @@
 			},
 			audio_desc: function (val) {
 				this.$broadcast('mudou-audio_desc', val);
+			},
+			redes: function (val) {
+				this.$broadcast('redinha', val);
 			}
 		},
 		attached: function() {
@@ -126,13 +146,10 @@
 			if (q === "") {
 				document.cookie = "qualidade=alta";
 			} else if (q === "alta") {
-				console.log('alta');
 				this.qualidade = 'alta';
 			} else if (q === "media") {
-				console.log('media');
 				this.qualidade = 'media';
 			} else if (q === "baixa") {
-				console.log('baixa');
 				this.qualidade = 'baixa';
 			}
 
@@ -146,7 +163,6 @@
 				this.libras = false;
 				this.audio_desc = true;
 				this.acessibilidade = 'audio';
-				console.log('test-cookie-audio');
 			} else if (a === "nada") {
 				this.libras = false;
 				this.audio_desc = false;
@@ -162,7 +178,11 @@
 	        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
 		    }
 		    return "";
-			} 
+			}
+
+			this.$on('redes', function (val) {
+				this.redes = val;
+			})
 
 			this.$on('video-qualidade', function (qualidade) {
 				this.qualidade = qualidade;
@@ -188,7 +208,8 @@
 		},
 		components: {
 			'home-view': require('./views/home-view.vue'),
-			'video-view': require('./views/video-view.vue')
+			'video-view': require('./views/video-view.vue'),
+			'in-redes': require('./components/redes.vue')
 		}
 	}
 
