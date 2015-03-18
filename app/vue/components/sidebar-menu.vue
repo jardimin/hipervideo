@@ -85,7 +85,7 @@
       <div class="menu_2" v-show="menuAcess">
       <div class="menu_item" v-class="selecionado: audio_desc" v-on="click: selectAudio">ÁUDIO DESCRIÇÃO</div>
       <div class="menu_item" v-class="selecionado: libras" v-on="click: selectLibras">LIBRAS</div>
-    </div>
+    </div> -->
     <div class="menu_2" v-show="menuQual">
       <div class="menu_item" v-class="selecionado: isAlta" v-on="click: selectAlta">ALTA</div>
       <div class="menu_item" v-class="selecionado: isMedia" v-on="click: selectMedia">MÉDIA</div>
@@ -119,7 +119,7 @@
         isAlmost: false,
         menuAcess: true,
         menuHip: false,
-        menuQual: false,
+        menuQual: true,
         infoOpen: false
       }
     },
