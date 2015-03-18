@@ -39,26 +39,32 @@
         {
           "nome": "Maternidade de Alto Risco",
           "id": 3,
-          "timecode": 957
+          "timecode": 857
         },
         {
-          "nome": "Apoio Institucional",
+          "nome": "Doulas",
           "id": 4,
+          "timecode": 957
+        },
+
+        {
+          "nome": "Apoio Institucional",
+          "id": 5,
           "timecode": 1243
         },
           {
           "nome": "Fórum Perinatal",
-          "id": 5,
-          "timecode": 1414
+          "id": 6,
+          "timecode": 1400
         },
           {
           "nome": "Mapa de Vinculação",
-          "id": 6,
+          "id": 7,
           "timecode": 1566
         },
           {
           "nome": "Final",
-          "id": 7,
+          "id": 8,
           "timecode": 1800
         }
       ]

@@ -1,13 +1,26 @@
 <style lang="scss">
-  #conteudo_info {
+  #conteudo_info_redes {
     overflow: hidden;
     position: relative;
-    height: 96%;
+    height: 85%;
     padding-left: 40px;
     padding-right: 40px;
     transition: all 0.3s ease;
     #app.marco-fechado & {
-      height: 100%;
+      height: 85%;
+    }
+  }
+
+  .voltar {
+    cursor: pointer;
+    font-size: 150%;
+    position: absolute;
+    background-color: #555;
+    top: 0;
+    right: 30px;
+    padding: 10px;
+    &:hover {
+      background-color: #999;
     }
   }
 
@@ -15,7 +28,7 @@
     letter-spacing: 0;
   }
   
-  .image-list {
+  .image-list-redes {
     & img {
       position: relative;
       float: left;
@@ -23,7 +36,7 @@
     }
   }
 
-  .video-list {
+  .video-list-redes {
     & img {
       position: relative;
       float: left;
@@ -64,8 +77,9 @@
 
 <template>
   <div style="height: 100%;">
-  <div class="border context-bg"></div>
-  <div id="conteudo_info">
+  <h3>Clique nos botões acima da rede para filtrar o conteúdo de cada área.</h3>
+  <h3>Clique pontos da rede para ver seu conteúdo relacionando.</h3>
+  <div id="conteudo_info_redes">
 
     <div v-component="in-mapa" v-with="mapa: conteudo.mapa" v-if="conteudo && hasMap"></div>
 
@@ -79,18 +93,18 @@
     <div v-component="in-databars" v-with="databars: conteudo.databars" v-if="conteudo && hasDatabars"></div>
     
     <h3 v-if="conteudo && conteudo.imagens"> IMAGENS </h3>
-    <div class="image-list"></div>
+    <div class="image-list-redes"></div>
     <h3 v-if="conteudo && conteudo.video_list"> VÍDEOS </h3>
-    <div class="video-list"></div>
+    <div class="video-list-redes"></div>
     <h3 v-if="conteudo && conteudo.arquivos"> LINKS </h3>
-    <div class="link context-bg" v-repeat="conteudo.arquivos">
-      <a href="{{link}}" target="_blank" class="link context-bg">
+    <div class="link {{conteudo.group}}-bg" v-repeat="conteudo.arquivos">
+      <a href="{{link}}" target="_blank" class="link {{conteudo.group}}-bg">
         {{nome | uppercase}}
       </a>
     </div>
     <h3 v-if="conteudo && conteudo.discursoes"> DISCUSSÃO </h3>
-    <div class="link context-bg" v-repeat="conteudo.discursoes">
-      <a href="{{link}}" target="_blank" class="link context-bg">
+    <div class="link {{conteudo.group}}-bg" v-repeat="conteudo.discursoes">
+      <a href="{{link}}" target="_blank" class="link {{conteudo.group}}-bg">
         {{nome | uppercase}}
       </a>
     </div>
@@ -100,7 +114,7 @@
       </a>
     </div>
   </div>
-  <a class="back" href="#/{{id}}">voltar ao video</a>
+  <div class="voltar" v-on="click: voltar">VOLTAR</div>
   </div>
 </template>
 
@@ -112,12 +126,11 @@
   var marked = require('marked')
 
   module.exports = {
-
+    inherit: true,
     replace: true,
 
     data: function(){
       return {
-        conteudo: {},
         html_texto: '',
         videoIndex: 0,
         imageIndex: 0
@@ -134,38 +147,48 @@
     attached: function() {
       var self = this
 
-      $$$('.image-list').slick({
+      $$$('.image-list-redes').slick({
         infinite: false,
         slidesToShow: 3,
         slidesToScroll: 3
       });
 
-      $$$('.video-list').slick({
+      $$$('.video-list-redes').slick({
         infinite: false,
         slidesToShow: 3,
         slidesToScroll: 3
       })
 
-      this.$on('create-scrollbar', function() {
-        $$$('#conteudo_info').perfectScrollbar({
-          suppressScrollX: true
-        });
+      $$$('#conteudo_info_redes').perfectScrollbar({
+        suppressScrollX: true
+      });
 
-        if (this.$parent.conteudo.texto !== "") {
-          this.html_texto = this.$parent.conteudo.texto;
+      this.$on('create-conteudo', function(text) {
+
+        for (var i = 0; i < this.imageIndex; i++) {
+          $$$('.image-list-redes').slick('slickRemove', i);
+        }
+        for (var i = 0; i < this.videoIndex; i++) {
+          $$$('.video-list-redes').slick('slickRemove', i);
+        }
+        this.imageIndex = 0;
+        this.videoIndex = 0;
+
+        if (this.conteudo.texto !== "") {
+          this.html_texto = this.conteudo.texto;
         } else {
-          this.html_texto = this.$parent.component.fields.excerpt
+          this.html_texto = text
         }
 
-        if (this.$parent.conteudo.imagens) {
-          for (var i = this.$parent.conteudo.imagens.length - 1; i >= 0; i--) {
-            $$$('.image-list').slick('slickAdd','<img src="' + this.$parent.conteudo.imagens[i].src + '">');
+        if (this.conteudo.imagens) {
+          for (var i = this.conteudo.imagens.length - 1; i >= 0; i--) {
+            $$$('.image-list-redes').slick('slickAdd','<img src="' + this.conteudo.imagens[i].src + '">');
             self.imageIndex ++;
           };
         }
 
-        if (this.$parent.conteudo.video_list) {
-          var playlistUrl = 'http://gdata.youtube.com/feeds/api/playlists/' + this.$parent.conteudo.video_list + '?v=2&alt=json&callback=?';
+        if (this.conteudo.video_list) {
+          var playlistUrl = 'http://gdata.youtube.com/feeds/api/playlists/' + this.conteudo.video_list + '?v=2&alt=json&callback=?';
           var videoURL= 'http://www.youtube.com/watch?v=';
           $$$.getJSON(playlistUrl, function(data) {
             var list_data=[];
@@ -179,32 +202,22 @@
               list_data.push(video_data);
             });
             for (var i = list_data.length - 1; i >= 0; i--) {
-              $$$('.video-list').slick('slickAdd','<a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a>');
+              $$$('.video-list-redes').slick('slickAdd','<a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a>');
               self.videoIndex ++;
             };
           });
         }
         
       })
-
-      this.$on('destroy-scrollbar', function() {
-        $$$('#conteudo_info').perfectScrollbar('destroy');
-        for (var i = 0; i < this.imageIndex; i++) {
-          $$$('.image-list').slick('slickRemove', i);
-        }
-        for (var i = 0; i < this.videoIndex; i++) {
-          $$$('.video-list').slick('slickRemove', i);
-        }
-        this.imageIndex = 0;
-        this.videoIndex = 0;
-      })
       
     },
-    beforeDestroy: function(){
-      this.$off('create-scrollbar')
-      this.$off('destroy-scrollbar')
-    },
+    methods: {
 
+      voltar: function() {
+        this.redes = false;
+      }
+
+    },
     components: {
       'in-databars': require('../components/content-databars.vue'),
       'in-mapa': require('../components/content-map.vue')

@@ -71,7 +71,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 
 app.listen(app.get('port'), function(err) {
     debug('Express server listening on port ' + app.get('port'));

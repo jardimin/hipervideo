@@ -33,21 +33,25 @@
 
       this.audio_desc = document.getElementById("audio_desc");
       this.vid = document.getElementById("hipVid-"+this.$parent.id);
-      audio_desc.volume = 0;
+      this.audio_desc.volume = 0;
 
       this.$on('audio-update', function (time) {
-        if (audio_desc.currentTime > time + 0.5 || audio_desc.currentTime < time - 0.5) {
+        if (self.audio_desc.currentTime > time + 0.5 || self.audio_desc.currentTime < time - 0.5) {
           self.audio_desc.currentTime = time;
         }
       })
 
       this.$on('mudou-audio_desc', function (val) {
         if (val === true) {
+          console.log(this.vid.volume);
           self.audio_desc.volume = 1;
           self.vid.volume = 0;
+          console.log(this.vid.volume);
         } else {
+          console.log(this.vid.volume);
           self.audio_desc.volume = 0;
           self.vid.volume = 1;
+          console.log(this.vid.volume);
         }
       })
 
@@ -58,6 +62,13 @@
       this.vid.addEventListener("pause" , function() {
         self.audio_desc.pause();
       })
+
+      if (this.$parent.$parent.audio_desc) {
+        console.log(this.vid.volume);
+        this.audio_desc.volume = 1;
+        this.vid.volume = 0;
+        console.log(this.vid.volume);
+      }
       
     },
     beforeDestroy: function(){

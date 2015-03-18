@@ -6,19 +6,24 @@
     position: absolute;
     right: 0;
     top: 0;
-    transition: width 0.25s ease 0.25s, height 0.5s ease 0.5s, left 0.5s ease 0.5s, right 0.5s ease 0.5s;
+    transition: width 0.5s;
     width: 50px;
-    &.is-open {
-      width: 100px;
-      transition: width 0.25s ease 0.25s, left 0.5s ease 0.5s, right 0.5s ease 0.5s;
-    }
-    &.is-after {
+    &.is-almost {
+      width: 50px;
       left: 0;
       top: 300px;
-      width: 100%;
-      height: 150px;
       position: fixed !important;
-      transition: height 1s ease 0.5s, width 0.5s,
+      .fa {
+        left: 7px !important;
+      }
+    }
+    &.is-open {
+      width: 100%;
+      transition: width 0.5s, height 0.5s,;
+    }
+    &.is-after {
+      height: 150px;
+      transition: height 0.5s
     }
   }
   .menu_handle {
@@ -68,7 +73,7 @@
 </style>
 
 <template>
-  <div class="sidebar__menu" v-class="is-open: isOpen, is-after: isAfter">
+  <div class="sidebar__menu" v-class="is-open: isOpen, is-after: isAfter, is-almost: isAlmost">
     <div v-on="click: toggle" style="position: absolute; left: 0px; top: 0px; color: #555; cursor: pointer;" class="menu_handle"><i class="fa fa-bars fa-2x" style="position: absolute; left: 10px; top: 6px;"></i></div>
     <div class="menu_1">
       <div class="menu_item" v-class="clicado: menuAcess" v-on="click: clickAcess">ACESSIBILIDADE</div>
@@ -111,6 +116,7 @@
       return {
         isOpen: false,
         isAfter: false,
+        isAlmost: false,
         menuAcess: true,
         menuHip: false,
         menuQual: false,
@@ -160,14 +166,20 @@
           $$$('#chap').removeClass('aberto')
           setTimeout(function() {
             self.isOpen = false
-          }, 400)
+          }, 200)
+          setTimeout(function() {
+            self.isAlmost = false
+          }, 700)
         }
       })
 
       this.$on('hipervideo-pause', function() {
         if (!self.infoOpen) {
-          self.isOpen = true
+          self.isAlmost = true
           $$$('#chap').addClass('aberto')
+          setTimeout(function() {
+            self.isOpen = true
+          }, 50)
           setTimeout(function() {
             self.isAfter = true
           }, 400)

@@ -18,7 +18,14 @@
 	#app .view .sidebar {
 		height: 100%;
 	}
-	
+
+	#full {
+		&:-webkit-full-screen {
+		  width: 100%;
+		  height: 100%;
+		  background-color: #333;
+		}
+	}
 	.vue-nav {
 		position: relative;
 		z-index: 20;
@@ -39,7 +46,23 @@
 	}
 
 	.view {
-		transition: opacity .3s ease .3s;
+		transition: all 0.5s, opacity .3s ease .3s;
+		&.is-redes {
+			transition: all 0.5s;
+			-webkit-transform: translate3d(0,110%,0);
+   		-moz-transform: translate3d(0,110%,0);
+   		-o-transform: translate3d(0,110%,0);
+   		-ms-transform: translate3d(0,110%,0);
+   		transform: translate3d(0,110%,0);
+   		#app.marco-fechado & {
+   			transition: all 0.5s;
+				-webkit-transform: translate3d(0,100%,0);
+	   		-moz-transform: translate3d(0,100%,0);
+	   		-o-transform: translate3d(0,100%,0);
+	   		-ms-transform: translate3d(0,100%,0);
+	   		transform: translate3d(0,100%,0);
+   		}
+		}
 		&.v-enter, &.v-leave {
 			opacity: 0;
 		}
@@ -78,7 +101,8 @@
 
 <template>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<div class="view" v-class="className, is-video: view=='video-view'" v-component="{{view}}" v-transition v-ref="view" />
+	<in-redes></in-redes>
+	<div id="full" class="view" v-class="className, is-video: view=='video-view', is-redes: redes" v-component="{{view}}" v-transition v-ref="view" />
 	</div>
 </template>
 
@@ -110,9 +134,56 @@
 			},
 			audio_desc: function (val) {
 				this.$broadcast('mudou-audio_desc', val);
+			},
+			redes: function (val) {
+				this.$broadcast('redinha', val);
 			}
 		},
 		attached: function() {
+			var q = getCookie('qualidade')
+			var a = getCookie('acessibilidade')
+
+			if (q === "") {
+				document.cookie = "qualidade=alta";
+			} else if (q === "alta") {
+				this.qualidade = 'alta';
+			} else if (q === "media") {
+				this.qualidade = 'media';
+			} else if (q === "baixa") {
+				this.qualidade = 'baixa';
+			}
+
+			if (a === "") {
+				document.cookie = "acessibilidade=nada";
+			} else if (a === "libras") {
+				this.libras = true;
+				this.audio_desc = false;
+				this.acessibilidade = 'libras';
+			} else if (a === "audio") {
+				this.libras = false;
+				this.audio_desc = true;
+				this.acessibilidade = 'audio';
+			} else if (a === "nada") {
+				this.libras = false;
+				this.audio_desc = false;
+				this.acessibilidade = 'nada';
+			}
+
+			function getCookie(cname) {
+		    var name = cname + "=";
+		    var ca = document.cookie.split(';');
+		    for(var i=0; i<ca.length; i++) {
+	        var c = ca[i];
+	        while (c.charAt(0)==' ') c = c.substring(1);
+	        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+		    }
+		    return "";
+			}
+
+			this.$on('redes', function (val) {
+				this.redes = val;
+			})
+
 			this.$on('video-qualidade', function (qualidade) {
 				this.qualidade = qualidade;
 				document.cookie = "qualidade = " + qualidade;
@@ -137,7 +208,8 @@
 		},
 		components: {
 			'home-view': require('./views/home-view.vue'),
-			'video-view': require('./views/video-view.vue')
+			'video-view': require('./views/video-view.vue'),
+			'in-redes': require('./components/redes.vue')
 		}
 	}
 

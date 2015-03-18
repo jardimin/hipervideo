@@ -17,7 +17,7 @@
   }
   .info {
     background-color: rgba(200, 200, 200, 0.3);
-    padding: 3%;
+    padding: 1% 3% 0;
     position: relative;
     width: 80%;
     margin: 0 auto;
@@ -35,88 +35,144 @@
   }
   .papel {
     width: 20%;
+    height: 133px;
     text-align: center;
     float: left;
+  }
+  .slick-dots {
+    bottom: -10px !important;
+  }
+  .slick-prev {
+    left: 25px !important;
+  }
+  .slick-next {
+    right: 25px !important;
+  }
+  .sslick {
+    margin-bottom: 0px !important;
   }
 </style>
 
 <template>
   <div id="creditos">
     <h1>CRÉDITOS</h1>
-    <div class="info">
-      <div class="papel">
-        <h3>DESIGN E PROGRAMAÇÃO</h3>
-        <p>Marlus Araújo</p>
-        <p>Gustavo Junqueira</p>
+    <div class="sslick">
+      <div class="info">
+        <div class="papel">
+          <h3>DESIGN E PROGRAMAÇÃO</h3>
+          <p>Gustavo Junqueira</p>
+          <p>Marlus Araújo</p>
+        </div>
+        <div class="papel">
+          <h3>DIREÇÃO</h3>
+          <p>Giuliano Bonorandi</p>
+          <p>Julio Braga</p>
+        </div>
+        <div class="papel">
+          <h3>COORDENAÇÃO GERAL</h3>
+          <p>Tadeu de Paula Souza</p>
+          <a href="http://jardim.in" target="_blank">Jardim.in</a>
+        </div>
+        <div class="papel">
+          <h3>PESQUISA E CURADORIA</h3>
+          <p>Cristiano Rodrigues</p>
+          <p>Luiz Augusto de Paula Souza</p>
+          <p>Tatiana Silva Tavares</p>
+        </div>
+        <div class="papel">
+          <h3>PRODUÇÃO</h3>
+          <p>Carolina Calcavecchia</p>
+          <p>Janaína Castro Alves</p>
+        </div>
+        <div class="papel">
+          <h3>FOTOGRAFIA</h3>
+          <p>Milena Sá</p>
+          <p>Tito José</p>
+        </div>
+        <div class="papel">
+          <h3>SOM DIRETO</h3>
+          <p>Alexandre Kubrusly</p>
+          <p>Francisco Bragança</p>
+        </div>
+        <div class="papel">
+          <h3>ASSISTÊNCIA DE EDIÇÃO</h3>
+          <p>Raoni Seixas</p>
+          <p>Tatiana Teitelroit</p>
+        </div>
+        <div class="papel">
+          <h3>EDIÇÃO</h3>
+          <p>Claudio Tammela</p>
+          <p>Marco Meireles</p>
+          <p>Tatiana Gouveia</p>
+        </div>
+        <div class="papel" style="margin-bottom: 40px;">
+          <h3>FINALIZAÇÃO DE SOM</h3>
+          <a href="http://criadomudo.net" target="_blank">Criado Mudo Produções Artísticas</a>
+        </div>
       </div>
-      <div class="papel">
-        <h3>DIREÇÃO</h3>
-        <p>Julio Braga</p>
-        <p>Giuliano Bonorandi</p>
-      </div>
-      <div class="papel">
-        <h3>PRODUÇÃO</h3>
-        <p>Janaína Castro Alves</p>
-        <p>Carolina Calcavecchia</p>
-      </div>
-      <div class="papel">
-        <h3>FOTOGRAFIA</h3>
-        <p>Milena Sá</p>
-        <p>Tito José</p>
-      </div>
-      <div class="papel">
-        <h3>SOM DIRETO</h3>
-        <p>Alexandre Kubrusly</p>
-        <p>Francisco</p>
-      </div>
-      <div class="papel">
-        <h3>ASSISTÊNCIA DE EDIÇÃO</h3>
-        <p>Raoni Seixas</p>
-        <p>Tatiana Teitelroit</p>
-      </div>
-      <div class="papel">
-        <h3>EDIÇÃO</h3>
-        <p>Tatiana Gouveia</p>
-        <p>Marco Meireles</p>
-        <p>Claudio Tammela</p>
-      </div>
-      <div class="papel" style="margin-bottom: 40px;">
-        <h3>FINALIZAÇÃO DE SOM</h3>
-        <a href="http://criadomudo.net" target="_blank">Criado Mudo Produções Artísticas</a>
-      </div>
-      <div class="papel" style="margin-bottom: 40px;">
-        <h3>TRILHA SONORA</h3>
-        <p>Bernardo Adeodato</p>
-        <p>Pedro Silveira</p>
-      </div>
-      <div class="papel" style="margin-bottom: 64px;">
-        <h3>CORREÇÃO DE COR</h3>
-        <p>Raoni Seixas</p>
-      </div>
-      <div class="papel" style="width: 100%;">
-        <h3>REALIZAÇÃO</h3>
-        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 20%; float: left; margin-right: 7%; margin-left: 8%; margin-top: 1.5%;">
-        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png" style="width: 30%; margin-top: 2%; float: left; margin-right: 11%;">
-        <a href="http://jardim.in" target="_blank">
-          <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 15%; float: left; margin-top: 1%;">
-        </a>
+      <div class="info">
+        <div class="papel" style="width: 25%;">
+          <h3>TRILHA SONORA</h3>
+          <p>Bernardo Adeodato</p>
+          <p>Pedro Silveira</p>
+        </div>
+        <div class="papel" style="width: 25%;">
+          <h3>CORREÇÃO DE COR</h3>
+          <p>Raoni Seixas</p>
+        </div>
+        <div class="papel" style="width: 25%;">
+          <h3>INTERPRETE DE LIBRAS</h3>
+          <p>Jhonatas Narciso</p>
+        </div>
+        <div class="papel" style="width: 25%;">
+          <h3>ÁUDIO DESCRIÇÃO</h3>
+          <p>Raoni Seixas</p>
+        </div>
+        <div class="papel" style="width: 100%; margin-bottom: 40px;">
+          <h3 style="margin-bottom: 0;">DESENVOLVIDO POR:</h3>
+          <a href="http://jardim.in" target="_blank">
+            <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 20%; float: left; margin-top: 0.5%; margin-left: 41%;">
+          </a>
+        </div>
       </div>
     </div>
-    <div style="width: 80%; margin: 0 auto;">
-      <a href="/#/home" class="botao" style="width: 16%; font-weight: 900; text-decoration: none;">INICIO</a>
-      <a v-if="isMulher" href="/#/mulher" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #ed1e79;">SAÚDE DA MULHER</a>
-      <a v-if="isCrianca" href="/#/crianca" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #0cc;">SAÚDE DA CRIANÇA</a>
-      <a v-if="isAdolescente" href="/#/adolescente" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00a300;">SAÚDE DO ADOLESCENTE</a>
-      <a v-if="isDeficiente" href="/#/deficiente" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00c;">SAÚDE DO DEFICIENTE</a>
-      <a v-if="isPreso" href="/#/preso" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #f00;">SAÚDE DO PRESO</a>
+      <div class="papel" style="width: 100%;">
+        <h3 style="margin-bottom: 0;">REALIZAÇÃO</h3>
+        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 17%; float: left; margin-right: 13%; margin-left: 8%; margin-top: 1.2%;">
+        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png" style="width: 20%; margin-top: 2%; float: left; margin-right: 18%; margin-bottom: 4%;">
+        <a href="http://jardim.in" target="_blank">
+          <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 12%; float: left; margin-top: 0.5%;">
+        </a>
+      </div>
+      <div style="width: 80%; margin: 0 auto;">
+        <a href="/#/home" class="botao" style="width: 16%; font-weight: 900; text-decoration: none;">INICIO</a>
+        <a v-if="isMulher" href="/#/mulher" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #ed1e79;">SAÚDE DA MULHER</a>
+        <a v-if="isCrianca" href="/#/crianca" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #0cc;">SAÚDE DA CRIANÇA</a>
+        <a v-if="isAdolescente" href="/#/adolescente" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00a300;">SAÚDE DO ADOLESCENTE</a>
+        <a v-if="isDeficiente" href="/#/deficiente" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00c;">SAÚDE DO DEFICIENTE</a>
+        <a v-if="isPreso" href="/#/preso" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #f00;">SAÚDE DO PRESO</a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  var $$$ = require('jquery')
+  var slick = require('slick-carousel')
 
   module.exports = {
     replace: true,
+    attached: function() {
+      $$$('.sslick').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        autoplay: true,
+        autoplaySpeed: 3000
+      });
+    },
     computed: {
       isMulher: function() {
         return this.$parent.id !== 'mulher';

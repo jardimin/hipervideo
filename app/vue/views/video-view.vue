@@ -268,6 +268,7 @@
 		</div>
 
 		<div id="loading" class="not-loading"><i class="fa fa-refresh fa-3x fa-spin"></i></div>
+		<div id="aviso" style="position: fixed; top: 50px; width: 100%; text-align: center; font-size: 200%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1;">Aperte ESPAÇO para pausar e ENTER para entrar no modo TELA CHEIA</div>
 		
 	</div>
 </template>
@@ -323,6 +324,12 @@
 			this.capitulo = this.db.capitulos[0];
 			this.libras = this.$parent.libras;
 			this.audio_desc = this.$parent.audio_desc;
+			setTimeout(function() {
+				$$$('#aviso').css('opacity', 0)
+			}, 4000)
+			setTimeout(function() {
+				$$$('#aviso').css('display', 'none')
+			}, 5000)
 
 			var self = this
 
@@ -596,12 +603,31 @@
 				var video = document.getElementById('hipVid-' + this.id);
 				switch(e.which) {
 					case 32 : 
-						if (video.paused) {
+						if (video.paused && this.conteudo === {} && this.$parent.redes) {
 							video.play();
 						} else if (!video.paused) {
 							video.pause();
 						}
 						break;
+					case 13 : 
+						this.toggleFullScreen();
+						break;
+				}
+			},
+			toggleFullScreen: function() {
+				var a = document.getElementById('full')
+				if (!document.mozFullScreen && !document.webkitFullScreen) {
+					if (a.mozRequestFullScreen) {
+						a.mozRequestFullScreen();
+					} else {
+						a.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+					}
+				} else {
+				if (document.mozCancelFullScreen) {
+						document.mozCancelFullScreen();
+					} else {
+						document.webkitCancelFullScreen();
+					}
 				}
 			},
 			addBlock: function(event){
@@ -618,6 +644,9 @@
 					}
 					this.cartela = true
 				} else {
+					if(this.contentBlocks.length !== 0) {
+						this.contentBlocks = [];
+					}
 					this.contentBlocks.unshift({
 						id: event.id,
 						videoID: this.params.video,
@@ -644,6 +673,9 @@
 			addBlockById: function(id){
 
 				if(_.findWhere(this.contentBlocks,{"id": id})) return;
+				if(this.contentBlocks.length !== 0) {
+					this.contentBlocks = [];
+				}
 
 				var node = _.findWhere(this.events.nodes,{"id": id})
 
