@@ -263,7 +263,7 @@
 </template>
 
 <script>
-	var $$$ = require('jquery')
+	var $$$ = require('jquery') 
 	module.exports = {
 		replace: true,
 		methods: {
