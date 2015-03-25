@@ -224,8 +224,8 @@
 				<a v-on="click: fechar" class="botao">O QUE É O HIPERVÍDEO?</a>
 				<a v-on="click: fechar" class="botao">ASSISTIR HIPERVÍDEOS</a>
 				<a v-on="click: redes" class="botao">VER REDES</a>
-				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 30%; margin: 5% 5% 0;">
-				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png" style="width: 50%;">
+				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 30%; margin: 5% 5% 0; float: left;">
+				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 50%; float: left; margin-top: 6%;">
 			</div>
 		</header>
 		<div class="conteudo" style="position: absolute; z-index: 0;">

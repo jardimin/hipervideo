@@ -106,7 +106,7 @@
           blue: data[2]
         };
 
-        var tolerance = 8;
+        var tolerance = 10;
         for(var i = 0, n = data.length; i < n; i += 4) {
           var diff = Math.abs(data[i] - data[0]) + Math.abs(data[i+1] - data[1]) + Math.abs(data[i+2] - data[2]);
           data[i + 3] = (diff*diff)/tolerance;

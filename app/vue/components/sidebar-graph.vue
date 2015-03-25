@@ -266,6 +266,12 @@
 			},
 
 			addRootNode: function(){
+				var titulo = this.title
+				if (this.title === 'Preso') {
+					titulo = 'Privada de Liberdade'
+				} else if (this.title === 'Deficiente') {
+					titulo = 'Com Deficiência'
+				}
 				this.addNode({
 					id: 0,
 					px: 0,
@@ -273,7 +279,7 @@
 					x: 0,
 					y: 0,
 					icon: 'root',
-					title: this.title
+					title: titulo
 				})
 			},
 

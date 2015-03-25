@@ -98,18 +98,18 @@
     <div class="video-list-redes"></div>
     <h3 v-if="conteudo && conteudo.arquivos"> LINKS </h3>
     <div class="link {{conteudo.group}}-bg" v-repeat="conteudo.arquivos">
-      <a href="{{link}}" target="_blank" class="link {{conteudo.group}}-bg">
+      <a href="{{link}}" target="_blank" class="link">
         {{nome | uppercase}}
       </a>
     </div>
     <h3 v-if="conteudo && conteudo.discursoes"> DISCUSSÃO </h3>
     <div class="link {{conteudo.group}}-bg" v-repeat="conteudo.discursoes">
-      <a href="{{link}}" target="_blank" class="link {{conteudo.group}}-bg">
+      <a href="{{link}}" target="_blank" class="link">
         {{nome | uppercase}}
       </a>
     </div>
     <div class="link {{conteudo.icon}}-bg" v-if="conteudo && conteudo.hipervideo">
-      <a href="{{conteudo.hipervideo.link}}" class="link {{conteudo.icon}}-bg">
+      <a href="{{conteudo.hipervideo.link}}" class="link">
         {{conteudo.hipervideo.nome | uppercase}}
       </a>
     </div>
