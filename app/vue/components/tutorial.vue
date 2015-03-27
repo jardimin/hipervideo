@@ -4,7 +4,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(150,150,150,0.6);
-    z-index: 100;
+    z-index: 10;
     transition: opacity .25s;
     &.v-enter, &.v-leave {
       opacity: 0;
@@ -16,7 +16,7 @@
       position: absolute;
       right: 25px;
       top: 25px;
-      background-color: rgba(100,100,100,1);
+      background-color: rgba(50,50,50,1);
       color: white;
       padding: 10px;
     }
@@ -27,6 +27,9 @@
       height: 80%;
       margin-top: 5%;
       box-shadow: 0px 0px 20px black;
+      .passo {
+        height: 100%;
+      }
     }
   }
 </style>
@@ -35,7 +38,7 @@
   <div class="tutorial_fundo">
     <a v-on="click: fecharTut" class="voltar">Voltar</a>
     <div class="tutoriais">
-      <div v-repeat="tutdata">
+      <div v-repeat="tutdata" class="passo">
         <h1>{{texto}}</h1>
       </div>
     </div>
