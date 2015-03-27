@@ -4,7 +4,7 @@
 		font-family: 'fonte-normal', sans-serif;
 		letter-spacing: -1px;
 		@media screen and (min-width: 1600px) {
-			font-size: 140%;
+			font-size: 1.3rem;
 		}
 	}
 
@@ -35,7 +35,7 @@
 			& h1 {
 				display: block;
 				@media screen and (min-width: 1600px) {
-					font-size: 300%;
+					font-size: 1.5rem;
 				}
 			}
 			& p {
@@ -216,12 +216,13 @@
 
 <template>
 	<div v-with="db: fulldb">
+		<in-tutorial v-show="tutorial" v-with="data: tutdata" v-transition></in-tutorial>
 		<header class="">
 			<div class="conteudo">
 				<div id="headHandle" v-on="click: abrir"></div>
 				<h1>{{db.title | uppercase}}</h1>
 				<p style="letter-spacing: 0; text-align: center;">{{{db.texto}}}</p>
-				<a v-on="click: fechar" class="botao">O QUE É O HIPERVÍDEO?</a>
+				<a v-on="click: tutorialGO()" class="botao">O QUE É HIPERVÍDEO?</a>
 				<a v-on="click: fechar" class="botao">ASSISTIR HIPERVÍDEOS</a>
 				<a v-on="click: redes" class="botao">VER REDES</a>
 				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 30%; margin: 5% 5% 0; float: left;">
@@ -258,7 +259,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="aviso" style="position: fixed; top: 0; width: 100%; text-align: center; font-size: 200%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1; display: none; z-index: 1;">Recomendamos a utilização do navegador GOOGLE CHROME para uma melhor experiência</div>
+		<div id="aviso" style="position: fixed; top: 0; width: 100%; text-align: center; font-size: 100%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1; display: none; z-index: 1;">Recomendamos a utilização do navegador GOOGLE CHROME para uma melhor experiência</div>
 	</div>
 </template>
 
@@ -266,6 +267,31 @@
 	var $$$ = require('jquery')
 	module.exports = {
 		replace: true,
+		data: function(){
+			return {
+				tutorial: false,
+				tutdata: [{
+					texto: "Tutorial 1",
+					imagem: "-"
+				},
+				{
+					texto: "Tutorial 2",
+					imagem: "-"
+				},
+				{
+					texto: "Tutorial 3",
+					imagem: "-"
+				},
+				{
+					texto: "Tutorial 4",
+					imagem: "-"
+				},
+				{
+					texto: "Tutorial 5",
+					imagem: "-"
+				}]
+			}
+		},
 		methods: {
 			fechar: function() {
 				var head = $$$('header')
@@ -289,6 +315,14 @@
 				var este = $$$('.'+ id)
 				head.removeClass('ativo')
 				este.removeClass('ativo')
+			},
+			tutorialGO: function() {
+				console.log(this.tutorial)
+				if (this.tutorial) {
+					this.tutorial = false;
+				} else {
+					this.tutorial = true;
+				}
 			},
       selectAlta: function(){
         this.$dispatch('video-qualidade', 'alta')
@@ -343,7 +377,6 @@
 		attached: function () {
 			$$$('body').removeClass("tocando");
 			var usr_ag = navigator.userAgent
-			console.log(usr_ag.search("Chrome"));
 			if (usr_ag.search("Chrome") === -1) {
 				$$$('#aviso').css('display', 'block')
 				setTimeout(function() {
@@ -354,6 +387,9 @@
 				}, 7000)
 			}
 
+		},
+		components: {
+			'in-tutorial': require('../components/tutorial.vue')
 		}
 	}
 </script>

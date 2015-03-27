@@ -4,6 +4,7 @@
 	var Vue = require('vue')
 	var Router = require('director').Router
 	var app = new Vue(require('./app.vue'))
+	Vue.config.debug = true;
 
 	// ROUTES
 
