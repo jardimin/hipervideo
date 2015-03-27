@@ -2434,11 +2434,10 @@ var $$$ = require('jquery')
 module.exports.template = __vue_template__;
 
 },{"insert-css":29,"jquery":30}],24:[function(require,module,exports){
-require("insert-css")(".tutorial_fundo{position:fixed;width:100%;height:100%;background-color:rgba(150,150,150,.6);z-index:10;transition:opacity .25s}.tutorial_fundo.v-enter,.tutorial_fundo.v-leave{opacity:0}.tutorial_fundo .voltar{position:absolute;right:25px;top:25px;background-color:#323232;color:#fff;padding:10px}.tutorial_fundo .tutoriais{width:80%;margin:5% auto 0;background-color:gray;height:80%;box-shadow:0 0 20px #000}.tutorial_fundo .tutoriais .passo{height:100%}");
-var __vue_template__ = "<div class=\"tutorial_fundo\">\n    <a v-on=\"click: fecharTut\" class=\"voltar\">Voltar</a>\n    <div class=\"tutoriais\">\n      <div v-repeat=\"tutdata\" class=\"passo\">\n        <h1>{{texto}}</h1>\n      </div>\n    </div>\n  </div>";
+require("insert-css")(".tutorial_fundo{position:fixed;width:100%;height:100%;background-color:rgba(150,150,150,.6);z-index:10;transition:opacity .25s}.tutorial_fundo.v-enter,.tutorial_fundo.v-leave{opacity:0}.tutorial_fundo .voltar{position:absolute;right:25px;top:25px;background-color:#323232;color:#fff;padding:10px}.tutorial_fundo .tutoriais{width:80%;margin:2% auto 0;background-color:gray;box-shadow:0 0 20px #000}.tutorial_fundo .tutoriais .passo{height:100%}");
+var __vue_template__ = "<div class=\"tutorial_fundo\">\n    <a v-on=\"click: fecharTut\" class=\"voltar\">Voltar</a>\n    <div class=\"tutoriais\">\n      <div v-repeat=\"tutdata\" class=\"passo\">\n        <img src=\"{{imagem}}\" style=\"width: 100%\">\n      </div>\n    </div>\n  </div>";
 var $$$ = require('jquery')
   var slick = require('slick-carousel')
-  var marked = require('marked')
 
   module.exports = {
     inherit: true,
@@ -2463,18 +2462,21 @@ var $$$ = require('jquery')
         slidesToScroll: 1,
         dots: true
       });
+
+      this.$on('slick-tut', function() {
+        $$$('.tutoriais').slick('slickGoTo', 0);
+      })
     }
   }
 module.exports.template = __vue_template__;
 
-},{"insert-css":29,"jquery":30,"marked":32,"slick-carousel":34}],25:[function(require,module,exports){
+},{"insert-css":29,"jquery":30,"slick-carousel":34}],25:[function(require,module,exports){
 (function(){
 
 	var _ = require('underscore')
 	var Vue = require('vue')
 	var Router = require('director').Router
 	var app = new Vue(require('./app.vue'))
-	Vue.config.debug = true;
 
 	// ROUTES
 
@@ -2581,24 +2583,19 @@ var $$$ = require('jquery')
 			return {
 				tutorial: false,
 				tutdata: [{
-					texto: "Tutorial 1",
-					imagem: "-"
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_1.png"
 				},
 				{
-					texto: "Tutorial 2",
-					imagem: "-"
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_2.png"
 				},
 				{
-					texto: "Tutorial 3",
-					imagem: "-"
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_3.png"
 				},
 				{
-					texto: "Tutorial 4",
-					imagem: "-"
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_4.png"
 				},
 				{
-					texto: "Tutorial 5",
-					imagem: "-"
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_5.png"
 				}]
 			}
 		},
@@ -2627,11 +2624,11 @@ var $$$ = require('jquery')
 				este.removeClass('ativo')
 			},
 			tutorialGO: function() {
-				console.log(this.tutorial)
 				if (this.tutorial) {
 					this.tutorial = false;
 				} else {
 					this.tutorial = true;
+					this.$broadcast('slick-tut');
 				}
 			},
       selectAlta: function(){

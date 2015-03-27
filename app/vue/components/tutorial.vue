@@ -24,8 +24,7 @@
       width: 80%;
       margin: 0 auto;
       background-color: gray;
-      height: 80%;
-      margin-top: 5%;
+      margin-top: 2%;
       box-shadow: 0px 0px 20px black;
       .passo {
         height: 100%;
@@ -39,7 +38,7 @@
     <a v-on="click: fecharTut" class="voltar">Voltar</a>
     <div class="tutoriais">
       <div v-repeat="tutdata" class="passo">
-        <h1>{{texto}}</h1>
+        <img src="{{imagem}}" style="width: 100%;">
       </div>
     </div>
   </div>
@@ -48,7 +47,6 @@
 <script>
   var $$$ = require('jquery')
   var slick = require('slick-carousel')
-  var marked = require('marked')
 
   module.exports = {
     inherit: true,
@@ -73,6 +71,10 @@
         slidesToScroll: 1,
         dots: true
       });
+
+      this.$on('slick-tut', function() {
+        $$$('.tutoriais').slick('slickGoTo', 0);
+      })
     }
   }
 

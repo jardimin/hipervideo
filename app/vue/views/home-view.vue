@@ -271,24 +271,19 @@
 			return {
 				tutorial: false,
 				tutdata: [{
-					texto: "Tutorial 1",
-					imagem: "-"
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_1.png"
 				},
 				{
-					texto: "Tutorial 2",
-					imagem: "-"
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_2.png"
 				},
 				{
-					texto: "Tutorial 3",
-					imagem: "-"
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_3.png"
 				},
 				{
-					texto: "Tutorial 4",
-					imagem: "-"
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_4.png"
 				},
 				{
-					texto: "Tutorial 5",
-					imagem: "-"
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_5.png"
 				}]
 			}
 		},
@@ -317,11 +312,11 @@
 				este.removeClass('ativo')
 			},
 			tutorialGO: function() {
-				console.log(this.tutorial)
 				if (this.tutorial) {
 					this.tutorial = false;
 				} else {
 					this.tutorial = true;
+					this.$broadcast('slick-tut');
 				}
 			},
       selectAlta: function(){
