@@ -1202,16 +1202,16 @@ var Vue = require('vue')
 
       calcNodeRadius: function(type){
         return {
-            'root': 8,
-            'dispositivo': 5,
-            'funcao': 4,
-            'conceito': 3,
-            'marco': 3,
-            'mulher': 5,
-            'deficiente': 5,
-            'preso': 5,
-            'crianca': 5,
-            'adolescente': 5
+            'root': 10,
+            'dispositivo': 7,
+            'funcao': 6,
+            'conceito': 5,
+            'marco': 5,
+            'mulher': 7,
+            'deficiente': 7,
+            'preso': 7,
+            'crianca': 7,
+            'adolescente': 7
           }[type]
       },
 
@@ -1381,22 +1381,30 @@ var Vue = require('vue')
           var root_id = 0
           if (area === 'mulher') {
             root_id = 1
+            var x = 0
+            var y = 0
           } else if (area === 'crianca') {
             root_id = 2
+            var x = 0
+            var y = 100
           } else if (area === 'adolescente') {
             root_id = 3
+            var x = 100
+            var y = 0
           } else if (area === 'deficiente') {
             root_id = 4
+            var x = 100
+            var y = 100
           } else if (area === 'preso') {
             root_id = 5
+            var x = 50
+            var y = 50
           }
           
           for (var i = 0; i < self._json.nodes.length; i++) {
             var node = self._json.nodes[i]
 
             if (!node.funcao) {
-              var x = 0
-              var y = 0
               var nod = {}
               nod.id = node.id + id_min;
               nod.title = node.title;
@@ -1893,7 +1901,7 @@ var _ = require('underscore')
 					x: 0,
 					y: 0,
 					icon: 'root',
-					title: titulo
+					title: " "
 				})
 			},
 
@@ -2596,6 +2604,9 @@ var $$$ = require('jquery')
 				},
 				{
 					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_5.png"
+				},
+				{
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_6.png"
 				}]
 			}
 		},

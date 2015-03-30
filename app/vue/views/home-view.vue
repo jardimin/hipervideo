@@ -284,6 +284,9 @@
 				},
 				{
 					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_5.png"
+				},
+				{
+					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_6.png"
 				}]
 			}
 		},

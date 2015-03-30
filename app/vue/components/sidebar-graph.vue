@@ -279,7 +279,7 @@
 					x: 0,
 					y: 0,
 					icon: 'root',
-					title: titulo
+					title: " "
 				})
 			},
 
