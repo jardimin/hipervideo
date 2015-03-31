@@ -35,7 +35,7 @@
   }
   .papel {
     width: 20%;
-    height: 133px;
+    height: 140px;
     text-align: center;
     float: left;
   }
@@ -111,22 +111,27 @@
         </div>
       </div>
       <div class="info">
-        <div class="papel" style="width: 25%;">
+        <div class="papel">
           <h3>TRILHA SONORA</h3>
           <p>Bernardo Adeodato</p>
           <p>Pedro Silveira</p>
         </div>
-        <div class="papel" style="width: 25%;">
+        <div class="papel">
           <h3>CORREÇÃO DE COR</h3>
           <p>Raoni Seixas</p>
         </div>
-        <div class="papel" style="width: 25%;">
+        <div class="papel">
           <h3>INTERPRETE DE LIBRAS</h3>
           <p>Jhonatas Narciso</p>
         </div>
-        <div class="papel" style="width: 25%;">
+        <div class="papel">
+          <h3>GRAVAÇÃO DE LIBRAS</h3>
+          <p>Condomínio Multimedia</p>
+        </div>
+        <div class="papel">
           <h3>ÁUDIO DESCRIÇÃO</h3>
-          <p>Raoni Seixas</p>
+          <p>Rio Sound Produções</p>
+          <p>Media Acessível Produções</p>
         </div>
         <div class="papel" style="width: 100%; margin-bottom: 40px;">
           <h3 style="margin-bottom: 0;">DESENVOLVIDO POR:</h3>
@@ -139,18 +144,18 @@
       <div class="papel" style="width: 100%;">
         <h3 style="margin-bottom: 0;">REALIZAÇÃO</h3>
         <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 17%; float: left; margin-right: 13%; margin-left: 8%; margin-top: 1.2%;">
-        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude.png" style="width: 20%; margin-top: 2%; float: left; margin-right: 18%; margin-bottom: 4%;">
+        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 25%; margin-top: 2%; float: left; margin-right: 18%; margin-bottom: 4%;">
         <a href="http://jardim.in" target="_blank">
           <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 12%; float: left; margin-top: 0.5%;">
         </a>
       </div>
-      <div style="width: 80%; margin: 0 auto;">
-        <a href="/#/home" class="botao" style="width: 16%; font-weight: 900; text-decoration: none;">INICIO</a>
+      <div style="width: 100%; margin: 0 auto; position: fixed; bottom: 0;">
+        <a href="/#/home" class="botao" style="width: 10%; font-weight: 900; text-decoration: none;">INICIO</a>
         <a v-if="isMulher" href="/#/mulher" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #ed1e79;">SAÚDE DA MULHER</a>
         <a v-if="isCrianca" href="/#/crianca" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #0cc;">SAÚDE DA CRIANÇA</a>
         <a v-if="isAdolescente" href="/#/adolescente" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00a300;">SAÚDE DO ADOLESCENTE</a>
-        <a v-if="isDeficiente" href="/#/deficiente" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00c;">SAÚDE DO DEFICIENTE</a>
-        <a v-if="isPreso" href="/#/preso" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #f00;">SAÚDE DO PRESO</a>
+        <a v-if="isDeficiente" href="/#/deficiente" class="botao" style="width: 20%; font-weight: 900; color: white; text-decoration: none; background-color: #00c;">SAÚDE DA PESSOA COM DEFICIÊNCIA</a>
+        <a v-if="isPreso" href="/#/preso" class="botao" style="width: 21.5%; font-weight: 900; color: white; text-decoration: none; background-color: #f00;">SAÚDE DA PESSOA PRIVADA DE LIBERDADE</a>
       </div>
     </div>
   </div>

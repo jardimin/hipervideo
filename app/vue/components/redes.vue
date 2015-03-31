@@ -129,6 +129,7 @@
     width: 16%;
     background-color: #555;
     float: left;
+    height: 100%;
     cursor: pointer;
     text-align: center;
     font-weight: 900;
@@ -149,11 +150,11 @@
     <div ></div>
     <div v-el="redes_graph" class="redes_graph redes_graph_svg">
       <div class="legendas">
-        <div v-on="click: filter('mulher')" class="leg" v-class="is-ativo: filter_mulher">MULHER</div>
-        <div v-on="click: filter('crianca')" class="leg" v-class="is-ativo: filter_crianca">CRIANÇA</div>
-        <div v-on="click: filter('adolescente')" class="leg" v-class="is-ativo: filter_adolescente">ADOLESCENTE</div>
-        <div v-on="click: filter('deficiente')" class="leg" v-class="is-ativo: filter_deficiente">DEFICIENTE</div>
-        <div v-on="click: filter('preso')" class="leg" v-class="is-ativo: filter_preso">PRESO</div>
+        <div v-on="click: filter('mulher')" class="leg" v-class="is-ativo: filter_mulher" style="padding: 3% 2% 1%;">MULHER</div>
+        <div v-on="click: filter('crianca')" class="leg" v-class="is-ativo: filter_crianca" style="padding: 3% 2% 1%;">CRIANÇA</div>
+        <div v-on="click: filter('adolescente')" class="leg" v-class="is-ativo: filter_adolescente" style="padding: 3% 2% 1%;">ADOLESCENTE</div>
+        <div v-on="click: filter('deficiente')" class="leg" v-class="is-ativo: filter_deficiente">PESSOA COM DEFICIENCIA</div>
+        <div v-on="click: filter('preso')" class="leg" v-class="is-ativo: filter_preso">PESSOA PRIVADA DE LIBERDADE</div>
       </div>
     </div>
     <div class="redes_info">
@@ -275,9 +276,9 @@
           .size([radius, radius])
           .charge(-50)//-100
           .linkStrength(0.5)//8
-          .linkDistance(2)
+          .linkDistance(3)
           .gravity(0)
-          .friction(0.1)
+          .friction(0.2)
           .nodes(this._labelAnchors)
           .links(this._labelLinks)
           .start()
@@ -355,16 +356,16 @@
 
       calcNodeRadius: function(type){
         return {
-            'root': 8,
-            'dispositivo': 5,
-            'funcao': 4,
-            'conceito': 3,
-            'marco': 3,
-            'mulher': 5,
-            'deficiente': 5,
-            'preso': 5,
-            'crianca': 5,
-            'adolescente': 5
+            'root': 10,
+            'dispositivo': 7,
+            'funcao': 6,
+            'conceito': 5,
+            'marco': 5,
+            'mulher': 7,
+            'deficiente': 7,
+            'preso': 7,
+            'crianca': 7,
+            'adolescente': 7
           }[type]
       },
 
@@ -434,7 +435,7 @@
           y: 0,
           group: 'deficiente',
           icon: 'root',
-          title: 'DEFICIENTE'
+          title: 'COM DEFICIÊNCIA'
         })
 
         this.addNode({
@@ -445,7 +446,7 @@
           y: 0,
           group: 'preso',
           icon: 'root',
-          title: 'PRESO'
+          title: 'PRIVADA DE LIBERDADE'
         })
 
         this._edges = [{
@@ -534,22 +535,30 @@
           var root_id = 0
           if (area === 'mulher') {
             root_id = 1
+            var x = 0
+            var y = 0
           } else if (area === 'crianca') {
             root_id = 2
+            var x = 0
+            var y = 100
           } else if (area === 'adolescente') {
             root_id = 3
+            var x = 100
+            var y = 0
           } else if (area === 'deficiente') {
             root_id = 4
+            var x = 100
+            var y = 100
           } else if (area === 'preso') {
             root_id = 5
+            var x = 50
+            var y = 50
           }
           
           for (var i = 0; i < self._json.nodes.length; i++) {
             var node = self._json.nodes[i]
 
             if (!node.funcao) {
-              var x = Math.random() * radius
-              var y = Math.random() * radius
               var nod = {}
               nod.id = node.id + id_min;
               nod.title = node.title;
