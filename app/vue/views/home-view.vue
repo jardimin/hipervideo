@@ -254,8 +254,8 @@
 							<div v-on="click: selectAudio" class="botao" v-class="clic: isAudio" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">AUDIO DESCRIÇÃO</div>
 						</div> 
 					</div>
-					<img v-attr="src: '/img/RE_' + id + 'BW.png'" class="fotoFundo BW" style="left: -{{posHip[$index]}}%; z-index: 1;" v-on="click: select(id)">
-					<img v-attr="src: '/img/RE_' + id + '.png'" class="fotoFundo" style="left: -{{posHip[$index]}}%" v-on="click: select(id)">
+					<img v-attr="src: 'https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + 'BW.png'" class="fotoFundo BW" style="left: -{{posHip[$index]}}%; z-index: 1;" v-on="click: select(id)">
+					<img v-attr="src: 'https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + '.png'" class="fotoFundo" style="left: -{{posHip[$index]}}%" v-on="click: select(id)">
 				</div>
 			</div>
 		</div>

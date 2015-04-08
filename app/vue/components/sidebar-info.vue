@@ -53,11 +53,11 @@
     background-color: #0cc;
   }
 
-  .preso-bg {
+  .prisional-bg {
     background-color: #f00;
   }
 
-  .deficiente-bg {
+  .deficiencia-bg {
     background-color: #00c;
   }
 
