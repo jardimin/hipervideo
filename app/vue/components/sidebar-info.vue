@@ -38,6 +38,7 @@
     padding: 8px;
     margin-bottom: 10px;
     text-decoration: none;
+    line-height: 22px;
   }
 
   .mulher-bg {
@@ -179,7 +180,7 @@
               list_data.push(video_data);
             });
             for (var i = list_data.length - 1; i >= 0; i--) {
-              $$$('.video-list').slick('slickAdd','<a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a>');
+              $$$('.video-list').slick('slickAdd','<div><a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'" style="text-decoration: none; text-align: center;"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a><p>' + list_data[i].title + '</p></div>');
               self.videoIndex ++;
             };
           });
@@ -190,6 +191,7 @@
       this.$on('destroy-scrollbar', function() {
         $$$('#conteudo_info').perfectScrollbar('destroy');
         for (var i = 0; i < this.imageIndex; i++) {
+          console.log('test-destroy');
           $$$('.image-list').slick('slickRemove', i);
         }
         for (var i = 0; i < this.videoIndex; i++) {
@@ -197,6 +199,12 @@
         }
         this.imageIndex = 0;
         this.videoIndex = 0;
+      })
+
+      this.$on('so-scrollbar', function() {
+        $$$('#conteudo_info').perfectScrollbar({
+          suppressScrollX: true
+        });
       })
       
     },

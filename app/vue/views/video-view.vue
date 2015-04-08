@@ -603,7 +603,7 @@
 				var video = document.getElementById('hipVid-' + this.id);
 				switch(e.which) {
 					case 32 : 
-						if (video.paused && this.conteudo === {} && this.$parent.redes) {
+						if (video.paused && !this.hasInfo && this.$parent.redes === false) {
 							video.play();
 						} else if (!video.paused) {
 							video.pause();
@@ -678,6 +678,7 @@
 				}
 
 				var node = _.findWhere(this.events.nodes,{"id": id})
+				if(node.component.fields.excerpt === "") return;
 
 				this.contentBlocks.unshift({
 					id: node.id,
@@ -695,6 +696,17 @@
 				}
 
 				this.fixedSidebar = false;
+
+				if (this.hasInfo) {
+					var loc = window.location.href
+					this.$broadcast('destroy-scrollbar');
+					if (this.conteudo.id.toString().length === 1) {
+						window.location.href = loc.substr(0, loc.length - 1) + node.id;
+					} else {
+						window.location.href = loc.substr(0, loc.length - 2) + node.id;	
+					}
+					this.$broadcast('so-scrollbar');
+				}
 
 			},
 			removeBlock: function(id) {

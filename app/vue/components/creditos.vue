@@ -56,6 +56,7 @@
 <template>
   <div id="creditos">
     <h1>CRÉDITOS</h1>
+    <a v-on="click: fecharCred" class="voltar">Voltar</a>
     <div class="sslick">
       <div class="info">
         <div class="papel">
@@ -149,14 +150,6 @@
           <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 12%; float: left; margin-top: 0.5%;">
         </a>
       </div>
-      <div style="width: 100%; margin: 0 auto; position: fixed; bottom: 0;">
-        <a href="/#/home" class="botao" style="width: 10%; font-weight: 900; text-decoration: none;">INICIO</a>
-        <a v-if="isMulher" href="/#/mulher" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #ed1e79;">SAÚDE DA MULHER</a>
-        <a v-if="isCrianca" href="/#/crianca" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #0cc;">SAÚDE DA CRIANÇA</a>
-        <a v-if="isAdolescente" href="/#/adolescente" class="botao" style="width: 16%; font-weight: 900; color: white; text-decoration: none; background-color: #00a300;">SAÚDE DO ADOLESCENTE</a>
-        <a v-if="isDeficiente" href="/#/deficiente" class="botao" style="width: 20%; font-weight: 900; color: white; text-decoration: none; background-color: #00c;">SAÚDE DA PESSOA COM DEFICIÊNCIA</a>
-        <a v-if="isPreso" href="/#/preso" class="botao" style="width: 21.5%; font-weight: 900; color: white; text-decoration: none; background-color: #f00;">SAÚDE DA PESSOA PRIVADA DE LIBERDADE</a>
-      </div>
     </div>
   </div>
 </template>
@@ -193,6 +186,11 @@
       },
       isDeficiente: function() {
         return this.$parent.id !== 'deficiente';
+      }
+    },
+    methods: {
+      fecharCred: function() {
+        this.$parent.creditos.className = '';
       }
     }
   }

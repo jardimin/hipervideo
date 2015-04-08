@@ -58,7 +58,6 @@
     },
     methods: {
       fecharTut: function() {
-        console.log(this.$parent.tutorial)
         this.tutorial = false;
       }
     },
