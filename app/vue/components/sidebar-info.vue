@@ -137,8 +137,8 @@
 
       $$$('.image-list').slick({
         infinite: false,
-        slidesToShow: 3,
-        slidesToScroll: 3
+        slidesToShow: 1,
+        slidesToScroll: 1
       });
 
       $$$('.video-list').slick({
@@ -185,13 +185,14 @@
             };
           });
         }
+
+        $$$('#conteudo_info').perfectScrollbar('update');
         
       })
 
       this.$on('destroy-scrollbar', function() {
         $$$('#conteudo_info').perfectScrollbar('destroy');
         for (var i = 0; i < this.imageIndex; i++) {
-          console.log('test-destroy');
           $$$('.image-list').slick('slickRemove', i);
         }
         for (var i = 0; i < this.videoIndex; i++) {
