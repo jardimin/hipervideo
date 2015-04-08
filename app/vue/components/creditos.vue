@@ -181,8 +181,8 @@
       isAdolescente: function() {
         return this.$parent.id !== 'adolescente';
       },
-      isPreso: function() {
-        return this.$parent.id !== 'preso';
+      isprisional: function() {
+        return this.$parent.id !== 'prisional';
       },
       isDeficiente: function() {
         return this.$parent.id !== 'deficiente';

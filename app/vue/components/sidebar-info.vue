@@ -53,7 +53,7 @@
     background-color: #0cc;
   }
 
-  .preso-bg {
+  .prisional-bg {
     background-color: #f00;
   }
 

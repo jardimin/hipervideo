@@ -101,8 +101,8 @@
       <a href="/#/adolescente" class="menu_item" v-if="!isAdolescente">ADOLESCENTE</a>
       <div class="menu_item context-bg" v-if="isDeficiente" style="color: white;">PESSOA COM DEFICIÊNCIA</div>
       <a href="/#/deficiente" class="menu_item" v-if="!isDeficiente">PESSOA COM DEFICIÊNCIA</a>
-      <div class="menu_item context-bg" v-if="isPreso" style="color: white;">PESSOA PRIVADA DE LIBERDADE</div>
-      <a href="/#/preso" class="menu_item" v-if="!isPreso">PESSOA PRIVADA DE LIBERDADE</a>
+      <div class="menu_item context-bg" v-if="isprisional" style="color: white;">PESSOA PRIVADA DE LIBERDADE</div>
+      <a href="/#/prisional" class="menu_item" v-if="!isprisional">PESSOA PRIVADA DE LIBERDADE</a>
     </div>
   </div>
 </template>
@@ -134,8 +134,8 @@
       isAdolescente: function() {
         return this.$parent.$parent.id === 'adolescente';
       },
-      isPreso: function() {
-        return this.$parent.$parent.id === 'preso';
+      isprisional: function() {
+        return this.$parent.$parent.id === 'prisional';
       },
       isDeficiente: function() {
         return this.$parent.$parent.id === 'deficiente';

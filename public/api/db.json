@@ -249,7 +249,7 @@
       ]
     },
     {
-      "id": "preso",
+      "id": "prisional",
       "artigo": "o",
       "cidade": "PA",
       "geo": [-30.0520, -51.2056, 12],
@@ -265,7 +265,7 @@
         "lon": -51.178758,
         "site": "http://www.saude.rs.gov.br/conteudo/639/?Hospital_Sanat%C3%B3rio_Partenon_%28HSP%29"
       }],
-      "nome": "Preso",
+      "nome": "prisional",
       "formato": "saúde da pessoa privada de liberdade",
       "descricao": "A experiência de Porto Alegre apresenta a complexidade desse novo território da saúde: o presídio, e o desafio de integração desse novo ponto de atenção da Rede de Atenção em Saúde: as equipes de saúde no sistema penitenciário. Entre a saúde e a justiça emerge um novo campo de práticas mobilizados pelo avanço da garantia dos direitos humanos das pessoas privadas de liberdade. ",
       "cor": "#f00",

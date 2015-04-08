@@ -28,7 +28,7 @@
 		&.crianca {
 			fill: $color-video-3;
 		}
-		&.preso {
+		&.prisional {
 			fill: $color-video-4;
 		}
 		&.adolescente {
@@ -72,7 +72,7 @@
 				.is-video-crianca & {
 					@include graph-node-styles($color-video-3);
 				}
-				.is-video-preso & {
+				.is-video-prisional & {
 					@include graph-node-styles($color-video-4);
 				}
 				.is-video-deficiente & {
@@ -246,7 +246,7 @@
 						'marco': 3,
 						'mulher': 5,
 						'deficiente': 5,
-						'preso': 5,
+						'prisional': 5,
 						'crianca': 5,
 						'adolescente': 5
 					}[type]
