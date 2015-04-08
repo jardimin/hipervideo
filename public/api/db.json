@@ -190,13 +190,13 @@
       ]
     },
     {
-      "id": "deficiente",
+      "id": "deficiencia",
       "artigo": "o",
       "cidade": "GO",
       "geo": [-16.6936, -49.2521, 12],
-      "nome": "Deficiente",
+      "nome": "deficiencia",
       "formato": "saúde da pessoa com deficiência",
-      "descricao": "A ampliação do grau de autonomia das pessoas com deficiência é um compromisso da Rede de Cuidado em Saúde a Pessoa com Deficiente. Na experiência de Goiânia acompanhamos em ato a constituição de uma rede de saberes que agindo de modo integrado e transversal vem  possibilitando transformações nos modos de ver e cuidar, que produzem avanços no direito à saúde e na cidadania da pessoa com deficiência na sociedade brasileira.",
+      "descricao": "A ampliação do grau de autonomia das pessoas com deficiência é um compromisso da Rede de Cuidado em Saúde a Pessoa com deficiencia. Na experiência de Goiânia acompanhamos em ato a constituição de uma rede de saberes que agindo de modo integrado e transversal vem  possibilitando transformações nos modos de ver e cuidar, que produzem avanços no direito à saúde e na cidadania da pessoa com deficiência na sociedade brasileira.",
       "cor": "#00f",
       "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/GYN/dapes_gyn_final",
       "duracao": 1556.386,

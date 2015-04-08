@@ -184,8 +184,8 @@
       isprisional: function() {
         return this.$parent.id !== 'prisional';
       },
-      isDeficiente: function() {
-        return this.$parent.id !== 'deficiente';
+      isdeficiencia: function() {
+        return this.$parent.id !== 'deficiencia';
       }
     },
     methods: {

@@ -57,7 +57,7 @@
     background-color: #f00;
   }
 
-  .deficiente-bg {
+  .deficiencia-bg {
     background-color: #00c;
   }
 

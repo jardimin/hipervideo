@@ -34,7 +34,7 @@
 		&.adolescente {
 			fill: $color-video-2;
 		}
-		&.deficiente {
+		&.deficiencia {
 			fill: $color-video-5;
 		}
 	}
@@ -75,7 +75,7 @@
 				.is-video-prisional & {
 					@include graph-node-styles($color-video-4);
 				}
-				.is-video-deficiente & {
+				.is-video-deficiencia & {
 					@include graph-node-styles($color-video-5);
 				}
 			}
@@ -245,7 +245,7 @@
 						'conceito': 3,
 						'marco': 3,
 						'mulher': 5,
-						'deficiente': 5,
+						'deficiencia': 5,
 						'prisional': 5,
 						'crianca': 5,
 						'adolescente': 5
