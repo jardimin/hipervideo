@@ -12,13 +12,13 @@
     &.crianca {
       fill: $color-video-3;
     }
-    &.preso {
+    &.prisional {
       fill: $color-video-4;
     }
     &.adolescente {
       fill: $color-video-2;
     }
-    &.deficiente {
+    &.deficiencia {
       fill: $color-video-5;
     }
     &.dispositivo {
@@ -78,10 +78,10 @@
         &.crianca {
           @include graph-node-styles($color-video-3);
         }
-        &.preso {
+        &.prisional {
           @include graph-node-styles($color-video-4);
         }
-        &.deficiente {
+        &.deficiencia {
           @include graph-node-styles($color-video-5);
         }
         &.sus {
@@ -150,8 +150,8 @@
         <div v-on="click: filter('mulher')" class="leg" v-class="is-ativo: filter_mulher" style="padding: 3% 2% 1%;">MULHER</div>
         <div v-on="click: filter('crianca')" class="leg" v-class="is-ativo: filter_crianca" style="padding: 3% 2% 1%;">CRIANÇA</div>
         <div v-on="click: filter('adolescente')" class="leg" v-class="is-ativo: filter_adolescente" style="padding: 3% 2% 1%;">ADOLESCENTE</div>
-        <div v-on="click: filter('deficiente')" class="leg" v-class="is-ativo: filter_deficiente">PESSOA COM DEFICIENCIA</div>
-        <div v-on="click: filter('preso')" class="leg" v-class="is-ativo: filter_preso">PESSOA PRIVADA DE LIBERDADE</div>
+        <div v-on="click: filter('deficiencia')" class="leg" v-class="is-ativo: filter_deficiencia">PESSOA COM DEFICIENCIA</div>
+        <div v-on="click: filter('prisional')" class="leg" v-class="is-ativo: filter_prisional">PESSOA PRIVADA DE LIBERDADE</div>
       </div>
     </div>
     <div class="redes_info">
@@ -182,8 +182,8 @@
         filter_mulher: false,
         filter_crianca: false,
         filter_adolescente: false,
-        filter_deficiente: false,
-        filter_preso: false,
+        filter_deficiencia: false,
+        filter_prisional: false,
         conteudo: {},
         _nodes: [],
         _edges: [],
@@ -192,13 +192,13 @@
         _mulher_nodes: [],
         _crianca_nodes: [],
         _adolescente_nodes: [],
-        _deficiente_nodes: [],
-        _preso_nodes: [],
+        _deficiencia_nodes: [],
+        _prisional_nodes: [],
         _mulher_edges: [],
         _crianca_edges: [],
         _adolescente_edges: [],
-        _deficiente_edges: [],
-        _preso_edges: [],
+        _deficiencia_edges: [],
+        _prisional_edges: [],
         _json: null
 
       }
@@ -213,8 +213,8 @@
       this.populateGraph('mulher')
       this.populateGraph('crianca')
       this.populateGraph('adolescente')
-      this.populateGraph('deficiente')
-      this.populateGraph('preso')
+      this.populateGraph('deficiencia')
+      this.populateGraph('prisional')
 
     },
 
@@ -249,13 +249,13 @@
         this._mulher_nodes = []
         this._crianca_nodes = []
         this._adolescente_nodes = []
-        this._deficiente_nodes = []
-        this._preso_nodes = []
+        this._deficiencia_nodes = []
+        this._prisional_nodes = []
         this._mulher_edges = []
         this._crianca_edges = []
         this._adolescente_edges = []
-        this._deficiente_edges = []
-        this._preso_edges = []
+        this._deficiencia_edges = []
+        this._prisional_edges = []
 
         this._force = d3.layout.force()
           .size([radius, radius])
@@ -359,8 +359,8 @@
             'conceito': 5,
             'marco': 5,
             'mulher': 7,
-            'deficiente': 7,
-            'preso': 7,
+            'deficiencia': 7,
+            'prisional': 7,
             'crianca': 7,
             'adolescente': 7
           }[type]
@@ -430,7 +430,7 @@
           py: 0,
           x: 0,
           y: 0,
-          group: 'deficiente',
+          group: 'deficiencia',
           icon: 'root',
           title: ' '
         })
@@ -441,7 +441,7 @@
           py: 0,
           x: 0,
           y: 0,
-          group: 'preso',
+          group: 'prisional',
           icon: 'root',
           title: ' '
         })
@@ -542,11 +542,11 @@
             root_id = 3
             var x = 500
             var y = 0
-          } else if (area === 'deficiente') {
+          } else if (area === 'deficiencia') {
             root_id = 4
             var x = 500
             var y = 500
-          } else if (area === 'preso') {
+          } else if (area === 'prisional') {
             root_id = 5
             var x = 250
             var y = 250
@@ -601,14 +601,14 @@
                   group: area
                 }
                 self._edges.push(e)
-              } else if (node.icon === 'deficiente') {
+              } else if (node.icon === 'deficiencia') {
                 var e = {
                   source: 4,
                   target: nod.id,
                   group: area
                 }
                 self._edges.push(e)
-              } else if (node.icon === 'preso') {
+              } else if (node.icon === 'prisional') {
                 var e = {
                   source: 5,
                   target: nod.id,
