@@ -2,30 +2,35 @@
   "timecode": [
     {"start": 31, "end":  42, "node": 1},
     {"start": 53, "end":  63  , "node": 2},
+    {"start": 73, "end": 80  , "node": 3},
     {"start": 145, "end": 156, "node": 4},
     {"start": 203, "end": 213, "node": 5},
     {"start": 249, "end": 259, "node": 6},
     {"start": 308, "end": 318, "node": 7},
     {"start": 367, "end": 377, "node": 8},
     {"start": 685, "end": 692, "node": 9},
-    {"start": 1441, "end": 1452, "node": 10},
+    {"start": 553, "end": 560, "node": 10},
+    {"start": 1446, "end": 1452, "node": 11},
     {"start": 1496, "end": 1506, "node": 12},
-    {"start": 126, "end": 131, "node": 13},
-    {"start": 192, "end": 202, "node": 14},
-    {"start": 239, "end": 248, "node": 15},
-    {"start": 332.5, "end": 336.5, "node": 16},
-    {"start": 383, "end": 387, "node": 17},
-    {"start": 512, "end": 518, "node": 18},
-    {"start": 531, "end": 536, "node": 19},
-    {"start": 543, "end": 549, "node": 20},
-    {"start": 783, "end": 792, "node": 21},
-    {"start": 822, "end": 831, "node": 22},
-    {"start": 895, "end": 900, "node": 23},
-    {"start": 1108, "end": 1115, "node": 24},
-    {"start": 1223, "end": 1228, "node": 25},
-    {"start": 1350, "end": 1356, "node": 26},
-    {"start": 1586, "end": 1594, "node": 27},
-    {"start": 1672 , "end": 1677, "node": 28}
+    {"start": 126, "end": 131, "node": 26},
+    {"start": 192, "end": 202, "node": 27},
+    {"start": 239, "end": 248, "node": 28},
+    {"start": 332.5, "end": 336.5, "node": 29},
+    {"start": 383, "end": 387, "node": 30},
+    {"start": 512, "end": 518, "node": 31},
+    {"start": 531, "end": 536, "node": 32},
+    {"start": 543, "end": 549, "node": 33},
+    {"start": 727, "end": 732, "node": 34},
+    {"start": 822, "end": 831, "node": 35},
+    {"start": 895, "end": 900, "node": 36},
+    {"start": 1108, "end": 1115, "node": 37},
+    {"start": 1223, "end": 1228, "node": 38},
+    {"start": 1350, "end": 1356, "node": 39},
+    {"start": 1586, "end": 1594, "node": 40},
+    {"start": 1672 , "end": 1677, "node": 41},
+    {"start": 798 , "end": 805, "node": 42},
+    {"start": 1416 , "end": 1422, "node": 13},
+    {"start": 1741 , "end": 1746, "node": 14}
   ],
   "nodes": [
     {
@@ -40,7 +45,7 @@
         }
       },
       "conteudo": {
-        "texto": "###Lorem ipsum dolor sit amet, \n\nconsectetur adipisicing elit. Modi voluptatum, **non quaerat**. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae id, doloremque ipsa quisquam assumenda quibusdam modi sit praesentium quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptatum, non quaerat. Ab mollitia animi deleniti vel quasi facilis molestiae "
+        "texto": " **O Conselho Nacional dos Direitos da Criança e do Adolescente – CONANDA**, é um órgão colegiado permanente de caráter deliberativo e composição paritária, previsto no artigo 88 da lei no 8.069/90 – Estatuto da Criança e do Adolescente (ECA). Integra a estrutura básica da Secretaria de Direitos Humanos da Presidência da República (SDH/PR).Algumas das principais pautas do CONANDA são:\n\n- o combate à violência e exploração sexual praticada contra crianças e adolescentes;\n\n- a prevenção e erradicação do trabalho infantil e proteção do trabalhador adolescente;\n\n- a promoção e a defesa dos direitos de crianças e adolescentes indígenas, quilombolas, crianças e adolescentes com deficiência;\n\n- criação de parâmetros de funcionamento e ação para as diversas partes integrantes do sistema de garantia de direitos; e\n\n- o acompanhamento de projetos de lei em tramitação no CN referentes aos direitos de crianças e adolescentes.\n\nReferência: disponível em http://www.sdh.gov.br/sobre/participacao-social/conselho-nacional-dos-direitos-da-crianca-e-do-adolescente-conanda, na data de 30/03/2015."
       }
     },
     {
@@ -61,10 +66,9 @@
     {
       "id": 3,
       "title": "Redes de Atenção",
-      "icon": "marco",
+      "icon": "conceito",
       "component": {
         "type": "text",
-        "ano": 2010,
         "fields": {
           "excerpt": "As **Redes de Atenção à Saúde** *(RAS)* são arranjos organizativos de ações e serviços de saúde, de diferentes densidades tecnológicas que, integradas por meio de sistemas de apoio técnico, logístico e de gestão, buscam garantir a integralidade do cuidado \n*(Ministério da Saúde, 2010 – portaria nº 4.279, de 30/12/2010)*."
         }
@@ -87,9 +91,8 @@
         "texto": "",
         "arquivos": [{
           "nome": "LEI Nº 8.069",
-          "link": "www.planalto.gov.br/ccivil_03/leis/l8069.htm"
-        }],
-        "discursoes": []
+          "link": "http://www.planalto.gov.br/ccivil_03/leis/l8069.htm"
+        }]
       }
     },
     {
@@ -98,13 +101,21 @@
       "icon": "marco",
       "component": {
         "type": "text",
-        "ano": 2008,
+        "ano": 2014,
         "fields": {
           "excerpt": "###Politica Nacional de Atenção Integral à Saúde de Adolescentes em Conflito com a Lei \n\nA Pnaisari tem como principal objetivo garantir e ampliar o acesso aos cuidados em saúde de adolescentes em conflito com a lei. "
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "",
+        "arquivos": [{
+          "nome": "PORTARIA 1082",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Pnaisari+-+Portaria+1082+de+23+demaio+de+2014.pdf"
+        },
+        {
+          "nome": "PORTARIA 1083",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Pnaisari+Portaria+1083+de+23+de+maio+de+2014.pdf"
+        }]
       }
     },
     {
@@ -118,32 +129,36 @@
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "",
+        "imagens": [{
+          "src": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Adolescentes+em+cumprimento+de+medida+socioeducativa.jpg"}]
       }
     },
     {
       "id": 7,
-      "title": "Saúde",
+      "title": "Serviços de Saúde",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Atenção básica passa a ser a principal referência para as unidades socioeducativas"
+          "excerpt": "###Reorganização dos serviços de saúde para a atenção à saúde de adolescentes  \n\nAtenção básica passa a ser a principal referência para as unidades socioeducativas"
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "",
+         "imagens": [{
+          "src": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Reorganiza%C3%A7%C3%A3o+dos+Servi%C3%A7os+de+Sa%C3%BAde+para+aten%C3%A7%C3%A3o+a+sa%C3%BAde+adolescentes.jpg"}]
       }
     },
     {
       "id": 8,
-      "title": "Uso de algemas",
+      "title": "Súmula Vinculante nº11 STF",
       "icon": "marco",
       "component": {
         "type": "text",
         "ano": 2008.5,
         "fields": {
-          "excerpt": "“Só é lícito o uso de algemas em caso de resistência e de fundado receio de fuga ou de perigo à integridade física própria ou alheia, por parte do preso ou de terceiros, justificada a excepcionalidade por escrito, sob pena de responsabilidade disciplinar civil e penal do agente ou da autoridade e de nulidade da prisão ou do ato processual a que se refere, sem prejuízo da responsabilidade civil do Estado”. - *Súmula Vinculante nº 11 do STF*"
+          "excerpt": "### O Uso de Algemas \n\n“Só é lícito o uso de algemas em caso de resistência e de fundado receio de fuga ou de perigo à integridade física própria ou alheia, por parte do preso ou de terceiros, justificada a excepcionalidade por escrito, sob pena de responsabilidade disciplinar civil e penal do agente ou da autoridade e de nulidade da prisão ou do ato processual a que se refere, sem prejuízo da responsabilidade civil do Estado”. - *Súmula Vinculante nº 11 do STF*"
         }
       },
       "conteudo": {
@@ -161,19 +176,26 @@
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "",
+         "arquivos": [{
+          "nome": "Cartilha PNH",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/clinica_ampliada_2ed+-+matriciamento+PNH.pdf"
+        },
+        {
+          "nome": "Atenção Psicosocial a Crianças e Adolescentes no SUS",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/atencao_psicossocial_criancas_adolescentes_sus.pdf"
+        }]
       }
     },
     {
       "id": 10,
-      "title": "Psicólogo",
+      "title": " Grupo de Trabalho Intersetorial",
       "icon": "funcao",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "A atuação do Agente Socioeducador compreende, entre outras atividades, zelar pela segurança e bem-estar, observando e acompanhando os adolescentes em todos os locais de atividades; acompanhar os adolescnetes nas atividades de rotina diária, orientando-os quanto às normas de conduta, cuidados pessoais e relacionamentos com outros; manter-se atento às condições de saúde dos adolescnetes, sugerindo que sejam providenciados atendimentos e encaminhamentos aos serviços médicos e odontológicos sempre que necessário e atender às determinações e orientações médicas, ministrando os medicamentos prescritos, quando necessário. \n\n*Fonte: Formação continuada de socioeducadores, caderno 2/ Paulo C. Duarte Paes, Sandra Maria Francisco de Amorim, Dulce Regina dos Santos Pedrossian, organizadores. - Campos Grande, MS: Ed. UFMS, 2010.*",
-          "image": "/img/eventos/teste.jpg"
-        }
+          "excerpt": "Conforme Portaria 1.082, de 23 de maio de 2014;\n\nSeção II\nDas Atribuições do Grupo de Trabalho Intersetorial (GTI)\nArt. 23. Compete ao GTI instituído no âmbito do Estado ou do Município:\nI - a elaboração de Plano Operativo, conforme modelo constante do anexo II a esta Portaria;\nII - a elaboração de Plano de Ação Anual, com definição das ações de saúde e as metas físicas para o ano de exercício por Município, conforme modelo constante do anexo III a esta Portaria;\nIII - o acompanhamento e monitoramento da efetiva implementação da atenção integral à saúde de adolescentes em situação de privação de liberdade; e\nIV - realização de diagnóstico da situação de saúde dos adolescentes em situação de privação de liberdade.\n§ 1º Poderão integrar o GTI de que trata o caput representantes dos seguintes órgãos e entidades:\na) Secretaria Estadual de Saúde;\nb) Secretaria Municipal de Saúde;\nc) Secretaria gestora do Sistema Socioeducativo em âmbito local;\nd) unidades socioeducativas; e\ne) outras instituições e conselhos estratégicos."
+          }
       },
       "conteudo": {
         "texto": ""
@@ -204,94 +226,309 @@
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "",
+        "arquivos": [{
+          "nome": "Caderneta do Adolescente - Meninas",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Caderneta+de+saude+de+adolescentes+-+meninas.pdf"
+        },
+        {
+          "nome": "Caderneta do Adolescente - Meninos",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/caderneta+de+saude+de+adolescentes+meninos.pdf"
+        }]
       }
     },
     {
       "id": 13,
+      "title": "Saúde Mental",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "###Papel do Profissional de Saúde Mental \n\n Toda a lógica de trabalho dos profissionais de saúde mental integrantes das equipes responsáveis pela atenção à saúde de adolescentes em conflito com a lei é baseada na estratégia do matriciamento. Isso significa que esses profissionais não têm como prioridade o atendimento individual, ambulatorial, nem mesmo a realização de avaliações demandadas pelo Judiciário. Seu papel principal é o matriciamento das ações de saúde mental junto às equipes da saúde e do socioeducativo."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+         "arquivos": [{
+          "nome": "Guia Prático de Matriciamento em Saúde Mental",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Matriciamento.pdf"
+        }]
+      }
+    },
+    {
+      "id": 14,
+      "title": "Entrevista",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Entrevista na íntegra com a Psicóloga Cristiane Barreto abordando temas como a Sócioeducação, criminalização e Escuta"
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "video_list": "PLMSHbkIRallnGm2PvVjeyB9gtiJkOesGM" 
+      }
+    },
+    {
+      "id": 15,
+      "title": "Código Melo Mattos",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1927,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 16,
+      "title": "Código de Menores",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1979,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 17,
+      "title": "Resolução 40/33, tratado de Beijing",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1985,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 18,
+      "title": "Constituição Federal",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1988,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 19,
+      "title": "Convenção dos Direitos da Criança",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1989,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 20,
+      "title": "Lei nº 8.069, Estatuto da Criança e do Adolescente ",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1990,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": "",
+          "arquivos": [{
+            "nome": "Estatuto da Criança e do Adolescente",
+            "link": "http://www.planalto.gov.br/ccivil_03/leis/l8069.htm"
+          }]
+      }
+    },
+    {
+      "id": 21,
+      "title": "Diretrizes de RIAD, Documento das Nações Unidas 157/24",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1990,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 22,
+      "title": "Publicação da Portaria interministerial 1426 e 340 – PNAISARI",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2004,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 23,
+      "title": "Resolução 119/CONANDA - SINASE",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2006,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+       "id": 24,
+      "title": "Publicação da portaria 647 - PNAISARI",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2008,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 25,
+      "title": " Publicação da Portaria 12.594 – SINASE",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 2012,
+        "fields": {
+          "excerpt": ""
+        }
+      },
+      "conteudo": {
+        "texto": ""
+      }
+    },
+    {
+      "id": 26,
       "title": "Tatiana Tironi",
       "funcao": "Psicóloga"
     },
-        {
-      "id": 14,
+    {
+      "id": 27,
       "title": "Thereza de Lamare",
       "funcao": "Coordenadora da Sáude do Adolescente/MS"
     },
-        {
-      "id": 15,
+    {
+      "id": 28,
       "title": "Maria Núbia Alves",
       "funcao": "Secretaria Municipal de Saúde - Belo Horizonte"
     },
-        {
-      "id": 16,
+    {
+      "id": 29,
       "title": "Eveline Araújo",
-      "funcao": "Secretaria Estadual de Defesa - MG"
+      "funcao": "Secretaria Estadual de Defesa Social - MG"
     },
-        {
-      "id": 17,
+    {
+      "id": 30,
       "title": "Breno Botelho",
       "funcao": "Gerente de Unidade Básica de Saúde"
     },
-        {
-      "id": 18,
+    {
+      "id": 31,
       "title": "Tatiana de Souza",
-      "funcao": "Gerente de Unidade Sócio Educativa"
+      "funcao": "Gerente de Unidade Sócioeducativa"
     },
-        {
-      "id": 19,
+    {
+      "id": 32,
       "title": "Márcia Parizzi",
       "funcao": "Coordenadora da Saúde do Adolescente - SMS/BH"
     },
-        {
-      "id": 20,
+    {
+      "id": 33,
       "title": "Reunião Intersetorial",
-      "funcao": " "
+      "funcao": "Saúde e Sócioeducação "
     },
-        {
-      "id": 21,
+    {
+      "id": 34,
       "title": "Dilma Torres",
       "funcao": "Agente Comunitária de Saúde"
     },
-        {
-      "id": 22,
+    {
+      "id": 35,
       "title": "Alessandra Costa",
-      "funcao": "Diretora da Casa de Semi Liberdade"
+      "funcao": "Diretora da Casa de Semiliberdade"
     },
-        {
-      "id": 23,
+    {
+      "id": 36,
       "title": "Suzana Rates",
       "funcao": "Médica da Saúde da Família"
     },
-        {
-      "id": 24,
+    {
+      "id": 37,
       "title": "Cristiane Barreto",
       "funcao": "Psicóloga"
     },
-        {
-      "id": 25,
+    {
+      "id": 38,
       "title": "Virginia Salles Resende",
-      "funcao": "Psicóloga NAMSEP-BH"
+      "funcao": "Médica Pediatra"
     },
-
-        {
-      "id": 26,
+    {
+      "id": 39,
       "title": "Vitor Dutra",
-      "funcao": "Agente de Segurança Referência em Saúde"
+      "funcao": "Agente Sócioeducativo"
     },
-        {
-      "id": 27,
+    {
+      "id": 40,
       "title": "Danielle Cruz",
-      "funcao": "Psicóloga"
+      "funcao": "Psicóloga - NAMSEP/BH"
     },
-        {
-      "id": 28,
+    {
+      "id": 41,
       "title": "Cristiane Cunha",
       "funcao": "Coordenadora da Especialização em Saúde do Adolescente - UFMG"
+    },
+    {
+      "id": 42,
+      "title": "Nátalia é um nome fictício utilizado",
+      "funcao": "para proteger a identidade da adolescente"
     }
   ],
   "edges": [
     {"source": 0,"target": 1},
     {"source": 0,"target": 2},
+    {"source": 0,"target": 3},
     {"source": 2,"target": 4},
     {"source": 2,"target": 6},
     {"source": 0,"target": 7},
@@ -299,6 +536,8 @@
     {"source": 9,"target": 10},
     {"source": 9,"target": 11},
     {"source": 1,"target": 11},
-    {"source": 7,"target": 12}
+    {"source": 7,"target": 12},
+    {"source": 10,"target": 13},
+    {"source": 0,"target": 14}
   ]
 }

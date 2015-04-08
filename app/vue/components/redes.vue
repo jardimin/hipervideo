@@ -6,22 +6,6 @@
     &.sus {
       fill: white;
     }
-    &.dispositivo {
-      fill: #fff;
-      stroke: $color;
-      stroke-width: 2px;
-    }
-    &.funcao {
-      fill: #fff;
-    }
-    &.conceito {
-      fill: $color;
-      stroke: #fff;
-      stroke-width: 2px;
-    }
-    &.marco {
-      fill: rgba(150,150,150,1);
-    }
     &.mulher {
       fill: $color-video-1;
     }
@@ -36,6 +20,19 @@
     }
     &.deficiente {
       fill: $color-video-5;
+    }
+    &.dispositivo {
+      fill: #fff;
+      stroke: $color;
+      stroke-width: 2px;
+    }
+    &.conceito {
+      fill: $color;
+      stroke: #fff;
+      stroke-width: 2px;
+    }
+    &.marco {
+      fill: rgba(150,150,150,1);
     }
   }
 
@@ -402,7 +399,7 @@
           y: 0,
           group: 'mulher',
           icon: 'root',
-          title: 'MULHER'
+          title: ' '
         })
 
         this.addNode({
@@ -413,7 +410,7 @@
           y: 0,
           group: 'crianca',
           icon: 'root',
-          title: 'CRIANÇA'
+          title: ' '
         })
 
         this.addNode({
@@ -424,7 +421,7 @@
           y: 0,
           group: 'adolescente',
           icon: 'root',
-          title: 'ADOLESCENTE'
+          title: ' '
         })
 
         this.addNode({
@@ -435,7 +432,7 @@
           y: 0,
           group: 'deficiente',
           icon: 'root',
-          title: 'COM DEFICIÊNCIA'
+          title: ' '
         })
 
         this.addNode({
@@ -446,7 +443,7 @@
           y: 0,
           group: 'preso',
           icon: 'root',
-          title: 'PRIVADA DE LIBERDADE'
+          title: ' '
         })
 
         this._edges = [{
@@ -540,19 +537,19 @@
           } else if (area === 'crianca') {
             root_id = 2
             var x = 0
-            var y = 100
+            var y = 500
           } else if (area === 'adolescente') {
             root_id = 3
-            var x = 100
+            var x = 500
             var y = 0
           } else if (area === 'deficiente') {
             root_id = 4
-            var x = 100
-            var y = 100
+            var x = 500
+            var y = 500
           } else if (area === 'preso') {
             root_id = 5
-            var x = 50
-            var y = 50
+            var x = 250
+            var y = 250
           }
           
           for (var i = 0; i < self._json.nodes.length; i++) {
@@ -573,9 +570,10 @@
               nod.py = y
               nod.x = x
               nod.y = y
+              if (node.icon === 'marco' && !node.graph) {nod.conteudo.ano = node.component.ano}
               self['_' + area + '_nodes'].push(nod)
               self.addNode(nod)
-              if (node.icon === 'marco') {
+              if (node.icon === 'marco' && !node.graph) {
                 var e = {
                   source: root_id,
                   target: nod.id,
@@ -640,8 +638,6 @@
           self.updateGraph()
         }
         xhr.send()
-
-        // this.updateGraph()
         
       }
     },
