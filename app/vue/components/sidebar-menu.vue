@@ -81,6 +81,7 @@
       <div class="menu_item" v-class="clicado: menuHip" v-on="click: clickHip">HIPERVÍDEOS</div>
       <div class="menu_item" v-on="click: clickRedes">VER REDES</div>
       <a href="/#/" class="menu_item">INÍCIO</a>
+      <div class="menu_item" v-on="click: clickCreditos">CRÉDITOS</div>
     </div>
       <div class="menu_2" v-show="menuAcess">
       <div class="menu_item" v-class="selecionado: audio_desc" v-on="click: selectAudio">ÁUDIO DESCRIÇÃO</div>
@@ -160,7 +161,7 @@
         self.infoOpen = false
       })
 
-      this.$on('hipervideo-play', function() {
+      this.$on('ho-play', function() {
         if (!self.infoOpen) {
           self.isAfter = false
           $$$('#chap').removeClass('aberto')
@@ -173,7 +174,7 @@
         }
       })
 
-      this.$on('hipervideo-pause', function() {
+      this.$on('ho-pause', function() {
         if (!self.infoOpen) {
           self.isAlmost = true
           $$$('#chap').addClass('aberto')
@@ -198,8 +199,10 @@
         if (!this.infoOpen) {
           if (!this.isOpen) {
             this.$parent.$parent.videoPause()
+            this.$emit('ho-pause')
           } else {
             this.$parent.$parent.videoPlay()
+            this.$emit('ho-play')
           }
         } else if (this.infoOpen) {
           if (!this.isOpen) {
@@ -234,6 +237,9 @@
       },
       clickRedes: function(){
         this.$dispatch('redes', true)
+      },
+      clickCreditos: function() {
+        this.$parent.$parent.creditos.className = 'finalizado';
       },
       selectAudio: function(){
         if (this.$parent.$parent.audio_desc === true) {

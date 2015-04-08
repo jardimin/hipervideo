@@ -221,7 +221,7 @@
 			<div class="conteudo">
 				<div id="headHandle" v-on="click: abrir"></div>
 				<h1>{{db.title | uppercase}}</h1>
-				<p style="letter-spacing: 0; text-align: center;">{{{db.texto}}}</p>
+				<p style="letter-spacing: 0; text-align: center;">{{{db.texto | marked}}}</p>
 				<a v-on="click: tutorialGO()" class="botao">O QUE É HIPERVÍDEO?</a>
 				<a v-on="click: fechar" class="botao">ASSISTIR HIPERVÍDEOS</a>
 				<a v-on="click: redes" class="botao">VER REDES</a>
@@ -238,7 +238,7 @@
 					<div class="linha" style="background-color: {{cor}}"></div>
 					<div class="areaTematica">
 						<h2>{{formato | uppercase}}</h2>
-						<p style="letter-spacing: 0;">{{descricao}}</p>
+						<p style="letter-spacing: 0;">{{{descricao | marked}}}</p>
 						<a href="#/{{id}}" class="botao" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">ASSISTIR</a>
 						<a v-on="click: deselect(id)" class="botao" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">VOLTAR</a>
 						<div class="sub_menu">
@@ -259,12 +259,19 @@
 				</div>
 			</div>
 		</div>
+		<div style="position: fixed; right: 0; bottom: 0; z-index: 1; width: 180px;">
+			<p style="float: left; font-size: 80%; width: 85px;">desenvolvido por</p>
+			<a href="http://jardim.in" target="_blank">
+	      <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 40%; float: left; margin-top: 0.5%;">
+	    </a>
+		</div>
 		<div id="aviso" style="position: fixed; top: 0; width: 100%; text-align: center; font-size: 100%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1; display: none; z-index: 1;">Recomendamos a utilização do navegador GOOGLE CHROME para uma melhor experiência</div>
 	</div>
 </template>
 
 <script>
-	var $$$ = require('jquery') 
+	var $$$ = require('jquery')
+	var marked = require('marked')
 	module.exports = {
 		replace: true,
 		data: function(){
@@ -388,6 +395,9 @@
 		},
 		components: {
 			'in-tutorial': require('../components/tutorial.vue')
-		}
+		},
+		filters: {
+      'marked': marked
+    }
 	}
 </script>

@@ -12,10 +12,11 @@
 		font-size: 75%;
 		font-weight: 700;
 		bottom: -8px;
+		z-index: -1;
 	}
 
 	.marco-detalhe {
-		width: 150px;
+		width: 250px;
 		position: absolute;
 		height: 0;
 		bottom: 0;
@@ -23,6 +24,8 @@
 		z-index: -1;
 		right: 4px;
 		overflow: hidden;
+		font-weight: 900;
+		font-size: 100%;
 		opacity: 0;
 		transition: all .2s ease-in-out;
 	}

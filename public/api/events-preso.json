@@ -3,10 +3,10 @@
     {"start":   5, "end":  20, "node": 1},
     {"start":  25, "end":  40, "node": 2},
     {"start":  50, "end":  69, "node": 3},
-    {"start":  94, "end":  104, "node": 4},
+    {"start":  100, "end":  120, "node": 4},
     {"start":  140, "end": 170, "node": 5},
-    {"start": 205, "end": 229, "node": 6},
-    {"start": 225, "end": 300, "node": 7},
+    {"start": 205, "end": 219, "node": 6},
+    {"start": 255, "end": 300, "node": 7},
     {"start": 308, "end": 325, "node": 8},
     {"start": 355, "end": 380, "node": 9},
     {"start": 417, "end": 437, "node": 10},
@@ -15,9 +15,23 @@
     {"start": 793, "end": 865, "node": 13},
     {"start": 911, "end": 960, "node": 14},
     {"start": 974, "end": 996, "node": 15},
-    {"start": 1009, "end": 1069, "node": 16},
-    {"start": 1144, "end": 1220, "node": 17},
-    {"start":  45, "end":  49, "node": 18}
+    {"start": 1009, "end": 1021, "node": 16},
+    {"start": 1044, "end": 1129, "node": 17},
+    {"start": 1144, "end": 1220, "node": 18},
+    {"start":  45, "end":  49, "node": 19},
+    {"start":  77, "end":  82, "node": 20},
+    {"start":  94, "end":  99, "node": 21},
+    {"start":  180, "end":  185, "node": 22},
+    {"start":  220, "end":  225, "node": 23},
+    {"start":  259, "end":  264, "node": 24},
+    {"start":  280, "end":  285, "node": 25},
+    {"start":  395, "end":  400, "node": 26},
+    {"start":  568, "end":  573, "node": 27},
+    {"start":  616, "end":  621, "node": 28},
+    {"start":  744, "end":  749, "node": 29},
+    {"start":  816, "end":  821, "node": 30},
+    {"start":  1022, "end":  1027, "node": 31},
+    {"start":  1066, "end":  1071, "node": 32}
   ],
   "nodes": [
     {
@@ -35,8 +49,12 @@
       "conteudo": {
         "texto": "",
         "arquivos": [{
-          "nome": "Portaria",
+          "nome": "PORTARIA INTERMINISTERIAL MS/MJ Nº 1, DE 2 DE JANEIRO DE 2014",
           "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2014/pri0001_02_01_2014.html"
+        },
+        {
+          "nome": "Carta de Brasília",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Carta+de+Bras%C3%ADlia+-+Gestores.pdf"
         }]
       }
     },
@@ -57,6 +75,14 @@
         "arquivos": [{
           "nome": "Plano Nacional de Saúde no Sistema Penitenciário",
           "link": "http://bvsms.saude.gov.br/bvs/publicacoes/plano_nacional_saude_sistema_penitenciario_2ed.pdf"
+        },
+        {
+          "nome": "NOVO DIAGNÓSTICO DE PESSOAS PRESAS NO BRASIL",
+          "link": "http://www.cnj.jus.br/images/imprensa/pessoas_presas_no_brasil_final.pdf"
+        },
+        {
+          "nome": "A VISÃO DO MINISTÉRIO PÚBLICO SOBRE O SISTEMA PRISIONAL BRASILEIRO",
+          "link": "http://www.cnmp.mp.br/portal/images/Comissoes/CSP/Relat%C3%B3rio_Vis%C3%A3o_do_Minist%C3%A9rio_P%C3%BAblico_no_Sistema_Prisional_Edi%C3%A7%C3%A3o_2013.PDF"
         }]
       }
     },
@@ -67,7 +93,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "###Art. 196 \n\nA saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação."
+          "excerpt": "A ambiência Humanizada é uma diretriz da Política Nacional de Humanização-PNH que visa tratar os espaços físicos a fim de torná-los acolhedores e contribuir para a atenção à saúde"
         }
       },
       "conteudo": {
@@ -78,8 +104,12 @@
           "link": "http://www.criminal.mppr.mp.br/arquivos/File/ExecucaoPenal/CNPCP/2011Diretrizes_ArquiteturaPenal_resolucao_09_11_CNPCP.pdf"
           },
           {
-          "nome": "Ambiência",
+          "nome": "CARTILHA AMBIÊNCIA",
           "link": "http://bvsms.saude.gov.br/bvs/publicacoes/ambiencia_2ed.pdf"
+          },
+          {
+          "nome": "VIGILÂNCIA SANITÁRIA",
+          "link": "http://portal.anvisa.gov.br/wps/wcm/connect/ca36b200474597459fc8df3fbc4c6735/RDC+N%C2%BA.+50,+DE+21+DE+FEVEREIRO+DE+2002.pdf?MOD=AJPERES"
           }
         ],
         "video_list": "PLqwF2MOG7-g32N2p1PHl5GR8Dn-pLOkZM"
@@ -87,23 +117,23 @@
     },
     {
       "id": 4,
-      "title": "Constituição da República",
+      "title": "DIREITOS HUMANOS",
       "icon": "marco",
       "component": {
         "type": "text",
         "ano": 1988,
         "fields": {
-          "excerpt": "##Art. 196. \nA saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação."
+          "excerpt": "##Conforme o art. 196º da Constituição do Brasil de 1988, \na saúde é direito de todos e dever do estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação."
         }
       },
       "conteudo": {
         "texto": "",
         "arquivos": [{
-          "nome": "Constituição da República",
+          "nome": "CONSTITUIÇÃO DA REPÚBLICA FEDERATIVA DO BRASIL DE 1988",
           "link": "http://www.senado.gov.br/legislacao/const/con1988/CON1988_05.10.1988/CON1988.shtm"
         },
         {
-          "nome": "Declaração dos direitos humanos",
+          "nome": "DECLARAÇÃO UNIVERSAL DOS DIREITOS HUMANOS",
           "link": "http://www.dudh.org.br/declaracao/"
         },
         {
@@ -111,11 +141,11 @@
           "link": "http://nacoesunidas.org/relator-especial-da-onu-pede-que-regras-globais-para-tratamento-de-prisioneiros-sejam-atualizadas/"
         },
         {
-          "nome": "Normas da ONU sobre prevenção ao crime",
+          "nome": "NORMAS E PRINCÍPIOS DAS NAÇÕES UNIDAS SOBRE PREVENÇÃO AO CRIME E JUSTIÇA CRIMINAL",
           "link": "https://www.unodc.org/documents/justice-and-prison-reform/projects/UN_Standards_and_Norms_CPCJ_-_Portuguese1.pdf"
         },
         {
-          "nome": "Recomendações internacionais sobre direitos humanos",
+          "nome": "OBSERVATÓRIO DE RECOMENDAÇÕES INTERNACIONAIS SOBRE DIREITOS HUMANOS",
           "link": "http://www.observadh.sdh.gov.br/portal/sistema/encontre-as-recomendacoes"
         }]
       }
@@ -134,7 +164,7 @@
         "texto": "",
         "video_list": "PLqwF2MOG7-g2mIoorZ0vWPffZIyVBR59x",
         "arquivos": [{
-          "nome": "ONASP - Colabore",
+          "nome": "OBSERVATÓRIO NACIONAL DO SISTEMA PRISIONAL – ONASP",
           "link": "https://www.ufmg.br/ead/onasp/participe.html"
         }]
       }
@@ -146,18 +176,30 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "**A Política Nacional de Atenção Integral à Saúde da Mulher** reconhece a necessidade de acesso diferenciado das mulheres em situação de prisão ao Sistema Único de Saúde - SUS"
+          "excerpt": "Política Nacional de Atenção Integral à Saúde da Mulher (**PNAISM**) identifica 'a necessidade de acesso dessa população às ações de atenção à saúde, tanto com a implantação de ações no nível da atenção básica dentro dos presídios, como pelas referências para média e alta complexidade, com garantia do atendimento das demandas específicas das mulheres presidiárias por meio de uma atenção diferenciada dentro do conjunto de ações do Sistema Único de Saúde- **SUS**"
         }
       },
       "conteudo": {
         "texto": "**Política Nacional de Atenção Integral à Saúde da Mulher** identifica 'a necessidade de acesso dessa população às ações de atenção à saúde, tanto com a implantação de ações no nível da atenção básica dentro dos presídios, como pelas referências para média e alta complexidade, com garantia do atendimento das demandas específicas das mulheres presidiárias por meio de uma atenção diferenciada dentro do conjunto de ações do Sistema Único de Saúde'.",
         "arquivos": [{
-          "nome": "Mulheres ainda são presas por abortos espontâneos",
+          "nome": "MULHERES CONTINUAM SENDO CONDENADAS E PRESAS POR SOFREREM ABORTOS ESPONTANEOS",
           "link": "http://www.redehumanizasus.net/88663-mulheres-continuam-sendo-condenadas-e-presas-por-sofrerem-abortos-espontaneos"
+          },
+          {
+          "nome": "POLÍTICA NACIONAL DE ATENÇÃO ÀS MULHERES EM SITUAÇÃO DE PRIVAÇÃO DE LIBERDADE E EGRESSAS DO SISTEMA PRISIONAL",
+          "link": "http://www.justica.sp.gov.br/StaticFiles/SJDC/ArquivosComuns/ProgramasProjetos/PPM/U_PT-INTERM-MJ-MSPM-210_160114.pdf"
           },
           {
           "nome": "Principios e Diretrizes da PNAISM",
           "link": "http://bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_mulher_principios_diretrizes.pdf"
+          },
+          {
+          "nome": "REGRAS INTERNACIONAIS DE DIREITOS HUMANOS GARANTEM PRISÃO DOMICILIAR A GESTANTE",
+          "link": "http://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=283125"
+          },
+          {
+          "nome": "REGRAS DAS NAÇÕES UNIDAS PARA O TRATAMENTO DE MULHERES PRESAS",
+          "link": "http://carceraria.org.br/wp-content/uploads/2012/09/Tradu%C3%A7%C3%A3o-n%C3%A3o-oficial-das-Regras-de-Bangkok-em-11-04-2012.pdf"
           }],
         "video_list": "PLqwF2MOG7-g2jJdUZUZ6tI6X-2t_o1O28",
         "hipervideo": {
@@ -168,12 +210,12 @@
     },
     {
       "id": 7,
-      "title": "Doenças contagiosas",
+      "title": "TUBERCULOSE/HIV",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "###Doenças infectocontagiosas no sistema prisional \n\nA tuberculose continua sendo uma alarmante causa de sofrimento e morte de homens e mulheres em seus anos mais produtivos, principalmente os mais pobres e marginalizados."
+          "excerpt": "NA POPULAÇÃO PRISIONAL, A PREVALÊNCIA DA TUBERCULOSE É 40 VEZES MAIOR QUE NA POPULAÇÃO GERAL, O QUE É INADMISSÍVEL HAJA VISTA QUE EXISTE TRATAMENTO PARA A DOENÇA. (...) PORTANTO, O CONTROLE DA COINFECÇÃO DO HIV E TUBERCULOSE É UM GRANDE DESAFIO A SER ENFRENTADO, E O SEU CONTROLE NA POPULAÇÃO COMO UM TODO, FAZENDO UM CHAMADO A TODOS OS PARTICIPANTES”. *(Consulta Nacional sobre HIV/AIDS no Sistema Penitenciário)*"
         }
       },
       "conteudo": {
@@ -190,19 +232,23 @@
             {
               "nome": "Manual de controle da tuberculose nas prisões",
               "link": "http://bvsms.saude.gov.br/bvs/publicacoes/manual_intervencoes_ambientais_controle_tuberculose_prisoes.pdf"
-              }]
+            },
+            {
+              "nome": "CONSULTA NACIONAL SOBRE HIV/AIDS NO SISTEMA PENITENCIÁRIO",
+              "link": "http://www.aids.gov.br/search/node/consulta"
+            }]
       }
     },
     {
       "id": 8,
-      "title": "PNH",
+      "title": "POLÍTICA NACIONAL DE HUMANIZAÇÃO – PNH",
       "icon": "marco",
       "graph": true,
       "component": {
         "type": "text",
         "ano": 2003,
         "fields": {
-          "excerpt": "###Política Nacional de Humanização - PNH \n\nO que é a PNH?"
+          "excerpt": "O que é a PNH?"
         }
       },
       "conteudo": {
@@ -210,6 +256,10 @@
         "arquivos": [{
           "nome": "Trabalho e redes de saúde",
           "link": "http://www.redehumanizasus.net/sites/default/files/10_0383_final_trabalho_e_redes_de_saude.pdf"
+          },
+          {
+          "nome": "PORTAL SAÚDE – HUMANIZA-SUS",
+          "link": "http://portalsaude.saude.gov.br/index.php?option=com_content&view=article&id=8596&Itemid=388"
           },
           {
           "nome": "Mapa de ações da PNH",
@@ -225,7 +275,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "O aleitamento materno é fundamental para o desenvolvimento sadio da criança e está garantido no Artigo 5º inciso L da contituição Federal o direito das mulheres em situação de liberdade as condições para que possam permanecer com seus filhos durante o periodo de amamentação."
+          "excerpt": "O ALEITAMENTO MATERNO É FUNDAMENTAL PARA O DESENVOLVIMENTO SADIO DA CRIANÇA E ESTÁ GARANTIDO NO ARTIGO 5º INCISO L DA CONTITUIÇÃO FEDERAL O DIREITO DAS MULHERES **PRIVADAS DE LIBERDADE** ÀS CONDIÇÕES PARA QUE POSSAM PERMANECER COM SEUS FILHOS DURANTE O **PERÍODO DE AMAMENTAÇÃO**"
         }
       },
       "conteudo": {
@@ -237,6 +287,14 @@
           {
           "nome": "Regras internacionais de direitos humanos garantem prisão domiciliar a gestante",
           "link": "http://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=283125"
+          },
+          {
+          "nome": "ALEITAMENTO MATERNO PARA AS MULHERES PRIVADAS DE LIBERDADE",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Cartilha+Aleitamento+Materno.pdf"
+          },
+          {
+          "nome": "INCLUSÃO DAS MULHERES EM PRIVAÇÃO DE LIBERDADE NA REDE CEGONHA",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Cartilha+Inclusao+Mulheres+Rede+Cegonha.pdf"
           }],
         "video_list": "PLqwF2MOG7-g1iWfMBPDIMR0S1sPPhAE6j",
         "hipervideo": {
@@ -260,12 +318,13 @@
         "arquivos": [{
           "nome": "Acolhimento e classificação de risco nos serviços de urgência",
           "link": "http://www.redehumanizasus.net/sites/default/files/10_0378_final_acolhimento_e_classificacao_de_risco_ue.pdf"
-        }]
+        }],
+        "video_list": "PLqwF2MOG7-g23XehNY8M45ByAvHVd0Hyn"
       }
     },
     {
       "id": 11,
-      "title": "Clínica Ampliada e PTS",
+      "title": "Clínica Ampliada",
       "icon": "conceito",
       "component": {
         "type": "text",
@@ -312,7 +371,19 @@
         }
       },
       "conteudo": {
-        "texto": "Por uma perspectiva ética das práticas de cuidado no contenporâneo."
+        "texto": "POR UMA PERSPECTIVA ÉTICA DAS PRÁTICAS DE CUIDADO NO CONTEMPORÂNEO.",
+        "arquivos": [{
+          "nome": "A ÉTICA DA METAESTABILIDADE E A DIREÇÃO ÉTICA DA CLÍNICA",
+          "link": "http://seer.ufrgs.br/InfEducTeoriaPratica/article/viewFile/29088/19466"
+        },
+        {
+          "nome": "POR OUTRA PERSPECTIVA ÉTICA DAS PRÁTICAS DE CUIDADO E GOVERNO NO CONTEMPORÂNEO",
+          "link": "http://www.editorasulina.com.br/img/sumarios/501.pdf"
+        },
+        {
+          "nome": "FRAGMENTOS DE DISCURSOS (NÃO TÃO AMOROSOS) SOBRE O EXAME CRIMINOLÓGICO",
+          "link": "http://www.crprj.org.br/publicacoes/livros/livro_falado.pdf "
+        }]
       }
     },
     {
@@ -322,11 +393,16 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Saúde e Segurança no sistema prisional são dois lados da mesma moeda."
+          "excerpt": "SAÚDE E SEGURANÇA NO SISTEMA PRISIONAL É UMA QUESTÃO DE DIREITOS HUMANOS."
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "",
+        "arquivos": [{
+          "nome": "OUVIDORIA DO DEPARTAMENTO PENITENCIÁRIO NACIONAL (DEPEN)",
+          "link": "http://portal.mj.gov.br/main.asp?View={DA8C1EA2-5CE1-45BD-AA07-5765C04797D9}&BrowserType=NN&LangID=pt-br&params=itemID%3D%7B114098CC-7FA2-4F34-B3B0-F61C115F415D%7D%3B&UIPartUID=%7B2868BA3C-1C72-4347-BE11-A26F70F4CB26%7D"
+        }],
+        "video_list": "PLqwF2MOG7-g3_ypi2LKt4PWFlf_HwgQyn"
       }
     },
     {
@@ -336,17 +412,17 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "No âmbito do Sistema prisional, é preciso analisar também a atual situação das pessoas com transtorno mental em conflito com a lei, mantidas sob custódia. \nAssim, complementarmente à Política surgiu a EAP, com o objetivo de  reorientar o modelo de atenção aos pacientes com transtorno mental em conflito com a lei, de maneira a evitar o tratamento em meio fechado, ou garantir o retorno à liberdade no menor tempo possível."
+          "excerpt": "VINCULADA À PNAISP FOI INSTITUÍDO O SERVIÇO DE AVALIAÇÃO E ACOMPANHAMENTO DAS MEDIDAS TERAPÊUTICAS APLICÁVEIS À PESSOA COM TRANSTORNO MENTAL EM CONFLITO COM A LEI (EAP), CUJO OBJETIVO É REORIENTAR O MODELO DE ATENÇÃO AOS PACIENTES COM TRANSTORNO MENTAL EM CONFLITO COM A LEI, QUE SE ENCONTRAM SOB A CUSTÓDIA DO ESTADO, DE MANEIRA A EVITAR O TRATAMENTO EM MEIO FECHADO E GARANTIR O RETORNO À LIBERDADE NO MENOR TEMPO POSSÍVEL"
         }
       },
       "conteudo": {
         "texto": "",
         "arquivos": [{
           "nome": "Luta antimanicomial",
-          "link": "http://www.redehumanizasus.net/85171-luta-antimanicomial-2014f"
+          "link": "http://www.redehumanizasus.net/85171-luta-antimanicomial-2014"
         },
         {
-          "nome": "Portaria Nº 94",
+          "nome": "PORTARIA Nº 94, DE 14 DE JANEIRO DE 2014",
           "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2014/prt0094_14_01_2014.html"
         },
         {
@@ -360,35 +436,66 @@
         {
           "nome": "Programa de Atenção Integral ao Paciente Judiciário Portador de Sofrimento Mental (PAI-PJ)",
           "link": "http://ftp.tjmg.jus.br/presidencia/projetonovosrumos/pai_pj/"
+        },
+        {
+          "nome": "PORTAL SAÚDE – SAÚDE MENTAL",
+          "link": "http://portalsaude.saude.gov.br/index.php?option=com_content&view=article&id=11359&Itemid=693 "
         }]
       }
     },
     {
       "id": 16,
-      "title": "Movimento Social LGBT",
+      "title": "Movimento Social Negro",
       "icon": "funcao",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Desde o início da epdemia de AIDS a resposta brasileira conduzida pelo Departamento de DST, Aids e Hepatites Virais do Ministério da Saúde contou com a participação da sociedade civil. "
+          "excerpt": "O sistema prisional tem cor! Negros e pardos são maioria entre as população das pessoas privadas de liberdade."
         }
       },
       "conteudo": {
         "texto": "",
         "arquivos": [{
-          "nome": "Portal da Saúde",
-          "link": "http://portalsaude.saude.gov.br/index.php/profissional-e-gestor/principal"
+          "nome": "Instituto de Cultura e Consciência Negra Nelson Mandela",
+          "link": "http://www.institutonelsonmandela.org/"
         },
         {
-          "nome": "Quilombo X",
-          "link": "https://quilomboxis.wordpress.com/"
+          "nome": "Fórum Permanente de Saúde no Sistema Penitenciário-RJ",
+          "link": "https://www.facebook.com/profile.php?id=100009184206078&sk=about"
         }]
       }
     },
     {
       "id": 17,
-      "title": "Sistema ùnico de Saúde - SUS",
+      "title": "Movimento Social LGBT",
+      "icon": "funcao",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "DESDE O INÍCIO DA EPIDEMIA DA AIDS A RESPOSTA BRASILEIRA CONDUZIDA PELO DEPARTAMENTO DE DST, AIDS E HEPATITES VIRAIS DO MINISTÉRIO DA SAÚDE CONTOU COM A PARTICIPAÇÃO DA SOCIEDADE CIVIL. ATUALMENTE, O MOVIMENTO LGBT LANÇA LUZ SOBRE AS CONDIÇÕES DE SAÚDE VIVIDA POR ESSE SEGUIMENTO POPULACIONAL NO SISTEMA PRISIONAL."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "DEPARTAMENTO DE DST, AIDS E HEPATITES VIRAIS (DDAHV)",
+          "link": "http://portalsaude.saude.gov.br/index.php/profissional-e-gestor/principal"
+        },
+        {
+          "nome": "IGUALDADE-RS",
+          "link": "http://www.aigualdaders.org/ "
+        },
+        {
+          "nome": "RESOLUÇÃO CONJUNTA Nº 1, DE 15 DE ABRIL DE 2014",
+          "link": "http://www.lex.com.br/legis_25437433_RESOLUCAO_CONJUNTA_N_1_DE_15_DE_ABRIL_DE_2014.aspx "
+        }]
+      }
+    },
+    {
+      "id": 18,
+      "title": "SISTEMA ÚNICO DE SAÚDE-SUS",
       "icon": "marco",
+      "graph": true,
       "component": {
         "type": "text",
         "ano": 1990,
@@ -399,16 +506,89 @@
       "conteudo": {
         "texto": "",
         "arquivos": [{
-          "nome": "LEI Nº 8.080",
+          "nome": "LEI Nº 8.080, DE 19 DE SETEMBRO DE 1990",
           "link": "http://www.planalto.gov.br/ccivil_03/leis/l8080.htm"
+        },
+        {
+          "nome": "CONSELHO NACIONAL DE SAÚDE",
+          "link": "http://www.conselho.saude.gov.br/"
+        },
+        {
+          "nome": "PORTARIA Nº 482, DE 1º DE ABRIL DE 2014",
+          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2014/prt0482_01_04_2014.html"
         }],
         "video_list": "PLqwF2MOG7-g1Vgcw8GpV3ezOsOc21U9nY"
       }
     },
     {
-      "id": 18,
+      "id": 19,
       "title": "Marden Marques Soares Filho",
-      "funcao": "coordenador do dapes"
+      "funcao": "Coordenador Geral Saúde da Pessoa Privada de Liberdade/DAPES/MS"
+    },
+    {
+      "id": 20,
+      "title": "Dário Frederico Pasche",
+      "funcao": "Diretor do Departamento de Ações Programáticas e Estratégicas/SAS/MS"
+    },
+    {
+      "id": 21,
+      "title": "Sandra Maria Sales Fagundes",
+      "funcao": "Secretária Estadual de Saúde do Rio Grande do Sul"
+    },
+    {
+      "id": 22,
+      "title": "Dr. Dirceu Dal'Molin",
+      "funcao": "Diretor Técnico e médico cirurgião"
+    },
+    {
+      "id": 23,
+      "title": "Marília dos Santos Simões",
+      "funcao": "Diretora da Penitenciária Feminina Madre Pelletier"
+    },
+    {
+      "id": 24,
+      "title": "Carla Letícia Preste Oliveira",
+      "funcao": "Presídio Central"
+    },
+    {
+      "id": 25,
+      "title": "Dra. Carla Jarczewski",
+      "funcao": "Coordenadora Estadual do Controle de Tuberculose"
+    },
+    {
+      "id": 26,
+      "title": "Maj. Dagoberto Albuquerque da Costa",
+      "funcao": "Diretor do Presídio Central. Brigada Militar"
+    },
+    {
+      "id": 27,
+      "title": "Elenita Majara Pinto Ferreira",
+      "funcao": "Presídio Central"
+    },
+    {
+      "id": 28,
+      "title": "Haika",
+      "funcao": "Interno do Presídio Central"
+    },
+    {
+      "id": 29,
+      "title": "Aguida Luana Veriato Schultz",
+      "funcao": "Unidade de Saúde Costa e Silva"
+    },
+    {
+      "id": 30,
+      "title": "Drª Sandra Coccaro",
+      "funcao": "Ginecologista - Penitenciária Feminina Madre Pelletier - RS"
+    },
+    {
+      "id": 31,
+      "title": "Renata Maria Dotta Panichi",
+      "funcao": "Secretaria Estadual da Saúde"
+    },
+    {
+      "id": 32,
+      "title": "Marcelly Malta Schwarzbold",
+      "funcao": "ONG Igualdade-RS"
     }
   ],
   "edges": [
@@ -429,7 +609,8 @@
     {"source": 0,"target": 14},
     {"source": 12,"target": 15},
     {"source": 12,"target": 16},
-    {"source": 1,"target": 17},
-    {"source": 8,"target": 17}
+    {"source": 12,"target": 17},
+    {"source": 1,"target": 18},
+    {"source": 8,"target": 18}
   ]
 }

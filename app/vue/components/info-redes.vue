@@ -86,6 +86,9 @@
     <h2 v-if="conteudo && conteudo.title"> 
       {{conteudo.title}} 
     </h2>
+    <h2 v-if="conteudo && conteudo.ano"> 
+      {{conteudo.ano}} 
+    </h2>
     <div class="info-texto">
       {{{html_texto | marked}}}
     </div>
