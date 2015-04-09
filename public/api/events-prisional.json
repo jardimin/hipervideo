@@ -123,7 +123,7 @@
         "type": "text",
         "ano": 1988,
         "fields": {
-          "excerpt": "##Conforme o art. 196º da Constituição do Brasil de 1988, \na saúde é direito de todos e dever do estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação."
+          "excerpt": "###Art. 196o da Constituição do Brasil de 1988. \n\nA saúde é direito de todos e dever do estado,garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação"
         }
       },
       "conteudo": {
@@ -152,12 +152,12 @@
     },
     {
       "id": 5,
-      "title": "Saúde prisional em debate",
+      "title": "Saúde Prisional em Debate",
       "icon": "funcao",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Quer saber mais sobre saúde no sistema prisional? Assista o Canal Saúde!"
+          "excerpt": "Quer saber mais sobre saúde no sistema prisional? Assista os vídeos abaixo!"
         }
       },
       "conteudo": {
@@ -176,7 +176,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Política Nacional de Atenção Integral à Saúde da Mulher (**PNAISM**) identifica 'a necessidade de acesso dessa população às ações de atenção à saúde, tanto com a implantação de ações no nível da atenção básica dentro dos presídios, como pelas referências para média e alta complexidade, com garantia do atendimento das demandas específicas das mulheres presidiárias por meio de uma atenção diferenciada dentro do conjunto de ações do Sistema Único de Saúde- **SUS**"
+          "excerpt": "A Política Nacional de Atenção Integral à Saúde da Mulher (**PNAISM**) identifica a necessidadede acesso da população feminina privada de liberdade às ações de atenção à saúde com garantia do atendimento das demandas específicas das mulheres presidiárias, por meio de uma atenção diferenciada dentro do conjunto de ações do **Sistema Único de Saúde- SUS**"
         }
       },
       "conteudo": {
@@ -190,7 +190,7 @@
           "link": "http://www.justica.sp.gov.br/StaticFiles/SJDC/ArquivosComuns/ProgramasProjetos/PPM/U_PT-INTERM-MJ-MSPM-210_160114.pdf"
           },
           {
-          "nome": "Principios e Diretrizes da PNAISM",
+          "nome": "Princípios e Diretrizes da PNAISM",
           "link": "http://bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_mulher_principios_diretrizes.pdf"
           },
           {
@@ -215,7 +215,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "NA POPULAÇÃO PRISIONAL, A PREVALÊNCIA DA TUBERCULOSE É 40 VEZES MAIOR QUE NA POPULAÇÃO GERAL, O QUE É INADMISSÍVEL HAJA VISTA QUE EXISTE TRATAMENTO PARA A DOENÇA. (...) PORTANTO, O CONTROLE DA COINFECÇÃO DO HIV E TUBERCULOSE É UM GRANDE DESAFIO A SER ENFRENTADO, E O SEU CONTROLE NA POPULAÇÃO COMO UM TODO, FAZENDO UM CHAMADO A TODOS OS PARTICIPANTES”. *(Consulta Nacional sobre HIV/AIDS no Sistema Penitenciário)*"
+          "excerpt": "“Na população prisional, a prevalência da tuberculose é 40 vezes maior que na populaçãogeral, o que é inadmissível haja vista que existe tratamento para a doença. (...) portanto, o controle da coinfecção do hiv e tuberculose é um grande desafio a ser enfrentado, e o seu controle na população como um todo, fazendo um chamado a todos os participantes.” *(consulta nacional sobre hiv/aids no sistema penitenciário)*"
         }
       },
       "conteudo": {
@@ -241,7 +241,7 @@
     },
     {
       "id": 8,
-      "title": "POLÍTICA NACIONAL DE HUMANIZAÇÃO – PNH",
+      "title": "Política Nacional de Humanização – PNH",
       "icon": "marco",
       "graph": true,
       "component": {
@@ -275,20 +275,12 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "O ALEITAMENTO MATERNO É FUNDAMENTAL PARA O DESENVOLVIMENTO SADIO DA CRIANÇA E ESTÁ GARANTIDO NO ARTIGO 5º INCISO L DA CONTITUIÇÃO FEDERAL O DIREITO DAS MULHERES **PRIVADAS DE LIBERDADE** ÀS CONDIÇÕES PARA QUE POSSAM PERMANECER COM SEUS FILHOS DURANTE O **PERÍODO DE AMAMENTAÇÃO**"
+          "excerpt": "O aleitamento materno é fundamental para o desenvolvimento sadio da criança e está garantido no artigo 5o inciso I da constituição federal o direito das mulheres privadas de liberdade às condições para que possam permanecer com seus filhos durante o período de amamentação."
         }
       },
       "conteudo": {
         "texto": "",
         "arquivos": [{
-          "nome": "Regras das Nações Unidas para o tratamento de mulheres presas",
-          "link": "http://carceraria.org.br/wp-content/uploads/2012/09/Tradu%C3%A7%C3%A3o-n%C3%A3o-oficial-das-Regras-de-Bangkok-em-11-04-2012.pdf"
-          },
-          {
-          "nome": "Regras internacionais de direitos humanos garantem prisão domiciliar a gestante",
-          "link": "http://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=283125"
-          },
-          {
           "nome": "ALEITAMENTO MATERNO PARA AS MULHERES PRIVADAS DE LIBERDADE",
           "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Cartilha+Aleitamento+Materno.pdf"
           },
@@ -310,7 +302,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "O acolhimento é uma atitude de acompanhamento do paciente desde a porta de entrada até a sua saída."
+          "excerpt": "O acolhimento é uma atitude de acompanhamento do paciente que deve ocorrer desde a porta de entrada até a sua saída."
         }
       },
       "conteudo": {
@@ -362,23 +354,27 @@
     },
     {
       "id": 13,
-      "title": "Ética do cuidado",
+      "title": "Ética do Cuidado",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Na relação entre saúde e justiça a direção ética é aquela que evita os estados de dominação para afirmar a vida."
+          "excerpt": "Na relação entre saúde e segurança a direção ética é aquela que evita os estados de dominação para afirmar a vida."
         }
       },
       "conteudo": {
-        "texto": "POR UMA PERSPECTIVA ÉTICA DAS PRÁTICAS DE CUIDADO NO CONTEMPORÂNEO.",
+        "texto": "Por uma perspectiva ética das práticas de cuidado no contemporâneo",
         "arquivos": [{
+          "nome": "ÉTICA E SUBJETIVIDADE - NOVOS IMPASSES NO CONTEMPORÂNEO",
+          "link": "http://www.editorasulina.com.br/img/sumarios/501.pdf"
+        },
+        {
           "nome": "A ÉTICA DA METAESTABILIDADE E A DIREÇÃO ÉTICA DA CLÍNICA",
           "link": "http://seer.ufrgs.br/InfEducTeoriaPratica/article/viewFile/29088/19466"
         },
         {
           "nome": "POR OUTRA PERSPECTIVA ÉTICA DAS PRÁTICAS DE CUIDADO E GOVERNO NO CONTEMPORÂNEO",
-          "link": "http://www.editorasulina.com.br/img/sumarios/501.pdf"
+          "link": "http://www.slab.uff.br/images/Aqruivos/dissertacoes/2009/Cristiano.pdf"
         },
         {
           "nome": "FRAGMENTOS DE DISCURSOS (NÃO TÃO AMOROSOS) SOBRE O EXAME CRIMINOLÓGICO",
@@ -393,7 +389,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "SAÚDE E SEGURANÇA NO SISTEMA PRISIONAL É UMA QUESTÃO DE DIREITOS HUMANOS."
+          "excerpt": "Saúde e segurança no sistema prisional é uma questão de direitos humanos."
         }
       },
       "conteudo": {
@@ -407,12 +403,12 @@
     },
     {
       "id": 15,
-      "title": "Luta antimanicomial",
+      "title": "Luta Antimanicomial",
       "icon": "funcao",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "VINCULADA À PNAISP FOI INSTITUÍDO O SERVIÇO DE AVALIAÇÃO E ACOMPANHAMENTO DAS MEDIDAS TERAPÊUTICAS APLICÁVEIS À PESSOA COM TRANSTORNO MENTAL EM CONFLITO COM A LEI (EAP), CUJO OBJETIVO É REORIENTAR O MODELO DE ATENÇÃO AOS PACIENTES COM TRANSTORNO MENTAL EM CONFLITO COM A LEI, QUE SE ENCONTRAM SOB A CUSTÓDIA DO ESTADO, DE MANEIRA A EVITAR O TRATAMENTO EM MEIO FECHADO E GARANTIR O RETORNO À LIBERDADE NO MENOR TEMPO POSSÍVEL"
+          "excerpt": "Vinculada à PNAISP foi instituído o serviço de avaliação e acompanhamento das medidas terapêuticas aplicáveis à pessoa com transtorno mental em conflito com a lei (EAP), cujo objetivo é reorientar o modelo de atenção aos pacientes com transtorno mental em conflito com a lei, que se encontram sob a custódia do estado, de maneira a evitar o tratamento em meio fechado e garantir o retorno à liberdade no menor tempo possível."
         }
       },
       "conteudo": {
@@ -450,7 +446,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "O sistema prisional tem cor! Negros e pardos são maioria entre as população das pessoas privadas de liberdade."
+          "excerpt": "O sistema prisional tem cor! Negros e pardos são maioria entre a população de pessoas privadas de liberdade."
         }
       },
       "conteudo": {
@@ -472,14 +468,14 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "DESDE O INÍCIO DA EPIDEMIA DA AIDS A RESPOSTA BRASILEIRA CONDUZIDA PELO DEPARTAMENTO DE DST, AIDS E HEPATITES VIRAIS DO MINISTÉRIO DA SAÚDE CONTOU COM A PARTICIPAÇÃO DA SOCIEDADE CIVIL. ATUALMENTE, O MOVIMENTO LGBT LANÇA LUZ SOBRE AS CONDIÇÕES DE SAÚDE VIVIDA POR ESSE SEGUIMENTO POPULACIONAL NO SISTEMA PRISIONAL."
+          "excerpt": "Desde o início da epidemia da AIDS a resposta brasileira conduzida pelo departamento de DST/AIDS e hepatites virais do Ministério da Saúde contou com a participação da sociedade civil. atualmente, o movimento lgbt lança luz sobre as condições de saúde vivida por esse seguimento populacional no sistema prisional."
         }
       },
       "conteudo": {
         "texto": "",
         "arquivos": [{
           "nome": "DEPARTAMENTO DE DST, AIDS E HEPATITES VIRAIS (DDAHV)",
-          "link": "http://portalsaude.saude.gov.br/index.php/profissional-e-gestor/principal"
+          "link": "http://www.aids.gov.br/"
         },
         {
           "nome": "IGUALDADE-RS",
@@ -493,7 +489,7 @@
     },
     {
       "id": 18,
-      "title": "SISTEMA ÚNICO DE SAÚDE-SUS",
+      "title": "Sistema Único De Saúde-SUS",
       "icon": "marco",
       "graph": true,
       "component": {
