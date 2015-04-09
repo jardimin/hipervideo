@@ -6,24 +6,24 @@
     {"start":  100, "end":  120, "node": 4},
     {"start":  140, "end": 170, "node": 5},
     {"start": 205, "end": 219, "node": 6},
-    {"start": 255, "end": 300, "node": 7},
+    {"start": 255, "end": 280, "node": 7},
     {"start": 308, "end": 325, "node": 8},
     {"start": 355, "end": 380, "node": 9},
     {"start": 417, "end": 437, "node": 10},
     {"start": 489, "end": 540, "node": 11},
-    {"start": 733, "end": 770, "node": 12},
-    {"start": 793, "end": 865, "node": 13},
+    {"start": 730, "end": 744, "node": 12},
+    {"start": 793, "end": 813, "node": 13},
     {"start": 911, "end": 960, "node": 14},
     {"start": 974, "end": 996, "node": 15},
     {"start": 1009, "end": 1021, "node": 16},
-    {"start": 1044, "end": 1129, "node": 17},
-    {"start": 1144, "end": 1220, "node": 18},
+    {"start": 1075, "end": 1129, "node": 17},
+    {"start": 1144, "end": 1188, "node": 18},
     {"start":  45, "end":  49, "node": 19},
     {"start":  77, "end":  82, "node": 20},
     {"start":  94, "end":  99, "node": 21},
     {"start":  180, "end":  185, "node": 22},
     {"start":  220, "end":  225, "node": 23},
-    {"start":  259, "end":  264, "node": 24},
+    {"start":  301, "end":  306, "node": 24},
     {"start":  280, "end":  285, "node": 25},
     {"start":  395, "end":  400, "node": 26},
     {"start":  568, "end":  573, "node": 27},
@@ -203,7 +203,7 @@
           }],
         "video_list": "PLqwF2MOG7-g2jJdUZUZ6tI6X-2t_o1O28",
         "hipervideo": {
-          "nome": "Veja também o hipervideo sobre a saúde da mulher",
+          "nome": "Veja também o hipervídeo sobre a saúde da mulher",
           "link": "/#/mulher"
         }
       }
@@ -298,7 +298,7 @@
           }],
         "video_list": "PLqwF2MOG7-g1iWfMBPDIMR0S1sPPhAE6j",
         "hipervideo": {
-          "nome": "Veja também o hipervideo sobre a saúde da criança",
+          "nome": "Veja também o hipervídeo sobre a saúde da criança",
           "link": "/#/crianca"
         }
       }
@@ -548,7 +548,7 @@
     {
       "id": 24,
       "title": "Carla Letícia Preste Oliveira",
-      "funcao": "Presídio Central"
+      "funcao": "Enfermeira Presídio Central"
     },
     {
       "id": 25,
@@ -563,7 +563,7 @@
     {
       "id": 27,
       "title": "Elenita Majara Pinto Ferreira",
-      "funcao": "Presídio Central"
+      "funcao": "Enfermeira Presídio Central"
     },
     {
       "id": 28,

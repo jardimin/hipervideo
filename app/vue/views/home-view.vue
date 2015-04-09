@@ -135,6 +135,7 @@
 
 	.fotoFundo {
 		position: absolute;
+		height: 100%;
 	}
 
 	.BW {
@@ -251,8 +252,8 @@
 							<h2>ACESSIBILIDADE</h2>
 							<div v-on="click: selectNada" class="botao" v-class="clic: isNada" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">SEM ACESSIBILIDADE</div>
 							<div v-on="click: selectLibras" class="botao" v-class="clic: isLibras" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">LIBRAS</div>
-							<div v-on="click: selectAudio" class="botao" v-class="clic: isAudio" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">AUDIO DESCRIÇÃO</div>
-						</div> 
+							<div v-on="click: selectAudio" class="botao" v-class="clic: isAudio" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">ÁUDIO DESCRIÇÃO</div>
+						</div>
 					</div>
 					<img v-attr="src: 'https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + 'BW.png'" class="fotoFundo BW" style="left: -{{posHip[$index]}}%; z-index: 1;" v-on="click: select(id)">
 					<img v-attr="src: 'https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + '.png'" class="fotoFundo" style="left: -{{posHip[$index]}}%" v-on="click: select(id)">
@@ -260,7 +261,7 @@
 			</div>
 		</div>
 		<div style="position: fixed; right: 0; bottom: 0; z-index: 1; width: 180px;">
-			<p style="float: left; font-size: 80%; width: 85px;">desenvolvido por</p>
+			<p style="float: left; font-size: 80%; width: 100px;">desenvolvido por</p>
 			<a href="http://jardim.in" target="_blank">
 	      <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 40%; float: left; margin-top: 0.5%;">
 	    </a>

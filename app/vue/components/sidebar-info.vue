@@ -101,7 +101,7 @@
       </a>
     </div>
   </div>
-  <a class="back" href="#/{{id}}">voltar ao video</a>
+  <a class="back" href="#/{{id}}">voltar ao vídeo</a>
   </div>
 </template>
 
@@ -182,6 +182,7 @@
             for (var i = list_data.length - 1; i >= 0; i--) {
               $$$('.video-list').slick('slickAdd','<div><a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'" style="text-decoration: none; text-align: center;"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a><p>' + list_data[i].title + '</p></div>');
               self.videoIndex ++;
+              console.log('videoIndex no create ' + self.videoIndex);
             };
           });
         }
@@ -193,10 +194,12 @@
       this.$on('destroy-scrollbar', function() {
         $$$('#conteudo_info').perfectScrollbar('destroy');
         for (var i = 0; i < this.imageIndex; i++) {
-          $$$('.image-list').slick('slickRemove', i);
+          $$$('.image-list').slick('slickRemove', 0);
         }
-        for (var i = 0; i < this.videoIndex; i++) {
-          $$$('.video-list').slick('slickRemove', i);
+        console.log('videoIndex no destroy ' + this.videoIndex);
+        for (var i = 0; i < this.videoIndex + 1; i++) {
+          console.log('no destroy i = '+ i + ' e videoIndex = ' + this.videoIndex);
+          $$$('.video-list').slick('slickRemove', 0);
         }
         this.imageIndex = 0;
         this.videoIndex = 0;
