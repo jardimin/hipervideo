@@ -184,6 +184,7 @@
 			cursor: default;
 			z-index: 2 !important;
 			left: 0 !important;
+			background-color: darkgray;
 			.areaTematica {
 				right: 0;
 			}
