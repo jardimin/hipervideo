@@ -170,6 +170,7 @@
 
 			this.sel.addEventListener("mouseup", function(e) {
 				self.hip.play();
+				$$$('video').removeClass('pausado');
 				self.$parent.seeking = false
 				self.bol = false;
 			});
