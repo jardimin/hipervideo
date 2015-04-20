@@ -261,9 +261,7 @@
 
 		<!-- ACESSIBILIDADE -->
 
-		<div class="libras" v-show="libras" v-transition>
-			<in-libras v-with="id: id"></in-libras>
-		</div>
+		<!-- <in-libras v-with="id: id" v-show="libras"></in-libras> -->
 
 		<div class="audio_desc" v-show="audio_desc">
 			<in-audio v-with="id: id"></in-audio>
@@ -342,6 +340,7 @@
 			var xhr = new XMLHttpRequest
 			xhr.open('GET', '/api/events-' + this.id + '.json')
 			xhr.onload = function () {
+				console.log(JSON.parse(xhr.responseText));
 				self.events = JSON.parse(xhr.responseText)
 				// attach events if popcorn already loaded
 				if(self.video.popcorn != null){
