@@ -186,7 +186,7 @@ module.exports.template = __vue_template__;
 
 },{"vue":96}],3:[function(require,module,exports){
 require("insert-css")(".hipVid{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#full:-webkit-full-screen .hipVid{z-index:0}#app.marco-fechado .hipVid{top:0}");
-var __vue_template__ = "<video poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n		<source src=\"{{db.url}}_{{qual}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n	</source></video>";
+var __vue_template__ = "<video poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n		<source src=\"{{db.url}}_{{lib}}_{{qual}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n	</source></video>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 
@@ -195,6 +195,7 @@ var Vue = require('vue')
 		data: function(){
 			return {
 				qual: 'alta',
+				lib: 'normal',
 				timecodeAntigo: 0,
 				hipervideo: null,
 				timecode: 0
@@ -202,6 +203,11 @@ var Vue = require('vue')
 		},
 		created: function() {
 			this.qual = this.$parent.$parent.qualidade;
+			if (this.$parent.$parent.libras) {
+				this.lib = 'libras'
+			} else {
+				this.lib = 'normal'
+			}
 		},
 		attached: function() {
 			
@@ -215,6 +221,17 @@ var Vue = require('vue')
 			this.$on('mudou-qualidade', function (qualidade) {
 				self.timecode = self.video.time;
 				self.qual = qualidade;
+				self.hipervideo.load();
+				self.continuarTemp();
+			})
+
+			this.$on('mudou-libras', function (val) {
+				self.timecode = self.video.time;
+				if (val) {
+					self.lib = 'libras';
+				} else {
+					self.lib = 'normal';
+				}
 				self.hipervideo.load();
 				self.continuarTemp();
 			})
@@ -288,6 +305,7 @@ var Vue = require('vue')
     	var self = this
 
       this.$off('mudou-qualidade')
+      this.$off('mudou-libras')
 
       this.hipervideo.removeEventListener("loadstart" , function() {
 				$$$('#loading').addClass('loading')
@@ -2402,6 +2420,7 @@ var $$$ = require('jquery')
 
 			this.sel.addEventListener("mouseup", function(e) {
 				self.hip.play();
+				$$$('video').removeClass('pausado');
 				self.$parent.seeking = false
 				self.bol = false;
 			});
@@ -2731,7 +2750,7 @@ module.exports.template = __vue_template__;
 
 },{"../components/tutorial.vue":24,"insert-css":29,"jquery":30,"marked":32}],27:[function(require,module,exports){
 require("insert-css")(".sidebar{width:22%}@media screen and (min-width:1600px){.sidebar{width:15%}}@media screen and (min-width:1600px){.sidebar.has-info{width:16%}}.sidebar_content{position:relative;height:100%;z-index:20}.sidebar_back{position:absolute;background-color:rgba(0,0,0,.5);width:300px;height:100%;top:0;left:0;transition:all .6s;-webkit-transform:translate3d(-300px,0,0);-moz-transform:translate3d(-300px,0,0);-o-transform:translate3d(-300px,0,0);-ms-transform:translate3d(-300px,0,0);transform:translate3d(-300px,0,0);z-index:10}.sidebar.is-open .sidebar_back{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.sidebar-right{position:absolute;right:0;top:57px;width:300px}.infopanel{position:absolute;background-color:rgba(0,0,0,.8);height:100%;top:0;left:0;z-index:10;transition:all .6s;-webkit-transform:translate3d(127%,0,0);-moz-transform:translate3d(127%,0,0);-o-transform:translate3d(127%,0,0);-ms-transform:translate3d(127%,0,0);transform:translate3d(127%,0,0)}.infopanel.is-open{-webkit-transform:translate3d(300px,0,0);-moz-transform:translate3d(300px,0,0);-o-transform:translate3d(300px,0,0);-ms-transform:translate3d(300px,0,0);transform:translate3d(300px,0,0)}.infopanel .border{position:absolute;height:100%;width:10px;top:0;left:0}.infopanel .back{position:absolute;top:10%;left:79%;color:#fff;font-size:24px}.debug{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;text-align:center}.debug .btn{cursor:pointer;padding:10px;background:#ccc;display:inline-block;margin:4px;color:#000;font-size:10px}#video-controls{position:fixed;top:0;width:100%;display:none;z-index:25}#video-controls.hover .rangeslider,#video-controls.hover .rangeslider__fill{top:0;height:3px}.sidebar_opener{position:relative;transition:all .6s ease .6s;overflow:hidden}.sidebar_opener.v-enter,.sidebar_opener.v-leave{-webkit-transform:translate3d(-100px,0,0);-moz-transform:translate3d(-100px,0,0);-o-transform:translate3d(-100px,0,0);-ms-transform:translate3d(-100px,0,0);transform:translate3d(-100px,0,0)}.sidebar_opener.v-leave{transition:all .3s ease 0}.sidebar_opener .sidebar_opener__inside{display:inline-block;color:#fff;padding:10px;height:28px;line-height:28px;transition:all .6s ease}.infopanel{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:5% 20% 3% 3%;width:79%}@media screen and (min-width:1600px){.infopanel{width:85%}}.is-cartela{height:auto!important}.sidebar_cartela{transition:all .5s ease .5s;position:fixed;bottom:60px;left:0;min-width:40%}.sidebar_cartela.expand-enter,.sidebar_cartela.expand-leave{left:-800px}.not-loading{position:fixed;left:0;top:0;width:100%;height:100%;z-index:-150;opacity:0;padding-top:22%;text-align:center;background-color:rgba(50,50,50,.6);transition:opacity .5s}.loading{opacity:1;z-index:150}.pausado{opacity:.3!important}");
-var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"capitulo: capitulo, libras: libras, audio_desc: audio_desc\" v-if=\"capitulo\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\"></in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- CARTELAS -->\n\n			<div v-show=\"cartela\" class=\"sidebar_cartela\" v-transition=\"expand\">\n				<div class=\"sidebar_block__header context-bg\" style=\"font-size: 100%\">\n					<div id=\"cartela_nome\">\n						{{contentCartela.title | uppercase}}\n					</div>\n				</div>\n				<div class=\"sidebar_block__header\" style=\"background: #fff\">\n					<div id=\"cartela_funcao\">\n						{{contentCartela.funcao}}\n					</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n\n		<!-- ACESSIBILIDADE -->\n\n		<in-libras v-with=\"id: id\" v-show=\"libras\"></in-libras>\n\n		<div class=\"audio_desc\" v-show=\"audio_desc\">\n			<in-audio v-with=\"id: id\"></in-audio>\n		</div>\n\n		<div id=\"loading\" class=\"not-loading\"><i class=\"fa fa-refresh fa-3x fa-spin\"></i></div>\n		<div id=\"aviso\" style=\"position: fixed; top: 50px; width: 100%; text-align: center; font-size: 200%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1\">Aperte ESPAÇO para pausar e ENTER para entrar no modo TELA CHEIA</div>\n		\n	</div>";
+var __vue_template__ = "<div v-with=\"id: params.video, params: params, db: db\" allowfullscreen=\"true\">\n\n		<!-- CREDITOS -->\n\n		<in-creditos></in-creditos>\n\n		<!-- VIDEO -->\n\n		<in-bg-video v-ref=\"hipervideo\"></in-bg-video>\n\n		<!-- NAV-VIDEO -->\n\n		<nav class=\"hover\" id=\"video-controls\">\n			<in-topbar-capitulos></in-topbar-capitulos>\n			<in-topbar-slider></in-topbar-slider>\n			<input type=\"range\" id=\"seek-bar-{{id}}\" min=\"0\" max=\"1000\" data-rangeslider=\"\" style=\"display: none\">\n		</nav>\n\n		<!-- SIDEBAR -->\n\n		<div class=\"sidebar\" v-class=\"is-open: hasBlocks || hasInfo || fixedSidebar, has-info: hasInfo\">\n\n			<!-- CONTENT -->\n\n			<div class=\"sidebar_content\">\n				<in-sidebar-graph></in-sidebar-graph>\n				<in-sidebar-chapter v-with=\"capitulo: capitulo, libras: libras, audio_desc: audio_desc\" v-if=\"capitulo\"></in-sidebar-chapter>\n				<in-sidebar-block v-repeat=\"contentBlocks\" v-with=\"video: video\" v-transition=\"\"></in-sidebar-block>\n				<div class=\"sidebar_opener clickable\" v-on=\"click: openDefaultBlock\" v-show=\"!hasBlocks &amp;&amp; !fixedSidebar &amp;&amp; !hasInfo\" v-transition=\"\">\n					<div class=\"sidebar_opener__inside context-bg\">abrir</div>\n				</div>\n			</div>\n\n			<!-- CARTELAS -->\n\n			<div v-show=\"cartela\" class=\"sidebar_cartela\" v-transition=\"expand\">\n				<div class=\"sidebar_block__header context-bg\" style=\"font-size: 100%\">\n					<div id=\"cartela_nome\">\n						{{contentCartela.title | uppercase}}\n					</div>\n				</div>\n				<div class=\"sidebar_block__header\" style=\"background: #fff\">\n					<div id=\"cartela_funcao\">\n						{{contentCartela.funcao}}\n					</div>\n				</div>\n			</div>\n\n			<!-- BACKGROUND -->\n\n			<div class=\"sidebar_back\"></div>\n		</div>\n\n		<!-- RIGHT SIDE -->\n\n		<div class=\"sidebar-right\">\n			<in-event-block-map v-ref=\"map\"></in-event-block-map>\n		</div>\n\n		<!-- INFO -->\n	\n		<div id=\"infopanel\" class=\"infopanel\" v-class=\"is-open: hasInfo\">\n	    <in-sidebar-info v-with=\"id: id, conteudo: conteudo\"></in-sidebar-info>\n	  </div>\n\n		<!-- MARCOS -->\n		\n		<in-botbar-marcos></in-botbar-marcos>\n\n		<!-- ACESSIBILIDADE -->\n\n		<!-- <in-libras v-with=\"id: id\" v-show=\"libras\"></in-libras> -->\n\n		<div class=\"audio_desc\" v-show=\"audio_desc\">\n			<in-audio v-with=\"id: id\"></in-audio>\n		</div>\n\n		<div id=\"loading\" class=\"not-loading\"><i class=\"fa fa-refresh fa-3x fa-spin\"></i></div>\n		<div id=\"aviso\" style=\"position: fixed; top: 50px; width: 100%; text-align: center; font-size: 200%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1\">Aperte ESPAÇO para pausar e ENTER para entrar no modo TELA CHEIA</div>\n		\n	</div>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 	var _ = require('underscore')
@@ -2797,6 +2816,7 @@ var Vue = require('vue')
 			var xhr = new XMLHttpRequest
 			xhr.open('GET', '/api/events-' + this.id + '.json')
 			xhr.onload = function () {
+				console.log(JSON.parse(xhr.responseText));
 				self.events = JSON.parse(xhr.responseText)
 				// attach events if popcorn already loaded
 				if(self.video.popcorn != null){

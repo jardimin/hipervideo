@@ -20,7 +20,7 @@
 
 <template>
 	<video poster="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
-		<source src="{{db.url}}_{{qual}}.mp4" type="video/mp4" id="mp4">
+		<source src="{{db.url}}_{{lib}}_{{qual}}.mp4" type="video/mp4" id="mp4">
 	</video>
 </template>
 
@@ -34,6 +34,7 @@
 		data: function(){
 			return {
 				qual: 'alta',
+				lib: 'normal',
 				timecodeAntigo: 0,
 				hipervideo: null,
 				timecode: 0
@@ -41,6 +42,11 @@
 		},
 		created: function() {
 			this.qual = this.$parent.$parent.qualidade;
+			if (this.$parent.$parent.libras) {
+				this.lib = 'libras'
+			} else {
+				this.lib = 'normal'
+			}
 		},
 		attached: function() {
 			
@@ -54,6 +60,17 @@
 			this.$on('mudou-qualidade', function (qualidade) {
 				self.timecode = self.video.time;
 				self.qual = qualidade;
+				self.hipervideo.load();
+				self.continuarTemp();
+			})
+
+			this.$on('mudou-libras', function (val) {
+				self.timecode = self.video.time;
+				if (val) {
+					self.lib = 'libras';
+				} else {
+					self.lib = 'normal';
+				}
 				self.hipervideo.load();
 				self.continuarTemp();
 			})
@@ -127,6 +144,7 @@
     	var self = this
 
       this.$off('mudou-qualidade')
+      this.$off('mudou-libras')
 
       this.hipervideo.removeEventListener("loadstart" , function() {
 				$$$('#loading').addClass('loading')

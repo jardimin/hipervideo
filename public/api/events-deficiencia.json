@@ -1,104 +1,401 @@
 {
   "timecode": [
-    {"start": 33, "end": 43, "node": 7},
-    {"start": 56, "end": 60, "node": 8},
-    {"start": 198, "end": 203, "node": 9},
-    {"start": 211, "end": 217, "node": 10},
-    {"start": 372, "end": 378, "node": 11},
-    {"start": 443, "end": 450, "node": 12},
-    {"start": 499, "end": 505, "node": 13},
-    {"start": 582, "end": 590, "node": 14},
-    {"start": 731, "end": 738, "node": 15},
-    {"start": 789, "end": 795, "node": 16},
-    {"start": 909, "end": 916, "node": 17},
-    {"start": 964, "end": 973, "node": 18},
-    {"start": 1049, "end": 1054, "node": 19},
-    {"start": 1297, "end": 1212, "node": 20},
-    {"start": 1269, "end": 1276, "node": 21},
-    {"start": 1304, "end": 1311, "node": 22}
+    {"start": 33, "end": 43, "node": 12},
+    {"start": 56, "end": 60, "node": 13},
+    {"start": 198, "end": 203, "node": 14},
+    {"start": 211, "end": 217, "node": 15},
+    {"start": 372, "end": 378, "node": 16},
+    {"start": 443, "end": 450, "node": 17},
+    {"start": 499, "end": 505, "node": 18},
+    {"start": 582, "end": 590, "node": 19},
+    {"start": 731, "end": 738, "node": 20},
+    {"start": 789, "end": 795, "node": 21},
+    {"start": 909, "end": 916, "node": 22},
+    {"start": 964, "end": 973, "node": 23},
+    {"start": 1049, "end": 1054, "node": 24},
+    {"start": 1297, "end": 1212, "node": 25},
+    {"start": 1269, "end": 1276, "node": 26},
+    {"start": 1304, "end": 1311, "node": 27},
+    {"start": 19, "end": 25, "node": 1},
+    {"start": 74, "end": 81, "node": 2},
+    {"start": 90, "end": 98, "node": 3},
+    {"start": 100, "end": 108, "node": 4},
+    {"start": 168, "end": 176, "node": 5},
+    {"start": 362, "end": 370, "node": 6},
+    {"start": 470, "end": 476, "node": 7},
+    {"start": 870, "end": 878, "node": 8},
+    {"start": 1162, "end": 1168, "node": 9},
+    {"start": 1453, "end": 1460, "node": 10},
+    {"start": 1480, "end": 1487, "node": 11}
   ],
   "nodes": [
     {
+      "id": 1,
+      "title": "Dialógos (Bio)Políticos",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "O Livro Diálogo (bio)político sobre alguns desafios da construção da rede de Cuidados à Pessoa com deficicência do SUS põe em análise alguma das muitas problemáticas implicadas na produção de saúde das pessoas com deficiência, como biopoder, bioidentidades e biossocialidades; tradição fragmentária dos serviços especializados e dos especialismos em saúde; desafio da construção de políticas públicas integradas e integradoras; enfrentamento de certa 'narrativa da dificuldade' na atenção à saúde das pessoas com deficiência."
+        }
+      },
+      "conteudo": {
+        "texto": "O Livro Diálogo (bio)político sobre alguns desafios da construção da rede de Cuidados à Pessoa com deficicência do SUS põe em análise alguma das muitas problemáticas implicadas na produção de saúde das pessoas com deficiência, como biopoder, bioidentidades e biossocialidades; tradição fragmentária dos serviços especializados e dos especialismos em saúde; desafio da construção de políticas públicas integradas e integradoras; enfrentamento de certa 'narrativa da dificuldade' na atenção à saúde das pessoas com deficiência.",
+        "arquivos": [{
+          "nome": "PDF",
+          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/dialogo_bio_politico_pessoa_deficiencia.pdf"
+        }]        
+      }
+    },
+    {
+      "id": 2,
+      "title": "Viver Sem Limite",
+      "icon": "marco",
+      "graph": true,
+      "component": {
+        "type": "text",
+        "ano": 2014,
+        "fields": {
+          "excerpt": "Além de ser o primeiro plano federal implantado com a missão de promover os direitos das pessoas com deficiência, o Viver sem Limite criou novas políticas públicas, articuladas em quatro eixos temáticos: Acesso à Educação; Atenção à Saúde; Inclusão Social e Acessibilidade."
+        }
+      },
+      "conteudo": {
+        "texto": "Além de ser o primeiro plano federal implantado com a missão de promover os direitos das pessoas com deficiência, o Viver sem Limite criou novas políticas públicas, articuladas em quatro eixos temáticos: Acesso à Educação; Atenção à Saúde; Inclusão Social e Acessibilidade.",
+        "arquivos": [{
+          "nome": "Livro - PDF",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/livro-viver-sem-limite-2014.pdf"
+          },
+          {
+          "nome": "Livro - TXT",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/livro-viver-sem-limite-2014.txt"
+          },
+          {
+            "nome": "Observatório Viver Sem Limite",
+          "link": "http://www.sdh.gov.br/assuntos/pessoa-com-deficiencia/observatorio"
+        }]
+      }
+    },
+    {
+      "id": 3,
+      "title": "História",
+      "icon": "marco",
+      "component": {
+        "type": "text",
+        "ano": 1970,
+        "fields": {
+          "excerpt": "### História do Movimento Político das Pessoas com Deficiência no Brasil\n\nHistória do Movimento Político das Pessoas com Deficiência no Brasil - Este livro decreve a evolução da luta pelos direitos das pessoas com deficiência, a partir da organização das mobilizações sociais na década de 70 e elaboração de suas demandas, até conquistar o seu reconhecimento e assimilação pelo Estado brasileiro com vistas a garantir direitos de 25 milhões de pessoas."
+        }
+      },
+      "conteudo": {
+        "texto": "História do Movimento Político das Pessoas com Deficiência no Brasil - Este livro decreve a evolução da luta pelos direitos das pessoas com deficiência, a partir da organização das mobilizações sociais na década de 70 e elaboração de suas demandas, até conquistar o seu reconhecimento e assimilação pelo Estado brasileiro com vistas a garantir direitos de 25 milhões de pessoas.",
+        "arquivos": [{
+          "nome": "Livro - PDF",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/Hist%C3%B3ria%20do%20Movimento%20Pol%C3%ADtico%20das%20Pessoas%20com%20Defici%C3%AAncia%20no%20Brasil.pdf"
+        },
+        {
+          "nome": "Livro - TXT",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/Hist%C3%B3ria%20do%20Movimento%20Pol%C3%ADtico%20das%20Pessoas%20com%20Defici%C3%AAncia%20no%20Brasil.txt"
+        }]
+      }
+    },
+    {
+      "id": 4,
+      "title": "Convenção da ONU",
+      "icon": "marco",
+      "graph": true,
+      "component": {
+        "type": "text",
+        "ano": 1980,
+        "fields": {
+          "excerpt": "Convenção Sobre os Direitos da Pessoa com Deficiência"
+        }
+      },
+      "conteudo": {
+        "texto": "O propósito Convenção é promover, proteger e assegurar o exercício pleno e equitativo de todos os direitos humanos e liberdades fundamentais por todas as pessoas com deficiência e promover o respeito pela sua dignidade inerente.",
+        "arquivos": [{
+          "nome": "Link - PDF",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/convencaopessoascomdeficiencia.pdf"
+        },
+        {
+          "nome": "Link - TXT",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/convencaopessoascomdeficiencia.txt"
+        },
+        {     
+          "nome": "Convenção Comentada - PDF",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/convencao-sdpcd-novos-comentarios.pdf"
+        },
+        {
+          "nome": "Convenção Comentada - TXT",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/convencao-sdpcd-novos-comentarios.txt"
+        },
+        {
+          "nome": "Cordel - PDF",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/convencao-sdpcd-cordel-reduzido.pdf"
+        },
+        {
+          "nome": "Cordel - TXT",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/convencao-sdpcd-cordel.txt"
+        }]
+      }
+    },
+    {
+      "id": 5,
+      "title": "Modos de CER",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Este documentário mostra o dia a dia dos primeiros Centros Especializados em Rabilitação - CER habilitados pelo Ministério da Saúde e impacto desta nova política no contidiano de usuários, Gestores e profissionais de saúde."
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "arquivos": [{
+          "nome": "Discussão",
+          "link": "http://www.redehumanizasus.net/87614-voce-sabia-que-dia-03-de-dezembro-sera-um-dia-especial-para-a-saude?show=overlay"
+        }]
+      }
+    },
+    {
+      "id": 6,
+      "title": "Portarias e Instrutivos",
+      "icon": "marco",
+      "graph": true,
+      "component": {
+        "type": "text",
+        "ano": 1996,
+        "fields": {
+          "excerpt": "Normativas da Rede de Cuidados à Pessoa com Deficiência no âmbito do SUS."
+        }
+      },
+      "conteudo": {
+        "texto": " ",
+        "arquivos":[{     
+          "nome": "Portaria 793 - HTML",
+          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2012/prt0793_24_04_2012.html"
+          },
+          {
+            "nome": "Portaria 835 - HTML",
+            "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2012/prt0835_25_04_2012.html"
+          },
+          {
+            "nome": "Instrutivo - PDF",
+            "link": "http://portalsaude.saude.gov.br/images/pdf/2014/junho/05/Instrutivo-Reabilitacao-Rede-PCD-SAIPS-01-06-14-FT.pdf"
+        }]
+      }
+    },
+    {
       "id": 7,
+      "title": "Redes de Atenção a Saúde",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "A Rede de Atenção à Saúde é definida como arranjos organizativos de ações e serviços de saúde, de diferentes densidades tecnológicas, que integradas por meio de sistemas de apoio técnico, logístico e de gestão, buscam garantir a integralidade do cuidado O objetivo da RAS é promover a integração sistêmica, de ações e serviços de saúde com provisão de atenção contínua, integral, de qualidade, responsável e humanizada, bem como incrementar o desempenho do Sistema, em termos de acesso, equidade, eficácia clínica e sanitária; e eficiência econômica."
+        }
+      },
+      "conteudo": {
+        "texto": "A Rede de Atenção à Saúde é definida como arranjos organizativos de ações e serviços de saúde, de diferentes densidades tecnológicas, que integradas por meio de sistemas de apoio técnico, logístico e de gestão, buscam garantir a integralidade do cuidado O objetivo da RAS é promover a integração sistêmica, de ações e serviços de saúde com provisão de atenção contínua, integral, de qualidade, responsável e humanizada, bem como incrementar o desempenho do Sistema, em termos de acesso, equidade, eficácia clínica e sanitária; e eficiência econômica.",
+        "arquivos": [{     
+          "nome": "Divulgação -PDF",
+          "link": "http://cebes.org.br/site/wp-content/uploads/2014/12/Divulgacao-52.pdf"
+          },
+          {
+            "nome": "Revista Completa - PDF",
+            "link": "http://portalsaude.saude.gov.br/images/pdf/2014/marco/20/RevistaSAS-2014-completa.pdf"
+          },
+          {
+            "nome": "Portaria 4279- HTML",
+            "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2010/prt4279_30_12_2010.html"
+        }]
+      }
+    },
+    {
+      "id": 8,
+      "title": "Ambiência",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Três eixos devem ser considerados na composição de uma ambiência: o espaço que visa à confortabilidade focada na privacidade e individualidade dos sujeitos envolvidos, valorizando elementos do ambiente que interagem com as pessoas – cor, cheiro, som, iluminação, morfologia...–, e garantindo conforto aos trabalhadores e usuários; o espaço que possibilita a produção de subjetividades – encontro de sujeitos – por meio da ação e reflexão sobre os processos de trabalho; e o espaço usado como ferramenta facilitadora do processo de trabalho, favorecendo a otimização de recursos, o atendimento humanizado, acolhedor e resolutivo. (cartilha ambiência)"
+        }
+      },
+      "conteudo": {
+        "texto": "Três eixos devem ser considerados na composição de uma ambiência: o espaço que visa à confortabilidade focada na privacidade e individualidade dos sujeitos envolvidos, valorizando elementos do ambiente que interagem com as pessoas – cor, cheiro, som, iluminação, morfologia...–, e garantindo conforto aos trabalhadores e usuários; o espaço que possibilita a produção de subjetividades – encontro de sujeitos – por meio da ação e reflexão sobre os processos de trabalho; e o espaço usado como ferramenta facilitadora do processo de trabalho, favorecendo a otimização de recursos, o atendimento humanizado, acolhedor e resolutivo. (cartilha ambiência)",
+        "arquivos": [{     
+          "nome": "Manual de Ambiência dos CER - PDF",
+          "link": "http://cosemspb.org/wp-content/uploads/2013/04/Orientacao_Ambiencia_CER_OfcOrto.pdf"
+          },
+          {
+           "nome": "Ambiência - PDF",
+           "link": "http://www.redehumanizasus.net/sites/default/files/ambiencia_2ed.pdf"
+        }]
+      }
+    },
+    {
+      "id": 9,
+      "title": "CIF",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Classificação Internacional de Funcionalidade"
+        }
+      },
+      "conteudo": {
+        "texto": "A contribuição da Convenção é representada pelo modelo social de direitos humanos que propõe que o ambiente é o responsável pela situação de deficiência da pessoa, sendo que as barreiras arquitetônicas, de comunicação e atitudinais existentes é que impedem a sua plena inclusão social, razão pela qual devem ser removidas. O novo modelo social determina que a deficiência não está na pessoa como um problema a ser curado, e sim na sociedade, que pode, por meio das barreiras que são impostas às pessoas, agravar uma determinada limitação funcional. (Convenção sobre os Direitos das Pessoas com Deficiência - versão comentada. Pg 26-27) \n\nA Classificação Internacional de Funcionalidade proporciona uma linguagem unificada e padronizada bem como uma estrutura de trabalho para a descrição da saúde e de estados relacionados com a saúde. Os domínios contidos na CIF podem, portanto, ser considerados como domínios da saúde e domínios relacionados com a saúde. Estes domínios são descritos com base na perspectiva do corpo, do indivíduo e da sociedade em duas listas básicas: (1) Funções e Estruturas do Corpo, e (2) Atividades e participação.",
+        "arquivos":[{     
+          "nome": "CIF na Organização Mundial de Saúde - HTML",
+          "link": "http://www.who.int/classifications/icf/en/"
+          },
+          {
+          "nome": "Guia para Principiantes CIF - PDF",
+          "link": "http://www.fsp.usp.br/cbcd/Material/Guia_para_principiantes_CIF_cbcd.pdf"          
+          },
+          {
+          "nome": "Centro Colaborador da OMS no Brasil",
+          "link": "http://www.fsp.usp.br/~cbcd/"          
+          },
+          {     
+          "nome": "Convenção Sobre os Direitos das Pessoas com Deficiência - Novos Comentários - PDF",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/convencao-sdpcd-novos-comentarios.pdf"
+          },
+          {
+          "nome": "Convenção Sobre os Direitos das Pessoas com Deficiência - Novos Comentários - TXT",
+          "link": "http://www.pessoacomdeficiencia.gov.br/app/sites/default/files/publicacoes/convencao-sdpcd-novos-comentarios.txt"
+        }]
+      }
+    },
+    {
+      "id": 10,
+      "title": "PNH",
+      "icon": "marco",
+      "graph": true,
+      "component": {
+        "type": "text",
+        "ano": 2008,
+        "fields": {
+          "excerpt": "Política Nacional de Humanização"
+        }
+      },
+      "conteudo": {
+        "texto": "A Política Nacional de Humanização estimula a comunicação entre gestores,trabalhadores e usuários para construir processos coletivos de enfrentamento de relações de poder, trabalho e afeto que muitas vezes produzem atitudes e práticas desumanizadoras que inibem a autonomia e a corresponsabilidade dos profissionais de saúde em seu trabalho e dos usuários no cuidado de si.",
+        "arquivos": [{     
+          "nome": "Política Nacional de Humanização",
+          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_humanizacao_pnh_folheto.pdf"
+        }]
+      }
+    },
+    {
+      "id": 11,
+      "title": "Participação",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Humanização - Gestão participativa e Co-Gestão"
+        }
+      }, 
+      "conteudo": {
+        "texto": "Construção de espaços coletivos em que se dão a análise das informações e a tomada das decisões. Nestes espaços estão incluídos a sociedade civil, o usuário e seus familiares, os trabalhadores e gestores dos serviços de saúde.",
+        "arquivos": [{     
+          "nome": "Gestão Participativa e Cogestão",
+          "link": "http://www.redehumanizasus.net/sites/default/files/10_0380_final_gestao_participativa_e_cogestao.pdf"
+        }]
+      }
+    },
+    {
+      "id": 12,
       "title": "Vera Mendes",
       "funcao": "Coordenadora da Saúde da Pessoa com Deficiência/MS"
     },
-       {
-      "id": 8,
+    {
+      "id": 13,
       "title": "Dagoberto Barbosa",
       "funcao": "Gerente de Reabilitação do CRER"
     },
-       {
-      "id": 9,
+    {
+      "id": 14,
       "title": "Thaís e José Neto",
       "funcao": "Usuários"
     },
-       {
-      "id": 10,
+    {
+      "id": 15,
       "title": "Renata Karina Santos",
       "funcao": "Médica"
     },
-       {
-      "id": 11,
+    {
+      "id": 16,
       "title": "Fábio Pechat dos Santos",
       "funcao": "Coordenador Estadual da Saúde da Pessoa com Deficiência / GO"
     },
-       {
-      "id": 12,
+    {
+      "id": 17,
       "title": "Atendimento Domiciliar",
       "funcao": " "
     },
-       {
-      "id": 13,
+    {
+      "id": 18,
       "title": "Augusto , Fernanda e Alice",
       "funcao": "Usuários"
     },
-       {
-      "id": 14,
+    {
+      "id": 19,
       "title": "Giane de Andrade",
       "funcao": "Fonoáudiológa"
     },
-       {
-      "id": 15,
+    {
+      "id": 20,
       "title": "Lays Minasi",
       "funcao": "Fisioterapeuta"
     },
-       {
-      "id": 16,
+    {
+      "id": 21,
       "title": "Wilson Borges",
       "funcao": "Usuário"
     },
-       {
-      "id": 17,
+    {
+      "id": 22,
       "title": "Manuella Mello",
       "funcao": "Médica"
     },
-       {
-      "id": 18,
+    {
+      "id": 23,
       "title": "Thereza Veríssimo",
       "funcao": "Fisioterapeuta"
     },
-       {
-      "id": 19,
+    {
+      "id": 24,
       "title": "Jackeline Bessa ",
       "funcao": "Terapeuta Ocupacional"
     },
-       {
-      "id": 20,
+    {
+      "id": 25,
       "title": "Michele Rocha",
       "funcao": "Terapeuta Ocupacional"
     },
-       {
-      "id": 21,
+    {
+      "id": 26,
       "title": "Wanderley José Sá",
       "funcao": "Técnico da Oficina Ortopédica"
     },
-       {
-      "id": 22,
+    {
+      "id": 27,
       "title": "Alysson Campos",
       "funcao": "Coordenador da Oficina Ortopédica"
     }
   ],
   "edges": [
+    {"source": 0,"target": 1},
+    {"source": 0,"target": 2},
+    {"source": 0,"target": 3},
+    {"source": 0,"target": 4},
+    {"source": 0,"target": 5},
+    {"source": 0,"target": 6},
+    {"source": 0,"target": 7},
+    {"source": 0,"target": 8},
+    {"source": 0,"target": 9},
+    {"source": 0,"target": 10},
+    {"source": 0,"target": 11}
   ]
 }
