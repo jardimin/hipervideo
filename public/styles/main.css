@@ -47,3 +47,15 @@ strong {
   background: #f00; }
 .is-video-deficiencia .context-bg {
   background: #00c; }
+
+.noty_text {
+  letter-spacing: 0;
+  font-size: 16px; }
+
+.noty_buttons {
+  text-align: center !important;
+  border: none !important;
+  background: none !important; }
+  .noty_buttons button {
+    font-size: 16px;
+    padding: 10 20px; }

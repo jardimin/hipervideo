@@ -267,13 +267,13 @@
 	      <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 40%; float: left; margin-top: 0.5%;">
 	    </a>
 		</div>
-		<div id="aviso" style="position: fixed; top: 0; width: 100%; text-align: center; font-size: 100%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1; display: none; z-index: 1;">Recomendamos a utilização do navegador GOOGLE CHROME para uma melhor experiência</div>
 	</div>
 </template>
 
 <script>
 	var $$$ = require('jquery')
 	var marked = require('marked')
+	var noty = require('noty')
 	module.exports = {
 		replace: true,
 		data: function(){
@@ -385,13 +385,19 @@
 			$$$('body').removeClass("tocando");
 			var usr_ag = navigator.userAgent
 			if (usr_ag.search("Chrome") === -1) {
-				$$$('#aviso').css('display', 'block')
-				setTimeout(function() {
-					$$$('#aviso').css('opacity', 0)
-				}, 6000)
-				setTimeout(function() {
-					$$$('#aviso').css('display', 'none')
-				}, 7000)
+
+				var n = noty({
+					layout: 'top',
+					theme: 'relax',
+					type: 'warning',
+					text: 'Recomendamos a utilização do navegador GOOGLE CHROME para uma melhor experiência',
+					animation: {
+						open: {height: 'toggle'}, // jQuery animate function property object
+						close: {height: 'toggle'}, // jQuery animate function property object
+						easing: 'swing', // easing
+						speed: 500 // opening & closing animation speed
+					},
+				})
 			}
 
 		},
