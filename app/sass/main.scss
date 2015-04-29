@@ -54,3 +54,22 @@ strong {
 		background: $color-video-5;
 	}
 }
+
+// noty
+
+.noty_bar {
+	//padding: 10px;
+}
+.noty_text {
+	letter-spacing: 0;
+	font-size: 16px;
+}
+.noty_buttons {
+	text-align: center !important;
+	border: none !important;
+	background: none !important;
+	button {
+		font-size: 16px;
+		padding: 10 20px;
+	}
+}
