@@ -141,6 +141,32 @@
           </a>
         </div>
       </div>
+      <div class="info">
+        <div class="papel">
+          <h3>HIPERVÍDEO MULHER</h3>
+          <p>Aline Costa</p>
+          <p>Ana Lia Cunha</p>
+          <p>Larissa Paiva</p>
+        </div>
+        <div class="papel">
+          <h3>HIPERVÍDEO CRIANÇA</h3>
+        </div>
+        <div class="papel">
+          <h3>HIPERVÍDEO ADOLESCENTE</h3>
+        </div>
+        <div class="papel">
+          <h3>HIPERVÍDEO DEFICIÊNCIA</h3>
+        </div>
+        <div class="papel">
+          <h3>HIPERVÍDEO PRISIONAL</h3>
+        </div>
+        <div class="papel" style="width: 100%; margin-bottom: 40px;">
+          <h3 style="margin-bottom: 0;">DESENVOLVIDO POR:</h3>
+          <a href="http://jardim.in" target="_blank">
+            <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 20%; float: left; margin-top: 0.5%; margin-left: 41%;">
+          </a>
+        </div>
+      </div>
     </div>
       <div class="papel" style="width: 100%;">
         <h3 style="margin-bottom: 0;">REALIZAÇÃO</h3>

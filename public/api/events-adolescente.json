@@ -12,6 +12,8 @@
     {"start": 553, "end": 560, "node": 10},
     {"start": 1446, "end": 1452, "node": 11},
     {"start": 1496, "end": 1506, "node": 12},
+    {"start": 1416 , "end": 1422, "node": 13},
+    {"start": 1741 , "end": 1746, "node": 14},
     {"start": 126, "end": 131, "node": 26},
     {"start": 192, "end": 202, "node": 27},
     {"start": 239, "end": 248, "node": 28},
@@ -28,9 +30,7 @@
     {"start": 1350, "end": 1356, "node": 39},
     {"start": 1586, "end": 1594, "node": 40},
     {"start": 1672 , "end": 1677, "node": 41},
-    {"start": 798 , "end": 805, "node": 42},
-    {"start": 1416 , "end": 1422, "node": 13},
-    {"start": 1741 , "end": 1746, "node": 14}
+    {"start": 798 , "end": 805, "node": 42}
   ],
   "nodes": [
     {
@@ -50,17 +50,17 @@
     },
     {
       "id": 2,
-      "title": "Mapa da Violência",
+      "title": "Dados sobre a Violência",
       "icon": "conceito",
       "geo": [-18,-44],
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "###Mapa da Violência: os jovens do Brasil \nO **Mapa da Violência** é um diagnóstico da violência contra os jovens brasileiros e oferece subsídios ao trabalho de gestores de políticas públicas, parlamentares, governantes, profissionais de segurança pública e instituições de pesquisa nacionais e internacionais, na formulação de políticas de combate à violência contra a juventude."
+          "excerpt": "Homens jovens, negros e pobres são as maiores vítimas de homicídio no Brasil. E o que a área da saúde tem haver com isso? Muito mais do que se imagina. A saúde é um dos setores mais impactados pelos efeitos dos atos de violência. As políticas públicas unem-se a fim de desenhar planos voltados ao enfrentamento desse fenômeno e a saúde, além de efetivar atendimentos de recuperação e reabilitação, também atua como promotora de uma Cultura de Paz."
         }
       },
       "conteudo": {
-        "texto": ""
+        "texto": "Homens jovens, negros e pobres são as maiores vítimas de homicídio no Brasil. E o que a área da saúde tem haver com isso? Muito mais do que se imagina. A saúde é um dos setores mais impactados pelos efeitos dos atos de violência. As políticas públicas unem-se a fim de desenhar planos voltados ao enfrentamento desse fenômeno e a saúde, além de efetivar atendimentos de recuperação e reabilitação, também atua como promotora de uma Cultura de Paz.\n\n **Evolução dos homicídios no Brasil: número total e taxas por 100.000 habitantes (1980 a 2010).**\n![Dados da Violência](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/dados-da-violencia.png)\n\n - Brasil passou de 13.910 homicídios em 1980 para 49.932 em 2010.\n - A taxa de homicídio cresceu de 11,7 homicídios em 100 mil habitantes em 1980 para 26,2 em 2010. "
       }
     },
     {
@@ -129,9 +129,7 @@
         }
       },
       "conteudo": {
-        "texto": "",
-        "imagens": [{
-          "src": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Adolescentes+em+cumprimento+de+medida+socioeducativa.jpg"}]
+        "texto": "###Adolescentes em Medida Socioeducativa \nEssa estatística representa uma porcentagem pequena, do ponto de vista quantitativo, e que deve ser alvo das políticas públicas, atuando em busca de soluções para assegurar que direitos estabelecidos em lei, repercutam diretamente na materialização de políticas públicas sociais, que incluam o (a) adolescente em atendimento socioeducativo. \n\n*Fonte: Levantamento da Secretaria de Direitos Humanos dos (as) adolescentes em cumprimento de medida socioeducativa. 2012.*\n\n ![adolescentes em cumprimento de medida socioeducativa](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Adolescentes+em+cumprimento+de+medida+socioeducativa.jpg)"
       }
     },
     {
@@ -145,9 +143,7 @@
         }
       },
       "conteudo": {
-        "texto": "",
-         "imagens": [{
-          "src": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Reorganiza%C3%A7%C3%A3o+dos+Servi%C3%A7os+de+Sa%C3%BAde+para+aten%C3%A7%C3%A3o+a+sa%C3%BAde+adolescentes.jpg"}]
+        "texto": "###Reorganização dos serviços de saúde para a atenção à saúde de adolescentes  \n\nAtenção básica passa a ser a principal referência para as unidades socioeducativas.\n\n ![Reorganização dos serviços de saúde para atenção básica de adolescentes](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Reorganiza%C3%A7%C3%A3o+dos+Servi%C3%A7os+de+Sa%C3%BAde+para+aten%C3%A7%C3%A3o+a+sa%C3%BAde+adolescentes.jpg)"
       }
     },
     {
@@ -194,7 +190,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Conforme Portaria 1.082, de 23 de maio de 2014;\n\nSeção II\nDas Atribuições do Grupo de Trabalho Intersetorial (GTI)\nArt. 23. Compete ao GTI instituído no âmbito do Estado ou do Município:\nI - a elaboração de Plano Operativo, conforme modelo constante do anexo II a esta Portaria;\nII - a elaboração de Plano de Ação Anual, com definição das ações de saúde e as metas físicas para o ano de exercício por Município, conforme modelo constante do anexo III a esta Portaria;\nIII - o acompanhamento e monitoramento da efetiva implementação da atenção integral à saúde de adolescentes em situação de privação de liberdade; e\nIV - realização de diagnóstico da situação de saúde dos adolescentes em situação de privação de liberdade.\n§ 1º Poderão integrar o GTI de que trata o caput representantes dos seguintes órgãos e entidades:\na) Secretaria Estadual de Saúde;\nb) Secretaria Municipal de Saúde;\nc) Secretaria gestora do Sistema Socioeducativo em âmbito local;\nd) unidades socioeducativas; e\ne) outras instituições e conselhos estratégicos."
+          "excerpt": "Conforme Portaria 1.082, de 23 de maio de 2014;\n\n Seção II\n\n Das Atribuições do Grupo de Trabalho Intersetorial (GTI)\n\n Art. 23. Compete ao GTI instituído no âmbito do Estado ou do Município:\n\nI - a elaboração de Plano Operativo, conforme modelo constante do anexo II a esta Portaria;\n\nII - a elaboração de Plano de Ação Anual, com definição das ações de saúde e as metas físicas para o ano de exercício por Município, conforme modelo constante do anexo III a esta Portaria;\n\nIII - o acompanhamento e monitoramento da efetiva implementação da atenção integral à saúde de adolescentes em situação de privação de liberdade; e\n\nIV - realização de diagnóstico da situação de saúde dos adolescentes em situação de privação de liberdade.\n\n§ 1º Poderão integrar o GTI de que trata o caput representantes dos seguintes órgãos e entidades:\n\na) Secretaria Estadual de Saúde;\n\nb) Secretaria Municipal de Saúde;\n\nc) Secretaria gestora do Sistema Socioeducativo em âmbito local;\n\nd) unidades socioeducativas; e\n\ne) outras instituições e conselhos estratégicos."
           }
       },
       "conteudo": {
@@ -249,6 +245,7 @@
       },
       "conteudo": {
         "texto": "",
+        "video_list": "PLMSHbkIRallm3ahHyjW7xXOBZ1e0YguRJ",
          "arquivos": [{
           "nome": "Guia Prático de Matriciamento em Saúde Mental",
           "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/BH/arquivos/Matriciamento.pdf"
@@ -262,7 +259,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Entrevista na íntegra com a Psicóloga Cristiane Barreto abordando temas como a Sócioeducação, criminalização e Escuta"
+          "excerpt": "Entrevista na íntegra com a Psicóloga Cristiane Barreto abordando temas como a Socioeducação, criminalização e Escuta"
         }
       },
       "conteudo": {
@@ -467,7 +464,7 @@
     {
       "id": 31,
       "title": "Tatiana de Souza",
-      "funcao": "Gerente de Unidade Sócioeducativa"
+      "funcao": "Gerente de Unidade Socioeducativa"
     },
     {
       "id": 32,
@@ -477,7 +474,7 @@
     {
       "id": 33,
       "title": "Reunião Intersetorial",
-      "funcao": "Saúde e Sócioeducação "
+      "funcao": "Saúde e Socioeducação "
     },
     {
       "id": 34,
@@ -507,7 +504,7 @@
     {
       "id": 39,
       "title": "Vitor Dutra",
-      "funcao": "Agente Sócioeducativo"
+      "funcao": "Agente Socioeducativo"
     },
     {
       "id": 40,
