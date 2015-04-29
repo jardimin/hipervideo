@@ -382,22 +382,63 @@
 			}
 		},
 		attached: function () {
+			
 			$$$('body').removeClass("tocando");
-			var usr_ag = navigator.userAgent
-			if (usr_ag.search("Chrome") === -1) {
+			
+			var browser = useragent.Browser
+			var version = useragent.Version.split('.')
+
+			var cond0 = browser.search("Chrome") === -1
+			var cond1 = browser.search("Firefox") !== -1 && Number(version[0]) < 22
+			var cond2 = browser.search("Chrome") !== -1 && Number(version[0]) < 28
+			
+			var animation = {
+				open: {height: 'toggle'}, // jQuery animate function property object
+				close: {height: 'toggle'}, // jQuery animate function property object
+				easing: 'swing', // easing
+				speed: 500 // opening & closing animation speed
+			}
+
+			// browser not chrome
+
+			if (cond0) { 
 
 				var n = noty({
 					layout: 'top',
 					theme: 'relax',
 					type: 'warning',
-					text: 'Recomendamos a utilização do navegador GOOGLE CHROME para uma melhor experiência',
-					animation: {
-						open: {height: 'toggle'}, // jQuery animate function property object
-						close: {height: 'toggle'}, // jQuery animate function property object
-						easing: 'swing', // easing
-						speed: 500 // opening & closing animation speed
-					},
+					text: 'Recomendamos a utilização do navegador GOOGLE CHROME para uma melhor experiência.',
+					animation: animation,
 				})
+
+			}
+
+			// old firefox
+
+			if (cond1) {
+
+				var n = noty({
+					layout: 'top',
+					theme: 'relax',
+					type: 'warning',
+					text: 'Você está usando a versão ' + useragent.Version + ' do Firefox. Recomendamos que você atualize o Firefox para a última versão.',
+					animation: animation
+				})
+
+			}
+
+			// old chrome
+			
+			if (cond2) {
+
+				var n = noty({
+					layout: 'top',
+					theme: 'relax',
+					type: 'warning',
+					text: 'Você está usando a versão ' + useragent.Version + ' do Chrome. Recomendamos que você atualize o Chrome para a última versão.',
+					animation: animation
+				})
+
 			}
 
 		},

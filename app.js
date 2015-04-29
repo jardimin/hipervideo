@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
 var livereload = require('connect-livereload');
+var useragent = require('express-useragent');
 
 var routes = {
     index: require(path.join(__dirname, 'app/routes/index'))
@@ -34,7 +35,7 @@ app.use(sassMiddleware({
 app.use(livereload());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/modules', express.static(path.join(__dirname, 'node_modules')));
-
+app.use(useragent.express());
 
 app.use('/', routes.index);
 // app.use('/users', routes.users);

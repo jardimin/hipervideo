@@ -17,6 +17,7 @@
     "debug": "~2.0.0",
     "director": "^1.2.3",
     "express": "~4.9.0",
+    "express-useragent": "^0.1.7",
     "jade": "~1.6.0",
     "jquery": "~2.1.1",
     "leaflet": "^0.7.3",
