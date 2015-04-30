@@ -1,18 +1,33 @@
 {
   "timecode": [
-    {"start":   98, "end":  128, "node": 1},
+    {"start":   120, "end":  142, "node": 1},
     {"start":  188, "end":  218, "node": 3},
     {"start":  218, "end":  248, "node": 4},
     {"start":  259, "end": 289, "node": 2},
     {"start": 370, "end": 400, "node": 5},
-    {"start": 530, "end": 560, "node": 6},
-    {"start": 570, "end": 600, "node": 7},
+    {"start": 530, "end": 550, "node": 6},
+    {"start": 590, "end": 600, "node": 7},
     {"start": 630, "end": 660, "node": 8},
-    {"start": 720, "end": 750, "node": 9},
+    {"start": 720, "end": 740, "node": 9},
     {"start": 780, "end": 810, "node": 10},
-    {"start": 840, "end": 870, "node": 11},
+    {"start": 850, "end": 870, "node": 11},
     {"start": 1000, "end": 1030, "node": 12},
-    {"start": 1045, "end": 1075, "node": 13}
+    {"start": 1045, "end": 1075, "node": 13},
+    {"start": 99, "end": 104, "node": 14},
+    {"start": 114, "end": 119, "node": 15},
+    {"start": 145, "end": 150, "node": 16},
+    {"start": 235, "end": 240, "node": 17},
+    {"start": 328, "end": 333, "node": 18},
+    {"start": 403, "end": 408, "node": 19},
+    {"start": 423, "end": 428, "node": 20},
+    {"start": 438, "end": 443, "node": 21},
+    {"start": 523, "end": 528, "node": 22},
+    {"start": 552, "end": 557, "node": 23},
+    {"start": 575, "end": 580, "node": 24},
+    {"start": 711, "end": 716, "node": 25},
+    {"start": 742, "end": 747, "node": 26},
+    {"start": 841, "end": 846, "node": 27},
+    {"start": 951, "end": 956, "node": 28}
   ],
   "nodes": [
     {
@@ -269,6 +284,81 @@
           "link": "http://www.redehumanizasus.net/sites/default/files/10_0380_final_gestao_participativa_e_cogestao.pdf"
         }]
       }
+    },
+    {
+      "id": 14,
+      "title": "Dr. Carlos Alberto Justo da Silva",
+      "funcao": "Diretor do Hospital Universitário Prof. Polydoro Ernani de Santiago"
+    },
+    {
+      "id": 15,
+      "title": "Dr. Paulo Vicente Bonilha Almeida",
+      "funcao": "Coordenador da Coordenação Geral da Saúde da Criança e Aleitamento Materno do Ministério da Saúde."
+    },
+    {
+      "id": 16,
+      "title": "Caren Della Méa da Fonseca",
+      "funcao": "Enfermeira da Equipe de Saúde da Família do Centro de Saúde Carianos."
+    },
+    {
+      "id": 17,
+      "title": "Sheila",
+      "funcao": "Mãe no Hospital Universitário"
+    },
+    {
+      "id": 18,
+      "title": "Márcia Borck",
+      "funcao": "Enfermeira da UTI Neonatal do Hospital Universitário"
+    },
+    {
+      "id": 19,
+      "title": "Rita",
+      "funcao": "Enfermeira da Maternidade do Hospital Universitário – UFSC "
+    },
+    {
+      "id": 20,
+      "title": "Jorge Ernesto Zepeda",
+      "funcao": "Diretor da Atenção Primaria a Saúde da Secretaria Municipal de Saúde de Florianópolis"
+    },
+    {
+      "id": 21,
+      "title": "Marcia Sueli Del Castanhel",
+      "funcao": "Coordenadora da Saúde da Criança/Capital Criança – SMS Florianópolis"
+    },
+    {
+      "id": 22,
+      "title": "Izabel",
+      "funcao": "Técnica de Enfermagem do Centro de Saúde Carianos"
+    },
+    {
+      "id": 23,
+      "title": " mãe criança na creche",
+      "funcao": ""
+    },
+    {
+      "id": 24,
+      "title": "professora da Creche Joaquina",
+      "funcao": "Unidade de Saúde Costa e Silva"
+    },
+    {
+      "id": 25,
+      "title": "Candice Boppre Besen",
+      "funcao": "Coordenadora do Programa Saúde na Escola da SMS Florianópolis"
+    },
+    {
+      "id": 26,
+      "title": "Carlos Daniel Moutinho Junior",
+      "funcao": "Secretario Municipal de Saúde de Florianópolis"
+    },
+    {
+      "id": 27,
+      "title": "Agente Comunitario de Saude do Centro de Saude do Itacorubi",
+      "funcao": "Unidade de Saúde Costa e Silva"
+    },
+    {
+      "id": 28,
+      "title": "Evanguelia Atherino dos Santos",
+      "funcao": "Profa. Dra. do Departamento de Enfermagem da UFSC e Consultora"
     }
   ],
   "edges": [
