@@ -422,6 +422,10 @@
           "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2014/prt0094_14_01_2014.html"
         },
         {
+          "nome": "Cartilha EAP",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Cartilha+EAP.pdf"
+        },
+        {
           "nome": "Programa de Atenção Integral ao Louco Infrator (PAILI)",
           "link": "http://www.saude.go.gov.br/index.php?idMateria=153172"
         },
@@ -504,6 +508,10 @@
         "arquivos": [{
           "nome": "LEI Nº 8.080, DE 19 DE SETEMBRO DE 1990",
           "link": "http://www.planalto.gov.br/ccivil_03/leis/l8080.htm"
+        },
+        {
+          "nome": "Cartilha PNAISP",
+          "link": ""
         },
         {
           "nome": "CONSELHO NACIONAL DE SAÚDE",
