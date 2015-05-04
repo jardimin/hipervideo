@@ -54,7 +54,7 @@
       "graph": true,
       "component": {
         "type": "text",
-        "ano": 2014,
+        "ano": 2011,
         "fields": {
           "excerpt": "Além de ser o primeiro plano federal implantado com a missão de promover os direitos das pessoas com deficiência, o Viver sem Limite criou novas políticas públicas, articuladas em quatro eixos temáticos: Acesso à Educação; Atenção à Saúde; Inclusão Social e Acessibilidade."
         }
@@ -81,7 +81,7 @@
       "icon": "marco",
       "component": {
         "type": "text",
-        "ano": 1970,
+        "ano": 2010,
         "fields": {
           "excerpt": "### História do Movimento Político das Pessoas com Deficiência no Brasil\n\nHistória do Movimento Político das Pessoas com Deficiência no Brasil - Este livro decreve a evolução da luta pelos direitos das pessoas com deficiência, a partir da organização das mobilizações sociais na década de 70 e elaboração de suas demandas, até conquistar o seu reconhecimento e assimilação pelo Estado brasileiro com vistas a garantir direitos de 25 milhões de pessoas."
         }
@@ -105,7 +105,7 @@
       "graph": true,
       "component": {
         "type": "text",
-        "ano": 1980,
+        "ano": 2007,
         "fields": {
           "excerpt": "Convenção Sobre os Direitos da Pessoa com Deficiência"
         }
@@ -163,7 +163,7 @@
       "graph": true,
       "component": {
         "type": "text",
-        "ano": 1996,
+        "ano": 2012,
         "fields": {
           "excerpt": "Normativas da Rede de Cuidados à Pessoa com Deficiência no âmbito do SUS."
         }
@@ -273,7 +273,7 @@
       "graph": true,
       "component": {
         "type": "text",
-        "ano": 2008,
+        "ano": 2003,
         "fields": {
           "excerpt": "Política Nacional de Humanização"
         }
