@@ -41,12 +41,12 @@
   "nodes": [
     {
       "id": 1,
-      "title": "Boas práticas de atenção ao parto e ao nascimento",
+      "title": "Boas práticas",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "O clampeamento do cordão umbilical em tempo oportuno, ou seja, somente após parar de pulsar, é uma das boas práticas de atenção ao parto e ao nascimento recomendadas pelo Ministério da Saúde e a Organização Mundial de Saúde, assim como o contato pele a pele e a amamentação na primeira hora de vida."
+          "excerpt": "###Boas práticas de atenção ao parto e ao nascimento \n\nO clampeamento do cordão umbilical em tempo oportuno, ou seja, somente após parar de pulsar, é uma das boas práticas de atenção ao parto e ao nascimento recomendadas pelo Ministério da Saúde e a Organização Mundial de Saúde, assim como o contato pele a pele e a amamentação na primeira hora de vida."
         }
       },
       "conteudo": {
@@ -95,12 +95,12 @@
     },
     {
       "id": 3,
-      "title": "Redução da Mortalidade Infantil e Neonatal",
+      "title": "Redução de Mortalidade",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "O Brasil foi um dos primeiros países a atingir a meta 4 dos Objetivos de Desenvolvimento do Milênio (ODM), de redução da mortalidade na infancia em dois terços, até 2015. De 1990 até 2012, a mortalidade de crianças menores de 5 anos foi reduzida em 77%, passando de 66 para cada mil nascidos vivos para 14 por cada mil. Apesar dos avanços, ainda oermanecem como importantes desafios a diminuição da mortalidade neonatal (70% das mortes infantis) e o enfrentamento às iniquidades regionais e em grupos vulneraveis (indigenas, quilombolas, ribeirinhos, etc). ![Desenho Mãe com Bebe](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/02.png)"
+          "excerpt": "###Redução da Mortalidade Infantil e Neonatal\n\nO Brasil foi um dos primeiros países a atingir a meta 4 dos Objetivos de Desenvolvimento do Milênio (ODM), de redução da mortalidade na infancia em dois terços, até 2015. De 1990 até 2012, a mortalidade de crianças menores de 5 anos foi reduzida em 77%, passando de 66 para cada mil nascidos vivos para 14 por cada mil. Apesar dos avanços, ainda oermanecem como importantes desafios a diminuição da mortalidade neonatal (70% das mortes infantis) e o enfrentamento às iniquidades regionais e em grupos vulneraveis (indigenas, quilombolas, ribeirinhos, etc). ![Desenho Mãe com Bebe](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/02.png)"
         }
       },
       "conteudo": {
@@ -111,12 +111,12 @@
 
     {
       "id": 4,
-      "title": "Iniciativa Hospital Amigo da Criança",
+      "title": "Hospital Amigo da Criança",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "A Iniciativa Hospital Amigo da Criança contribui para a diminuição da morbimortalidade infantil com o estímulo das Boas Práticas de parto e nascimento (OMS_1996), do incentivo ao aleitamento materno desde o contato pele a pele na sala de parto e do incentivo à amamentação na primeira hora de vida do bebê. Para um hospital se tornar Amigo da Criança é necessário que cumpra além desses critérios, a  Norma Brasileira de Comercialização de Alimentos para Lactentes e Crianças na Primeira Infância (NBCAL) e a Garantia da permanência da mãe ou pai, junto ao recém-nascido , durante as 24 horas, e livre acesso  a ambos ou  na  falta  destes, ao responsável legal."
+          "excerpt": "A **Iniciativa Hospital Amigo da Criança** contribui para a diminuição da morbimortalidade infantil com o estímulo das Boas Práticas de parto e nascimento (OMS_1996), do incentivo ao aleitamento materno desde o contato pele a pele na sala de parto e do incentivo à amamentação na primeira hora de vida do bebê. Para um hospital se tornar Amigo da Criança é necessário que cumpra além desses critérios, a  Norma Brasileira de Comercialização de Alimentos para Lactentes e Crianças na Primeira Infância (NBCAL) e a Garantia da permanência da mãe ou pai, junto ao recém-nascido , durante as 24 horas, e livre acesso  a ambos ou  na  falta  destes, ao responsável legal."
         }
       },
       "conteudo": {
@@ -159,12 +159,12 @@
     },
     {
       "id": 6,
-      "title": "Vinculação da mãe/bebê à Atenção Básica",
+      "title": "Vinculação da à Atenção Básica",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Alem da apliação das vacinas contra Tuberculose (BCG) e Hepatite B, ainda na Maternidade, o RN deve também realizar os testes do Olhinho, da Orelhinha e do Coraçaozinho, previstos na Politica Nacional de Triagens Neonatais. O teste do pezinho (triagem neonatal biologica) na maior parte do país é realizado nas Unidades Basicas de Saúde, entre o 3º e o 5º dia de vida.![Atenção Basica](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/03.png)"
+          "excerpt": "###Vinculação da mãe/bebê à Atenção Básica\n\nAlém da apliação das vacinas contra Tuberculose (BCG) e Hepatite B, ainda na Maternidade, o RN deve também realizar os testes do Olhinho, da Orelhinha e do Coraçaozinho, previstos na Politica Nacional de Triagens Neonatais. O teste do pezinho (triagem neonatal biologica) na maior parte do país é realizado nas Unidades Basicas de Saúde, entre o 3º e o 5º dia de vida.![Atenção Basica](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/03.png)"
         }
       },
       "conteudo": {
@@ -233,7 +233,7 @@
     },
     {
       "id": 10,
-      "title": "Metodo Canguru",
+      "title": "Método Canguru",
       "icon": "conceito",
       "component": {
         "type": "text",
@@ -324,14 +324,14 @@
     },
     {
       "id": 15,
-      "title": "Brasil Carinhoso e Mulher Trabalhadora que Amamenta",
+      "title": "Brasil Carinhoso e MTA",
       "icon": "marco",
       "graph": true,
       "component": {
         "type": "text",
         "ano": 2012,
         "fields": {
-          "excerpt": "Em 2012, o Brasil se juntou ao seleto grupo de países que possuem politicas nacionais intersetoriais em prol da promoção do Desenvolvimento na Primeira Infancia (DPI), ao lançar o programa **BRASIL CARINHOSO**. Contempla ações de ampliação da oferta de Creches pelo MEC, de extensão do Bolsa Familia para familias com crianças na primeira infancia pelo Ministerio do Desenvolvimento Social (MDS) e, no caso do Ministerio da Saúde, fortalecimento da prevenção de Anemia Ferropriva e Hipovitaminose A e extensão do Programa Saúde na Escola (PSE) para creches e pre-escolas. A ação Mulher Trabalhadora que Amamenta consiste em criar nas empresas públicas e privadas uma cultura de respeito e apoio ao aleitamento materno, com a implementação de salas de apoio à amamentação nos locais de trabalho; a ampliação da licença maternidade para seis meses; possibilitar o acesso a creches no local de trabalho ou conveniadas; o cumprimento das leis que protegem a amamentação, entre outras ações."
+          "excerpt": "###Brasil Carinhoso e Mulher Trabalhadora que Amamenta\n\nEm 2012, o Brasil se juntou ao seleto grupo de países que possuem politicas nacionais intersetoriais em prol da promoção do Desenvolvimento na Primeira Infancia (DPI), ao lançar o programa **BRASIL CARINHOSO**. Contempla ações de ampliação da oferta de Creches pelo MEC, de extensão do Bolsa Familia para familias com crianças na primeira infancia pelo Ministerio do Desenvolvimento Social (MDS) e, no caso do Ministerio da Saúde, fortalecimento da prevenção de Anemia Ferropriva e Hipovitaminose A e extensão do Programa Saúde na Escola (PSE) para creches e pre-escolas. A ação Mulher Trabalhadora que Amamenta consiste em criar nas empresas públicas e privadas uma cultura de respeito e apoio ao aleitamento materno, com a implementação de salas de apoio à amamentação nos locais de trabalho; a ampliação da licença maternidade para seis meses; possibilitar o acesso a creches no local de trabalho ou conveniadas; o cumprimento das leis que protegem a amamentação, entre outras ações."
         }
       },
       "conteudo": {
@@ -419,12 +419,12 @@
     },
     {
       "id": 19,
-      "title": "DESENVOLVIMENTO INTEGRAL DA PRIMEIRA INFÃNCIA",
+      "title": "PRIMEIRA INFÃNCIA",
       "icon": "marco",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "A primeira infância compreende o período da gestação até os 6 anos de idade, e é considerada o período mais importante para a formação e para o desenvolvimento social, cognitivo e emocional de um indivíduo. Evidencias sobre a importancia de investimento pelas familias e nações na promoção de um pleno Desenvolvimento na Primeira Infancia (DPI) têm se avolumado, por parte das Neurociencias, da Psicologia e do Nobel de Economia, James Heckman, que mostrou a associação entre investimento nesta faixa etaria e o desenvolvimento das nações. Para o Ministerio da Saúde,  com os avanços do país em relação a diminuição da mortaldade infantil não se pode mais pensar apenas em politicas de garantia  da sobrevivencia, devendo se almejar tambem a promoção de um pleno DPI. Além das ações do programa Brasil Carinhoso, lançado em 2012, tem se desenvolvido no país importantes programas de Visitas Domiciliares para familias vulneraveis, com gravidas ou crianças pequenas, visando o fomento ao vinculo mae/familia e seu bebe e seu empoderamento para o  cuidado e estimulo ao DPI (Primeira Infancia Melhor, no Rio Grande do Sul, etc)"
+          "excerpt": "###Desenvolvimento Integral da Primeira Infância\n\nA primeira infância compreende o período da gestação até os 6 anos de idade, e é considerada o período mais importante para a formação e para o desenvolvimento social, cognitivo e emocional de um indivíduo. Evidencias sobre a importancia de investimento pelas familias e nações na promoção de um pleno Desenvolvimento na Primeira Infancia (DPI) têm se avolumado, por parte das Neurociencias, da Psicologia e do Nobel de Economia, James Heckman, que mostrou a associação entre investimento nesta faixa etaria e o desenvolvimento das nações. Para o Ministerio da Saúde,  com os avanços do país em relação a diminuição da mortaldade infantil não se pode mais pensar apenas em politicas de garantia  da sobrevivencia, devendo se almejar tambem a promoção de um pleno DPI. Além das ações do programa Brasil Carinhoso, lançado em 2012, tem se desenvolvido no país importantes programas de Visitas Domiciliares para familias vulneraveis, com gravidas ou crianças pequenas, visando o fomento ao vinculo mae/familia e seu bebe e seu empoderamento para o  cuidado e estimulo ao DPI (Primeira Infancia Melhor, no Rio Grande do Sul, etc)"
         }
       },
       "conteudo": {
