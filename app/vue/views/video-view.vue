@@ -95,7 +95,7 @@
 			background: #ccc;
 			display: inline-block;
 			margin: 4px;
-			color: black;
+			color: black; 
 			font-size: 10px;
 		}
 	}
