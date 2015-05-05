@@ -159,7 +159,7 @@
     },
     {
       "id": 6,
-      "title": "Vinculação da à Atenção Básica",
+      "title": "Vinculação à Atenção Básica",
       "icon": "conceito",
       "component": {
         "type": "text",
@@ -197,12 +197,12 @@
     },
     {
       "id": 8,
-      "title": "Vinculação da gestante a maternidade",
+      "title": "Vinculação da gestante",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Uma das principais diretrizes da Rede Cegonha é a garantia da vinculação de toda mulher grávida, à Maternidade onde deverá dar a luz. Isso deve acontecer já durante o Pré-natal."
+          "excerpt": "###Vinculação da gestante à maternidade\n\nUma das principais diretrizes da Rede Cegonha é a garantia da vinculação de toda mulher grávida, à Maternidade onde deverá dar a luz. Isso deve acontecer já durante o Pré-natal."
         }
       },
       "conteudo": {
@@ -216,7 +216,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": ""
+          "excerpt": "###Articulação do cuidado em rede"
         }
       },
       "conteudo": {
@@ -238,11 +238,11 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "![Método Canguru](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/04.png)\n\nO Método Canguru é uma política de saúde pública que reúne conhecimentos sobre as particularidades físicas e biológicas e sobre as necessidades de cuidados técnicos e psicológicos do casal grávido, da gestante, da mãe e do pai do RN pré termo e de toda a sua família. Abrange também a equipe de profissionais responsável por esse atendimento, buscando motivá-la para mudanças importantes em suas ações como cuidadores."
+          "excerpt": "O Método Canguru é uma política de saúde pública que reúne conhecimentos sobre as particularidades físicas e biológicas e sobre as necessidades de cuidados técnicos e psicológicos do casal grávido, da gestante, da mãe e do pai do RN pré termo e de toda a sua família. Abrange também a equipe de profissionais responsável por esse atendimento, buscando motivá-la para mudanças importantes em suas ações como cuidadores."
         }
       },
       "conteudo": {
-        "texto": "",
+        "texto": "![Método Canguru](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/04.png)\n\nO Método Canguru é uma política de saúde pública que reúne conhecimentos sobre as particularidades físicas e biológicas e sobre as necessidades de cuidados técnicos e psicológicos do casal grávido, da gestante, da mãe e do pai do RN pré termo e de toda a sua família. Abrange também a equipe de profissionais responsável por esse atendimento, buscando motivá-la para mudanças importantes em suas ações como cuidadores.",
         "arquivos": [{
           "nome": "PORTARIA Nº 1.683, DE 12 DE JULHO DE 2007",
           "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2007/prt1683_12_07_2007.html"
@@ -274,11 +274,11 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "![Cadernetas da criança](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/05.png)\n\nA Caderneta de Saúde da Criança traz o calendário básico de vacinação, além de gráficos de crescimento, desenvolvimento e diversas orientações para o cuidado da criança dos 0 aos 9 anos. É direito de toda criança nascida em território nacional receber a caderneta de saúde da criança logo após o nascimento."
+          "excerpt": "A Caderneta de Saúde da Criança traz o calendário básico de vacinação, além de gráficos de crescimento, desenvolvimento e diversas orientações para o cuidado da criança dos 0 aos 9 anos. É direito de toda criança nascida em território nacional receber a caderneta de saúde da criança logo após o nascimento."
         }
       },
       "conteudo": {
-        "texto": "",
+        "texto": "![Cadernetas da criança](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/05.png)\n\nA Caderneta de Saúde da Criança traz o calendário básico de vacinação, além de gráficos de crescimento, desenvolvimento e diversas orientações para o cuidado da criança dos 0 aos 9 anos. É direito de toda criança nascida em território nacional receber a caderneta de saúde da criança logo após o nascimento.",
         "arquivos": [{
           "nome": "Caderneta menino",
           "link": "http://bvsms.saude.gov.br/bvs/publicacoes/caderneta_saude_crianca_menino_9ed.pdf"
@@ -292,16 +292,16 @@
 
     {
       "id": 13,
-      "title": "Estratégia Amamenta e Alimenta Brasil",
+      "title": "Amamenta e Alimenta Brasil",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "![Cadernetas da criança](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/06.png)\n\nEm 2012, a Rede Amamenta Brasil foi integrada à Estratégia Nacional para a Alimentação Complementar Saudável (ENPACS) com o objetivo de qualificar o processo de trabalho dos profissionais da atenção básica para a promoção do aleitamento materno e da alimentação saudável para crianças menores de dois anos."
+          "excerpt": "###Estratégian Amamenta e Alimenta Brasil\n\nEm 2012, a Rede Amamenta Brasil foi integrada à Estratégia Nacional para a Alimentação Complementar Saudável (ENPACS) com o objetivo de qualificar o processo de trabalho dos profissionais da atenção básica para a promoção do aleitamento materno e da alimentação saudável para crianças menores de dois anos."
         }
       },
       "conteudo": {
-        "texto": "",
+        "texto": "![Amamenta Brasil](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/06.png)\n\nEm 2012, a Rede Amamenta Brasil foi integrada à Estratégia Nacional para a Alimentação Complementar Saudável (ENPACS) com o objetivo de qualificar o processo de trabalho dos profissionais da atenção básica para a promoção do aleitamento materno e da alimentação saudável para crianças menores de dois anos.",
         "arquivos": [{
           "nome": "ESTRATÉGIA AMAMENTA E ALIMENTA BRASIL",
           "link": "http://portalsaude.saude.gov.br/index.php/o-ministerio/principal/secretarias/515-sas-raiz/dapes/saude-da-crianca-e-aleitamento-materno/l3-saude-da-crianca-e-aleitamento-materno/10385-mortalidade-infantil"
@@ -385,7 +385,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": ""
+          "excerpt": "###Sobrepeso infantil"
         }
       },
       "conteudo": {
@@ -438,7 +438,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": ""
+          "excerpt": "###Conselhos Locais de Saúde"
         }
       },
       "conteudo": {
@@ -470,7 +470,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": ""
+          "excerpt": "###Co-gestão"
         }
       },
       "conteudo": {
