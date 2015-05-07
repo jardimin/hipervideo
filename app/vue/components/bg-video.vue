@@ -28,7 +28,9 @@
 			opacity: 0;
 			transform: scale(1.2);
 		}
-
+		i.fa {
+			opacity: 0.5;
+		}
 	}
 </style>
 

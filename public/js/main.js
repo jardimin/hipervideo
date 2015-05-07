@@ -185,7 +185,7 @@ var Vue = require('vue')
 ;(typeof module.exports === "function"? module.exports.options: module.exports).template = __vue_template__;
 
 },{"vue":97}],3:[function(require,module,exports){
-require("insert-css")(".hipVid{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#full:-webkit-full-screen .hipVid{z-index:0}#app.marco-fechado .hipVid{top:0}.hipVid-status{position:fixed;top:50%;left:50%;margin-top:-40px;margin-left:-35px;z-index:-99;transition:all .5s}.hipVid-status.is-play{opacity:0;transform:scale(1.2)}");
+require("insert-css")(".hipVid{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#full:-webkit-full-screen .hipVid{z-index:0}#app.marco-fechado .hipVid{top:0}.hipVid-status{position:fixed;top:50%;left:50%;margin-top:-40px;margin-left:-35px;z-index:-99;transition:all .5s}.hipVid-status.is-play{opacity:0;transform:scale(1.2)}.hipVid-status i.fa{opacity:.5}");
 var __vue_template__ = "<div class=\"hipVid-status\" v-class=\"is-play: playing\">\n		<i class=\"fa fa-5x\" v-class=\"fa-play: playing, fa-pause: !playing\"></i>\n	</div>\n	<video poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n		<source src=\"{{db.url}}_{{lib}}_{{qual}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n	</source></video>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
