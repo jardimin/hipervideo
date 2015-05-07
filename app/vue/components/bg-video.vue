@@ -143,6 +143,8 @@
 				// Calculate the slider value
 				var value = (1000 / self.hipervideo.duration) * self.hipervideo.currentTime;
 				var fillWidth = seekBar.value / 10;
+				var bufferEnd = self.hipervideo.buffered.end(0)
+				var bufferWidth = bufferEnd / self.hipervideo.duration * 100;
 				var tempo = toFormat(self.hipervideo.currentTime);
 				var t = self.hipervideo.currentTime;
 				tempoCorrido(tempo);
@@ -155,7 +157,8 @@
 				seekBar.value = value;
 				$$$('.rangeslider__fill').css('width', fillWidth+"%");
 				$$$('.rangeslider__handle').css('left', fillWidth+"%");
-
+				$$$('.rangeslider__buffer').css('width', bufferWidth+"%");
+				
 				// Dispatch timeupdate to parent
 				self.$dispatch('video-timeupdate', self.hipervideo.currentTime, self.hipervideo.duration, self.hipervideo.currentTime/self.hipervideo.duration);
 			});

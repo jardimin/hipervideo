@@ -15,6 +15,18 @@
 		transition: all 0.5s ease 0s;
 	}
 
+	.rangeslider__buffer {
+		background: rgba(255,255,255,0.2);
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 27px;
+		transition: all 0.5s ease 0s;
+		#video-controls.hover & {
+			height: 3px;
+		}
+	}
+
 	.rangeslider__handle {
 		width: 25px;
 		height: 25px;
@@ -110,6 +122,7 @@
 			<div style="position: relative; float: right;">:</div>
 			<div id="tp-tt-min">00</div>
 		</div>
+		<div class="rangeslider__buffer"></div>
 		<div class="rangeslider__fill context-bg" style="width: 0px;"></div>
 		<div class="rangeslider__handle" style="left: 0px;"></div>
 	</div>
