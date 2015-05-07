@@ -6,6 +6,7 @@
     padding-left: 40px;
     padding-right: 40px;
     transition: all 0.3s ease;
+    & img { width: 100%; }
     #app.marco-fechado & {
       height: 85%;
     }

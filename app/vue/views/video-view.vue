@@ -95,7 +95,7 @@
 			background: #ccc;
 			display: inline-block;
 			margin: 4px;
-			color: black;
+			color: black; 
 			font-size: 10px;
 		}
 	}
@@ -657,6 +657,7 @@
 						end: event.end,
 						fields: node.component.fields
 					})
+					console.log(this.contentBlocks[0].id)
 				}
 
 				if(node.geo){
