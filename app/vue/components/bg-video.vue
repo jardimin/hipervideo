@@ -16,9 +16,26 @@
 			top: 0;
 		}
 	}
+	.hipVid-status {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-top: -40px;
+		margin-left: -35px;
+		z-index: -99;
+		transition: all 0.5s;
+		&.is-play {
+			opacity: 0;
+			transform: scale(1.2);
+		}
+
+	}
 </style>
 
 <template>
+	<div class="hipVid-status" v-class="is-play: playing">
+		<i class="fa fa-5x" v-class="fa-play: playing, fa-pause: !playing"></i>
+	</div>
 	<video poster="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
 		<source src="{{db.url}}_{{lib}}_{{qual}}.mp4" type="video/mp4" id="mp4">
 	</video>
@@ -37,7 +54,8 @@
 				lib: 'normal',
 				timecodeAntigo: 0,
 				hipervideo: null,
-				timecode: 0
+				timecode: 0,
+				playing: true
 			}
 		},
 		created: function() {
@@ -187,9 +205,11 @@
 		methods: {
 			play: function(){
 				this.$$.hipervideo.play()
+				this.playing = true
 			},
 			pause: function(){
 				this.$$.hipervideo.pause()
+				this.playing = false
 			},
 			continuarTemp: function() {
 				this.hipervideo.currentTime = this.video.time

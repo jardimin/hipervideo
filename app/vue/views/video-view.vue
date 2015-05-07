@@ -400,7 +400,7 @@
 				console.log(self.seeking);
 
 				creditos.className = 'finalizado';
-				self.viid.pause();
+				self.videoPause();
 
 			}, false );
 
@@ -499,7 +499,7 @@
 			this.viid.removeEventListener( "ended", function() {
 
 				creditos.className = 'finalizado';
-				self.viid.pause();
+				self.videoPause();
 
 			}, false );
 			this.$off('block-timer-clicked')
@@ -605,9 +605,9 @@
 				switch(e.which) {
 					case 32 : 
 						if (video.paused && !this.hasInfo && this.$parent.redes === false) {
-							video.play();
+							this.videoPlay()
 						} else if (!video.paused) {
-							video.pause();
+							this.videoPause()
 						}
 						break;
 					case 13 : 
