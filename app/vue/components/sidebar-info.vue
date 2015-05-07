@@ -172,9 +172,10 @@
               list_data.push(video_data);
             });
             for (var i = list_data.length - 1; i >= 0; i--) {
-              $$$('.video-list').slick('slickAdd','<div><a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'" style="text-decoration: none; text-align: center;"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a><p>' + list_data[i].title + '</p></div>');
+              $$$('.video-list').slick('slickAdd','<div><a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'" style="text-decoration: none; text-align: center;" class="popup-iframe"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a><p>' + list_data[i].title + '</p></div>');
               self.videoIndex ++;
               console.log('videoIndex no create ' + self.videoIndex);
+              jQuery('.popup-iframe').magnificPopup({type:'iframe'});
             };
           });
         }
