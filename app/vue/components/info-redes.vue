@@ -45,14 +45,6 @@
     }
   }
 
-  .link {
-    font-weight: 900;
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    text-decoration: none;
-  }
-
   .mulher-bg {
     background-color: #ed1e79;
   }
@@ -101,18 +93,18 @@
     <div class="video-list-redes"></div>
     <h3 v-if="conteudo && conteudo.arquivos"> LINKS </h3>
     <div class="link {{conteudo.group}}-bg" v-repeat="conteudo.arquivos">
-      <a href="{{link}}" target="_blank" class="link">
+      <a href="{{link}}" target="_blank">
         {{nome | uppercase}}
       </a>
     </div>
     <h3 v-if="conteudo && conteudo.discursoes"> DISCUSSÃO </h3>
     <div class="link {{conteudo.group}}-bg" v-repeat="conteudo.discursoes">
-      <a href="{{link}}" target="_blank" class="link">
+      <a href="{{link}}" target="_blank">
         {{nome | uppercase}}
       </a>
     </div>
     <div class="link {{conteudo.icon}}-bg" v-if="conteudo && conteudo.hipervideo">
-      <a href="{{conteudo.hipervideo.link}}" class="link">
+      <a href="{{conteudo.hipervideo.link}}">
         {{conteudo.hipervideo.nome | uppercase}}
       </a>
     </div>
