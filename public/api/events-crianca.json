@@ -1,7 +1,7 @@
 {
   "timecode": [
     {"start":   60, "end":  70, "node": 1},
-    {"start":   105, "end":  113, "node": 2},
+    {"start":   83, "end":  93, "node": 2},
     {"start":  120, "end":  130, "node": 3},
     {"start":  131, "end":  143, "node": 4},
     {"start":  259, "end": 289, "node": 5},
@@ -16,27 +16,26 @@
     {"start": 530, "end": 550, "node": 14},
     {"start": 570, "end": 574, "node": 15},
     {"start": 630, "end": 640, "node": 16},
-    {"start": 720, "end": 730, "node": 17},
-    {"start": 780, "end": 790, "node": 18},
-    {"start": 808, "end": 818, "node": 19},
-    {"start": 847, "end": 857, "node": 20},
-    {"start": 1000, "end": 1010, "node": 21},
-    {"start": 1045, "end": 1055, "node": 22},
-    {"start": 99, "end": 104, "node": 23},
-    {"start": 114, "end": 119, "node": 24},
-    {"start": 145, "end": 150, "node": 25},
-    {"start": 235, "end": 240, "node": 26},
-    {"start": 328, "end": 333, "node": 27},
-    {"start": 403, "end": 408, "node": 28},
-    {"start": 423, "end": 428, "node": 29},
-    {"start": 438, "end": 443, "node": 30},
-    {"start": 523, "end": 528, "node": 31},
-    {"start": 552, "end": 557, "node": 32},
-    {"start": 575, "end": 580, "node": 33},
-    {"start": 711, "end": 716, "node": 34},
-    {"start": 742, "end": 747, "node": 35},
-    {"start": 841, "end": 846, "node": 36},
-    {"start": 951, "end": 956, "node": 37}
+    {"start": 780, "end": 790, "node": 17},
+    {"start": 808, "end": 818, "node": 18},
+    {"start": 847, "end": 857, "node": 19},
+    {"start": 1000, "end": 1010, "node": 20},
+    {"start": 1045, "end": 1055, "node": 21},
+    {"start": 99, "end": 104, "node": 22},
+    {"start": 114, "end": 119, "node": 23},
+    {"start": 145, "end": 150, "node": 24},
+    {"start": 235, "end": 240, "node": 25},
+    {"start": 328, "end": 333, "node": 26},
+    {"start": 403, "end": 408, "node": 27},
+    {"start": 423, "end": 428, "node": 28},
+    {"start": 438, "end": 443, "node": 29},
+    {"start": 523, "end": 528, "node": 30},
+    {"start": 552, "end": 557, "node": 31},
+    {"start": 575, "end": 580, "node": 32},
+    {"start": 711, "end": 716, "node": 33},
+    {"start": 742, "end": 747, "node": 34},
+    {"start": 841, "end": 846, "node": 35},
+    {"start": 951, "end": 956, "node": 36}
   ],
   "nodes": [
     {
@@ -63,14 +62,14 @@
     },
     {
       "id": 2,
-      "title": "Direitos ao Acompanhante",
+      "title": "Direito ao Acompanhante",
       "icon": "marco",
       "graph": true,
       "component": {
         "type": "text",
         "ano": 2005,
         "fields": {
-          "excerpt": "A lei, que está em vigor desde 2005, e determina que os hospitais, maternidades e assemelhados permitam a presença de um acompanhante indicado pela gestante para acompanhá-la durante o trabalho de parto, durante o parto e pós-parto (período por até 10 dias). Isso vale para todos os hospitais brasileiros, seja particular ou público. ![Direito ao acompanhante](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/01.png)"
+          "excerpt": "A lei, que está em vigor desde 2005, determina que os hospitais, maternidades e assemelhados permitam a presença de um acompanhante indicado pela gestante para acompanhá-la durante o trabalho de parto, durante o parto e pós-parto (período por até 10 dias). Isso vale para todos os hospitais brasileiros, seja particular ou público. ![Direito ao acompanhante](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/01.png)"
         }
       },
       "conteudo": {
@@ -100,12 +99,11 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "###Redução da Mortalidade Infantil e Neonatal\n\nO Brasil foi um dos primeiros países a atingir a meta 4 dos Objetivos de Desenvolvimento do Milênio (ODM), de redução da mortalidade na infancia em dois terços, até 2015. De 1990 até 2012, a mortalidade de crianças menores de 5 anos foi reduzida em 77%, passando de 66 para cada mil nascidos vivos para 14 por cada mil. Apesar dos avanços, ainda oermanecem como importantes desafios a diminuição da mortalidade neonatal (70% das mortes infantis) e o enfrentamento às iniquidades regionais e em grupos vulneraveis (indigenas, quilombolas, ribeirinhos, etc). ![Desenho Mãe com Bebe](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/02.png)"
+          "excerpt": "###Redução da Mortalidade Infantil e Neonatal\n\nO Brasil foi um dos primeiros países a atingir a meta 4 dos Objetivos de Desenvolvimento do Milênio (ODM), de redução da mortalidade na infância em dois terços, até 2015. De 1990 até 2012, a mortalidade de crianças menores de 5 anos foi reduzida em 77%, passando de 66 mortes para cada mil nascidos vivos para 14 por cada mil. Apesar dos avanços, ainda permanecem como desafios importantes a diminuição da mortalidade neonatal, que compreende o período de 0 a 27 dias do bebê, e que representa 70% das mortes infantis, bem como o enfrentamento às iniquidades regionais e em grupos vulneráveis, como indígenas, quilombolas, ribeirinhos, entre outros."
         }
       },
       "conteudo": {
-        "texto": "",
-        "databars": "15VFyCZBthNhiyn9mPBNB9B_Sre1mAxIwKCS8xkWA0pU"
+        "texto": ""
       }
     },
 
@@ -116,7 +114,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "A **Iniciativa Hospital Amigo da Criança** contribui para a diminuição da morbimortalidade infantil com o estímulo das Boas Práticas de parto e nascimento (OMS_1996), do incentivo ao aleitamento materno desde o contato pele a pele na sala de parto e do incentivo à amamentação na primeira hora de vida do bebê. Para um hospital se tornar Amigo da Criança é necessário que cumpra além desses critérios, a  Norma Brasileira de Comercialização de Alimentos para Lactentes e Crianças na Primeira Infância (NBCAL) e a Garantia da permanência da mãe ou pai, junto ao recém-nascido , durante as 24 horas, e livre acesso  a ambos ou  na  falta  destes, ao responsável legal."
+          "excerpt": "A **Iniciativa Hospital Amigo da Criança** contribui para a diminuição da morbimortalidade infantil com o estímulo das Boas Práticas de atenção ao parto e nascimento (OMS_1996), o incentivo ao aleitamento materno desde o contato pele a pele na sala de parto e o incentivo à amamentação na primeira hora de vida do bebê. Para um hospital se tornar Amigo da Criança é necessário que cumpra, além desses critérios, a Norma Brasileira de Comercialização de Alimentos para Lactentes e Crianças na Primeira Infância (NBCAL) e a garantia da permanência da mãe ou pai, junto ao recém-nascido internado, durante as 24 horas, com livre acesso de ambos ao bebê, ou na falta dos pais, ao responsável legal. ![Desenho Mãe com Bebe](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/02.png)"
         }
       },
       "conteudo": {
@@ -164,7 +162,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "###Vinculação da mãe/bebê à Atenção Básica\n\nAlém da apliação das vacinas contra Tuberculose (BCG) e Hepatite B, ainda na Maternidade, o RN deve também realizar os testes do Olhinho, da Orelhinha e do Coraçaozinho, previstos na Politica Nacional de Triagens Neonatais. O teste do pezinho (triagem neonatal biologica) na maior parte do país é realizado nas Unidades Basicas de Saúde, entre o 3º e o 5º dia de vida.![Atenção Basica](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/03.png)"
+          "excerpt": "###Vinculação da mãe/bebê à Atenção Básica\n\n Além da aplicação das vacinas contra Tuberculose (BCG) e Hepatite B, ainda na Maternidade, o recém-nascido deve também realizar os testes do Olhinho, da Orelhinha e do Coraçãozinho, previstos na Política Nacional de Triagens Neonatais. O teste do pezinho (triagem neonatal biológica), na maior parte do país, é realizado nas Unidades Básicas de Saúde, entre o 3º e o 5º dia de vida.![Atenção Basica](https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/FPA/arquivos/03.png)"
         }
       },
       "conteudo": {
@@ -202,7 +200,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "###Vinculação da gestante à maternidade\n\nUma das principais diretrizes da Rede Cegonha é a garantia da vinculação de toda mulher grávida, à Maternidade onde deverá dar a luz. Isso deve acontecer já durante o Pré-natal."
+          "excerpt": "###Vinculação da gestante à maternidade\n\nUma das principais diretrizes da Rede Cegonha é a garantia da vinculação de toda mulher grávida à Maternidade onde deverá dar à luz. Isso deve acontecer já durante o pré-natal."
         }
       },
       "conteudo": {
@@ -238,7 +236,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "O Método Canguru é uma política de saúde pública que reúne conhecimentos sobre as particularidades físicas e biológicas e sobre as necessidades de cuidados técnicos e psicológicos do casal grávido, da gestante, da mãe e do pai do RN pré termo e de toda a sua família. Abrange também a equipe de profissionais responsável por esse atendimento, buscando motivá-la para mudanças importantes em suas ações como cuidadores."
+          "excerpt": "O Método Canguru é uma política de saúde pública que reúne conhecimentos sobre as particularidades físicas e biológicas e sobre as necessidades de cuidados técnicos e psicológicos do casal grávido, da gestante, da mãe e do pai do recém-nascido pré-termo e de toda a sua família. Abrange também a equipe de profissionais responsável por esse atendimento, buscando motivá-la para mudanças importantes em suas ações como cuidadores."
         }
       },
       "conteudo": {
@@ -249,18 +247,18 @@
         },
         {
           "nome": "Método canguru:",
-          "link": "http://portalsaude.saude.gov.br/index.php/o-ministerio/principal/secretarias/562-sas-raiz/dapes/saude-da-crianca-e-aleitamento-"
+          "link": "http://portalsaude.saude.gov.br/index.php/o-ministerio/principal/secretarias/562-sas-raiz/dapes/saude-da-crianca-e-aleitamento-materno/l4-saude-da-crianca-e-aleitamento-materno/10387-vacinacao-infantil"
         }]
       }
     },
     {
       "id": 11,
-      "title": "Equipe multifuncional",
+      "title": "Equipe Multiprofissional",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "O atendimento ao Recem-nascido na Atenção Basica à Saúde é realizado por uma equipe multiprofissional, composta por médico de familia, enfermeiro, agentes de saúde, etc, com apoio de Pediatra e outros profissionais."
+          "excerpt": "O atendimento ao recém-nascido na Atenção Básica é realizado por uma equipe multiprofissional, composta por médico de família, enfermeiro, agentes de saúde, com apoio do Pediatra e de outros profissionais."
         }
       },
       "conteudo": {
@@ -331,7 +329,7 @@
         "type": "text",
         "ano": 2012,
         "fields": {
-          "excerpt": "###Brasil Carinhoso e Mulher Trabalhadora que Amamenta\n\nEm 2012, o Brasil se juntou ao seleto grupo de países que possuem politicas nacionais intersetoriais em prol da promoção do Desenvolvimento na Primeira Infancia (DPI), ao lançar o programa **BRASIL CARINHOSO**. Contempla ações de ampliação da oferta de Creches pelo MEC, de extensão do Bolsa Familia para familias com crianças na primeira infancia pelo Ministerio do Desenvolvimento Social (MDS) e, no caso do Ministerio da Saúde, fortalecimento da prevenção de Anemia Ferropriva e Hipovitaminose A e extensão do Programa Saúde na Escola (PSE) para creches e pre-escolas. A ação Mulher Trabalhadora que Amamenta consiste em criar nas empresas públicas e privadas uma cultura de respeito e apoio ao aleitamento materno, com a implementação de salas de apoio à amamentação nos locais de trabalho; a ampliação da licença maternidade para seis meses; possibilitar o acesso a creches no local de trabalho ou conveniadas; o cumprimento das leis que protegem a amamentação, entre outras ações."
+          "excerpt": "###Brasil Carinhoso e Mulher Trabalhadora que Amamenta\n\nEm 2012, o Brasil se juntou ao seleto grupo de países que possuem politicas nacionais intersetoriais em prol da promoção do Desenvolvimento na Primeira Infância (DPI), ao lançar o BRASIL CARINHOSO. O programa contempla ações de ampliação da oferta de Creches pelo Ministério da Educação (MEC), de extensão do Bolsa Família para famílias com crianças na primeira infância pelo Ministério do Desenvolvimento Social (MDS) e, no caso do Ministério da Saúde, fortalecimento da prevenção de Anemia Ferropriva e Hipovitaminose A e extensão do Programa Saúde na Escola (PSE) para creches e pré-escolas. A ação Mulher Trabalhadora que Amamenta consiste em criar nas empresas públicas e privadas uma cultura de respeito e apoio ao aleitamento materno, com a implementação de salas de apoio à amamentação nos locais de trabalho; a ampliação da licença maternidade para seis meses; possibilitar o acesso a creches no local de trabalho ou conveniadas; o cumprimento das leis que protegem a amamentação, entre outras ações."
         }
       },
       "conteudo": {
@@ -380,21 +378,6 @@
     },
     {
       "id": 17,
-      "title": "Sobrepeso infantil",
-      "icon": "conceito",
-      "component": {
-        "type": "text",
-        "fields": {
-          "excerpt": "###Sobrepeso infantil"
-        }
-      },
-      "conteudo": {
-        "texto": "",
-        "databars": "1vGBoduagQDGQhx6jAx74O19zSpZLMK2fbpZWkGGNMnc"
-      }
-    },
-    {
-      "id": 18,
       "title": "Programa Saúde na Escola",
       "icon": "marco",
       "graph": true,
@@ -418,13 +401,13 @@
       }
     },
     {
-      "id": 19,
-      "title": "PRIMEIRA INFÃNCIA",
+      "id": 18,
+      "title": "PRIMEIRA INFÂNCIA",
       "icon": "marco",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "###Desenvolvimento Integral da Primeira Infância\n\nA primeira infância compreende o período da gestação até os 6 anos de idade, e é considerada o período mais importante para a formação e para o desenvolvimento social, cognitivo e emocional de um indivíduo. Evidencias sobre a importancia de investimento pelas familias e nações na promoção de um pleno Desenvolvimento na Primeira Infancia (DPI) têm se avolumado, por parte das Neurociencias, da Psicologia e do Nobel de Economia, James Heckman, que mostrou a associação entre investimento nesta faixa etaria e o desenvolvimento das nações. Para o Ministerio da Saúde,  com os avanços do país em relação a diminuição da mortaldade infantil não se pode mais pensar apenas em politicas de garantia  da sobrevivencia, devendo se almejar tambem a promoção de um pleno DPI. Além das ações do programa Brasil Carinhoso, lançado em 2012, tem se desenvolvido no país importantes programas de Visitas Domiciliares para familias vulneraveis, com gravidas ou crianças pequenas, visando o fomento ao vinculo mae/familia e seu bebe e seu empoderamento para o  cuidado e estimulo ao DPI (Primeira Infancia Melhor, no Rio Grande do Sul, etc)"
+          "excerpt": "###Desenvolvimento Integral da Primeira Infância\n\n A primeira infância compreende o período da gestação até os 6 anos de idade, e é considerada o período mais importante para a formação e para o desenvolvimento social, cognitivo e emocional de um indivíduo. Evidências sobre a importância de investimento pelas famílias e nações na promoção de um pleno Desenvolvimento na Primeira Infância (DPI) têm se avolumado, por parte das Neurociências, da Psicologia e do ganhador do Prêmio Nobel de Economia James Heckman, que mostrou a associação entre investimento nesta faixa etária e o desenvolvimento das nações. Para o Ministério da Saúde, com os avanços do país em relação a diminuição da mortalidade infantil, não se pode mais pensar apenas em políticas de garantia da sobrevivência, devendo se almejar, também, a promoção de um pleno DPI. Além das ações do programa Brasil Carinhoso, lançado em 2012, importantes programas de Visitas Domiciliares para famílias vulneráveis, com gravidas ou crianças pequenas, estão sendo desenvolvidos,  visando o fomento ao vínculo mãe/família com o bebê e seu empoderamento para o cuidado e estimulo ao DPI. Um exemplo desses programas é o Primeira Infância Melhor, da Secretaria de Saúde do Rio Grande do Sul."
         }
       },
       "conteudo": {
@@ -432,7 +415,7 @@
       }
     },
     {
-      "id": 20,
+      "id": 19,
       "title": "Conselhos Locais de Saúde",
       "icon": "dispositivo",
       "component": {
@@ -450,7 +433,7 @@
       }
     },
     {
-      "id": 21,
+      "id": 20,
       "title": "Rede da Primeia Infância",
       "icon": "conceito",
       "component": {
@@ -464,7 +447,7 @@
       }
     },
     {
-      "id": 22,
+      "id": 21,
       "title": "Co-gestão",
       "icon": "conceito",
       "component": {
@@ -482,79 +465,79 @@
       }
     },
     {
-      "id": 23,
+      "id": 22,
       "title": "Dr. Carlos Alberto Justo da Silva",
       "funcao": "Diretor do Hospital Universitário Prof. Polydoro Ernani de Santiago"
     },
     {
-      "id": 24,
+      "id": 23,
       "title": "Dr. Paulo Vicente Bonilha Almeida",
-      "funcao": "Coordenador da Coordenação Geral da Saúde da Criança e Aleitamento Materno do Ministério da Saúde."
+      "funcao": "Coordenador Geral de Saúde da Criança e Aleitamento Materno do Ministério da Saúde"
+    },
+    {
+      "id": 24,
+      "title": "Caren Della Méa da Fonseca",
+      "funcao": "Enfermeira da Equipe de Saúde da Família do Centro de Saúde Carianos"
     },
     {
       "id": 25,
-      "title": "Caren Della Méa da Fonseca",
-      "funcao": "Enfermeira da Equipe de Saúde da Família do Centro de Saúde Carianos."
-    },
-    {
-      "id": 26,
       "title": "Sheila",
       "funcao": "Mãe no Hospital Universitário"
     },
     {
-      "id": 27,
+      "id": 26,
       "title": "Márcia Borck",
       "funcao": "Enfermeira da UTI Neonatal do Hospital Universitário"
     },
     {
-      "id": 28,
+      "id": 27,
       "title": "Rita de Cassia",
       "funcao": "Enfermeira da Maternidade do Hospital Universitário – UFSC "
     },
     {
-      "id": 29,
+      "id": 28,
       "title": "Jorge Ernesto Zepeda",
       "funcao": "Diretor da Atenção Primaria a Saúde da Secretaria Municipal de Saúde de Florianópolis"
     },
     {
-      "id": 30,
+      "id": 29,
       "title": "Marcia Sueli Del Castanhel",
       "funcao": "Coordenadora da Saúde da Criança/Capital Criança – SMS Florianópolis"
     },
     {
-      "id": 31,
+      "id": 30,
       "title": "Maria Izabel Machado Costa",
       "funcao": "Técnica de Enfermagem do Centro de Saúde Carianos"
     },
     {
-      "id": 32,
+      "id": 31,
       "title": "Patricia Mattos Carvalho",
       "funcao": "Mãe"
     },
     {
-      "id": 33,
+      "id": 32,
       "title": "Marli Conceição Marques Moreira",
       "funcao": "Professora da Creche Joaquina"
     },
     {
-      "id": 34,
+      "id": 33,
       "title": "Candice Boppre Besen",
       "funcao": "Coordenadora do Programa Saúde na Escola da SMS Florianópolis"
     },
     {
-      "id": 35,
+      "id": 34,
       "title": "Carlos Daniel Moutinho Junior",
       "funcao": "Secretario Municipal de Saúde de Florianópolis"
     },
     {
-      "id": 36,
+      "id": 35,
       "title": "Marivone da Silva",
       "funcao": "Agente Comunitario de Saude do Centro de Saude do Itacorubi"
     },
     {
-      "id": 37,
+      "id": 36,
       "title": "Evanguelia Atherino dos Santos",
-      "funcao": "Profa. Dra. do Departamento de Enfermagem da UFSC e Consultora"
+      "funcao": "Profa. Dra. do Departamento de Enfermagem da UFSC e Consultora do Ministério da Saúde"
     }
   ],
   "edges": [
@@ -580,7 +563,6 @@
     {"source": 0,"target": 18},
     {"source": 0,"target": 19},
     {"source": 0,"target": 20},
-    {"source": 0,"target": 21},
-    {"source": 0,"target": 22}
+    {"source": 0,"target": 21}
   ]
 }
