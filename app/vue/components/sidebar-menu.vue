@@ -120,7 +120,7 @@
         isAlmost: false,
         menuAcess: true,
         menuHip: false,
-        menuQual: true,
+        menuQual: false,
         infoOpen: false
       }
     },

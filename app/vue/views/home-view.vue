@@ -369,6 +369,17 @@
       isNada: function() {
         return this.$parent.acessibilidade === 'nada';
       },
+      hipId: {
+      	get: function() {
+      		var hip = this.$data.db.hipervideos
+					var ids = []
+					for (var i = 0, antes = 0; i < hip.length; i++) {
+						var hipid = hip[i].id
+						ids.push(hipid)
+					}
+					return ids
+      	}
+      },
 			posHip: {
 				get: function() {
 					var hip = this.$data.db.hipervideos
@@ -389,8 +400,8 @@
 			var version = useragent.Version.split('.')
 
 			var cond0 = browser.search("Chrome") === -1
-			var cond1 = browser.search("Firefox") !== -1 && Number(version[0]) < 22
-			var cond2 = browser.search("Chrome") !== -1 && Number(version[0]) < 28
+			var cond1 = browser.search("Firefox") !== -1 && Number(version[0]) < 23
+			var cond2 = browser.search("Chrome") !== -1 && Number(version[0]) < 29
 			
 			var animation = {
 				open: {height: 'toggle'}, // jQuery animate function property object
@@ -408,6 +419,7 @@
 					theme: 'relax',
 					type: 'warning',
 					text: 'Recomendamos a utilização do navegador GOOGLE CHROME para uma melhor experiência.',
+					closeWith: ['button', 'click'],
 					animation: animation,
 				})
 
@@ -422,6 +434,7 @@
 					theme: 'relax',
 					type: 'warning',
 					text: 'Você está usando a versão ' + useragent.Version + ' do Firefox. Recomendamos que você atualize o Firefox para a última versão.',
+					closeWith: ['button', 'click'],
 					animation: animation
 				})
 
@@ -436,6 +449,7 @@
 					theme: 'relax',
 					type: 'warning',
 					text: 'Você está usando a versão ' + useragent.Version + ' do Chrome. Recomendamos que você atualize o Chrome para a última versão.',
+					closeWith: ['button', 'click'],
 					animation: animation
 				})
 

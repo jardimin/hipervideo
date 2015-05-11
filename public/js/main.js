@@ -2037,7 +2037,7 @@ var _ = require('underscore')
 ;(typeof module.exports === "function"? module.exports.options: module.exports).template = __vue_template__;
 
 },{"insert-css":29,"underscore":36}],20:[function(require,module,exports){
-require("insert-css")("#conteudo_info{overflow:hidden;position:relative;height:96%;padding-left:40px;padding-right:40px;transition:all .3s ease}#conteudo_info img{width:100%}#app.marco-fechado #conteudo_info{height:100%}.info-texto{letter-spacing:0}.image-list img{position:relative;float:left;margin-right:10px}.video-list img{position:relative;float:left;margin-right:10px;width:220px}.mulher-bg{background-color:#ed1e79}.adolescente-bg{background-color:#00a300}.crianca-bg{background-color:#0cc}.prisional-bg{background-color:red}.deficiencia-bg{background-color:#00c}");
+require("insert-css")("#conteudo_info{overflow:hidden;position:relative;height:96%;padding-left:40px;padding-right:40px;transition:all .3s ease}#conteudo_info img{width:100%}#app.marco-fechado #conteudo_info{height:100%}.info-texto{letter-spacing:0}.image-list img{position:relative;float:left;margin-right:10px}.video-list img{position:relative;float:left;margin-right:10px;width:220px}.video-list .slick-next{right:-25px!important}.video-list .slick-prev{left:-25px!important}.mulher-bg{background-color:#ed1e79}.adolescente-bg{background-color:#00a300}.crianca-bg{background-color:#0cc}.prisional-bg{background-color:red}.deficiencia-bg{background-color:#00c}");
 var __vue_template__ = "<div style=\"height: 100%\">\n  <div class=\"border context-bg\"></div>\n  <div id=\"conteudo_info\">\n\n    <div v-component=\"in-mapa\" v-with=\"mapa: conteudo.mapa\" v-if=\"conteudo &amp;&amp; hasMap\"></div>\n\n    <h2 v-if=\"conteudo &amp;&amp; conteudo.title\"> \n      {{conteudo.title}} \n    </h2>\n    <div class=\"info-texto\">\n      {{{html_texto | marked}}}\n    </div>\n\n    <div v-component=\"in-databars\" v-with=\"databars: conteudo.databars\" v-if=\"conteudo &amp;&amp; hasDatabars\"></div>\n    \n    <h3 v-if=\"conteudo &amp;&amp; conteudo.imagens\"> IMAGENS </h3>\n    <div class=\"image-list\"></div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.video_list\"> VÍDEOS </h3>\n    <div class=\"video-list\"></div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.arquivos\"> LINKS </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.arquivos\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <h3 v-if=\"conteudo &amp;&amp; conteudo.discursoes\"> DISCUSSÃO </h3>\n    <div class=\"link context-bg\" v-repeat=\"conteudo.discursoes\">\n      <a href=\"{{link}}\" target=\"_blank\" class=\"context-bg\">\n        {{nome | uppercase}}\n      </a>\n    </div>\n    <div class=\"link {{conteudo.icon}}-bg\" v-if=\"conteudo &amp;&amp; conteudo.hipervideo\">\n      <a href=\"{{conteudo.hipervideo.link}}\" class=\"{{conteudo.icon}}-bg\">\n        {{conteudo.hipervideo.nome | uppercase}}\n      </a>\n    </div>\n  </div>\n  <a class=\"back\" href=\"#/{{id}}\">voltar ao vídeo</a>\n  </div>";
 var Vue = require('vue')
   var $$$ = require('jquery')
@@ -2178,7 +2178,7 @@ var $$$ = require('jquery')
         isAlmost: false,
         menuAcess: true,
         menuHip: false,
-        menuQual: true,
+        menuQual: false,
         infoOpen: false
       }
     },
@@ -2721,6 +2721,17 @@ var $$$ = require('jquery')
       isNada: function() {
         return this.$parent.acessibilidade === 'nada';
       },
+      hipId: {
+      	get: function() {
+      		var hip = this.$data.db.hipervideos
+					var ids = []
+					for (var i = 0, antes = 0; i < hip.length; i++) {
+						var hipid = hip[i].id
+						ids.push(hipid)
+					}
+					return ids
+      	}
+      },
 			posHip: {
 				get: function() {
 					var hip = this.$data.db.hipervideos
@@ -2741,8 +2752,8 @@ var $$$ = require('jquery')
 			var version = useragent.Version.split('.')
 
 			var cond0 = browser.search("Chrome") === -1
-			var cond1 = browser.search("Firefox") !== -1 && Number(version[0]) < 22
-			var cond2 = browser.search("Chrome") !== -1 && Number(version[0]) < 28
+			var cond1 = browser.search("Firefox") !== -1 && Number(version[0]) < 23
+			var cond2 = browser.search("Chrome") !== -1 && Number(version[0]) < 29
 			
 			var animation = {
 				open: {height: 'toggle'}, // jQuery animate function property object
@@ -2760,6 +2771,7 @@ var $$$ = require('jquery')
 					theme: 'relax',
 					type: 'warning',
 					text: 'Recomendamos a utilização do navegador GOOGLE CHROME para uma melhor experiência.',
+					closeWith: ['button', 'click'],
 					animation: animation,
 				})
 
@@ -2774,6 +2786,7 @@ var $$$ = require('jquery')
 					theme: 'relax',
 					type: 'warning',
 					text: 'Você está usando a versão ' + useragent.Version + ' do Firefox. Recomendamos que você atualize o Firefox para a última versão.',
+					closeWith: ['button', 'click'],
 					animation: animation
 				})
 
@@ -2788,6 +2801,7 @@ var $$$ = require('jquery')
 					theme: 'relax',
 					type: 'warning',
 					text: 'Você está usando a versão ' + useragent.Version + ' do Chrome. Recomendamos que você atualize o Chrome para a última versão.',
+					closeWith: ['button', 'click'],
 					animation: animation
 				})
 
@@ -4024,7 +4038,7 @@ module.exports = function (css, options) {
 
 },{}],30:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.1.3
+ * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -4034,7 +4048,7 @@ module.exports = function (css, options) {
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-12-18T15:11Z
+ * Date: 2015-04-28T16:01Z
  */
 
 (function( global, factory ) {
@@ -4092,7 +4106,7 @@ var
 	// Use the correct document accordingly with window argument (sandbox)
 	document = window.document,
 
-	version = "2.1.3",
+	version = "2.1.4",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -4556,7 +4570,12 @@ jQuery.each("Boolean Number String Function Array Date RegExp Object Error".spli
 });
 
 function isArraylike( obj ) {
-	var length = obj.length,
+
+	// Support: iOS 8.2 (not reproducible in simulator)
+	// `in` check used to prevent JIT error (gh-2145)
+	// hasOwn isn't used here due to false negatives
+	// regarding Nodelist length in IE
+	var length = "length" in obj && obj.length,
 		type = jQuery.type( obj );
 
 	if ( type === "function" || jQuery.isWindow( obj ) ) {
@@ -26011,7 +26030,7 @@ return window.noty;
 |___/_|_|\___|_|\_(_)/ |___/
                    |__/
 
- Version: 1.4.1
+ Version: 1.5.2
   Author: Ken Wheeler
  Website: http://kenwheeler.github.io
     Docs: http://kenwheeler.github.io/slick
@@ -26019,9 +26038,7 @@ return window.noty;
   Issues: http://github.com/kenwheeler/slick/issues
 
  */
-
 /* global window, document, define, jQuery, setInterval, clearInterval */
-
 (function(factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
@@ -26077,8 +26094,10 @@ return window.noty;
                 pauseOnDotsHover: false,
                 respondTo: 'window',
                 responsive: null,
+                rows: 1,
                 rtl: false,
                 slide: '',
+                slidesPerRow: 1,
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 speed: 500,
@@ -26089,6 +26108,7 @@ return window.noty;
                 useCSS: true,
                 variableWidth: false,
                 vertical: false,
+                verticalSwiping: false,
                 waitForAnimate: true
             };
 
@@ -26126,16 +26146,17 @@ return window.noty;
             _.breakpoints = [];
             _.breakpointSettings = [];
             _.cssTransitions = false;
-            _.hidden = "hidden";
+            _.hidden = 'hidden';
             _.paused = false;
             _.positionProp = null;
             _.respondTo = null;
+            _.rowCount = 1;
             _.shouldClick = true;
             _.$slider = $(element);
             _.$slidesCache = null;
             _.transformType = null;
             _.transitionType = null;
-            _.visibilityChange = "visibilitychange";
+            _.visibilityChange = 'visibilitychange';
             _.windowWidth = 0;
             _.windowTimer = null;
 
@@ -26149,18 +26170,18 @@ return window.noty;
             responsiveSettings = _.options.responsive || null;
 
             if (responsiveSettings && responsiveSettings.length > -1) {
-                _.respondTo = _.options.respondTo || "window";
+                _.respondTo = _.options.respondTo || 'window';
                 for (breakpoint in responsiveSettings) {
                     if (responsiveSettings.hasOwnProperty(breakpoint)) {
                         _.breakpoints.push(responsiveSettings[
                             breakpoint].breakpoint);
                         _.breakpointSettings[responsiveSettings[
-                            breakpoint].breakpoint] =
+                                breakpoint].breakpoint] =
                             responsiveSettings[breakpoint].settings;
                     }
                 }
                 _.breakpoints.sort(function(a, b) {
-                    if(_.options.mobileFirst === true) {
+                    if (_.options.mobileFirst === true) {
                         return a - b;
                     } else {
                         return b - a;
@@ -26168,15 +26189,12 @@ return window.noty;
                 });
             }
 
-            if (typeof document.mozHidden !== "undefined") {
-                _.hidden = "mozHidden";
-                _.visibilityChange = "mozvisibilitychange";
-            } else if (typeof document.msHidden !== "undefined") {
-                _.hidden = "msHidden";
-                _.visibilityChange = "msvisibilitychange";
-            } else if (typeof document.webkitHidden !== "undefined") {
-                _.hidden = "webkitHidden";
-                _.visibilityChange = "webkitvisibilitychange";
+            if (typeof document.mozHidden !== 'undefined') {
+                _.hidden = 'mozHidden';
+                _.visibilityChange = 'mozvisibilitychange';
+            } else if (typeof document.webkitHidden !== 'undefined') {
+                _.hidden = 'webkitHidden';
+                _.visibilityChange = 'webkitvisibilitychange';
             }
 
             _.autoPlay = $.proxy(_.autoPlay, _);
@@ -26243,7 +26261,7 @@ return window.noty;
         _.$slideTrack.append(_.$slides);
 
         _.$slides.each(function(index, element) {
-            $(element).attr("data-slick-index",index);
+            $(element).attr('data-slick-index', index);
         });
 
         _.$slidesCache = _.$slides;
@@ -26252,17 +26270,20 @@ return window.noty;
 
     };
 
-    Slick.prototype.animateHeight = function(){
+    Slick.prototype.animateHeight = function() {
         var _ = this;
-        if(_.options.slidesToShow === 1 && _.options.adaptiveHeight === true && _.options.vertical === false) {
+        if (_.options.slidesToShow === 1 && _.options.adaptiveHeight === true && _.options.vertical === false) {
             var targetHeight = _.$slides.eq(_.currentSlide).outerHeight(true);
-            _.$list.animate({height: targetHeight},_.options.speed);
+            _.$list.animate({
+                height: targetHeight
+            }, _.options.speed);
         }
     };
 
     Slick.prototype.animateSlide = function(targetLeft, callback) {
 
-        var animProps = {}, _ = this;
+        var animProps = {},
+            _ = this;
 
         _.animateHeight();
 
@@ -26340,8 +26361,9 @@ return window.noty;
     };
 
     Slick.prototype.asNavFor = function(index) {
-        var _ = this, asNavFor = _.options.asNavFor !== null ? $(_.options.asNavFor).slick('getSlick') : null;
-        if(asNavFor !== null) asNavFor.slideHandler(index, true);
+        var _ = this,
+            asNavFor = _.options.asNavFor !== null ? $(_.options.asNavFor).slick('getSlick') : null;
+        if (asNavFor !== null) asNavFor.slideHandler(index, true);
     };
 
     Slick.prototype.applyTransition = function(slide) {
@@ -26465,7 +26487,7 @@ return window.noty;
             _.$dots = $(dotString).appendTo(
                 _.options.appendDots);
 
-            _.$dots.find('li').first().addClass('slick-active').attr("aria-hidden","false");
+            _.$dots.find('li').first().addClass('slick-active').attr('aria-hidden', 'false');
 
         }
 
@@ -26475,13 +26497,13 @@ return window.noty;
 
         var _ = this;
 
-        _.$slides = _.$slider.children(_.options.slide +
+        _.$slides = _.$slider.children(
             ':not(.slick-cloned)').addClass(
             'slick-slide');
         _.slideCount = _.$slides.length;
 
         _.$slides.each(function(index, element) {
-            $(element).attr("data-slick-index",index);
+            $(element).attr('data-slick-index', index);
         });
 
         _.$slidesCache = _.$slides;
@@ -26522,18 +26544,53 @@ return window.noty;
 
     };
 
+    Slick.prototype.buildRows = function() {
+
+        var _ = this, a, b, c, newSlides, numOfSlides, originalSlides,slidesPerSection;
+
+        newSlides = document.createDocumentFragment();
+        originalSlides = _.$slider.children();
+
+        if(_.options.rows > 1) {
+            slidesPerSection = _.options.slidesPerRow * _.options.rows;
+            numOfSlides = Math.ceil(
+                originalSlides.length / slidesPerSection
+            );
+
+            for(a = 0; a < numOfSlides; a++){
+                var slide = document.createElement('div');
+                for(b = 0; b < _.options.rows; b++) {
+                    var row = document.createElement('div');
+                    for(c = 0; c < _.options.slidesPerRow; c++) {
+                        var target = (a * slidesPerSection + ((b * _.options.slidesPerRow) + c));
+                        if (originalSlides.get(target)) {
+                            row.appendChild(originalSlides.get(target));
+                        }
+                    }
+                    slide.appendChild(row);
+                }
+                newSlides.appendChild(slide);
+            };
+            _.$slider.html(newSlides);
+            _.$slider.children().children().children()
+                .width((100 / _.options.slidesPerRow) + "%")
+                .css({'display': 'inline-block'});
+        };
+
+    };
+
     Slick.prototype.checkResponsive = function(initial) {
 
         var _ = this,
             breakpoint, targetBreakpoint, respondToWidth;
         var sliderWidth = _.$slider.width();
         var windowWidth = window.innerWidth || $(window).width();
-        if (_.respondTo === "window") {
-          respondToWidth = windowWidth;
-        } else if (_.respondTo === "slider") {
-          respondToWidth = sliderWidth;
-        } else if (_.respondTo === "min") {
-          respondToWidth = Math.min(windowWidth, sliderWidth);
+        if (_.respondTo === 'window') {
+            respondToWidth = windowWidth;
+        } else if (_.respondTo === 'slider') {
+            respondToWidth = sliderWidth;
+        } else if (_.respondTo === 'min') {
+            respondToWidth = Math.min(windowWidth, sliderWidth);
         }
 
         if (_.originalSettings.responsive && _.originalSettings
@@ -26560,37 +26617,40 @@ return window.noty;
                     if (targetBreakpoint !== _.activeBreakpoint) {
                         _.activeBreakpoint =
                             targetBreakpoint;
-                        if(_.breakpointSettings[targetBreakpoint] === "unslick") {
+                        if (_.breakpointSettings[targetBreakpoint] === 'unslick') {
                             _.unslick();
                         } else {
                             _.options = $.extend({}, _.originalSettings,
                                 _.breakpointSettings[
                                     targetBreakpoint]);
-                            if(initial === true)
+                            if (initial === true)
                                 _.currentSlide = _.options.initialSlide;
                             _.refresh();
                         }
+                        _.$slider.trigger('breakpoint', [_, targetBreakpoint]);
                     }
                 } else {
                     _.activeBreakpoint = targetBreakpoint;
-                    if(_.breakpointSettings[targetBreakpoint] === "unslick") {
+                    if (_.breakpointSettings[targetBreakpoint] === 'unslick') {
                         _.unslick();
                     } else {
                         _.options = $.extend({}, _.originalSettings,
                             _.breakpointSettings[
                                 targetBreakpoint]);
-                        if(initial === true)
+                        if (initial === true)
                             _.currentSlide = _.options.initialSlide;
                         _.refresh();
                     }
+                    _.$slider.trigger('breakpoint', [_, targetBreakpoint]);
                 }
             } else {
                 if (_.activeBreakpoint !== null) {
                     _.activeBreakpoint = null;
                     _.options = _.originalSettings;
-                    if(initial === true)
+                    if (initial === true)
                         _.currentSlide = _.options.initialSlide;
                     _.refresh();
+                    _.$slider.trigger('breakpoint', [_, targetBreakpoint]);
                 }
             }
 
@@ -26615,7 +26675,7 @@ return window.noty;
             case 'previous':
                 slideOffset = indexOffset === 0 ? _.options.slidesToScroll : _.options.slidesToShow - indexOffset;
                 if (_.slideCount > _.options.slidesToShow) {
-                    _.slideHandler(_.currentSlide  - slideOffset, false, dontAnimate);
+                    _.slideHandler(_.currentSlide - slideOffset, false, dontAnimate);
                 }
                 break;
 
@@ -26641,15 +26701,16 @@ return window.noty;
 
     Slick.prototype.checkNavigable = function(index) {
 
-        var _ = this, navigables, prevNavigable;
+        var _ = this,
+            navigables, prevNavigable;
 
         navigables = _.getNavigableIndexes();
         prevNavigable = 0;
-        if(index > navigables[navigables.length -1]){
-            index = navigables[navigables.length -1];
+        if (index > navigables[navigables.length - 1]) {
+            index = navigables[navigables.length - 1];
         } else {
-            for(var n in navigables) {
-                if(index < navigables[n]) {
+            for (var n in navigables) {
+                if (index < navigables[n]) {
                     index = prevNavigable;
                     break;
                 }
@@ -26660,11 +26721,72 @@ return window.noty;
         return index;
     };
 
+    Slick.prototype.cleanUpEvents = function() {
+
+        var _ = this;
+
+        if (_.options.dots === true && _.slideCount > _.options.slidesToShow) {
+            $('li', _.$dots).off('click.slick', _.changeSlide);
+        }
+
+        if (_.options.dots === true && _.options.pauseOnDotsHover === true && _.options.autoplay === true) {
+            $('li', _.$dots)
+                .off('mouseenter.slick', $.proxy(_.setPaused, _, true))
+                .off('mouseleave.slick', $.proxy(_.setPaused, _, false));
+        }
+
+        if (_.options.arrows === true && _.slideCount > _.options.slidesToShow) {
+            _.$prevArrow && _.$prevArrow.off('click.slick', _.changeSlide);
+            _.$nextArrow && _.$nextArrow.off('click.slick', _.changeSlide);
+        }
+
+        _.$list.off('touchstart.slick mousedown.slick', _.swipeHandler);
+        _.$list.off('touchmove.slick mousemove.slick', _.swipeHandler);
+        _.$list.off('touchend.slick mouseup.slick', _.swipeHandler);
+        _.$list.off('touchcancel.slick mouseleave.slick', _.swipeHandler);
+
+        _.$list.off('click.slick', _.clickHandler);
+
+        $(document).off(_.visibilityChange, _.visibility);
+
+        _.$list.off('mouseenter.slick', $.proxy(_.setPaused, _, true));
+        _.$list.off('mouseleave.slick', $.proxy(_.setPaused, _, false));
+
+        if (_.options.accessibility === true) {
+            _.$list.off('keydown.slick', _.keyHandler);
+        }
+
+        if (_.options.focusOnSelect === true) {
+            $(_.$slideTrack).children().off('click.slick', _.selectHandler);
+        }
+
+        $(window).off('orientationchange.slick.slick-' + _.instanceUid, _.orientationChange);
+
+        $(window).off('resize.slick.slick-' + _.instanceUid, _.resize);
+
+        $('[draggable!=true]', _.$slideTrack).off('dragstart', _.preventDefault);
+
+        $(window).off('load.slick.slick-' + _.instanceUid, _.setPosition);
+        $(document).off('ready.slick.slick-' + _.instanceUid, _.setPosition);
+    };
+
+    Slick.prototype.cleanUpRows = function() {
+
+        var _ = this, originalSlides;
+
+        if(_.options.rows > 1) {
+            originalSlides = _.$slides.children().children();
+            originalSlides.removeAttr('style');
+            _.$slider.html(originalSlides);
+        }
+
+    };
+
     Slick.prototype.clickHandler = function(event) {
 
         var _ = this;
 
-        if(_.shouldClick === false) {
+        if (_.shouldClick === false) {
             event.stopImmediatePropagation();
             event.stopPropagation();
             event.preventDefault();
@@ -26680,7 +26802,10 @@ return window.noty;
 
         _.touchObject = {};
 
-        $('.slick-cloned', _.$slider).remove();
+        _.cleanUpEvents();
+
+        $('.slick-cloned', _.$slider).detach();
+
         if (_.$dots) {
             _.$dots.remove();
         }
@@ -26691,27 +26816,32 @@ return window.noty;
             _.$nextArrow.remove();
         }
 
+        if (_.$slides) {
+            _.$slides.removeClass('slick-slide slick-active slick-center slick-visible')
+                .removeAttr('aria-hidden')
+                .removeAttr('data-slick-index')
+                .css({
+                    position: '',
+                    left: '',
+                    top: '',
+                    zIndex: '',
+                    opacity: '',
+                    width: ''
+                });
 
-        _.$slides.removeClass('slick-slide slick-active slick-center slick-visible')
-            .attr("aria-hidden","true")
-            .removeAttr('data-slick-index')
-            .css({
-                position: '',
-                left: '',
-                top: '',
-                zIndex: '',
-                opacity: '',
-                width: ''
-            });
+            _.$slideTrack.children(this.options.slide).detach();
+
+            _.$slideTrack.detach();
+
+            _.$list.detach();
+
+            _.$slider.append(_.$slides);
+        }
+
+        _.cleanUpRows();
 
         _.$slider.removeClass('slick-slider');
         _.$slider.removeClass('slick-initialized');
-
-        _.$list.off('.slick');
-        $(window).off('.slick-' + _.instanceUid);
-        $(document).off('.slick-' + _.instanceUid);
-
-        _.$slider.html(_.$slides);
 
     };
 
@@ -26720,7 +26850,7 @@ return window.noty;
         var _ = this,
             transition = {};
 
-        transition[_.transitionType] = "";
+        transition[_.transitionType] = '';
 
         if (_.options.fade === false) {
             _.$slideTrack.css(transition);
@@ -26799,15 +26929,19 @@ return window.noty;
         var counter = 0;
         var pagerQty = 0;
 
-        if(_.options.infinite === true) {
-            pagerQty = Math.ceil(_.slideCount / _.options.slidesToScroll);
+        if (_.options.infinite === true) {
+            while (breakPoint < _.slideCount) {
+                ++pagerQty;
+                breakPoint = counter + _.options.slidesToShow;
+                counter += _.options.slidesToScroll <= _.options.slidesToShow ? _.options.slidesToScroll : _.options.slidesToShow;
+            }
         } else if (_.options.centerMode === true) {
             pagerQty = _.slideCount;
         } else {
-            while (breakPoint < _.slideCount){
+            while (breakPoint < _.slideCount) {
                 ++pagerQty;
                 breakPoint = counter + _.options.slidesToShow;
-                counter += _.options.slidesToScroll <= _.options.slidesToShow ? _.options.slidesToScroll  : _.options.slidesToShow;
+                counter += _.options.slidesToScroll <= _.options.slidesToShow ? _.options.slidesToScroll : _.options.slidesToShow;
             }
         }
 
@@ -26833,7 +26967,7 @@ return window.noty;
             }
             if (_.slideCount % _.options.slidesToScroll !== 0) {
                 if (slideIndex + _.options.slidesToScroll > _.slideCount && _.slideCount > _.options.slidesToShow) {
-                    if(slideIndex > _.slideCount) {
+                    if (slideIndex > _.slideCount) {
                         _.slideOffset = ((_.options.slidesToShow - (slideIndex - _.slideCount)) * _.slideWidth) * -1;
                         verticalOffset = ((_.options.slidesToShow - (slideIndex - _.slideCount)) * verticalHeight) * -1;
                     } else {
@@ -26843,13 +26977,13 @@ return window.noty;
                 }
             }
         } else {
-            if(slideIndex + _.options.slidesToShow > _.slideCount) {
+            if (slideIndex + _.options.slidesToShow > _.slideCount) {
                 _.slideOffset = ((slideIndex + _.options.slidesToShow) - _.slideCount) * _.slideWidth;
                 verticalOffset = ((slideIndex + _.options.slidesToShow) - _.slideCount) * verticalHeight;
             }
         }
 
-        if (_.slideCount <= _.options.slidesToShow){
+        if (_.slideCount <= _.options.slidesToShow) {
             _.slideOffset = 0;
             verticalOffset = 0;
         }
@@ -26878,7 +27012,7 @@ return window.noty;
             targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
 
             if (_.options.centerMode === true) {
-                if(_.options.infinite === false) {
+                if (_.options.infinite === false) {
                     targetSlide = _.$slideTrack.children('.slick-slide').eq(slideIndex);
                 } else {
                     targetSlide = _.$slideTrack.children('.slick-slide').eq(slideIndex + _.options.slidesToShow + 1);
@@ -26902,21 +27036,25 @@ return window.noty;
 
     Slick.prototype.getNavigableIndexes = function() {
 
-        var _ = this, breakPoint = 0, counter = 0, indexes = [], max;
+        var _ = this,
+            breakPoint = 0,
+            counter = 0,
+            indexes = [],
+            max;
 
-        if(_.options.infinite === false) {
+        if (_.options.infinite === false) {
             max = _.slideCount - _.options.slidesToShow + 1;
             if (_.options.centerMode === true) max = _.slideCount;
         } else {
-            breakPoint = _.slideCount * -1;
-            counter = _.slideCount * -1;
+            breakPoint = _.options.slidesToScroll * -1;
+            counter = _.options.slidesToScroll * -1;
             max = _.slideCount * 2;
         }
 
-        while (breakPoint < max){
+        while (breakPoint < max) {
             indexes.push(breakPoint);
             breakPoint = counter + _.options.slidesToScroll;
-            counter += _.options.slidesToScroll <= _.options.slidesToShow ? _.options.slidesToScroll  : _.options.slidesToShow;
+            counter += _.options.slidesToScroll <= _.options.slidesToShow ? _.options.slidesToScroll : _.options.slidesToShow;
         }
 
         return indexes;
@@ -26931,12 +27069,13 @@ return window.noty;
 
     Slick.prototype.getSlideCount = function() {
 
-        var _ = this, slidesTraversed, swipedSlide, centerOffset;
+        var _ = this,
+            slidesTraversed, swipedSlide, centerOffset;
 
         centerOffset = _.options.centerMode === true ? _.slideWidth * Math.floor(_.options.slidesToShow / 2) : 0;
 
-        if(_.options.swipeToSlide === true) {
-            _.$slideTrack.find('.slick-slide').each(function(index, slide){
+        if (_.options.swipeToSlide === true) {
+            _.$slideTrack.find('.slick-slide').each(function(index, slide) {
                 if (slide.offsetLeft - centerOffset + ($(slide).outerWidth() / 2) > (_.swipeLeft * -1)) {
                     swipedSlide = slide;
                     return false;
@@ -26973,6 +27112,7 @@ return window.noty;
         if (!$(_.$slider).hasClass('slick-initialized')) {
 
             $(_.$slider).addClass('slick-initialized');
+            _.buildRows();
             _.buildOut();
             _.setProps();
             _.startLoad();
@@ -26982,7 +27122,7 @@ return window.noty;
             _.updateDots();
         }
 
-        _.$slider.trigger("init", [ _ ]);
+        _.$slider.trigger('init', [_]);
 
     };
 
@@ -27013,14 +27153,8 @@ return window.noty;
 
         if (_.options.dots === true && _.options.pauseOnDotsHover === true && _.options.autoplay === true) {
             $('li', _.$dots)
-                .on('mouseenter.slick', function(){
-                    _.paused = true;
-                    _.autoPlayClear();
-                })
-                .on('mouseleave.slick', function(){
-                    _.paused = false;
-                    _.autoPlay();
-                });
+                .on('mouseenter.slick', $.proxy(_.setPaused, _, true))
+                .on('mouseleave.slick', $.proxy(_.setPaused, _, false));
         }
 
     };
@@ -27048,52 +27182,24 @@ return window.noty;
 
         _.$list.on('click.slick', _.clickHandler);
 
-        if (_.options.autoplay === true) {
+        $(document).on(_.visibilityChange, $.proxy(_.visibility, _));
 
-            $(document).on(_.visibilityChange, function(){
-                _.visibility();
-            });
+        _.$list.on('mouseenter.slick', $.proxy(_.setPaused, _, true));
+        _.$list.on('mouseleave.slick', $.proxy(_.setPaused, _, false));
 
-            if( _.options.pauseOnHover === true ) {
-
-                _.$list.on('mouseenter.slick', function(){
-                    _.paused = true;
-                    _.autoPlayClear();
-                });
-                _.$list.on('mouseleave.slick', function(){
-                    _.paused = false;
-                    _.autoPlay();
-                });
-
-            }
-
-        }
-
-        if(_.options.accessibility === true) {
+        if (_.options.accessibility === true) {
             _.$list.on('keydown.slick', _.keyHandler);
         }
 
-        if(_.options.focusOnSelect === true) {
+        if (_.options.focusOnSelect === true) {
             $(_.$slideTrack).children().on('click.slick', _.selectHandler);
         }
 
-        $(window).on('orientationchange.slick.slick-' + _.instanceUid, function() {
-            _.checkResponsive();
-            _.setPosition();
-        });
+        $(window).on('orientationchange.slick.slick-' + _.instanceUid, $.proxy(_.orientationChange, _));
 
-        $(window).on('resize.slick.slick-' + _.instanceUid, function() {
-            if ($(window).width() !== _.windowWidth) {
-                clearTimeout(_.windowDelay);
-                _.windowDelay = window.setTimeout(function() {
-                    _.windowWidth = $(window).width();
-                    _.checkResponsive();
-                    _.setPosition();
-                }, 50);
-            }
-        });
+        $(window).on('resize.slick.slick-' + _.instanceUid, $.proxy(_.resize, _));
 
-        $('*[draggable!=true]', _.$slideTrack).on('dragstart', function(e){ e.preventDefault(); });
+        $('[draggable!=true]', _.$slideTrack).on('dragstart', _.preventDefault);
 
         $(window).on('load.slick.slick-' + _.instanceUid, _.setPosition);
         $(document).on('ready.slick.slick-' + _.instanceUid, _.setPosition);
@@ -27153,41 +27259,50 @@ return window.noty;
         function loadImages(imagesScope) {
             $('img[data-lazy]', imagesScope).each(function() {
                 var image = $(this),
-                    imageSource = $(this).attr('data-lazy');
+                    imageSource = $(this).attr('data-lazy'),
+                    imageToLoad = document.createElement('img');
+
+                imageToLoad.onload = function() {
+                    image.animate({
+                        opacity: 1
+                    }, 200);
+                };
+                imageToLoad.src = imageSource;
 
                 image
-                  .load(function() { image.animate({ opacity: 1 }, 200); })
-                  .css({ opacity: 0 })
-                  .attr('src', imageSource)
-                  .removeAttr('data-lazy')
-                  .removeClass('slick-loading');
+                    .css({
+                        opacity: 0
+                    })
+                    .attr('src', imageSource)
+                    .removeAttr('data-lazy')
+                    .removeClass('slick-loading');
             });
         }
 
         if (_.options.centerMode === true) {
             if (_.options.infinite === true) {
-                rangeStart = _.currentSlide + (_.options.slidesToShow/2 + 1);
+                rangeStart = _.currentSlide + (_.options.slidesToShow / 2 + 1);
                 rangeEnd = rangeStart + _.options.slidesToShow + 2;
             } else {
-                rangeStart = Math.max(0, _.currentSlide - (_.options.slidesToShow/2 + 1));
-                rangeEnd = 2 + (_.options.slidesToShow/2 + 1) + _.currentSlide;
+                rangeStart = Math.max(0, _.currentSlide - (_.options.slidesToShow / 2 + 1));
+                rangeEnd = 2 + (_.options.slidesToShow / 2 + 1) + _.currentSlide;
             }
         } else {
             rangeStart = _.options.infinite ? _.options.slidesToShow + _.currentSlide : _.currentSlide;
             rangeEnd = rangeStart + _.options.slidesToShow;
-            if (_.options.fade === true ) {
-                if(rangeStart > 0) rangeStart--;
-                if(rangeEnd <= _.slideCount) rangeEnd++;
+            if (_.options.fade === true) {
+                if (rangeStart > 0) rangeStart--;
+                if (rangeEnd <= _.slideCount) rangeEnd++;
             }
         }
 
         loadRange = _.$slider.find('.slick-slide').slice(rangeStart, rangeEnd);
         loadImages(loadRange);
 
-          if (_.slideCount <= _.options.slidesToShow){
-              cloneRange = _.$slider.find('.slick-slide');
-              loadImages(cloneRange);
-          }else
+        if (_.slideCount <= _.options.slidesToShow) {
+            cloneRange = _.$slider.find('.slick-slide');
+            loadImages(cloneRange);
+        } else
         if (_.currentSlide >= _.slideCount - _.options.slidesToShow) {
             cloneRange = _.$slider.find('.slick-cloned').slice(0, _.options.slidesToShow);
             loadImages(cloneRange);
@@ -27230,6 +27345,15 @@ return window.noty;
 
     };
 
+    Slick.prototype.orientationChange = function() {
+
+        var _ = this;
+
+        _.checkResponsive();
+        _.setPosition();
+
+    };
+
     Slick.prototype.pause = Slick.prototype.slickPause = function() {
 
         var _ = this;
@@ -27252,7 +27376,7 @@ return window.noty;
 
         var _ = this;
 
-        _.$slider.trigger("afterChange", [ _, index]);
+        _.$slider.trigger('afterChange', [_, index]);
 
         _.animating = false;
 
@@ -27278,6 +27402,10 @@ return window.noty;
 
     };
 
+    Slick.prototype.preventDefault = function(e) {
+        e.preventDefault();
+    };
+
     Slick.prototype.progressiveLazyLoad = function() {
 
         var _ = this,
@@ -27288,17 +27416,17 @@ return window.noty;
         if (imgCount > 0) {
             targetImage = $('img[data-lazy]', _.$slider).first();
             targetImage.attr('src', targetImage.attr('data-lazy')).removeClass('slick-loading').load(function() {
-                targetImage.removeAttr('data-lazy');
-                _.progressiveLazyLoad();
-                
-                if( _.options.adaptiveHeight === true ) {
-                    _.setPosition();
-                }
-            })
-         .error(function () {
-          targetImage.removeAttr('data-lazy');
-          _.progressiveLazyLoad();
-         });
+                    targetImage.removeAttr('data-lazy');
+                    _.progressiveLazyLoad();
+
+                    if (_.options.adaptiveHeight === true) {
+                        _.setPosition();
+                    }
+                })
+                .error(function() {
+                    targetImage.removeAttr('data-lazy');
+                    _.progressiveLazyLoad();
+                });
         }
 
     };
@@ -27319,7 +27447,7 @@ return window.noty;
                 message: 'index',
                 index: currentSlide
             }
-        }, true);
+        }, false);
 
     };
 
@@ -27356,7 +27484,7 @@ return window.noty;
 
         _.initDotEvents();
 
-        if(_.options.focusOnSelect === true) {
+        if (_.options.focusOnSelect === true) {
             $(_.$slideTrack).children().on('click.slick', _.selectHandler);
         }
 
@@ -27364,8 +27492,22 @@ return window.noty;
 
         _.setPosition();
 
-        _.$slider.trigger("reInit", [ _ ]);
+        _.$slider.trigger('reInit', [_]);
 
+    };
+
+    Slick.prototype.resize = function() {
+
+        var _ = this;
+
+        if ($(window).width() !== _.windowWidth) {
+            clearTimeout(_.windowDelay);
+            _.windowDelay = window.setTimeout(function() {
+                _.windowWidth = $(window).width();
+                _.checkResponsive();
+                _.setPosition();
+            }, 50);
+        }
     };
 
     Slick.prototype.removeSlide = Slick.prototype.slickRemove = function(index, removeBefore, removeAll) {
@@ -27385,7 +27527,7 @@ return window.noty;
 
         _.unload();
 
-        if(removeAll === true) {
+        if (removeAll === true) {
             _.$slideTrack.children().remove();
         } else {
             _.$slideTrack.children(this.options.slide).eq(index).remove();
@@ -27406,7 +27548,8 @@ return window.noty;
     Slick.prototype.setCSS = function(position) {
 
         var _ = this,
-            positionProps = {}, x, y;
+            positionProps = {},
+            x, y;
 
         if (_.options.rtl === true) {
             position = -position;
@@ -27454,17 +27597,12 @@ return window.noty;
         _.listHeight = _.$list.height();
 
 
-        if(_.options.vertical === false && _.options.variableWidth === false) {
+        if (_.options.vertical === false && _.options.variableWidth === false) {
             _.slideWidth = Math.ceil(_.listWidth / _.options.slidesToShow);
             _.$slideTrack.width(Math.ceil((_.slideWidth * _.$slideTrack.children('.slick-slide').length)));
 
         } else if (_.options.variableWidth === true) {
-            var trackWidth = 0;
-            _.slideWidth = Math.ceil(_.listWidth / _.options.slidesToShow);
-            _.$slideTrack.children('.slick-slide').each(function(){
-                trackWidth += _.listWidth;
-            });
-            _.$slideTrack.width(Math.ceil(trackWidth) + 1);
+            _.$slideTrack.width(5000 * _.slideCount);
         } else {
             _.slideWidth = Math.ceil(_.listWidth);
             _.$slideTrack.height(Math.ceil((_.$slides.first().outerHeight(true) * _.$slideTrack.children('.slick-slide').length)));
@@ -27512,7 +27650,7 @@ return window.noty;
 
         var _ = this;
 
-        if(_.options.slidesToShow === 1 && _.options.adaptiveHeight === true && _.options.vertical === false) {
+        if (_.options.slidesToShow === 1 && _.options.adaptiveHeight === true && _.options.vertical === false) {
             var targetHeight = _.$slides.eq(_.currentSlide).outerHeight(true);
             _.$list.css('height', targetHeight);
         }
@@ -27545,7 +27683,7 @@ return window.noty;
             _.setFade();
         }
 
-        _.$slider.trigger("setPosition", [ _ ]);
+        _.$slider.trigger('setPosition', [_]);
 
     };
 
@@ -27565,38 +27703,38 @@ return window.noty;
         if (bodyStyle.WebkitTransition !== undefined ||
             bodyStyle.MozTransition !== undefined ||
             bodyStyle.msTransition !== undefined) {
-            if(_.options.useCSS === true) {
+            if (_.options.useCSS === true) {
                 _.cssTransitions = true;
             }
         }
 
         if (bodyStyle.OTransform !== undefined) {
             _.animType = 'OTransform';
-            _.transformType = "-o-transform";
+            _.transformType = '-o-transform';
             _.transitionType = 'OTransition';
             if (bodyStyle.perspectiveProperty === undefined && bodyStyle.webkitPerspective === undefined) _.animType = false;
         }
         if (bodyStyle.MozTransform !== undefined) {
             _.animType = 'MozTransform';
-            _.transformType = "-moz-transform";
+            _.transformType = '-moz-transform';
             _.transitionType = 'MozTransition';
             if (bodyStyle.perspectiveProperty === undefined && bodyStyle.MozPerspective === undefined) _.animType = false;
         }
         if (bodyStyle.webkitTransform !== undefined) {
             _.animType = 'webkitTransform';
-            _.transformType = "-webkit-transform";
+            _.transformType = '-webkit-transform';
             _.transitionType = 'webkitTransition';
             if (bodyStyle.perspectiveProperty === undefined && bodyStyle.webkitPerspective === undefined) _.animType = false;
         }
         if (bodyStyle.msTransform !== undefined) {
             _.animType = 'msTransform';
-            _.transformType = "-ms-transform";
+            _.transformType = '-ms-transform';
             _.transitionType = 'msTransition';
             if (bodyStyle.msTransform === undefined) _.animType = false;
         }
         if (bodyStyle.transform !== undefined && _.animType !== false) {
             _.animType = 'transform';
-            _.transformType = "transform";
+            _.transformType = 'transform';
             _.transitionType = 'transition';
         }
         _.transformsEnabled = (_.animType !== null && _.animType !== false);
@@ -27609,20 +27747,20 @@ return window.noty;
         var _ = this,
             centerOffset, allSlides, indexOffset, remainder;
 
-        _.$slider.find('.slick-slide').removeClass('slick-active').attr("aria-hidden","true").removeClass('slick-center');
+        _.$slider.find('.slick-slide').removeClass('slick-active').attr('aria-hidden', 'true').removeClass('slick-center');
         allSlides = _.$slider.find('.slick-slide');
 
         if (_.options.centerMode === true) {
 
             centerOffset = Math.floor(_.options.slidesToShow / 2);
 
-            if(_.options.infinite === true) {
+            if (_.options.infinite === true) {
 
                 if (index >= centerOffset && index <= (_.slideCount - 1) - centerOffset) {
-                    _.$slides.slice(index - centerOffset, index + centerOffset + 1).addClass('slick-active').attr("aria-hidden","false");
+                    _.$slides.slice(index - centerOffset, index + centerOffset + 1).addClass('slick-active').attr('aria-hidden', 'false');
                 } else {
                     indexOffset = _.options.slidesToShow + index;
-                    allSlides.slice(indexOffset - centerOffset + 1, indexOffset + centerOffset + 2).addClass('slick-active').attr("aria-hidden","false");
+                    allSlides.slice(indexOffset - centerOffset + 1, indexOffset + centerOffset + 2).addClass('slick-active').attr('aria-hidden', 'false');
                 }
 
                 if (index === 0) {
@@ -27638,16 +27776,16 @@ return window.noty;
         } else {
 
             if (index >= 0 && index <= (_.slideCount - _.options.slidesToShow)) {
-                _.$slides.slice(index, index + _.options.slidesToShow).addClass('slick-active').attr("aria-hidden","false");
-            } else if ( allSlides.length <= _.options.slidesToShow ) {
-                allSlides.addClass('slick-active').attr("aria-hidden","false");
+                _.$slides.slice(index, index + _.options.slidesToShow).addClass('slick-active').attr('aria-hidden', 'false');
+            } else if (allSlides.length <= _.options.slidesToShow) {
+                allSlides.addClass('slick-active').attr('aria-hidden', 'false');
             } else {
-                remainder = _.slideCount%_.options.slidesToShow;
+                remainder = _.slideCount % _.options.slidesToShow;
                 indexOffset = _.options.infinite === true ? _.options.slidesToShow + index : index;
-                if(_.options.slidesToShow == _.options.slidesToScroll && (_.slideCount - index) < _.options.slidesToShow) {
-                    allSlides.slice(indexOffset-(_.options.slidesToShow-remainder), indexOffset + remainder).addClass('slick-active').attr("aria-hidden","false");
+                if (_.options.slidesToShow == _.options.slidesToScroll && (_.slideCount - index) < _.options.slidesToShow) {
+                    allSlides.slice(indexOffset - (_.options.slidesToShow - remainder), indexOffset + remainder).addClass('slick-active').attr('aria-hidden', 'false');
                 } else {
-                    allSlides.slice(indexOffset, indexOffset + _.options.slidesToShow).addClass('slick-active').attr("aria-hidden","false");
+                    allSlides.slice(indexOffset, indexOffset + _.options.slidesToShow).addClass('slick-active').attr('aria-hidden', 'false');
                 }
             }
 
@@ -27681,16 +27819,16 @@ return window.noty;
                 }
 
                 for (i = _.slideCount; i > (_.slideCount -
-                    infiniteCount); i -= 1) {
+                        infiniteCount); i -= 1) {
                     slideIndex = i - 1;
                     $(_.$slides[slideIndex]).clone(true).attr('id', '')
-                        .attr('data-slick-index', slideIndex-_.slideCount)
+                        .attr('data-slick-index', slideIndex - _.slideCount)
                         .prependTo(_.$slideTrack).addClass('slick-cloned');
                 }
                 for (i = 0; i < infiniteCount; i += 1) {
                     slideIndex = i;
                     $(_.$slides[slideIndex]).clone(true).attr('id', '')
-                        .attr('data-slick-index', slideIndex+_.slideCount)
+                        .attr('data-slick-index', slideIndex + _.slideCount)
                         .appendTo(_.$slideTrack).addClass('slick-cloned');
                 }
                 _.$slideTrack.find('.slick-cloned').find('[id]').each(function() {
@@ -27703,16 +27841,36 @@ return window.noty;
 
     };
 
+    Slick.prototype.setPaused = function(paused) {
+
+        var _ = this;
+
+        if (_.options.autoplay === true && _.options.pauseOnHover === true) {
+            _.paused = paused;
+            if (!paused) {
+                _.autoPlay();
+            } else {
+                _.autoPlayClear();
+            }
+        }
+    };
+
     Slick.prototype.selectHandler = function(event) {
 
         var _ = this;
-        var index = parseInt($(event.target).parents('.slick-slide').attr("data-slick-index"));
-        if(!index) index = 0;
 
-        if(_.slideCount <= _.options.slidesToShow){
-            _.$slider.find('.slick-slide').removeClass('slick-active').attr("aria-hidden","true");
-            _.$slides.eq(index).addClass('slick-active').attr("aria-hidden","false");
-            if(_.options.centerMode === true) {
+        var targetElement = $(event.target).is('.slick-slide') ?
+            $(event.target) :
+            $(event.target).parents('.slick-slide');
+
+        var index = parseInt(targetElement.attr('data-slick-index'));
+
+        if (!index) index = 0;
+
+        if (_.slideCount <= _.options.slidesToShow) {
+            _.$slider.find('.slick-slide').removeClass('slick-active').attr('aria-hidden', 'true');
+            _.$slides.eq(index).addClass('slick-active').attr("aria-hidden", "false");
+            if (_.options.centerMode === true) {
                 _.$slider.find('.slick-slide').removeClass('slick-center');
                 _.$slides.eq(index).addClass('slick-center');
             }
@@ -27723,7 +27881,7 @@ return window.noty;
 
     };
 
-    Slick.prototype.slideHandler = function(index,sync,dontAnimate) {
+    Slick.prototype.slideHandler = function(index, sync, dontAnimate) {
 
         var targetSlide, animSlide, oldSlide, slideLeft, targetLeft = null,
             _ = this;
@@ -27753,9 +27911,9 @@ return window.noty;
         _.currentLeft = _.swipeLeft === null ? slideLeft : _.swipeLeft;
 
         if (_.options.infinite === false && _.options.centerMode === false && (index < 0 || index > _.getDotCount() * _.options.slidesToScroll)) {
-            if(_.options.fade === false) {
+            if (_.options.fade === false) {
                 targetSlide = _.currentSlide;
-                if(dontAnimate!==true) {
+                if (dontAnimate !== true) {
                     _.animateSlide(slideLeft, function() {
                         _.postSlide(targetSlide);
                     });
@@ -27765,9 +27923,9 @@ return window.noty;
             }
             return;
         } else if (_.options.infinite === false && _.options.centerMode === true && (index < 0 || index > (_.slideCount - _.options.slidesToScroll))) {
-            if(_.options.fade === false) {
+            if (_.options.fade === false) {
                 targetSlide = _.currentSlide;
-                if(dontAnimate!==true) {
+                if (dontAnimate !== true) {
                     _.animateSlide(slideLeft, function() {
                         _.postSlide(targetSlide);
                     });
@@ -27800,7 +27958,7 @@ return window.noty;
 
         _.animating = true;
 
-        _.$slider.trigger("beforeChange", [ _ , _.currentSlide, animSlide]);
+        _.$slider.trigger("beforeChange", [_, _.currentSlide, animSlide]);
 
         oldSlide = _.currentSlide;
         _.currentSlide = animSlide;
@@ -27811,7 +27969,7 @@ return window.noty;
         _.updateArrows();
 
         if (_.options.fade === true) {
-            if(dontAnimate!==true) {
+            if (dontAnimate !== true) {
                 _.fadeSlide(animSlide, function() {
                     _.postSlide(animSlide);
                 });
@@ -27822,7 +27980,7 @@ return window.noty;
             return;
         }
 
-        if(dontAnimate!==true) {
+        if (dontAnimate !== true) {
             _.animateSlide(targetLeft, function() {
                 _.postSlide(animSlide);
             });
@@ -27875,6 +28033,13 @@ return window.noty;
         if ((swipeAngle >= 135) && (swipeAngle <= 225)) {
             return (_.options.rtl === false ? 'right' : 'left');
         }
+        if (_.options.verticalSwiping === true) {
+            if ((swipeAngle >= 35) && (swipeAngle <= 135)) {
+                return 'left';
+            } else {
+                return 'right';
+            }
+        }
 
         return 'vertical';
 
@@ -27882,7 +28047,8 @@ return window.noty;
 
     Slick.prototype.swipeEnd = function(event) {
 
-        var _ = this, slideCount;
+        var _ = this,
+            slideCount;
 
         _.dragging = false;
 
@@ -27893,7 +28059,7 @@ return window.noty;
         }
 
         if (_.touchObject.edgeHit === true) {
-            _.$slider.trigger("edge", [  _, _.swipeDirection()]);
+            _.$slider.trigger("edge", [_, _.swipeDirection()]);
         }
 
         if (_.touchObject.swipeLength >= _.touchObject.minSwipe) {
@@ -27904,7 +28070,7 @@ return window.noty;
                     _.slideHandler(slideCount);
                     _.currentDirection = 0;
                     _.touchObject = {};
-                    _.$slider.trigger("swipe", [ _, "left"]);
+                    _.$slider.trigger("swipe", [_, "left"]);
                     break;
 
                 case 'right':
@@ -27912,11 +28078,11 @@ return window.noty;
                     _.slideHandler(slideCount);
                     _.currentDirection = 1;
                     _.touchObject = {};
-                    _.$slider.trigger("swipe", [ _, "right"]);
+                    _.$slider.trigger("swipe", [_, "right"]);
                     break;
             }
         } else {
-            if(_.touchObject.startX !== _.touchObject.curX) {
+            if (_.touchObject.startX !== _.touchObject.curX) {
                 _.slideHandler(_.currentSlide);
                 _.touchObject = {};
             }
@@ -27929,9 +28095,9 @@ return window.noty;
         var _ = this;
 
         if ((_.options.swipe === false) || ('ontouchend' in document && _.options.swipe === false)) {
-           return;
+            return;
         } else if (_.options.draggable === false && event.type.indexOf('mouse') !== -1) {
-           return;
+            return;
         }
 
         _.touchObject.fingerCount = event.originalEvent && event.originalEvent.touches !== undefined ?
@@ -27939,6 +28105,11 @@ return window.noty;
 
         _.touchObject.minSwipe = _.listWidth / _.options
             .touchThreshold;
+
+        if (_.options.verticalSwiping === true) {
+            _.touchObject.minSwipe = _.listHeight / _.options
+                .touchThreshold;
+        }
 
         switch (event.data.action) {
 
@@ -27978,6 +28149,11 @@ return window.noty;
         _.touchObject.swipeLength = Math.round(Math.sqrt(
             Math.pow(_.touchObject.curX - _.touchObject.startX, 2)));
 
+        if (_.options.verticalSwiping === true) {
+            _.touchObject.swipeLength = Math.round(Math.sqrt(
+                Math.pow(_.touchObject.curY - _.touchObject.startY, 2)));
+        }
+
         swipeDirection = _.swipeDirection();
 
         if (swipeDirection === 'vertical') {
@@ -27989,6 +28165,10 @@ return window.noty;
         }
 
         positionOffset = (_.options.rtl === false ? 1 : -1) * (_.touchObject.curX > _.touchObject.startX ? 1 : -1);
+        if (_.options.verticalSwiping === true) {
+            positionOffset = _.touchObject.curY > _.touchObject.startY ? 1 : -1;
+        }
+
 
         swipeLength = _.touchObject.swipeLength;
 
@@ -28005,6 +28185,9 @@ return window.noty;
             _.swipeLeft = curLeft + swipeLength * positionOffset;
         } else {
             _.swipeLeft = curLeft + (swipeLength * (_.$list.height() / _.listWidth)) * positionOffset;
+        }
+        if (_.options.verticalSwiping === true) {
+            _.swipeLeft = curLeft + swipeLength * positionOffset;
         }
 
         if (_.options.fade === true || _.options.touchMove === false) {
@@ -28073,7 +28256,7 @@ return window.noty;
         if (_.$nextArrow && (typeof _.options.nextArrow !== 'object')) {
             _.$nextArrow.remove();
         }
-        _.$slides.removeClass('slick-slide slick-active slick-visible').attr("aria-hidden","true").css('width', '');
+        _.$slides.removeClass('slick-slide slick-active slick-visible').attr("aria-hidden", "true").css('width', '');
 
     };
 
@@ -28086,7 +28269,8 @@ return window.noty;
 
     Slick.prototype.updateArrows = function() {
 
-        var _ = this, centerOffset;
+        var _ = this,
+            centerOffset;
 
         centerOffset = Math.floor(_.options.slidesToShow / 2);
 
@@ -28114,8 +28298,8 @@ return window.noty;
 
         if (_.$dots !== null) {
 
-            _.$dots.find('li').removeClass('slick-active').attr("aria-hidden","true");
-            _.$dots.find('li').eq(Math.floor(_.currentSlide / _.options.slidesToScroll)).addClass('slick-active').attr("aria-hidden","false");
+            _.$dots.find('li').removeClass('slick-active').attr("aria-hidden", "true");
+            _.$dots.find('li').eq(Math.floor(_.currentSlide / _.options.slidesToScroll)).addClass('slick-active').attr("aria-hidden", "false");
 
         }
 
@@ -28125,36 +28309,39 @@ return window.noty;
 
         var _ = this;
 
-        if( document[ _.hidden ] ) {
+        if (document[_.hidden]) {
             _.paused = true;
             _.autoPlayClear();
         } else {
-            _.paused = false;
-            _.autoPlay();
+            if (_.options.autoplay === true) {
+                _.paused = false;
+                _.autoPlay();
+            }
         }
 
     };
 
     $.fn.slick = function() {
-        var _ = this, opt = arguments[0], args = Array.prototype.slice.call(arguments,1), l = _.length, i = 0, ret;
-        for(i; i < l; i++) {
+        var _ = this,
+            opt = arguments[0],
+            args = Array.prototype.slice.call(arguments, 1),
+            l = _.length,
+            i = 0,
+            ret;
+        for (i; i < l; i++) {
             if (typeof opt == 'object' || typeof opt == 'undefined')
-                _[i].slick =  new Slick(_[i], opt);
+                _[i].slick = new Slick(_[i], opt);
             else
                 ret = _[i].slick[opt].apply(_[i].slick, args);
-                if (typeof ret != 'undefined') return ret;
+            if (typeof ret != 'undefined') return ret;
         }
         return _;
     };
 
-    $(function(){
-        $('[data-slick]').slick();
-    });
-
 }));
 
 },{"jquery":30}],36:[function(require,module,exports){
-//     Underscore.js 1.8.2
+//     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 //     Underscore may be freely distributed under the MIT license.
@@ -28211,7 +28398,7 @@ return window.noty;
   }
 
   // Current version.
-  _.VERSION = '1.8.2';
+  _.VERSION = '1.8.3';
 
   // Internal function that returns an efficient (for current engines) version
   // of the passed-in callback, to be repeatedly applied in other Underscore
@@ -28278,12 +28465,20 @@ return window.noty;
     return result;
   };
 
+  var property = function(key) {
+    return function(obj) {
+      return obj == null ? void 0 : obj[key];
+    };
+  };
+
   // Helper for collection methods to determine whether a collection
   // should be iterated as an array or as an object
   // Related: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength
+  // Avoids a very nasty iOS 8 JIT bug on ARM-64. #2094
   var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
+  var getLength = property('length');
   var isArrayLike = function(collection) {
-    var length = collection && collection.length;
+    var length = getLength(collection);
     return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
   };
 
@@ -28408,11 +28603,12 @@ return window.noty;
     return false;
   };
 
-  // Determine if the array or object contains a given value (using `===`).
+  // Determine if the array or object contains a given item (using `===`).
   // Aliased as `includes` and `include`.
-  _.contains = _.includes = _.include = function(obj, target, fromIndex) {
+  _.contains = _.includes = _.include = function(obj, item, fromIndex, guard) {
     if (!isArrayLike(obj)) obj = _.values(obj);
-    return _.indexOf(obj, target, typeof fromIndex == 'number' && fromIndex) >= 0;
+    if (typeof fromIndex != 'number' || guard) fromIndex = 0;
+    return _.indexOf(obj, item, fromIndex) >= 0;
   };
 
   // Invoke a method (with arguments) on every item in a collection.
@@ -28636,7 +28832,7 @@ return window.noty;
   // Internal implementation of a recursive `flatten` function.
   var flatten = function(input, shallow, strict, startIndex) {
     var output = [], idx = 0;
-    for (var i = startIndex || 0, length = input && input.length; i < length; i++) {
+    for (var i = startIndex || 0, length = getLength(input); i < length; i++) {
       var value = input[i];
       if (isArrayLike(value) && (_.isArray(value) || _.isArguments(value))) {
         //flatten current level of array or arguments object
@@ -28667,7 +28863,6 @@ return window.noty;
   // been sorted, you have the option of using a faster algorithm.
   // Aliased as `unique`.
   _.uniq = _.unique = function(array, isSorted, iteratee, context) {
-    if (array == null) return [];
     if (!_.isBoolean(isSorted)) {
       context = iteratee;
       iteratee = isSorted;
@@ -28676,7 +28871,7 @@ return window.noty;
     if (iteratee != null) iteratee = cb(iteratee, context);
     var result = [];
     var seen = [];
-    for (var i = 0, length = array.length; i < length; i++) {
+    for (var i = 0, length = getLength(array); i < length; i++) {
       var value = array[i],
           computed = iteratee ? iteratee(value, i, array) : value;
       if (isSorted) {
@@ -28703,10 +28898,9 @@ return window.noty;
   // Produce an array that contains every item shared between all the
   // passed-in arrays.
   _.intersection = function(array) {
-    if (array == null) return [];
     var result = [];
     var argsLength = arguments.length;
-    for (var i = 0, length = array.length; i < length; i++) {
+    for (var i = 0, length = getLength(array); i < length; i++) {
       var item = array[i];
       if (_.contains(result, item)) continue;
       for (var j = 1; j < argsLength; j++) {
@@ -28735,7 +28929,7 @@ return window.noty;
   // Complement of _.zip. Unzip accepts an array of arrays and groups
   // each array's elements on shared indices
   _.unzip = function(array) {
-    var length = array && _.max(array, 'length').length || 0;
+    var length = array && _.max(array, getLength).length || 0;
     var result = Array(length);
 
     for (var index = 0; index < length; index++) {
@@ -28749,7 +28943,7 @@ return window.noty;
   // the corresponding values.
   _.object = function(list, values) {
     var result = {};
-    for (var i = 0, length = list && list.length; i < length; i++) {
+    for (var i = 0, length = getLength(list); i < length; i++) {
       if (values) {
         result[list[i]] = values[i];
       } else {
@@ -28759,42 +28953,11 @@ return window.noty;
     return result;
   };
 
-  // Return the position of the first occurrence of an item in an array,
-  // or -1 if the item is not included in the array.
-  // If the array is large and already in sort order, pass `true`
-  // for **isSorted** to use binary search.
-  _.indexOf = function(array, item, isSorted) {
-    var i = 0, length = array && array.length;
-    if (typeof isSorted == 'number') {
-      i = isSorted < 0 ? Math.max(0, length + isSorted) : isSorted;
-    } else if (isSorted && length) {
-      i = _.sortedIndex(array, item);
-      return array[i] === item ? i : -1;
-    }
-    if (item !== item) {
-      return _.findIndex(slice.call(array, i), _.isNaN);
-    }
-    for (; i < length; i++) if (array[i] === item) return i;
-    return -1;
-  };
-
-  _.lastIndexOf = function(array, item, from) {
-    var idx = array ? array.length : 0;
-    if (typeof from == 'number') {
-      idx = from < 0 ? idx + from + 1 : Math.min(idx, from + 1);
-    }
-    if (item !== item) {
-      return _.findLastIndex(slice.call(array, 0, idx), _.isNaN);
-    }
-    while (--idx >= 0) if (array[idx] === item) return idx;
-    return -1;
-  };
-
   // Generator function to create the findIndex and findLastIndex functions
-  function createIndexFinder(dir) {
+  function createPredicateIndexFinder(dir) {
     return function(array, predicate, context) {
       predicate = cb(predicate, context);
-      var length = array != null && array.length;
+      var length = getLength(array);
       var index = dir > 0 ? 0 : length - 1;
       for (; index >= 0 && index < length; index += dir) {
         if (predicate(array[index], index, array)) return index;
@@ -28804,16 +28967,15 @@ return window.noty;
   }
 
   // Returns the first index on an array-like that passes a predicate test
-  _.findIndex = createIndexFinder(1);
-
-  _.findLastIndex = createIndexFinder(-1);
+  _.findIndex = createPredicateIndexFinder(1);
+  _.findLastIndex = createPredicateIndexFinder(-1);
 
   // Use a comparator function to figure out the smallest index at which
   // an object should be inserted so as to maintain order. Uses binary search.
   _.sortedIndex = function(array, obj, iteratee, context) {
     iteratee = cb(iteratee, context, 1);
     var value = iteratee(obj);
-    var low = 0, high = array.length;
+    var low = 0, high = getLength(array);
     while (low < high) {
       var mid = Math.floor((low + high) / 2);
       if (iteratee(array[mid]) < value) low = mid + 1; else high = mid;
@@ -28821,11 +28983,43 @@ return window.noty;
     return low;
   };
 
+  // Generator function to create the indexOf and lastIndexOf functions
+  function createIndexFinder(dir, predicateFind, sortedIndex) {
+    return function(array, item, idx) {
+      var i = 0, length = getLength(array);
+      if (typeof idx == 'number') {
+        if (dir > 0) {
+            i = idx >= 0 ? idx : Math.max(idx + length, i);
+        } else {
+            length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
+        }
+      } else if (sortedIndex && idx && length) {
+        idx = sortedIndex(array, item);
+        return array[idx] === item ? idx : -1;
+      }
+      if (item !== item) {
+        idx = predicateFind(slice.call(array, i, length), _.isNaN);
+        return idx >= 0 ? idx + i : -1;
+      }
+      for (idx = dir > 0 ? i : length - 1; idx >= 0 && idx < length; idx += dir) {
+        if (array[idx] === item) return idx;
+      }
+      return -1;
+    };
+  }
+
+  // Return the position of the first occurrence of an item in an array,
+  // or -1 if the item is not included in the array.
+  // If the array is large and already in sort order, pass `true`
+  // for **isSorted** to use binary search.
+  _.indexOf = createIndexFinder(1, _.findIndex, _.sortedIndex);
+  _.lastIndexOf = createIndexFinder(-1, _.findLastIndex);
+
   // Generate an integer Array containing an arithmetic progression. A port of
   // the native Python `range()` function. See
   // [the Python documentation](http://docs.python.org/library/functions.html#range).
   _.range = function(start, stop, step) {
-    if (arguments.length <= 1) {
+    if (stop == null) {
       stop = start || 0;
       start = 0;
     }
@@ -29204,6 +29398,15 @@ return window.noty;
   // Fill in a given object with default properties.
   _.defaults = createAssigner(_.allKeys, true);
 
+  // Creates an object that inherits from the given prototype object.
+  // If additional properties are provided then they will be added to the
+  // created object.
+  _.create = function(prototype, props) {
+    var result = baseCreate(prototype);
+    if (props) _.extendOwn(result, props);
+    return result;
+  };
+
   // Create a (shallow-cloned) duplicate of an object.
   _.clone = function(obj) {
     if (!_.isObject(obj)) return obj;
@@ -29281,7 +29484,7 @@ return window.noty;
     }
     // Assume equality for cyclic structures. The algorithm for detecting cyclic
     // structures is adapted from ES 5.1 section 15.12.3, abstract operation `JO`.
-    
+
     // Initializing stack of traversed objects.
     // It's done here since we only need them for objects and arrays comparison.
     aStack = aStack || [];
@@ -29432,11 +29635,7 @@ return window.noty;
 
   _.noop = function(){};
 
-  _.property = function(key) {
-    return function(obj) {
-      return obj == null ? void 0 : obj[key];
-    };
-  };
+  _.property = property;
 
   // Generates a function for a given object that returns a given property.
   _.propertyOf = function(obj) {
@@ -29445,7 +29644,7 @@ return window.noty;
     };
   };
 
-  // Returns a predicate for checking whether an object has a given set of 
+  // Returns a predicate for checking whether an object has a given set of
   // `key:value` pairs.
   _.matcher = _.matches = function(attrs) {
     attrs = _.extendOwn({}, attrs);
@@ -29672,7 +29871,7 @@ return window.noty;
   // Provide unwrapping proxy for some methods used in engine operations
   // such as arithmetic and JSON stringification.
   _.prototype.valueOf = _.prototype.toJSON = _.prototype.value;
-  
+
   _.prototype.toString = function() {
     return '' + this._wrapped;
   };
@@ -29736,6 +29935,7 @@ exports.$addChild = function (opts, BaseCtor) {
   opts._parent = parent
   opts._root = parent.$root
   var child = new ChildVue(opts)
+  this._children.push(child)
   return child
 }
 },{"../util":94}],38:[function(require,module,exports){
@@ -30731,36 +30931,40 @@ var textParser = require('../parsers/text')
 var dirParser = require('../parsers/directive')
 var templateParser = require('../parsers/template')
 
-module.exports = compile
-
 /**
  * Compile a template and return a reusable composite link
  * function, which recursively contains more link functions
  * inside. This top level compile function should only be
  * called on instance root nodes.
  *
+ * When the `asParent` flag is true, this means we are doing
+ * a partial compile for a component's parent scope markup
+ * (See #502). This could **only** be triggered during
+ * compilation of `v-component`, and we need to skip v-with,
+ * v-ref & v-component in this situation.
+ *
  * @param {Element|DocumentFragment} el
  * @param {Object} options
  * @param {Boolean} partial
- * @param {Boolean} transcluded
+ * @param {Boolean} asParent - compiling a component
+ *                             container as its parent.
  * @return {Function}
  */
 
-function compile (el, options, partial, transcluded) {
+module.exports = function compile (el, options, partial, asParent) {
   var isBlock = el.nodeType === 11
-  // link function for param attributes.
-  var params = options.paramAttributes
-  var paramsLinkFn = params && !partial && !transcluded && !isBlock
-    ? compileParamAttributes(el, params, options)
+  var params = !partial && options.paramAttributes
+  // if el is a fragment, this is a block instance
+  // and paramAttributes will be stored on the first
+  // element in the template. (excluding the _blockStart
+  // comment node)
+  var paramsEl = isBlock ? el.childNodes[1] : el
+  var paramsLinkFn = params
+    ? compileParamAttributes(paramsEl, params, options)
     : null
-  // link function for the node itself.
-  // if this is a block instance, we return a link function
-  // for the attributes found on the container, if any.
-  // options._containerAttrs are collected during transclusion.
   var nodeLinkFn = isBlock
-    ? compileBlockContainer(options._containerAttrs, params, options)
-    : compileNode(el, options)
-  // link function for the childNodes
+    ? null
+    : compileNode(el, options, asParent)
   var childLinkFn =
     !(nodeLinkFn && nodeLinkFn.terminal) &&
     el.tagName !== 'SCRIPT' &&
@@ -30769,8 +30973,8 @@ function compile (el, options, partial, transcluded) {
       : null
 
   /**
-   * A composite linker function to be called on a already
-   * compiled piece of DOM, which instantiates all directive
+   * A linker function to be called on a already compiled
+   * piece of DOM, which instantiates all directive
    * instances.
    *
    * @param {Vue} vm
@@ -30778,23 +30982,16 @@ function compile (el, options, partial, transcluded) {
    * @return {Function|undefined}
    */
 
-  function compositeLinkFn (vm, el) {
+  return function link (vm, el) {
     var originalDirCount = vm._directives.length
-    var parentOriginalDirCount =
-      vm.$parent && vm.$parent._directives.length
     if (paramsLinkFn) {
-      paramsLinkFn(vm, el)
+      var paramsEl = isBlock ? el.childNodes[1] : el
+      paramsLinkFn(vm, paramsEl)
     }
     // cache childNodes before linking parent, fix #657
     var childNodes = _.toArray(el.childNodes)
-    // if this is a transcluded compile, linkers need to be
-    // called in source scope, and the host needs to be
-    // passed down.
-    var source = transcluded ? vm.$parent : vm
-    var host = transcluded ? vm : undefined
-    // link
-    if (nodeLinkFn) nodeLinkFn(source, el, host)
-    if (childLinkFn) childLinkFn(source, childNodes, host)
+    if (nodeLinkFn) nodeLinkFn(vm, el)
+    if (childLinkFn) childLinkFn(vm, childNodes)
 
     /**
      * If this is a partial compile, the linker function
@@ -30803,12 +31000,9 @@ function compile (el, options, partial, transcluded) {
      * linking.
      */
 
-    if (partial && !transcluded) {
-      var selfDirs = vm._directives.slice(originalDirCount)
-      var parentDirs = vm.$parent &&
-        vm.$parent._directives.slice(parentOriginalDirCount)
-
-      var teardownDirs = function (vm, dirs) {
+    if (partial) {
+      var dirs = vm._directives.slice(originalDirCount)
+      return function unlink () {
         var i = dirs.length
         while (i--) {
           dirs[i]._teardown()
@@ -30816,56 +31010,7 @@ function compile (el, options, partial, transcluded) {
         i = vm._directives.indexOf(dirs[0])
         vm._directives.splice(i, dirs.length)
       }
-
-      return function unlink () {
-        teardownDirs(vm, selfDirs)
-        if (parentDirs) {
-          teardownDirs(vm.$parent, parentDirs)
-        }
-      }
     }
-  }
-
-  // transcluded linkFns are terminal, because it takes
-  // over the entire sub-tree.
-  if (transcluded) {
-    compositeLinkFn.terminal = true
-  }
-
-  return compositeLinkFn
-}
-
-/**
- * Compile the attributes found on a "block container" -
- * i.e. the container node in the parent tempate of a block
- * instance. We are only concerned with v-with and
- * paramAttributes here.
- *
- * @param {Object} attrs - a map of attr name/value pairs
- * @param {Array} params - param attributes list
- * @param {Object} options
- * @return {Function}
- */
-
-function compileBlockContainer (attrs, params, options) {
-  if (!attrs) return null
-  var paramsLinkFn = params
-    ? compileParamAttributes(attrs, params, options)
-    : null
-  var withVal = attrs[config.prefix + 'with']
-  var withLinkFn = null
-  if (withVal) {
-    var descriptor = dirParser.parse(withVal)[0]
-    var def = options.directives['with']
-    withLinkFn = function (vm, el) {
-      vm._bindDir('with', el, descriptor, def)   
-    }
-  }
-  return function blockContainerLinkFn (vm) {
-    // explicitly passing null to the linkers
-    // since v-with doesn't need a real element
-    if (paramsLinkFn) paramsLinkFn(vm, null)
-    if (withLinkFn) withLinkFn(vm, null)
   }
 }
 
@@ -30875,17 +31020,16 @@ function compileBlockContainer (attrs, params, options) {
  *
  * @param {Node} node
  * @param {Object} options
- * @return {Function|null}
+ * @param {Boolean} asParent
+ * @return {Function|undefined}
  */
 
-function compileNode (node, options) {
+function compileNode (node, options, asParent) {
   var type = node.nodeType
   if (type === 1 && node.tagName !== 'SCRIPT') {
-    return compileElement(node, options)
-  } else if (type === 3 && config.interpolate && node.data.trim()) {
+    return compileElement(node, options, asParent)
+  } else if (type === 3 && config.interpolate) {
     return compileTextNode(node, options)
-  } else {
-    return null
   }
 }
 
@@ -30894,20 +31038,14 @@ function compileNode (node, options) {
  *
  * @param {Element} el
  * @param {Object} options
+ * @param {Boolean} asParent
  * @return {Function|null}
  */
 
-function compileElement (el, options) {
-  if (checkTransclusion(el)) {
-    // unwrap textNode
-    if (el.hasAttribute('__vue__wrap')) {
-      el = el.firstChild
-    }
-    return compile(el, options._parent.$options, true, true)
-  }
+function compileElement (el, options, asParent) {
   var linkFn, tag, component
   // check custom element component, but only on non-root
-  if (!el.__vue__) {
+  if (!asParent && !el.__vue__) {
     tag = el.tagName.toLowerCase()
     component =
       tag.indexOf('-') > 0 &&
@@ -30918,12 +31056,14 @@ function compileElement (el, options) {
   }
   if (component || el.hasAttributes()) {
     // check terminal direcitves
-    linkFn = checkTerminalDirectives(el, options)
+    if (!asParent) {
+      linkFn = checkTerminalDirectives(el, options)
+    }
     // if not terminal, build normal link function
     if (!linkFn) {
-      var dirs = collectDirectives(el, options)
+      var dirs = collectDirectives(el, options, asParent)
       linkFn = dirs.length
-        ? makeNodeLinkFn(dirs)
+        ? makeDirectivesLinkFn(dirs)
         : null
     }
   }
@@ -30941,32 +31081,27 @@ function compileElement (el, options) {
 }
 
 /**
- * Build a link function for all directives on a single node.
+ * Build a multi-directive link function.
  *
  * @param {Array} directives
  * @return {Function} directivesLinkFn
  */
 
-function makeNodeLinkFn (directives) {
-  return function nodeLinkFn (vm, el, host) {
+function makeDirectivesLinkFn (directives) {
+  return function directivesLinkFn (vm, el) {
     // reverse apply because it's sorted low to high
     var i = directives.length
-    var dir, j, k, target
+    var dir, j, k
     while (i--) {
       dir = directives[i]
-      // a directive can be transcluded if it's written
-      // on a component's container in its parent tempalte.
-      target = dir.transcluded
-        ? vm.$parent
-        : vm
       if (dir._link) {
         // custom link fn
-        dir._link(target, el)
+        dir._link(vm, el)
       } else {
         k = dir.descriptors.length
         for (j = 0; j < k; j++) {
-          target._bindDir(dir.name, el,
-            dir.descriptors[j], dir.def, host)
+          vm._bindDir(dir.name, el,
+                      dir.descriptors[j], dir.def)
         }
       }
     }
@@ -30982,7 +31117,7 @@ function makeNodeLinkFn (directives) {
  */
 
 function compileTextNode (node, options) {
-  var tokens = textParser.parse(node.data)
+  var tokens = textParser.parse(node.nodeValue)
   if (!tokens) {
     return null
   }
@@ -31055,7 +31190,7 @@ function makeTextNodeLinkFn (tokens, frag) {
           if (token.html) {
             _.replace(node, templateParser.parse(value, true))
           } else {
-            node.data = value
+            node.nodeValue = value
           }
         } else {
           vm._bindDir(token.type, node,
@@ -31102,7 +31237,7 @@ function compileNodeList (nodeList, options) {
  */
 
 function makeChildLinkFn (linkFns) {
-  return function childLinkFn (vm, nodes, host) {
+  return function childLinkFn (vm, nodes) {
     var node, nodeLinkFn, childrenLinkFn
     for (var i = 0, n = 0, l = linkFns.length; i < l; n++) {
       node = nodes[n]
@@ -31111,10 +31246,10 @@ function makeChildLinkFn (linkFns) {
       // cache childNodes before linking parent, fix #657
       var childNodes = _.toArray(node.childNodes)
       if (nodeLinkFn) {
-        nodeLinkFn(vm, node, host)
+        nodeLinkFn(vm, node)
       }
       if (childrenLinkFn) {
-        childrenLinkFn(vm, childNodes, host)
+        childrenLinkFn(vm, childNodes)
       }
     }
   }
@@ -31124,7 +31259,7 @@ function makeChildLinkFn (linkFns) {
  * Compile param attributes on a root element and return
  * a paramAttributes link function.
  *
- * @param {Element|Object} el
+ * @param {Element} el
  * @param {Array} attrs
  * @param {Object} options
  * @return {Function} paramsLinkFn
@@ -31132,7 +31267,6 @@ function makeChildLinkFn (linkFns) {
 
 function compileParamAttributes (el, attrs, options) {
   var params = []
-  var isEl = el.nodeType
   var i = attrs.length
   var name, value, param
   while (i--) {
@@ -31146,7 +31280,7 @@ function compileParamAttributes (el, attrs, options) {
         'http://vuejs.org/api/options.html#paramAttributes'
       )
     }
-    value = isEl ? el.getAttribute(name) : el[name]
+    value = el.getAttribute(name)
     if (value !== null) {
       param = {
         name: name,
@@ -31154,7 +31288,7 @@ function compileParamAttributes (el, attrs, options) {
       }
       var tokens = textParser.parse(value)
       if (tokens) {
-        if (isEl) el.removeAttribute(name)
+        el.removeAttribute(name)
         if (tokens.length > 1) {
           _.warn(
             'Invalid param attribute binding: "' +
@@ -31239,16 +31373,13 @@ function checkTerminalDirectives (el, options) {
   for (var i = 0; i < 3; i++) {
     dirName = terminalDirectives[i]
     if (value = _.attr(el, dirName)) {
-      return makeTerminalNodeLinkFn(el, dirName, value, options)
+      return makeTeriminalLinkFn(el, dirName, value, options)
     }
   }
 }
 
 /**
- * Build a node link function for a terminal directive.
- * A terminal link function terminates the current
- * compilation recursion and handles compilation of the
- * subtree in the directive.
+ * Build a link function for a terminal directive.
  *
  * @param {Element} el
  * @param {String} dirName
@@ -31257,14 +31388,14 @@ function checkTerminalDirectives (el, options) {
  * @return {Function} terminalLinkFn
  */
 
-function makeTerminalNodeLinkFn (el, dirName, value, options) {
+function makeTeriminalLinkFn (el, dirName, value, options) {
   var descriptor = dirParser.parse(value)[0]
   var def = options.directives[dirName]
-  var fn = function terminalNodeLinkFn (vm, el, host) {
-    vm._bindDir(dirName, el, descriptor, def, host)
+  var terminalLinkFn = function (vm, el) {
+    vm._bindDir(dirName, el, descriptor, def)
   }
-  fn.terminal = true
-  return fn
+  terminalLinkFn.terminal = true
+  return terminalLinkFn
 }
 
 /**
@@ -31272,37 +31403,38 @@ function makeTerminalNodeLinkFn (el, dirName, value, options) {
  *
  * @param {Element} el
  * @param {Object} options
+ * @param {Boolean} asParent
  * @return {Array}
  */
 
-function collectDirectives (el, options) {
+function collectDirectives (el, options, asParent) {
   var attrs = _.toArray(el.attributes)
   var i = attrs.length
   var dirs = []
-  var attr, attrName, dir, dirName, dirDef, transcluded
+  var attr, attrName, dir, dirName, dirDef
   while (i--) {
     attr = attrs[i]
     attrName = attr.name
-    transcluded =
-      options._transcludedAttrs &&
-      options._transcludedAttrs[attrName]
     if (attrName.indexOf(config.prefix) === 0) {
       dirName = attrName.slice(config.prefix.length)
+      if (asParent &&
+          (dirName === 'with' ||
+           dirName === 'component')) {
+        continue
+      }
       dirDef = options.directives[dirName]
       _.assertAsset(dirDef, 'directive', dirName)
       if (dirDef) {
         dirs.push({
           name: dirName,
           descriptors: dirParser.parse(attr.value),
-          def: dirDef,
-          transcluded: transcluded
+          def: dirDef
         })
       }
     } else if (config.interpolate) {
       dir = collectAttrDirective(el, attrName, attr.value,
                                  options)
       if (dir) {
-        dir.transcluded = transcluded
         dirs.push(dir)
       }
     }
@@ -31324,6 +31456,10 @@ function collectDirectives (el, options) {
  */
 
 function collectAttrDirective (el, name, value, options) {
+  if (options._skipAttrs &&
+      options._skipAttrs.indexOf(name) > -1) {
+    return
+  }
   var tokens = textParser.parse(value)
   if (tokens) {
     var def = options.directives.attr
@@ -31362,26 +31498,9 @@ function directiveComparator (a, b) {
   b = b.def.priority || 0
   return a > b ? 1 : -1
 }
-
-/**
- * Check whether an element is transcluded
- *
- * @param {Element} el
- * @return {Boolean}
- */
-
-var transcludedFlagAttr = '__vue__transcluded'
-function checkTransclusion (el) {
-  if (el.nodeType === 1 && el.hasAttribute(transcludedFlagAttr)) {
-    el.removeAttribute(transcludedFlagAttr)
-    return true
-  }
-}
 },{"../config":47,"../parsers/directive":82,"../parsers/template":85,"../parsers/text":86,"../util":94}],46:[function(require,module,exports){
 var _ = require('../util')
-var config = require('../config')
 var templateParser = require('../parsers/template')
-var transcludedFlagAttr = '__vue__transcluded'
 
 /**
  * Process an element or a DocumentFragment based on a
@@ -31396,29 +31515,6 @@ var transcludedFlagAttr = '__vue__transcluded'
  */
 
 module.exports = function transclude (el, options) {
-  if (options && options._asComponent) {
-    // mutating the options object here assuming the same
-    // object will be used for compile right after this
-    options._transcludedAttrs = extractAttrs(el.attributes)
-    // Mark content nodes and attrs so that the compiler
-    // knows they should be compiled in parent scope.
-    var i = el.childNodes.length
-    while (i--) {
-      var node = el.childNodes[i]
-      if (node.nodeType === 1) {
-        node.setAttribute(transcludedFlagAttr, '')
-      } else if (node.nodeType === 3 && node.data.trim()) {
-        // wrap transcluded textNodes in spans, because
-        // raw textNodes can't be persisted through clones
-        // by attaching attributes.
-        var wrapper = document.createElement('span')
-        wrapper.textContent = node.data
-        wrapper.setAttribute('__vue__wrap', '')
-        wrapper.setAttribute(transcludedFlagAttr, '')
-        el.replaceChild(wrapper, node)
-      }
-    }
-  }
   // for template tags, what we want is its content as
   // a documentFragment (for block instances)
   if (el.tagName === 'TEMPLATE') {
@@ -31452,20 +31548,8 @@ function transcludeTemplate (el, options) {
     var rawContent = options._content || _.extractContent(el)
     if (options.replace) {
       if (frag.childNodes.length > 1) {
-        // this is a block instance which has no root node.
-        // however, the container in the parent template
-        // (which is replaced here) may contain v-with and
-        // paramAttributes that still need to be compiled
-        // for the child. we store all the container
-        // attributes on the options object and pass it down
-        // to the compiler.
-        var containerAttrs = options._containerAttrs = {}
-        var i = el.attributes.length
-        while (i--) {
-          var attr = el.attributes[i]
-          containerAttrs[attr.name] = attr.value
-        }
         transcludeContent(frag, rawContent)
+        _.copyAttributes(el, frag.firstChild)
         return frag
       } else {
         var replacer = frag.firstChild
@@ -31571,28 +31655,7 @@ function insertContentAt (outlet, contents) {
   }
   parent.removeChild(outlet)
 }
-
-/**
- * Helper to extract a component container's attribute names
- * into a map, and filtering out `v-with` in the process.
- * The resulting map will be used in compiler/compile to
- * determine whether an attribute is transcluded.
- *
- * @param {NameNodeMap} attrs
- */
-
-function extractAttrs (attrs) {
-  if (!attrs) return null
-  var res = {}
-  var vwith = config.prefix + 'with'
-  var i = attrs.length
-  while (i--) {
-    var name = attrs[i].name
-    if (name !== vwith) res[name] = true
-  }
-  return res
-}
-},{"../config":47,"../parsers/template":85,"../util":94}],47:[function(require,module,exports){
+},{"../parsers/template":85,"../util":94}],47:[function(require,module,exports){
 module.exports = {
 
   /**
@@ -31700,11 +31763,10 @@ var expParser = require('./parsers/expression')
  *                 - {String} [arg]
  *                 - {Array<Object>} [filters]
  * @param {Object} def - directive definition object
- * @param {Vue|undefined} host - transclusion host target
  * @constructor
  */
 
-function Directive (name, el, vm, descriptor, def, host) {
+function Directive (name, el, vm, descriptor, def) {
   // public
   this.name = name
   this.el = el
@@ -31715,7 +31777,6 @@ function Directive (name, el, vm, descriptor, def, host) {
   this.arg = descriptor.arg
   this.filters = _.resolveFilters(vm, descriptor.filters)
   // private
-  this._host = host
   this._locked = false
   this._bound = false
   // init
@@ -31733,7 +31794,7 @@ var p = Directive.prototype
  */
 
 p._bind = function (def) {
-  if (this.name !== 'cloak' && this.el && this.el.removeAttribute) {
+  if (this.name !== 'cloak' && this.el.removeAttribute) {
     this.el.removeAttribute(config.prefix + this.name)
   }
   if (typeof def === 'function') {
@@ -32059,8 +32120,7 @@ module.exports = {
       var child = vm.$addChild({
         el: el,
         template: this.template,
-        _asComponent: true,
-        _host: this._host
+        _asComponent: true
       }, this.Ctor)
       if (this.keepAlive) {
         this.cache[this.ctorId] = child
@@ -32217,9 +32277,7 @@ module.exports = {
 },{}],54:[function(require,module,exports){
 var _ = require('../util')
 
-module.exports = {
-
-  acceptStatement: true,
+module.exports = { 
 
   bind: function () {
     var child = this.el.__vue__
@@ -32230,21 +32288,14 @@ module.exports = {
       )
       return
     }
-  },
-
-  update: function (handler, oldHandler) {
-    if (typeof handler !== 'function') {
+    var method = this.vm[this.expression]
+    if (!method) {
       _.warn(
-        'Directive "v-events:' + this.expression + '" ' +
-        'expects a function value.'
+        '`v-events` cannot find method "' + this.expression +
+        '" on the parent instance.'
       )
-      return
     }
-    var child = this.el.__vue__
-    if (oldHandler) {
-      child.$off(this.arg, oldHandler)
-    }
-    child.$on(this.arg, handler)
+    child.$on(this.arg, method)
   }
 
   // when child is destroyed, all events are turned off,
@@ -32305,11 +32356,15 @@ module.exports = {
       this.end = document.createComment('v-if-end')
       _.replace(el, this.end)
       _.before(this.start, this.end)
+
+      // Note: content transclusion is not available for
+      // <template> blocks
       if (el.tagName === 'TEMPLATE') {
         this.template = templateParser.parse(el, true)
       } else {
         this.template = document.createDocumentFragment()
         this.template.appendChild(templateParser.clone(el))
+        this.checkContent()
       }
       // compile the nested partial
       this.linker = compile(
@@ -32326,6 +32381,32 @@ module.exports = {
     }
   },
 
+  // check if there are any content nodes from parent.
+  // these nodes are compiled by the parent and should
+  // not be cloned during a re-compilation - otherwise the
+  // parent directives bound to them will no longer work.
+  // (see #736)
+  checkContent: function () {
+    var el = this.el
+    for (var i = 0; i < el.childNodes.length; i++) {
+      var node = el.childNodes[i]
+      // _isContent is a flag set in instance/compile
+      // after the raw content has been compiled by parent
+      if (node._isContent) {
+        ;(this.contentNodes = this.contentNodes || []).push(node)
+        ;(this.contentPositions = this.contentPositions || []).push(i)
+      }
+    }
+    // keep track of any transcluded components contained within
+    // the conditional block. we need to call attach/detach hooks
+    // for them.
+    this.transCpnts =
+      this.vm._transCpnts &&
+      this.vm._transCpnts.filter(function (c) {
+        return el.contains(c.$el)
+      })
+  },
+
   update: function (value) {
     if (this.invalid) return
     if (value) {
@@ -32333,6 +32414,15 @@ module.exports = {
       // called with different truthy values
       if (!this.unlink) {
         var frag = templateParser.clone(this.template)
+        // persist content nodes from parent.
+        if (this.contentNodes) {
+          var el = frag.childNodes[0]
+          for (var i = 0, l = this.contentNodes.length; i < l; i++) {
+            var node = this.contentNodes[i]
+            var j = this.contentPositions[i]
+            el.replaceChild(node, el.childNodes[j])
+          }
+        }
         this.compile(frag)
       }
     } else {
@@ -32343,64 +32433,35 @@ module.exports = {
   // NOTE: this function is shared in v-partial
   compile: function (frag) {
     var vm = this.vm
-    // the linker is not guaranteed to be present because
-    // this function might get called by v-partial 
+    var originalChildLength = vm._children.length
     this.unlink = this.linker
       ? this.linker(vm, frag)
       : vm.$compile(frag)
     transition.blockAppend(frag, this.end, vm)
-    // call attached for all the child components created
-    // during the compilation
-    if (_.inDoc(vm.$el)) {
-      var children = this.getContainedComponents()
-      if (children) children.forEach(callAttach)
+    this.children = vm._children.slice(originalChildLength)
+    if (this.transCpnts) {
+      this.children = this.children.concat(this.transCpnts)
+    }
+    if (this.children.length && _.inDoc(vm.$el)) {
+      this.children.forEach(function (child) {
+        child._callHook('attached')
+      })
     }
   },
 
   // NOTE: this function is shared in v-partial
   teardown: function () {
     if (!this.unlink) return
-    // collect children beforehand
-    var children
-    if (_.inDoc(this.vm.$el)) {
-      children = this.getContainedComponents()
-    }
     transition.blockRemove(this.start, this.end, this.vm)
-    if (children) children.forEach(callDetach)
+    if (this.children && _.inDoc(this.vm.$el)) {
+      this.children.forEach(function (child) {
+        if (!child._isDestroyed) {
+          child._callHook('detached')
+        }
+      })
+    }
     this.unlink()
     this.unlink = null
-  },
-
-  // NOTE: this function is shared in v-partial
-  getContainedComponents: function () {
-    var vm = this.vm
-    var start = this.start.nextSibling
-    var end = this.end
-    var selfCompoents =
-      vm._children.length &&
-      vm._children.filter(contains)
-    var transComponents =
-      vm._transCpnts &&
-      vm._transCpnts.filter(contains)
-
-    function contains (c) {
-      var cur = start
-      var next
-      while (next !== end) {
-        next = cur.nextSibling
-        if (cur.contains(c.$el)) {
-          return true
-        }
-        cur = next
-      }
-      return false
-    }
-
-    return selfCompoents
-      ? transComponents
-        ? selfCompoents.concat(transComponents)
-        : selfCompoents
-      : transComponents
   },
 
   // NOTE: this function is shared in v-partial
@@ -32408,18 +32469,6 @@ module.exports = {
     if (this.unlink) this.unlink()
   }
 
-}
-
-function callAttach (child) {
-  if (!child._isAttached) {
-    child._callHook('attached')
-  }
-}
-
-function callDetach (child) {
-  if (child._isAttached) {
-    child._callHook('detached')
-  }
 }
 },{"../compiler/compile":45,"../parsers/template":85,"../transition":88,"../util":94}],57:[function(require,module,exports){
 // manipulation directives
@@ -32959,7 +33008,6 @@ module.exports = {
   // same logic reuse from v-if
   compile: vIf.compile,
   teardown: vIf.teardown,
-  getContainedComponents: vIf.getContainedComponents,
   unbind: vIf.unbind,
 
   bind: function () {
@@ -32989,10 +33037,6 @@ module.exports = {
     var partial = this.vm.$options.partials[id]
     _.assertAsset(partial, 'partial', id)
     if (partial) {
-      var filters = this.filters && this.filters.read
-      if (filters) {
-        partial = _.applyFilters(partial, filters, this.vm)
-      }
       this.compile(templateParser.parse(partial, true))
     }
   }
@@ -33132,18 +33176,21 @@ module.exports = {
       if (!tokens) { // static component
         var Ctor = this.Ctor = options.components[id]
         _.assertAsset(Ctor, 'component', id)
-        var merged = mergeOptions(Ctor.options, {}, {
-          $parent: this.vm
-        })
-        merged.template = this.inlineTempalte || merged.template
-        merged._asComponent = true
-        merged._parent = this.vm
-        this.template = transclude(this.template, merged)
-        // Important: mark the template as a root node so that
-        // custom element components don't get compiled twice.
-        // fixes #822
-        this.template.__vue__ = true
-        this._linkFn = compile(this.template, merged)
+        // If there's no parent scope directives and no
+        // content to be transcluded, we can optimize the
+        // rendering by pre-transcluding + compiling here
+        // and provide a link function to every instance.
+        if (!this.el.hasChildNodes() &&
+            !this.el.hasAttributes()) {
+          // merge an empty object with owner vm as parent
+          // so child vms can access parent assets.
+          var merged = mergeOptions(Ctor.options, {}, {
+            $parent: this.vm
+          })
+          merged.template = this.inlineTempalte || merged.template
+          this.template = transclude(this.template, merged)
+          this._linkFn = compile(this.template, merged, false, true)
+        }
       } else {
         // to be resolved later
         var ctorExp = textParser.tokensToExp(tokens)
@@ -33268,7 +33315,9 @@ module.exports = {
           vm.$before(ref)
         }
       } else {
-        var nextEl = targetNext.$el
+        // make sure to insert before the comment node if
+        // the vms are block instances
+        var nextEl = targetNext._blockStart || targetNext.$el
         if (vm._reused) {
           // this is the vm we are actually in front of
           currentNext = findNextVm(vm, ref)
@@ -33297,29 +33346,26 @@ module.exports = {
    */
 
   build: function (data, index, needCache) {
+    var original = data
     var meta = { $index: index }
     if (this.converted) {
-      meta.$key = data.$key
+      meta.$key = original.$key
     }
     var raw = this.converted ? data.$value : data
     var alias = this.arg
+    var hasAlias = !isObject(raw) || !isPlainObject(data) || alias
+    // wrap the raw data with alias
+    data = hasAlias ? {} : raw
     if (alias) {
-      data = {}
       data[alias] = raw
-    } else if (!isPlainObject(raw)) {
-      // non-object values
-      data = {}
+    } else if (hasAlias) {
       meta.$value = raw
-    } else {
-      // default
-      data = raw
     }
     // resolve constructor
     var Ctor = this.Ctor || this.resolveCtor(data, meta)
     var vm = this.vm.$addChild({
       el: templateParser.clone(this.template),
       _asComponent: this.asComponent,
-      _host: this._host,
       _linkFn: this._linkFn,
       _meta: meta,
       data: data,
@@ -33693,20 +33739,10 @@ module.exports = {
   isLiteral: true,
 
   bind: function () {
-    if (!this._isDynamicLiteral) {
-      this.update(this.expression)
-    }
-  },
-
-  update: function (id) {
-    var vm = this.el.__vue__ || this.vm
     this.el.__v_trans = {
-      id: id,
+      id: this.expression,
       // resolve the custom transition functions now
-      // so the transition module knows this is a
-      // javascript transition without having to check
-      // computed CSS.
-      fns: vm.$options.transitions[id]
+      fns: this.vm.$options.transitions[this.expression]
     }
   }
 
@@ -33714,8 +33750,6 @@ module.exports = {
 },{}],71:[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
-var expParser = require('../parsers/expression')
-var literalRE = /^(true|false|\s?('[^']*'|"[^"]")\s?)$/
 
 module.exports = {
 
@@ -33728,7 +33762,7 @@ module.exports = {
     var childKey = this.arg || '$data'
     var parentKey = this.expression
 
-    if (this.el && this.el !== child.$el) {
+    if (this.el !== child.$el) {
       _.warn(
         'v-with can only be used on instance root elements.'
       )
@@ -33736,17 +33770,6 @@ module.exports = {
       _.warn(
         'v-with must be used on an instance with a parent.'
       )
-    } else if (literalRE.test(parentKey)) {
-      // no need to setup watchers for literal bindings
-      if (!this.arg) {
-        _.warn(
-          'v-with cannot bind literal value as $data: ' +
-          parentKey
-        )
-      } else {
-        var value = expParser.parse(parentKey).get()
-        child.$set(childKey, value)
-      }
     } else {
 
       // simple lock to avoid circular updates.
@@ -33798,7 +33821,7 @@ module.exports = {
   }
 
 }
-},{"../parsers/expression":83,"../util":94,"../watcher":98}],72:[function(require,module,exports){
+},{"../util":94,"../watcher":98}],72:[function(require,module,exports){
 var _ = require('../util')
 var Path = require('../parsers/path')
 
@@ -34045,22 +34068,55 @@ var transclude = require('../compiler/transclude')
 
 exports._compile = function (el) {
   var options = this.$options
+  var parent = options._parent
   if (options._linkFn) {
-    // pre-transcluded with linker, just use it
     this._initElement(el)
     options._linkFn(this, el)
   } else {
-    // transclude and init element
-    // transclude can potentially replace original
-    // so we need to keep reference
-    var original = el
-    el = transclude(el, options)
-    this._initElement(el)
-    // compile and link the rest
-    compile(el, options)(this, el)
-    // finally replace original
+    var raw = el
+    if (options._asComponent) {
+      // separate container element and content
+      var content = options._content = _.extractContent(raw)
+      // create two separate linekrs for container and content
+      var parentOptions = parent.$options
+      
+      // hack: we need to skip the paramAttributes for this
+      // child instance when compiling its parent container
+      // linker. there could be a better way to do this.
+      parentOptions._skipAttrs = options.paramAttributes
+      var containerLinkFn =
+        compile(raw, parentOptions, true, true)
+      parentOptions._skipAttrs = null
+
+      if (content) {
+        var ol = parent._children.length
+        var contentLinkFn =
+          compile(content, parentOptions, true)
+        // call content linker now, before transclusion
+        this._contentUnlinkFn = contentLinkFn(parent, content)
+        // mark all compiled nodes as transcluded, so that
+        // directives that do partial compilation, e.g. v-if
+        // and v-partial can detect them and persist them
+        // through re-compilations.
+        for (var i = 0; i < content.childNodes.length; i++) {
+          content.childNodes[i]._isContent = true
+        }
+        this._transCpnts = parent._children.slice(ol)
+      }
+      // tranclude, this possibly replaces original
+      el = transclude(el, options)
+      this._initElement(el)
+      // now call the container linker on the resolved el
+      this._containerUnlinkFn = containerLinkFn(parent, el)
+    } else {
+      // simply transclude
+      el = transclude(el, options)
+      this._initElement(el)
+    }
+    var linkFn = compile(el, options)
+    linkFn(this, el)
     if (options.replace) {
-      _.replace(original, el)
+      _.replace(raw, el)
     }
   }
   return el
@@ -34076,7 +34132,8 @@ exports._compile = function (el) {
 exports._initElement = function (el) {
   if (el instanceof DocumentFragment) {
     this._isBlock = true
-    this.$el = this._blockStart = el.firstChild
+    this._blockStart = el.firstChild
+    this.$el = el.childNodes[1]
     this._blockEnd = el.lastChild
     this._blockFragment = el
   } else {
@@ -34093,12 +34150,11 @@ exports._initElement = function (el) {
  * @param {Node} node   - target node
  * @param {Object} desc - parsed directive descriptor
  * @param {Object} def  - directive definition object
- * @param {Vue|undefined} host - transclusion host component
  */
 
-exports._bindDir = function (name, node, desc, def, host) {
+exports._bindDir = function (name, node, desc, def) {
   this._directives.push(
-    new Directive(name, node, this, desc, def, host)
+    new Directive(name, node, this, desc, def)
   )
 }
 
@@ -34125,16 +34181,17 @@ exports._destroy = function (remove, deferCleanup) {
     i = parent._children.indexOf(this)
     parent._children.splice(i, 1)
   }
-  // same for transclusion host.
-  var host = this._host
-  if (host && !host._isBeingDestroyed) {
-    i = host._transCpnts.indexOf(this)
-    host._transCpnts.splice(i, 1)
-  }
   // destroy all children.
   i = this._children.length
   while (i--) {
     this._children[i].$destroy()
+  }
+  // teardown parent linkers
+  if (this._containerUnlinkFn) {
+    this._containerUnlinkFn()
+  }
+  if (this._contentUnlinkFn) {
+    this._contentUnlinkFn()
   }
   // teardown all directives. this also tearsdown all
   // directive-owned watchers. intentionally check for
@@ -34274,7 +34331,7 @@ exports._initDOMHooks = function () {
 function onAttached () {
   this._isAttached = true
   this._children.forEach(callAttach)
-  if (this._transCpnts.length) {
+  if (this._transCpnts) {
     this._transCpnts.forEach(callAttach)
   }
 }
@@ -34298,7 +34355,7 @@ function callAttach (child) {
 function onDetached () {
   this._isAttached = false
   this._children.forEach(callDetach)
-  if (this._transCpnts.length) {
+  if (this._transCpnts) {
     this._transCpnts.forEach(callDetach)
   }
 }
@@ -34389,16 +34446,7 @@ exports._init = function (options) {
   // transcluded components that belong to the parent.
   // need to keep track of them so that we can call
   // attached/detached hooks on them.
-  this._transCpnts = []
-  this._host = options._host
-
-  // push self into parent / transclusion host
-  if (this.$parent) {
-    this.$parent._children.push(this)
-  }
-  if (this._host) {
-    this._host._transCpnts.push(this)
-  }
+  this._transCpnts = null
 
   // props used in v-repeat diffing
   this._new = true
@@ -34551,7 +34599,7 @@ exports._digest = function () {
   i = children.length
   while (i--) {
     var child = children[i]
-    if (child.$options.inherit) {
+    if (!child._repeat && child.$options.inherit) {
       child._digest()
     }
   }
@@ -35063,24 +35111,6 @@ _.define(
 )
 
 /**
- * Set a property on an observed object, calling add to
- * ensure the property is observed.
- *
- * @param {String} key
- * @param {*} val
- * @public
- */
-
-_.define(
-  objProto,
-  '$set',
-  function $set (key, val) {
-    this.$add(key, val)
-    this[key] = val
-  }
-)
-
-/**
  * Deletes a property from an observed object
  * and emits corresponding event
  *
@@ -35276,29 +35306,24 @@ var Path = require('./path')
 var Cache = require('../cache')
 var expressionCache = new Cache(1000)
 
-var allowedKeywords =
-  'Math,Date,this,true,false,null,undefined,Infinity,NaN,' +
-  'isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,' +
-  'encodeURIComponent,parseInt,parseFloat'
-var allowedKeywordsRE =
-  new RegExp('^(' + allowedKeywords.replace(/,/g, '\\b|') + '\\b)')
-
-// keywords that don't make sense inside expressions
-var improperKeywords =
-  'break,case,class,catch,const,continue,debugger,default,' +
-  'delete,do,else,export,extends,finally,for,function,if,' +
-  'import,in,instanceof,let,return,super,switch,throw,try,' +
-  'var,while,with,yield,enum,await,implements,package,' +
-  'proctected,static,interface,private,public'
-var improperKeywordsRE =
-  new RegExp('^(' + improperKeywords.replace(/,/g, '\\b|') + '\\b)')
+var keywords =
+  'Math,Date,break,case,catch,continue,debugger,default,' +
+  'delete,do,else,false,finally,for,function,if,in,' +
+  'instanceof,new,null,return,switch,this,throw,true,try,' +
+  'typeof,var,void,while,with,undefined,abstract,boolean,' +
+  'byte,char,class,const,double,enum,export,extends,' +
+  'final,float,goto,implements,import,int,interface,long,' +
+  'native,package,private,protected,public,short,static,' +
+  'super,synchronized,throws,transient,volatile,' +
+  'arguments,let,yield'
 
 var wsRE = /\s/g
 var newlineRE = /\n/g
-var saveRE = /[\{,]\s*[\w\$_]+\s*:|('[^']*'|"[^"]*")|new |typeof |void /g
+var saveRE = /[\{,]\s*[\w\$_]+\s*:|('[^']*'|"[^"]*")|new /g
 var restoreRE = /"(\d+)"/g
 var pathTestRE = /^[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*|\['.*?'\]|\[".*?"\]|\[\d+\])*$/
 var pathReplaceRE = /[^\w$\.]([A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*|\['.*?'\]|\[".*?"\])*)/g
+var keywordsRE = new RegExp('^(' + keywords.replace(/,/g, '\\b|') + '\\b)')
 var booleanLiteralRE = /^(true|false)$/
 
 /**
@@ -35346,7 +35371,7 @@ function save (str, isString) {
 function rewrite (raw) {
   var c = raw.charAt(0)
   var path = raw.slice(1)
-  if (allowedKeywordsRE.test(path)) {
+  if (keywordsRE.test(path)) {
     return raw
   } else {
     path = path.indexOf('"') > -1
@@ -35378,12 +35403,6 @@ function restore (str, i) {
  */
 
 function compileExpFns (exp, needSet) {
-  if (improperKeywordsRE.test(exp)) {
-    _.warn(
-      'Avoid using reserved keywords in expression: '
-      + exp
-    )
-  }
   // reset state
   saved.length = 0
   // save strings and object literal keys
@@ -35514,9 +35533,7 @@ exports.parse = function (exp, needSet) {
   // global "Math"
   var res =
     pathTestRE.test(exp) &&
-    // don't treat true/false as paths
     !booleanLiteralRE.test(exp) &&
-    // Math constants e.g. Math.PI, Math.E etc.
     exp.slice(0, 5) !== 'Math.'
       ? compilePathFns(exp)
       : compileExpFns(exp, needSet)
@@ -36459,7 +36476,6 @@ module.exports = function (el, direction, op, data, cb) {
 var _ = require('../util')
 var applyCSSTransition = require('./css')
 var applyJSTransition = require('./js')
-var doc = typeof document === 'undefined' ? null : document
 
 /**
  * Append with transition.
@@ -36593,15 +36609,7 @@ var apply = exports.apply = function (el, direction, op, vm, cb) {
       vm,
       cb
     )
-  } else if (
-    _.transitionEndEvent &&
-    // skip CSS transitions if page is not visible -
-    // this solves the issue of transitionend events not
-    // firing until the page is visible again.
-    // pageVisibility API is supported in IE10+, same as
-    // CSS transitions.
-    !(doc && doc.hidden)
-  ) {
+  } else if (_.transitionEndEvent) {
     // css
     applyCSSTransition(
       el,
@@ -36696,8 +36704,15 @@ function enableDebug () {
    * @param {String} msg
    */
 
+  var warned = false
   exports.warn = function (msg) {
     if (hasConsole && (!config.silent || config.debug)) {
+      if (!config.debug && !warned) {
+        warned = true
+        console.log(
+          'Set `Vue.config.debug = true` to enable debug mode.'
+        )
+      }
       console.warn('[Vue warn]: ' + msg)
       /* istanbul ignore if */
       if (config.debug) {
@@ -37911,10 +37926,7 @@ p.teardown = function () {
     // which can improve teardown performance.
     if (!this.vm._isBeingDestroyed) {
       var list = this.vm._watcherList
-      var i = list.indexOf(this)
-      if (i > -1) {
-        list.splice(i, 1)
-      }
+      list.splice(list.indexOf(this))
     }
     for (var id in this.deps) {
       this.deps[id].removeSub(this)

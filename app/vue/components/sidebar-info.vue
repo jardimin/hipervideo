@@ -31,6 +31,12 @@
       margin-right: 10px;
       width: 220px;
     }
+    .slick-next {
+      right: -25px !important;
+    }
+    .slick-prev {
+      left: -25px !important;
+    }
   }
 
   .mulher-bg {
