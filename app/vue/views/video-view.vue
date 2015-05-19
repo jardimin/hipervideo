@@ -268,7 +268,7 @@
 		</div>
 
 		<div id="loading" class="not-loading"><i class="fa fa-refresh fa-3x fa-spin"></i></div>
-		<div id="aviso" style="position: fixed; top: 50px; width: 100%; text-align: center; font-size: 200%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1;">Aperte ESPAÇO para pausar e ENTER para entrar no modo TELA CHEIA</div>
+		<!-- <div id="aviso" style="position: fixed; top: 50px; width: 100%; text-align: center; font-size: 200%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1;">Aperte ESPAÇO para pausar e ENTER para entrar no modo TELA CHEIA</div> -->
 		
 	</div>
 </template>
@@ -279,6 +279,7 @@
 	var $$$ = require('jquery')
 	var _ = require('underscore')
 	var perfectScrollbar = require('perfect-scrollbar')
+	var noty = require('noty')
 
 	module.exports = {
 		// replace para pegar com v-with objetos do parent
@@ -321,6 +322,25 @@
 		},
 		attached: function() {
 
+			var animation = {
+				open: {height: 'toggle'}, // jQuery animate function property object
+				close: {height: 'toggle'}, // jQuery animate function property object
+				easing: 'swing', // easing
+				speed: 500 // opening & closing animation speed
+			}
+
+			var n = noty({
+				layout: 'top',
+				theme: 'relax',
+				type: 'warning',
+				text: 'Aperte ESPAÇO para pausar e ENTER para entrar no modo TELA CHEIA.',
+				closeWith: ['button', 'click'],
+				animation: animation,
+				buttons: [{text: 'OK', onClick: function($noty) {
+					$noty.close();
+				}}]
+			})
+
 			this.capitulo = this.db.capitulos[0];
 			this.libras = this.$parent.libras;
 			this.audio_desc = this.$parent.audio_desc;
@@ -359,6 +379,10 @@
 
 			this.$on('hipervideo-canplay', function() {
 				self.$broadcast('libras-load')
+			})
+
+			this.$on('ping', function() {
+				self.$broadcast('pong')
 			})
 
 			// POPCORN

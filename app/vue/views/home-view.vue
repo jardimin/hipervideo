@@ -11,7 +11,8 @@
 	header {
 		position: absolute;
 		height: 100%;
-		background-image: url(http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png);
+		background-image: url(http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home_nova.png);
+		background-repeat: no-repeat;
 		background-size: 100% auto;
 		width: 100%;
 		-webkit-box-sizing: border-box;
@@ -227,7 +228,6 @@
 				<a v-on="click: tutorialGO()" class="botao">O QUE É HIPERVÍDEO?</a>
 				<a v-on="click: fechar" class="botao">ASSISTIR HIPERVÍDEOS</a>
 				<a v-on="click: redes" class="botao">VER REDES</a>
-				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 30%; margin: 5% 5% 0; float: left;">
 				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 50%; float: left; margin-top: 6%;">
 			</div>
 		</header>
@@ -261,12 +261,11 @@
 				</div>
 			</div>
 		</div>
-		<div style="position: fixed; right: 0; bottom: 0; z-index: 1; width: 180px;">
+		<!-- <div style="position: fixed; right: 0; bottom: 0; z-index: 1; width: 180px;">
 			<p style="float: left; font-size: 80%; width: 100px;">desenvolvido por</p>
 			<a href="http://jardim.in" target="_blank">
-	      <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 40%; float: left; margin-top: 0.5%;">
 	    </a>
-		</div>
+		</div> -->
 	</div>
 </template>
 

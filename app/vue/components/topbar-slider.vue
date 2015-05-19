@@ -184,6 +184,7 @@
 			this.sel.addEventListener("mouseup", function(e) {
 				self.hip.play();
 				$$$('video').removeClass('pausado');
+				self.$dispatch('ping');
 				self.$parent.seeking = false
 				self.bol = false;
 			});

@@ -24,7 +24,7 @@
     {"start":  180, "end":  185, "node": 22},
     {"start":  220, "end":  225, "node": 23},
     {"start":  301, "end":  306, "node": 24},
-    {"start":  280, "end":  285, "node": 25},
+    {"start":  281, "end":  286, "node": 25},
     {"start":  395, "end":  400, "node": 26},
     {"start":  568, "end":  573, "node": 27},
     {"start":  616, "end":  621, "node": 28},
@@ -123,7 +123,7 @@
         "type": "text",
         "ano": 1988,
         "fields": {
-          "excerpt": "###Art. 196o da Constituição do Brasil de 1988. \n\nA saúde é direito de todos e dever do estado,garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação"
+          "excerpt": "###Art. 196o da Constituição do Brasil de 1988. \n\nA saúde é direito de todos e dever do estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação"
         }
       },
       "conteudo": {
@@ -186,7 +186,7 @@
           "link": "http://www.redehumanizasus.net/88663-mulheres-continuam-sendo-condenadas-e-presas-por-sofrerem-abortos-espontaneos"
           },
           {
-          "nome": "POLÍTICA NACIONAL DE ATENÇÃO ÀS MULHERES EM SITUAÇÃO DE PRIVAÇÃO DE LIBERDADE E EGRESSAS DO SISTEMA PRISIONAL",
+          "nome": "ATENÇÃO ÀS MULHERES EM SITUAÇÃO DE PRIVAÇÃO DE LIBERDADE E EGRESSAS DO SISTEMA PRISIONAL",
           "link": "http://www.justica.sp.gov.br/StaticFiles/SJDC/ArquivosComuns/ProgramasProjetos/PPM/U_PT-INTERM-MJ-MSPM-210_160114.pdf"
           },
           {
@@ -215,7 +215,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "“Na população prisional, a prevalência da tuberculose é 40 vezes maior que na populaçãogeral, o que é inadmissível haja vista que existe tratamento para a doença. (...) portanto, o controle da coinfecção do hiv e tuberculose é um grande desafio a ser enfrentado, e o seu controle na população como um todo, fazendo um chamado a todos os participantes.” *(consulta nacional sobre hiv/aids no sistema penitenciário)*"
+          "excerpt": "“Na população prisional, a prevalência da tuberculose é 40 vezes maior que na população geral, o que é inadmissível haja vista que existe tratamento para a doença. (...) portanto, o controle da coinfecção do hiv e tuberculose é um grande desafio a ser enfrentado, e o seu controle na população como um todo, fazendo um chamado a todos os participantes.” *(consulta nacional sobre hiv/aids no sistema penitenciário)*"
         }
       },
       "conteudo": {

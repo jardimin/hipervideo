@@ -19,7 +19,7 @@
     {"start": 993, "end": 1003, "node": 17},
     {"start": 1060, "end": 1070, "node": 18},
     {"start": 1120, "end": 1130, "node": 19},
-    {"start": 1244, "end": 1254, "node": 20},
+    {"start": 1242, "end": 1254, "node": 20},
     {"start": 1323, "end": 1332 , "node": 21},
     {"start": 1415, "end": 1422, "node": 22},
     {"start": 1435, "end": 1445, "node": 23},
@@ -35,10 +35,14 @@
     {"start": 678, "end": 683, "node": 37},
     {"start": 787, "end": 794, "node": 38},
     {"start": 814, "end": 822, "node": 39},
-    {"start": 949, "end": 956, "node": 40},
+    {"start": 875, "end": 882, "node": 40},
     {"start": 1007, "end": 1013, "node": 41},
     {"start": 1144, "end": 1154, "node": 42},
-    {"start": 1285, "end": 1292, "node": 44}
+    {"start": 1285, "end": 1292, "node": 44},
+    {"start": 1342, "end": 1352, "node": 45},
+   {"start": 1361, "end": 1372, "node": 46},
+ {"start": 1609, "end": 1618, "node": 47},
+ {"start": 1627, "end": 1634, "node": 48}
   ],
   "nodes": [
     {
@@ -438,11 +442,7 @@
       },
       "conteudo": {
         "texto": "O Fórum Perinatal é um espaço plural de construção de propostas, projetos, desenvolvimento de ações voltadas para a mudança de modelo de gestão e da atenção obstétrica e neonatal, propiciando a transversalidade das práticas e dos saberes, a tomada de decisões a partir de situações- problema identificados e pactuações para efetivação de propostas para qualificar o cuidado em saúde para mulheres e famílias, em rede. Demanda que seja organizado por um grupo técnico da Secretaria Estadual e ou Municipal de Saúde, com propostas de pautas e logística organizativa prévia a cada encontro, bem como de elaboração de ata/ memória enviada a todos os participantes. Propõe-se que seja constituído como espaço de debates pertinentes à realidade dos serviços, das necessidades locais de saúde baseadas em indicadores epidemiológicos do território e de suas respectivas regiões de saúde, além de percepções e significados presentes no coletivo de participantes envolvidos na proposta de reorganização da rede e do modelo de atenção. Os Fóruns foram incorporados, a partir de 2008, com o Plano de Qualificação das Maternidades, proporcionando experiências práticas e de construções coletivas desenvolvidas pela equipe de apoiadores institucionais e supervisores (FIGUEIREDO; LANSKY, 2014). Em 2011, os Fóruns foram integrados à Rede Cegonha.",
-        "mapa": {
-          "geo": [-16.05, -61.08, 4],
-          "locais": "1BZRhr7aoRFqHpcLxn-RZcLEgYaaM_OKsSGKvEVhsClM"
-        },
-        "arquivos": [{
+          "arquivos": [{
           "nome": "Texto Fóruns Perinatais no Âmbito do Plano de Qualificação,",
           "link": "http://www.redehumanizasus.net/sites/default/files/caderno_humanizasus_v4_humanizacao_parto.pdf "
           }]
@@ -609,8 +609,8 @@
     },
     {
       "id": 30,
-      "title": "Ana Lia Cunha",
-      "funcao": "Apoiadora de Serviço/MS"
+      "title": "Analia Pupo",
+      "funcao": "Apoiadora de Maternidades/MS"
     },
     {
       "id": 31,
@@ -681,7 +681,36 @@
       "id": 44,
       "title": "Manoel Miranda",
       "funcao": "Secretaria Estadual de Saúde/BA"
+    },
+    {
+      "id": 45,
+      "title": "Naiara Maria",
+      "funcao": "Marcha Mundial das Mulheres"
+    },
+
+  {
+      "id": 46,
+      "title": "Rogério Queiroz",
+      "funcao": "Promotor de Saúde - MPE/BA"
+    },
+
+  {
+      "id":47,
+      "title": "Neila Dias e Matheus dos Santos",
+      "funcao": "Puérpera e Pai"
+    },
+
+  {
+      "id":47,
+      "title": "Neila Dias e Matheus dos Santos",
+      "funcao": "Puérpera e Pai"
+    },
+  {
+      "id":48,
+      "title": "Gésica Souza",
+      "funcao": "Puérpera"
     }
+
   ],
   "edges": [
     {"source": 0,"target": 1},

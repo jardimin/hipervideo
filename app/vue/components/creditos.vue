@@ -170,8 +170,7 @@
     </div>
       <div class="papel" style="width: 100%;">
         <h3 style="margin-bottom: 0;">REALIZAÇÃO</h3>
-        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Logomarca_DAPES.png" style="width: 17%; float: left; margin-right: 13%; margin-left: 8%; margin-top: 1.2%;">
-        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 25%; margin-top: 2%; float: left; margin-right: 18%; margin-bottom: 4%;">
+        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 25%; margin-top: 2%; margin-left: 8%; float: left; margin-right: 18%; margin-bottom: 4%;">
         <a href="http://jardim.in" target="_blank">
           <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 12%; float: left; margin-top: 0.5%;">
         </a>
