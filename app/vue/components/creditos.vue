@@ -17,7 +17,7 @@
   }
   .info {
     background-color: rgba(200, 200, 200, 0.3);
-    padding: 1% 3% 0;
+    padding: 1% 3% 1%;
     position: relative;
     width: 80%;
     margin: 0 auto;
@@ -151,8 +151,17 @@
         <div class="papel">
           <h3>HIPERVÍDEO CRIANÇA</h3>
         </div>
-        <div class="papel">
+        <div class="papel" style="height: 320px;">
           <h3>HIPERVÍDEO ADOLESCENTE</h3>
+          <p>Ana Luísa Serra</p>
+          <p>Bruna Gisele de Oliveira</p>
+          <p>Henrique Bezerra Perminio</p>
+          <p>Maria da Guia de Oliveira</p>
+          <p>Márcia Rocha Parizzi</p>
+          <p>Maria Núbia Alves Cruz</p>
+          <p>Vanessa Rodrigues Cardoso</p>
+          <p>Eveline Correia Miranda Araújo</p>
+          <p>Thereza de Lamare Franco Netto</p>
         </div>
         <div class="papel">
           <h3>HIPERVÍDEO DEFICIÊNCIA</h3>
@@ -160,17 +169,17 @@
         <div class="papel">
           <h3>HIPERVÍDEO PRISIONAL</h3>
         </div>
-        <div class="papel" style="width: 100%; margin-bottom: 40px;">
+        <!-- <div class="papel" style="width: 100%; margin-bottom: 40px;">
           <h3 style="margin-bottom: 0;">DESENVOLVIDO POR:</h3>
           <a href="http://jardim.in" target="_blank">
             <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 20%; float: left; margin-top: 0.5%; margin-left: 41%;">
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
       <div class="papel" style="width: 100%;">
         <h3 style="margin-bottom: 0;">REALIZAÇÃO</h3>
-        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 25%; margin-top: 2%; margin-left: 8%; float: left; margin-right: 18%; margin-bottom: 4%;">
+        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 25%; margin-top: 2%; margin-left: 19%; float: left; margin-right: 18%; margin-bottom: 4%;">
         <a href="http://jardim.in" target="_blank">
           <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 12%; float: left; margin-top: 0.5%;">
         </a>
