@@ -263,9 +263,9 @@
 
 		<!-- <in-libras v-with="id: id" v-show="libras"></in-libras> -->
 
-		<div class="audio_desc" v-show="audio_desc">
+		<!-- <div class="audio_desc" v-show="audio_desc">
 			<in-audio v-with="id: id"></in-audio>
-		</div>
+		</div> -->
 
 		<div id="loading" class="not-loading"><i class="fa fa-refresh fa-3x fa-spin"></i></div>
 		<!-- <div id="aviso" style="position: fixed; top: 50px; width: 100%; text-align: center; font-size: 200%; background-color: #555; padding: 10px; transition: all 1s; opacity: 1;">Aperte ESPAÇO para pausar e ENTER para entrar no modo TELA CHEIA</div> -->
@@ -369,17 +369,13 @@
 			}
 			xhr.send()
 
-			this.$on('mudou-libras', function (val) {
-				self.libras = val;
-			})
+			// this.$on('mudou-acess', function (val) {
+			// 	self.acess = val;
+			// })
 
-			this.$on('mudou-audio_desc', function (val) {
-				self.audio_desc = val;
-			})
-
-			this.$on('hipervideo-canplay', function() {
-				self.$broadcast('libras-load')
-			})
+			// this.$on('hipervideo-canplay', function() {
+			// 	self.$broadcast('libras-load')
+			// })
 
 			this.$on('ping', function() {
 				self.$broadcast('pong')
@@ -486,8 +482,7 @@
 
 		},
 		beforeDestroy: function(){
-      this.$off('mudou-libras')
-			this.$off('mudou-audio_desc')
+      this.$off('mudou-acess')
 			this.$off('hipervideo-canplay')
 			var self = this
 			this.viid.removeEventListener( "play", function() {

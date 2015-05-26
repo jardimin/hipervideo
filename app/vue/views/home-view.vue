@@ -346,7 +346,7 @@
       	this.$dispatch('video-acessibilidade', 'audio')
       },
       selectNada: function(){
-      	this.$dispatch('video-acessibilidade', 'nada')
+      	this.$dispatch('video-acessibilidade', 'normal')
       }
 		},
 		computed: {
@@ -366,7 +366,7 @@
         return this.$parent.acessibilidade === 'audio';
       },
       isNada: function() {
-        return this.$parent.acessibilidade === 'nada';
+        return this.$parent.acessibilidade === 'normal';
       },
       hipId: {
       	get: function() {

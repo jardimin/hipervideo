@@ -62,11 +62,7 @@
 		},
 		created: function() {
 			this.qual = this.$parent.$parent.qualidade;
-			if (this.$parent.$parent.libras) {
-				this.lib = 'libras'
-			} else {
-				this.lib = 'normal'
-			}
+			this.lib = this.$parent.$parent.acessibilidade;
 		},
 		attached: function() {
 			
@@ -88,13 +84,9 @@
 				self.continuarTemp();
 			})
 
-			this.$on('mudou-libras', function (val) {
+			this.$on('mudou-acess', function (val) {
 				self.timecode = self.video.time;
-				if (val) {
-					self.lib = 'libras';
-				} else {
-					self.lib = 'normal';
-				}
+				self.lib = val;
 				self.hipervideo.load();
 				self.continuarTemp();
 			})
@@ -171,7 +163,7 @@
     	var self = this
 
       this.$off('mudou-qualidade')
-      this.$off('mudou-libras')
+      this.$off('mudou-acess')
 
       this.hipervideo.removeEventListener("loadstart" , function() {
 				$$$('#loading').addClass('loading')

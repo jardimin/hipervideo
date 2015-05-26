@@ -84,8 +84,9 @@
       <div class="menu_item" v-on="click: clickCreditos">CRÉDITOS</div>
     </div>
       <div class="menu_2" v-show="menuAcess">
-      <div class="menu_item" v-class="selecionado: audio_desc" v-on="click: selectAudio">ÁUDIO DESCRIÇÃO</div>
-      <div class="menu_item" v-class="selecionado: libras" v-on="click: selectLibras">LIBRAS</div>
+      <div class="menu_item" v-class="selecionado: isNada" v-on="click: selectNada">SEM ACESSIBILIDADE</div>
+      <div class="menu_item" v-class="selecionado: isAudio" v-on="click: selectAudio">ÁUDIO DESCRIÇÃO</div>
+      <div class="menu_item" v-class="selecionado: isLibras" v-on="click: selectLibras">LIBRAS</div>
     </div>
     <div class="menu_2" v-show="menuQual">
       <div class="menu_item" v-class="selecionado: isAlta" v-on="click: selectAlta">ALTA</div>
@@ -148,6 +149,15 @@
       },
       isBaixa: function() {
         return this.$parent.$parent.$parent.qualidade === 'baixa';
+      },
+      isNada: function() {
+        return this.$parent.$parent.$parent.acessibilidade === 'normal';
+      },
+      isAudio: function() {
+        return this.$parent.$parent.$parent.acessibilidade === 'audio';
+      },
+      isLibras: function() {
+        return this.$parent.$parent.$parent.acessibilidade === 'libras';
       }
     },
     attached: function() {
@@ -241,19 +251,14 @@
       clickCreditos: function() {
         this.$parent.$parent.creditos.className = 'finalizado';
       },
+      selectNada: function(){
+        this.$dispatch('video-acessibilidade', 'normal')
+      },
       selectAudio: function(){
-        if (this.$parent.$parent.audio_desc === true) {
-          this.$dispatch('video-acessibilidade', 'nada')
-        } else {
-          this.$dispatch('video-acessibilidade', 'audio')
-        }
+        this.$dispatch('video-acessibilidade', 'audio')
       },
       selectLibras: function(){
-        if (this.$parent.$parent.libras === true) {
-          this.$dispatch('video-acessibilidade', 'nada')
-        } else {
-          this.$dispatch('video-acessibilidade', 'libras')
-        }
+        this.$dispatch('video-acessibilidade', 'libras')
       },
       selectAlta: function(){
         this.$dispatch('video-qualidade', 'alta')

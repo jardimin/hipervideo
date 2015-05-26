@@ -1,5 +1,17 @@
 {
   "timecode": [
+    {"start": 19, "end": 25, "node": 1},
+    {"start": 74, "end": 84, "node": 2},
+    {"start": 90, "end": 98, "node": 3},
+    {"start": 107, "end": 117, "node": 4},
+    {"start": 171, "end": 179, "node": 5},
+    {"start": 351, "end": 360, "node": 6},
+    {"start": 464, "end": 472, "node": 7},
+    {"start": 870, "end": 878, "node": 8},
+    {"start": 1171, "end": 1179, "node": 9},
+    {"start": 1453, "end": 1460, "node": 10},
+    {"start": 1461, "end": 1470, "node": 11},
+    {"start": 1480, "end": 1487, "node": 12},
     {"start": 33, "end": 43, "node": 13},
     {"start": 56, "end": 60, "node": 14},
     {"start": 198, "end": 203, "node": 15},
@@ -15,19 +27,7 @@
     {"start": 1049, "end": 1054, "node": 25},
     {"start": 1297, "end": 1212, "node": 26},
     {"start": 1269, "end": 1276, "node": 27},
-    {"start": 1304, "end": 1311, "node": 28},
-    {"start": 19, "end": 25, "node": 1},
-    {"start": 74, "end": 84, "node": 2},
-    {"start": 90, "end": 98, "node": 3},
-    {"start": 107, "end": 117, "node": 4},
-    {"start": 171, "end": 179, "node": 5},
-    {"start": 351, "end": 360, "node": 6},
-    {"start": 464, "end": 472, "node": 7},
-    {"start": 870, "end": 878, "node": 8},
-    {"start": 1171, "end": 1179, "node": 9},
-    {"start": 1453, "end": 1460, "node": 10},
-    {"start": 1461, "end": 1470, "node": 11},
-    {"start": 1480, "end": 1487, "node": 12}
+    {"start": 1304, "end": 1311, "node": 28}
   ],
   "nodes": [
     {

@@ -116,10 +116,8 @@
 			view: "",
 			className: "",
 			redes: false,
-			qualidade: 'alta',
-			acessibilidade: 'nada',
-			libras: false,
-			audio_desc: false,
+			qualidade: 'baixa',
+			acessibilidade: 'normal',
 			params: {
 				video: null,
 				route: null
@@ -129,11 +127,8 @@
 			qualidade: function (qualidade) {
 				this.$broadcast('mudou-qualidade', qualidade);
 			},
-			libras: function (val) {
-				this.$broadcast('mudou-libras', val);
-			},
-			audio_desc: function (val) {
-				this.$broadcast('mudou-audio_desc', val);
+			acessibilidade: function (val) {
+				this.$broadcast('mudou-acess', val);
 			},
 			redes: function (val) {
 				this.$broadcast('redinha', val);
@@ -144,7 +139,7 @@
 			var a = getCookie('acessibilidade')
 
 			if (q === "") {
-				document.cookie = "qualidade=alta";
+				document.cookie = "qualidade=baixa";
 			} else if (q === "alta") {
 				this.qualidade = 'alta';
 			} else if (q === "media") {
@@ -154,19 +149,13 @@
 			}
 
 			if (a === "") {
-				document.cookie = "acessibilidade=nada";
+				document.cookie = "acessibilidade=normal";
 			} else if (a === "libras") {
-				this.libras = true;
-				this.audio_desc = false;
 				this.acessibilidade = 'libras';
 			} else if (a === "audio") {
-				this.libras = false;
-				this.audio_desc = true;
 				this.acessibilidade = 'audio';
-			} else if (a === "nada") {
-				this.libras = false;
-				this.audio_desc = false;
-				this.acessibilidade = 'nada';
+			} else if (a === "normal") {
+				this.acessibilidade = 'normal';
 			}
 
 			function getCookie(cname) {
@@ -191,17 +180,11 @@
 
 			this.$on('video-acessibilidade', function (acess) {
 				if (acess === 'libras') {
-					this.libras = true;
-					this.audio_desc = false;
 					document.cookie = "acessibilidade = libras";
 				} else if (acess === 'audio') {
-					this.libras = false;
-					this.audio_desc = true;
 					document.cookie = "acessibilidade = audio";
-				} else if (acess === 'nada') {
-					this.libras = false;
-					this.audio_desc = false;
-					document.cookie = "acessibilidade = nada";
+				} else if (acess === 'normal') {
+					document.cookie = "acessibilidade = normal";
 				}
 				this.acessibilidade = acess;
 			})

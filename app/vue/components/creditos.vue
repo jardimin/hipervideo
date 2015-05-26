@@ -17,11 +17,14 @@
   }
   .info {
     background-color: rgba(200, 200, 200, 0.3);
-    padding: 1% 3% 1%;
+    padding: 1% 3% 0%;
     position: relative;
     width: 80%;
     margin: 0 auto;
     zoom: 1; /* IE6&7 */
+    @media screen and (min-width: 1600px) {
+      padding: 1% 3% 1%;
+    }
     &:before, &:after,{
       content: "";
       display: table;
@@ -150,6 +153,7 @@
         </div>
         <div class="papel">
           <h3>HIPERVÍDEO CRIANÇA</h3>
+          <p>Tadeu de Paula</p>
         </div>
         <div class="papel" style="height: 320px;">
           <h3>HIPERVÍDEO ADOLESCENTE</h3>
@@ -165,9 +169,11 @@
         </div>
         <div class="papel">
           <h3>HIPERVÍDEO DEFICIÊNCIA</h3>
+          <p>Luiz Augusto de Paula Souza</p>
         </div>
         <div class="papel">
           <h3>HIPERVÍDEO PRISIONAL</h3>
+          <p>Cristiano Rodrigues</p>
         </div>
         <!-- <div class="papel" style="width: 100%; margin-bottom: 40px;">
           <h3 style="margin-bottom: 0;">DESENVOLVIDO POR:</h3>
