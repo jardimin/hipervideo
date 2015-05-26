@@ -403,7 +403,7 @@
     {
       "id": 18,
       "title": "PRIMEIRA INFÂNCIA",
-      "icon": "marco",
+      "icon": "funcao",
       "component": {
         "type": "text",
         "fields": {
