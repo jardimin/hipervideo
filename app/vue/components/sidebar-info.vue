@@ -164,16 +164,15 @@
         }
 
         if (this.$parent.conteudo.video_list) {
-          var playlistUrl = 'http://gdata.youtube.com/feeds/api/playlists/' + this.$parent.conteudo.video_list + '?v=2&alt=json&callback=?';
+          var playlistUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + this.$parent.conteudo.video_list + '&key=AIzaSyCwNv14d5bNQ4MwaodqT6z45-6A5y4kzus';
           var videoURL= 'http://www.youtube.com/watch?v=';
           $$$.getJSON(playlistUrl, function(data) {
+            console.log(data);
             var list_data=[];
-            $$$.each(data.feed.entry, function(i, item) {
+            $$$.each(data.items, function(i, item) {
               var video_data = {};
-              video_data.title = item.title.$t;
-              var feedURL = item.link[1].href;
-              var fragments = feedURL.split("/");
-              video_data.id = fragments[fragments.length - 2];
+              video_data.title = item.snippet.title;
+              video_data.id = item.snippet.resourceId.videoId;
               video_data.url = videoURL + video_data.id;
               list_data.push(video_data);
             });
