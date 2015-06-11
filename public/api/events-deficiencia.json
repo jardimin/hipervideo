@@ -10,24 +10,25 @@
     {"start": 870, "end": 878, "node": 8},
     {"start": 1171, "end": 1179, "node": 9},
     {"start": 1453, "end": 1460, "node": 10},
-    {"start": 1461, "end": 1470, "node": 11},
+    {"start": 1315, "end": 1325, "node": 11},
     {"start": 1480, "end": 1487, "node": 12},
-    {"start": 33, "end": 43, "node": 13},
-    {"start": 56, "end": 60, "node": 14},
-    {"start": 198, "end": 203, "node": 15},
-    {"start": 211, "end": 217, "node": 16},
-    {"start": 372, "end": 378, "node": 17},
-    {"start": 443, "end": 450, "node": 18},
-    {"start": 499, "end": 505, "node": 19},
-    {"start": 582, "end": 590, "node": 20},
-    {"start": 731, "end": 738, "node": 21},
-    {"start": 789, "end": 795, "node": 22},
-    {"start": 909, "end": 916, "node": 23},
-    {"start": 964, "end": 973, "node": 24},
-    {"start": 1049, "end": 1054, "node": 25},
-    {"start": 1297, "end": 1212, "node": 26},
-    {"start": 1269, "end": 1276, "node": 27},
-    {"start": 1304, "end": 1311, "node": 28}
+    {"start": 390, "end": 404, "node": 13},
+    {"start": 33, "end": 43, "node": 14},
+    {"start": 56, "end": 60, "node": 15},
+    {"start": 198, "end": 203, "node": 16},
+    {"start": 211, "end": 217, "node": 17},
+    {"start": 372, "end": 378, "node": 18},
+    {"start": 443, "end": 450, "node": 19},
+    {"start": 499, "end": 505, "node": 20},
+    {"start": 582, "end": 590, "node": 21},
+    {"start": 731, "end": 738, "node": 22},
+    {"start": 789, "end": 795, "node": 23},
+    {"start": 909, "end": 916, "node": 24},
+    {"start": 964, "end": 973, "node": 25},
+    {"start": 1049, "end": 1054, "node": 26},
+    {"start": 1297, "end": 1212, "node": 27},
+    {"start": 1269, "end": 1276, "node": 28},
+    {"start": 1304, "end": 1311, "node": 29}
   ],
   "nodes": [
     {
@@ -150,11 +151,6 @@
         }
       },
       "conteudo": {
-        "texto": "",
-        "mapa": {
-          "geo": [-16.05, -61.08, 4],
-          "locais": "1CGuQU7eEfzYKrhRKOXKGxA5OFe1O5nzQxPR72Bu2f7A"
-        },
         "video_list": "PLMSHbkIRallkp2hqmw-e06u5Q5lLDPtTv",
         "arquivos": [{
           "nome": "Discussão",
@@ -299,7 +295,7 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Veja em **abaixo** o mapa com oficinas ortopédicas espalhadas pelo Brasil."
+          "excerpt": "Veja em **abaixo** o mapa com oficinas ortopédicas habilitadas pelo Brasil."
         }
       },
       "conteudo": {
@@ -330,81 +326,99 @@
     },
     {
       "id": 13,
+      "title": "Mapa dos CER's",
+      "icon": "conceito",
+      "component": {
+        "type": "text",
+        "fields": {
+          "excerpt": "Confira o mapa com os Centros Especializados em Reabilitação (CER) habilitados em todo o país"
+        }
+      },
+      "conteudo": {
+        "texto": "",
+        "mapa": {
+          "geo": [-16.05, -61.08, 4],
+          "locais": "1CGuQU7eEfzYKrhRKOXKGxA5OFe1O5nzQxPR72Bu2f7A"
+        }
+      }
+    },
+    {
+      "id": 14,
       "title": "Vera Mendes",
       "funcao": "Coordenadora da Saúde da Pessoa com Deficiência/MS"
     },
     {
-      "id": 14,
+      "id": 15,
       "title": "Dagoberto Barbosa",
       "funcao": "Gerente de Reabilitação do CRER"
     },
     {
-      "id": 15,
+      "id": 16,
       "title": "Thaís e José Neto",
       "funcao": "Usuários"
     },
     {
-      "id": 16,
+      "id": 17,
       "title": "Renata Karina Santos",
       "funcao": "Médica"
     },
     {
-      "id": 17,
+      "id": 18,
       "title": "Fábio Pechat dos Santos",
       "funcao": "Coordenador Estadual da Saúde da Pessoa com Deficiência / GO"
     },
     {
-      "id": 18,
+      "id": 19,
       "title": "Atendimento Domiciliar",
       "funcao": " "
     },
     {
-      "id": 19,
+      "id": 20,
       "title": "Augusto , Fernanda e Alice",
       "funcao": "Usuários"
     },
     {
-      "id": 20,
+      "id": 21,
       "title": "Giane de Andrade",
       "funcao": "Fonoáudiológa"
     },
     {
-      "id": 21,
+      "id": 22,
       "title": "Lays Minasi",
       "funcao": "Fisioterapeuta"
     },
     {
-      "id": 22,
+      "id": 23,
       "title": "Wilson Borges",
       "funcao": "Usuário"
     },
     {
-      "id": 23,
+      "id": 24,
       "title": "Manuella Mello",
       "funcao": "Médica"
     },
     {
-      "id": 24,
+      "id": 25,
       "title": "Thereza Veríssimo",
       "funcao": "Fisioterapeuta"
     },
     {
-      "id": 25,
+      "id": 26,
       "title": "Jackeline Bessa ",
       "funcao": "Terapeuta Ocupacional"
     },
     {
-      "id": 26,
+      "id": 27,
       "title": "Michele Rocha",
       "funcao": "Terapeuta Ocupacional"
     },
     {
-      "id": 27,
+      "id": 28,
       "title": "Wanderley José Sá",
       "funcao": "Técnico da Oficina Ortopédica"
     },
     {
-      "id": 28,
+      "id": 29,
       "title": "Alysson Campos",
       "funcao": "Coordenador da Oficina Ortopédica"
     }
@@ -421,6 +435,7 @@
     {"source": 0,"target": 9},
     {"source": 0,"target": 10},
     {"source": 0,"target": 11},
-    {"source": 0,"target": 12}
+    {"source": 0,"target": 12},
+    {"source": 0,"target": 13}
   ]
 }
