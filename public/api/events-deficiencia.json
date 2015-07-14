@@ -46,6 +46,10 @@
         "arquivos": [{
           "nome": "PDF",
           "link": "http://bvsms.saude.gov.br/bvs/publicacoes/dialogo_bio_politico_pessoa_deficiencia.pdf"
+        },
+        {
+          "nome": "TXT",
+          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/GYN/arquivos/Di%C3%A1logo+(bio)pol%C3%ADtico+sobre+alguns+desafios+na+constru%C3%A7%C3%A3o+da+rede+de+cuidados+%C3%A0+pessoa+com+deficiencia+do+SUS.txt"
         }]        
       }
     },
@@ -79,7 +83,7 @@
     },
     {
       "id": 3,
-      "title": "História",
+      "title": "Movimento Social",
       "icon": "marco",
       "component": {
         "type": "text",
@@ -172,7 +176,7 @@
         }
       },
       "conteudo": {
-        "texto": " ",
+        "texto": "Normativas da Rede de Cuidados à Pessoa com Deficiência no âmbito do SUS.",
         "arquivos":[{     
           "nome": "Portaria 793 - HTML",
           "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2012/prt0793_24_04_2012.html"
@@ -296,11 +300,11 @@
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Veja em **abaixo** o mapa com oficinas ortopédicas habilitadas pelo Brasil."
+          "excerpt": "As Oficinas Ortopédicas constituem-se como serviços especializados que promovem o acesso a órteses, próteses e meios auxiliares de locomoção - OPM, além de confecção de adaptações, ajustes e pequenos concertos em OPM."
         }
       },
       "conteudo": {
-        "texto": "",
+        "texto": "As Oficinas Ortopédicas constituem-se como serviços especializados que promovem o acesso a órteses, próteses e meios auxiliares de locomoção - OPM, além de confecção de adaptações, ajustes e pequenos concertos em OPM.\n\n Veja em **abaixo** o mapa com oficinas ortopédicas habilitadas pelo Brasil.",
         "mapa": {
           "geo": [-16.05, -61.08, 4],
           "locais": "1TbigY1zYfKvajgyOMFo4cIrWjfIyxykT3GjYvvWplJw"
@@ -327,16 +331,16 @@
     },
     {
       "id": 13,
-      "title": "Mapa dos CER's",
+      "title": "CER",
       "icon": "conceito",
       "component": {
         "type": "text",
         "fields": {
-          "excerpt": "Confira o mapa com os Centros Especializados em Reabilitação (CER) habilitados em todo o país"
+          "excerpt": "O Centro Especializado em Reabilitação (CER) é um ponto de atenção ambulatorial especializada em reabilitação que realiza diagnóstico, tratamento, concessão, adaptação e manutenção de tecnologia assistiva, constituindo-se em referência para a rede de atenção à saúde no território."
         }
       },
       "conteudo": {
-        "texto": "",
+        "texto": "O Centro Especializado em Reabilitação (CER) é um ponto de atenção ambulatorial especializada em reabilitação que realiza diagnóstico, tratamento, concessão, adaptação e manutenção de tecnologia assistiva, constituindo-se em referência para a rede de atenção à saúde no território.\n\n Confira o mapa com os Centros Especializados em Reabilitação (CER) habilitados em todo o país.",
         "mapa": {
           "geo": [-16.05, -61.08, 4],
           "locais": "1CGuQU7eEfzYKrhRKOXKGxA5OFe1O5nzQxPR72Bu2f7A"
