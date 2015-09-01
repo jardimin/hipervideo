@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  - var inic
+  - if (home) { inic = '/#/home/' } else { inic = '/#/'}
+  script(type="text/javascript").
+    window.location = '#{inic}' + '#{facetruque.urlized}'

@@ -164,7 +164,8 @@
   var Vue = require('vue')
   
   var _ = require('underscore')
-  var radius = 720
+  var winWidth = (window.innerWidth * 56) / 100
+  var radius = winWidth
 
   module.exports = {
     inherit: true,

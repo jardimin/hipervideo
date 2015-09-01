@@ -299,6 +299,16 @@
 			}
 		},
 		methods: {
+			hiperHome: function (id) {
+				$$$('.'+id).addClass('ativo')
+				var head = $$$('header')
+				head.addClass('ativo')
+			},
+			hiper: function (id) {
+				$$$('.'+id).removeClass('ativo')
+				var head = $$$('header')
+				head.removeClass('ativo')
+			},
 			fechar: function() {
 				var head = $$$('header')
 				head.addClass('fechado')
@@ -392,7 +402,7 @@
 			}
 		},
 		attached: function () {
-			
+			this.$dispatch('home-view-ready');
 			$$$('body').removeClass("tocando");
 			
 			var browser = useragent.Browser

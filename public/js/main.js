@@ -1021,7 +1021,8 @@ var __vue_template__ = "<div id=\"redes\" v-show=\"redes\" v-class=\"is-redes: r
 var Vue = require('vue')
   
   var _ = require('underscore')
-  var radius = 720
+  var winWidth = (window.innerWidth * 56) / 100
+  var radius = winWidth
 
   module.exports = {
     inherit: true,
@@ -2506,14 +2507,41 @@ var $$$ = require('jquery')
 	var Vue = require('vue')
 	var Router = require('director').Router
 	var app = new Vue(require('./app.vue'))
+	// Vue.config.debug = true
 
 	// ROUTES
 
 	var routes = {
 		'/home' : {
+			'/:di': {
+				on: function(di) {
+					if (di === 'redes') {
+						if(app.$.view){
+							app.$data.redes = true
+						} else {
+							app.$once('home-view-ready',function(){
+								app.$data.redes = true
+							})
+						}
+					} else {
+						if(app.$.view){
+							app.$.view.fechar()
+							app.$.view.hiperHome(di)
+						} else {
+							app.$once('home-view-ready',function(){
+								app.$.view.fechar()
+								app.$.view.hiperHome(di)
+							})
+						}
+					}
+				}
+			},
 			on: function () {
-				app.view = 'home-view'
 				app.className = 'is-home'
+
+				Vue.nextTick(function () {
+					app.view = 'home-view'
+				})
 			}
 		},
 		'/:id': {
@@ -2531,7 +2559,7 @@ var $$$ = require('jquery')
 				}
 			},
 			on: function (id) {
-				
+				console.log('test-video-' + id)
 				var self = this
 				var last_route = app.params.route
 				var cur_route = app.params.route = self.getRoute()
@@ -2554,21 +2582,13 @@ var $$$ = require('jquery')
 
 				app.view = ''
 
-				if (id === 'teste') {
-					Vue.nextTick(function () {
-						app.db = app.fulldb.teste
-						app.view = 'video-view'
-						app.params.video = id
-						app.className = 'is-video-mulher'
-					})
-				} else {
-					Vue.nextTick(function () {
-						app.db = _.findWhere(app.fulldb.hipervideos,{"id": id})
-						app.view = 'video-view'
-						app.params.video = id
-						app.className = 'is-video-' + id
-					})
-				}
+
+				Vue.nextTick(function () {
+					app.db = _.findWhere(app.fulldb.hipervideos,{"id": id})
+					app.view = 'video-view'
+					app.params.video = id
+					app.className = 'is-video-' + id
+				})
 				
 			}
 		}
@@ -2634,6 +2654,16 @@ var $$$ = require('jquery')
 			}
 		},
 		methods: {
+			hiperHome: function (id) {
+				$$$('.'+id).addClass('ativo')
+				var head = $$$('header')
+				head.addClass('ativo')
+			},
+			hiper: function (id) {
+				$$$('.'+id).removeClass('ativo')
+				var head = $$$('header')
+				head.removeClass('ativo')
+			},
 			fechar: function() {
 				var head = $$$('header')
 				head.addClass('fechado')
@@ -2727,7 +2757,7 @@ var $$$ = require('jquery')
 			}
 		},
 		attached: function () {
-			
+			this.$dispatch('home-view-ready');
 			$$$('body').removeClass("tocando");
 			
 			var browser = useragent.Browser

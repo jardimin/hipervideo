@@ -4,14 +4,41 @@
 	var Vue = require('vue')
 	var Router = require('director').Router
 	var app = new Vue(require('./app.vue'))
+	// Vue.config.debug = true
 
 	// ROUTES
 
 	var routes = {
 		'/home' : {
+			'/:di': {
+				on: function(di) {
+					if (di === 'redes') {
+						if(app.$.view){
+							app.$data.redes = true
+						} else {
+							app.$once('home-view-ready',function(){
+								app.$data.redes = true
+							})
+						}
+					} else {
+						if(app.$.view){
+							app.$.view.fechar()
+							app.$.view.hiperHome(di)
+						} else {
+							app.$once('home-view-ready',function(){
+								app.$.view.fechar()
+								app.$.view.hiperHome(di)
+							})
+						}
+					}
+				}
+			},
 			on: function () {
-				app.view = 'home-view'
 				app.className = 'is-home'
+
+				Vue.nextTick(function () {
+					app.view = 'home-view'
+				})
 			}
 		},
 		'/:id': {
@@ -29,7 +56,7 @@
 				}
 			},
 			on: function (id) {
-				
+				console.log('test-video-' + id)
 				var self = this
 				var last_route = app.params.route
 				var cur_route = app.params.route = self.getRoute()
@@ -52,21 +79,13 @@
 
 				app.view = ''
 
-				if (id === 'teste') {
-					Vue.nextTick(function () {
-						app.db = app.fulldb.teste
-						app.view = 'video-view'
-						app.params.video = id
-						app.className = 'is-video-mulher'
-					})
-				} else {
-					Vue.nextTick(function () {
-						app.db = _.findWhere(app.fulldb.hipervideos,{"id": id})
-						app.view = 'video-view'
-						app.params.video = id
-						app.className = 'is-video-' + id
-					})
-				}
+
+				Vue.nextTick(function () {
+					app.db = _.findWhere(app.fulldb.hipervideos,{"id": id})
+					app.view = 'video-view'
+					app.params.video = id
+					app.className = 'is-video-' + id
+				})
 				
 			}
 		}

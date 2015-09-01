@@ -10,6 +10,7 @@ router.get('/', function(req, res) {
     res.render('mobile', {});
   } else {
     res.render('index', {});
+    console.log('teste-index');
   }
 });
 
