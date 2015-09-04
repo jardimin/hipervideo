@@ -405,8 +405,8 @@
 			this.$dispatch('home-view-ready');
 			$$$('body').removeClass("tocando");
 			
-			var browser = useragent.Browser
-			var version = useragent.Version.split('.')
+			var browser = useragent.browser
+			var version = useragent.version.split('.')
 
 			var cond0 = browser.search("Chrome") === -1
 			var cond1 = browser.search("Firefox") !== -1 && Number(version[0]) < 23

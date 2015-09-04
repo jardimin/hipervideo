@@ -2559,7 +2559,6 @@ var $$$ = require('jquery')
 				}
 			},
 			on: function (id) {
-				console.log('test-video-' + id)
 				var self = this
 				var last_route = app.params.route
 				var cur_route = app.params.route = self.getRoute()
@@ -2760,8 +2759,8 @@ var $$$ = require('jquery')
 			this.$dispatch('home-view-ready');
 			$$$('body').removeClass("tocando");
 			
-			var browser = useragent.Browser
-			var version = useragent.Version.split('.')
+			var browser = useragent.browser
+			var version = useragent.version.split('.')
 
 			var cond0 = browser.search("Chrome") === -1
 			var cond1 = browser.search("Firefox") !== -1 && Number(version[0]) < 23

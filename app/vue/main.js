@@ -56,7 +56,6 @@
 				}
 			},
 			on: function (id) {
-				console.log('test-video-' + id)
 				var self = this
 				var last_route = app.params.route
 				var cur_route = app.params.route = self.getRoute()
