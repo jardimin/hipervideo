@@ -1,4 +1,14 @@
 <style lang="scss">
+	%clearfix {
+	  zoom: 1; /* IE6&7 */
+	  &:before, :after,{
+	    content: "";
+	    display: table;
+	  }
+	  &:after {
+	    clear: both;
+	  }
+	}
 
 	body {
 		font-family: 'fonte-normal', sans-serif;
@@ -20,7 +30,7 @@
 		box-sizing: border-box;
 		z-index: 1;
 		transition: all 0.5s;
-		@extend clearfix;
+		@extend %clearfix;
 		& h1 {
 			margin: 0.5%;
 			display: none;
@@ -405,12 +415,13 @@
 			this.$dispatch('home-view-ready');
 			$$$('body').removeClass("tocando");
 			
-			var browser = useragent.browser
-			var version = useragent.version.split('.')
+			var userAgent = window.navigator.userAgent
+			var browser = userAgent.includes('Chrome') ? 'Chrome' : userAgent.includes('Firefox') ? 'Firefox' : 'Other'
+			var version = userAgent.split(browser)[1].split('/')[1].split('.')[0]
 
-			var cond0 = browser.search("Chrome") === -1
-			var cond1 = browser.search("Firefox") !== -1 && Number(version[0]) < 23
-			var cond2 = browser.search("Chrome") !== -1 && Number(version[0]) < 29
+			var cond0 = browser !== "Chrome" && browser !== "Firefox" 
+			var cond1 = browser === "Firefox" && Number(version) < 23
+			var cond2 = browser === "Chrome" && Number(version) < 29
 			
 			var animation = {
 				open: {height: 'toggle'}, // jQuery animate function property object

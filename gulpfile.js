@@ -21,12 +21,12 @@ gulp.task("vue", function() {
 
 // gulp styles (compilar sass)
 
-gulp.task('styles', ['clean'], function () {
-    return gulp.src('app/sass/main.scss')
-        .pipe($.sass())
-        .pipe(gulp.dest('public/styles'))
-        .pipe($.livereload())
-});
+// gulp.task('styles', ['clean'], function () {
+//     return gulp.src('app/sass/main.scss')
+//         .pipe($.sass())
+//         .pipe(gulp.dest('public/styles'))
+//         .pipe($.livereload())
+// });
 
 // gulp reload (livereload)
 
@@ -65,7 +65,7 @@ gulp.task('watch', function () {
 
 // gulp build
 
-gulp.task('build', ['styles', 'vue']);
+gulp.task('build', ['vue']);
 
 // gulp
 

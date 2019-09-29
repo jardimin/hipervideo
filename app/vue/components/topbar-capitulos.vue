@@ -1,4 +1,15 @@
 <style lang="scss">
+	%clearfix {
+		zoom: 1; /* IE6&7 */
+		&:before, :after,{
+			content: "";
+			display: table;
+		}
+		&:after {
+			clear: both;
+		}
+	}
+
 	#capitulos {
 	  background-color: rgba(50, 50, 50, 1);
 	  color: white;
