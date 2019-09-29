@@ -21,7 +21,7 @@
 	header {
 		position: absolute;
 		height: 100%;
-		background-image: url(http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home_nova.png);
+		background-image: url(//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home_nova.png);
 		background-repeat: no-repeat;
 		background-size: 100% auto;
 		width: 100%;
@@ -238,7 +238,7 @@
 				<a v-on="click: tutorialGO()" class="botao">O QUE É HIPERVÍDEO?</a>
 				<a v-on="click: fechar" class="botao">ASSISTIR HIPERVÍDEOS</a>
 				<a v-on="click: redes" class="botao">VER REDES</a>
-				<img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 50%; float: left; margin-top: 6%;">
+				<img src="//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 50%; float: left; margin-top: 6%;">
 			</div>
 		</header>
 		<div class="conteudo" style="position: absolute; z-index: 0;">
@@ -266,14 +266,14 @@
 							<div v-on="click: selectAudio" class="botao" v-class="clic: isAudio" style="background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900;">ÁUDIO DESCRIÇÃO</div>
 						</div>
 					</div>
-					<img v-attr="src: 'https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + 'BW.png'" class="fotoFundo BW" style="left: -{{posHip[$index]}}%; z-index: 1;" v-on="click: select(id)">
-					<img v-attr="src: 'https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + '.png'" class="fotoFundo" style="left: -{{posHip[$index]}}%" v-on="click: select(id)">
+					<img v-attr="src: '//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + 'BW.png'" class="fotoFundo BW" style="left: -{{posHip[$index]}}%; z-index: 1;" v-on="click: select(id)">
+					<img v-attr="src: '//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + '.png'" class="fotoFundo" style="left: -{{posHip[$index]}}%" v-on="click: select(id)">
 				</div>
 			</div>
 		</div>
 		<!-- <div style="position: fixed; right: 0; bottom: 0; z-index: 1; width: 180px;">
 			<p style="float: left; font-size: 80%; width: 100px;">desenvolvido por</p>
-			<a href="http://jardim.in" target="_blank">
+			<a href="//jardim.in" target="_blank">
 	    </a>
 		</div> -->
 	</div>
@@ -289,22 +289,22 @@
 			return {
 				tutorial: false,
 				tutdata: [{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_1.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_1.png"
 				},
 				{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_2.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_2.png"
 				},
 				{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_3.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_3.png"
 				},
 				{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_4.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_4.png"
 				},
 				{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_5.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_5.png"
 				},
 				{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_6.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_6.png"
 				}]
 			}
 		},

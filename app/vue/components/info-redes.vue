@@ -184,23 +184,25 @@
         }
 
         if (this.conteudo.video_list) {
-          var playlistUrl = 'http://gdata.youtube.com/feeds/api/playlists/' + this.conteudo.video_list + '?v=2&alt=json&callback=?';
-          var videoURL= 'http://www.youtube.com/watch?v=';
+          var playlistUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + this.$parent.conteudo.video_list + '&key=AIzaSyCwNv14d5bNQ4MwaodqT6z45-6A5y4kzus';
+          var videoURL= 'https://www.youtube.com/watch?v=';
           $$$.getJSON(playlistUrl, function(data) {
+            console.log(data);
             var list_data=[];
-            $$$.each(data.feed.entry, function(i, item) {
+            $$$.each(data.items, function(i, item) {
               var video_data = {};
-              video_data.title = item.title.$t;
-              var feedURL = item.link[1].href;
-              var fragments = feedURL.split("/");
-              video_data.id = fragments[fragments.length - 2];
+              video_data.title = item.snippet.title;
+              video_data.id = item.snippet.resourceId.videoId;
               video_data.url = videoURL + video_data.id;
               list_data.push(video_data);
             });
             for (var i = list_data.length - 1; i >= 0; i--) {
-              $$$('.video-list-redes').slick('slickAdd','<a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a>');
+              $$$('.video-list-redes').slick('slickAdd','<div><a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'" style="text-decoration: none; text-align: center;" class="popup-iframe"><img alt="'+ list_data[i].title +'" src="//img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a><p>' + list_data[i].title + '</p></div>');
               self.videoIndex ++;
+              jQuery('.popup-iframe').magnificPopup({type:'iframe'});
             };
+          }).error(function (err) {
+            console.log(err)
           });
         }
         

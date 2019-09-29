@@ -46,7 +46,7 @@
       }
     },
     created: function() {
-      this.mp4 = "http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/LIBRAS/libras_"+this.$parent.id+".mp4";
+      this.mp4 = "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/LIBRAS/libras_"+this.$parent.id+".mp4";
     },
     attached: function() {
       

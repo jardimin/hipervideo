@@ -61,7 +61,7 @@
         "texto": "A **Coordenação Geral de Saúde da Mulher**, do Departamento de Ações Programáticas Estratégicas (DAPES), vinculado à Secretaria de Atenção à Saúde (SAS), do Ministério da Saúde (MS), em 2004, elaborou em parceria com diversos setores da sociedade a Política Nacional de Atenção Integral à Saúde da Mulher (PNAISM).",
         "arquivos": [{
           "nome": "PNAISM",
-          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/politica_nac_atencao_mulher.pdf"
+          "link": "//bvsms.saude.gov.br/bvs/publicacoes/politica_nac_atencao_mulher.pdf"
           }]
       }
     },
@@ -150,7 +150,7 @@
         "texto": "Três eixos devem ser considerados na composição de uma ambiência: o espaço que visa à confortabilidade focada na privacidade e individualidade dos sujeitos envolvidos, valorizando elementos do ambiente que interagem com as pessoas – cor, cheiro, som, iluminação, morfologia...–, e garantindo conforto aos trabalhadores e usuários; o espaço que possibilita a produção de subjetividades – encontro de sujeitos – por meio da ação e reflexão sobre os processos de trabalho; e o espaço usado como ferramenta facilitadora do processo de trabalho, favorecendo a otimização de recursos, o atendimento humanizado, acolhedor e resolutivo. (cartilha ambiência)",
         "arquivos": [{
           "nome": "Cartilhas HumanizaSUS Ambiência",
-          "link": "http://www.redehumanizasus.net/sites/default/files/ambiencia_2ed.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/ambiencia_2ed.pdf"
           }]
       }
     },
@@ -168,7 +168,7 @@
         "texto": "Estudo evidenciou que as práticas educativas desenvolvidas por enfermeiras sobre a vivência da gravidez e do parto no Centro de Parto Normal favoreceram a vivência tranquila da gestação, o vínculo mãe-bebê, a melhor aceitação da gravidez e a livre expressão sobre sexualidade. As práticas educativas tiveram repercussões na vivência do parto, pois possibilitaram às mulheres a desmistificação da dor do parto, o empoderamento e a vivência do apreendido (PROGIANTI; COSTA, 2012). \n\nLei nº 11.634, de 27 de setembro 2007 dispõe sobre o direito da gestante ao conhecimento e a vinculação à maternidade onde receberá assistência no âmbito do Sistema Único de Saúde. Artigo PROGIANTI, Jane Márcia; COSTA, Rafael Ferreira da. Práticas educativas desenvolvidas por enfermeiras: repercussões sobre vivências de mulheres na gestação e no parto. Rev. bras. enferm.,  Brasília ,  v. 65, n. 2, Apr.  2012 .",
         "arquivos": [{
           "nome": "Repercursões de práticas educativas desenvolvidas por enfermeiras",
-          "link": "http://www.scielo.br/scielo.php?script=sci_arttext&pid=S0034-71672012000200009&lng=en&nrm=iso"
+          "link": "//www.scielo.br/scielo.php?script=sci_arttext&pid=S0034-71672012000200009&lng=en&nrm=iso"
           }]
       }
     },
@@ -187,11 +187,11 @@
         "texto": "A organização da RC visa possibilitar o provimento contínuo de ações de atenção à saúde materna e infantil para a população de determinado território, mediante a articulação dos distintos pontos de atenção à saúde, do sistema de apoio, do sistema logístico e da governança da rede de atenção à saúde, a partir das diretrizes: \n- garantia do acolhimento com avaliação e classificação de risco e vulnerabilidade, ampliação do acesso e melhoria da qualidade do pré-natal; \n- garantia de vinculação da gestante à unidade de referência e ao transporte seguro; \n- garantia das boas práticas e segurança na atenção ao parto e nascimento; \n- garantia da atenção à saúde das crianças de zero a vinte e quatro meses com qualidade e resolutividade; \n- e garantia de acesso às ações do planejamento reprodutivo. \n\nA RC segue as diretrizes para a organização da Rede de Atenção à Saúde no âmbito do SUS.",
         "arquivos": [{
           "nome": "PORTARIA Nº 4.279 - Diretrizes Redes de Atenção",
-          "link": "http://conselho.saude.gov.br/ultimas_noticias/2011/img/07_jan_portaria4279_301210.pdf"
+          "link": "//conselho.saude.gov.br/ultimas_noticias/2011/img/07_jan_portaria4279_301210.pdf"
           },
           {
           "nome": "PORTARIA Nº 1.459 - Rede Segonha no SUS",
-          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2011/prt1459_24_06_2011.html"
+          "link": "//bvsms.saude.gov.br/bvs/saudelegis/gm/2011/prt1459_24_06_2011.html"
           }]
       }
     },
@@ -214,7 +214,7 @@
             "nome": "Maternidade de Referência Professor José Maria de Magalhães Neto",
             "lat": -12.95990,
             "lon": -38.48417,
-            "site": "http://www.saude.ba.gov.br/dgrp/index.php?option=com_content&view=article&id=327&Itemid=175"
+            "site": "//www.saude.ba.gov.br/dgrp/index.php?option=com_content&view=article&id=327&Itemid=175"
             }]
         },
         "video_list": "PLMSHbkIRalllZVdHBDZoeTM47IOc_aCh1"
@@ -234,7 +234,7 @@
         "texto": "O acolhimento como postura e prática nas ações de atenção e gestão nas unidades de saúde, a partir da análise dos processos de trabalho, favorece a construção de relação de confiança e compromisso entre as equipes e os serviços. O acolhimento na porta de entrada ganha sentido ao ser entendido como parte do processo de produção de saúde, como algo que qualifica a relação e que, portanto, é passível de ser apreendido e trabalhado em todo e qualquer encontro no serviço de saúde. \nA classificação de risco é uma ferramenta que, além de organizar a fila de espera e propor outra ordem de atendimento que não a ordem de chegada,  também garante o atendimento imediato do usuário com grau de risco elevado; informa o paciente que não corre risco imediato, assim como a seus familiares, sobre o tempo provável de espera; promove o trabalho em equipe por meio da avaliação contínua do processo; fornece melhores condições de trabalho para os profissionais pela discussão da ambiência e implantação do cuidado horizontalizado; aumenta a satisfação dos usuários e, principalmente, possibilita e instiga a pactuação e a construção de redes internas e externas de atendimento.",
         "arquivos": [{
           "nome": "Cartilhas HumanizaSUS Acolhimento e Classificação de Risco PNH",
-          "link": "http://www.redehumanizasus.net/sites/default/files/10_0378_final_acolhimento_e_classificacao_de_risco_ue.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/10_0378_final_acolhimento_e_classificacao_de_risco_ue.pdf"
           }]
       }
     },
@@ -253,7 +253,7 @@
         "databars": "1bRw6Ni9CxF0HujXlEKdBerxWAUjXRgyKCbxmuUGgeoQ",
         "arquivos": [{
           "nome": "Legislação Profissional e Marcos Regulatórios",
-          "link": "http://abenfo.redesindical.com.br/arqs/manuais/039.pdf ; Artigo Reflexões sobre a assistência de enfermagem prestada à parturiente http://dx.doi.org/10.1590/S0034-71672010000400023"
+          "link": "//abenfo.redesindical.com.br/arqs/manuais/039.pdf ; Artigo Reflexões sobre a assistência de enfermagem prestada à parturiente //dx.doi.org/10.1590/S0034-71672010000400023"
           }]
       }
     },
@@ -272,11 +272,11 @@
         "databars": "1F5eo1cqpbXrLahGHrDqWO0390SqgqM-eGlyNvmrsEFY",
         "arquivos": [{
           "nome": "Cadernos HumanizaSUS - Volume 4 Humanização do parto e do nascimento",
-          "link": "http://www.redehumanizasus.net/sites/default/files/caderno_humanizasus_v4_humanizacao_parto.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/caderno_humanizasus_v4_humanizacao_parto.pdf"
           },
           {
           "nome": "Portal ODM - Objetivos de desenvolvimento do Milênio",
-          "link": "http://www.portalodm.com.br/ "
+          "link": "//www.portalodm.com.br/ "
           }]
       }
     },
@@ -294,7 +294,7 @@
         "texto": "",
         "arquivos": [{
           "nome": "Texto Práticas cuidadoras como orientação da atenção à saúde:",
-          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/cadernos_humanizasus_atencao_hospitalar.pdf"
+          "link": "//bvsms.saude.gov.br/bvs/publicacoes/cadernos_humanizasus_atencao_hospitalar.pdf"
           }]
       }
     },
@@ -312,7 +312,7 @@
         "texto": "O atendimento perinatal tem sido foco prioritário do Ministério da Saúde, já que no componente neonatal reside o maior desafio para a redução da mortalidade infantil nas diferentes regiões brasileiras. O elevado número de neonatos de baixo peso ao nascimento (peso inferior a 2.500g, sem considerar a idade gestacional) constitui um importante problema de saúde e representa um alto percentual na morbimortalidade neonatal. Além disso, tem graves consequências médicas e sociais. Nesse contexto, o Método Canguru, foi introduzido em algumas unidades de saúde brasileiras na década de 90 e incorporado às políticas de saúde no campo perinatal. Tendo como base a Norma de Atenção Humanizada ao Recém‐nascido de Baixo Peso – Método Canguru, a Área Técnica de Saúde da Criança Aleitamento Materno do Ministério da Saúde tem desenvolvido um conjunto de ações visando o fortalecimento do Método Canguru no Brasil.",
         "arquivos": [{
           "nome": "Manual técnico Atenção humanizada ao recém‐nascido de baixo peso: Método Canguru",
-          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/metodo_canguru_manual_tecnico_2ed.pdf Portaria nº 1.683, de 12 de julho de 2007, aprova as Normas de Orientação para a Implantação do Método Canguru http://bvsms.saude.gov.br/bvs/saudelegis/gm/2007/prt1683_12_07_2007.html"
+          "link": "//bvsms.saude.gov.br/bvs/publicacoes/metodo_canguru_manual_tecnico_2ed.pdf Portaria nº 1.683, de 12 de julho de 2007, aprova as Normas de Orientação para a Implantação do Método Canguru //bvsms.saude.gov.br/bvs/saudelegis/gm/2007/prt1683_12_07_2007.html"
           }]
       }
     },
@@ -331,19 +331,19 @@
         "texto": "###A Lei nº 11.108, de 7 de abril de 2005 \n\nGarantir às parturientes o direito à presença de acompanhante durante o trabalho de parto, parto e pós-parto imediato, no âmbito do Sistema Único de Saúde - SUS \n###Portaria nº 2.418, de 2 de dezembro de 2005 \n\nRegulamenta a presença de acompanhante para mulheres em trabalho de parto, parto e pós-parto imediato nos hospitais públicos e conveniados com o Sistema Único de Saúde - SUS",
         "arquivos": [{
           "nome": "Lei nº 11.108",
-          "link": "http://www.planalto.gov.br/ccivil_03/_Ato2004-2006/2005/Lei/L11108.htm"
+          "link": "//www.planalto.gov.br/ccivil_03/_Ato2004-2006/2005/Lei/L11108.htm"
           },
           {
           "nome": "Portaria nº 2.418",
-          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2005/prt2418_02_12_2005.html"
+          "link": "//bvsms.saude.gov.br/bvs/saudelegis/gm/2005/prt2418_02_12_2005.html"
           },
           {
           "nome": "HumanizaSUS : visita aberta e direito a acompanhante",
-          "link": "http://www.redehumanizasus.net/sites/default/files/humanizasus_visita_aberta_direito_acompanhante_0.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/humanizasus_visita_aberta_direito_acompanhante_0.pdf"
           },
           {
           "nome": "Carta dos direitos dos usuários da saúde",
-          "link": "http://www.redehumanizasus.net/sites/default/files/af_carta_usuarios_saude_sem_logo_0.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/af_carta_usuarios_saude_sem_logo_0.pdf"
           }]
       }
     },
@@ -362,11 +362,11 @@
         "databars": "1F5eo1cqpbXrLahGHrDqWO0390SqgqM-eGlyNvmrsEFY",
         "arquivos": [{
           "nome": "Texto A Doula na Assistência ao Parto e Nascimento",
-          "link": "http://www.redehumanizasus.net/sites/default/files/caderno_humanizasus_v4_humanizacao_parto.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/caderno_humanizasus_v4_humanizacao_parto.pdf"
           },
           {
           "nome": "Portal ODM - Objetivos de desenvolvimento do Milênio",
-          "link": "http://www.portalodm.com.br/ "
+          "link": "//www.portalodm.com.br/ "
           }]
       }
     },
@@ -389,7 +389,7 @@
             "nome": "Maternidade de Referência Professor José Maria de Magalhães Neto",
             "lat": -12.9627283,
             "lon": -38.4917117,
-            "site": "http://mtbalbino.blogspot.com.br/"
+            "site": "//mtbalbino.blogspot.com.br/"
             }]
         }
       }
@@ -408,7 +408,7 @@
         "texto": "Esse modo de trabalhar evidencia a compreensão de que não se alteram modelos de gestão e atenção com o desenvolvimento de ações circunscritas as maternidades, sendo preciso estender o apoio aos outros pontos da rede. Evidencia-se a aposta e confiança no apoio como estratégia para mudança do modelo, por permitir articular com o território, aproximando o MS do cotidiano dos serviços. Essa estratégia modifica radicalmente os eixos de comunicação entre MS e demais entes no sentido da ampliação do diálogo e co-gestão (capitulo 2 SM DAPES).",
         "arquivos": [{
           "nome": "Revista Interface – suplemento “Apoio institucional na Política Nacional de Humanização”",
-          "link": "http://www.scielo.br/scielo.php?script=sci_issuetoc&pid=1414-328320140005&lng=pt&nrm=iso"
+          "link": "//www.scielo.br/scielo.php?script=sci_issuetoc&pid=1414-328320140005&lng=pt&nrm=iso"
           }]
       }
     },
@@ -426,7 +426,7 @@
         "texto": "O modelo de gestão que a Política Nacional de Humanização propõe é centrado no trabalho em equipe, na construção coletiva (planeja quem executa) e em espaços coletivos que garantem que o poder seja de fato compartilhado, por meio de análises, decisões e avaliações construídas coletivamente. Os colegiados são espaços coletivos tanto dos gestores e dos trabalhadores da saúde quanto dos usuários. Espaços em que há discussão e tomada de decisões no seu campo de ação de acordo com as diretrizes e contratos definidos.",
         "arquivos": [{
           "nome": "Cartilhas HumanizaSUS Gestão participativa e cogestão",
-          "link": "http://www.redehumanizasus.net/sites/default/files/10_0380_final_gestao_participativa_e_cogestao.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/10_0380_final_gestao_participativa_e_cogestao.pdf"
           }]
       }
     },
@@ -444,7 +444,7 @@
         "texto": "O Fórum Perinatal é um espaço plural de construção de propostas, projetos, desenvolvimento de ações voltadas para a mudança de modelo de gestão e da atenção obstétrica e neonatal, propiciando a transversalidade das práticas e dos saberes, a tomada de decisões a partir de situações- problema identificados e pactuações para efetivação de propostas para qualificar o cuidado em saúde para mulheres e famílias, em rede. Demanda que seja organizado por um grupo técnico da Secretaria Estadual e ou Municipal de Saúde, com propostas de pautas e logística organizativa prévia a cada encontro, bem como de elaboração de ata/ memória enviada a todos os participantes. Propõe-se que seja constituído como espaço de debates pertinentes à realidade dos serviços, das necessidades locais de saúde baseadas em indicadores epidemiológicos do território e de suas respectivas regiões de saúde, além de percepções e significados presentes no coletivo de participantes envolvidos na proposta de reorganização da rede e do modelo de atenção. Os Fóruns foram incorporados, a partir de 2008, com o Plano de Qualificação das Maternidades, proporcionando experiências práticas e de construções coletivas desenvolvidas pela equipe de apoiadores institucionais e supervisores (FIGUEIREDO; LANSKY, 2014). Em 2011, os Fóruns foram integrados à Rede Cegonha.",
           "arquivos": [{
           "nome": "Texto Fóruns Perinatais no Âmbito do Plano de Qualificação,",
-          "link": "http://www.redehumanizasus.net/sites/default/files/caderno_humanizasus_v4_humanizacao_parto.pdf "
+          "link": "//www.redehumanizasus.net/sites/default/files/caderno_humanizasus_v4_humanizacao_parto.pdf "
           }]
       }
     },
@@ -462,7 +462,7 @@
         "texto": "O gênero, como elemento constitutivo das relações sociais entre homens e mulheres, é uma construção social e histórica. É construído e alimentado com base em símbolos, normas e instituições que definem modelos de masculinidade e feminilidade e padrões de comportamento aceitáveis ou não para homens e mulheres. O gênero delimita campos de atuação para cada sexo, dá suporte à elaboração de leis e suas formas de aplicação. Também está incluída no gênero a subjetividade de cada sujeito, sendo única sua forma de reagir ao que lhe é oferecido em sociedade. O gênero é uma construção social sobreposta a um corpo sexuado (SCOTT, 1989). Na maioria das sociedades, as relações de gênero são desiguais. As desigualdades de gênero tendem a aprofundar outras desigualdades sociais e a discriminação de classe, raça, casta, idade, orientação sexual, etnia, deficiência, língua ou religião, dentre outras (HERA, 1995).",
         "arquivos": [{
           "nome": "Política Nacional de Enfrentamento à Violência Contra às Mulheres",
-          "link": "http://www.spm.gov.br/sobre/publicacoes/publicacoes/2011/politica-nacional"
+          "link": "//www.spm.gov.br/sobre/publicacoes/publicacoes/2011/politica-nacional"
           }]
       }
     },
@@ -499,7 +499,7 @@
         "texto": "###Lei nº 11.634, de 27 de dezembro 2007, dispõe sobre o direito da gestante ao conhecimento e a vinculação à maternidade onde receberá assistência no âmbito do Sistema Único de Saúden\n\nA vinculação da gestante à maternidade em que se realizará o parto e na qual será atendida nos casos de intercorrência deve ocorrer no ato de sua inscrição no programa de assistência pré-natal, conforme disposto na Lei nº 11.634/2007.",
         "arquivos": [{
           "nome": "Texto Fóruns Perinatais no Âmbito do Plano de Qualificação,",
-          "link": "http://dab.saude.gov.br/portaldab/"
+          "link": "//dab.saude.gov.br/portaldab/"
           }]
       }
     },
@@ -515,7 +515,7 @@
       },
       "conteudo": {
         "texto": "",
-        "video_list": "PLqwF2MOG7-g2DJQHNFhiRqOobVvLBKHKu",
+        "video_list": "PLMSHbkIRallkF5yBzomgTl7Q_6GaLads5",
         "hipervideo": {
           "nome": "Veja também o hipervideo sobre a saúde da criança",
           "link": "/#/crianca"
@@ -537,11 +537,11 @@
         "texto": "A organização da RC visa possibilitar o provimento contínuo de ações de atenção à saúde materna e infantil para a população de determinado território, mediante a articulação dos distintos pontos de atenção à saúde, do sistema de apoio, do sistema logístico e da governança da rede de atenção à saúde, a partir das diretrizes: \n- garantia do acolhimento com avaliação e classificação de risco e vulnerabilidade, ampliação do acesso e melhoria da qualidade do pré-natal; \n- garantia de vinculação da gestante à unidade de referência e ao transporte seguro; \n- garantia das boas práticas e segurança na atenção ao parto e nascimento; \n- garantia da atenção à saúde das crianças de zero a vinte e quatro meses com qualidade e resolutividade; \n- e garantia de acesso às ações do planejamento reprodutivo. \n\nA RC segue as diretrizes para a organização da Rede de Atenção à Saúde no âmbito do SUS.",
         "arquivos": [{
           "nome": "PORTARIA Nº 4.279 - Diretrizes Redes de Atenção",
-          "link": "http://conselho.saude.gov.br/ultimas_noticias/2011/img/07_jan_portaria4279_301210.pdf"
+          "link": "//conselho.saude.gov.br/ultimas_noticias/2011/img/07_jan_portaria4279_301210.pdf"
           },
           {
           "nome": "PORTARIA Nº 1.459 - Rede Segonha no SUS",
-          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2011/prt1459_24_06_2011.html"
+          "link": "//bvsms.saude.gov.br/bvs/saudelegis/gm/2011/prt1459_24_06_2011.html"
           }]
       }
     },
@@ -560,7 +560,7 @@
         "texto": "",
         "arquivos": [{
           "nome": "RDC nº 36/ANVISA, de 3 de junho de 2008",
-          "link": "http://portal.anvisa.gov.br/wps/wcm/connect/f18c7f80474597439fbbdf3fbc4c6735/RDC+N%C2%B0+36,+DE+3+DE+JUNHO+DE+2008.pdf?MOD=AJPERES"
+          "link": "//portal.anvisa.gov.br/wps/wcm/connect/f18c7f80474597439fbbdf3fbc4c6735/RDC+N%C2%B0+36,+DE+3+DE+JUNHO+DE+2008.pdf?MOD=AJPERES"
         }]
       }
     },
@@ -579,7 +579,7 @@
         "texto": "",
         "arquivos": [{
           "nome": "Portaria Nº 11, de 7 de janeiro de 2015",
-          "link": "http://www.brasilsus.com.br/images/portarias/janeiro2015/dia08/portaria11.pdf"
+          "link": "//www.brasilsus.com.br/images/portarias/janeiro2015/dia08/portaria11.pdf"
         }]
       }
     },
@@ -598,7 +598,7 @@
         "texto": "",
         "arquivos": [{
           "nome": "Boas práticas de atenção ao parto e ao nascimento",
-          "link": "http://www.clam.org.br/uploads/arquivo/OMS%20-%20Boas%20Praticas%20de%20Atencao%20ao%20Parto%20e%20ao%20Nascimento.pdf"
+          "link": "//www.clam.org.br/uploads/arquivo/OMS%20-%20Boas%20Praticas%20de%20Atencao%20ao%20Parto%20e%20ao%20Nascimento.pdf"
         }]
       }
     },

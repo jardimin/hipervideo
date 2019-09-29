@@ -50,11 +50,11 @@
         "texto": "",
         "arquivos": [{
           "nome": "PORTARIA INTERMINISTERIAL MS/MJ Nº 1, DE 2 DE JANEIRO DE 2014",
-          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2014/pri0001_02_01_2014.html"
+          "link": "//bvsms.saude.gov.br/bvs/saudelegis/gm/2014/pri0001_02_01_2014.html"
         },
         {
           "nome": "Carta de Brasília",
-          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Carta+de+Bras%C3%ADlia+-+Gestores.pdf"
+          "link": "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Carta+de+Bras%C3%ADlia+-+Gestores.pdf"
         }]
       }
     },
@@ -74,15 +74,15 @@
         "texto": "",
         "arquivos": [{
           "nome": "Plano Nacional de Saúde no Sistema Penitenciário",
-          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/plano_nacional_saude_sistema_penitenciario_2ed.pdf"
+          "link": "//bvsms.saude.gov.br/bvs/publicacoes/plano_nacional_saude_sistema_penitenciario_2ed.pdf"
         },
         {
           "nome": "NOVO DIAGNÓSTICO DE PESSOAS PRESAS NO BRASIL",
-          "link": "http://www.cnj.jus.br/images/imprensa/pessoas_presas_no_brasil_final.pdf"
+          "link": "//www.cnj.jus.br/images/imprensa/pessoas_presas_no_brasil_final.pdf"
         },
         {
           "nome": "A VISÃO DO MINISTÉRIO PÚBLICO SOBRE O SISTEMA PRISIONAL BRASILEIRO",
-          "link": "http://www.cnmp.mp.br/portal/images/Comissoes/CSP/Relat%C3%B3rio_Vis%C3%A3o_do_Minist%C3%A9rio_P%C3%BAblico_no_Sistema_Prisional_Edi%C3%A7%C3%A3o_2013.PDF"
+          "link": "//www.cnmp.mp.br/portal/images/Comissoes/CSP/Relat%C3%B3rio_Vis%C3%A3o_do_Minist%C3%A9rio_P%C3%BAblico_no_Sistema_Prisional_Edi%C3%A7%C3%A3o_2013.PDF"
         }]
       }
     },
@@ -101,18 +101,18 @@
         "arquivos": [
           {
           "nome": "Diretrizes básicas para arquitetura penal",
-          "link": "http://www.criminal.mppr.mp.br/arquivos/File/ExecucaoPenal/CNPCP/2011Diretrizes_ArquiteturaPenal_resolucao_09_11_CNPCP.pdf"
+          "link": "//www.criminal.mppr.mp.br/arquivos/File/ExecucaoPenal/CNPCP/2011Diretrizes_ArquiteturaPenal_resolucao_09_11_CNPCP.pdf"
           },
           {
           "nome": "CARTILHA AMBIÊNCIA",
-          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/ambiencia_2ed.pdf"
+          "link": "//bvsms.saude.gov.br/bvs/publicacoes/ambiencia_2ed.pdf"
           },
           {
           "nome": "VIGILÂNCIA SANITÁRIA",
-          "link": "http://portal.anvisa.gov.br/wps/wcm/connect/ca36b200474597459fc8df3fbc4c6735/RDC+N%C2%BA.+50,+DE+21+DE+FEVEREIRO+DE+2002.pdf?MOD=AJPERES"
+          "link": "//portal.anvisa.gov.br/wps/wcm/connect/ca36b200474597459fc8df3fbc4c6735/RDC+N%C2%BA.+50,+DE+21+DE+FEVEREIRO+DE+2002.pdf?MOD=AJPERES"
           }
         ],
-        "video_list": "PLqwF2MOG7-g32N2p1PHl5GR8Dn-pLOkZM"
+        "video_list": "PLMSHbkIRallkmxoZhY4i7FMh_MiHHInbE"
       }
     },
     {
@@ -130,23 +130,23 @@
         "texto": "",
         "arquivos": [{
           "nome": "CONSTITUIÇÃO DA REPÚBLICA FEDERATIVA DO BRASIL DE 1988",
-          "link": "http://www.senado.gov.br/legislacao/const/con1988/CON1988_05.10.1988/CON1988.shtm"
+          "link": "//www.senado.gov.br/legislacao/const/con1988/CON1988_05.10.1988/CON1988.shtm"
         },
         {
           "nome": "DECLARAÇÃO UNIVERSAL DOS DIREITOS HUMANOS",
-          "link": "http://www.dudh.org.br/declaracao/"
+          "link": "//www.dudh.org.br/declaracao/"
         },
         {
           "nome": "Relator da ONU pede revisao de regras para tratamento de prisioneiros",
-          "link": "http://nacoesunidas.org/relator-especial-da-onu-pede-que-regras-globais-para-tratamento-de-prisioneiros-sejam-atualizadas/"
+          "link": "//nacoesunidas.org/relator-especial-da-onu-pede-que-regras-globais-para-tratamento-de-prisioneiros-sejam-atualizadas/"
         },
         {
           "nome": "NORMAS E PRINCÍPIOS DAS NAÇÕES UNIDAS SOBRE PREVENÇÃO AO CRIME E JUSTIÇA CRIMINAL",
-          "link": "https://www.unodc.org/documents/justice-and-prison-reform/projects/UN_Standards_and_Norms_CPCJ_-_Portuguese1.pdf"
+          "link": "//www.unodc.org/documents/justice-and-prison-reform/projects/UN_Standards_and_Norms_CPCJ_-_Portuguese1.pdf"
         },
         {
           "nome": "OBSERVATÓRIO DE RECOMENDAÇÕES INTERNACIONAIS SOBRE DIREITOS HUMANOS",
-          "link": "http://www.observadh.sdh.gov.br/portal/sistema/encontre-as-recomendacoes"
+          "link": "//www.observadh.sdh.gov.br/portal/sistema/encontre-as-recomendacoes"
         }]
       }
     },
@@ -162,10 +162,10 @@
       },
       "conteudo": {
         "texto": "",
-        "video_list": "PLqwF2MOG7-g2mIoorZ0vWPffZIyVBR59x",
+        "video_list": "PLMSHbkIRallk16syN7DKp6ngPPcSavBIx",
         "arquivos": [{
           "nome": "OBSERVATÓRIO NACIONAL DO SISTEMA PRISIONAL – ONASP",
-          "link": "https://www.ufmg.br/ead/onasp/participe.html"
+          "link": "//www.ufmg.br/ead/onasp/participe.html"
         }]
       }
     },
@@ -183,25 +183,25 @@
         "texto": "**Política Nacional de Atenção Integral à Saúde da Mulher** identifica a necessidade de acesso dessa população às ações de atenção à saúde, tanto com a implantação de ações no nível da atenção básica dentro dos presídios, como pelas referências para média e alta complexidade, com garantia do atendimento das demandas específicas das mulheres presidiárias por meio de uma atenção diferenciada dentro do conjunto de ações do Sistema Único de Saúde'.",
         "arquivos": [{
           "nome": "MULHERES CONTINUAM SENDO CONDENADAS E PRESAS POR SOFREREM ABORTOS ESPONTANEOS",
-          "link": "http://www.redehumanizasus.net/88663-mulheres-continuam-sendo-condenadas-e-presas-por-sofrerem-abortos-espontaneos"
+          "link": "//www.redehumanizasus.net/88663-mulheres-continuam-sendo-condenadas-e-presas-por-sofrerem-abortos-espontaneos"
           },
           {
           "nome": "ATENÇÃO ÀS MULHERES EM SITUAÇÃO DE PRIVAÇÃO DE LIBERDADE E EGRESSAS DO SISTEMA PRISIONAL",
-          "link": "http://www.justica.sp.gov.br/StaticFiles/SJDC/ArquivosComuns/ProgramasProjetos/PPM/U_PT-INTERM-MJ-MSPM-210_160114.pdf"
+          "link": "//www.justica.sp.gov.br/StaticFiles/SJDC/ArquivosComuns/ProgramasProjetos/PPM/U_PT-INTERM-MJ-MSPM-210_160114.pdf"
           },
           {
           "nome": "Princípios e Diretrizes da PNAISM",
-          "link": "http://bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_mulher_principios_diretrizes.pdf"
+          "link": "//bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_mulher_principios_diretrizes.pdf"
           },
           {
           "nome": "REGRAS INTERNACIONAIS DE DIREITOS HUMANOS GARANTEM PRISÃO DOMICILIAR A GESTANTE",
-          "link": "http://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=283125"
+          "link": "//www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=283125"
           },
           {
           "nome": "REGRAS DAS NAÇÕES UNIDAS PARA O TRATAMENTO DE MULHERES PRESAS",
-          "link": "http://carceraria.org.br/wp-content/uploads/2012/09/Tradu%C3%A7%C3%A3o-n%C3%A3o-oficial-das-Regras-de-Bangkok-em-11-04-2012.pdf"
+          "link": "//carceraria.org.br/wp-content/uploads/2012/09/Tradu%C3%A7%C3%A3o-n%C3%A3o-oficial-das-Regras-de-Bangkok-em-11-04-2012.pdf"
           }],
-        "video_list": "PLqwF2MOG7-g2jJdUZUZ6tI6X-2t_o1O28",
+        "video_list": "PLMSHbkIRallko24bkgoRmxbornJyJRJby",
         "hipervideo": {
           "nome": "Veja também o hipervídeo sobre a saúde da mulher",
           "link": "/#/mulher"
@@ -223,19 +223,19 @@
         "arquivos": [
           {
             "nome": "Portal da Saúde - Tuberculose",
-            "link": "http://portalsaude.saude.gov.br/index.php/o-ministerio/principal/leia-mais-o-ministerio/743-secretaria-svs/vigilancia-de-a-a-z/tuberculose/l2-tuberculose/11941-viajantes-tuberculose"
+            "link": "//portalsaude.saude.gov.br/index.php/o-ministerio/principal/leia-mais-o-ministerio/743-secretaria-svs/vigilancia-de-a-a-z/tuberculose/l2-tuberculose/11941-viajantes-tuberculose"
             },
             {
               "nome": "Panorama da tuberculose no brasil",
-              "link": "http://portalsaude.saude.gov.br/images/pdf/2014/novembro/24/panorama-tuberculose-brasil-out14-web.pdf"
+              "link": "//portalsaude.saude.gov.br/images/pdf/2014/novembro/24/panorama-tuberculose-brasil-out14-web.pdf"
             },
             {
               "nome": "Manual de controle da tuberculose nas prisões",
-              "link": "http://bvsms.saude.gov.br/bvs/publicacoes/manual_intervencoes_ambientais_controle_tuberculose_prisoes.pdf"
+              "link": "//bvsms.saude.gov.br/bvs/publicacoes/manual_intervencoes_ambientais_controle_tuberculose_prisoes.pdf"
             },
             {
               "nome": "CONSULTA NACIONAL SOBRE HIV/AIDS NO SISTEMA PENITENCIÁRIO",
-              "link": "http://www.aids.gov.br/search/node/consulta"
+              "link": "//www.aids.gov.br/search/node/consulta"
             }]
       }
     },
@@ -255,17 +255,17 @@
         "texto": "",
         "arquivos": [{
           "nome": "Trabalho e redes de saúde",
-          "link": "http://www.redehumanizasus.net/sites/default/files/10_0383_final_trabalho_e_redes_de_saude.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/10_0383_final_trabalho_e_redes_de_saude.pdf"
           },
           {
           "nome": "PORTAL SAÚDE – HUMANIZA-SUS",
-          "link": "http://portalsaude.saude.gov.br/index.php?option=com_content&view=article&id=8596&Itemid=388"
+          "link": "//portalsaude.saude.gov.br/index.php?option=com_content&view=article&id=8596&Itemid=388"
           },
           {
           "nome": "Mapa de ações da PNH",
-          "link": "http://www.redehumanizasus.net/mapa-acoes"
+          "link": "//www.redehumanizasus.net/mapa-acoes"
           }],
-        "video_list": "PLqwF2MOG7-g3hbV9tRIm11qJcMhcuksi4"
+        "video_list": "PLMSHbkIRallkr7QUR9jMXEONOBqYIEGwe"
       }
     },
     {
@@ -282,13 +282,13 @@
         "texto": "",
         "arquivos": [{
           "nome": "ALEITAMENTO MATERNO PARA AS MULHERES PRIVADAS DE LIBERDADE",
-          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Cartilha+Aleitamento+Materno.pdf"
+          "link": "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Cartilha+Aleitamento+Materno.pdf"
           },
           {
           "nome": "INCLUSÃO DAS MULHERES EM PRIVAÇÃO DE LIBERDADE NA REDE CEGONHA",
-          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Cartilha+Inclusao+Mulheres+Rede+Cegonha.pdf"
+          "link": "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Cartilha+Inclusao+Mulheres+Rede+Cegonha.pdf"
           }],
-        "video_list": "PLqwF2MOG7-g1iWfMBPDIMR0S1sPPhAE6j",
+        "video_list": "PLMSHbkIRallniqtg02ryM4lXVSQN_c7Ae",
         "hipervideo": {
           "nome": "Veja também o hipervídeo sobre a saúde da criança",
           "link": "/#/crianca"
@@ -309,9 +309,9 @@
         "texto": "",
         "arquivos": [{
           "nome": "Acolhimento e classificação de risco nos serviços de urgência",
-          "link": "http://www.redehumanizasus.net/sites/default/files/10_0378_final_acolhimento_e_classificacao_de_risco_ue.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/10_0378_final_acolhimento_e_classificacao_de_risco_ue.pdf"
         }],
-        "video_list": "PLqwF2MOG7-g23XehNY8M45ByAvHVd0Hyn"
+        "video_list": "PLMSHbkIRalll8kdJEhvOvz5o0zlEdLJU_"
       }
     },
     {
@@ -328,9 +328,9 @@
         "texto": "",
         "arquivos": [{
           "nome": "Clínica ampliada e compartilhada",
-          "link": "http://www.redehumanizasus.net/sites/default/files/10_0379_final_clinica_ampliada.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/10_0379_final_clinica_ampliada.pdf"
         }],
-        "video_list": "PLqwF2MOG7-g1DqSVvy02X8SUuLasB6I77"
+        "video_list": "PLMSHbkIRallnUuRC1lFhcBVekvt-Or_GP"
       }
     },
     {
@@ -347,9 +347,9 @@
         "texto": "",
         "arquivos": [{
           "nome": "Redes de produção de saúde",
-          "link": "http://www.redehumanizasus.net/sites/default/files/10_0382_redes_de_producao_de_saude.pdf"
+          "link": "//www.redehumanizasus.net/sites/default/files/10_0382_redes_de_producao_de_saude.pdf"
         }],
-        "video_list": "PLqwF2MOG7-g0JbF3k-ol4SMFzHeGK9Whl"
+        "video_list": "PLMSHbkIRallnvrf2kevz25CjHNRePQXR8"
       }
     },
     {
@@ -366,19 +366,19 @@
         "texto": "Por uma perspectiva ética das práticas de cuidado no contemporâneo",
         "arquivos": [{
           "nome": "ÉTICA E SUBJETIVIDADE - NOVOS IMPASSES NO CONTEMPORÂNEO",
-          "link": "http://www.editorasulina.com.br/img/sumarios/501.pdf"
+          "link": "//www.editorasulina.com.br/img/sumarios/501.pdf"
         },
         {
           "nome": "A ÉTICA DA METAESTABILIDADE E A DIREÇÃO ÉTICA DA CLÍNICA",
-          "link": "http://seer.ufrgs.br/InfEducTeoriaPratica/article/viewFile/29088/19466"
+          "link": "//seer.ufrgs.br/InfEducTeoriaPratica/article/viewFile/29088/19466"
         },
         {
           "nome": "POR OUTRA PERSPECTIVA ÉTICA DAS PRÁTICAS DE CUIDADO E GOVERNO NO CONTEMPORÂNEO",
-          "link": "http://www.slab.uff.br/images/Aqruivos/dissertacoes/2009/Cristiano.pdf"
+          "link": "//www.slab.uff.br/images/Aqruivos/dissertacoes/2009/Cristiano.pdf"
         },
         {
           "nome": "FRAGMENTOS DE DISCURSOS (NÃO TÃO AMOROSOS) SOBRE O EXAME CRIMINOLÓGICO",
-          "link": "http://www.crprj.org.br/publicacoes/livros/livro_falado.pdf "
+          "link": "//www.crprj.org.br/publicacoes/livros/livro_falado.pdf "
         }]
       }
     },
@@ -396,9 +396,9 @@
         "texto": "",
         "arquivos": [{
           "nome": "OUVIDORIA DO DEPARTAMENTO PENITENCIÁRIO NACIONAL (DEPEN)",
-          "link": "http://portal.mj.gov.br/main.asp?View={DA8C1EA2-5CE1-45BD-AA07-5765C04797D9}&BrowserType=NN&LangID=pt-br&params=itemID%3D%7B114098CC-7FA2-4F34-B3B0-F61C115F415D%7D%3B&UIPartUID=%7B2868BA3C-1C72-4347-BE11-A26F70F4CB26%7D"
+          "link": "//portal.mj.gov.br/main.asp?View={DA8C1EA2-5CE1-45BD-AA07-5765C04797D9}&BrowserType=NN&LangID=pt-br&params=itemID%3D%7B114098CC-7FA2-4F34-B3B0-F61C115F415D%7D%3B&UIPartUID=%7B2868BA3C-1C72-4347-BE11-A26F70F4CB26%7D"
         }],
-        "video_list": "PLqwF2MOG7-g3_ypi2LKt4PWFlf_HwgQyn"
+        "video_list": "PLMSHbkIRalllrJolZkEdXlwV5AzCvP0HE"
       }
     },
     {
@@ -415,31 +415,31 @@
         "texto": "",
         "arquivos": [{
           "nome": "Luta antimanicomial",
-          "link": "http://www.redehumanizasus.net/85171-luta-antimanicomial-2014"
+          "link": "//www.redehumanizasus.net/85171-luta-antimanicomial-2014"
         },
         {
           "nome": "PORTARIA Nº 94, DE 14 DE JANEIRO DE 2014",
-          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2014/prt0094_14_01_2014.html"
+          "link": "//bvsms.saude.gov.br/bvs/saudelegis/gm/2014/prt0094_14_01_2014.html"
         },
         {
           "nome": "Cartilha EAP",
-          "link": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Cartilha+EAP.pdf"
+          "link": "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/POA/arquivos/Cartilha+EAP.pdf"
         },
         {
           "nome": "Programa de Atenção Integral ao Louco Infrator (PAILI)",
-          "link": "http://www.saude.go.gov.br/index.php?idMateria=153172"
+          "link": "//www.saude.go.gov.br/index.php?idMateria=153172"
         },
         {
           "nome": "Observatório nacional de saúde mental e justiça criminal",
-          "link": "http://observasmjc.uff.br/"
+          "link": "//observasmjc.uff.br/"
         },
         {
           "nome": "Programa de Atenção Integral ao Paciente Judiciário Portador de Sofrimento Mental (PAI-PJ)",
-          "link": "http://ftp.tjmg.jus.br/presidencia/projetonovosrumos/pai_pj/"
+          "link": "//ftp.tjmg.jus.br/presidencia/projetonovosrumos/pai_pj/"
         },
         {
           "nome": "PORTAL SAÚDE – SAÚDE MENTAL",
-          "link": "http://portalsaude.saude.gov.br/index.php?option=com_content&view=article&id=11359&Itemid=693 "
+          "link": "//portalsaude.saude.gov.br/index.php?option=com_content&view=article&id=11359&Itemid=693 "
         }]
       }
     },
@@ -457,11 +457,11 @@
         "texto": "",
         "arquivos": [{
           "nome": "Instituto de Cultura e Consciência Negra Nelson Mandela",
-          "link": "http://www.institutonelsonmandela.org/"
+          "link": "//www.institutonelsonmandela.org/"
         },
         {
           "nome": "Fórum Permanente de Saúde no Sistema Penitenciário-RJ",
-          "link": "https://www.facebook.com/profile.php?id=100009184206078&sk=about"
+          "link": "//www.facebook.com/profile.php?id=100009184206078&sk=about"
         }]
       }
     },
@@ -479,15 +479,15 @@
         "texto": "",
         "arquivos": [{
           "nome": "DEPARTAMENTO DE DST, AIDS E HEPATITES VIRAIS (DDAHV)",
-          "link": "http://www.aids.gov.br/"
+          "link": "//www.aids.gov.br/"
         },
         {
           "nome": "IGUALDADE-RS",
-          "link": "http://www.aigualdaders.org/ "
+          "link": "//www.aigualdaders.org/ "
         },
         {
           "nome": "RESOLUÇÃO CONJUNTA Nº 1, DE 15 DE ABRIL DE 2014",
-          "link": "http://www.lex.com.br/legis_25437433_RESOLUCAO_CONJUNTA_N_1_DE_15_DE_ABRIL_DE_2014.aspx "
+          "link": "//www.lex.com.br/legis_25437433_RESOLUCAO_CONJUNTA_N_1_DE_15_DE_ABRIL_DE_2014.aspx "
         }]
       }
     },
@@ -507,7 +507,7 @@
         "texto": "",
         "arquivos": [{
           "nome": "LEI Nº 8.080, DE 19 DE SETEMBRO DE 1990",
-          "link": "http://www.planalto.gov.br/ccivil_03/leis/l8080.htm"
+          "link": "//www.planalto.gov.br/ccivil_03/leis/l8080.htm"
         },
         {
           "nome": "Cartilha PNAISP",
@@ -515,13 +515,13 @@
         },
         {
           "nome": "CONSELHO NACIONAL DE SAÚDE",
-          "link": "http://www.conselho.saude.gov.br/"
+          "link": "//www.conselho.saude.gov.br/"
         },
         {
           "nome": "PORTARIA Nº 482, DE 1º DE ABRIL DE 2014",
-          "link": "http://bvsms.saude.gov.br/bvs/saudelegis/gm/2014/prt0482_01_04_2014.html"
+          "link": "//bvsms.saude.gov.br/bvs/saudelegis/gm/2014/prt0482_01_04_2014.html"
         }],
-        "video_list": "PLqwF2MOG7-g1Vgcw8GpV3ezOsOc21U9nY"
+        "video_list": "PLMSHbkIRallkHAYQ6_pDC2LWx1jLHGSLn"
       }
     },
     {

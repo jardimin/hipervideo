@@ -24,8 +24,8 @@
       }
     },
     created: function() {
-      this.mp3 = "http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/AUDIO_DESC/audio_desc_"+this.$parent.id+".mp3";
-      this.wav = "http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/AUDIO_DESC/audio_desc_"+this.$parent.id+".wav";
+      this.mp3 = "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/AUDIO_DESC/audio_desc_"+this.$parent.id+".mp3";
+      this.wav = "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/AUDIO_DESC/audio_desc_"+this.$parent.id+".wav";
     },
     attached: function() {
       

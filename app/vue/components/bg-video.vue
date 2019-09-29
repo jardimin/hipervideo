@@ -38,7 +38,7 @@
 	<div class="hipVid-status" v-class="is-play: playing">
 		<i id="pauseplay" class="fa fa-5x" v-class="fa-play: playing, fa-pause: !playing"></i>
 	</div>
-	<video poster="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
+	<video poster="//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png" class="hipVid" id="hipVid-{{db.id}}" v-el="hipervideo">
 		<source src="{{db.url}}_{{lib}}_{{qual}}.mp4" type="video/mp4" id="mp4">
 	</video>
 </template>

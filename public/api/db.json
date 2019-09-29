@@ -11,19 +11,19 @@
         "nome": "Maternidade de Referência Professor José Maria de Magalhães Neto",
         "lat": -12.9627283,
         "lon": -38.4917117,
-        "site": "http://mtbalbino.blogspot.com.br/"
+        "site": "//mtbalbino.blogspot.com.br/"
       },
       {
         "nome": "Maternidade de Referência Professor José Maria de Magalhães Neto",
         "lat": -12.95990,
         "lon": -38.48417,
-        "site": "http://www.saude.ba.gov.br/dgrp/index.php?option=com_content&view=article&id=327&Itemid=175"
+        "site": "//www.saude.ba.gov.br/dgrp/index.php?option=com_content&view=article&id=327&Itemid=175"
       }],
       "nome": "Mulher",
       "formato": "saúde da mulher",
       "descricao": "A Rede Cegonha surge do compromisso com a redução da mortalidade materno-infantil, com a mudança no modelo de atenção obstétrico e avanço da pauta do direito reprodutivo na sociedade brasileira. A experiência de Salvador permite cartografar um processo em construção de avanços, mudanças e desafios para a construção de Redes de Atenção em Saúde com ampliação do acesso, melhoria da atenção e reconhecimento dos direitos das mulheres.      ",      
       "cor": "#ed1e79",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Novos_Converts/dapes_ssa_final",
+      "url": "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Novos_Converts/dapes_ssa_final",
       "duracao": 1782.434,
       "capitulos": [
         {
@@ -78,7 +78,7 @@
       "formato": "saúde da criança",
       "descricao": "Os componentes da Saúde da Criança na consolidação da Rede Cegonha são explorados nessa rica experiência no município de Florianópolis que expressa o compromisso interfederativo que agrega acúmulos da esfera local com apoio ministerial. O cuidado com primeira infância, boas práticas e humanização do parto e nascimento, a participação da comunidade e o papel da atenção básica na articulação do cuidado do recém-nascido são temas abordados nesse hipervídeo.",      
       "cor": "#0cc",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Novos_Converts/dapes_fpa_final",
+      "url": "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Novos_Converts/dapes_fpa_final",
       "duracao": 1172.404,
       "capitulos": [
         {
@@ -112,49 +112,49 @@
         "nome": "NAMSEP / CIA BH",
         "lat": -19.9215938,
         "lon": -43.94632,
-        "site": "http://ftp.tjmg.jus.br/ciabh/"
+        "site": "//ftp.tjmg.jus.br/ciabh/"
       },
       {
         "nome": "CENTRO DE SAÚDE SANTA MÔNICA",
         "lat": -19.8290296,
         "lon": -43.9770025,
-        "site": "http://www.guiamais.com.br/local/centro+de+saude+santa+monica-postos+de+saude-belo+horizonte-mg-16353791-1"
+        "site": "//www.guiamais.com.br/local/centro+de+saude+santa+monica-postos+de+saude-belo+horizonte-mg-16353791-1"
       },
       {
         "nome": "CERSAMI",
         "lat": -19.9728268,
         "lon": -44.2081893,
-        "site": "http://ftp.tjmg.jus.br/ciabh/"
+        "site": "//ftp.tjmg.jus.br/ciabh/"
       },
       {
         "nome": "CENTRO DE INTERNAÇÃO SÃO JERÔNIMO",
         "lat": -19.8980852,
         "lon": -43.9143304,
-        "site": "http://www.apontador.com.br/local/mg/belo_horizonte/medicos_e_consultorios/W688GW22/centro_de_reeducacao_social_sao_jeronimo.html"
+        "site": "//www.apontador.com.br/local/mg/belo_horizonte/medicos_e_consultorios/W688GW22/centro_de_reeducacao_social_sao_jeronimo.html"
       },
       {
         "nome": "CENTRO SAUDE HORTO",
         "lat": -19.913061,
         "lon": -43.920491,
-        "site": "http://www.guiamais.com.br/local/centro+de+saude+horto-postos+de+saude-belo+horizonte-mg-16353728-1"
+        "site": "//www.guiamais.com.br/local/centro+de+saude+horto-postos+de+saude-belo+horizonte-mg-16353728-1"
       },
       {
         "nome": "CENTRO DE INTERNAÇÃO DOM BOSCO",
         "lat": -19.911262,
         "lon": -43.909458,
-        "site": "https://plus.google.com/109503049864054263237/about?gl=br&hl=pt-BR"
+        "site": "//plus.google.com/109503049864054263237/about?gl=br&hl=pt-BR"
       },
       {
         "nome": "CENTRO DE INTERNAÇÃO SÃO BENEDITO",
         "lat": -19.909405,
         "lon": -43.911859,
-        "site": "https://plus.google.com/113775131467892365820/about?hl=pt-BR"
+        "site": "//plus.google.com/113775131467892365820/about?hl=pt-BR"
       }],
       "nome": "Adolescente",
       "formato": "saúde do adolescente",
       "descricao": "Este hipervídeo aborda, entre as diversas ações direcionadas a saúde do adolescente, a Política de Atenção Integral à Saúde de Adolescentes em Conflito com a Lei – PNAISARI, e sua missão de facilitar o acesso do adolescente em conflito com a lei no Serviço Único de Saúde – SUS, com ações intersetoriais nos espaços que desenvolvem programas socioeducativos, favorecendo o fortalecimento de redes e uma maior atuação das secretarias estaduais e municipais de saúde no aporte às necessidades desta população.",
       "cor": "#00a300",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Novos_Converts/dapes_bh_final",
+      "url": "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Novos_Converts/dapes_bh_final",
       "duracao": 1801.591,
       "capitulos": [
         {
@@ -198,7 +198,7 @@
       "formato": "saúde da pessoa com deficiência",
       "descricao": "A ampliação do grau de autonomia das pessoas com deficiência é um compromisso da Rede de Cuidado em Saúde a Pessoa com deficiencia. Na experiência de Goiânia acompanhamos em ato a constituição de uma rede de saberes que agindo de modo integrado e transversal vem  possibilitando transformações nos modos de ver e cuidar, que produzem avanços no direito à saúde e na cidadania da pessoa com deficiência na sociedade brasileira.",
       "cor": "#00f",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Novos_Converts/dapes_gyn_final",
+      "url": "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Novos_Converts/dapes_gyn_final",
       "duracao": 1556.386,
       "capitulos": [
         {
@@ -257,19 +257,19 @@
         "nome": "Presídio Central",
         "lat": -30.071048,
         "lon": -51.181741,
-        "site": "https://plus.google.com/111983755407338448883/about?hl=pt-BR"
+        "site": "//plus.google.com/111983755407338448883/about?hl=pt-BR"
       },
       {
         "nome": "Hospital Sanatório Partenon",
         "lat": -30.062574,
         "lon": -51.178758,
-        "site": "http://www.saude.rs.gov.br/conteudo/639/?Hospital_Sanat%C3%B3rio_Partenon_%28HSP%29"
+        "site": "//www.saude.rs.gov.br/conteudo/639/?Hospital_Sanat%C3%B3rio_Partenon_%28HSP%29"
       }],
       "nome": "prisional",
       "formato": "saúde da pessoa privada de liberdade",
       "descricao": "A experiência de Porto Alegre-RS apresenta a complexidade desse novo território da saúde: o sistema prisional, e o desafio de integração desse novo ponto da Rede de Atenção em Saúde: as Equipe de Atenção Básica Prisional – EABP. Entre a saúde e a justiça emerge um novo campo de práticas mobilizado pelo avanço da garantia dos direitos humanos das pessoas privadas de liberdade.",
       "cor": "#f00",
-      "url": "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Novos_Converts/dapes_poa_final",
+      "url": "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Novos_Converts/dapes_poa_final",
       "duracao": 1294.914,
       "capitulos": [
         {
@@ -312,13 +312,13 @@
         "nome": "Maternidade 2",
         "lat": -12.9627283,
         "lon": -38.4917117,
-        "site": "http://mtbalbino.blogspot.com.br/"
+        "site": "//mtbalbino.blogspot.com.br/"
       },
       {
         "nome": "Maternidade 1",
         "lat": -12.95990,
         "lon": -38.48417,
-        "site": "http://www.saude.ba.gov.br/dgrp/index.php?option=com_content&view=article&id=327&Itemid=175"
+        "site": "//www.saude.ba.gov.br/dgrp/index.php?option=com_content&view=article&id=327&Itemid=175"
       }],
       "nome": "Teste",
       "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat tenetur adipisci aliquid temporibus veritatis necessitatibus hic ut, culpa placeat, voluptate, delectus dolores. Nam hic sequi aspernatur excepturi reiciendis aperiam. Sapiente.",      

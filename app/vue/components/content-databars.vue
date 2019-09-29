@@ -65,7 +65,7 @@
 
 			loadData: function(){
 				var self = this;
-				var url = 'https://spreadsheets.google.com/feeds/list/' + this.databars + '/od6/public/values?alt=json-in-script&callback=?';
+				var url = '//spreadsheets.google.com/feeds/list/' + this.databars + '/od6/public/values?alt=json-in-script&callback=?';
 
 				console.log('spreadsheet will load now')
 

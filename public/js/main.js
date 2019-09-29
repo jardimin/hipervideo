@@ -1,6 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 require("insert-css")(".view.v-enter,.view.v-leave,body.tocando a.hipervideo,body.tocando header{opacity:0}#app,#app .view,#app .view .sidebar,.conteudo{height:100%}.link{font-weight:900;margin-bottom:10px}.link a{display:block;padding:8px;text-decoration:none;line-height:22px}.clickable{cursor:pointer}.disable-select{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.conteudo :after,.conteudo:before{content:\"\";display:table}.conteudo:after{clear:both}#full:-webkit-full-screen{width:100%;height:100%;background-color:#333}.vue-nav{position:relative;z-index:20;list-style-type:none;margin:0;padding:0}.vue-nav li{display:inline;margin:0;padding:0}.vue-nav li a{padding:10px}.vue-nav li a:hover{background:#eee}.view{transition:all .5s,opacity .3s ease .3s}.view.is-redes{transition:all .5s;-webkit-transform:translate3d(0,110%,0);-moz-transform:translate3d(0,110%,0);-o-transform:translate3d(0,110%,0);-ms-transform:translate3d(0,110%,0);transform:translate3d(0,110%,0)}#app.marco-fechado .view.is-redes{transition:all .5s;-webkit-transform:translate3d(0,100%,0);-moz-transform:translate3d(0,100%,0);-o-transform:translate3d(0,100%,0);-ms-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}.view.v-leave{transition-delay:0}body.tocando .hipVid{opacity:1}body.tocando #video-controls{display:block}.conteudo{zoom:1;margin:0 auto;width:100%}");
-var __vue_template__ = "<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n\t<in-redes></in-redes>\n\t<div id=\"full\" class=\"view\" v-class=\"className, is-video: view=='video-view', is-redes: redes\" v-component=\"{{view}}\" v-transition=\"\" v-ref=\"view\">\n\t</div>";
+var __vue_template__ = "<script type=\"text/javascript\" src=\"//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\n\t<in-redes></in-redes>\n\t<div id=\"full\" class=\"view\" v-class=\"className, is-video: view=='video-view', is-redes: redes\" v-component=\"{{view}}\" v-transition=\"\" v-ref=\"view\">\n\t</div>";
 module.exports = {
 		el: '#app',
 		data: {
@@ -105,8 +105,8 @@ var Vue = require('vue')
       }
     },
     created: function() {
-      this.mp3 = "http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/AUDIO_DESC/audio_desc_"+this.$parent.id+".mp3";
-      this.wav = "http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/AUDIO_DESC/audio_desc_"+this.$parent.id+".wav";
+      this.mp3 = "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/AUDIO_DESC/audio_desc_"+this.$parent.id+".mp3";
+      this.wav = "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/AUDIO_DESC/audio_desc_"+this.$parent.id+".wav";
     },
     attached: function() {
       
@@ -169,7 +169,7 @@ var Vue = require('vue')
 
 },{"vue":97}],3:[function(require,module,exports){
 require("insert-css")(".hipVid{background-size:cover;top:-60px;height:auto;width:100%;position:fixed;left:0;transition:all .5s ease 0s;z-index:-100;opacity:0}#full:-webkit-full-screen .hipVid{z-index:0}#app.marco-fechado .hipVid{top:0}.hipVid-status{position:fixed;top:50%;left:50%;margin-top:-40px;margin-left:-35px;z-index:-99;transition:all .5s}.hipVid-status.is-play{opacity:0;transform:scale(1.2)}.hipVid-status i.fa{opacity:.5}");
-var __vue_template__ = "<div class=\"hipVid-status\" v-class=\"is-play: playing\">\n\t\t<i id=\"pauseplay\" class=\"fa fa-5x\" v-class=\"fa-play: playing, fa-pause: !playing\"></i>\n\t</div>\n\t<video poster=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n\t\t<source src=\"{{db.url}}_{{lib}}_{{qual}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n\t</source></video>";
+var __vue_template__ = "<div class=\"hipVid-status\" v-class=\"is-play: playing\">\n\t\t<i id=\"pauseplay\" class=\"fa fa-5x\" v-class=\"fa-play: playing, fa-pause: !playing\"></i>\n\t</div>\n\t<video poster=\"//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home.png\" class=\"hipVid\" id=\"hipVid-{{db.id}}\" v-el=\"hipervideo\">\n\t\t<source src=\"{{db.url}}_{{lib}}_{{qual}}.mp4\" type=\"video/mp4\" id=\"mp4\">\n\t</source></video>";
 var Vue = require('vue')
 	var $$$ = require('jquery')
 
@@ -381,7 +381,7 @@ var $$$ = require('jquery')
 
 			loadData: function(){
 				var self = this;
-				var url = 'https://spreadsheets.google.com/feeds/list/' + this.databars + '/od6/public/values?alt=json-in-script&callback=?';
+				var url = '//spreadsheets.google.com/feeds/list/' + this.databars + '/od6/public/values?alt=json-in-script&callback=?';
 
 				console.log('spreadsheet will load now')
 
@@ -548,8 +548,8 @@ var L = require('leaflet')
       new L.Control.Zoom({ position: 'topright' }).addTo(this._mapa)
 
       // add an OpenStreetMap tile layer
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      L.tileLayer('//{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="//osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this._mapa)
 
       L.Icon.Default.imagePath = 'img/leaflet';
@@ -561,7 +561,7 @@ var L = require('leaflet')
       loadData: function() {
         var self = this;
         if (typeof this.mapa.locais === 'string') {
-          var url = 'https://spreadsheets.google.com/feeds/list/' + self.mapa.locais + '/od6/public/values?alt=json-in-script&callback=?';
+          var url = '//spreadsheets.google.com/feeds/list/' + self.mapa.locais + '/od6/public/values?alt=json-in-script&callback=?';
 
           console.log('mapa-spreadsheet will load now')
 
@@ -620,7 +620,7 @@ var L = require('leaflet')
 
 },{"insert-css":29,"jquery":30,"leaflet":31}],6:[function(require,module,exports){
 require("insert-css")("#creditos h1,.papel{text-align:center}#creditos{width:100%;position:fixed;height:100%;z-index:-100;background-color:#141414;opacity:0;transition:all .3s ease 0}#creditos.finalizado{z-index:100;opacity:1}.info{background-color:rgba(200,200,200,.3);padding:1% 3% 0;position:relative;width:80%;margin:0 auto;zoom:1}@media screen and (min-width:1600px){.info{padding:1% 3%}}.info:after,.info:before{content:\"\";display:table}.info:after{clear:both}.info p{margin:0}.papel{width:20%;height:140px;float:left}.slick-dots{bottom:-10px!important}.slick-prev{left:25px!important}.slick-next{right:25px!important}.sslick{margin-bottom:0!important}");
-var __vue_template__ = "<div id=\"creditos\">\n    <h1>CRÉDITOS</h1>\n    <a v-on=\"click: fecharCred\" class=\"voltar\">Voltar</a>\n    <div class=\"sslick\">\n      <div class=\"info\">\n        <div class=\"papel\">\n          <h3>DESIGN E PROGRAMAÇÃO</h3>\n          <p>Gustavo Junqueira</p>\n          <p>Marlus Araújo</p>\n        </div>\n        <div class=\"papel\">\n          <h3>DIREÇÃO</h3>\n          <p>Giuliano Bonorandi</p>\n          <p>Julio Braga</p>\n        </div>\n        <div class=\"papel\">\n          <h3>COORDENAÇÃO GERAL</h3>\n          <p>Tadeu de Paula Souza</p>\n          <a href=\"http://jardim.in\" target=\"_blank\">Jardim.in</a>\n        </div>\n        <div class=\"papel\">\n          <h3>PESQUISA E CURADORIA</h3>\n          <p>Cristiano Rodrigues</p>\n          <p>Luiz Augusto de Paula Souza</p>\n          <p>Tatiana Silva Tavares</p>\n        </div>\n        <div class=\"papel\">\n          <h3>PRODUÇÃO</h3>\n          <p>Carolina Calcavecchia</p>\n          <p>Janaína Castro Alves</p>\n        </div>\n        <div class=\"papel\">\n          <h3>FOTOGRAFIA</h3>\n          <p>Milena Sá</p>\n          <p>Tito José</p>\n        </div>\n        <div class=\"papel\">\n          <h3>SOM DIRETO</h3>\n          <p>Alexandre Kubrusly</p>\n          <p>Francisco Bragança</p>\n        </div>\n        <div class=\"papel\">\n          <h3>ASSISTÊNCIA DE EDIÇÃO</h3>\n          <p>Raoni Seixas</p>\n          <p>Tatiana Teitelroit</p>\n        </div>\n        <div class=\"papel\">\n          <h3>EDIÇÃO</h3>\n          <p>Claudio Tammela</p>\n          <p>Marco Meireles</p>\n          <p>Tatiana Gouveia</p>\n        </div>\n        <div class=\"papel\" style=\"margin-bottom: 40px\">\n          <h3>FINALIZAÇÃO DE SOM</h3>\n          <a href=\"http://criadomudo.net\" target=\"_blank\">Criado Mudo Produções Artísticas</a>\n        </div>\n      </div>\n      <div class=\"info\">\n        <div class=\"papel\">\n          <h3>TRILHA SONORA</h3>\n          <p>Bernardo Adeodato</p>\n          <p>Pedro Silveira</p>\n        </div>\n        <div class=\"papel\">\n          <h3>CORREÇÃO DE COR</h3>\n          <p>Raoni Seixas</p>\n        </div>\n        <div class=\"papel\">\n          <h3>INTERPRETE DE LIBRAS</h3>\n          <p>Jhonatas Narciso</p>\n        </div>\n        <div class=\"papel\">\n          <h3>GRAVAÇÃO DE LIBRAS</h3>\n          <p>Condomínio Multimedia</p>\n        </div>\n        <div class=\"papel\">\n          <h3>ÁUDIO DESCRIÇÃO</h3>\n          <p>Rio Sound Produções</p>\n          <p>Media Acessível Produções</p>\n        </div>\n        <div class=\"papel\" style=\"width: 100%; margin-bottom: 40px\">\n          <h3 style=\"margin-bottom: 0\">DESENVOLVIDO POR:</h3>\n          <a href=\"http://jardim.in\" target=\"_blank\">\n            <img src=\"https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png\" style=\"width: 20%; float: left; margin-top: 0.5%; margin-left: 41%\">\n          </a>\n        </div>\n      </div>\n      <div class=\"info\">\n        <div class=\"papel\">\n          <h3>HIPERVÍDEO MULHER</h3>\n          <p>Aline Costa</p>\n          <p>Ana Lia Cunha</p>\n          <p>Larissa Paiva</p>\n        </div>\n        <div class=\"papel\">\n          <h3>HIPERVÍDEO CRIANÇA</h3>\n          <p>Tadeu de Paula</p>\n        </div>\n        <div class=\"papel\" style=\"height: 320px\">\n          <h3>HIPERVÍDEO ADOLESCENTE</h3>\n          <p>Ana Luísa Serra</p>\n          <p>Bruna Gisele de Oliveira</p>\n          <p>Henrique Bezerra Perminio</p>\n          <p>Maria da Guia de Oliveira</p>\n          <p>Márcia Rocha Parizzi</p>\n          <p>Maria Núbia Alves Cruz</p>\n          <p>Vanessa Rodrigues Cardoso</p>\n          <p>Eveline Correia Miranda Araújo</p>\n          <p>Thereza de Lamare Franco Netto</p>\n        </div>\n        <div class=\"papel\">\n          <h3>HIPERVÍDEO DEFICIÊNCIA</h3>\n          <p>Luiz Augusto de Paula Souza</p>\n        </div>\n        <div class=\"papel\">\n          <h3>HIPERVÍDEO PRISIONAL</h3>\n          <p>Cristiano Rodrigues</p>\n        </div>\n        <!-- <div class=\"papel\" style=\"width: 100%; margin-bottom: 40px;\">\n          <h3 style=\"margin-bottom: 0;\">DESENVOLVIDO POR:</h3>\n          <a href=\"http://jardim.in\" target=\"_blank\">\n            <img src=\"https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png\" style=\"width: 20%; float: left; margin-top: 0.5%; margin-left: 41%;\">\n          </a>\n        </div> -->\n      </div>\n    </div>\n      <div class=\"papel\" style=\"width: 100%\">\n        <h3 style=\"margin-bottom: 0\">REALIZAÇÃO</h3>\n        <img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png\" style=\"width: 25%; margin-top: 2%; margin-left: 38%; float: left; margin-right: 18%; margin-bottom: 4%\">\n      </div>\n    </div>";
+var __vue_template__ = "<div id=\"creditos\">\n    <h1>CRÉDITOS</h1>\n    <a v-on=\"click: fecharCred\" class=\"voltar\">Voltar</a>\n    <div class=\"sslick\">\n      <div class=\"info\">\n        <div class=\"papel\">\n          <h3>DESIGN E PROGRAMAÇÃO</h3>\n          <p>Gustavo Junqueira</p>\n          <p>Marlus Araújo</p>\n        </div>\n        <div class=\"papel\">\n          <h3>DIREÇÃO</h3>\n          <p>Giuliano Bonorandi</p>\n          <p>Julio Braga</p>\n        </div>\n        <div class=\"papel\">\n          <h3>COORDENAÇÃO GERAL</h3>\n          <p>Tadeu de Paula Souza</p>\n          <a href=\"//jardim.digital\" target=\"_blank\">Jardim Digital</a>\n        </div>\n        <div class=\"papel\">\n          <h3>PESQUISA E CURADORIA</h3>\n          <p>Cristiano Rodrigues</p>\n          <p>Luiz Augusto de Paula Souza</p>\n          <p>Tatiana Silva Tavares</p>\n        </div>\n        <div class=\"papel\">\n          <h3>PRODUÇÃO</h3>\n          <p>Carolina Calcavecchia</p>\n          <p>Janaína Castro Alves</p>\n        </div>\n        <div class=\"papel\">\n          <h3>FOTOGRAFIA</h3>\n          <p>Milena Sá</p>\n          <p>Tito José</p>\n        </div>\n        <div class=\"papel\">\n          <h3>SOM DIRETO</h3>\n          <p>Alexandre Kubrusly</p>\n          <p>Francisco Bragança</p>\n        </div>\n        <div class=\"papel\">\n          <h3>ASSISTÊNCIA DE EDIÇÃO</h3>\n          <p>Raoni Seixas</p>\n          <p>Tatiana Teitelroit</p>\n        </div>\n        <div class=\"papel\">\n          <h3>EDIÇÃO</h3>\n          <p>Claudio Tammela</p>\n          <p>Marco Meireles</p>\n          <p>Tatiana Gouveia</p>\n        </div>\n        <div class=\"papel\" style=\"margin-bottom: 40px\">\n          <h3>FINALIZAÇÃO DE SOM</h3>\n          <a href=\"//criadomudo.net\" target=\"_blank\">Criado Mudo Produções Artísticas</a>\n        </div>\n      </div>\n      <div class=\"info\">\n        <div class=\"papel\">\n          <h3>TRILHA SONORA</h3>\n          <p>Bernardo Adeodato</p>\n          <p>Pedro Silveira</p>\n        </div>\n        <div class=\"papel\">\n          <h3>CORREÇÃO DE COR</h3>\n          <p>Raoni Seixas</p>\n        </div>\n        <div class=\"papel\">\n          <h3>INTERPRETE DE LIBRAS</h3>\n          <p>Jhonatas Narciso</p>\n        </div>\n        <div class=\"papel\">\n          <h3>GRAVAÇÃO DE LIBRAS</h3>\n          <p>Condomínio Multimedia</p>\n        </div>\n        <div class=\"papel\">\n          <h3>ÁUDIO DESCRIÇÃO</h3>\n          <p>Rio Sound Produções</p>\n          <p>Media Acessível Produções</p>\n        </div>\n        <div class=\"papel\" style=\"width: 100%; margin-bottom: 40px\">\n          <h3 style=\"margin-bottom: 0\">DESENVOLVIDO POR:</h3>\n          <a href=\"//jardim.in\" target=\"_blank\">\n            <img src=\"//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png\" style=\"width: 20%; float: left; margin-top: 0.5%; margin-left: 41%\">\n          </a>\n        </div>\n      </div>\n      <div class=\"info\">\n        <div class=\"papel\">\n          <h3>HIPERVÍDEO MULHER</h3>\n          <p>Aline Costa</p>\n          <p>Ana Lia Cunha</p>\n          <p>Larissa Paiva</p>\n        </div>\n        <div class=\"papel\">\n          <h3>HIPERVÍDEO CRIANÇA</h3>\n          <p>Tadeu de Paula</p>\n        </div>\n        <div class=\"papel\" style=\"height: 320px\">\n          <h3>HIPERVÍDEO ADOLESCENTE</h3>\n          <p>Ana Luísa Serra</p>\n          <p>Bruna Gisele de Oliveira</p>\n          <p>Henrique Bezerra Perminio</p>\n          <p>Maria da Guia de Oliveira</p>\n          <p>Márcia Rocha Parizzi</p>\n          <p>Maria Núbia Alves Cruz</p>\n          <p>Vanessa Rodrigues Cardoso</p>\n          <p>Eveline Correia Miranda Araújo</p>\n          <p>Thereza de Lamare Franco Netto</p>\n        </div>\n        <div class=\"papel\">\n          <h3>HIPERVÍDEO DEFICIÊNCIA</h3>\n          <p>Luiz Augusto de Paula Souza</p>\n        </div>\n        <div class=\"papel\">\n          <h3>HIPERVÍDEO PRISIONAL</h3>\n          <p>Cristiano Rodrigues</p>\n        </div>\n        <!-- <div class=\"papel\" style=\"width: 100%; margin-bottom: 40px;\">\n          <h3 style=\"margin-bottom: 0;\">DESENVOLVIDO POR:</h3>\n          <a href=\"//jardim.in\" target=\"_blank\">\n            <img src=\"//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png\" style=\"width: 20%; float: left; margin-top: 0.5%; margin-left: 41%;\">\n          </a>\n        </div> -->\n      </div>\n    </div>\n      <div class=\"papel\" style=\"width: 100%\">\n        <h3 style=\"margin-bottom: 0\">REALIZAÇÃO</h3>\n        <img src=\"//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png\" style=\"width: 25%; margin-top: 2%; margin-left: 38%; float: left; margin-right: 18%; margin-bottom: 4%\">\n      </div>\n    </div>";
 var $$$ = require('jquery')
   var slick = require('slick-carousel')
 
@@ -687,8 +687,8 @@ var L = require('leaflet')
 			new L.Control.Zoom({ position: 'topright' }).addTo(this._map)
 
 			// add an OpenStreetMap tile layer
-			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+			L.tileLayer('//{s}.tile.osm.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="//osm.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(this._map)
 
 			L.Icon.Default.imagePath = 'img/leaflet';
@@ -808,23 +808,25 @@ var Vue = require('vue')
         }
 
         if (this.conteudo.video_list) {
-          var playlistUrl = 'http://gdata.youtube.com/feeds/api/playlists/' + this.conteudo.video_list + '?v=2&alt=json&callback=?';
-          var videoURL= 'http://www.youtube.com/watch?v=';
+          var playlistUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + this.$parent.conteudo.video_list + '&key=AIzaSyCwNv14d5bNQ4MwaodqT6z45-6A5y4kzus';
+          var videoURL= 'https://www.youtube.com/watch?v=';
           $$$.getJSON(playlistUrl, function(data) {
+            console.log(data);
             var list_data=[];
-            $$$.each(data.feed.entry, function(i, item) {
+            $$$.each(data.items, function(i, item) {
               var video_data = {};
-              video_data.title = item.title.$t;
-              var feedURL = item.link[1].href;
-              var fragments = feedURL.split("/");
-              video_data.id = fragments[fragments.length - 2];
+              video_data.title = item.snippet.title;
+              video_data.id = item.snippet.resourceId.videoId;
               video_data.url = videoURL + video_data.id;
               list_data.push(video_data);
             });
             for (var i = list_data.length - 1; i >= 0; i--) {
-              $$$('.video-list-redes').slick('slickAdd','<a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a>');
+              $$$('.video-list-redes').slick('slickAdd','<div><a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'" style="text-decoration: none; text-align: center;" class="popup-iframe"><img alt="'+ list_data[i].title +'" src="//img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a><p>' + list_data[i].title + '</p></div>');
               self.videoIndex ++;
+              jQuery('.popup-iframe').magnificPopup({type:'iframe'});
             };
+          }).error(function (err) {
+            console.log(err)
           });
         }
         
@@ -871,7 +873,7 @@ var Vue = require('vue')
       }
     },
     created: function() {
-      this.mp4 = "http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/LIBRAS/libras_"+this.$parent.id+".mp4";
+      this.mp4 = "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/ACES/LIBRAS/libras_"+this.$parent.id+".mp4";
     },
     attached: function() {
       
@@ -1539,7 +1541,7 @@ var $$$ = require('jquery')
 
 			loadData: function(){
 				var self = this;
-				var url = 'https://spreadsheets.google.com/feeds/list/' + this.fields.spreadsheet + '/od6/public/values?alt=json-in-script&callback=?';
+				var url = '//spreadsheets.google.com/feeds/list/' + this.fields.spreadsheet + '/od6/public/values?alt=json-in-script&callback=?';
 
 				console.log('spreadsheet will load now')
 
@@ -2080,7 +2082,7 @@ var Vue = require('vue')
 
         if (this.$parent.conteudo.video_list) {
           var playlistUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + this.$parent.conteudo.video_list + '&key=AIzaSyCwNv14d5bNQ4MwaodqT6z45-6A5y4kzus';
-          var videoURL= 'http://www.youtube.com/watch?v=';
+          var videoURL= 'https://www.youtube.com/watch?v=';
           $$$.getJSON(playlistUrl, function(data) {
             console.log(data);
             var list_data=[];
@@ -2092,10 +2094,12 @@ var Vue = require('vue')
               list_data.push(video_data);
             });
             for (var i = list_data.length - 1; i >= 0; i--) {
-              $$$('.video-list').slick('slickAdd','<div><a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'" style="text-decoration: none; text-align: center;" class="popup-iframe"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a><p>' + list_data[i].title + '</p></div>');
+              $$$('.video-list').slick('slickAdd','<div><a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'" style="text-decoration: none; text-align: center;" class="popup-iframe"><img alt="'+ list_data[i].title +'" src="//img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a><p>' + list_data[i].title + '</p></div>');
               self.videoIndex ++;
               jQuery('.popup-iframe').magnificPopup({type:'iframe'});
             };
+          }).error(function (err) {
+            console.log(err)
           });
         }
 
@@ -2622,8 +2626,8 @@ var $$$ = require('jquery')
 })()
 
 },{"./app.vue":1,"director":28,"underscore":36,"vue":97}],26:[function(require,module,exports){
-require("insert-css")(".areaTematica,.botao,.nest h2,header.fechado{text-align:center}header{zoom:1;position:absolute;height:100%;background-image:url(http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home_nova.png);background-repeat:no-repeat;background-size:100% auto;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;z-index:1;transition:all .5s}.areaTematica,header .conteudo{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;transition:all .5s}header :after,header:before{content:\"\";display:table}header:after{clear:both}body{font-family:fonte-normal,sans-serif;letter-spacing:-1px}@media screen and (min-width:1600px){body{font-size:1.3rem}}header h1{margin:.5%;display:none}header.fechado{height:5%;font-size:50%;overflow:hidden;padding:0;background:#141414;transition:all .5s}header.fechado h1{display:block}@media screen and (min-width:1600px){header.fechado h1{font-size:1.5rem}}header.fechado p{opacity:0}header.fechado a{opacity:0!important}header.fechado:hover{font-size:55%}header.fechado.ativo{top:-5%;transition:all .5s}header.fechado .conteudo{padding:0}header.fechado #headHandle{z-index:2;cursor:pointer}.areaTematica,.linha{height:100%;z-index:1}header .conteudo{box-sizing:border-box;padding:20% 2% 2% 50%}.areaTematica{padding:0 3%;box-sizing:border-box;right:-40%;width:40%;position:fixed;background-color:rgba(15,15,15,.8)}.areaTematica h2{margin-top:10%}.col-1-5{width:20%;text-decoration:none;position:absolute;height:100%;transition:all .5s}.linha{position:fixed;right:40%;width:.5%;bottom:-100%;opacity:.6;transition:all .1s}.botao{cursor:pointer;display:inline-block;margin:10px;padding:10px;width:26%;background:#ccc;color:#000;opacity:.6;transition:all .3s}.BW,.hipervideo,.nest{transition:all .5s ease 0s}.botao.clic,.botao:hover{opacity:1}.botao.cruz{border-radius:16px;height:20px;padding:5px;position:absolute;right:2%;top:2%;width:20px}#headHandle,.fotoFundo{height:100%;position:absolute}#headHandle{z-index:-15;left:0;width:100%}.nest{bottom:-35%;height:35%;opacity:.8;position:absolute;width:100%;z-index:2;padding:17% 5%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.hipervideo{overflow:hidden;cursor:pointer}.hipervideo:hover .BW{opacity:0}.hipervideo:hover .nest{bottom:0}.hipervideo.ativo{width:100%;cursor:default;z-index:2!important;left:0!important;background-color:#a9a9a9}.hipervideo.ativo .areaTematica{right:0}.hipervideo.ativo .nest{padding:0;opacity:0;z-index:0}.hipervideo.ativo .linha{transition:all .5s ease .3s;bottom:0}.hipervideo.ativo .fotoFundo{left:0!important}.hipervideo.ativo .BW{z-index:-1!important;opacity:0}.sub_menu{width:50%;float:left}.sub_menu .botao{width:80%}");
-var __vue_template__ = "<div v-with=\"db: fulldb\">\n\t\t<in-tutorial v-show=\"tutorial\" v-with=\"data: tutdata\" v-transition=\"\"></in-tutorial>\n\t\t<header class=\"\">\n\t\t\t<div class=\"conteudo\">\n\t\t\t\t<div id=\"headHandle\" v-on=\"click: abrir\"></div>\n\t\t\t\t<h1>{{db.title | uppercase}}</h1>\n\t\t\t\t<p style=\"letter-spacing: 0; text-align: center\">{{{db.texto | marked}}}</p>\n\t\t\t\t<a v-on=\"click: tutorialGO()\" class=\"botao\">O QUE É HIPERVÍDEO?</a>\n\t\t\t\t<a v-on=\"click: fechar\" class=\"botao\">ASSISTIR HIPERVÍDEOS</a>\n\t\t\t\t<a v-on=\"click: redes\" class=\"botao\">VER REDES</a>\n\t\t\t\t<img src=\"http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png\" style=\"width: 50%; float: left; margin-top: 6%\">\n\t\t\t</div>\n\t\t</header>\n\t\t<div class=\"conteudo\" style=\"position: absolute; z-index: 0\">\n\t\t\t<div class=\"grid\">\n\t\t\t\t<div v-repeat=\"db.hipervideos\" class=\"hipervideo col-1-5 {{id}}\" style=\"left: {{posHip[$index]}}%; z-index: -{{$index}}\">\n\t\t\t\t\t<div v-on=\"click: select(id)\" class=\"nest\" style=\"background-color: {{cor}}\">\n\t\t\t\t\t\t<h2>{{formato | uppercase}}</h2>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"linha\" style=\"background-color: {{cor}}\"></div>\n\t\t\t\t\t<div class=\"areaTematica\">\n\t\t\t\t\t\t<h2>{{formato | uppercase}}</h2>\n\t\t\t\t\t\t<p style=\"letter-spacing: 0\">{{{descricao | marked}}}</p>\n\t\t\t\t\t\t<a href=\"#/{{id}}\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ASSISTIR</a>\n\t\t\t\t\t\t<a v-on=\"click: deselect(id)\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">VOLTAR</a>\n\t\t\t\t\t\t<div class=\"sub_menu\">\n\t\t\t\t\t\t\t<h2>QUALIDADE</h2>\n\t\t\t\t\t\t\t<div v-on=\"click: selectAlta\" class=\"botao\" v-class=\"clic: isAlta\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ALTA</div>\n\t\t\t\t\t\t\t<div v-on=\"click: selectMedia\" class=\"botao\" v-class=\"clic: isMedia\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">MEDIA</div>\n\t\t\t\t\t\t\t<div v-on=\"click: selectBaixa\" class=\"botao\" v-class=\"clic: isBaixa\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">BAIXA</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"sub_menu\">\n\t\t\t\t\t\t\t<h2>ACESSIBILIDADE</h2>\n\t\t\t\t\t\t\t<div v-on=\"click: selectNada\" class=\"botao\" v-class=\"clic: isNada\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">SEM ACESSIBILIDADE</div>\n\t\t\t\t\t\t\t<div v-on=\"click: selectLibras\" class=\"botao\" v-class=\"clic: isLibras\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">LIBRAS</div>\n\t\t\t\t\t\t\t<div v-on=\"click: selectAudio\" class=\"botao\" v-class=\"clic: isAudio\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ÁUDIO DESCRIÇÃO</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<img v-attr=\"src: 'https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + 'BW.png'\" class=\"fotoFundo BW\" style=\"left: -{{posHip[$index]}}%; z-index: 1\" v-on=\"click: select(id)\">\n\t\t\t\t\t<img v-attr=\"src: 'https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + '.png'\" class=\"fotoFundo\" style=\"left: -{{posHip[$index]}}%\" v-on=\"click: select(id)\">\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<!-- <div style=\"position: fixed; right: 0; bottom: 0; z-index: 1; width: 180px;\">\n\t\t\t<p style=\"float: left; font-size: 80%; width: 100px;\">desenvolvido por</p>\n\t\t\t<a href=\"http://jardim.in\" target=\"_blank\">\n\t    </a>\n\t\t</div> -->\n\t</div>";
+require("insert-css")(".areaTematica,.botao,.nest h2,header.fechado{text-align:center}header{zoom:1;position:absolute;height:100%;background-image:url(//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/home_nova.png);background-repeat:no-repeat;background-size:100% auto;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;z-index:1;transition:all .5s}.areaTematica,header .conteudo{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;transition:all .5s}header :after,header:before{content:\"\";display:table}header:after{clear:both}body{font-family:fonte-normal,sans-serif;letter-spacing:-1px}@media screen and (min-width:1600px){body{font-size:1.3rem}}header h1{margin:.5%;display:none}header.fechado{height:5%;font-size:50%;overflow:hidden;padding:0;background:#141414;transition:all .5s}header.fechado h1{display:block}@media screen and (min-width:1600px){header.fechado h1{font-size:1.5rem}}header.fechado p{opacity:0}header.fechado a{opacity:0!important}header.fechado:hover{font-size:55%}header.fechado.ativo{top:-5%;transition:all .5s}header.fechado .conteudo{padding:0}header.fechado #headHandle{z-index:2;cursor:pointer}.areaTematica,.linha{height:100%;z-index:1}header .conteudo{box-sizing:border-box;padding:20% 2% 2% 50%}.areaTematica{padding:0 3%;box-sizing:border-box;right:-40%;width:40%;position:fixed;background-color:rgba(15,15,15,.8)}.areaTematica h2{margin-top:10%}.col-1-5{width:20%;text-decoration:none;position:absolute;height:100%;transition:all .5s}.linha{position:fixed;right:40%;width:.5%;bottom:-100%;opacity:.6;transition:all .1s}.botao{cursor:pointer;display:inline-block;margin:10px;padding:10px;width:26%;background:#ccc;color:#000;opacity:.6;transition:all .3s}.BW,.hipervideo,.nest{transition:all .5s ease 0s}.botao.clic,.botao:hover{opacity:1}.botao.cruz{border-radius:16px;height:20px;padding:5px;position:absolute;right:2%;top:2%;width:20px}#headHandle,.fotoFundo{height:100%;position:absolute}#headHandle{z-index:-15;left:0;width:100%}.nest{bottom:-35%;height:35%;opacity:.8;position:absolute;width:100%;z-index:2;padding:17% 5%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.hipervideo{overflow:hidden;cursor:pointer}.hipervideo:hover .BW{opacity:0}.hipervideo:hover .nest{bottom:0}.hipervideo.ativo{width:100%;cursor:default;z-index:2!important;left:0!important;background-color:#a9a9a9}.hipervideo.ativo .areaTematica{right:0}.hipervideo.ativo .nest{padding:0;opacity:0;z-index:0}.hipervideo.ativo .linha{transition:all .5s ease .3s;bottom:0}.hipervideo.ativo .fotoFundo{left:0!important}.hipervideo.ativo .BW{z-index:-1!important;opacity:0}.sub_menu{width:50%;float:left}.sub_menu .botao{width:80%}");
+var __vue_template__ = "<div v-with=\"db: fulldb\">\n\t\t<in-tutorial v-show=\"tutorial\" v-with=\"data: tutdata\" v-transition=\"\"></in-tutorial>\n\t\t<header class=\"\">\n\t\t\t<div class=\"conteudo\">\n\t\t\t\t<div id=\"headHandle\" v-on=\"click: abrir\"></div>\n\t\t\t\t<h1>{{db.title | uppercase}}</h1>\n\t\t\t\t<p style=\"letter-spacing: 0; text-align: center\">{{{db.texto | marked}}}</p>\n\t\t\t\t<a v-on=\"click: tutorialGO()\" class=\"botao\">O QUE É HIPERVÍDEO?</a>\n\t\t\t\t<a v-on=\"click: fechar\" class=\"botao\">ASSISTIR HIPERVÍDEOS</a>\n\t\t\t\t<a v-on=\"click: redes\" class=\"botao\">VER REDES</a>\n\t\t\t\t<img src=\"//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png\" style=\"width: 50%; float: left; margin-top: 6%\">\n\t\t\t</div>\n\t\t</header>\n\t\t<div class=\"conteudo\" style=\"position: absolute; z-index: 0\">\n\t\t\t<div class=\"grid\">\n\t\t\t\t<div v-repeat=\"db.hipervideos\" class=\"hipervideo col-1-5 {{id}}\" style=\"left: {{posHip[$index]}}%; z-index: -{{$index}}\">\n\t\t\t\t\t<div v-on=\"click: select(id)\" class=\"nest\" style=\"background-color: {{cor}}\">\n\t\t\t\t\t\t<h2>{{formato | uppercase}}</h2>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"linha\" style=\"background-color: {{cor}}\"></div>\n\t\t\t\t\t<div class=\"areaTematica\">\n\t\t\t\t\t\t<h2>{{formato | uppercase}}</h2>\n\t\t\t\t\t\t<p style=\"letter-spacing: 0\">{{{descricao | marked}}}</p>\n\t\t\t\t\t\t<a href=\"#/{{id}}\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ASSISTIR</a>\n\t\t\t\t\t\t<a v-on=\"click: deselect(id)\" class=\"botao\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">VOLTAR</a>\n\t\t\t\t\t\t<div class=\"sub_menu\">\n\t\t\t\t\t\t\t<h2>QUALIDADE</h2>\n\t\t\t\t\t\t\t<div v-on=\"click: selectAlta\" class=\"botao\" v-class=\"clic: isAlta\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ALTA</div>\n\t\t\t\t\t\t\t<div v-on=\"click: selectMedia\" class=\"botao\" v-class=\"clic: isMedia\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">MEDIA</div>\n\t\t\t\t\t\t\t<div v-on=\"click: selectBaixa\" class=\"botao\" v-class=\"clic: isBaixa\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">BAIXA</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"sub_menu\">\n\t\t\t\t\t\t\t<h2>ACESSIBILIDADE</h2>\n\t\t\t\t\t\t\t<div v-on=\"click: selectNada\" class=\"botao\" v-class=\"clic: isNada\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">SEM ACESSIBILIDADE</div>\n\t\t\t\t\t\t\t<div v-on=\"click: selectLibras\" class=\"botao\" v-class=\"clic: isLibras\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">LIBRAS</div>\n\t\t\t\t\t\t\t<div v-on=\"click: selectAudio\" class=\"botao\" v-class=\"clic: isAudio\" style=\"background-color: {{cor}}; text-decoration: none; color: white; font-weight: 900\">ÁUDIO DESCRIÇÃO</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<img v-attr=\"src: '//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + 'BW.png'\" class=\"fotoFundo BW\" style=\"left: -{{posHip[$index]}}%; z-index: 1\" v-on=\"click: select(id)\">\n\t\t\t\t\t<img v-attr=\"src: '//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/foto_' + id + '.png'\" class=\"fotoFundo\" style=\"left: -{{posHip[$index]}}%\" v-on=\"click: select(id)\">\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<!-- <div style=\"position: fixed; right: 0; bottom: 0; z-index: 1; width: 180px;\">\n\t\t\t<p style=\"float: left; font-size: 80%; width: 100px;\">desenvolvido por</p>\n\t\t\t<a href=\"//jardim.in\" target=\"_blank\">\n\t    </a>\n\t\t</div> -->\n\t</div>";
 var $$$ = require('jquery')
 	var marked = require('marked')
 	var noty = require('noty')
@@ -2633,22 +2637,22 @@ var $$$ = require('jquery')
 			return {
 				tutorial: false,
 				tutdata: [{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_1.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_1.png"
 				},
 				{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_2.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_2.png"
 				},
 				{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_3.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_3.png"
 				},
 				{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_4.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_4.png"
 				},
 				{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_5.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_5.png"
 				},
 				{
-					imagem: "https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_6.png"
+					imagem: "//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/Tutorial/Tutorial_Hip_6.png"
 				}]
 			}
 		},

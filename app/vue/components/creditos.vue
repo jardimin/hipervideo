@@ -75,7 +75,7 @@
         <div class="papel">
           <h3>COORDENAÇÃO GERAL</h3>
           <p>Tadeu de Paula Souza</p>
-          <a href="http://jardim.in" target="_blank">Jardim.in</a>
+          <a href="//jardim.digital" target="_blank">Jardim Digital</a>
         </div>
         <div class="papel">
           <h3>PESQUISA E CURADORIA</h3>
@@ -111,7 +111,7 @@
         </div>
         <div class="papel" style="margin-bottom: 40px;">
           <h3>FINALIZAÇÃO DE SOM</h3>
-          <a href="http://criadomudo.net" target="_blank">Criado Mudo Produções Artísticas</a>
+          <a href="//criadomudo.net" target="_blank">Criado Mudo Produções Artísticas</a>
         </div>
       </div>
       <div class="info">
@@ -139,8 +139,8 @@
         </div>
         <div class="papel" style="width: 100%; margin-bottom: 40px;">
           <h3 style="margin-bottom: 0;">DESENVOLVIDO POR:</h3>
-          <a href="http://jardim.in" target="_blank">
-            <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 20%; float: left; margin-top: 0.5%; margin-left: 41%;">
+          <a href="//jardim.in" target="_blank">
+            <img src="//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 20%; float: left; margin-top: 0.5%; margin-left: 41%;">
           </a>
         </div>
       </div>
@@ -177,15 +177,15 @@
         </div>
         <!-- <div class="papel" style="width: 100%; margin-bottom: 40px;">
           <h3 style="margin-bottom: 0;">DESENVOLVIDO POR:</h3>
-          <a href="http://jardim.in" target="_blank">
-            <img src="https://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 20%; float: left; margin-top: 0.5%; margin-left: 41%;">
+          <a href="//jardim.in" target="_blank">
+            <img src="//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo-fundotransparente.png" style="width: 20%; float: left; margin-top: 0.5%; margin-left: 41%;">
           </a>
         </div> -->
       </div>
     </div>
       <div class="papel" style="width: 100%;">
         <h3 style="margin-bottom: 0;">REALIZAÇÃO</h3>
-        <img src="http://s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 25%; margin-top: 2%; margin-left: 38%; float: left; margin-right: 18%; margin-bottom: 4%;">
+        <img src="//s3-sa-east-1.amazonaws.com/avnaweb/DAPES/logo_ministerio_saude_sus2.png" style="width: 25%; margin-top: 2%; margin-left: 38%; float: left; margin-right: 18%; margin-bottom: 4%;">
       </div>
     </div>
   </div>

@@ -38,8 +38,8 @@
       new L.Control.Zoom({ position: 'topright' }).addTo(this._mapa)
 
       // add an OpenStreetMap tile layer
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      L.tileLayer('//{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="//osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this._mapa)
 
       L.Icon.Default.imagePath = 'img/leaflet';
@@ -51,7 +51,7 @@
       loadData: function() {
         var self = this;
         if (typeof this.mapa.locais === 'string') {
-          var url = 'https://spreadsheets.google.com/feeds/list/' + self.mapa.locais + '/od6/public/values?alt=json-in-script&callback=?';
+          var url = '//spreadsheets.google.com/feeds/list/' + self.mapa.locais + '/od6/public/values?alt=json-in-script&callback=?';
 
           console.log('mapa-spreadsheet will load now')
 

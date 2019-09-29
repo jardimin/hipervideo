@@ -165,7 +165,7 @@
 
         if (this.$parent.conteudo.video_list) {
           var playlistUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + this.$parent.conteudo.video_list + '&key=AIzaSyCwNv14d5bNQ4MwaodqT6z45-6A5y4kzus';
-          var videoURL= 'http://www.youtube.com/watch?v=';
+          var videoURL= 'https://www.youtube.com/watch?v=';
           $$$.getJSON(playlistUrl, function(data) {
             console.log(data);
             var list_data=[];
@@ -177,10 +177,12 @@
               list_data.push(video_data);
             });
             for (var i = list_data.length - 1; i >= 0; i--) {
-              $$$('.video-list').slick('slickAdd','<div><a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'" style="text-decoration: none; text-align: center;" class="popup-iframe"><img alt="'+ list_data[i].title +'" src="http://img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a><p>' + list_data[i].title + '</p></div>');
+              $$$('.video-list').slick('slickAdd','<div><a href="'+ list_data[i].url +'" target="_blank" title="'+ list_data[i].title +'" style="text-decoration: none; text-align: center;" class="popup-iframe"><img alt="'+ list_data[i].title +'" src="//img.youtube.com/vi/'+ list_data[i].id +'/0.jpg"</a><p>' + list_data[i].title + '</p></div>');
               self.videoIndex ++;
               jQuery('.popup-iframe').magnificPopup({type:'iframe'});
             };
+          }).error(function (err) {
+            console.log(err)
           });
         }
 

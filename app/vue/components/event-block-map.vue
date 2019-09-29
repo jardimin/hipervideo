@@ -86,8 +86,8 @@
 			new L.Control.Zoom({ position: 'topright' }).addTo(this._map)
 
 			// add an OpenStreetMap tile layer
-			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+			L.tileLayer('//{s}.tile.osm.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="//osm.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(this._map)
 
 			L.Icon.Default.imagePath = 'img/leaflet';
