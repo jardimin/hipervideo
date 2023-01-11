@@ -14,7 +14,7 @@
     "body-parser": "^1.8.4",
     "connect-livereload": "^0.5.2",
     "cookie-parser": "~1.3.3",
-    "debug": "~2.0.0",
+    "debug": "~2.6.9",
     "director": "^1.2.3",
     "express": "~4.9.0",
     "express-useragent": "^0.1.7",
